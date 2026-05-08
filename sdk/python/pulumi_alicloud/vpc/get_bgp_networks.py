@@ -142,10 +142,10 @@ def get_bgp_networks(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         router_id=pulumi.get(__ret__, 'router_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            router_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_bgp_networks_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            router_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBgpNetworksResult]:
     """
     This data source provides the Vpc Bgp Networks of the current Alibaba Cloud user.

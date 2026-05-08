@@ -21,10 +21,10 @@ class BucketRefererArgs:
     def __init__(__self__, *,
                  allow_empty_referer: pulumi.Input[_builtins.bool],
                  bucket: pulumi.Input[_builtins.str],
-                 allow_truncate_query_string: Optional[pulumi.Input[_builtins.bool]] = None,
-                 referer_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 truncate_path: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+                 referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 truncate_path: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketReferer resource.
 
@@ -72,62 +72,62 @@ class BucketRefererArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowTruncateQueryString")
-    def allow_truncate_query_string(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_truncate_query_string(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         """
         return pulumi.get(self, "allow_truncate_query_string")
 
     @allow_truncate_query_string.setter
-    def allow_truncate_query_string(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_truncate_query_string(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_truncate_query_string", value)
 
     @_builtins.property
     @pulumi.getter(name="refererBlacklists")
-    def referer_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referer_blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The container that holds the Referer blacklist.
         """
         return pulumi.get(self, "referer_blacklists")
 
     @referer_blacklists.setter
-    def referer_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referer_blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referer_blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="refererLists")
-    def referer_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referer_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The container that holds the Referer whitelist.
         """
         return pulumi.get(self, "referer_lists")
 
     @referer_lists.setter
-    def referer_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referer_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referer_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="truncatePath")
-    def truncate_path(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def truncate_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         return pulumi.get(self, "truncate_path")
 
     @truncate_path.setter
-    def truncate_path(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def truncate_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "truncate_path", value)
 
 
 @pulumi.input_type
 class _BucketRefererState:
     def __init__(__self__, *,
-                 allow_empty_referer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_truncate_query_string: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 truncate_path: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allow_empty_referer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 truncate_path: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketReferer resources.
 
@@ -153,74 +153,74 @@ class _BucketRefererState:
 
     @_builtins.property
     @pulumi.getter(name="allowEmptyReferer")
-    def allow_empty_referer(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_empty_referer(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow empty Referer request headers.
         """
         return pulumi.get(self, "allow_empty_referer")
 
     @allow_empty_referer.setter
-    def allow_empty_referer(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_empty_referer(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_empty_referer", value)
 
     @_builtins.property
     @pulumi.getter(name="allowTruncateQueryString")
-    def allow_truncate_query_string(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_truncate_query_string(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         """
         return pulumi.get(self, "allow_truncate_query_string")
 
     @allow_truncate_query_string.setter
-    def allow_truncate_query_string(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_truncate_query_string(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_truncate_query_string", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="refererBlacklists")
-    def referer_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referer_blacklists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The container that holds the Referer blacklist.
         """
         return pulumi.get(self, "referer_blacklists")
 
     @referer_blacklists.setter
-    def referer_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referer_blacklists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referer_blacklists", value)
 
     @_builtins.property
     @pulumi.getter(name="refererLists")
-    def referer_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def referer_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The container that holds the Referer whitelist.
         """
         return pulumi.get(self, "referer_lists")
 
     @referer_lists.setter
-    def referer_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def referer_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "referer_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="truncatePath")
-    def truncate_path(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def truncate_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         return pulumi.get(self, "truncate_path")
 
     @truncate_path.setter
-    def truncate_path(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def truncate_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "truncate_path", value)
 
 
@@ -230,12 +230,12 @@ class BucketReferer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_empty_referer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_truncate_query_string: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 truncate_path: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_empty_referer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 truncate_path: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
@@ -365,12 +365,12 @@ class BucketReferer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_empty_referer: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_truncate_query_string: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 referer_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 referer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 truncate_path: Optional[pulumi.Input[_builtins.bool]] = None,
+                 allow_empty_referer: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 truncate_path: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,12 +400,12 @@ class BucketReferer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_empty_referer: Optional[pulumi.Input[_builtins.bool]] = None,
-            allow_truncate_query_string: Optional[pulumi.Input[_builtins.bool]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            referer_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            referer_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            truncate_path: Optional[pulumi.Input[_builtins.bool]] = None) -> 'BucketReferer':
+            allow_empty_referer: pulumi.Input[Optional[_builtins.bool]] = None,
+            allow_truncate_query_string: pulumi.Input[Optional[_builtins.bool]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            referer_blacklists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            referer_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            truncate_path: pulumi.Input[Optional[_builtins.bool]] = None) -> 'BucketReferer':
         """
         Get an existing BucketReferer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

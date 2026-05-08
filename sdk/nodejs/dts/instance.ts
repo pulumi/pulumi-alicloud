@@ -321,25 +321,25 @@ export interface InstanceState {
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to start the task automatically after the purchase is completed. Value:
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    autoStart?: pulumi.Input<boolean>;
+    autoStart?: pulumi.Input<boolean | undefined>;
     /**
      * Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * Instance creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * The target database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -368,50 +368,50 @@ export interface InstanceState {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    destinationRegion?: pulumi.Input<string>;
+    destinationRegion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subscription instance.
      */
-    dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
      */
-    du?: pulumi.Input<number>;
+    du?: pulumi.Input<number | undefined>;
     /**
      * Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
      */
-    feeType?: pulumi.Input<string>;
+    feeType?: pulumi.Input<string | undefined>;
     /**
      * The type of the migration or synchronization instance.
      * - The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.
      * - The types of synchronization instances: **large**, **medium**, **small**, **micro**.
      * - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The name of Dts instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `paymentType` is `Subscription`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Source instance database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -440,32 +440,32 @@ export interface InstanceState {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    sourceRegion?: pulumi.Input<string>;
+    sourceRegion?: pulumi.Input<string | undefined>;
     /**
      * Instance status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Synchronization topology, value:
      * - **oneway**: one-way synchronization, the default value.
      * - **bidirectional**: two-way synchronization.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
      * - `Forward`: Data is synchronized from the source database to the destination database.
      * - `Reverse`: Data is synchronized from the destination database to the source database.
      * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
-    synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string | undefined>;
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.
@@ -473,7 +473,7 @@ export interface InstanceState {
      * - **subscribe**: SUBSCRIBE.
      * - **NOTE:** This parameter or **job_id** must be passed in.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Prepaid instance purchase duration.
      * - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -482,7 +482,7 @@ export interface InstanceState {
      * - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
      * - The billing method of the subscription instance. You can set the parameter `period`.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -494,21 +494,21 @@ export interface InstanceArgs {
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to start the task automatically after the purchase is completed. Value:
      * - **false**: No, the default value.
      * - **true**: Yes.
      */
-    autoStart?: pulumi.Input<boolean>;
+    autoStart?: pulumi.Input<boolean | undefined>;
     /**
      * Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
      */
-    computeUnit?: pulumi.Input<number>;
+    computeUnit?: pulumi.Input<number | undefined>;
     /**
      * The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
      */
-    databaseCount?: pulumi.Input<number>;
+    databaseCount?: pulumi.Input<number | undefined>;
     /**
      * The target database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -537,42 +537,42 @@ export interface InstanceArgs {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    destinationRegion?: pulumi.Input<string>;
+    destinationRegion?: pulumi.Input<string | undefined>;
     /**
      * Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
      */
-    du?: pulumi.Input<number>;
+    du?: pulumi.Input<number | undefined>;
     /**
      * Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
      */
-    feeType?: pulumi.Input<string>;
+    feeType?: pulumi.Input<string | undefined>;
     /**
      * The type of the migration or synchronization instance.
      * - The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.
      * - The types of synchronization instances: **large**, **medium**, **small**, **micro**.
      * - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).> After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
      */
-    jobId?: pulumi.Input<string>;
+    jobId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `paymentType` is `Subscription`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Source instance database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
@@ -601,28 +601,28 @@ export interface InstanceArgs {
      * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
      * - This parameter or **job_id** must be passed in.
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      */
-    sourceRegion?: pulumi.Input<string>;
+    sourceRegion?: pulumi.Input<string | undefined>;
     /**
      * Synchronization topology, value:
      * - **oneway**: one-way synchronization, the default value.
      * - **bidirectional**: two-way synchronization.
      */
-    syncArchitecture?: pulumi.Input<string>;
+    syncArchitecture?: pulumi.Input<string | undefined>;
     /**
      * The synchronization direction. Default value: `Forward`. Valid values:
      * - `Forward`: Data is synchronized from the source database to the destination database.
      * - `Reverse`: Data is synchronized from the destination database to the source database.
      * - **NOTE:** You can set this parameter to Reverse to delete the reverse synchronization task only if the topology is two-way synchronization.
      */
-    synchronizationDirection?: pulumi.Input<string>;
+    synchronizationDirection?: pulumi.Input<string | undefined>;
     /**
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The instance type. Valid values:
      * - **migration**: MIGRATION.
@@ -630,7 +630,7 @@ export interface InstanceArgs {
      * - **subscribe**: SUBSCRIBE.
      * - **NOTE:** This parameter or **job_id** must be passed in.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Prepaid instance purchase duration.
      * - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -639,5 +639,5 @@ export interface InstanceArgs {
      * - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
      * - The billing method of the subscription instance. You can set the parameter `period`.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
 }

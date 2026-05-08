@@ -170,39 +170,39 @@ export interface FirewallVpcFirewallCenState {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
      */
-    connectType?: pulumi.Input<string>;
+    connectType?: pulumi.Input<string | undefined>;
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The details of the VPC. See `localVpc` below.
      */
-    localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc>;
+    localVpc?: pulumi.Input<inputs.cloudfirewall.FirewallVpcFirewallCenLocalVpc | undefined>;
     /**
      * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * Firewall switch status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VPC firewall ID
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC firewall instance.
      */
-    vpcFirewallName?: pulumi.Input<string>;
+    vpcFirewallName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the VPC is created.
      */
-    vpcRegion?: pulumi.Input<string>;
+    vpcRegion?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface FirewallVpcFirewallCenArgs {
     /**
      * The language type of the requested and received messages. Valid values:
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The details of the VPC. See `localVpc` below.
      */
@@ -224,7 +224,7 @@ export interface FirewallVpcFirewallCenArgs {
     /**
      * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * Firewall switch status.
      */

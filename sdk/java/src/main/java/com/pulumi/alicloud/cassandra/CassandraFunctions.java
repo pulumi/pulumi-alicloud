@@ -44,8 +44,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,8 +138,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -185,8 +185,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -232,8 +232,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetBackupPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -323,8 +323,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -368,8 +368,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -413,8 +413,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -458,8 +458,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -503,8 +503,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -548,8 +548,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -593,8 +593,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -639,8 +639,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -685,8 +685,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -731,8 +731,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class CassandraFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cassandra.CassandraFunctions;
      * import com.pulumi.alicloud.cassandra.inputs.GetDataCentersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -824,8 +824,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -875,8 +875,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -926,8 +926,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -977,8 +977,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1028,8 +1028,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1079,8 +1079,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1130,8 +1130,8 @@ public final class CassandraFunctions {
      * import com.pulumi.alicloud.cassandra.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.cassandra.Cluster;
      * import com.pulumi.alicloud.cassandra.ClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

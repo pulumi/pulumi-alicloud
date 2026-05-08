@@ -155,11 +155,11 @@ def get_check_structures(current_page: Optional[_builtins.int] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         structures=pulumi.get(__ret__, 'structures'),
         task_sources=pulumi.get(__ret__, 'task_sources'))
-def get_check_structures_output(current_page: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                task_sources: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_check_structures_output(current_page: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                task_sources: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCheckStructuresResult]:
     """
     This data source provides Threat Detection Check Structure available to the user.[What is Check Structure](https://next.api.alibabacloud.com/document/Sas/2018-12-03/GetCheckStructure)

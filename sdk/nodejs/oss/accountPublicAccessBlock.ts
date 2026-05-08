@@ -100,7 +100,7 @@ export interface AccountPublicAccessBlockState {
     /**
      * Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
      */
-    blockPublicAccess?: pulumi.Input<boolean>;
+    blockPublicAccess?: pulumi.Input<boolean | undefined>;
 }
 
 /**

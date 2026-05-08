@@ -153,29 +153,29 @@ export interface AccessPointState {
     /**
      * The name of the access point
      */
-    accessPointName?: pulumi.Input<string>;
+    accessPointName?: pulumi.Input<string | undefined>;
     /**
      * The Bucket to which the current access point belongs.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Access point network source. The valid values are as follows: 
      * - vpc: only the specified VPC ID can be used to access the access point.
      * - internet: the access point can be accessed through both external and internal Endpoint.
      */
-    networkOrigin?: pulumi.Input<string>;
+    networkOrigin?: pulumi.Input<string | undefined>;
     /**
      * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      */
-    publicAccessBlockConfiguration?: pulumi.Input<inputs.oss.AccessPointPublicAccessBlockConfiguration>;
+    publicAccessBlockConfiguration?: pulumi.Input<inputs.oss.AccessPointPublicAccessBlockConfiguration | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      */
-    vpcConfiguration?: pulumi.Input<inputs.oss.AccessPointVpcConfiguration>;
+    vpcConfiguration?: pulumi.Input<inputs.oss.AccessPointVpcConfiguration | undefined>;
 }
 
 /**
@@ -199,9 +199,9 @@ export interface AccessPointArgs {
     /**
      * Configuration of Access Point Blocking Public Access See `publicAccessBlockConfiguration` below.
      */
-    publicAccessBlockConfiguration?: pulumi.Input<inputs.oss.AccessPointPublicAccessBlockConfiguration>;
+    publicAccessBlockConfiguration?: pulumi.Input<inputs.oss.AccessPointPublicAccessBlockConfiguration | undefined>;
     /**
      * If the Network Origin is vpc, the VPC source information is saved here. See `vpcConfiguration` below.
      */
-    vpcConfiguration?: pulumi.Input<inputs.oss.AccessPointVpcConfiguration>;
+    vpcConfiguration?: pulumi.Input<inputs.oss.AccessPointVpcConfiguration | undefined>;
 }

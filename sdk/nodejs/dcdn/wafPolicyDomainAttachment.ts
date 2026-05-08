@@ -139,11 +139,11 @@ export interface WafPolicyDomainAttachmentState {
     /**
      * Access the accelerated domain name of the specified protection policy.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The protection policy ID. Only one input is supported.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 /**

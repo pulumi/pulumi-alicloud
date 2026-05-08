@@ -169,8 +169,8 @@ def get_rules(frontend_port: Optional[_builtins.int] = None,
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
-        frontend_port=22))
+    sample_ds = alicloud.slb.get_rules_output(load_balancer_id=default_application_load_balancer.id,
+        frontend_port=22)
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```
 
@@ -199,11 +199,11 @@ def get_rules(frontend_port: Optional[_builtins.int] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         slb_rules=pulumi.get(__ret__, 'slb_rules'))
-def get_rules_output(frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_rules_output(frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRulesResult]:
     """
     This data source provides the rules associated with a server load balancer listener.
@@ -246,8 +246,8 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[_builtins.int]] = None
         domain="*.aliyun.com",
         url="/image",
         server_group_id=default_server_group.id)
-    sample_ds = default_application_load_balancer.id.apply(lambda id: alicloud.slb.get_rules_output(load_balancer_id=id,
-        frontend_port=22))
+    sample_ds = alicloud.slb.get_rules_output(load_balancer_id=default_application_load_balancer.id,
+        frontend_port=22)
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```
 

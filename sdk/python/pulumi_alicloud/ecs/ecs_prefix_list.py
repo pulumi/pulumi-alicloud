@@ -25,7 +25,7 @@ class EcsPrefixListArgs:
                  entries: pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]],
                  max_entries: pulumi.Input[_builtins.int],
                  prefix_list_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsPrefixList resource.
 
@@ -92,25 +92,25 @@ class EcsPrefixListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _EcsPrefixListState:
     def __init__(__self__, *,
-                 address_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsPrefixList resources.
 
@@ -133,62 +133,62 @@ class _EcsPrefixListState:
 
     @_builtins.property
     @pulumi.getter(name="addressFamily")
-    def address_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address family. Valid values: `IPv4`,`IPv6`.
         """
         return pulumi.get(self, "address_family")
 
     @address_family.setter
-    def address_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_family", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]]:
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]]:
         """
         The Entry. The details see Block `entry`.
         """
         return pulumi.get(self, "entries")
 
     @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]]):
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]]]):
         pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter(name="maxEntries")
-    def max_entries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_entries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         """
         return pulumi.get(self, "max_entries")
 
     @max_entries.setter
-    def max_entries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_entries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListName")
-    def prefix_list_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
         """
         return pulumi.get(self, "prefix_list_name")
 
     @prefix_list_name.setter
-    def prefix_list_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_name", value)
 
 
@@ -198,11 +198,11 @@ class EcsPrefixList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Prefix List resource.
@@ -307,11 +307,11 @@ class EcsPrefixList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -344,11 +344,11 @@ class EcsPrefixList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_family: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
-            max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-            prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsPrefixList':
+            address_family: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EcsPrefixListEntryArgs', 'EcsPrefixListEntryArgsDict']]]]] = None,
+            max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsPrefixList':
         """
         Get an existing EcsPrefixList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

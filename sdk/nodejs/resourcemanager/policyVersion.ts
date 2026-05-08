@@ -143,15 +143,15 @@ export interface PolicyVersionState {
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
-    isDefaultVersion?: pulumi.Input<boolean>;
+    isDefaultVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the policy. The content must be 1 to 2,048 characters in length.
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface PolicyVersionArgs {
      *
      * @deprecated Field 'is_default_version' has been deprecated from provider version 1.90.0
      */
-    isDefaultVersion?: pulumi.Input<boolean>;
+    isDefaultVersion?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the policy. The content must be 1 to 2,048 characters in length.
      */

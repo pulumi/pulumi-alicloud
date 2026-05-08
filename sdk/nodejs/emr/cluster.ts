@@ -756,111 +756,111 @@ export interface ClusterState {
     /**
      * Boot action parameters.
      */
-    bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
+    bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[] | undefined>;
     /**
      * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * The custom configurations of emr-cluster service.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[] | undefined>;
     /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
-    depositType?: pulumi.Input<string>;
+    depositType?: pulumi.Input<string | undefined>;
     /**
      * High security cluster (true) or not. Default value is false.
      */
-    easEnable?: pulumi.Input<boolean>;
+    easEnable?: pulumi.Input<boolean | undefined>;
     /**
      * EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
      */
-    emrVer?: pulumi.Input<string>;
+    emrVer?: pulumi.Input<string | undefined>;
     /**
      * High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
      */
-    highAvailabilityEnable?: pulumi.Input<boolean>;
+    highAvailabilityEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
-    hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[] | undefined>;
     /**
      * Whether the MASTER node has a public IP address enabled. Default value is false.
      */
-    isOpenPublicIp?: pulumi.Input<boolean>;
+    isOpenPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Ssh key pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * Master ssh password.
      */
-    masterPwd?: pulumi.Input<string>;
+    masterPwd?: pulumi.Input<string | undefined>;
     /**
      * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
      */
-    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf>;
+    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf | undefined>;
     /**
      * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
      */
-    metaStoreType?: pulumi.Input<string>;
+    metaStoreType?: pulumi.Input<string | undefined>;
     /**
      * The configurations of emr-cluster service modification after cluster created.
      */
-    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig>;
+    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional software list.
      */
-    optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;
+    optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */
-    relatedClusterId?: pulumi.Input<string>;
+    relatedClusterId?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * If this is set true, we can ssh into cluster. Default value is false.
      */
-    sshEnable?: pulumi.Input<boolean>;
+    sshEnable?: pulumi.Input<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Use local metadb. Default is false.
      */
-    useLocalMetadb?: pulumi.Input<boolean>;
+    useLocalMetadb?: pulumi.Input<boolean | undefined>;
     /**
      * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
      */
-    userDefinedEmrEcsRole?: pulumi.Input<string>;
+    userDefinedEmrEcsRole?: pulumi.Input<string | undefined>;
     /**
      * Global vswitch id, you can also specify it in host group.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Zone ID, e.g. cn-huhehaote-a
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -870,11 +870,11 @@ export interface ClusterArgs {
     /**
      * Boot action parameters.
      */
-    bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[]>;
+    bootstrapActions?: pulumi.Input<pulumi.Input<inputs.emr.ClusterBootstrapAction>[] | undefined>;
     /**
      * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
      */
@@ -882,15 +882,15 @@ export interface ClusterArgs {
     /**
      * The custom configurations of emr-cluster service.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.emr.ClusterConfig>[] | undefined>;
     /**
      * Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
      */
-    depositType?: pulumi.Input<string>;
+    depositType?: pulumi.Input<string | undefined>;
     /**
      * High security cluster (true) or not. Default value is false.
      */
-    easEnable?: pulumi.Input<boolean>;
+    easEnable?: pulumi.Input<boolean | undefined>;
     /**
      * EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
      */
@@ -898,79 +898,79 @@ export interface ClusterArgs {
     /**
      * High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
      */
-    highAvailabilityEnable?: pulumi.Input<boolean>;
+    highAvailabilityEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
      */
-    hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[]>;
+    hostGroups?: pulumi.Input<pulumi.Input<inputs.emr.ClusterHostGroup>[] | undefined>;
     /**
      * Whether the MASTER node has a public IP address enabled. Default value is false.
      */
-    isOpenPublicIp?: pulumi.Input<boolean>;
+    isOpenPublicIp?: pulumi.Input<boolean | undefined>;
     /**
      * Ssh key pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * Master ssh password.
      */
-    masterPwd?: pulumi.Input<string>;
+    masterPwd?: pulumi.Input<string | undefined>;
     /**
      * The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
      */
-    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf>;
+    metaStoreConf?: pulumi.Input<inputs.emr.ClusterMetaStoreConf | undefined>;
     /**
      * The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
      */
-    metaStoreType?: pulumi.Input<string>;
+    metaStoreType?: pulumi.Input<string | undefined>;
     /**
      * The configurations of emr-cluster service modification after cluster created.
      */
-    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig>;
+    modifyClusterServiceConfig?: pulumi.Input<inputs.emr.ClusterModifyClusterServiceConfig | undefined>;
     /**
      * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Optional software list.
      */
-    optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[]>;
+    optionSoftwareLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * This specify the related cluster id, if this cluster is a Gateway.
      */
-    relatedClusterId?: pulumi.Input<string>;
+    relatedClusterId?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the emr-cluster belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Security Group ID for Cluster, you can also specify this key for each host group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * If this is set true, we can ssh into cluster. Default value is false.
      */
-    sshEnable?: pulumi.Input<boolean>;
+    sshEnable?: pulumi.Input<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Use local metadb. Default is false.
      */
-    useLocalMetadb?: pulumi.Input<boolean>;
+    useLocalMetadb?: pulumi.Input<boolean | undefined>;
     /**
      * Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
      */
-    userDefinedEmrEcsRole?: pulumi.Input<string>;
+    userDefinedEmrEcsRole?: pulumi.Input<string | undefined>;
     /**
      * Global vswitch id, you can also specify it in host group.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Zone ID, e.g. cn-huhehaote-a
      */

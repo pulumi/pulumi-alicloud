@@ -21,8 +21,8 @@ class RoleArgs:
     def __init__(__self__, *,
                  assume_role_policy_document: pulumi.Input[_builtins.str],
                  role_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Role resource.
 
@@ -64,39 +64,39 @@ class RoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Resource Manager role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """
         return pulumi.get(self, "max_session_duration")
 
     @max_session_duration.setter
-    def max_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_session_duration", value)
 
 
 @pulumi.input_type
 class _RoleState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_date: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_date: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Role resources.
 
@@ -125,86 +125,86 @@ class _RoleState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource descriptor of the role.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRolePolicyDocument")
-    def assume_role_policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assume_role_policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the permissions strategy that plays a role.
         """
         return pulumi.get(self, "assume_role_policy_document")
 
     @assume_role_policy_document.setter
-    def assume_role_policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assume_role_policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assume_role_policy_document", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Resource Manager role.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSessionDuration")
-    def max_session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
         """
         return pulumi.get(self, "max_session_duration")
 
     @max_session_duration.setter
-    def max_session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_session_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This ID of Resource Manager role. The value is set to `role_name`.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updateDate")
-    def update_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role update time.
         """
         return pulumi.get(self, "update_date")
 
     @update_date.setter
-    def update_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_date", value)
 
 
@@ -214,10 +214,10 @@ class Role(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager role resource. Members are resource containers in the resource directory, which can physically isolate resources to form an independent resource grouping unit. You can create members in the resource folder to manage them in a unified manner.
@@ -341,10 +341,10 @@ class Role(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,13 +375,13 @@ class Role(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            assume_role_policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            max_session_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            update_date: Optional[pulumi.Input[_builtins.str]] = None) -> 'Role':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            assume_role_policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            max_session_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> 'Role':
         """
         Get an existing Role resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

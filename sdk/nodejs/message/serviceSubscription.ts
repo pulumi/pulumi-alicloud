@@ -185,11 +185,11 @@ export interface ServiceSubscriptionState {
     /**
      * (Available since v1.244.0) The time when the subscription was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy | undefined>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
@@ -198,37 +198,37 @@ export interface ServiceSubscriptionState {
      * - `Sms Format`: A mobile number
      * - `Email Format`: An email address.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
      */
-    filterTag?: pulumi.Input<string>;
+    filterTag?: pulumi.Input<string | undefined>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
      */
-    notifyContentFormat?: pulumi.Input<string>;
+    notifyContentFormat?: pulumi.Input<string | undefined>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
      * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
      * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
-    notifyStrategy?: pulumi.Input<string>;
+    notifyStrategy?: pulumi.Input<string | undefined>;
     /**
      * The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
      */
-    pushType?: pulumi.Input<string>;
+    pushType?: pulumi.Input<string | undefined>;
     /**
      * The STS RoleArn.
      */
-    stsRoleArn?: pulumi.Input<string>;
+    stsRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
-    subscriptionName?: pulumi.Input<string>;
+    subscriptionName?: pulumi.Input<string | undefined>;
     /**
      * The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface ServiceSubscriptionArgs {
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy>;
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceSubscriptionDlqPolicy | undefined>;
     /**
      * The endpoint has three format. Available values format:
      * - `HTTP Format`: An HTTP URL that starts with http:// or https://.
@@ -251,17 +251,17 @@ export interface ServiceSubscriptionArgs {
     /**
      * The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
      */
-    filterTag?: pulumi.Input<string>;
+    filterTag?: pulumi.Input<string | undefined>;
     /**
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
      */
-    notifyContentFormat?: pulumi.Input<string>;
+    notifyContentFormat?: pulumi.Input<string | undefined>;
     /**
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
      * - `BACKOFF_RETRY`: retries with a fixed backoff interval.
      * - `EXPONENTIAL_DECAY_RETRY`: retries with exponential backoff.
      */
-    notifyStrategy?: pulumi.Input<string>;
+    notifyStrategy?: pulumi.Input<string | undefined>;
     /**
      * The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
      */
@@ -269,7 +269,7 @@ export interface ServiceSubscriptionArgs {
     /**
      * The STS RoleArn.
      */
-    stsRoleArn?: pulumi.Input<string>;
+    stsRoleArn?: pulumi.Input<string | undefined>;
     /**
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      */

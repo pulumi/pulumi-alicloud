@@ -342,48 +342,48 @@ export function getNetworkInterfacesOutput(args?: GetNetworkInterfacesOutputArgs
  * A collection of arguments for invoking getNetworkInterfaces.
  */
 export interface GetNetworkInterfacesOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the instance that the ENI is attached to.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Name of the ENI.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    name?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
-    networkInterfaceName?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
-    primaryIpAddress?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    networkInterfaceName?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    primaryIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Primary private IP of the ENI.
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
-    securityGroupId?: pulumi.Input<string>;
-    serviceManaged?: pulumi.Input<boolean>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    securityGroupId?: pulumi.Input<string | undefined>;
+    serviceManaged?: pulumi.Input<boolean | undefined>;
     /**
      * Current status of the ENI.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the ENI.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    type?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * ID of the VPC that the ENI belongs to.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * ID of the vSwitch that the ENI is linked to.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

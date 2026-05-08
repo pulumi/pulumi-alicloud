@@ -150,15 +150,15 @@ export interface SlsGroupState {
     /**
      * The Config of the Sls Group. You can specify up to 25 Config. See `slsGroupConfig` below.
      */
-    slsGroupConfigs?: pulumi.Input<pulumi.Input<inputs.cms.SlsGroupSlsGroupConfig>[]>;
+    slsGroupConfigs?: pulumi.Input<pulumi.Input<inputs.cms.SlsGroupSlsGroupConfig>[] | undefined>;
     /**
      * The Description of the Sls Group.
      */
-    slsGroupDescription?: pulumi.Input<string>;
+    slsGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
      */
-    slsGroupName?: pulumi.Input<string>;
+    slsGroupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface SlsGroupArgs {
     /**
      * The Description of the Sls Group.
      */
-    slsGroupDescription?: pulumi.Input<string>;
+    slsGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
      */

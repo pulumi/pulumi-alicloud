@@ -152,27 +152,27 @@ export interface BucketRefererState {
     /**
      * Whether to allow empty Referer request headers.
      */
-    allowEmptyReferer?: pulumi.Input<boolean>;
+    allowEmptyReferer?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
-    allowTruncateQueryString?: pulumi.Input<boolean>;
+    allowTruncateQueryString?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The container that holds the Referer blacklist.
      */
-    refererBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    refererBlacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The container that holds the Referer whitelist.
      */
-    refererLists?: pulumi.Input<pulumi.Input<string>[]>;
+    refererLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
-    truncatePath?: pulumi.Input<boolean>;
+    truncatePath?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface BucketRefererArgs {
     /**
      * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
-    allowTruncateQueryString?: pulumi.Input<boolean>;
+    allowTruncateQueryString?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the Bucket.
      */
@@ -194,13 +194,13 @@ export interface BucketRefererArgs {
     /**
      * The container that holds the Referer blacklist.
      */
-    refererBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    refererBlacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The container that holds the Referer whitelist.
      */
-    refererLists?: pulumi.Input<pulumi.Input<string>[]>;
+    refererLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
-    truncatePath?: pulumi.Input<boolean>;
+    truncatePath?: pulumi.Input<boolean | undefined>;
 }

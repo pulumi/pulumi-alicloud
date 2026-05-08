@@ -178,43 +178,43 @@ export interface QosCarState {
     /**
      * The description of the QoS speed limiting rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
-    limitType?: pulumi.Input<string>;
+    limitType?: pulumi.Input<string | undefined>;
     /**
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      */
-    maxBandwidthAbs?: pulumi.Input<number>;
+    maxBandwidthAbs?: pulumi.Input<number | undefined>;
     /**
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    maxBandwidthPercent?: pulumi.Input<number>;
+    maxBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      */
-    minBandwidthAbs?: pulumi.Input<number>;
+    minBandwidthAbs?: pulumi.Input<number | undefined>;
     /**
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    minBandwidthPercent?: pulumi.Input<number>;
+    minBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The name of the QoS speed limiting rule..
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      */
-    percentSourceType?: pulumi.Input<string>;
+    percentSourceType?: pulumi.Input<string | undefined>;
     /**
      * The priority of the specified stream.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The instance ID of the QoS.
      */
-    qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -224,7 +224,7 @@ export interface QosCarArgs {
     /**
      * The description of the QoS speed limiting rule.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The speed limiting method. Valid values: `Absolute`, `Percent`.
      */
@@ -232,27 +232,27 @@ export interface QosCarArgs {
     /**
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      */
-    maxBandwidthAbs?: pulumi.Input<number>;
+    maxBandwidthAbs?: pulumi.Input<number | undefined>;
     /**
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    maxBandwidthPercent?: pulumi.Input<number>;
+    maxBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      */
-    minBandwidthAbs?: pulumi.Input<number>;
+    minBandwidthAbs?: pulumi.Input<number | undefined>;
     /**
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      */
-    minBandwidthPercent?: pulumi.Input<number>;
+    minBandwidthPercent?: pulumi.Input<number | undefined>;
     /**
      * The name of the QoS speed limiting rule..
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      */
-    percentSourceType?: pulumi.Input<string>;
+    percentSourceType?: pulumi.Input<string | undefined>;
     /**
      * The priority of the specified stream.
      */

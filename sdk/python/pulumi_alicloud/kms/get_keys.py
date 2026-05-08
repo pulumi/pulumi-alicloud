@@ -176,12 +176,12 @@ def get_keys(description_regex: Optional[_builtins.str] = None,
         keys=pulumi.get(__ret__, 'keys'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_keys_output(description_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    filters: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_keys_output(description_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    filters: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     This data source provides a list of KMS keys in an Alibaba Cloud account according to the specified filters.

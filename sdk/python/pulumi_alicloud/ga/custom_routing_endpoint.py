@@ -22,7 +22,7 @@ class CustomRoutingEndpointArgs:
                  endpoint: pulumi.Input[_builtins.str],
                  endpoint_group_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 traffic_to_endpoint_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomRoutingEndpoint resource.
 
@@ -78,7 +78,7 @@ class CustomRoutingEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="trafficToEndpointPolicy")
-    def traffic_to_endpoint_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_to_endpoint_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
         - `DenyAll`: denies all traffic to the endpoint.
@@ -88,21 +88,21 @@ class CustomRoutingEndpointArgs:
         return pulumi.get(self, "traffic_to_endpoint_policy")
 
     @traffic_to_endpoint_policy.setter
-    def traffic_to_endpoint_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_to_endpoint_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_to_endpoint_policy", value)
 
 
 @pulumi.input_type
 class _CustomRoutingEndpointState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_routing_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_routing_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_to_endpoint_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomRoutingEndpoint resources.
 
@@ -137,79 +137,79 @@ class _CustomRoutingEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the GA instance with which the endpoint is associated.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="customRoutingEndpointId")
-    def custom_routing_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_routing_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Custom Routing Endpoint.
         """
         return pulumi.get(self, "custom_routing_endpoint_id")
 
     @custom_routing_endpoint_id.setter
-    def custom_routing_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_routing_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_routing_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint (vSwitch).
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointGroupId")
-    def endpoint_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint group in which to create endpoints.
         """
         return pulumi.get(self, "endpoint_group_id")
 
     @endpoint_group_id.setter
-    def endpoint_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener with which the endpoint is associated.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Custom Routing Endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficToEndpointPolicy")
-    def traffic_to_endpoint_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_to_endpoint_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
         - `DenyAll`: denies all traffic to the endpoint.
@@ -219,19 +219,19 @@ class _CustomRoutingEndpointState:
         return pulumi.get(self, "traffic_to_endpoint_policy")
 
     @traffic_to_endpoint_policy.setter
-    def traffic_to_endpoint_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_to_endpoint_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_to_endpoint_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend service type of the endpoint. Valid values: `PrivateSubNet`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -241,10 +241,10 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_to_endpoint_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Custom Routing Endpoint resource.
@@ -423,10 +423,10 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_to_endpoint_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -460,14 +460,14 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_routing_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            traffic_to_endpoint_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomRoutingEndpoint':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_routing_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            traffic_to_endpoint_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomRoutingEndpoint':
         """
         Get an existing CustomRoutingEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

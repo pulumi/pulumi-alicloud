@@ -21,21 +21,21 @@ class DdosCooInstanceArgs:
     def __init__(__self__, *,
                  domain_count: pulumi.Input[_builtins.str],
                  port_count: pulumi.Input[_builtins.str],
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition_sale: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_qps: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DdosCooInstance resource.
 
@@ -116,208 +116,208 @@ class DdosCooInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "address_type")
 
     @address_type.setter
-    def address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthMode")
-    def bandwidth_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Valid values:
         """
         return pulumi.get(self, "bandwidth_mode")
 
     @bandwidth_mode.setter
-    def bandwidth_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "base_bandwidth")
 
     @base_bandwidth.setter
-    def base_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="editionSale")
-    def edition_sale(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition_sale(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Default value: `coop`. Valid values:
         """
         return pulumi.get(self, "edition_sale")
 
     @edition_sale.setter
-    def edition_sale(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition_sale(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition_sale", value)
 
     @_builtins.property
     @pulumi.getter(name="functionVersion")
-    def function_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function plan of the instance. Valid values:
         """
         return pulumi.get(self, "function_version")
 
     @function_version.setter
-    def function_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_version", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the instance. This name can have a string of `1` to `64` characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="normalBandwidth")
-    def normal_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def normal_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
         """
         return pulumi.get(self, "normal_bandwidth")
 
     @normal_bandwidth.setter
-    def normal_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def normal_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "normal_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="normalQps")
-    def normal_qps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def normal_qps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
         """
         return pulumi.get(self, "normal_qps")
 
     @normal_qps.setter
-    def normal_qps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def normal_qps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "normal_qps", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productPlan")
-    def product_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Valid values:
         """
         return pulumi.get(self, "product_plan")
 
     @product_plan.setter
-    def product_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="productType")
-    def product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
         """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
-    def product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceBandwidth")
-    def service_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "service_bandwidth")
 
     @service_bandwidth.setter
-    def service_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DdosCooInstanceState:
     def __init__(__self__, *,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition_sale: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_qps: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DdosCooInstance resources.
 
@@ -385,242 +385,242 @@ class _DdosCooInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="addressType")
-    def address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `address_type` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "address_type")
 
     @address_type.setter
-    def address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthMode")
-    def bandwidth_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Valid values:
         """
         return pulumi.get(self, "bandwidth_mode")
 
     @bandwidth_mode.setter
-    def bandwidth_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="baseBandwidth")
-    def base_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `base_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "base_bandwidth")
 
     @base_bandwidth.setter
-    def base_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.248.0) The time when the instance was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="domainCount")
-    def domain_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         """
         return pulumi.get(self, "domain_count")
 
     @domain_count.setter
-    def domain_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_count", value)
 
     @_builtins.property
     @pulumi.getter(name="editionSale")
-    def edition_sale(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition_sale(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Default value: `coop`. Valid values:
         """
         return pulumi.get(self, "edition_sale")
 
     @edition_sale.setter
-    def edition_sale(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition_sale(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition_sale", value)
 
     @_builtins.property
     @pulumi.getter(name="functionVersion")
-    def function_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function plan of the instance. Valid values:
         """
         return pulumi.get(self, "function_version")
 
     @function_version.setter
-    def function_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.212.0) The IP address of the Instance.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the instance. This name can have a string of `1` to `64` characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="normalBandwidth")
-    def normal_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def normal_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clean bandwidth provided by the instance. **NOTE:** `normal_bandwidth` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_bandwidth` can be modified.
         """
         return pulumi.get(self, "normal_bandwidth")
 
     @normal_bandwidth.setter
-    def normal_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def normal_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "normal_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="normalQps")
-    def normal_qps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def normal_qps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clean QPS provided by the instance. **NOTE:** `normal_qps` is valid only when `product_type` is set to `ddosDip`. From version 1.248.0, `normal_qps` can be modified.
         """
         return pulumi.get(self, "normal_qps")
 
     @normal_qps.setter
-    def normal_qps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def normal_qps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "normal_qps", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="portCount")
-    def port_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
         """
         return pulumi.get(self, "port_count")
 
     @port_count.setter
-    def port_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_count", value)
 
     @_builtins.property
     @pulumi.getter(name="productPlan")
-    def product_plan(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_plan(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mitigation plan of the instance. Valid values:
         """
         return pulumi.get(self, "product_plan")
 
     @product_plan.setter
-    def product_plan(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_plan(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_plan", value)
 
     @_builtins.property
     @pulumi.getter(name="productType")
-    def product_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
         """
         return pulumi.get(self, "product_type")
 
     @product_type.setter
-    def product_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceBandwidth")
-    def service_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
         """
         return pulumi.get(self, "service_bandwidth")
 
     @service_bandwidth.setter
-    def service_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.248.0) The status of the instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -635,23 +635,23 @@ class DdosCooInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition_sale: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_qps: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a BGP-line Anti-DDoS Pro(DdosCoo) Instance resource.
@@ -784,23 +784,23 @@ class DdosCooInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 edition_sale: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 normal_qps: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_plan: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         pulumi.log.warn("""DdosCooInstance is deprecated: alicloud.dns.DdosCooInstance has been deprecated in favor of alicloud.ddos.DdosCooInstance""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -845,26 +845,26 @@ class DdosCooInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            base_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            domain_count: Optional[pulumi.Input[_builtins.str]] = None,
-            edition_sale: Optional[pulumi.Input[_builtins.str]] = None,
-            function_version: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            normal_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            normal_qps: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            port_count: Optional[pulumi.Input[_builtins.str]] = None,
-            product_plan: Optional[pulumi.Input[_builtins.str]] = None,
-            product_type: Optional[pulumi.Input[_builtins.str]] = None,
-            service_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DdosCooInstance':
+            address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            base_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_count: pulumi.Input[Optional[_builtins.str]] = None,
+            edition_sale: pulumi.Input[Optional[_builtins.str]] = None,
+            function_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            normal_qps: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port_count: pulumi.Input[Optional[_builtins.str]] = None,
+            product_plan: pulumi.Input[Optional[_builtins.str]] = None,
+            product_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DdosCooInstance':
         """
         Get an existing DdosCooInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

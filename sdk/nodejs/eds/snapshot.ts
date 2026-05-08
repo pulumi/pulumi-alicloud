@@ -175,23 +175,23 @@ export interface SnapshotState {
     /**
      * The description of the Snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Desktop.
      */
-    desktopId?: pulumi.Input<string>;
+    desktopId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Snapshot.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * The type of the disk for which to create a snapshot. Valid values: `SYSTEM`, `DATA`.
      */
-    sourceDiskType?: pulumi.Input<string>;
+    sourceDiskType?: pulumi.Input<string | undefined>;
     /**
      * The status of the snapshot.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,7 +201,7 @@ export interface SnapshotArgs {
     /**
      * The description of the Snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Desktop.
      */

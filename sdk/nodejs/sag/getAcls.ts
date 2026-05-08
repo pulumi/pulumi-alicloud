@@ -115,10 +115,10 @@ export interface GetAclsOutputArgs {
     /**
      * A list of Sag Acl IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter Sag Acl instances by name.
      */
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

@@ -161,28 +161,28 @@ export interface CustomScenePolicyState {
      * The time when the policy takes effect.
      * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The policy name.
      */
-    customScenePolicyName?: pulumi.Input<string>;
+    customScenePolicyName?: pulumi.Input<string | undefined>;
     /**
      * The time when the policy expires.
      * The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The IDs of websites associated.
      */
-    siteIds?: pulumi.Input<string>;
+    siteIds?: pulumi.Input<string | undefined>;
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy template. Valid value:
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,7 +210,7 @@ export interface CustomScenePolicyArgs {
     /**
      * Policy effective status. Valid values: `Disabled`, `Running`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy template. Valid value:
      */

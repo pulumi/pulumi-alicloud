@@ -23,11 +23,11 @@ class AccessConfigurationArgs:
     def __init__(__self__, *,
                  access_configuration_name: pulumi.Input[_builtins.str],
                  directory_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_remove_permission_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
-                 relay_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
+                 relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AccessConfiguration resource.
 
@@ -80,19 +80,19 @@ class AccessConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the access configuration. The description can be up to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRemovePermissionPolicies")
-    def force_remove_permission_policies(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_remove_permission_policies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
 
@@ -101,57 +101,57 @@ class AccessConfigurationArgs:
         return pulumi.get(self, "force_remove_permission_policies")
 
     @force_remove_permission_policies.setter
-    def force_remove_permission_policies(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_remove_permission_policies(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_remove_permission_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionPolicies")
-    def permission_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
+    def permission_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
         """
         The Policy List. See `permission_policies` below.
         """
         return pulumi.get(self, "permission_policies")
 
     @permission_policies.setter
-    def permission_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]):
+    def permission_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]):
         pulumi.set(self, "permission_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="relayState")
-    def relay_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def relay_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         """
         return pulumi.get(self, "relay_state")
 
     @relay_state.setter
-    def relay_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def relay_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "relay_state", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
 
 @pulumi.input_type
 class _AccessConfigurationState:
     def __init__(__self__, *,
-                 access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_remove_permission_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
-                 relay_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]] = None,
+                 relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AccessConfiguration resources.
 
@@ -185,55 +185,55 @@ class _AccessConfigurationState:
 
     @_builtins.property
     @pulumi.getter(name="accessConfigurationId")
-    def access_configuration_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_configuration_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Access Configuration.
         """
         return pulumi.get(self, "access_configuration_id")
 
     @access_configuration_id.setter
-    def access_configuration_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_configuration_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_configuration_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessConfigurationName")
-    def access_configuration_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_configuration_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "access_configuration_name")
 
     @access_configuration_name.setter
-    def access_configuration_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_configuration_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_configuration_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the access configuration. The description can be up to `1024` characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Directory.
         """
         return pulumi.get(self, "directory_id")
 
     @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRemovePermissionPolicies")
-    def force_remove_permission_policies(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_remove_permission_policies(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This parameter is used to force deletion `permission_policies`. Valid Value: `true`, `false`.
 
@@ -242,43 +242,43 @@ class _AccessConfigurationState:
         return pulumi.get(self, "force_remove_permission_policies")
 
     @force_remove_permission_policies.setter
-    def force_remove_permission_policies(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_remove_permission_policies(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_remove_permission_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionPolicies")
-    def permission_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
+    def permission_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]:
         """
         The Policy List. See `permission_policies` below.
         """
         return pulumi.get(self, "permission_policies")
 
     @permission_policies.setter
-    def permission_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]):
+    def permission_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]]]):
         pulumi.set(self, "permission_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="relayState")
-    def relay_state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def relay_state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
         """
         return pulumi.get(self, "relay_state")
 
     @relay_state.setter
-    def relay_state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def relay_state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "relay_state", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionDuration")
-    def session_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def session_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
         """
         return pulumi.get(self, "session_duration")
 
     @session_duration.setter
-    def session_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def session_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "session_duration", value)
 
 
@@ -288,13 +288,13 @@ class AccessConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_remove_permission_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
-                 relay_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+                 relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Access Configuration resource.
@@ -435,13 +435,13 @@ class AccessConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_remove_permission_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
-                 relay_state: Optional[pulumi.Input[_builtins.str]] = None,
-                 session_duration: Optional[pulumi.Input[_builtins.int]] = None,
+                 access_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+                 relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+                 session_duration: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -473,14 +473,14 @@ class AccessConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_configuration_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force_remove_permission_policies: Optional[pulumi.Input[_builtins.bool]] = None,
-            permission_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
-            relay_state: Optional[pulumi.Input[_builtins.str]] = None,
-            session_duration: Optional[pulumi.Input[_builtins.int]] = None) -> 'AccessConfiguration':
+            access_configuration_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_remove_permission_policies: pulumi.Input[Optional[_builtins.bool]] = None,
+            permission_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessConfigurationPermissionPolicyArgs', 'AccessConfigurationPermissionPolicyArgsDict']]]]] = None,
+            relay_state: pulumi.Input[Optional[_builtins.str]] = None,
+            session_duration: pulumi.Input[Optional[_builtins.int]] = None) -> 'AccessConfiguration':
         """
         Get an existing AccessConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

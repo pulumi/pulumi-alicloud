@@ -23,18 +23,18 @@ class ListenerArgs:
     def __init__(__self__, *,
                  accelerator_id: pulumi.Input[_builtins.str],
                  port_ranges: pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]],
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
-                 client_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+                 client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarded_for_config: pulumi.Input[Optional['ListenerForwardedForConfigArgs']] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -118,7 +118,7 @@ class ListenerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener. See `certificates` below.
         > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
@@ -126,12 +126,12 @@ class ListenerArgs:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAffinity")
-    def client_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clientAffinity of the listener. Default value: `NONE`. Valid values:
         - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -140,36 +140,36 @@ class ListenerArgs:
         return pulumi.get(self, "client_affinity")
 
     @client_affinity.setter
-    def client_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the listener.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardedForConfig")
-    def forwarded_for_config(self) -> Optional[pulumi.Input['ListenerForwardedForConfigArgs']]:
+    def forwarded_for_config(self) -> pulumi.Input[Optional['ListenerForwardedForConfigArgs']]:
         """
         The XForward headers. See `forwarded_for_config` below.
         """
         return pulumi.get(self, "forwarded_for_config")
 
     @forwarded_for_config.setter
-    def forwarded_for_config(self, value: Optional[pulumi.Input['ListenerForwardedForConfigArgs']]):
+    def forwarded_for_config(self, value: pulumi.Input[Optional['ListenerForwardedForConfigArgs']]):
         pulumi.set(self, "forwarded_for_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpVersion")
-    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
         > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
@@ -177,12 +177,12 @@ class ListenerArgs:
         return pulumi.get(self, "http_version")
 
     @http_version.setter
-    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of idle connections. Unit: seconds. Valid values:
         - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -192,12 +192,12 @@ class ListenerArgs:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerType")
-    def listener_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing type of the listener. Default Value: `Standard`. Valid values:
         - `Standard`: intelligent routing.
@@ -206,48 +206,48 @@ class ListenerArgs:
         return pulumi.get(self, "listener_type")
 
     @listener_type.setter
-    def listener_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The proxy protocol of the listener. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
         > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
@@ -255,40 +255,40 @@ class ListenerArgs:
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
-                 client_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input['ListenerForwardedForConfigArgs']] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]] = None,
+                 client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarded_for_config: pulumi.Input[Optional['ListenerForwardedForConfigArgs']] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerPortRangeArgs']]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -352,19 +352,19 @@ class _ListenerState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The accelerator id.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
+    def certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]:
         """
         The certificates of the listener. See `certificates` below.
         > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
@@ -372,12 +372,12 @@ class _ListenerState:
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
+    def certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCertificateArgs']]]]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="clientAffinity")
-    def client_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The clientAffinity of the listener. Default value: `NONE`. Valid values:
         - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
@@ -386,36 +386,36 @@ class _ListenerState:
         return pulumi.get(self, "client_affinity")
 
     @client_affinity.setter
-    def client_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the listener.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardedForConfig")
-    def forwarded_for_config(self) -> Optional[pulumi.Input['ListenerForwardedForConfigArgs']]:
+    def forwarded_for_config(self) -> pulumi.Input[Optional['ListenerForwardedForConfigArgs']]:
         """
         The XForward headers. See `forwarded_for_config` below.
         """
         return pulumi.get(self, "forwarded_for_config")
 
     @forwarded_for_config.setter
-    def forwarded_for_config(self, value: Optional[pulumi.Input['ListenerForwardedForConfigArgs']]):
+    def forwarded_for_config(self, value: pulumi.Input[Optional['ListenerForwardedForConfigArgs']]):
         pulumi.set(self, "forwarded_for_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpVersion")
-    def http_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
         > **NOTE:** `http_version` is only valid when `protocol` is `HTTPS`.
@@ -423,12 +423,12 @@ class _ListenerState:
         return pulumi.get(self, "http_version")
 
     @http_version.setter
-    def http_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_version", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of idle connections. Unit: seconds. Valid values:
         - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
@@ -438,12 +438,12 @@ class _ListenerState:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerType")
-    def listener_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing type of the listener. Default Value: `Standard`. Valid values:
         - `Standard`: intelligent routing.
@@ -452,24 +452,24 @@ class _ListenerState:
         return pulumi.get(self, "listener_type")
 
     @listener_type.setter
-    def listener_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portRanges")
-    def port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]:
+    def port_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]:
         """
         The portRanges of the listener. See `port_ranges` below.
         > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
@@ -477,36 +477,36 @@ class _ListenerState:
         return pulumi.get(self, "port_ranges")
 
     @port_ranges.setter
-    def port_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]):
+    def port_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerPortRangeArgs']]]]):
         pulumi.set(self, "port_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocol")
-    def proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The proxy protocol of the listener. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "proxy_protocol")
 
     @proxy_protocol.setter
-    def proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
         > **NOTE:** `request_timeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
@@ -514,31 +514,31 @@ class _ListenerState:
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the listener.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -548,20 +548,20 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
-                 client_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
+                 client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarded_for_config: pulumi.Input[Optional[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Listener resource.
@@ -708,20 +708,20 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
-                 client_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
-                 http_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
+                 client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarded_for_config: pulumi.Input[Optional[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
+                 http_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -760,21 +760,21 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
-            client_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            forwarded_for_config: Optional[pulumi.Input[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
-            http_version: Optional[pulumi.Input[_builtins.str]] = None,
-            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-            request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Listener':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCertificateArgs', 'ListenerCertificateArgsDict']]]]] = None,
+            client_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarded_for_config: pulumi.Input[Optional[Union['ListenerForwardedForConfigArgs', 'ListenerForwardedForConfigArgsDict']]] = None,
+            http_version: pulumi.Input[Optional[_builtins.str]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerPortRangeArgs', 'ListenerPortRangeArgsDict']]]]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

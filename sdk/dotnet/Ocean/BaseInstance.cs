@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ocean
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.Index.GetZones.Invoke();
+    ///     var @default = AliCloud.GetZones.Invoke();
     /// 
     ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
@@ -39,19 +39,19 @@ namespace Pulumi.AliCloud.Ocean
     ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         Zones = new[]
     ///         {
-    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length()).Apply(values =&gt;
     ///             {
     ///                 var @default = values.Item1;
     ///                 var length = values.Item2;
     ///                 return @default.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 2];
     ///             }),
-    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length()).Apply(values =&gt;
     ///             {
     ///                 var @default = values.Item1;
     ///                 var length = values.Item2;
     ///                 return @default.Apply(getZonesResult =&gt; getZonesResult.Ids)[length - 3];
     ///             }),
-    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length).Apply(values =&gt;
+    ///             Output.Tuple(@default, @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids)).Length()).Apply(values =&gt;
     ///             {
     ///                 var @default = values.Item1;
     ///                 var length = values.Item2;

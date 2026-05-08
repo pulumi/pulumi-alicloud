@@ -27,12 +27,12 @@ class SyntheticTaskArgs:
                  monitors: pulumi.Input[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]],
                  synthetic_task_name: pulumi.Input[_builtins.str],
                  task_type: pulumi.Input[_builtins.int],
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]] = None,
-                 common_setting: Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']] = None,
-                 custom_period: Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]] = None,
+                 common_setting: pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']] = None,
+                 custom_period: pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SyntheticTask resource.
 
@@ -142,92 +142,92 @@ class SyntheticTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="availableAssertions")
-    def available_assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]:
+    def available_assertions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]:
         """
         Assertion List. See `available_assertions` below.
         """
         return pulumi.get(self, "available_assertions")
 
     @available_assertions.setter
-    def available_assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]):
+    def available_assertions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]):
         pulumi.set(self, "available_assertions", value)
 
     @_builtins.property
     @pulumi.getter(name="commonSetting")
-    def common_setting(self) -> Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']]:
+    def common_setting(self) -> pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']]:
         """
         Common settings. See `common_setting` below.
         """
         return pulumi.get(self, "common_setting")
 
     @common_setting.setter
-    def common_setting(self, value: Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']]):
+    def common_setting(self, value: pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']]):
         pulumi.set(self, "common_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="customPeriod")
-    def custom_period(self) -> Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']]:
+    def custom_period(self) -> pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']]:
         """
         Custom Cycle. See `custom_period` below.
         """
         return pulumi.get(self, "custom_period")
 
     @custom_period.setter
-    def custom_period(self, value: Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']]):
+    def custom_period(self, value: pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']]):
         pulumi.set(self, "custom_period", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes which resource group the resource belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         task status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _SyntheticTaskState:
     def __init__(__self__, *,
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]] = None,
-                 common_setting: Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']] = None,
-                 custom_period: Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_category: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_conf: Optional[pulumi.Input['SyntheticTaskMonitorConfArgs']] = None,
-                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 synthetic_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.int]] = None):
+                 available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]] = None,
+                 common_setting: pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']] = None,
+                 custom_period: pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_category: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_conf: pulumi.Input[Optional['SyntheticTaskMonitorConfArgs']] = None,
+                 monitors: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 synthetic_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SyntheticTask resources.
 
@@ -271,146 +271,146 @@ class _SyntheticTaskState:
 
     @_builtins.property
     @pulumi.getter(name="availableAssertions")
-    def available_assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]:
+    def available_assertions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]:
         """
         Assertion List. See `available_assertions` below.
         """
         return pulumi.get(self, "available_assertions")
 
     @available_assertions.setter
-    def available_assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]):
+    def available_assertions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskAvailableAssertionArgs']]]]):
         pulumi.set(self, "available_assertions", value)
 
     @_builtins.property
     @pulumi.getter(name="commonSetting")
-    def common_setting(self) -> Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']]:
+    def common_setting(self) -> pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']]:
         """
         Common settings. See `common_setting` below.
         """
         return pulumi.get(self, "common_setting")
 
     @common_setting.setter
-    def common_setting(self, value: Optional[pulumi.Input['SyntheticTaskCommonSettingArgs']]):
+    def common_setting(self, value: pulumi.Input[Optional['SyntheticTaskCommonSettingArgs']]):
         pulumi.set(self, "common_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="customPeriod")
-    def custom_period(self) -> Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']]:
+    def custom_period(self) -> pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']]:
         """
         Custom Cycle. See `custom_period` below.
         """
         return pulumi.get(self, "custom_period")
 
     @custom_period.setter
-    def custom_period(self, value: Optional[pulumi.Input['SyntheticTaskCustomPeriodArgs']]):
+    def custom_period(self, value: pulumi.Input[Optional['SyntheticTaskCustomPeriodArgs']]):
         pulumi.set(self, "custom_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Frequency.
         """
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorCategory")
-    def monitor_category(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_category(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Classification of selected monitors.
         """
         return pulumi.get(self, "monitor_category")
 
     @monitor_category.setter
-    def monitor_category(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_category(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_category", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorConf")
-    def monitor_conf(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfArgs']]:
+    def monitor_conf(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfArgs']]:
         """
         Monitoring configuration. See `monitor_conf` below.
         """
         return pulumi.get(self, "monitor_conf")
 
     @monitor_conf.setter
-    def monitor_conf(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfArgs']]):
+    def monitor_conf(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfArgs']]):
         pulumi.set(self, "monitor_conf", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]]:
+    def monitors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]]:
         """
         List of selected monitors. See `monitors` below.
         """
         return pulumi.get(self, "monitors")
 
     @monitors.setter
-    def monitors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]]):
+    def monitors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SyntheticTaskMonitorArgs']]]]):
         pulumi.set(self, "monitors", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describes which resource group the resource belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         task status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="syntheticTaskName")
-    def synthetic_task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def synthetic_task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of synthetic task.
         """
         return pulumi.get(self, "synthetic_task_name")
 
     @synthetic_task_name.setter
-    def synthetic_task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def synthetic_task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "synthetic_task_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The list of tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="taskType")
-    def task_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def task_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The type of synthetic task.
         """
         return pulumi.get(self, "task_type")
 
     @task_type.setter
-    def task_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def task_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "task_type", value)
 
 
@@ -420,18 +420,18 @@ class SyntheticTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
-                 common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
-                 custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_category: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
-                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 synthetic_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+                 common_setting: pulumi.Input[Optional[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+                 custom_period: pulumi.Input[Optional[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_category: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_conf: pulumi.Input[Optional[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+                 monitors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 synthetic_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ARMS Synthetic Task resource. Cloud Synthetic task resources.
@@ -873,18 +873,18 @@ class SyntheticTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
-                 common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
-                 custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_category: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
-                 monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 synthetic_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 task_type: Optional[pulumi.Input[_builtins.int]] = None,
+                 available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+                 common_setting: pulumi.Input[Optional[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+                 custom_period: pulumi.Input[Optional[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_category: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_conf: pulumi.Input[Optional[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+                 monitors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 synthetic_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 task_type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -928,18 +928,18 @@ class SyntheticTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            available_assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
-            common_setting: Optional[pulumi.Input[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
-            custom_period: Optional[pulumi.Input[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
-            frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_category: Optional[pulumi.Input[_builtins.int]] = None,
-            monitor_conf: Optional[pulumi.Input[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
-            monitors: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            synthetic_task_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            task_type: Optional[pulumi.Input[_builtins.int]] = None) -> 'SyntheticTask':
+            available_assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskAvailableAssertionArgs', 'SyntheticTaskAvailableAssertionArgsDict']]]]] = None,
+            common_setting: pulumi.Input[Optional[Union['SyntheticTaskCommonSettingArgs', 'SyntheticTaskCommonSettingArgsDict']]] = None,
+            custom_period: pulumi.Input[Optional[Union['SyntheticTaskCustomPeriodArgs', 'SyntheticTaskCustomPeriodArgsDict']]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_category: pulumi.Input[Optional[_builtins.int]] = None,
+            monitor_conf: pulumi.Input[Optional[Union['SyntheticTaskMonitorConfArgs', 'SyntheticTaskMonitorConfArgsDict']]] = None,
+            monitors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SyntheticTaskMonitorArgs', 'SyntheticTaskMonitorArgsDict']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            synthetic_task_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            task_type: pulumi.Input[Optional[_builtins.int]] = None) -> 'SyntheticTask':
         """
         Get an existing SyntheticTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

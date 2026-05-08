@@ -188,13 +188,13 @@ def get_security_policies(ids: Optional[Sequence[_builtins.str]] = None,
         security_policy_names=pulumi.get(__ret__, 'security_policy_names'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 security_policy_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_security_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 security_policy_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityPoliciesResult]:
     """
     This data source provides the Nlb Security Policies of the current Alibaba Cloud user.

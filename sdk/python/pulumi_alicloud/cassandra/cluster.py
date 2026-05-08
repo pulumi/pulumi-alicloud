@@ -24,22 +24,22 @@ class ClusterArgs:
                  node_count: pulumi.Input[_builtins.int],
                  pay_type: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_white: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -165,55 +165,55 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCenterName")
-    def data_center_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_center_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
         return pulumi.get(self, "data_center_name")
 
     @data_center_name.setter
-    def data_center_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_center_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_center_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -222,96 +222,96 @@ class ClusterArgs:
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
-    def enable_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhite")
-    def ip_white(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_white(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the instance's IP whitelist in VPC network.
         """
         return pulumi.get(self, "ip_white")
 
     @ip_white.setter
-    def ip_white(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_white(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_white", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of security group ids to associate with.
 
@@ -320,60 +320,60 @@ class ClusterArgs:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 major_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 major_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -448,55 +448,55 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when pay_type = PrePaid.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCenterName")
-    def data_center_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_center_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
         """
         return pulumi.get(self, "data_center_name")
 
     @data_center_name.setter
-    def data_center_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_center_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_center_name", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
         - Custom storage space; value range: [160, 2000].
@@ -505,153 +505,153 @@ class _ClusterState:
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type of Cassandra dataCenter-1. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enablePublic")
-    def enable_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_public(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "enable_public")
 
     @enable_public.setter
-    def enable_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_public(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_public", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhite")
-    def ip_white(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_white(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the instance's IP whitelist in VPC network.
         """
         return pulumi.get(self, "ip_white")
 
     @ip_white.setter
-    def ip_white(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_white(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_white", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainEndTime")
-    def maintain_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_end_time")
 
     @maintain_end_time.setter
-    def maintain_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainStartTime")
-    def maintain_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
         """
         return pulumi.get(self, "maintain_start_time")
 
     @maintain_start_time.setter
-    def maintain_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="majorVersion")
-    def major_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def major_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cassandra major version. Now only support version `3.11`.
         """
         return pulumi.get(self, "major_version")
 
     @major_version.setter
-    def major_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def major_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "major_version", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The node count of Cassandra dataCenter-1 default to 2.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="publicPoints")
-    def public_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def public_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "public_points")
 
     @public_points.setter
-    def public_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def public_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "public_points", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of security group ids to associate with.
 
@@ -660,52 +660,52 @@ class _ClusterState:
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vswitch_id of dataCenter-1, can not empty.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -715,27 +715,27 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 major_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 major_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cassandra cluster resource supports replica set clusters only. The Cassandra provides stable, reliable, and automatic scalable database services.
@@ -884,27 +884,27 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_white: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 major_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 major_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -959,29 +959,29 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            data_center_name: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_public: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_white: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            maintain_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            major_version: Optional[pulumi.Input[_builtins.str]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            public_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center_name: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_public: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_white: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maintain_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            major_version: pulumi.Input[Optional[_builtins.str]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            public_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

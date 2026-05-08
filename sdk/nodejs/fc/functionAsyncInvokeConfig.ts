@@ -246,39 +246,39 @@ export interface FunctionAsyncInvokeConfigState {
     /**
      * The date this resource was created.
      */
-    createdTime?: pulumi.Input<string>;
+    createdTime?: pulumi.Input<string | undefined>;
     /**
      * Configuration block with destination configuration. See `destinationConfig` below.
      */
-    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * Name of the Function Compute Function.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The date this resource was last modified.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
-    maximumEventAgeInSeconds?: pulumi.Input<number>;
+    maximumEventAgeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
-    maximumRetryAttempts?: pulumi.Input<number>;
+    maximumRetryAttempts?: pulumi.Input<number | undefined>;
     /**
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
-    statefulInvocation?: pulumi.Input<boolean>;
+    statefulInvocation?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface FunctionAsyncInvokeConfigArgs {
     /**
      * Configuration block with destination configuration. See `destinationConfig` below.
      */
-    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig>;
+    destinationConfig?: pulumi.Input<inputs.fc.FunctionAsyncInvokeConfigDestinationConfig | undefined>;
     /**
      * Name of the Function Compute Function.
      */
@@ -296,15 +296,15 @@ export interface FunctionAsyncInvokeConfigArgs {
     /**
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      */
-    maximumEventAgeInSeconds?: pulumi.Input<number>;
+    maximumEventAgeInSeconds?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      */
-    maximumRetryAttempts?: pulumi.Input<number>;
+    maximumRetryAttempts?: pulumi.Input<number | undefined>;
     /**
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      */
-    qualifier?: pulumi.Input<string>;
+    qualifier?: pulumi.Input<string | undefined>;
     /**
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      */
@@ -312,5 +312,5 @@ export interface FunctionAsyncInvokeConfigArgs {
     /**
      * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      */
-    statefulInvocation?: pulumi.Input<boolean>;
+    statefulInvocation?: pulumi.Input<boolean | undefined>;
 }

@@ -215,19 +215,19 @@ export interface PhysicalConnectionState {
     /**
      * The access point ID of the Express Connect circuit.
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * The maximum bandwidth of the hosted connection.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The circuit code of the Express Connect circuit.
      */
-    circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string | undefined>;
     /**
      * The description of the Express Connect circuit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The connectivity provider of the Express Connect circuit. Valid values:
      * - `CT`: China Telecom.
@@ -237,25 +237,25 @@ export interface PhysicalConnectionState {
      * - `Equinix`: Equinix.
      * - `Other`: Other connectivity providers outside the Chinese mainland.
      */
-    lineOperator?: pulumi.Input<string>;
+    lineOperator?: pulumi.Input<string | undefined>;
     /**
      * The ID of the order that is placed. **Note:** `orderId` takes effect only if `status` is set to `Enabled`.
      */
-    orderId?: pulumi.Input<string>;
+    orderId?: pulumi.Input<string | undefined>;
     /**
      * The geographical location of the data center.
      */
-    peerLocation?: pulumi.Input<string>;
+    peerLocation?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Valid values:
      * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
      * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The name of the Express Connect circuit.
      */
-    physicalConnectionName?: pulumi.Input<string>;
+    physicalConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The port type of the Express Connect circuit. Valid values:
      * - `100Base-T`: 100 Mbit/s copper Ethernet port.
@@ -267,24 +267,24 @@ export interface PhysicalConnectionState {
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
-    portType?: pulumi.Input<string>;
+    portType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
      */
-    redundantPhysicalConnectionId?: pulumi.Input<string>;
+    redundantPhysicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -298,15 +298,15 @@ export interface PhysicalConnectionArgs {
     /**
      * The maximum bandwidth of the hosted connection.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The circuit code of the Express Connect circuit.
      */
-    circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string | undefined>;
     /**
      * The description of the Express Connect circuit.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The connectivity provider of the Express Connect circuit. Valid values:
      * - `CT`: China Telecom.
@@ -320,17 +320,17 @@ export interface PhysicalConnectionArgs {
     /**
      * The geographical location of the data center.
      */
-    peerLocation?: pulumi.Input<string>;
+    peerLocation?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Valid values:
      * - If `pricingCycle` is set to `Month`. Valid values: `1` to `9`.
      * - If `pricingCycle` is set to `Year`. Valid values: `1` to `5`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The name of the Express Connect circuit.
      */
-    physicalConnectionName?: pulumi.Input<string>;
+    physicalConnectionName?: pulumi.Input<string | undefined>;
     /**
      * The port type of the Express Connect circuit. Valid values:
      * - `100Base-T`: 100 Mbit/s copper Ethernet port.
@@ -342,22 +342,22 @@ export interface PhysicalConnectionArgs {
      * - `100GBase-LR`: 100000 Mbit/s single-mode optical port.
      * > **NOTE:** From version 1.185.0, `portType` can be set to `40GBase-LR`, `100GBase-LR`. From version 1.230.1, `portType` cannot be modified.
      */
-    portType?: pulumi.Input<string>;
+    portType?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle of the subscription. Default value: `Month`. Valid values: `Month`, `Year`.
      * > **NOTE:** `period` and `pricingCycle` are valid only when `status` is set to `Enabled`.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The ID of the redundant Express Connect circuit. **NOTE:** From version 1.230.1, `redundantPhysicalConnectionId` cannot be modified.
      */
-    redundantPhysicalConnectionId?: pulumi.Input<string>;
+    redundantPhysicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Express Connect circuit. Valid values: `Confirmed`, `Enabled`, `Canceled`, `Terminated`. **NOTE:** From version 1.230.1, `status` can be set to `Confirmed`. If you want to set `status` to `Enabled`, `period` must be set.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of Express Connect circuit. Default value: `VPC`. Valid values: `VPC`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

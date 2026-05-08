@@ -132,19 +132,19 @@ export interface RoutineRelatedRecordState {
     /**
      * The routine name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The record ID.
      */
-    recordId?: pulumi.Input<number>;
+    recordId?: pulumi.Input<number | undefined>;
     /**
      * The record name.
      */
-    recordName?: pulumi.Input<string>;
+    recordName?: pulumi.Input<string | undefined>;
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -154,7 +154,7 @@ export interface RoutineRelatedRecordArgs {
     /**
      * The routine name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The record name.
      */

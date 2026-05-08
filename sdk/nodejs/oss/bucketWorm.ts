@@ -139,25 +139,25 @@ export interface BucketWormState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The specified number of days to retain the Object.
      */
-    retentionPeriodInDays?: pulumi.Input<number>;
+    retentionPeriodInDays?: pulumi.Input<number | undefined>;
     /**
      * The status of the compliance retention policy. Optional values:
      * - `InProgress`: After a compliance retention policy is created, the policy is in the InProgress status by default, and the validity period of this status is 24 hours.
      * - `Locked`: The compliance retention policy is Locked.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the retention policy.
      */
-    wormId?: pulumi.Input<string>;
+    wormId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,11 +171,11 @@ export interface BucketWormArgs {
     /**
      * The specified number of days to retain the Object.
      */
-    retentionPeriodInDays?: pulumi.Input<number>;
+    retentionPeriodInDays?: pulumi.Input<number | undefined>;
     /**
      * The status of the compliance retention policy. Optional values:
      * - `InProgress`: After a compliance retention policy is created, the policy is in the InProgress status by default, and the validity period of this status is 24 hours.
      * - `Locked`: The compliance retention policy is Locked.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -21,12 +21,12 @@ class PrometheusInstanceArgs:
     def __init__(__self__, *,
                  prometheus_instance_name: pulumi.Input[_builtins.str],
                  workspace: pulumi.Input[_builtins.str],
-                 archive_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auth_free_read_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_free_write_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_auth_free_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auth_free_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage_duration: Optional[pulumi.Input[_builtins.int]] = None):
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage_duration: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PrometheusInstance resource.
 
@@ -80,91 +80,91 @@ class PrometheusInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveDuration")
-    def archive_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days that data is automatically archived after the storage duration expires. Valid values: `60` to `3650`.
         """
         return pulumi.get(self, "archive_duration")
 
     @archive_duration.setter
-    def archive_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="authFreeReadPolicy")
-    def auth_free_read_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_free_read_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for password-free read access.
         """
         return pulumi.get(self, "auth_free_read_policy")
 
     @auth_free_read_policy.setter
-    def auth_free_read_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_free_read_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_free_read_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authFreeWritePolicy")
-    def auth_free_write_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_free_write_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for password-free write access.
         """
         return pulumi.get(self, "auth_free_write_policy")
 
     @auth_free_write_policy.setter
-    def auth_free_write_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_free_write_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_free_write_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAuthFreeRead")
-    def enable_auth_free_read(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auth_free_read(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable password-free read access. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_auth_free_read")
 
     @enable_auth_free_read.setter
-    def enable_auth_free_read(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auth_free_read(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auth_free_read", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAuthFreeWrite")
-    def enable_auth_free_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auth_free_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable password-free write access. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_auth_free_write")
 
     @enable_auth_free_write.setter
-    def enable_auth_free_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auth_free_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auth_free_write", value)
 
     @_builtins.property
     @pulumi.getter(name="storageDuration")
-    def storage_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage duration of the instance in days.
         """
         return pulumi.get(self, "storage_duration")
 
     @storage_duration.setter
-    def storage_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_duration", value)
 
 
 @pulumi.input_type
 class _PrometheusInstanceState:
     def __init__(__self__, *,
-                 archive_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auth_free_read_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_free_write_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_auth_free_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auth_free_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None):
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusInstance resources.
 
@@ -205,134 +205,134 @@ class _PrometheusInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="archiveDuration")
-    def archive_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days that data is automatically archived after the storage duration expires. Valid values: `60` to `3650`.
         """
         return pulumi.get(self, "archive_duration")
 
     @archive_duration.setter
-    def archive_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="authFreeReadPolicy")
-    def auth_free_read_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_free_read_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for password-free read access.
         """
         return pulumi.get(self, "auth_free_read_policy")
 
     @auth_free_read_policy.setter
-    def auth_free_read_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_free_read_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_free_read_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="authFreeWritePolicy")
-    def auth_free_write_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_free_write_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for password-free write access.
         """
         return pulumi.get(self, "auth_free_write_policy")
 
     @auth_free_write_policy.setter
-    def auth_free_write_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_free_write_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_free_write_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time, using UTC +0 time, in the format of yyyy-MM-ddTHH:mmZ.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAuthFreeRead")
-    def enable_auth_free_read(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auth_free_read(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable password-free read access. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_auth_free_read")
 
     @enable_auth_free_read.setter
-    def enable_auth_free_read(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auth_free_read(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auth_free_read", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAuthFreeWrite")
-    def enable_auth_free_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auth_free_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable password-free write access. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_auth_free_write")
 
     @enable_auth_free_write.setter
-    def enable_auth_free_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auth_free_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auth_free_write", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusInstanceName")
-    def prometheus_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prometheus_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "prometheus_instance_name")
 
     @prometheus_instance_name.setter
-    def prometheus_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prometheus_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prometheus_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageDuration")
-    def storage_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage duration of the instance in days.
         """
         return pulumi.get(self, "storage_duration")
 
     @storage_duration.setter
-    def storage_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def workspace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace to which the instance belongs.
         """
         return pulumi.get(self, "workspace")
 
     @workspace.setter
-    def workspace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace", value)
 
 
@@ -342,14 +342,14 @@ class PrometheusInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auth_free_read_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_free_write_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_auth_free_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auth_free_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prometheus_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None,
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prometheus_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cms Prometheus Instance resource.
@@ -469,14 +469,14 @@ class PrometheusInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 archive_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auth_free_read_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_free_write_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_auth_free_read: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auth_free_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prometheus_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None,
+                 archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prometheus_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -511,17 +511,17 @@ class PrometheusInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            archive_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            auth_free_read_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_free_write_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_auth_free_read: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_auth_free_write: Optional[pulumi.Input[_builtins.bool]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            prometheus_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            workspace: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrometheusInstance':
+            archive_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auth_free_read_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_free_write_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_auth_free_read: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auth_free_write: pulumi.Input[Optional[_builtins.bool]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrometheusInstance':
         """
         Get an existing PrometheusInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

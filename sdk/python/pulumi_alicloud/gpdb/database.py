@@ -22,10 +22,10 @@ class DatabaseArgs:
                  database_name: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
                  owner: pulumi.Input[_builtins.str],
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
 
@@ -87,63 +87,63 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="characterSetName")
-    def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def character_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character set, default value is UTF8
         """
         return pulumi.get(self, "character_set_name")
 
     @character_set_name.setter
-    def character_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def character_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database locale parameters, specifying string comparison/collation
         """
         return pulumi.get(self, "collate")
 
     @collate.setter
-    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collate", value)
 
     @_builtins.property
     @pulumi.getter
-    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database locale parameters, specifying character classification/case conversion rules
         """
         return pulumi.get(self, "ctype")
 
     @ctype.setter
-    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ctype", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None):
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
 
@@ -172,86 +172,86 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="characterSetName")
-    def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def character_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Character set, default value is UTF8
         """
         return pulumi.get(self, "character_set_name")
 
     @character_set_name.setter
-    def character_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def character_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database locale parameters, specifying string comparison/collation
         """
         return pulumi.get(self, "collate")
 
     @collate.setter
-    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collate", value)
 
     @_builtins.property
     @pulumi.getter
-    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database locale parameters, specifying character classification/case conversion rules
         """
         return pulumi.get(self, "ctype")
 
     @ctype.setter
-    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ctype", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseName")
-    def database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database Name
         """
         return pulumi.get(self, "database_name")
 
     @database_name.setter
-    def database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Sheet owner
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "owner", value)
 
 
@@ -261,13 +261,13 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Database resource.
@@ -422,13 +422,13 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner: Optional[pulumi.Input[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -461,13 +461,13 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            collate: Optional[pulumi.Input[_builtins.str]] = None,
-            ctype: Optional[pulumi.Input[_builtins.str]] = None,
-            database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            owner: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            collate: pulumi.Input[Optional[_builtins.str]] = None,
+            ctype: pulumi.Input[Optional[_builtins.str]] = None,
+            database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            owner: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

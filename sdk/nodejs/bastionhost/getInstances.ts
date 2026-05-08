@@ -124,17 +124,17 @@ export interface GetInstancesOutputArgs {
     /**
      * A regex string to filter results by the instance description.
      */
-    descriptionRegex?: pulumi.Input<string>;
+    descriptionRegex?: pulumi.Input<string | undefined>;
     /**
      * Matched instance IDs to filter data source result.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name to persist data source output.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the bastionhost instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

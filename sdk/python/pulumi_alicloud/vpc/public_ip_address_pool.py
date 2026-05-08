@@ -19,13 +19,13 @@ __all__ = ['PublicIpAddressPoolArgs', 'PublicIpAddressPool']
 @pulumi.input_type
 class PublicIpAddressPoolArgs:
     def __init__(__self__, *,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPool resource.
 
@@ -56,67 +56,67 @@ class PublicIpAddressPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC Public IP address pool.
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolName")
-    def public_ip_address_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC Public IP address pool.
         """
         return pulumi.get(self, "public_ip_address_pool_name")
 
     @public_ip_address_pool_name.setter
-    def public_ip_address_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID of the VPC Public IP address pool.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
-    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security protection level.
         - If the configuration is empty, the default value is DDoS protection (Basic edition).
@@ -125,38 +125,38 @@ class PublicIpAddressPoolArgs:
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
-    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_protection_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_protection_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PublicIpAddressPoolState:
     def __init__(__self__, *,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address_remaining: Optional[pulumi.Input[_builtins.bool]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 total_ip_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 used_ip_num: Optional[pulumi.Input[_builtins.int]] = None):
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address_remaining: pulumi.Input[Optional[_builtins.bool]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 total_ip_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 used_ip_num: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPool resources.
 
@@ -205,103 +205,103 @@ class _PublicIpAddressPoolState:
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC Public IP address pool.
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddressRemaining")
-    def ip_address_remaining(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ip_address_remaining(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether there is a free IP address.
         """
         return pulumi.get(self, "ip_address_remaining")
 
     @ip_address_remaining.setter
-    def ip_address_remaining(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ip_address_remaining(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ip_address_remaining", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
-    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource ID in terraform of VPC Public Ip Address Pool.
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
-    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolName")
-    def public_ip_address_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC Public IP address pool.
         """
         return pulumi.get(self, "public_ip_address_pool_name")
 
     @public_ip_address_pool_name.setter
-    def public_ip_address_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID of the VPC Public IP address pool.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityProtectionTypes")
-    def security_protection_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_protection_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security protection level.
         - If the configuration is empty, the default value is DDoS protection (Basic edition).
@@ -310,55 +310,55 @@ class _PublicIpAddressPoolState:
         return pulumi.get(self, "security_protection_types")
 
     @security_protection_types.setter
-    def security_protection_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_protection_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_protection_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VPC Public IP address pool.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="totalIpNum")
-    def total_ip_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def total_ip_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of public IP address pools.
         """
         return pulumi.get(self, "total_ip_num")
 
     @total_ip_num.setter
-    def total_ip_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def total_ip_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "total_ip_num", value)
 
     @_builtins.property
     @pulumi.getter(name="usedIpNum")
-    def used_ip_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_ip_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of used IP addresses in the public IP address pool.
         """
         return pulumi.get(self, "used_ip_num")
 
     @used_ip_num.setter
-    def used_ip_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_ip_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_ip_num", value)
 
 
@@ -368,13 +368,13 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a VPC Public Ip Address Pool resource.
@@ -485,13 +485,13 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -524,19 +524,19 @@ class PublicIpAddressPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_address_remaining: Optional[pulumi.Input[_builtins.bool]] = None,
-            isp: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_protection_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            total_ip_num: Optional[pulumi.Input[_builtins.int]] = None,
-            used_ip_num: Optional[pulumi.Input[_builtins.int]] = None) -> 'PublicIpAddressPool':
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_address_remaining: pulumi.Input[Optional[_builtins.bool]] = None,
+            isp: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_protection_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            total_ip_num: pulumi.Input[Optional[_builtins.int]] = None,
+            used_ip_num: pulumi.Input[Optional[_builtins.int]] = None) -> 'PublicIpAddressPool':
         """
         Get an existing PublicIpAddressPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

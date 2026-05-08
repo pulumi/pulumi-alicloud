@@ -197,25 +197,25 @@ export interface GetTemplateApplicationsOutputArgs {
     /**
      * The ID of the quota application batch.
      */
-    batchQuotaApplicationId?: pulumi.Input<string>;
+    batchQuotaApplicationId?: pulumi.Input<string | undefined>;
     /**
      * A list of Template Applications IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Cloud service name abbreviation.> For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The quota ID.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The quota type. Value: `CommonQuota`, `FlowControl` and `WhiteListLabel`.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
 }

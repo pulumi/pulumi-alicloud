@@ -44,8 +44,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -86,8 +86,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -128,8 +128,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -170,8 +170,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -212,8 +212,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketObjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -260,8 +260,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -316,8 +316,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -372,8 +372,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -428,8 +428,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -540,8 +540,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -596,8 +596,8 @@ public final class OssFunctions {
      * import com.pulumi.alicloud.oss.BucketArgs;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -646,8 +646,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -693,8 +693,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -740,8 +740,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -787,8 +787,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -834,8 +834,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstanceAttachmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -883,8 +883,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -930,8 +930,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -977,8 +977,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1071,8 +1071,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1165,8 +1165,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1214,8 +1214,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1258,8 +1258,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1302,8 +1302,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1346,8 +1346,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1390,8 +1390,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1434,8 +1434,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1478,8 +1478,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.oss.OssFunctions;
      * import com.pulumi.alicloud.oss.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1520,8 +1520,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1569,8 +1569,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1618,8 +1618,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1667,8 +1667,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1716,8 +1716,8 @@ public final class OssFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ots.OtsFunctions;
      * import com.pulumi.alicloud.ots.inputs.GetTablesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

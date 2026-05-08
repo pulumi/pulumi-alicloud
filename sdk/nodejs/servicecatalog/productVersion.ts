@@ -166,35 +166,35 @@ export interface ProductVersionState {
     /**
      * Whether the version is activated
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Version description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Administrator guidance
      */
-    guidance?: pulumi.Input<string>;
+    guidance?: pulumi.Input<string | undefined>;
     /**
      * Product ID
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    productVersionName?: pulumi.Input<string>;
+    productVersionName?: pulumi.Input<string | undefined>;
     /**
      * Template Type
      */
-    templateType?: pulumi.Input<string>;
+    templateType?: pulumi.Input<string | undefined>;
     /**
      * Template URL
      */
-    templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,15 +204,15 @@ export interface ProductVersionArgs {
     /**
      * Whether the version is activated
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Version description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Administrator guidance
      */
-    guidance?: pulumi.Input<string>;
+    guidance?: pulumi.Input<string | undefined>;
     /**
      * Product ID
      */

@@ -246,66 +246,66 @@ export interface DedicatedHostState {
     /**
      * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
-    allocationStatus?: pulumi.Input<string>;
+    allocationStatus?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the auto-renewal feature.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the host.
      */
-    dedicatedHostId?: pulumi.Input<string>;
+    dedicatedHostId?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
      */
-    hostClass?: pulumi.Input<string>;
+    hostClass?: pulumi.Input<string | undefined>;
     /**
      * The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      */
-    imageCategory?: pulumi.Input<string>;
+    imageCategory?: pulumi.Input<string | undefined>;
     /**
      * Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
      */
-    osPassword?: pulumi.Input<string>;
+    osPassword?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the vSwitch to which the host is connected.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,11 +315,11 @@ export interface DedicatedHostArgs {
     /**
      * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
-    allocationStatus?: pulumi.Input<string>;
+    allocationStatus?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the auto-renewal feature.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the dedicated cluster.
      */
@@ -331,15 +331,15 @@ export interface DedicatedHostArgs {
     /**
      * The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      */
-    imageCategory?: pulumi.Input<string>;
+    imageCategory?: pulumi.Input<string | undefined>;
     /**
      * Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
      */
-    osPassword?: pulumi.Input<string>;
+    osPassword?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
@@ -347,18 +347,18 @@ export interface DedicatedHostArgs {
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The subscription duration of the host. Valid values: 
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the vSwitch to which the host is connected.
      */

@@ -127,19 +127,19 @@ export interface CrossAccountState {
     /**
      * Backup account alias
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of the creation time
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The name of RAM role that the backup account authorizes the management account to manage its resources
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The uid of the backup account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -149,7 +149,7 @@ export interface CrossAccountArgs {
     /**
      * Backup account alias
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * The name of RAM role that the backup account authorizes the management account to manage its resources
      */

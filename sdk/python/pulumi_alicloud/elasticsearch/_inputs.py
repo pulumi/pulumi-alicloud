@@ -28,19 +28,19 @@ __all__ = [
 ]
 
 class InstanceClientNodeConfigurationArgsDict(TypedDict):
-    amount: NotRequired[pulumi.Input[_builtins.int]]
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of nodes.
     """
-    disk: NotRequired[pulumi.Input[_builtins.int]]
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Node storage capacity, in GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
     """
-    spec: NotRequired[pulumi.Input[_builtins.str]]
+    spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
@@ -48,10 +48,10 @@ class InstanceClientNodeConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceClientNodeConfigurationArgs:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] amount: Number of nodes.
         :param pulumi.Input[_builtins.int] disk: Node storage capacity, in GB.
@@ -69,50 +69,50 @@ class InstanceClientNodeConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Node storage capacity, in GB.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage type of the node. Only ultra disk (cloud_efficiency) is supported.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node specification. You can view specification details in [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
 
@@ -121,27 +121,27 @@ class InstanceDataNodeConfigurationArgsDict(TypedDict):
     """
     Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
-    amount: NotRequired[pulumi.Input[_builtins.int]]
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of data nodes. Valid values: 2 to 50.
     """
-    disk: NotRequired[pulumi.Input[_builtins.int]]
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage capacity per node, in GB.
     """
-    disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    disk_encryption: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable cloud disk encryption:
     - true: Enabled
     - false: Disabled.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node disk type. Supported types:
     - cloud_ssd: SSD cloud disk
     - cloud_efficiency: Ultra cloud disk.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
     """
@@ -150,11 +150,11 @@ class InstanceDataNodeConfigurationArgsDict(TypedDict):
 class InstanceDataNodeConfigurationArgs:
     def __init__(__self__, *,
                  spec: pulumi.Input[_builtins.str],
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] spec: Node specification. For more information about specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         :param pulumi.Input[_builtins.int] amount: Number of data nodes. Valid values: 2 to 50.
@@ -193,31 +193,31 @@ class InstanceDataNodeConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of data nodes. Valid values: 2 to 50.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable cloud disk encryption:
         - true: Enabled
@@ -226,12 +226,12 @@ class InstanceDataNodeConfigurationArgs:
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node disk type. Supported types:
         - cloud_ssd: SSD cloud disk
@@ -240,19 +240,19 @@ class InstanceDataNodeConfigurationArgs:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance level of ESSD cloud disks. This parameter is required when diskType is set to cloud_essd. Supported values: PL1, PL2, PL3.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
 
@@ -261,11 +261,11 @@ class InstanceKibanaConfigurationArgsDict(TypedDict):
     """
     Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
-    amount: NotRequired[pulumi.Input[_builtins.int]]
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of nodes.
     """
-    disk: NotRequired[pulumi.Input[_builtins.int]]
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage capacity per node, in GB.
     """
@@ -274,8 +274,8 @@ class InstanceKibanaConfigurationArgsDict(TypedDict):
 class InstanceKibanaConfigurationArgs:
     def __init__(__self__, *,
                  spec: pulumi.Input[_builtins.str],
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] spec: Node specification. For specification details, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         :param pulumi.Input[_builtins.int] amount: The number of nodes.
@@ -301,43 +301,43 @@ class InstanceKibanaConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
 
 class InstanceMasterConfigurationArgsDict(TypedDict):
-    amount: NotRequired[pulumi.Input[_builtins.int]]
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of nodes.
     """
-    disk: NotRequired[pulumi.Input[_builtins.int]]
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Node storage capacity, in GB.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node storage type. Only cloud_ssd (SSD cloud disk) is supported.
     """
-    spec: NotRequired[pulumi.Input[_builtins.str]]
+    spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
@@ -345,10 +345,10 @@ class InstanceMasterConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceMasterConfigurationArgs:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] amount: Number of nodes.
         :param pulumi.Input[_builtins.int] disk: Node storage capacity, in GB.
@@ -366,73 +366,73 @@ class InstanceMasterConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Node storage capacity, in GB.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node storage type. Only cloud_ssd (SSD cloud disk) is supported.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
 
 class InstanceWarmNodeConfigurationArgsDict(TypedDict):
-    amount: NotRequired[pulumi.Input[_builtins.int]]
+    amount: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of nodes.
     """
-    disk: NotRequired[pulumi.Input[_builtins.int]]
+    disk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Storage capacity per node, in GB.
     """
-    disk_encryption: NotRequired[pulumi.Input[_builtins.bool]]
+    disk_encryption: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable disk encryption. The values are as follows:
     - true: Enabled.
     - false: Disabled.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Storage type for the node. Only `cloud_efficiency` (ultra disk) is supported.
     """
-    spec: NotRequired[pulumi.Input[_builtins.str]]
+    spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
     """
@@ -440,11 +440,11 @@ class InstanceWarmNodeConfigurationArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceWarmNodeConfigurationArgs:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] amount: Number of nodes.
         :param pulumi.Input[_builtins.int] disk: Storage capacity per node, in GB.
@@ -467,31 +467,31 @@ class InstanceWarmNodeConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of nodes.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage capacity per node, in GB.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="diskEncryption")
-    def disk_encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disk_encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable disk encryption. The values are as follows:
         - true: Enabled.
@@ -500,31 +500,31 @@ class InstanceWarmNodeConfigurationArgs:
         return pulumi.get(self, "disk_encryption")
 
     @disk_encryption.setter
-    def disk_encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disk_encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disk_encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage type for the node. Only `cloud_efficiency` (ultra disk) is supported.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node specification. For specifications, see [Product Specifications](https://help.aliyun.com/document_detail/271718.html).
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
 

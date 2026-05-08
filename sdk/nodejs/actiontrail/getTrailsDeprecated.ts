@@ -118,16 +118,16 @@ export function getTrailsDeprecatedOutput(args?: GetTrailsDeprecatedOutputArgs, 
  * A collection of arguments for invoking getTrailsDeprecated.
  */
 export interface GetTrailsDeprecatedOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    includeOrganizationTrail?: pulumi.Input<boolean>;
-    includeShadowTrails?: pulumi.Input<boolean>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeOrganizationTrail?: pulumi.Input<boolean | undefined>;
+    includeShadowTrails?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results action trail name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }

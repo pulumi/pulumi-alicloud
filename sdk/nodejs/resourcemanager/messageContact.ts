@@ -168,22 +168,22 @@ export interface MessageContactState {
     /**
      * The time when the contact was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The email address of the contact.
      * After you specify an email address, you need to call SendEmailVerificationForMessageContact to send verification information to the email address. After the verification is passed, the email address takes effect.
      */
-    emailAddress?: pulumi.Input<string>;
+    emailAddress?: pulumi.Input<string | undefined>;
     /**
      * The name of the contact.
      * The name must be unique in your resource directory.
      * The name must be 2 to 12 characters in length and can contain only letters.
      */
-    messageContactName?: pulumi.Input<string>;
+    messageContactName?: pulumi.Input<string | undefined>;
     /**
      * The types of messages received by the contact.
      */
-    messageTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    messageTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The mobile phone number of the contact.
      *
@@ -193,11 +193,11 @@ export interface MessageContactState {
      *
      * After you specify a mobile phone number, you need to call SendPhoneVerificationForMessageContact to send verification information to the mobile phone number. After the verification is passed, the mobile phone number takes effect.
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * The status of the contact.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The job title of the contact.Valid values:
      * - FinanceDirector
@@ -207,7 +207,7 @@ export interface MessageContactState {
      * - ProjectDirector
      * - Other
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface MessageContactArgs {
      *
      * After you specify a mobile phone number, you need to call SendPhoneVerificationForMessageContact to send verification information to the mobile phone number. After the verification is passed, the mobile phone number takes effect.
      */
-    phoneNumber?: pulumi.Input<string>;
+    phoneNumber?: pulumi.Input<string | undefined>;
     /**
      * The job title of the contact.Valid values:
      * - FinanceDirector

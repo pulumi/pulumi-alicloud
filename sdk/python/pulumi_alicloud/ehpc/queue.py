@@ -21,18 +21,18 @@ __all__ = ['QueueArgs', 'Queue']
 @pulumi.input_type
 class QueueArgs:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]] = None,
-                 enable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_scale_out: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 inter_connect: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Queue resource.
 
@@ -83,7 +83,7 @@ class QueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         You can call the ListClusters operation to query the cluster ID.
@@ -91,24 +91,24 @@ class QueueArgs:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeNodes")
-    def compute_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]:
+    def compute_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]:
         """
         The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
         """
         return pulumi.get(self, "compute_nodes")
 
     @compute_nodes.setter
-    def compute_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]):
+    def compute_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]):
         pulumi.set(self, "compute_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="enableScaleIn")
-    def enable_scale_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scale-in for the queue. Valid values:
 
@@ -118,12 +118,12 @@ class QueueArgs:
         return pulumi.get(self, "enable_scale_in")
 
     @enable_scale_in.setter
-    def enable_scale_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_scale_in", value)
 
     @_builtins.property
     @pulumi.getter(name="enableScaleOut")
-    def enable_scale_out(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_scale_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scale-out for the queue. Valid values:
 
@@ -133,122 +133,122 @@ class QueueArgs:
         return pulumi.get(self, "enable_scale_out")
 
     @enable_scale_out.setter
-    def enable_scale_out(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_scale_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_scale_out", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnamePrefix")
-    def hostname_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname prefix of the added compute nodes.
         """
         return pulumi.get(self, "hostname_prefix")
 
     @hostname_prefix.setter
-    def hostname_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnameSuffix")
-    def hostname_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname suffix of the compute nodes in the queue.
         """
         return pulumi.get(self, "hostname_suffix")
 
     @hostname_suffix.setter
-    def hostname_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="initialCount")
-    def initial_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The initial number of compute nodes in the queue.
         """
         return pulumi.get(self, "initial_count")
 
     @initial_count.setter
-    def initial_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_count", value)
 
     @_builtins.property
     @pulumi.getter(name="interConnect")
-    def inter_connect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_connect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network for interconnecting compute nodes in the queue.
         """
         return pulumi.get(self, "inter_connect")
 
     @inter_connect.setter
-    def inter_connect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_connect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of compute nodes that the queue can contain.
         """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
-    def max_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of compute nodes that the queue must contain.
         """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
-    def min_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_count", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue name.
         """
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches available for use by compute nodes in the queue.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
 @pulumi.input_type
 class _QueueState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_scale_out: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 inter_connect: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Queue resources.
 
@@ -302,7 +302,7 @@ class _QueueState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         You can call the ListClusters operation to query the cluster ID.
@@ -310,36 +310,36 @@ class _QueueState:
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computeNodes")
-    def compute_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]:
+    def compute_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]:
         """
         The hardware configurations of the compute nodes in the queue. Valid values of N: 1 to 10. See `compute_nodes` below.
         """
         return pulumi.get(self, "compute_nodes")
 
     @compute_nodes.setter
-    def compute_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]):
+    def compute_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QueueComputeNodeArgs']]]]):
         pulumi.set(self, "compute_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableScaleIn")
-    def enable_scale_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scale-in for the queue. Valid values:
 
@@ -349,12 +349,12 @@ class _QueueState:
         return pulumi.get(self, "enable_scale_in")
 
     @enable_scale_in.setter
-    def enable_scale_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_scale_in", value)
 
     @_builtins.property
     @pulumi.getter(name="enableScaleOut")
-    def enable_scale_out(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_scale_out(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scale-out for the queue. Valid values:
 
@@ -364,103 +364,103 @@ class _QueueState:
         return pulumi.get(self, "enable_scale_out")
 
     @enable_scale_out.setter
-    def enable_scale_out(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_scale_out(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_scale_out", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnamePrefix")
-    def hostname_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname prefix of the added compute nodes.
         """
         return pulumi.get(self, "hostname_prefix")
 
     @hostname_prefix.setter
-    def hostname_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="hostnameSuffix")
-    def hostname_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname suffix of the compute nodes in the queue.
         """
         return pulumi.get(self, "hostname_suffix")
 
     @hostname_suffix.setter
-    def hostname_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="initialCount")
-    def initial_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The initial number of compute nodes in the queue.
         """
         return pulumi.get(self, "initial_count")
 
     @initial_count.setter
-    def initial_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_count", value)
 
     @_builtins.property
     @pulumi.getter(name="interConnect")
-    def inter_connect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inter_connect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network for interconnecting compute nodes in the queue.
         """
         return pulumi.get(self, "inter_connect")
 
     @inter_connect.setter
-    def inter_connect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inter_connect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inter_connect", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCount")
-    def max_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of compute nodes that the queue can contain.
         """
         return pulumi.get(self, "max_count")
 
     @max_count.setter
-    def max_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_count", value)
 
     @_builtins.property
     @pulumi.getter(name="minCount")
-    def min_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of compute nodes that the queue must contain.
         """
         return pulumi.get(self, "min_count")
 
     @min_count.setter
-    def min_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_count", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue name.
         """
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The vSwitches available for use by compute nodes in the queue.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
@@ -470,18 +470,18 @@ class Queue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
-                 enable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_scale_out: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 inter_connect: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ehpc Queue resource.
@@ -938,18 +938,18 @@ class Queue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
-                 enable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_scale_out: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hostname_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 inter_connect: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+                 enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -982,19 +982,19 @@ class Queue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_scale_out: Optional[pulumi.Input[_builtins.bool]] = None,
-            hostname_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_count: Optional[pulumi.Input[_builtins.int]] = None,
-            inter_connect: Optional[pulumi.Input[_builtins.str]] = None,
-            max_count: Optional[pulumi.Input[_builtins.int]] = None,
-            min_count: Optional[pulumi.Input[_builtins.int]] = None,
-            queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Queue':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['QueueComputeNodeArgs', 'QueueComputeNodeArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_scale_out: pulumi.Input[Optional[_builtins.bool]] = None,
+            hostname_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_count: pulumi.Input[Optional[_builtins.int]] = None,
+            inter_connect: pulumi.Input[Optional[_builtins.str]] = None,
+            max_count: pulumi.Input[Optional[_builtins.int]] = None,
+            min_count: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Queue':
         """
         Get an existing Queue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

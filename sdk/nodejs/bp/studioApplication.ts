@@ -167,35 +167,35 @@ export interface StudioApplicationState {
     /**
      * The name of the application.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The id of the area.
      */
-    areaId?: pulumi.Input<string>;
+    areaId?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the application.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
-    instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[]>;
+    instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[] | undefined>;
     /**
      * The id of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Application.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The variables of the application.
      */
-    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -209,19 +209,19 @@ export interface StudioApplicationArgs {
     /**
      * The id of the area.
      */
-    areaId?: pulumi.Input<string>;
+    areaId?: pulumi.Input<string | undefined>;
     /**
      * The configuration of the application.
      */
-    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The instance list. Support the creation of instances in the existing vpc under the application. See the following `Block instances`.
      */
-    instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[]>;
+    instances?: pulumi.Input<pulumi.Input<inputs.bp.StudioApplicationInstance>[] | undefined>;
     /**
      * The id of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The id of the template.
      */
@@ -229,5 +229,5 @@ export interface StudioApplicationArgs {
     /**
      * The variables of the application.
      */
-    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    variables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

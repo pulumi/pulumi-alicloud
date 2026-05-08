@@ -173,37 +173,37 @@ export interface FilesetState {
     /**
      * The time when Fileset was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The instance release protection attribute, which specifies whether the instance can be released through the console or API( DeleteFileset).
      * - true: Enable instance release protection.
      * - false (default): Turn off instance release protection
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of Fileset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The path of Fileset.
      */
-    fileSystemPath?: pulumi.Input<string>;
+    fileSystemPath?: pulumi.Input<string | undefined>;
     /**
      * Fileset ID
      */
-    filesetId?: pulumi.Input<string>;
+    filesetId?: pulumi.Input<string | undefined>;
     /**
      * The status of Fileset. Includes:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,15 +215,15 @@ export interface FilesetArgs {
      * - true: Enable instance release protection.
      * - false (default): Turn off instance release protection
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of Fileset.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */

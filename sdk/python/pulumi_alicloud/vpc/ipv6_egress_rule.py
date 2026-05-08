@@ -21,9 +21,9 @@ class Ipv6EgressRuleArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  ipv6_gateway_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ipv6EgressRule resource.
 
@@ -68,51 +68,51 @@ class Ipv6EgressRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6EgressRuleName")
-    def ipv6_egress_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_egress_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ipv6_egress_rule_name")
 
     @ipv6_egress_rule_name.setter
-    def ipv6_egress_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_egress_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_egress_rule_name", value)
 
 
 @pulumi.input_type
 class _Ipv6EgressRuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_egress_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_egress_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv6EgressRule resources.
 
@@ -141,86 +141,86 @@ class _Ipv6EgressRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv6 address to which you want to apply the egress-only rule.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6EgressRuleId")
-    def ipv6_egress_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_egress_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv6 EgressRule.
         """
         return pulumi.get(self, "ipv6_egress_rule_id")
 
     @ipv6_egress_rule_id.setter
-    def ipv6_egress_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_egress_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_egress_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6EgressRuleName")
-    def ipv6_egress_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_egress_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "ipv6_egress_rule_name")
 
     @ipv6_egress_rule_name.setter
-    def ipv6_egress_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_egress_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_egress_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6GatewayId")
-    def ipv6_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPv6 gateway.
         """
         return pulumi.get(self, "ipv6_gateway_id")
 
     @ipv6_gateway_id.setter
-    def ipv6_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -230,11 +230,11 @@ class Ipv6EgressRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Ipv6 Egress Rule resource. IPv6 address addition only active exit rule.
@@ -425,11 +425,11 @@ class Ipv6EgressRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -460,13 +460,13 @@ class Ipv6EgressRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_egress_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_egress_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ipv6EgressRule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_egress_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_egress_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ipv6EgressRule':
         """
         Get an existing Ipv6EgressRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -28,7 +28,7 @@ class ClusterNetworkArgsDict(TypedDict):
     """
     Switch to which the cluster belongs.
     """
-    security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Security group to which the cluster belongs.
     """
@@ -38,7 +38,7 @@ class ClusterNetworkArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitches: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] vpc_id: VpcId to which the cluster belongs.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitches: Switch to which the cluster belongs.
@@ -75,14 +75,14 @@ class ClusterNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Security group to which the cluster belongs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
 

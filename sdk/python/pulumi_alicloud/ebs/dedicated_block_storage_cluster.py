@@ -23,7 +23,7 @@ class DedicatedBlockStorageClusterArgs:
                  total_capacity: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DedicatedBlockStorageCluster resource.
 
@@ -90,36 +90,36 @@ class DedicatedBlockStorageClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dedicated block storage cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _DedicatedBlockStorageClusterState:
     def __init__(__self__, *,
-                 available_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_block_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_block_storage_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 supported_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 used_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 available_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_block_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_block_storage_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 supported_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 used_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedBlockStorageCluster resources.
 
@@ -175,194 +175,194 @@ class _DedicatedBlockStorageClusterState:
 
     @_builtins.property
     @pulumi.getter(name="availableCapacity")
-    def available_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def available_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The available capacity of the dedicated block storage cluster. Unit: GiB.
         """
         return pulumi.get(self, "available_capacity")
 
     @available_capacity.setter
-    def available_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def available_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "available_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of cloud disk that can be created by a dedicated block storage cluster.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedBlockStorageClusterId")
-    def dedicated_block_storage_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_block_storage_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "dedicated_block_storage_cluster_id")
 
     @dedicated_block_storage_cluster_id.setter
-    def dedicated_block_storage_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_block_storage_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_block_storage_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedBlockStorageClusterName")
-    def dedicated_block_storage_cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_block_storage_cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "dedicated_block_storage_cluster_name")
 
     @dedicated_block_storage_cluster_name.setter
-    def dedicated_block_storage_cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_block_storage_cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_block_storage_cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryCapacity")
-    def delivery_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Capacity to be delivered in GB.
         """
         return pulumi.get(self, "delivery_capacity")
 
     @delivery_capacity.setter
-    def delivery_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the dedicated block storage cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="supportedCategory")
-    def supported_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def supported_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is not supported.
         """
         return pulumi.get(self, "supported_category")
 
     @supported_category.setter
-    def supported_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def supported_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "supported_category", value)
 
     @_builtins.property
     @pulumi.getter(name="totalCapacity")
-    def total_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The total capacity of the dedicated block storage cluster. Unit: GiB.
         """
         return pulumi.get(self, "total_capacity")
 
     @total_capacity.setter
-    def total_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="usedCapacity")
-    def used_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def used_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The used (created disk) capacity of the current cluster, in GB
         """
         return pulumi.get(self, "used_capacity")
 
     @used_capacity.setter
-    def used_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def used_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "used_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID  of the resource
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -372,11 +372,11 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_block_storage_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_block_storage_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Ebs Dedicated Block Storage Cluster resource.
@@ -475,11 +475,11 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dedicated_block_storage_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 total_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dedicated_block_storage_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 total_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -523,22 +523,22 @@ class DedicatedBlockStorageCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            available_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_block_storage_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_block_storage_cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-            performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            supported_category: Optional[pulumi.Input[_builtins.str]] = None,
-            total_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            used_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedBlockStorageCluster':
+            available_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_block_storage_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_block_storage_cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            supported_category: pulumi.Input[Optional[_builtins.str]] = None,
+            total_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            used_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedBlockStorageCluster':
         """
         Get an existing DedicatedBlockStorageCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

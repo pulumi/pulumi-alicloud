@@ -151,11 +151,11 @@ def get_mail_addresses(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         sendtype=pulumi.get(__ret__, 'sendtype'),
         status=pulumi.get(__ret__, 'status'))
-def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              key_word: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              sendtype: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_mail_addresses_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              key_word: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              sendtype: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMailAddressesResult]:
     """
     This data source provides the Direct Mail Mail Addresses of the current Alibaba Cloud user.

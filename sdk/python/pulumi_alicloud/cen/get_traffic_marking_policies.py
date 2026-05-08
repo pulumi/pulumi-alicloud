@@ -180,12 +180,12 @@ def get_traffic_marking_policies(description: Optional[_builtins.str] = None,
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-def get_traffic_marking_policies_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_traffic_marking_policies_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMarkingPoliciesResult]:
     """
     This data source provides the Cen Traffic Marking Policies of the current Alibaba Cloud user.

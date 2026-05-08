@@ -201,59 +201,59 @@ export interface HanaInstanceState {
     /**
      * The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      */
-    alertSetting?: pulumi.Input<string>;
+    alertSetting?: pulumi.Input<string | undefined>;
     /**
      * The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
      */
-    ecsInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ecsInstanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id of the Hana Instance.
      */
-    hanaInstanceId?: pulumi.Input<string>;
+    hanaInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the SAP HANA instance.
      */
-    hanaName?: pulumi.Input<string>;
+    hanaName?: pulumi.Input<string | undefined>;
     /**
      * The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The instance number of the SAP HANA system.
      */
-    instanceNumber?: pulumi.Input<number>;
+    instanceNumber?: pulumi.Input<number | undefined>;
     /**
      * The password that is used to connect with the SAP HANA database.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security identifier (SID) of the SAP HANA database.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
      */
-    useSsl?: pulumi.Input<boolean>;
+    useSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The username of the SYSTEMDB database.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to verify the SSL certificate of the SAP HANA database.
      */
-    validateCertificate?: pulumi.Input<boolean>;
+    validateCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -263,47 +263,47 @@ export interface HanaInstanceArgs {
     /**
      * The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
      */
-    alertSetting?: pulumi.Input<string>;
+    alertSetting?: pulumi.Input<string | undefined>;
     /**
      * The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
      */
-    ecsInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ecsInstanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the SAP HANA instance.
      */
-    hanaName?: pulumi.Input<string>;
+    hanaName?: pulumi.Input<string | undefined>;
     /**
      * The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The instance number of the SAP HANA system.
      */
-    instanceNumber?: pulumi.Input<number>;
+    instanceNumber?: pulumi.Input<number | undefined>;
     /**
      * The password that is used to connect with the SAP HANA database.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security identifier (SID) of the SAP HANA database.
      */
-    sid?: pulumi.Input<string>;
+    sid?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
      */
-    useSsl?: pulumi.Input<boolean>;
+    useSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The username of the SYSTEMDB database.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to verify the SSL certificate of the SAP HANA database.
      */
-    validateCertificate?: pulumi.Input<boolean>;
+    validateCertificate?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the backup vault.
      */

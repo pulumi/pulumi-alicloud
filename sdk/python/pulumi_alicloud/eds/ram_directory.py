@@ -21,9 +21,9 @@ class RamDirectoryArgs:
     def __init__(__self__, *,
                  ram_directory_name: pulumi.Input[_builtins.str],
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None):
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RamDirectory resource.
 
@@ -68,50 +68,50 @@ class RamDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
         """
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable public network access.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to grant local administrator rights to users who use cloud desktops.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
 
 @pulumi.input_type
 class _RamDirectoryState:
     def __init__(__self__, *,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ram_directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ram_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RamDirectory resources.
 
@@ -137,74 +137,74 @@ class _RamDirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
         """
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable public network access.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to grant local administrator rights to users who use cloud desktops.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="ramDirectoryName")
-    def ram_directory_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "ram_directory_name")
 
     @ram_directory_name.setter
-    def ram_directory_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_directory_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of directory.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of VSwitch IDs in the directory.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
@@ -214,11 +214,11 @@ class RamDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ram_directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ram_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ECD Ram Directory resource.
@@ -345,11 +345,11 @@ class RamDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ram_directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ram_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -379,12 +379,12 @@ class RamDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            ram_directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RamDirectory':
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            ram_directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'RamDirectory':
         """
         Get an existing RamDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

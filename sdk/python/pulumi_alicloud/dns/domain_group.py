@@ -19,9 +19,9 @@ __all__ = ['DomainGroupArgs', 'DomainGroup']
 @pulumi.input_type
 class DomainGroupArgs:
     def __init__(__self__, *,
-                 domain_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DomainGroup resource.
 
@@ -41,48 +41,48 @@ class DomainGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="domainGroupName")
-    def domain_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         """
         return pulumi.get(self, "domain_group_name")
 
     @domain_group_name.setter
-    def domain_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     @_utilities.deprecated("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
 @pulumi.input_type
 class _DomainGroupState:
     def __init__(__self__, *,
-                 domain_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DomainGroup resources.
 
@@ -102,39 +102,39 @@ class _DomainGroupState:
 
     @_builtins.property
     @pulumi.getter(name="domainGroupName")
-    def domain_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the domain group. The `domain_group_name` is required when the value of the `group_name`  is Empty.
         """
         return pulumi.get(self, "domain_group_name")
 
     @domain_group_name.setter
-    def domain_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
     @_utilities.deprecated("""Field 'group_name' has been deprecated from version 1.97.0. Use 'domain_group_name' instead.""")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Name of the domain group. The `group_name` has been deprecated from provider version 1.97.0. Please use `domain_group_name` instead.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
@@ -144,9 +144,9 @@ class DomainGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Domain Group resource. For information about Alidns Domain Group and how to use it, see [What is Resource Alidns Domain Group](https://www.alibabacloud.com/help/en/doc-detail/29762.htm).
@@ -225,9 +225,9 @@ class DomainGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
+                 domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,9 +250,9 @@ class DomainGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None) -> 'DomainGroup':
+            domain_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None) -> 'DomainGroup':
         """
         Get an existing DomainGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

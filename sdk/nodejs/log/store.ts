@@ -290,81 +290,81 @@ export interface StoreState {
     /**
      * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
-    appendMeta?: pulumi.Input<boolean>;
+    appendMeta?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether to automatically split a shard. Default to `false`.
      */
-    autoSplit?: pulumi.Input<boolean>;
+    autoSplit?: pulumi.Input<boolean | undefined>;
     /**
      * Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      */
-    enableWebTracking?: pulumi.Input<boolean>;
+    enableWebTracking?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      */
-    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
+    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf | undefined>;
     /**
      * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      */
-    hotTtl?: pulumi.Input<number>;
+    hotTtl?: pulumi.Input<number | undefined>;
     /**
      * Low frequency storage time
      */
-    infrequentAccessTtl?: pulumi.Input<number>;
+    infrequentAccessTtl?: pulumi.Input<number | undefined>;
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
-    maxSplitShardCount?: pulumi.Input<number>;
+    maxSplitShardCount?: pulumi.Input<number | undefined>;
     /**
      * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
      */
-    meteringMode?: pulumi.Input<string>;
+    meteringMode?: pulumi.Input<string | undefined>;
     /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
      *
      * @deprecated Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * The shard attribute.
      */
-    shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[]>;
+    shards?: pulumi.Input<pulumi.Input<inputs.log.StoreShard>[] | undefined>;
     /**
      * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    telemetryType?: pulumi.Input<string>;
+    telemetryType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -374,71 +374,71 @@ export interface StoreArgs {
     /**
      * Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
      */
-    appendMeta?: pulumi.Input<boolean>;
+    appendMeta?: pulumi.Input<boolean | undefined>;
     /**
      * Determines whether to automatically split a shard. Default to `false`.
      */
-    autoSplit?: pulumi.Input<boolean>;
+    autoSplit?: pulumi.Input<boolean | undefined>;
     /**
      * Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
      */
-    enableWebTracking?: pulumi.Input<boolean>;
+    enableWebTracking?: pulumi.Input<boolean | undefined>;
     /**
      * Encrypted storage of data, providing data static protection capability, encryptConf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encryptConf` below.
      */
-    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf>;
+    encryptConf?: pulumi.Input<inputs.log.StoreEncryptConf | undefined>;
     /**
      * The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
      */
-    hotTtl?: pulumi.Input<number>;
+    hotTtl?: pulumi.Input<number | undefined>;
     /**
      * Low frequency storage time
      */
-    infrequentAccessTtl?: pulumi.Input<number>;
+    infrequentAccessTtl?: pulumi.Input<number | undefined>;
     /**
      * The log store, which is unique in the same project. You need to specify one of the attributes: `logstoreName`, `name`.
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
      */
-    maxSplitShardCount?: pulumi.Input<number>;
+    maxSplitShardCount?: pulumi.Input<number | undefined>;
     /**
      * Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
      */
-    meteringMode?: pulumi.Input<string>;
+    meteringMode?: pulumi.Input<string | undefined>;
     /**
      * The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
      *
      * @deprecated Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The project name to the log store belongs. You need to specify one of the attributes: `projectName`, `project`.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * Determines whether store type is metric. `Metrics` means metric store, empty means log store.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    telemetryType?: pulumi.Input<string>;
+    telemetryType?: pulumi.Input<string | undefined>;
 }

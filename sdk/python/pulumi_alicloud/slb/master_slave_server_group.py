@@ -22,9 +22,9 @@ __all__ = ['MasterSlaveServerGroupArgs', 'MasterSlaveServerGroup']
 class MasterSlaveServerGroupArgs:
     def __init__(__self__, *,
                  load_balancer_id: pulumi.Input[_builtins.str],
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
         """
         The set of arguments for constructing a MasterSlaveServerGroup resource.
 
@@ -55,48 +55,48 @@ class MasterSlaveServerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the master slave server group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]:
         """
         A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
 
 @pulumi.input_type
 class _MasterSlaveServerGroupState:
     def __init__(__self__, *,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]] = None):
         """
         Input properties used for looking up and filtering MasterSlaveServerGroup resources.
 
@@ -116,50 +116,50 @@ class _MasterSlaveServerGroupState:
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Load Balancer ID which is used to launch a new master slave server group.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the master slave server group.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]:
         """
         A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MasterSlaveServerGroupServerArgs']]]]):
         pulumi.set(self, "servers", value)
 
 
@@ -169,10 +169,10 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
                  __props__=None):
         """
         A master slave server group contains two ECS instances. The master slave server group can help you to define multiple listening dimension.
@@ -195,13 +195,14 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         ms_server_group = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         ms_server_group_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=ms_server_group.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -221,7 +222,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         group = alicloud.ecs.SecurityGroup("group",
             security_group_name=slb_master_slave_server_group,
             vpc_id=main.id)
-        ms_server_group_instance = []
+        ms_server_group_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{range['value']}",
                 image_id=image.images[0].id,
@@ -325,13 +326,14 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         ms_server_group = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
         ms_server_group_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=ms_server_group.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         image = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
@@ -351,7 +353,7 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
         group = alicloud.ecs.SecurityGroup("group",
             security_group_name=slb_master_slave_server_group,
             vpc_id=main.id)
-        ms_server_group_instance = []
+        ms_server_group_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             ms_server_group_instance.append(alicloud.ecs.Instance(f"ms_server_group-{range['value']}",
                 image_id=image.images[0].id,
@@ -436,10 +438,10 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -465,10 +467,10 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            servers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None) -> 'MasterSlaveServerGroup':
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            servers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MasterSlaveServerGroupServerArgs', 'MasterSlaveServerGroupServerArgsDict']]]]] = None) -> 'MasterSlaveServerGroup':
         """
         Get an existing MasterSlaveServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

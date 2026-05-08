@@ -43,9 +43,9 @@ class HistoryDeliveryJobArgs:
 @pulumi.input_type
 class _HistoryDeliveryJobState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HistoryDeliveryJob resources.
 
@@ -62,38 +62,38 @@ class _HistoryDeliveryJobState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trailName")
-    def trail_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trail_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Track Name.
         """
         return pulumi.get(self, "trail_name")
 
     @trail_name.setter
-    def trail_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trail_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trail_name", value)
 
 
@@ -103,7 +103,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Action Trail History Delivery Job resource.
@@ -250,7 +250,7 @@ class HistoryDeliveryJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 trail_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 trail_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,9 +275,9 @@ class HistoryDeliveryJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            trail_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HistoryDeliveryJob':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            trail_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HistoryDeliveryJob':
         """
         Get an existing HistoryDeliveryJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

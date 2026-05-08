@@ -145,25 +145,25 @@ export interface GetDbInstancePlansOutputArgs {
     /**
      * A list of DB Instance Plan IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by DB Instance Plan name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Plan scheduling type. Valid values: `Postpone`, `Regular`.
      */
-    planScheduleType?: pulumi.Input<string>;
+    planScheduleType?: pulumi.Input<string | undefined>;
     /**
      * The type of the Plan. Valid values: `PauseResume`, `Resize`.
      */
-    planType?: pulumi.Input<string>;
+    planType?: pulumi.Input<string | undefined>;
     /**
      * Planning Status. Valid values: `active`, `cancel`, `deleted`, `finished`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

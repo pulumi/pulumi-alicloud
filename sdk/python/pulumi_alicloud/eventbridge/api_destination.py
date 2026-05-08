@@ -24,7 +24,7 @@ class ApiDestinationArgs:
                  api_destination_name: pulumi.Input[_builtins.str],
                  connection_name: pulumi.Input[_builtins.str],
                  http_api_parameters: pulumi.Input['ApiDestinationHttpApiParametersArgs'],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ApiDestination resource.
 
@@ -77,25 +77,25 @@ class ApiDestinationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the API destination.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _ApiDestinationState:
     def __init__(__self__, *,
-                 api_destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_api_parameters: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']] = None):
+                 api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_api_parameters: pulumi.Input[Optional['ApiDestinationHttpApiParametersArgs']] = None):
         """
         Input properties used for looking up and filtering ApiDestination resources.
 
@@ -118,62 +118,62 @@ class _ApiDestinationState:
 
     @_builtins.property
     @pulumi.getter(name="apiDestinationName")
-    def api_destination_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_destination_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the API destination.
         """
         return pulumi.get(self, "api_destination_name")
 
     @api_destination_name.setter
-    def api_destination_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_destination_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_destination_name", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the connection.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the Api Destination.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the API destination.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="httpApiParameters")
-    def http_api_parameters(self) -> Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']]:
+    def http_api_parameters(self) -> pulumi.Input[Optional['ApiDestinationHttpApiParametersArgs']]:
         """
         The parameters that are configured for the API destination. See `http_api_parameters` below.
         """
         return pulumi.get(self, "http_api_parameters")
 
     @http_api_parameters.setter
-    def http_api_parameters(self, value: Optional[pulumi.Input['ApiDestinationHttpApiParametersArgs']]):
+    def http_api_parameters(self, value: pulumi.Input[Optional['ApiDestinationHttpApiParametersArgs']]):
         pulumi.set(self, "http_api_parameters", value)
 
 
@@ -183,10 +183,10 @@ class ApiDestination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
+                 api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Api Destination resource.
@@ -312,10 +312,10 @@ class ApiDestination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
+                 api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,11 +346,11 @@ class ApiDestination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_destination_name: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            http_api_parameters: Optional[pulumi.Input[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None) -> 'ApiDestination':
+            api_destination_name: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            http_api_parameters: pulumi.Input[Optional[Union['ApiDestinationHttpApiParametersArgs', 'ApiDestinationHttpApiParametersArgsDict']]] = None) -> 'ApiDestination':
         """
         Get an existing ApiDestination resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

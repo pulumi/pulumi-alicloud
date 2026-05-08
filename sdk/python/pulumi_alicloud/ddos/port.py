@@ -25,8 +25,8 @@ class PortArgs:
                  frontend_protocol: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  real_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 backend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['PortConfigArgs']] = None):
+                 backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['PortConfigArgs']] = None):
         """
         The set of arguments for constructing a Port resource.
 
@@ -101,19 +101,19 @@ class PortArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of the origin server. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
-    def backend_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['PortConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['PortConfigArgs']]:
         """
         Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
         - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
@@ -121,19 +121,19 @@ class PortArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['PortConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['PortConfigArgs']]):
         pulumi.set(self, "config", value)
 
 
 @pulumi.input_type
 class _PortState:
     def __init__(__self__, *,
-                 backend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input['PortConfigArgs']] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional['PortConfigArgs']] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Port resources.
 
@@ -162,19 +162,19 @@ class _PortState:
 
     @_builtins.property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of the origin server. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
-    def backend_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['PortConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['PortConfigArgs']]:
         """
         Session persistence settings for port forwarding rules. Use a string representation in JSON format. The specific structure is described as follows.
         - `PersistenceTimeout`: is of Integer type and is required. The timeout period of the session. Value range: `30` to `3600`, in seconds. The default value is `0`, which is closed. See `config` below.
@@ -182,36 +182,36 @@ class _PortState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['PortConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['PortConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frontend_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The forwarding port to query. Valid values: `0` to `65535`.
         """
         return pulumi.get(self, "frontend_port")
 
     @frontend_port.setter
-    def frontend_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frontend_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frontend_port", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendProtocol")
-    def frontend_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frontend_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the forwarding protocol to query. Valid values:
         """
         return pulumi.get(self, "frontend_protocol")
 
     @frontend_protocol.setter
-    def frontend_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frontend_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frontend_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Anti-DDoS Pro or Anti-DDoS Premium instance to which the port forwarding rule belongs.
 
@@ -220,19 +220,19 @@ class _PortState:
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="realServers")
-    def real_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def real_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of source IP addresses
         """
         return pulumi.get(self, "real_servers")
 
     @real_servers.setter
-    def real_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def real_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "real_servers", value)
 
 
@@ -242,12 +242,12 @@ class Port(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ddos Coo Port resource.
@@ -382,12 +382,12 @@ class Port(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 frontend_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -421,12 +421,12 @@ class Port(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_port: Optional[pulumi.Input[_builtins.str]] = None,
-            config: Optional[pulumi.Input[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
-            frontend_port: Optional[pulumi.Input[_builtins.str]] = None,
-            frontend_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Port':
+            backend_port: pulumi.Input[Optional[_builtins.str]] = None,
+            config: pulumi.Input[Optional[Union['PortConfigArgs', 'PortConfigArgsDict']]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.str]] = None,
+            frontend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Port':
         """
         Get an existing Port resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

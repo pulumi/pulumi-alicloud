@@ -139,29 +139,29 @@ export interface GetPublicIpAddressPoolsOutputArgs {
     /**
      * A list of Vpc Public Ip Address Pool IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Vpc Public Ip Address Pool name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the Vpc Public IP address pools.
      */
-    publicIpAddressPoolIds?: pulumi.Input<pulumi.Input<string>[]>;
+    publicIpAddressPoolIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the VPC Public IP address pool.
      */
-    publicIpAddressPoolName?: pulumi.Input<string>;
+    publicIpAddressPoolName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

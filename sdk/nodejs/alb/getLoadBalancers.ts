@@ -356,63 +356,63 @@ export interface GetLoadBalancersOutputArgs {
     /**
      * The type of IP address that the ALB instance uses to provide services. Valid values: `Intranet`, `Internet`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Load Balancer IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      */
-    loadBalancerBusinessStatus?: pulumi.Input<string>;
+    loadBalancerBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * Field `loadBalancerBussinessStatus` has been deprecated from provider version 1.142.0. New field `loadBalancerBusinessStatus` instead.
      *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
-    loadBalancerBussinessStatus?: pulumi.Input<string>;
+    loadBalancerBussinessStatus?: pulumi.Input<string | undefined>;
     /**
      * The load balancer ids.
      */
-    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Load Balancer name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vpc ids.
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

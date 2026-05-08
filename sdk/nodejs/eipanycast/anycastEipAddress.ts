@@ -163,43 +163,43 @@ export interface AnycastEipAddressState {
     /**
      * Anycast EIP instance name.
      */
-    anycastEipAddressName?: pulumi.Input<string>;
+    anycastEipAddressName?: pulumi.Input<string | undefined>;
     /**
      * The peak bandwidth of the Anycast EIP instance, in Mbps.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Anycast EIP instance creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Anycast EIP instance description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
-    serviceLocation?: pulumi.Input<string>;
+    serviceLocation?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of resource-bound tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -209,27 +209,27 @@ export interface AnycastEipAddressArgs {
     /**
      * Anycast EIP instance name.
      */
-    anycastEipAddressName?: pulumi.Input<string>;
+    anycastEipAddressName?: pulumi.Input<string | undefined>;
     /**
      * The peak bandwidth of the Anycast EIP instance, in Mbps.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Anycast EIP instance description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The billing method of Anycast EIP instance. "PayByBandwidth": refers to the method of billing based on traffic.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The payment model of Anycast EIP instance. "PayAsYouGo": Refers to the post-paid mode
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Anycast EIP instance access area. "international": Refers to areas outside of Mainland China.
      */
@@ -237,5 +237,5 @@ export interface AnycastEipAddressArgs {
     /**
      * List of resource-bound tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

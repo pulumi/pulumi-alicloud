@@ -181,41 +181,41 @@ export interface GetVpcFirewallsOutputArgs {
     /**
      * A list of Vpc Firewall IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The UID of the Alibaba Cloud member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the peer VPC.
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC firewall instance.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC firewall instance.
      */
-    vpcFirewallName?: pulumi.Input<string>;
+    vpcFirewallName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the peer VPC instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

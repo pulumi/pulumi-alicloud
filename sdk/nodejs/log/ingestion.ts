@@ -216,39 +216,39 @@ export interface IngestionState {
     /**
      * Ingestion job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name displayed on the web page.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Ingestion job name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      */
-    ingestionName?: pulumi.Input<string>;
+    ingestionName?: pulumi.Input<string | undefined>;
     /**
      * Task execution interval, support minute `m`, hour `h`, day `d`, for example 30 minutes `30m`.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the target logstore.
      */
-    logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
      */
-    runImmediately?: pulumi.Input<boolean>;
+    runImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Which time zone is the log time imported in, e.g. `+0800`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,7 +258,7 @@ export interface IngestionArgs {
     /**
      * Ingestion job description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name displayed on the web page.
      */
@@ -290,5 +290,5 @@ export interface IngestionArgs {
     /**
      * Which time zone is the log time imported in, e.g. `+0800`.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
 }

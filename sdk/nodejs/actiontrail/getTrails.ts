@@ -138,25 +138,25 @@ export interface GetTrailsOutputArgs {
     /**
      * A list of ActionTrail Trail IDs. It is the same as trail name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to show organization tracking. Default to `false`.
      */
-    includeOrganizationTrail?: pulumi.Input<boolean>;
+    includeOrganizationTrail?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to show shadow tracking. Default to `false`.
      */
-    includeShadowTrails?: pulumi.Input<boolean>;
+    includeShadowTrails?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by trail name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

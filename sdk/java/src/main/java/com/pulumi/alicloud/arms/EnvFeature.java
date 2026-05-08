@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.arms.EnvironmentArgs;
  * import com.pulumi.alicloud.arms.EnvFeature;
  * import com.pulumi.alicloud.arms.EnvFeatureArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -89,11 +89,11 @@ import javax.annotation.Nullable;
  *             .vpcId(vpc.id())
  *             .vswitchName(name)
  *             .zoneId(enhanced.zones()[0].zoneId())
- *             .cidrBlock(vpc.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                 .input(_cidrBlock)
+ *             .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                 .input(vpc.cidrBlock())
  *                 .newbits(8)
  *                 .netnum(8)
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .build());
  * 
  *         var defaultSnapshotPolicy = new SnapshotPolicy("defaultSnapshotPolicy", SnapshotPolicyArgs.builder()
@@ -109,13 +109,13 @@ import javax.annotation.Nullable;
  *                 "23")
  *             .build());
  * 
- *         final var default = vswitch.zoneId().applyValue(_zoneId -> EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(_zoneId)
+ *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(vswitch.zoneId())
  *             .cpuCoreCount(2)
- *             .memorySize(4)
+ *             .memorySize(4.0)
  *             .kubernetesNodeRole("Worker")
  *             .instanceTypeFamily("ecs.sn1ne")
- *             .build()));
+ *             .build());
  * 
  *         var defaultManagedKubernetes = new ManagedKubernetes("defaultManagedKubernetes", ManagedKubernetesArgs.builder()
  *             .name(String.format("terraform-example-%s", defaultInteger.result()))

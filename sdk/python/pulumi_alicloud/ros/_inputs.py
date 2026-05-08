@@ -83,11 +83,11 @@ class ChangeSetParameterArgs:
 
 
 class StackGroupAutoDeploymentArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable or disable automatic deployment. Valid Values:
     """
-    retain_stacks_on_account_removal: NotRequired[pulumi.Input[_builtins.bool]]
+    retain_stacks_on_account_removal: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
     """
@@ -95,8 +95,8 @@ class StackGroupAutoDeploymentArgsDict(TypedDict):
 @pulumi.input_type
 class StackGroupAutoDeploymentArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retain_stacks_on_account_removal: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retain_stacks_on_account_removal: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable automatic deployment. Valid Values:
         :param pulumi.Input[_builtins.bool] retain_stacks_on_account_removal: Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
@@ -108,26 +108,26 @@ class StackGroupAutoDeploymentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable automatic deployment. Valid Values:
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="retainStacksOnAccountRemoval")
-    def retain_stacks_on_account_removal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_stacks_on_account_removal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retain the stack in the member account when the member account is deleted from the target folder. Valid values:
         """
         return pulumi.get(self, "retain_stacks_on_account_removal")
 
     @retain_stacks_on_account_removal.setter
-    def retain_stacks_on_account_removal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_stacks_on_account_removal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_stacks_on_account_removal", value)
 
 
@@ -179,11 +179,11 @@ class StackGroupParameterArgs:
 
 
 class StackInstanceParameterOverrideArgsDict(TypedDict):
-    parameter_key: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
     """
-    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
     """
@@ -191,8 +191,8 @@ class StackInstanceParameterOverrideArgsDict(TypedDict):
 @pulumi.input_type
 class StackInstanceParameterOverrideArgs:
     def __init__(__self__, *,
-                 parameter_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         :param pulumi.Input[_builtins.str] parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
@@ -204,26 +204,26 @@ class StackInstanceParameterOverrideArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
-    def parameter_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
-    def parameter_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_key", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_value", value)
 
 
@@ -232,7 +232,7 @@ class StackParameterArgsDict(TypedDict):
     """
     The parameter value.
     """
-    parameter_key: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameter key.
     """
@@ -241,7 +241,7 @@ class StackParameterArgsDict(TypedDict):
 class StackParameterArgs:
     def __init__(__self__, *,
                  parameter_value: pulumi.Input[_builtins.str],
-                 parameter_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_value: The parameter value.
         :param pulumi.Input[_builtins.str] parameter_key: The parameter key.
@@ -264,14 +264,14 @@ class StackParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
-    def parameter_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameter key.
         """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
-    def parameter_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_key", value)
 
 
@@ -374,13 +374,13 @@ class TemplateScratchSourceResourceGroupArgsDict(TypedDict):
     """
     The ID of the Source Resource Group.
     """
-    resource_type_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_type_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class TemplateScratchSourceResourceGroupArgs:
     def __init__(__self__, *,
                  resource_group_id: pulumi.Input[_builtins.str],
-                 resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 resource_type_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_group_id: The ID of the Source Resource Group.
         """
@@ -402,11 +402,11 @@ class TemplateScratchSourceResourceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
-    def resource_type_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_type_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter
-    def resource_type_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_type_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_type_filters", value)
 
 
@@ -415,13 +415,13 @@ class TemplateScratchSourceTagArgsDict(TypedDict):
     """
     Source label. **NOTE:** A maximum of 10 source labels can be configured.
     """
-    resource_type_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_type_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class TemplateScratchSourceTagArgs:
     def __init__(__self__, *,
                  resource_tags: pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]],
-                 resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 resource_type_filters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
         """
@@ -443,11 +443,11 @@ class TemplateScratchSourceTagArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypeFilters")
-    def resource_type_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_type_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter
-    def resource_type_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_type_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_type_filters", value)
 
 

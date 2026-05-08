@@ -165,11 +165,11 @@ def get_zones(engine: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         product_type=pulumi.get(__ret__, 'product_type'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(engine: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     instance_charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     multi: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     product_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(engine: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     instance_charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     multi: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     product_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for Tair (Redis OSS-Compatible) And Memcache (KVStore) that can be accessed by an Alibaba Cloud account within the region configured in the provider.

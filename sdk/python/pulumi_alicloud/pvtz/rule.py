@@ -25,7 +25,7 @@ class RuleArgs:
                  forward_ips: pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]],
                  rule_name: pulumi.Input[_builtins.str],
                  zone_name: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Rule resource.
 
@@ -92,25 +92,25 @@ class RuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the rule. Valid values: `OUTBOUND`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _RuleState:
     def __init__(__self__, *,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input['RuleForwardIpArgs']]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
 
@@ -133,62 +133,62 @@ class _RuleState:
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Endpoint.
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardIps")
-    def forward_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]]:
+    def forward_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleForwardIpArgs']]]]:
         """
         Forwarding target. See `forward_ips` below.
         """
         return pulumi.get(self, "forward_ips")
 
     @forward_ips.setter
-    def forward_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleForwardIpArgs']]]]):
+    def forward_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleForwardIpArgs']]]]):
         pulumi.set(self, "forward_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the rule. Valid values: `OUTBOUND`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneName")
-    def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the forwarding zone.
         """
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
-    def zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_name", value)
 
 
@@ -198,11 +198,11 @@ class Rule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Zone Rule resource.
@@ -217,6 +217,7 @@ class Rule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -233,13 +234,13 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
-                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
@@ -310,6 +311,7 @@ class Rule(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -326,13 +328,13 @@ class Rule(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
-                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
@@ -391,11 +393,11 @@ class Rule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,11 +430,11 @@ class Rule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            forward_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Rule':
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_ips: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleForwardIpArgs', 'RuleForwardIpArgsDict']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Rule':
         """
         Get an existing Rule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

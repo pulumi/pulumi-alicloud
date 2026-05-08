@@ -23,8 +23,8 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  connection_name: pulumi.Input[_builtins.str],
                  network_parameters: pulumi.Input['ConnectionNetworkParametersArgs'],
-                 auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_parameters: pulumi.Input[Optional['ConnectionAuthParametersArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -66,37 +66,37 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="authParameters")
-    def auth_parameters(self) -> Optional[pulumi.Input['ConnectionAuthParametersArgs']]:
+    def auth_parameters(self) -> pulumi.Input[Optional['ConnectionAuthParametersArgs']]:
         """
         The parameters that are configured for authentication. See `auth_parameters` below.
         """
         return pulumi.get(self, "auth_parameters")
 
     @auth_parameters.setter
-    def auth_parameters(self, value: Optional[pulumi.Input['ConnectionAuthParametersArgs']]):
+    def auth_parameters(self, value: pulumi.Input[Optional['ConnectionAuthParametersArgs']]):
         pulumi.set(self, "auth_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 auth_parameters: Optional[pulumi.Input['ConnectionAuthParametersArgs']] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_parameters: Optional[pulumi.Input['ConnectionNetworkParametersArgs']] = None):
+                 auth_parameters: pulumi.Input[Optional['ConnectionAuthParametersArgs']] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_parameters: pulumi.Input[Optional['ConnectionNetworkParametersArgs']] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -119,62 +119,62 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="authParameters")
-    def auth_parameters(self) -> Optional[pulumi.Input['ConnectionAuthParametersArgs']]:
+    def auth_parameters(self) -> pulumi.Input[Optional['ConnectionAuthParametersArgs']]:
         """
         The parameters that are configured for authentication. See `auth_parameters` below.
         """
         return pulumi.get(self, "auth_parameters")
 
     @auth_parameters.setter
-    def auth_parameters(self, value: Optional[pulumi.Input['ConnectionAuthParametersArgs']]):
+    def auth_parameters(self, value: pulumi.Input[Optional['ConnectionAuthParametersArgs']]):
         pulumi.set(self, "auth_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionName")
-    def connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the connection.
         """
         return pulumi.get(self, "connection_name")
 
     @connection_name.setter
-    def connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the Connection.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the connection.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkParameters")
-    def network_parameters(self) -> Optional[pulumi.Input['ConnectionNetworkParametersArgs']]:
+    def network_parameters(self) -> pulumi.Input[Optional['ConnectionNetworkParametersArgs']]:
         """
         The parameters that are configured for the network. See `network_parameters` below.
         """
         return pulumi.get(self, "network_parameters")
 
     @network_parameters.setter
-    def network_parameters(self, value: Optional[pulumi.Input['ConnectionNetworkParametersArgs']]):
+    def network_parameters(self, value: pulumi.Input[Optional['ConnectionNetworkParametersArgs']]):
         pulumi.set(self, "network_parameters", value)
 
 
@@ -184,10 +184,10 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
+                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Connection resource.
@@ -401,10 +401,10 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
-                 connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
+                 auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+                 connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,11 +433,11 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_parameters: Optional[pulumi.Input[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
-            connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            network_parameters: Optional[pulumi.Input[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None) -> 'Connection':
+            auth_parameters: pulumi.Input[Optional[Union['ConnectionAuthParametersArgs', 'ConnectionAuthParametersArgsDict']]] = None,
+            connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            network_parameters: pulumi.Input[Optional[Union['ConnectionNetworkParametersArgs', 'ConnectionNetworkParametersArgsDict']]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

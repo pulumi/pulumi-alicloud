@@ -208,47 +208,47 @@ export interface VirtualNodeState {
     /**
      * The Id of eip.
      */
-    eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      */
-    enablePublicNetwork?: pulumi.Input<boolean>;
+    enablePublicNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The taint. See `taints` below.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[] | undefined>;
     /**
      * The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
      */
-    virtualNodeName?: pulumi.Input<string>;
+    virtualNodeName?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,11 +258,11 @@ export interface VirtualNodeArgs {
     /**
      * The Id of eip.
      */
-    eipInstanceId?: pulumi.Input<string>;
+    eipInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public network. **NOTE:** If `eipInstanceId` is not configured and `enablePublicNetwork` is true, the system will create an elastic public network IP.
      */
-    enablePublicNetwork?: pulumi.Input<boolean>;
+    enablePublicNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
      */
@@ -270,7 +270,7 @@ export interface VirtualNodeArgs {
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
@@ -278,15 +278,15 @@ export interface VirtualNodeArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The taint. See `taints` below.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.eci.VirtualNodeTaint>[] | undefined>;
     /**
      * The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
      */
-    virtualNodeName?: pulumi.Input<string>;
+    virtualNodeName?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id.
      */
@@ -294,5 +294,5 @@ export interface VirtualNodeArgs {
     /**
      * The Zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

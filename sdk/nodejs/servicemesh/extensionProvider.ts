@@ -171,19 +171,19 @@ export interface ExtensionProviderState {
     /**
      * The config of the Service Mesh Extension Provider. The `config` format is json.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
      */
-    extensionProviderName?: pulumi.Input<string>;
+    extensionProviderName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Service Mesh.
      */
-    serviceMeshId?: pulumi.Input<string>;
+    serviceMeshId?: pulumi.Input<string | undefined>;
     /**
      * The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**

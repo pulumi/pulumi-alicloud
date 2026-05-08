@@ -289,74 +289,74 @@ export interface EcsBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * The detail of the backup plan.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    ecsBackupPlanName?: pulumi.Input<string>;
+    ecsBackupPlanName?: pulumi.Input<string | undefined>;
     /**
      * Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
-    exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string | undefined>;
     /**
      * Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
-    include?: pulumi.Input<string>;
+    include?: pulumi.Input<string | undefined>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * * `startTime` Backup start time, UNIX time seconds.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
-    speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string | undefined>;
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
      * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of Backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -370,23 +370,23 @@ export interface EcsBackupPlanArgs {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * The detail of the backup plan.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -394,11 +394,11 @@ export interface EcsBackupPlanArgs {
     /**
      * Exclude path. String of Json list, up to 255 characters. e.g. `"[\"/home/work\"]"`
      */
-    exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string | undefined>;
     /**
      * Include path. String of Json list, up to 255 characters. e.g. `"[\"/var\"]"`
      */
-    include?: pulumi.Input<string>;
+    include?: pulumi.Input<string | undefined>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      */
@@ -406,11 +406,11 @@ export interface EcsBackupPlanArgs {
     /**
      * Windows operating system with application consistency using VSS, e.g: `{\"UseVSS\":false}`.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
      */
-    paths?: pulumi.Input<pulumi.Input<string>[]>;
+    paths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
@@ -423,13 +423,13 @@ export interface EcsBackupPlanArgs {
     /**
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      */
-    speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string | undefined>;
     /**
      * Attribute updatePaths has been deprecated in v1.139.0+, and you do not need to set it anymore.
      *
      * @deprecated Attribute updatePaths has been deprecated in v1.139.0+ and you do not need to set it anymore.
      */
-    updatePaths?: pulumi.Input<boolean>;
+    updatePaths?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of Backup vault.
      */

@@ -106,9 +106,9 @@ def get_monitor_group_instances(ids: Optional[_builtins.str] = None,
         instances=pulumi.get(__ret__, 'instances'),
         keyword=pulumi.get(__ret__, 'keyword'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_monitor_group_instances_output(ids: Optional[pulumi.Input[_builtins.str]] = None,
-                                       keyword: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_monitor_group_instances_output(ids: pulumi.Input[Optional[_builtins.str]] = None,
+                                       keyword: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMonitorGroupInstancesResult]:
     """
     Use this data source to access information about an existing resource.

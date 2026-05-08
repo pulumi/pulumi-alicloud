@@ -173,39 +173,39 @@ export interface KeywordLibState {
     /**
      * The business scenario. Example:["bizTypeA","bizTypeB"]
      */
-    bizTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    bizTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */
-    keywordLibName?: pulumi.Input<string>;
+    keywordLibName?: pulumi.Input<string | undefined>;
     /**
      * Language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Language used by the text Library
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
      */
-    libType?: pulumi.Input<string>;
+    libType?: pulumi.Input<string | undefined>;
     /**
      * The matching method. Valid values:fuzzy: fuzzy match precise: exact match
      */
-    matchMode?: pulumi.Input<string>;
+    matchMode?: pulumi.Input<string | undefined>;
     /**
      * The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,15 +215,15 @@ export interface KeywordLibArgs {
     /**
      * The business scenario. Example:["bizTypeA","bizTypeB"]
      */
-    bizTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    bizTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */
@@ -231,19 +231,19 @@ export interface KeywordLibArgs {
     /**
      * Language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Language used by the text Library
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
      */
-    libType?: pulumi.Input<string>;
+    libType?: pulumi.Input<string | undefined>;
     /**
      * The matching method. Valid values:fuzzy: fuzzy match precise: exact match
      */
-    matchMode?: pulumi.Input<string>;
+    matchMode?: pulumi.Input<string | undefined>;
     /**
      * The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
      */

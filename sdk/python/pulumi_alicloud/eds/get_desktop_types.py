@@ -177,13 +177,13 @@ def get_desktop_types(cpu_count: Optional[_builtins.int] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         types=pulumi.get(__ret__, 'types'))
-def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             gpu_count: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             instance_type_family: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             memory_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_desktop_types_output(cpu_count: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             gpu_count: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             instance_type_family: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             memory_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDesktopTypesResult]:
     """
     This data source provides the Ecd Desktop Types of the current Alibaba Cloud user.

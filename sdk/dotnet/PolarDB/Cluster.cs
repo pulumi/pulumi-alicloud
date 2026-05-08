@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.PolarDB
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var current = AliCloud.Index.GetAccount.Invoke();
+    ///     var current = AliCloud.GetAccount.Invoke();
     /// 
     ///     var roles = AliCloud.Ram.GetRoles.Invoke(new()
     ///     {
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.PolarDB
     ///     });
     /// 
     ///     var @default = new List&lt;AliCloud.Ram.Role&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         @default.Add(new AliCloud.Ram.Role($"default-{range.Value}", new()
@@ -127,14 +127,14 @@ namespace Pulumi.AliCloud.PolarDB
     ///         }));
     ///     }
     ///     var defaultPolicyAttachment = new List&lt;AliCloud.ResourceManager.PolicyAttachment&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultPolicyAttachment.Add(new AliCloud.ResourceManager.PolicyAttachment($"default-{range.Value}", new()
     ///         {
     ///             PolicyName = "AliyunRDSInstanceEncryptionRolePolicy",
     ///             PolicyType = "System",
-    ///             PrincipalName = Output.Tuple(roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length, roles, current, @default[0].Name, current).Apply(values =&gt;
+    ///             PrincipalName = Output.Tuple(roles.Apply(getRolesResult =&gt; getRolesResult.Roles).Length(), roles, current, @default[0].Name, current).Apply(values =&gt;
     ///             {
     ///                 var length = values.Item1;
     ///                 var roles = values.Item2;

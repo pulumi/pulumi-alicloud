@@ -20,30 +20,30 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -148,43 +148,43 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment architecture for Serverless instances. Valid values:
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Valid values:
         - professional: professional Edition
@@ -196,60 +196,60 @@ class InstanceArgs:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerMode")
-    def listener_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         """
         return pulumi.get(self, "listener_mode")
 
     @listener_mode.setter
-    def listener_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         """
         return pulumi.get(self, "max_connections")
 
     @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="maxEipTps")
-    def max_eip_tps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_eip_tps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         """
         return pulumi.get(self, "max_eip_tps")
 
     @max_eip_tps.setter
-    def max_eip_tps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_eip_tps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_eip_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTps")
-    def max_tps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_tps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         """
         return pulumi.get(self, "max_tps")
 
     @max_tps.setter
-    def max_tps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_tps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         - Upgrade: Upgrade
@@ -258,220 +258,220 @@ class InstanceArgs:
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodCycle")
-    def period_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepaid cycle units. Value: Month, Year.
         """
         return pulumi.get(self, "period_cycle")
 
     @period_cycle.setter
-    def period_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedCapacity")
-    def provisioned_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The provisioned TPS capacity for reserved + elastic instances.
         """
         return pulumi.get(self, "provisioned_capacity")
 
     @provisioned_capacity.setter
-    def provisioned_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCapacity")
-    def queue_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         """
         return pulumi.get(self, "queue_capacity")
 
     @queue_capacity.setter
-    def queue_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of automatic renewal cycles.
         """
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessChargeType")
-    def serverless_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type of the serverless instance. Value: onDemand.
         """
         return pulumi.get(self, "serverless_charge_type")
 
     @serverless_charge_type.setter
-    def serverless_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="supportEip")
-    def support_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to support public network.
         """
         return pulumi.get(self, "support_eip")
 
     @support_eip.setter
-    def support_eip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_eip", value)
 
     @_builtins.property
     @pulumi.getter(name="supportTracing")
-    def support_tracing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_tracing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         """
         return pulumi.get(self, "support_tracing")
 
     @support_tracing.setter
-    def support_tracing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_tracing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_tracing", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingStorageTime")
-    def tracing_storage_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracing_storage_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
         return pulumi.get(self, "tracing_storage_time")
 
     @tracing_storage_time.setter
-    def tracing_storage_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracing_storage_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracing_storage_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -569,55 +569,55 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Renewal method. Automatic renewal: true; Manual renewal: false. When RenewalStatus has a value, the value of RenewalStatus shall prevail.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         OrderCreateTime.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def edition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment architecture for Serverless instances. Valid values:
         """
         return pulumi.get(self, "edition")
 
     @edition.setter
-    def edition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edition", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Valid values:
         - professional: professional Edition
@@ -629,60 +629,60 @@ class _InstanceState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerMode")
-    def listener_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Listener mode. Valid values: `tcp_and_ssl`, `ssl_only`.
         """
         return pulumi.get(self, "listener_mode")
 
     @listener_mode.setter
-    def listener_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections, according to the value given on the purchase page of the cloud message queue RabbitMQ version console.
         """
         return pulumi.get(self, "max_connections")
 
     @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="maxEipTps")
-    def max_eip_tps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_eip_tps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peak TPS traffic of the public network, which must be a multiple of 128, unit: times per second.
         """
         return pulumi.get(self, "max_eip_tps")
 
     @max_eip_tps.setter
-    def max_eip_tps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_eip_tps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_eip_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTps")
-    def max_tps(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_tps(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the private network TPS traffic peak, please set the value according to the cloud message queue RabbitMQ version of the console purchase page given.
         """
         return pulumi.get(self, "max_tps")
 
     @max_tps.setter
-    def max_tps(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_tps(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter must be provided while you change the instance specification. Type of instance lifting and lowering:
         - Upgrade: Upgrade
@@ -691,12 +691,12 @@ class _InstanceState:
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type. Valid value: 
         - Subscription: Pre-paid.
@@ -705,199 +705,199 @@ class _InstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepayment cycle, unit: periodCycle. This parameter is valid when PaymentType is set to Subscription.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodCycle")
-    def period_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepaid cycle units. Value: Month, Year.
         """
         return pulumi.get(self, "period_cycle")
 
     @period_cycle.setter
-    def period_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedCapacity")
-    def provisioned_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The provisioned TPS capacity for reserved + elastic instances.
         """
         return pulumi.get(self, "provisioned_capacity")
 
     @provisioned_capacity.setter
-    def provisioned_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="queueCapacity")
-    def queue_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the maximum number of queues. The value range is as follows:  Professional version:[50,1000], minimum modification step size is 5  Enterprise Edition:[200,6000], minimum modification step size is 100  Platinum version:[10000,80000], minimum modification step size is 100.
         """
         return pulumi.get(self, "queue_capacity")
 
     @queue_capacity.setter
-    def queue_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDuration")
-    def renewal_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renewal_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of automatic renewal cycles.
         """
         return pulumi.get(self, "renewal_duration")
 
     @renewal_duration.setter
-    def renewal_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renewal_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renewal_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalDurationUnit")
-    def renewal_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years.
         """
         return pulumi.get(self, "renewal_duration_unit")
 
     @renewal_duration_unit.setter
-    def renewal_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. NotRenewal: no renewal.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group. **NOTE:** From version 1.274.0, `security_group_id` is required.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessChargeType")
-    def serverless_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type of the serverless instance. Value: onDemand.
         """
         return pulumi.get(self, "serverless_charge_type")
 
     @serverless_charge_type.setter
-    def serverless_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_charge_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configure the message storage space. Unit: GB. The value is as follows:  Professional Edition and Enterprise Edition: Fixed to 0. Description A value of 0 indicates that the Professional Edition and Enterprise Edition instances do not charge storage fees, but do not have storage space. Platinum version example: m × 100, where the value range of m is [7,28].
         """
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="supportEip")
-    def support_eip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_eip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to support public network.
         """
         return pulumi.get(self, "support_eip")
 
     @support_eip.setter
-    def support_eip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_eip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_eip", value)
 
     @_builtins.property
     @pulumi.getter(name="supportTracing")
-    def support_tracing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def support_tracing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
         """
         return pulumi.get(self, "support_tracing")
 
     @support_tracing.setter
-    def support_tracing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def support_tracing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "support_tracing", value)
 
     @_builtins.property
     @pulumi.getter(name="tracingStorageTime")
-    def tracing_storage_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracing_storage_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
         """
         return pulumi.get(self, "tracing_storage_time")
 
     @tracing_storage_time.setter
-    def tracing_storage_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracing_storage_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracing_storage_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. **NOTE:** From version 1.274.0, `vpc_id` is required.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated. `vswitch_ids` only supports setting two values. **NOTE:** From version 1.274.0, `vswitch_ids` is required.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
@@ -907,31 +907,31 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RabbitMQ (AMQP) Instance resource.
@@ -1143,31 +1143,31 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 edition: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_tps: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1216,33 +1216,33 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            edition: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-            max_eip_tps: Optional[pulumi.Input[_builtins.str]] = None,
-            max_tps: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            queue_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            serverless_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_size: Optional[pulumi.Input[_builtins.str]] = None,
-            support_eip: Optional[pulumi.Input[_builtins.bool]] = None,
-            support_tracing: Optional[pulumi.Input[_builtins.bool]] = None,
-            tracing_storage_time: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            max_eip_tps: pulumi.Input[Optional[_builtins.str]] = None,
+            max_tps: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.str]] = None,
+            support_eip: pulumi.Input[Optional[_builtins.bool]] = None,
+            support_tracing: pulumi.Input[Optional[_builtins.bool]] = None,
+            tracing_storage_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

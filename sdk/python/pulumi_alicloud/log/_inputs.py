@@ -107,13 +107,13 @@ class AlertGroupConfigurationArgsDict(TypedDict):
     """
     Group configuration type, including no_group, labels_auto, custom.
     """
-    fields: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    fields: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class AlertGroupConfigurationArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 fields: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Group configuration type, including no_group, labels_auto, custom.
         """
@@ -135,11 +135,11 @@ class AlertGroupConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fields(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "fields")
 
     @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fields(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fields", value)
 
 
@@ -246,15 +246,15 @@ class AlertNotificationListArgsDict(TypedDict):
     """
     Notification type. support Email, SMS, DingTalk, MessageCenter.
     """
-    email_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    email_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Email address list.
     """
-    mobile_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mobile_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     SMS sending mobile number.
     """
-    service_uri: NotRequired[pulumi.Input[_builtins.str]]
+    service_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Request address.
     """
@@ -264,9 +264,9 @@ class AlertNotificationListArgs:
     def __init__(__self__, *,
                  content: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 email_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mobile_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 service_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 email_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mobile_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 service_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: Notice content of alarm.
         :param pulumi.Input[_builtins.str] type: Notification type. support Email, SMS, DingTalk, MessageCenter.
@@ -309,38 +309,38 @@ class AlertNotificationListArgs:
 
     @_builtins.property
     @pulumi.getter(name="emailLists")
-    def email_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def email_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Email address list.
         """
         return pulumi.get(self, "email_lists")
 
     @email_lists.setter
-    def email_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def email_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "email_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="mobileLists")
-    def mobile_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mobile_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         SMS sending mobile number.
         """
         return pulumi.get(self, "mobile_lists")
 
     @mobile_lists.setter
-    def mobile_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mobile_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mobile_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceUri")
-    def service_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request address.
         """
         return pulumi.get(self, "service_uri")
 
     @service_uri.setter
-    def service_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_uri", value)
 
 
@@ -353,7 +353,7 @@ class AlertPolicyConfigurationArgsDict(TypedDict):
     """
     Repeat interval used by alert policy, 1h, 1m.e.g.
     """
-    action_policy_id: NotRequired[pulumi.Input[_builtins.str]]
+    action_policy_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Action Policy Id.
     """
@@ -363,7 +363,7 @@ class AlertPolicyConfigurationArgs:
     def __init__(__self__, *,
                  alert_policy_id: pulumi.Input[_builtins.str],
                  repeat_interval: pulumi.Input[_builtins.str],
-                 action_policy_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 action_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alert_policy_id: Alert Policy Id.
         :param pulumi.Input[_builtins.str] repeat_interval: Repeat interval used by alert policy, 1h, 1m.e.g.
@@ -400,14 +400,14 @@ class AlertPolicyConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionPolicyId")
-    def action_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Action Policy Id.
         """
         return pulumi.get(self, "action_policy_id")
 
     @action_policy_id.setter
-    def action_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action_policy_id", value)
 
 
@@ -424,43 +424,43 @@ class AlertQueryListArgsDict(TypedDict):
     """
     Begin time. example: -60s.
     """
-    chart_title: NotRequired[pulumi.Input[_builtins.str]]
+    chart_title: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Chart title, optional from 1.161.0+.
     """
-    dashboard_id: NotRequired[pulumi.Input[_builtins.str]]
+    dashboard_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query dashboard id.
     """
-    logstore: NotRequired[pulumi.Input[_builtins.str]]
+    logstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query logstore, use store for new alert, Deprecated from 1.161.0+.
     """
-    power_sql_mode: NotRequired[pulumi.Input[_builtins.str]]
+    power_sql_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     default disable, whether to use power sql. support auto, enable, disable.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query project.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query project region.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query project store's ARN.
     """
-    store: NotRequired[pulumi.Input[_builtins.str]]
+    store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query store for new alert.
     """
-    store_type: NotRequired[pulumi.Input[_builtins.str]]
+    store_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Query store type for new alert, including log,metric,meta.
     """
-    time_span_type: NotRequired[pulumi.Input[_builtins.str]]
+    time_span_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     default Custom. No need to configure this parameter.
     """
@@ -471,16 +471,16 @@ class AlertQueryListArgs:
                  end: pulumi.Input[_builtins.str],
                  query: pulumi.Input[_builtins.str],
                  start: pulumi.Input[_builtins.str],
-                 chart_title: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 power_sql_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 store: Optional[pulumi.Input[_builtins.str]] = None,
-                 store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_span_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 chart_title: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 power_sql_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 store: pulumi.Input[Optional[_builtins.str]] = None,
+                 store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_span_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end: End time. example: 20s.
         :param pulumi.Input[_builtins.str] query: Query corresponding to chart. example: * AND aliyun.
@@ -561,123 +561,123 @@ class AlertQueryListArgs:
 
     @_builtins.property
     @pulumi.getter(name="chartTitle")
-    def chart_title(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def chart_title(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Chart title, optional from 1.161.0+.
         """
         return pulumi.get(self, "chart_title")
 
     @chart_title.setter
-    def chart_title(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def chart_title(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "chart_title", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardId")
-    def dashboard_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query dashboard id.
         """
         return pulumi.get(self, "dashboard_id")
 
     @dashboard_id.setter
-    def dashboard_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated from 1.161.0+, use store""")
-    def logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query logstore, use store for new alert, Deprecated from 1.161.0+.
         """
         return pulumi.get(self, "logstore")
 
     @logstore.setter
-    def logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore", value)
 
     @_builtins.property
     @pulumi.getter(name="powerSqlMode")
-    def power_sql_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def power_sql_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         default disable, whether to use power sql. support auto, enable, disable.
         """
         return pulumi.get(self, "power_sql_mode")
 
     @power_sql_mode.setter
-    def power_sql_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def power_sql_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "power_sql_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query project region.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query project store's ARN.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query store for new alert.
         """
         return pulumi.get(self, "store")
 
     @store.setter
-    def store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store", value)
 
     @_builtins.property
     @pulumi.getter(name="storeType")
-    def store_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def store_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Query store type for new alert, including log,metric,meta.
         """
         return pulumi.get(self, "store_type")
 
     @store_type.setter
-    def store_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "store_type", value)
 
     @_builtins.property
     @pulumi.getter(name="timeSpanType")
-    def time_span_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_span_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         default Custom. No need to configure this parameter.
         """
         return pulumi.get(self, "time_span_type")
 
     @time_span_type.setter
-    def time_span_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_span_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_span_type", value)
 
 
@@ -686,25 +686,25 @@ class AlertScheduleArgsDict(TypedDict):
     """
     including FixedRate,Hourly,Daily,Weekly,Cron.
     """
-    cron_expression: NotRequired[pulumi.Input[_builtins.str]]
+    cron_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cron expression when type is Cron.
     """
-    day_of_week: NotRequired[pulumi.Input[_builtins.int]]
+    day_of_week: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
     """
-    delay: NotRequired[pulumi.Input[_builtins.int]]
-    hour: NotRequired[pulumi.Input[_builtins.int]]
+    delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Hour of day when type is Weekly/Daily.
     """
-    interval: NotRequired[pulumi.Input[_builtins.str]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
     """
-    run_immediately: NotRequired[pulumi.Input[_builtins.bool]]
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    run_immediately: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time zone for schedule.
     """
@@ -713,13 +713,13 @@ class AlertScheduleArgsDict(TypedDict):
 class AlertScheduleArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[_builtins.str],
-                 cron_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 day_of_week: Optional[pulumi.Input[_builtins.int]] = None,
-                 delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 cron_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 day_of_week: pulumi.Input[Optional[_builtins.int]] = None,
+                 delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
         :param pulumi.Input[_builtins.str] cron_expression: Cron expression when type is Cron.
@@ -758,80 +758,80 @@ class AlertScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="cronExpression")
-    def cron_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cron_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cron expression when type is Cron.
         """
         return pulumi.get(self, "cron_expression")
 
     @cron_expression.setter
-    def cron_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cron_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cron_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def day_of_week(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Day of week when type is Weekly, including 0,1,2,3,4,5,6, 0 for Sunday, 1 for Monday
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def day_of_week(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "day_of_week", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Hour of day when type is Weekly/Daily.
         """
         return pulumi.get(self, "hour")
 
     @hour.setter
-    def hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hour", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execution interval. 60 seconds minimum, such as 60s, 1h. used when type is FixedRate.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="runImmediately")
-    def run_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def run_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "run_immediately")
 
     @run_immediately.setter
-    def run_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def run_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "run_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone for schedule.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
@@ -891,15 +891,15 @@ class AlertTemplateConfigurationArgsDict(TypedDict):
     """
     Alert template type including `sys`, `user`.
     """
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Alert template annotations.
     """
-    lang: NotRequired[pulumi.Input[_builtins.str]]
+    lang: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Alert template language including `cn`, `en`.
     """
-    tokens: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    tokens: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Alert template tokens.
     """
@@ -909,9 +909,9 @@ class AlertTemplateConfigurationArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 tokens: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] id: Alert template id.
         :param pulumi.Input[_builtins.str] type: Alert template type including `sys`, `user`.
@@ -954,38 +954,38 @@ class AlertTemplateConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Alert template annotations.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alert template language including `cn`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def tokens(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tokens(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Alert template tokens.
         """
         return pulumi.get(self, "tokens")
 
     @tokens.setter
-    def tokens(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tokens(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tokens", value)
 
 
@@ -1006,33 +1006,33 @@ class EtlEtlSinkArgsDict(TypedDict):
     """
     The project where the target logstore is delivered.
     """
-    access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Delivery target logstore access key id.
     """
-    access_key_secret: NotRequired[pulumi.Input[_builtins.str]]
+    access_key_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Delivery target logstore access key secret.
     """
-    datasets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    datasets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     LogETL datasets.
 
     > **Note:** `from_time` and `to_time` no modification allowed after successful creation.
     """
-    kms_encrypted_access_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    kms_encrypted_access_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
     """
-    kms_encrypted_access_key_secret: NotRequired[pulumi.Input[_builtins.str]]
+    kms_encrypted_access_key_secret: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
     """
-    role_arn: NotRequired[pulumi.Input[_builtins.str]]
+    role_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ETL sinks type, the default value is AliyunLOG.
     """
@@ -1044,13 +1044,13 @@ class EtlEtlSinkArgs:
                  logstore: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 kms_encrypted_access_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_access_key_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 datasets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_encrypted_access_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_access_key_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] endpoint: Delivery target logstore region.
         :param pulumi.Input[_builtins.str] logstore: Delivery target logstore.
@@ -1135,31 +1135,31 @@ class EtlEtlSinkArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKeyId")
-    def access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery target logstore access key id.
         """
         return pulumi.get(self, "access_key_id")
 
     @access_key_id.setter
-    def access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKeySecret")
-    def access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery target logstore access key secret.
         """
         return pulumi.get(self, "access_key_secret")
 
     @access_key_secret.setter
-    def access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter
-    def datasets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def datasets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         LogETL datasets.
 
@@ -1168,55 +1168,55 @@ class EtlEtlSinkArgs:
         return pulumi.get(self, "datasets")
 
     @datasets.setter
-    def datasets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def datasets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "datasets", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeyId")
-    def kms_encrypted_access_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key id used to a log etl job. If the `access_key_id` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_id")
 
     @kms_encrypted_access_key_id.setter
-    def kms_encrypted_access_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedAccessKeySecret")
-    def kms_encrypted_access_key_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_access_key_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts access key secret used to a log etl job. If the `access_key_secret` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_access_key_secret")
 
     @kms_encrypted_access_key_secret.setter
-    def kms_encrypted_access_key_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_access_key_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_access_key_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ETL sinks type, the default value is AliyunLOG.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1299,15 +1299,15 @@ class OssShipperParquetConfigArgs:
 
 
 class StoreEncryptConfArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable encryption. Default false.
     """
-    encrypt_type: NotRequired[pulumi.Input[_builtins.str]]
+    encrypt_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Supported encryption type, only supports `default`(AES), `m4`.
     """
-    user_cmk_info: NotRequired[pulumi.Input['StoreEncryptConfUserCmkInfoArgsDict']]
+    user_cmk_info: NotRequired[pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgs']]]
     """
     User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
     """
@@ -1315,9 +1315,9 @@ class StoreEncryptConfArgsDict(TypedDict):
 @pulumi.input_type
 class StoreEncryptConfArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_cmk_info: Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_cmk_info: pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: Enable encryption. Default false.
         :param pulumi.Input[_builtins.str] encrypt_type: Supported encryption type, only supports `default`(AES), `m4`.
@@ -1332,51 +1332,51 @@ class StoreEncryptConfArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable encryption. Default false.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptType")
-    def encrypt_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Supported encryption type, only supports `default`(AES), `m4`.
         """
         return pulumi.get(self, "encrypt_type")
 
     @encrypt_type.setter
-    def encrypt_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_type", value)
 
     @_builtins.property
     @pulumi.getter(name="userCmkInfo")
-    def user_cmk_info(self) -> Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']]:
+    def user_cmk_info(self) -> pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgs']]:
         """
         User bring your own key (BYOK) encryption Refer to details, the format is as follows. See user_cmk_info below. `{ "cmk_key_id": "your_cmk_key_id", "arn": "your_role_arn", "region_id": "you_cmk_region_id" }`. See `user_cmk_info` below.
         """
         return pulumi.get(self, "user_cmk_info")
 
     @user_cmk_info.setter
-    def user_cmk_info(self, value: Optional[pulumi.Input['StoreEncryptConfUserCmkInfoArgs']]):
+    def user_cmk_info(self, value: pulumi.Input[Optional['StoreEncryptConfUserCmkInfoArgs']]):
         pulumi.set(self, "user_cmk_info", value)
 
 
 class StoreEncryptConfUserCmkInfoArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Role arn.
     """
-    cmk_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    cmk_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     User master key id.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Region id where the user master key id is located.
     """
@@ -1384,9 +1384,9 @@ class StoreEncryptConfUserCmkInfoArgsDict(TypedDict):
 @pulumi.input_type
 class StoreEncryptConfUserCmkInfoArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmk_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmk_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: Role arn.
         :param pulumi.Input[_builtins.str] cmk_key_id: User master key id.
@@ -1401,38 +1401,38 @@ class StoreEncryptConfUserCmkInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role arn.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="cmkKeyId")
-    def cmk_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmk_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User master key id.
         """
         return pulumi.get(self, "cmk_key_id")
 
     @cmk_key_id.setter
-    def cmk_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmk_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmk_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region id where the user master key id is located.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -1441,31 +1441,31 @@ class StoreIndexFieldSearchArgsDict(TypedDict):
     """
     When using the json_keys field, this field is required.
     """
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias of one field.
     """
-    case_sensitive: NotRequired[pulumi.Input[_builtins.bool]]
+    case_sensitive: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
     """
-    enable_analytics: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_analytics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable field analytics. Default to true.
     """
-    include_chinese: NotRequired[pulumi.Input[_builtins.bool]]
+    include_chinese: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
     """
-    json_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgsDict']]]]
+    json_keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]]
     """
     Use nested index when type is json. See `json_keys` below.
     """
-    token: NotRequired[pulumi.Input[_builtins.str]]
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
     """
@@ -1474,13 +1474,13 @@ class StoreIndexFieldSearchArgsDict(TypedDict):
 class StoreIndexFieldSearchArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_analytics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_chinese: Optional[pulumi.Input[_builtins.bool]] = None,
-                 json_keys: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_analytics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_chinese: pulumi.Input[Optional[_builtins.bool]] = None,
+                 json_keys: pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: When using the json_keys field, this field is required.
         :param pulumi.Input[_builtins.str] alias: The alias of one field.
@@ -1521,86 +1521,86 @@ class StoreIndexFieldSearchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of one field.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAnalytics")
-    def enable_analytics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_analytics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable field analytics. Default to true.
         """
         return pulumi.get(self, "enable_analytics")
 
     @enable_analytics.setter
-    def enable_analytics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_analytics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_analytics", value)
 
     @_builtins.property
     @pulumi.getter(name="includeChinese")
-    def include_chinese(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_chinese(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
         """
         return pulumi.get(self, "include_chinese")
 
     @include_chinese.setter
-    def include_chinese(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_chinese(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_chinese", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonKeys")
-    def json_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]:
+    def json_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]:
         """
         Use nested index when type is json. See `json_keys` below.
         """
         return pulumi.get(self, "json_keys")
 
     @json_keys.setter
-    def json_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]):
+    def json_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StoreIndexFieldSearchJsonKeyArgs']]]]):
         pulumi.set(self, "json_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1609,17 +1609,17 @@ class StoreIndexFieldSearchJsonKeyArgsDict(TypedDict):
     """
     When using the json_keys field, this field is required.
     """
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias of one field.
     """
-    doc_value: NotRequired[pulumi.Input[_builtins.bool]]
+    doc_value: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable statistics. default to true.
 
     > **Note:** At least one of the "full_text" and "field_search" should be specified.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
     """
@@ -1628,9 +1628,9 @@ class StoreIndexFieldSearchJsonKeyArgsDict(TypedDict):
 class StoreIndexFieldSearchJsonKeyArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 doc_value: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 doc_value: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: When using the json_keys field, this field is required.
         :param pulumi.Input[_builtins.str] alias: The alias of one field.
@@ -1661,19 +1661,19 @@ class StoreIndexFieldSearchJsonKeyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of one field.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="docValue")
-    def doc_value(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def doc_value(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable statistics. default to true.
 
@@ -1682,32 +1682,32 @@ class StoreIndexFieldSearchJsonKeyArgs:
         return pulumi.get(self, "doc_value")
 
     @doc_value.setter
-    def doc_value(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def doc_value(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "doc_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class StoreIndexFullTextArgsDict(TypedDict):
-    case_sensitive: NotRequired[pulumi.Input[_builtins.bool]]
+    case_sensitive: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the case sensitive. Default to false.
     """
-    include_chinese: NotRequired[pulumi.Input[_builtins.bool]]
+    include_chinese: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether includes the chinese. Default to false.
     """
-    token: NotRequired[pulumi.Input[_builtins.str]]
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The string of several split words, like "\\r", "#"
     """
@@ -1715,9 +1715,9 @@ class StoreIndexFullTextArgsDict(TypedDict):
 @pulumi.input_type
 class StoreIndexFullTextArgs:
     def __init__(__self__, *,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 include_chinese: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None):
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 include_chinese: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] case_sensitive: Whether the case sensitive. Default to false.
         :param pulumi.Input[_builtins.bool] include_chinese: Whether includes the chinese. Default to false.
@@ -1732,55 +1732,55 @@ class StoreIndexFullTextArgs:
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the case sensitive. Default to false.
         """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter(name="includeChinese")
-    def include_chinese(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def include_chinese(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether includes the chinese. Default to false.
         """
         return pulumi.get(self, "include_chinese")
 
     @include_chinese.setter
-    def include_chinese(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def include_chinese(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "include_chinese", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string of several split words, like "\\r", "#"
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
 
 class StoreShardArgsDict(TypedDict):
-    begin_key: NotRequired[pulumi.Input[_builtins.str]]
+    begin_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The begin value of the shard range(MD5), included in the shard range.
     """
-    end_key: NotRequired[pulumi.Input[_builtins.str]]
+    end_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The end value of the shard range(MD5), not included in shard range.
     """
-    id: NotRequired[pulumi.Input[_builtins.int]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the shard.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Shard status, only two status of `readwrite` and `readonly`.
     """
@@ -1788,10 +1788,10 @@ class StoreShardArgsDict(TypedDict):
 @pulumi.input_type
 class StoreShardArgs:
     def __init__(__self__, *,
-                 begin_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 begin_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] begin_key: The begin value of the shard range(MD5), included in the shard range.
         :param pulumi.Input[_builtins.str] end_key: The end value of the shard range(MD5), not included in shard range.
@@ -1809,50 +1809,50 @@ class StoreShardArgs:
 
     @_builtins.property
     @pulumi.getter(name="beginKey")
-    def begin_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def begin_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The begin value of the shard range(MD5), included in the shard range.
         """
         return pulumi.get(self, "begin_key")
 
     @begin_key.setter
-    def begin_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def begin_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "begin_key", value)
 
     @_builtins.property
     @pulumi.getter(name="endKey")
-    def end_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end value of the shard range(MD5), not included in shard range.
         """
         return pulumi.get(self, "end_key")
 
     @end_key.setter
-    def end_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the shard.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shard status, only two status of `readwrite` and `readonly`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 

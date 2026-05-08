@@ -21,10 +21,10 @@ class AttachmentArgs:
     def __init__(__self__, *,
                  instance_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  load_balancer_id: pulumi.Input[_builtins.str],
-                 backend_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Attachment resource.
 
@@ -72,62 +72,62 @@ class AttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_servers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend servers of the load balancer.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_servers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the instances. Valid value ecs, eni. Default to ecs.
         """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
 @pulumi.input_type
 class _AttachmentState:
     def __init__(__self__, *,
-                 backend_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Attachment resources.
 
@@ -153,74 +153,74 @@ class _AttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="backendServers")
-    def backend_servers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_servers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend servers of the load balancer.
         """
         return pulumi.get(self, "backend_servers")
 
     @backend_servers.setter
-    def backend_servers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_servers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
         """
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of instance ids to added backend server in the SLB.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the load balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the instances. Valid value ecs, eni. Default to ecs.
         """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the instances. Valid value range: [0-100]. Default to 100.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -230,12 +230,12 @@ class Attachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         > **DEPRECATED:** This resource has been deprecated from v1.153.0 and using slb.BackendServer instead.
@@ -256,7 +256,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -335,7 +335,7 @@ class Attachment(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -395,12 +395,12 @@ class Attachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None,
+                 backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -430,12 +430,12 @@ class Attachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_servers: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_type: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.int]] = None) -> 'Attachment':
+            backend_servers: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_type: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.int]] = None) -> 'Attachment':
         """
         Get an existing Attachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

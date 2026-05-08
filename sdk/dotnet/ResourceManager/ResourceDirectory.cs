@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var @default = AliCloud.ResourceManager.GetResourceDirectories.Invoke();
     /// 
     ///     var defaultResourceDirectory = new List&lt;AliCloud.ResourceManager.ResourceDirectory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getResourceDirectoriesResult =&gt; getResourceDirectoriesResult.Directories)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultResourceDirectory.Add(new AliCloud.ResourceManager.ResourceDirectory($"default-{range.Value}", new()

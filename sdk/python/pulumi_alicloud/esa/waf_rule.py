@@ -23,10 +23,10 @@ class WafRuleArgs:
     def __init__(__self__, *,
                  phase: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['WafRuleConfigArgs']] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared: Optional[pulumi.Input['WafRuleSharedArgs']] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 config: pulumi.Input[Optional['WafRuleConfigArgs']] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared: pulumi.Input[Optional['WafRuleSharedArgs']] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a WafRule resource.
 
@@ -78,31 +78,31 @@ class WafRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['WafRuleConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['WafRuleConfigArgs']]:
         """
         The specific configuration of the WAF rule. See `config` below.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['WafRuleConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['WafRuleConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ruleset_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
         """
         return pulumi.get(self, "ruleset_id")
 
     @ruleset_id.setter
-    def ruleset_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ruleset_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ruleset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input['WafRuleSharedArgs']]:
+    def shared(self) -> pulumi.Input[Optional['WafRuleSharedArgs']]:
         """
         Shared configuration attributes used across multiple rules. See `shared` below.
 
@@ -111,12 +111,12 @@ class WafRuleArgs:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input['WafRuleSharedArgs']]):
+    def shared(self, value: pulumi.Input[Optional['WafRuleSharedArgs']]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 
@@ -125,20 +125,20 @@ class WafRuleArgs:
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
 
 @pulumi.input_type
 class _WafRuleState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['WafRuleConfigArgs']] = None,
-                 phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared: Optional[pulumi.Input['WafRuleSharedArgs']] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 waf_rule_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 config: pulumi.Input[Optional['WafRuleConfigArgs']] = None,
+                 phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared: pulumi.Input[Optional['WafRuleSharedArgs']] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 waf_rule_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WafRule resources.
 
@@ -171,43 +171,43 @@ class _WafRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['WafRuleConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['WafRuleConfigArgs']]:
         """
         The specific configuration of the WAF rule. See `config` below.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['WafRuleConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['WafRuleConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def phase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The phase in which the WAF processes this rule.
         """
         return pulumi.get(self, "phase")
 
     @phase.setter
-    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def phase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "phase", value)
 
     @_builtins.property
     @pulumi.getter(name="rulesetId")
-    def ruleset_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ruleset_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://www.alibabacloud.com/help/en/doc-detail/2850233.html) operation.
         """
         return pulumi.get(self, "ruleset_id")
 
     @ruleset_id.setter
-    def ruleset_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ruleset_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ruleset_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input['WafRuleSharedArgs']]:
+    def shared(self) -> pulumi.Input[Optional['WafRuleSharedArgs']]:
         """
         Shared configuration attributes used across multiple rules. See `shared` below.
 
@@ -216,24 +216,24 @@ class _WafRuleState:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input['WafRuleSharedArgs']]):
+    def shared(self, value: pulumi.Input[Optional['WafRuleSharedArgs']]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the website, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
 
@@ -242,19 +242,19 @@ class _WafRuleState:
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter(name="wafRuleId")
-    def waf_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def waf_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier of the WAF rule.
         """
         return pulumi.get(self, "waf_rule_id")
 
     @waf_rule_id.setter
-    def waf_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def waf_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "waf_rule_id", value)
 
 
@@ -264,12 +264,12 @@ class WafRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
-                 phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared: Optional[pulumi.Input[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 config: pulumi.Input[Optional[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
+                 phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared: pulumi.Input[Optional[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Waf Rule resource.
@@ -290,7 +290,7 @@ class WafRule(pulumi.CustomResource):
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0)
         default_waf_rule = alicloud.esa.WafRule("default",
@@ -309,7 +309,7 @@ class WafRule(pulumi.CustomResource):
                 "name": "111",
             },
             site_version=0,
-            site_id=default.sites[0].site_id)
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -361,7 +361,7 @@ class WafRule(pulumi.CustomResource):
 
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
         default_waf_ruleset = alicloud.esa.WafRuleset("default",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             phase="http_custom",
             site_version=0)
         default_waf_rule = alicloud.esa.WafRule("default",
@@ -380,7 +380,7 @@ class WafRule(pulumi.CustomResource):
                 "name": "111",
             },
             site_version=0,
-            site_id=default.sites[0].site_id)
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -409,12 +409,12 @@ class WafRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
-                 phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 shared: Optional[pulumi.Input[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 config: pulumi.Input[Optional[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
+                 phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 shared: pulumi.Input[Optional[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,13 +445,13 @@ class WafRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
-            phase: Optional[pulumi.Input[_builtins.str]] = None,
-            ruleset_id: Optional[pulumi.Input[_builtins.int]] = None,
-            shared: Optional[pulumi.Input[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None,
-            waf_rule_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'WafRule':
+            config: pulumi.Input[Optional[Union['WafRuleConfigArgs', 'WafRuleConfigArgsDict']]] = None,
+            phase: pulumi.Input[Optional[_builtins.str]] = None,
+            ruleset_id: pulumi.Input[Optional[_builtins.int]] = None,
+            shared: pulumi.Input[Optional[Union['WafRuleSharedArgs', 'WafRuleSharedArgsDict']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            waf_rule_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'WafRule':
         """
         Get an existing WafRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

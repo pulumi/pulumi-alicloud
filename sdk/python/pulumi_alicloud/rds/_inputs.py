@@ -60,11 +60,11 @@ __all__ = [
 ]
 
 class AiInstanceAuthConfigListArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the configuration item.
     """
@@ -72,8 +72,8 @@ class AiInstanceAuthConfigListArgsDict(TypedDict):
 @pulumi.input_type
 class AiInstanceAuthConfigListArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
         :param pulumi.Input[_builtins.str] value: The value of the configuration item.
@@ -85,35 +85,35 @@ class AiInstanceAuthConfigListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/authentication).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the configuration item.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class AiInstanceStorageConfigListArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the configuration item.
     """
@@ -121,8 +121,8 @@ class AiInstanceStorageConfigListArgsDict(TypedDict):
 @pulumi.input_type
 class AiInstanceStorageConfigListArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
         :param pulumi.Input[_builtins.str] value: The value of the configuration item.
@@ -134,42 +134,42 @@ class AiInstanceStorageConfigListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the configuration item.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class CustomDataDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Instance storage type
     local_ssd: local SSD disk
     cloud_essd:ESSD PL1 cloud disk
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Disk Performance
     Currently only supports PL1
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Instance storage space. Unit: GB.
     """
@@ -177,9 +177,9 @@ class CustomDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class CustomDataDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Instance storage type
                local_ssd: local SSD disk
@@ -197,7 +197,7 @@ class CustomDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance storage type
         local_ssd: local SSD disk
@@ -206,12 +206,12 @@ class CustomDataDiskArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Disk Performance
         Currently only supports PL1
@@ -219,28 +219,28 @@ class CustomDataDiskArgs:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance storage space. Unit: GB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class CustomSystemDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
     """
-    size: NotRequired[pulumi.Input[_builtins.str]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
     """
@@ -248,8 +248,8 @@ class CustomSystemDiskArgsDict(TypedDict):
 @pulumi.input_type
 class CustomSystemDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
         :param pulumi.Input[_builtins.str] size: System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
@@ -261,26 +261,26 @@ class CustomSystemDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud disk type of the system disk. Currently, only `cloud_essd`(ESSD cloud disk) is supported.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System disk size, unit: GiB. Only ESSD PL1 is supported. Valid values range from 20 to 2048.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size", value)
 
 
@@ -408,11 +408,11 @@ class DdrInstancePgHbaConfArgsDict(TypedDict):
     """
     The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
     """
-    mask: NotRequired[pulumi.Input[_builtins.str]]
+    mask: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
     """
-    option: NotRequired[pulumi.Input[_builtins.str]]
+    option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
     """
@@ -426,8 +426,8 @@ class DdrInstancePgHbaConfArgs:
                  priority_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 option: Optional[pulumi.Input[_builtins.str]] = None):
+                 mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
         :param pulumi.Input[_builtins.str] database: The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
@@ -533,26 +533,26 @@ class DdrInstancePgHbaConfArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         """
         return pulumi.get(self, "mask")
 
     @mask.setter
-    def mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
         return pulumi.get(self, "option")
 
     @option.setter
-    def option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "option", value)
 
 
@@ -718,11 +718,11 @@ class InstancePgHbaConfArgsDict(TypedDict):
     """
     The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
     """
-    mask: NotRequired[pulumi.Input[_builtins.str]]
+    mask: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
     """
-    option: NotRequired[pulumi.Input[_builtins.str]]
+    option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
     """
@@ -736,8 +736,8 @@ class InstancePgHbaConfArgs:
                  priority_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 option: Optional[pulumi.Input[_builtins.str]] = None):
+                 mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
         :param pulumi.Input[_builtins.str] database: The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
@@ -843,26 +843,26 @@ class InstancePgHbaConfArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         """
         return pulumi.get(self, "mask")
 
     @mask.setter
-    def mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
         return pulumi.get(self, "option")
 
     @option.setter
-    def option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "option", value)
 
 
@@ -881,7 +881,7 @@ class InstanceServerlessConfigArgsDict(TypedDict):
     - SQLServer: 2~8 \\(Supports integers only\\).
     - PostgreSQL: 0.5~12
     """
-    auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_pause: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
     - true: enables the feature.
@@ -889,7 +889,7 @@ class InstanceServerlessConfigArgsDict(TypedDict):
     > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
     > - Terraform does not support automatic start and stop when creating serverless instances, because the instances will automatically become STOPPED after 10 minutes. As a result, the state of the instances will be checked when the apply and other operations are executed. So pass FALSE for the current argument.
     """
-    switch_force: NotRequired[pulumi.Input[_builtins.bool]]
+    switch_force: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
     - true: enables the feature.
@@ -903,8 +903,8 @@ class InstanceServerlessConfigArgs:
     def __init__(__self__, *,
                  max_capacity: pulumi.Input[_builtins.float],
                  min_capacity: pulumi.Input[_builtins.float],
-                 auto_pause: Optional[pulumi.Input[_builtins.bool]] = None,
-                 switch_force: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_pause: pulumi.Input[Optional[_builtins.bool]] = None,
+                 switch_force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.float] max_capacity: The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
                - MySQL: 1~8
@@ -964,7 +964,7 @@ class InstanceServerlessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPause")
-    def auto_pause(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pause(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
         - true: enables the feature.
@@ -975,12 +975,12 @@ class InstanceServerlessConfigArgs:
         return pulumi.get(self, "auto_pause")
 
     @auto_pause.setter
-    def auto_pause(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pause(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pause", value)
 
     @_builtins.property
     @pulumi.getter(name="switchForce")
-    def switch_force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def switch_force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         - true: enables the feature.
@@ -991,7 +991,7 @@ class InstanceServerlessConfigArgs:
         return pulumi.get(self, "switch_force")
 
     @switch_force.setter
-    def switch_force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def switch_force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "switch_force", value)
 
 
@@ -1072,11 +1072,11 @@ class RdsCloneDbInstancePgHbaConfArgsDict(TypedDict):
     """
     The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
     """
-    mask: NotRequired[pulumi.Input[_builtins.str]]
+    mask: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
     """
-    option: NotRequired[pulumi.Input[_builtins.str]]
+    option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
     """
@@ -1090,8 +1090,8 @@ class RdsCloneDbInstancePgHbaConfArgs:
                  priority_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 option: Optional[pulumi.Input[_builtins.str]] = None):
+                 mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
         :param pulumi.Input[_builtins.str] database: The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
@@ -1197,26 +1197,26 @@ class RdsCloneDbInstancePgHbaConfArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         """
         return pulumi.get(self, "mask")
 
     @mask.setter
-    def mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
         return pulumi.get(self, "option")
 
     @option.setter
-    def option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "option", value)
 
 
@@ -1235,14 +1235,14 @@ class RdsCloneDbInstanceServerlessConfigArgsDict(TypedDict):
     - SQLServer: 2~8 \\(Supports integers only\\).
     - PostgreSQL: 0.5~12
     """
-    auto_pause: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_pause: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
     - true: enables the feature.
     - false: disables the feature. This is the default value.
     > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
     """
-    switch_force: NotRequired[pulumi.Input[_builtins.bool]]
+    switch_force: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
     - true: enables the feature.
@@ -1256,8 +1256,8 @@ class RdsCloneDbInstanceServerlessConfigArgs:
     def __init__(__self__, *,
                  max_capacity: pulumi.Input[_builtins.float],
                  min_capacity: pulumi.Input[_builtins.float],
-                 auto_pause: Optional[pulumi.Input[_builtins.bool]] = None,
-                 switch_force: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_pause: pulumi.Input[Optional[_builtins.bool]] = None,
+                 switch_force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.float] max_capacity: The maximum number of RDS Capacity Units (RCUs). The value of this parameter must be greater than or equal to `min_capacity` and only supports passing integers. Valid values:
                - MySQL: 1~8
@@ -1316,7 +1316,7 @@ class RdsCloneDbInstanceServerlessConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPause")
-    def auto_pause(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pause(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
         - true: enables the feature.
@@ -1326,12 +1326,12 @@ class RdsCloneDbInstanceServerlessConfigArgs:
         return pulumi.get(self, "auto_pause")
 
     @auto_pause.setter
-    def auto_pause(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pause(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pause", value)
 
     @_builtins.property
     @pulumi.getter(name="switchForce")
-    def switch_force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def switch_force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         - true: enables the feature.
@@ -1342,7 +1342,7 @@ class RdsCloneDbInstanceServerlessConfigArgs:
         return pulumi.get(self, "switch_force")
 
     @switch_force.setter
-    def switch_force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def switch_force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "switch_force", value)
 
 
@@ -1517,11 +1517,11 @@ class RdsUpgradeDbInstancePgHbaConfArgsDict(TypedDict):
     """
     The user that is allowed to access the instance. If you specify multiple users, separate the usernames with commas (,).
     """
-    mask: NotRequired[pulumi.Input[_builtins.str]]
+    mask: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
     """
-    option: NotRequired[pulumi.Input[_builtins.str]]
+    option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
     """
@@ -1535,8 +1535,8 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
                  priority_id: pulumi.Input[_builtins.int],
                  type: pulumi.Input[_builtins.str],
                  user: pulumi.Input[_builtins.str],
-                 mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 option: Optional[pulumi.Input[_builtins.str]] = None):
+                 mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 option: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IP addresses from which the specified users can access the specified databases. If you set this parameter to 0.0.0.0/0, the specified users are allowed to access the specified databases from all IP addresses.
         :param pulumi.Input[_builtins.str] database: The name of the database that the specified users are allowed to access. If you set this parameter to all, the specified users are allowed to access all databases in the instance. If you specify multiple databases, separate the database names with commas (,).
@@ -1642,26 +1642,26 @@ class RdsUpgradeDbInstancePgHbaConfArgs:
 
     @_builtins.property
     @pulumi.getter
-    def mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mask of the instance. If the value of the `Address` parameter is an IP address, you can use this parameter to specify the mask of the IP address.
         """
         return pulumi.get(self, "mask")
 
     @mask.setter
-    def mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mask", value)
 
     @_builtins.property
     @pulumi.getter
-    def option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional. The value of this parameter is based on the value of the HbaItem.N.Method parameter. In this topic, LDAP is used as an example. You must configure this parameter. For more information, see [Authentication Methods](https://www.postgresql.org/docs/11/auth-methods.html).
         """
         return pulumi.get(self, "option")
 
     @option.setter
-    def option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "option", value)
 
 

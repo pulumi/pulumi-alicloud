@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 class InstanceDataDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk type. Optional values:
     - cloud_efficiency: Ultra cloud disk
@@ -32,19 +32,19 @@ class InstanceDataDiskArgsDict(TypedDict):
     - local_hdd: local hdd disk
     - local_ssd: local disk ssd.
     """
-    disk_id: NotRequired[pulumi.Input[_builtins.str]]
+    disk_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Disk ID.
     """
-    encrypt_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    encrypt_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the KMS key used by the cloud disk.
     """
-    encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Data disk size, unit: GB.
     """
@@ -52,11 +52,11 @@ class InstanceDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceDataDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Data disk type. Optional values:
                - cloud_efficiency: Ultra cloud disk
@@ -81,7 +81,7 @@ class InstanceDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk type. Optional values:
         - cloud_efficiency: Ultra cloud disk
@@ -92,60 +92,60 @@ class InstanceDataDiskArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Disk ID.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptKeyId")
-    def encrypt_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key used by the cloud disk.
         """
         return pulumi.get(self, "encrypt_key_id")
 
     @encrypt_key_id.setter
-    def encrypt_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to encrypt the cloud disk. Value range:  true: Yes  false (default): No.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data disk size, unit: GB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class InstanceSystemDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System disk type. Value
     - cloud_efficiency: Ultra cloud disk
@@ -153,7 +153,7 @@ class InstanceSystemDiskArgsDict(TypedDict):
     - local_hdd: local hdd disk
     - local_ssd: local disk ssd.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     System disk size, unit: GB.
     """
@@ -161,8 +161,8 @@ class InstanceSystemDiskArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceSystemDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: System disk type. Value
                - cloud_efficiency: Ultra cloud disk
@@ -178,7 +178,7 @@ class InstanceSystemDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System disk type. Value
         - cloud_efficiency: Ultra cloud disk
@@ -189,19 +189,19 @@ class InstanceSystemDiskArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         System disk size, unit: GB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
@@ -210,19 +210,19 @@ class LoadBalancerBackendServerArgsDict(TypedDict):
     """
     Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP address of the backend server  Example value: 192.168.0.5.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Port used by the backend server.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Backend server type  Example value: ens.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Weight of the backend server  Example value: 100.
     """
@@ -231,10 +231,10 @@ class LoadBalancerBackendServerArgsDict(TypedDict):
 class LoadBalancerBackendServerArgs:
     def __init__(__self__, *,
                  server_id: pulumi.Input[_builtins.str],
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] server_id: Backend server instance ID  Example value: i-5vb5h5njxiuhn48a * * * *.
         :param pulumi.Input[_builtins.str] ip: IP address of the backend server  Example value: 192.168.0.5.
@@ -266,50 +266,50 @@ class LoadBalancerBackendServerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address of the backend server  Example value: 192.168.0.5.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port used by the backend server.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backend server type  Example value: ens.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the backend server  Example value: 100.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 

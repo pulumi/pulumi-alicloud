@@ -167,42 +167,42 @@ export interface GetDomainsOutputArgs {
     /**
      * The end time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
      */
-    changeEndTime?: pulumi.Input<string>;
+    changeEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the update. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
      */
-    changeStartTime?: pulumi.Input<string>;
+    changeStartTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to display the domains in the checking, check_failed, or configureFailed status. Valid values: `true` or `false`.
      */
-    checkDomainShow?: pulumi.Input<boolean>;
+    checkDomainShow?: pulumi.Input<boolean | undefined>;
     /**
      * The search method. Default value: `fuzzyMatch`. Valid values: `fuzzyMatch`, `preMatch`, `sufMatch`, `fullMatch`.
      */
-    domainSearchType?: pulumi.Input<string>;
+    domainSearchType?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list ids of DCDN Domain.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by the DCDN Domain.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
-    securityToken?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    securityToken?: pulumi.Input<string | undefined>;
     /**
      * The status of DCDN Domain.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -121,11 +121,11 @@ export interface BucketPublicAccessBlockState {
     /**
      * Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
      */
-    blockPublicAccess?: pulumi.Input<boolean>;
+    blockPublicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
 }
 
 /**

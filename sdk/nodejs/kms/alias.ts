@@ -115,7 +115,7 @@ export interface AliasState {
     /**
      * The alias of CMK. `Encrypt`、`GenerateDataKey`、`DescribeKey` can be called using aliases. Length of characters other than prefixes: minimum length of 1 character and maximum length of 255 characters. Must contain prefix `alias/`.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The id of the key.
      *
@@ -125,7 +125,7 @@ export interface AliasState {
      *
      * > **NOTE:** UpdateAlias can be used to update the mapping relationship between alias and master key(CMK).
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
 }
 
 /**

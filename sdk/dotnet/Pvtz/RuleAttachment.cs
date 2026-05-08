@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Pvtz
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "example_value";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Pvtz
     ///         Status = "NORMAL",
     ///     });
     /// 
-    ///     var defaultGetRegions = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var defaultGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -65,12 +65,12 @@ namespace Pulumi.AliCloud.Pvtz
     ///         defaultSwitch.Add(new AliCloud.Vpc.Switch($"default-{range.Value}", new()
     ///         {
     ///             VpcId = defaultNetwork[2].Id,
-    ///             CidrBlock = defaultNetwork[2].CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
+    ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
     ///             {
-    ///                 Input = cidrBlock,
+    ///                 Input = defaultNetwork[2].CidrBlock,
     ///                 Newbits = 8,
     ///                 Netnum = range.Value,
-    ///             })).Apply(invoke =&gt; invoke.Result),
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///             ZoneId = @default.Apply(@default =&gt; @default.Apply(getResolverZonesResult =&gt; getResolverZonesResult.Zones)[range.Value].ZoneId),
     ///         }));
     ///     }

@@ -59,7 +59,7 @@ export function getDomainGroupsOutput(args?: GetDomainGroupsOutputArgs, opts?: p
  * A collection of arguments for invoking getDomainGroups.
  */
 export interface GetDomainGroupsOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

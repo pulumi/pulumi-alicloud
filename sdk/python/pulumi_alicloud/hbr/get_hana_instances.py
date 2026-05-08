@@ -189,13 +189,13 @@ def get_hana_instances(ids: Optional[Sequence[_builtins.str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-def get_hana_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              vault_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_hana_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              vault_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHanaInstancesResult]:
     """
     This data source provides the Hbr Hana Instances of the current Alibaba Cloud user.

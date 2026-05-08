@@ -23,10 +23,10 @@ class BucketCnameArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  domain: pulumi.Input[_builtins.str],
-                 certificate: Optional[pulumi.Input['BucketCnameCertificateArgs']] = None,
-                 delete_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate: pulumi.Input[Optional['BucketCnameCertificateArgs']] = None,
+                 delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketCname resource.
 
@@ -74,63 +74,63 @@ class BucketCnameArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['BucketCnameCertificateArgs']]:
+    def certificate(self) -> pulumi.Input[Optional['BucketCnameCertificateArgs']]:
         """
         The container for the certificate configuration. See `certificate` below.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['BucketCnameCertificateArgs']]):
+    def certificate(self, value: pulumi.Input[Optional['BucketCnameCertificateArgs']]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCertificate")
-    def delete_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_certificate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the certificate.
         """
         return pulumi.get(self, "delete_certificate")
 
     @delete_certificate.setter
-    def delete_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_certificate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force overwrite certificate.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="previousCertId")
-    def previous_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def previous_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
         """
         return pulumi.get(self, "previous_cert_id")
 
     @previous_cert_id.setter
-    def previous_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def previous_cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "previous_cert_id", value)
 
 
 @pulumi.input_type
 class _BucketCnameState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input['BucketCnameCertificateArgs']] = None,
-                 delete_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional['BucketCnameCertificateArgs']] = None,
+                 delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketCname resources.
 
@@ -159,86 +159,86 @@ class _BucketCnameState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket to which the custom domain name belongs
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['BucketCnameCertificateArgs']]:
+    def certificate(self) -> pulumi.Input[Optional['BucketCnameCertificateArgs']]:
         """
         The container for the certificate configuration. See `certificate` below.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['BucketCnameCertificateArgs']]):
+    def certificate(self, value: pulumi.Input[Optional['BucketCnameCertificateArgs']]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteCertificate")
-    def delete_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_certificate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the certificate.
         """
         return pulumi.get(self, "delete_certificate")
 
     @delete_certificate.setter
-    def delete_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_certificate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined domain name
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force overwrite certificate.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="previousCertId")
-    def previous_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def previous_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current certificate ID. If the Force value is not true, the OSS Server checks whether the value matches the current certificate ID. If the value does not match, an error is reported.
         """
         return pulumi.get(self, "previous_cert_id")
 
     @previous_cert_id.setter
-    def previous_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def previous_cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "previous_cert_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cname status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -248,12 +248,12 @@ class BucketCname(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
-                 delete_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+                 delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Cname resource.
@@ -389,12 +389,12 @@ class BucketCname(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
-                 delete_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+                 delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,13 +425,13 @@ class BucketCname(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate: Optional[pulumi.Input[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
-            delete_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            previous_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketCname':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate: pulumi.Input[Optional[Union['BucketCnameCertificateArgs', 'BucketCnameCertificateArgsDict']]] = None,
+            delete_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            previous_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketCname':
         """
         Get an existing BucketCname resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

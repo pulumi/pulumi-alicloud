@@ -149,19 +149,19 @@ export interface GatewayRouteTableAttachmentState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the IPv4 Gateway instance.
      */
-    ipv4GatewayId?: pulumi.Input<string>;
+    ipv4GatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Gateway route table to be bound.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * The status of the IPv4 Gateway instance. Value:
      * - **Creating**: The function is being created.
@@ -171,7 +171,7 @@ export interface GatewayRouteTableAttachmentState {
      * - **Deleted**: Deleted.
      * - **Activating**: enabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,7 +181,7 @@ export interface GatewayRouteTableAttachmentArgs {
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the IPv4 Gateway instance.
      */

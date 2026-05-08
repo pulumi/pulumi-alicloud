@@ -22,11 +22,11 @@ class CustomResponseCodeRuleArgs:
                  page_id: pulumi.Input[_builtins.str],
                  return_code: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a CustomResponseCodeRule resource.
 
@@ -97,7 +97,7 @@ class CustomResponseCodeRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
 
@@ -107,12 +107,12 @@ class CustomResponseCodeRuleArgs:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
 
@@ -122,58 +122,58 @@ class CustomResponseCodeRuleArgs:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The order in which the rule is executed. A smaller value gives priority to the rule.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
 
 @pulumi.input_type
 class _CustomResponseCodeRuleState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 page_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 return_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 page_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 return_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CustomResponseCodeRule resources.
 
@@ -214,43 +214,43 @@ class _CustomResponseCodeRuleState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the configuration.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pageId")
-    def page_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Response page.
         """
         return pulumi.get(self, "page_id")
 
     @page_id.setter
-    def page_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page_id", value)
 
     @_builtins.property
     @pulumi.getter(name="returnCode")
-    def return_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def return_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The response code.
         """
         return pulumi.get(self, "return_code")
 
     @return_code.setter
-    def return_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def return_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "return_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the rule. A conditional expression is used to match a user request. You do not need to set this parameter when you add global configurations. Use cases:
 
@@ -260,12 +260,12 @@ class _CustomResponseCodeRuleState:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the rule. Valid values: You do not need to set this parameter when you add global configurations. Valid values:
 
@@ -275,55 +275,55 @@ class _CustomResponseCodeRuleState:
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The order in which the rule is executed. A smaller value gives priority to the rule.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the website configurations. You can use this parameter to specify a version of your website to apply the feature settings. By default, version 0 is used.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
 
@@ -333,14 +333,14 @@ class CustomResponseCodeRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 page_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 return_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 page_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 return_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Custom Response Code Rule resource.
@@ -488,14 +488,14 @@ class CustomResponseCodeRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 page_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 return_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
+                 page_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 return_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -530,15 +530,15 @@ class CustomResponseCodeRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            page_id: Optional[pulumi.Input[_builtins.str]] = None,
-            return_code: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None) -> 'CustomResponseCodeRule':
+            config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            page_id: pulumi.Input[Optional[_builtins.str]] = None,
+            return_code: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None) -> 'CustomResponseCodeRule':
         """
         Get an existing CustomResponseCodeRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -151,11 +151,11 @@ export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getTopics.
  */
 export interface GetTopicsOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of topic IDs to filter results.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the ONS Instance that owns the topics.
      */
@@ -163,13 +163,13 @@ export interface GetTopicsOutputArgs {
     /**
      * A regex string to filter results by the topic name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

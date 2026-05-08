@@ -131,11 +131,11 @@ export interface VirtualHostState {
     /**
      * InstanceId.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * VirtualHostName.
      */
-    virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string | undefined>;
 }
 
 /**

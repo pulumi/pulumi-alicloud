@@ -118,21 +118,21 @@ export interface GetAlidnsInstancesOutputArgs {
     /**
      * The type of domain.
      */
-    domainType?: pulumi.Input<string>;
+    domainType?: pulumi.Input<string | undefined>;
     /**
      * A list of instance IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the client.
      */
-    userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string | undefined>;
 }

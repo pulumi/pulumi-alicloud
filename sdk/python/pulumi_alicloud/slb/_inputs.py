@@ -28,14 +28,14 @@ __all__ = [
 ]
 
 class AclEntryListArgsDict(TypedDict):
-    comment: NotRequired[pulumi.Input[_builtins.str]]
-    entry: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    entry: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class AclEntryListArgs:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None):
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if entry is not None:
@@ -43,36 +43,36 @@ class AclEntryListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "entry")
 
     @entry.setter
-    def entry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry", value)
 
 
 class BackendServerBackendServerArgsDict(TypedDict):
     server_id: pulumi.Input[_builtins.str]
     weight: pulumi.Input[_builtins.int]
-    server_ip: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    server_ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class BackendServerBackendServerArgs:
     def __init__(__self__, *,
                  server_id: pulumi.Input[_builtins.str],
                  weight: pulumi.Input[_builtins.int],
-                 server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "weight", weight)
         if server_ip is not None:
@@ -100,37 +100,37 @@ class BackendServerBackendServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverIp")
-    def server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_ip")
 
     @server_ip.setter
-    def server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ListenerXForwardedForArgsDict(TypedDict):
-    retrive_client_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    retrive_client_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to retrieve the client ip.
     """
-    retrive_slb_id: NotRequired[pulumi.Input[_builtins.bool]]
+    retrive_slb_id: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
     """
-    retrive_slb_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    retrive_slb_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
     """
-    retrive_slb_proto: NotRequired[pulumi.Input[_builtins.bool]]
+    retrive_slb_proto: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
     """
@@ -138,10 +138,10 @@ class ListenerXForwardedForArgsDict(TypedDict):
 @pulumi.input_type
 class ListenerXForwardedForArgs:
     def __init__(__self__, *,
-                 retrive_client_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retrive_slb_id: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retrive_slb_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retrive_slb_proto: Optional[pulumi.Input[_builtins.bool]] = None):
+                 retrive_client_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retrive_slb_id: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retrive_slb_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retrive_slb_proto: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] retrive_client_ip: Whether to retrieve the client ip.
         :param pulumi.Input[_builtins.bool] retrive_slb_id: Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
@@ -159,50 +159,50 @@ class ListenerXForwardedForArgs:
 
     @_builtins.property
     @pulumi.getter(name="retriveClientIp")
-    def retrive_client_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrive_client_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to retrieve the client ip.
         """
         return pulumi.get(self, "retrive_client_ip")
 
     @retrive_client_ip.setter
-    def retrive_client_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrive_client_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrive_client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="retriveSlbId")
-    def retrive_slb_id(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrive_slb_id(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the SLB-ID header is used to retrieve the ID of the CLB instance. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_id")
 
     @retrive_slb_id.setter
-    def retrive_slb_id(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrive_slb_id(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrive_slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retriveSlbIp")
-    def retrive_slb_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrive_slb_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the SLB-IP header is used to retrieve the virtual IP address (VIP) requested by the client. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_ip")
 
     @retrive_slb_ip.setter
-    def retrive_slb_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrive_slb_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrive_slb_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="retriveSlbProto")
-    def retrive_slb_proto(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retrive_slb_proto(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the X-Forwarded-Proto header to retrieve the listener protocol. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "retrive_slb_proto")
 
     @retrive_slb_proto.setter
-    def retrive_slb_proto(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retrive_slb_proto(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retrive_slb_proto", value)
 
 
@@ -215,19 +215,19 @@ class MasterSlaveServerGroupServerArgsDict(TypedDict):
     """
     A list backend server ID (ECS instance ID).
     """
-    is_backup: NotRequired[pulumi.Input[_builtins.int]]
+    is_backup: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Determine if the server is executing. Valid value 0, 1.
     """
-    server_type: NotRequired[pulumi.Input[_builtins.str]]
+    server_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The server type of the backend server. Valid value Master, Slave.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type of the backend server. Valid value ecs, eni. Default to eni.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Weight of the backend server. Valid value range: [0-100]. Default to 100.
     """
@@ -237,10 +237,10 @@ class MasterSlaveServerGroupServerArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  server_id: pulumi.Input[_builtins.str],
-                 is_backup: Optional[pulumi.Input[_builtins.int]] = None,
-                 server_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 is_backup: pulumi.Input[Optional[_builtins.int]] = None,
+                 server_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port used by the backend server. Valid value range: [1-65535].
         :param pulumi.Input[_builtins.str] server_id: A list backend server ID (ECS instance ID).
@@ -286,50 +286,50 @@ class MasterSlaveServerGroupServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="isBackup")
-    def is_backup(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def is_backup(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Determine if the server is executing. Valid value 0, 1.
         """
         return pulumi.get(self, "is_backup")
 
     @is_backup.setter
-    def is_backup(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def is_backup(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "is_backup", value)
 
     @_builtins.property
     @pulumi.getter(name="serverType")
-    def server_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server type of the backend server. Valid value Master, Slave.
         """
         return pulumi.get(self, "server_type")
 
     @server_type.setter
-    def server_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of the backend server. Valid value ecs, eni. Default to eni.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the backend server. Valid value range: [0-100]. Default to 100.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 
@@ -342,11 +342,11 @@ class ServerGroupServerArgsDict(TypedDict):
     """
     The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
     """
-    weight: NotRequired[pulumi.Input[_builtins.int]]
+    weight: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
     """
@@ -356,8 +356,8 @@ class ServerGroupServerArgs:
     def __init__(__self__, *,
                  port: pulumi.Input[_builtins.int],
                  server_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.int]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port used by the backend server. Valid values: `1` to `65535`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] server_ids: The list of Elastic Compute Service (ECS) Ids or Elastic Network Interface (ENI) Ids.
@@ -397,26 +397,26 @@ class ServerGroupServerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the type of the backend server. Default value: `ecs`. Valid values: `ecs`, `eni`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Weight of the backend server. Default value: `100`. Valid values: `0` to `100`.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "weight", value)
 
 

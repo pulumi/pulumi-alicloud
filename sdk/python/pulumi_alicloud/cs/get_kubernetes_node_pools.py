@@ -128,7 +128,7 @@ def get_kubernetes_node_pools(cluster_id: Optional[_builtins.str] = None,
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
     cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
         cpu_core_count=4,
-        memory_size=8,
+        memory_size=float(8),
         kubernetes_node_role="Worker",
         system_disk_category="cloud_efficiency")
     default_network = alicloud.vpc.Network("default",
@@ -197,10 +197,10 @@ def get_kubernetes_node_pools(cluster_id: Optional[_builtins.str] = None,
         node_pool_name=pulumi.get(__ret__, 'node_pool_name'),
         nodepools=pulumi.get(__ret__, 'nodepools'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     node_pool_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kubernetes_node_pools_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     node_pool_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesNodePoolsResult]:
     """
     This data source provides Ack Nodepool available to the user.[What is Nodepool](https://next.api.alibabacloud.com/document/CS/2015-12-15/CreateClusterNodePool)
@@ -221,7 +221,7 @@ def get_kubernetes_node_pools_output(cluster_id: Optional[pulumi.Input[_builtins
     enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
     cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
         cpu_core_count=4,
-        memory_size=8,
+        memory_size=float(8),
         kubernetes_node_role="Worker",
         system_disk_category="cloud_efficiency")
     default_network = alicloud.vpc.Network("default",

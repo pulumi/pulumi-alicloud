@@ -21,7 +21,7 @@ class EnterpriseAuthorityTemplateArgs:
     def __init__(__self__, *,
                  authority_template_name: pulumi.Input[_builtins.str],
                  tid: pulumi.Input[_builtins.int],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseAuthorityTemplate resource.
 
@@ -60,25 +60,25 @@ class EnterpriseAuthorityTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission template description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _EnterpriseAuthorityTemplateState:
     def __init__(__self__, *,
-                 authority_template_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 authority_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None):
+                 authority_template_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 authority_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EnterpriseAuthorityTemplate resources.
 
@@ -101,62 +101,62 @@ class _EnterpriseAuthorityTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="authorityTemplateId")
-    def authority_template_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def authority_template_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Permission template ID.
         """
         return pulumi.get(self, "authority_template_id")
 
     @authority_template_id.setter
-    def authority_template_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def authority_template_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "authority_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="authorityTemplateName")
-    def authority_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authority_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission Template name.
         """
         return pulumi.get(self, "authority_template_name")
 
     @authority_template_name.setter
-    def authority_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authority_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authority_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission template description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Tenant ID.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tid", value)
 
 
@@ -166,9 +166,9 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
+                 authority_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise Authority Template resource.
@@ -191,7 +191,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.dms.get_user_tenants(status="ACTIVE")
         default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("default",
-            tid=default.ids[0],
+            tid=output(default.ids[0]).apply(lambda x: int(x)),
             authority_template_name=name,
             description=name)
         ```
@@ -240,7 +240,7 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.dms.get_user_tenants(status="ACTIVE")
         default_enterprise_authority_template = alicloud.dms.EnterpriseAuthorityTemplate("default",
-            tid=default.ids[0],
+            tid=output(default.ids[0]).apply(lambda x: int(x)),
             authority_template_name=name,
             description=name)
         ```
@@ -271,9 +271,9 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authority_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.int]] = None,
+                 authority_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,11 +302,11 @@ class EnterpriseAuthorityTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authority_template_id: Optional[pulumi.Input[_builtins.int]] = None,
-            authority_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            tid: Optional[pulumi.Input[_builtins.int]] = None) -> 'EnterpriseAuthorityTemplate':
+            authority_template_id: pulumi.Input[Optional[_builtins.int]] = None,
+            authority_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.int]] = None) -> 'EnterpriseAuthorityTemplate':
         """
         Get an existing EnterpriseAuthorityTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

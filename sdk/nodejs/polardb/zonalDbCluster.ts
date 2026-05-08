@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *     ensRegionId: "tr-Istanbul-1",
  *     vpcId: _default.id,
  *     vswitchId: defaultVswitch.id,
- *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
+ *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).sort().reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).sort().filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
  * });
  * ```
  *
@@ -286,101 +286,101 @@ export interface ZonalDbClusterState {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB zonal cluster latest version.
      */
-    clusterLatestVersion?: pulumi.Input<string>;
+    clusterLatestVersion?: pulumi.Input<string | undefined>;
     /**
      * current DB Cluster revision Version.
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * PolarDB zonal cluster creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The edition of the PolarDB service. Valid values are `SENormal`.
      */
-    creationCategory?: pulumi.Input<string>;
+    creationCategory?: pulumi.Input<string | undefined>;
     /**
      * Cache of the relationship between node key and node ID for PolarDB zonal Cluster
      */
-    dbClusterNodesAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dbClusterNodesAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Map of node needs to be created after DB cluster was launched.
      */
-    dbClusterNodesConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dbClusterNodesConfigs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cache of node ID for PolarDB zonal Cluster
      */
-    dbClusterNodesIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dbClusterNodesIds?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
      */
-    dbMinorVersion?: pulumi.Input<string>;
+    dbMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The dbNodeClass of cluster node.Only effective when the cluster is created for the first time. After the cluster is started, the cluster specification is maintained through the node class.
      */
-    dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DB cluster.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * PolarDB zonal cluster region
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the storage. Valid values `Prepaid`.
      */
-    storagePayType?: pulumi.Input<string>;
+    storagePayType?: pulumi.Input<string | undefined>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      */
-    storageSpace?: pulumi.Input<number>;
+    storageSpace?: pulumi.Input<number | undefined>;
     /**
      * The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
      */
-    targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The id of the ENS VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ENS virtual switch ID to launch DB instances in one VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -390,15 +390,15 @@ export interface ZonalDbClusterArgs {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when payType is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * current DB Cluster revision Version.
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The edition of the PolarDB service. Valid values are `SENormal`.
      */
-    creationCategory?: pulumi.Input<string>;
+    creationCategory?: pulumi.Input<string | undefined>;
     /**
      * Map of node needs to be created after DB cluster was launched.
      */
@@ -406,7 +406,7 @@ export interface ZonalDbClusterArgs {
     /**
      * Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `dbType` is MySQL and `dbVersion` is 8.0.
      */
-    dbMinorVersion?: pulumi.Input<string>;
+    dbMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The dbNodeClass of cluster node.Only effective when the cluster is created for the first time. After the cluster is started, the cluster specification is maintained through the node class.
      */
@@ -414,15 +414,15 @@ export interface ZonalDbClusterArgs {
     /**
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DB cluster.
      */
@@ -430,29 +430,29 @@ export interface ZonalDbClusterArgs {
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Storage space charged by space (monthly package). Unit: GB.
      * > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when payType are `PrePaid` ,`PostPaid`.
      */
-    storageSpace?: pulumi.Input<number>;
+    storageSpace?: pulumi.Input<number | undefined>;
     /**
      * The storage type of the cluster. Valid values are `ESSDPL1`, `ESSDPL0`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersionZonal](https://www.alibabacloud.com/help/en/polardb/api-polardb-2017-08-01-describedbclusterversionzonal) interface.
      */
-    targetMinorVersion?: pulumi.Input<string>;
+    targetMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when payType is `PrePaid`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to `PostPaid`. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
-    usedTime?: pulumi.Input<number>;
+    usedTime?: pulumi.Input<number | undefined>;
     /**
      * The id of the ENS VPC.
      */

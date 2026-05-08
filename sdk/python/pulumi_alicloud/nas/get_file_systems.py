@@ -181,11 +181,11 @@ def get_file_systems(description_regex: Optional[_builtins.str] = None,
         protocol_type=pulumi.get(__ret__, 'protocol_type'),
         storage_type=pulumi.get(__ret__, 'storage_type'),
         systems=pulumi.get(__ret__, 'systems'))
-def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            protocol_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            storage_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_file_systems_output(description_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            protocol_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            storage_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileSystemsResult]:
     """
     This data source provides FileSystems available to the user.

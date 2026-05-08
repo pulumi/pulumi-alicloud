@@ -90,19 +90,19 @@ class ClusterApplicationConfigArgsDict(TypedDict):
     """
     The configuration item value of application installed.
     """
-    config_description: NotRequired[pulumi.Input[_builtins.str]]
+    config_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration description of application installed.
     """
-    config_scope: NotRequired[pulumi.Input[_builtins.str]]
+    config_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
     """
-    node_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration effected which node group id of emr cluster.
     """
-    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The configuration effected which node group name of emr cluster.
     """
@@ -114,10 +114,10 @@ class ClusterApplicationConfigArgs:
                  config_file_name: pulumi.Input[_builtins.str],
                  config_item_key: pulumi.Input[_builtins.str],
                  config_item_value: pulumi.Input[_builtins.str],
-                 config_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] application_name: The application name of EMR cluster which has installed.
         :param pulumi.Input[_builtins.str] config_file_name: The configuration file name of application installed.
@@ -191,50 +191,50 @@ class ClusterApplicationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="configDescription")
-    def config_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration description of application installed.
         """
         return pulumi.get(self, "config_description")
 
     @config_description.setter
-    def config_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_description", value)
 
     @_builtins.property
     @pulumi.getter(name="configScope")
-    def config_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration scope of emr cluster. Supported value: CLUSTER or NODEGROUP.
         """
         return pulumi.get(self, "config_scope")
 
     @config_scope.setter
-    def config_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration effected which node group id of emr cluster.
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration effected which node group name of emr cluster.
         """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
 
@@ -263,7 +263,7 @@ class ClusterBootstrapScriptArgsDict(TypedDict):
     """
     The bootstrap script path, e.g. "oss://bucket/path".
     """
-    priority: NotRequired[pulumi.Input[_builtins.int]]
+    priority: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The bootstrap scripts priority.
     """
@@ -277,7 +277,7 @@ class ClusterBootstrapScriptArgs:
                  script_args: pulumi.Input[_builtins.str],
                  script_name: pulumi.Input[_builtins.str],
                  script_path: pulumi.Input[_builtins.str],
-                 priority: Optional[pulumi.Input[_builtins.int]] = None):
+                 priority: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] execution_fail_strategy: The bootstrap scripts execution fail strategy, ’FAILED_BLOCK’ or ‘FAILED_CONTINUE’ .
         :param pulumi.Input[_builtins.str] execution_moment: The bootstrap scripts execution moment, ’BEFORE_INSTALL’, ‘AFTER_STARTED’ or ‘BEFORE_START’. The execution moment of BEFORE_START is available since v1.243.0.
@@ -374,14 +374,14 @@ class ClusterBootstrapScriptArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'priority' has been deprecated from provider version 1.227.0.""")
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bootstrap scripts priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
 
@@ -390,21 +390,21 @@ class ClusterBootstrapScriptNodeSelectorArgsDict(TypedDict):
     """
     The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
     """
-    node_group_id: NotRequired[pulumi.Input[_builtins.str]]
-    node_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    node_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    node_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The bootstrap scripts execution target node group ids.
     """
-    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
-    node_group_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    node_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    node_group_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The bootstrap scripts execution target node group names.
     """
-    node_group_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    node_group_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The bootstrap scripts execution target node group types.
     """
-    node_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    node_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The bootstrap scripts execution target node names.
     """
@@ -413,12 +413,12 @@ class ClusterBootstrapScriptNodeSelectorArgsDict(TypedDict):
 class ClusterBootstrapScriptNodeSelectorArgs:
     def __init__(__self__, *,
                  node_select_type: pulumi.Input[_builtins.str],
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_group_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_group_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] node_select_type: The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_group_ids: The bootstrap scripts execution target node group ids.
@@ -461,69 +461,69 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
     @_utilities.deprecated("""Field 'node_group_id' has been deprecated from provider version 1.227.0. New field 'node_group_ids' replaces it.""")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupIds")
-    def node_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The bootstrap scripts execution target node group ids.
         """
         return pulumi.get(self, "node_group_ids")
 
     @node_group_ids.setter
-    def node_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
     @_utilities.deprecated("""Field 'node_group_name' has been deprecated from provider version 1.227.0. New field 'node_group_names' replaces it.""")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupNames")
-    def node_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_group_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The bootstrap scripts execution target node group names.
         """
         return pulumi.get(self, "node_group_names")
 
     @node_group_names.setter
-    def node_group_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_group_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_group_names", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupTypes")
-    def node_group_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_group_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The bootstrap scripts execution target node group types.
         """
         return pulumi.get(self, "node_group_types")
 
     @node_group_types.setter
-    def node_group_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_group_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_group_types", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeNames")
-    def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The bootstrap scripts execution target node names.
         """
         return pulumi.get(self, "node_names")
 
     @node_names.setter
-    def node_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_names", value)
 
 
@@ -548,19 +548,19 @@ class ClusterNodeAttributeArgsDict(TypedDict):
     """
     Zone ID, e.g. cn-hangzhou-i
     """
-    data_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    data_disk_encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable data disk encryption.
     """
-    data_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    data_disk_kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
     """
-    system_disk_encrypted: NotRequired[pulumi.Input[_builtins.bool]]
+    system_disk_encrypted: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable system disk encryption.
     """
-    system_disk_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    system_disk_kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
     """
@@ -573,10 +573,10 @@ class ClusterNodeAttributeArgs:
                  security_group_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 data_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key_pair_name: The name of the key pair.
         :param pulumi.Input[_builtins.str] ram_role: Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
@@ -664,50 +664,50 @@ class ClusterNodeAttributeArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataDiskEncrypted")
-    def data_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable data disk encryption.
         """
         return pulumi.get(self, "data_disk_encrypted")
 
     @data_disk_encrypted.setter
-    def data_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDiskKmsKeyId")
-    def data_disk_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kms key id used to encrypt the data disk. It takes effect when data_disk_encrypted is true.
         """
         return pulumi.get(self, "data_disk_kms_key_id")
 
     @data_disk_kms_key_id.setter
-    def data_disk_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskEncrypted")
-    def system_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable system disk encryption.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
     @system_disk_encrypted.setter
-    def system_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskKmsKeyId")
-    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
         """
         return pulumi.get(self, "system_disk_kms_key_id")
 
     @system_disk_kms_key_id.setter
-    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_kms_key_id", value)
 
 
@@ -736,63 +736,63 @@ class ClusterNodeGroupArgsDict(TypedDict):
     """
     Host Ecs system disk information in this node group. See `system_disk` below.
     """
-    ack_config: NotRequired[pulumi.Input['ClusterNodeGroupAckConfigArgsDict']]
+    ack_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAckConfigArgs']]]
     """
     The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
     """
-    additional_security_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    additional_security_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
     """
-    auto_scaling_policy: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgsDict']]
+    auto_scaling_policy: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgs']]]
     """
     The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
     """
-    cost_optimized_config: NotRequired[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgsDict']]
+    cost_optimized_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgs']]]
     """
     The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
     """
-    deployment_set_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    deployment_set_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
     """
-    graceful_shutdown: NotRequired[pulumi.Input[_builtins.bool]]
+    graceful_shutdown: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
     """
-    node_resize_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    node_resize_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
     """
-    payment_type: NotRequired[pulumi.Input[_builtins.str]]
+    payment_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
     """
-    private_pool_options: NotRequired[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgsDict']]
+    private_pool_options: NotRequired[pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgs']]]
     """
     The node group specific private pool resources. See `private_pool_options` below.
     """
-    spot_bid_prices: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgsDict']]]]
+    spot_bid_prices: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]]
     """
     The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
     """
-    spot_instance_remedy: NotRequired[pulumi.Input[_builtins.bool]]
+    spot_instance_remedy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
     """
-    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    spot_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
     """
-    subscription_config: NotRequired[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgsDict']]
+    subscription_config: NotRequired[pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgs']]]
     """
     The detail configuration of subscription payment type. See `subscription_config` below.
     """
-    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
     """
-    with_public_ip: NotRequired[pulumi.Input[_builtins.bool]]
+    with_public_ip: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
     """
@@ -806,21 +806,21 @@ class ClusterNodeGroupArgs:
                  node_group_name: pulumi.Input[_builtins.str],
                  node_group_type: pulumi.Input[_builtins.str],
                  system_disk: pulumi.Input['ClusterNodeGroupSystemDiskArgs'],
-                 ack_config: Optional[pulumi.Input['ClusterNodeGroupAckConfigArgs']] = None,
-                 additional_security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_scaling_policy: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']] = None,
-                 cost_optimized_config: Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']] = None,
-                 deployment_set_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_resize_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options: Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']] = None,
-                 spot_bid_prices: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]] = None,
-                 spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_config: Optional[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs']] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 with_public_ip: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ack_config: pulumi.Input[Optional['ClusterNodeGroupAckConfigArgs']] = None,
+                 additional_security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_scaling_policy: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgs']] = None,
+                 cost_optimized_config: pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgs']] = None,
+                 deployment_set_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_resize_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options: pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgs']] = None,
+                 spot_bid_prices: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]] = None,
+                 spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_config: pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgs']] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 with_public_ip: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupDataDiskArgs']]] data_disks: Host Ecs data disks information in this node group. See `data_disks` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] instance_types: Host Ecs instance types. **NOTE:** From version 1.236.0, `instance_types` can be modified.
@@ -955,182 +955,182 @@ class ClusterNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="ackConfig")
-    def ack_config(self) -> Optional[pulumi.Input['ClusterNodeGroupAckConfigArgs']]:
+    def ack_config(self) -> pulumi.Input[Optional['ClusterNodeGroupAckConfigArgs']]:
         """
         The node group of ack configuration for emr cluster to deploying on kubernetes. See `ack_config` below.
         """
         return pulumi.get(self, "ack_config")
 
     @ack_config.setter
-    def ack_config(self, value: Optional[pulumi.Input['ClusterNodeGroupAckConfigArgs']]):
+    def ack_config(self, value: pulumi.Input[Optional['ClusterNodeGroupAckConfigArgs']]):
         pulumi.set(self, "ack_config", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalSecurityGroupIds")
-    def additional_security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def additional_security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Additional security Group IDS for Cluster, you can also specify this key for each node group. **NOTE:** From version 1.236.0, `additional_security_group_ids` can be modified.
         """
         return pulumi.get(self, "additional_security_group_ids")
 
     @additional_security_group_ids.setter
-    def additional_security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def additional_security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "additional_security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="autoScalingPolicy")
-    def auto_scaling_policy(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']]:
+    def auto_scaling_policy(self) -> pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgs']]:
         """
         The node group auto scaling policy for emr cluster. See `auto_scaling_policy` below.
         """
         return pulumi.get(self, "auto_scaling_policy")
 
     @auto_scaling_policy.setter
-    def auto_scaling_policy(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyArgs']]):
+    def auto_scaling_policy(self, value: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyArgs']]):
         pulumi.set(self, "auto_scaling_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="costOptimizedConfig")
-    def cost_optimized_config(self) -> Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']]:
+    def cost_optimized_config(self) -> pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgs']]:
         """
         The detail cost optimized configuration of emr cluster. See `cost_optimized_config` below. **NOTE:** From version 1.236.0, `cost_optimized_config` can be modified.
         """
         return pulumi.get(self, "cost_optimized_config")
 
     @cost_optimized_config.setter
-    def cost_optimized_config(self, value: Optional[pulumi.Input['ClusterNodeGroupCostOptimizedConfigArgs']]):
+    def cost_optimized_config(self, value: pulumi.Input[Optional['ClusterNodeGroupCostOptimizedConfigArgs']]):
         pulumi.set(self, "cost_optimized_config", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetStrategy")
-    def deployment_set_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_set_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment set strategy for this cluster node group. Supported value: NONE, CLUSTER or NODE_GROUP. **NOTE:** From version 1.236.0, `deployment_set_strategy` can be modified.
         """
         return pulumi.get(self, "deployment_set_strategy")
 
     @deployment_set_strategy.setter
-    def deployment_set_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_set_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_set_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
-    def graceful_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def graceful_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable emr cluster of task node graceful decommission, ’true’ or ‘false’ .
         """
         return pulumi.get(self, "graceful_shutdown")
 
     @graceful_shutdown.setter
-    def graceful_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def graceful_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "graceful_shutdown", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeResizeStrategy")
-    def node_resize_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_resize_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node resize strategy for this cluster node group. Supported value: PRIORITY, COST_OPTIMIZED.
         """
         return pulumi.get(self, "node_resize_strategy")
 
     @node_resize_strategy.setter
-    def node_resize_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_resize_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_resize_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type for this cluster. Supported value: PayAsYouGo or Subscription.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolOptions")
-    def private_pool_options(self) -> Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']]:
+    def private_pool_options(self) -> pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgs']]:
         """
         The node group specific private pool resources. See `private_pool_options` below.
         """
         return pulumi.get(self, "private_pool_options")
 
     @private_pool_options.setter
-    def private_pool_options(self, value: Optional[pulumi.Input['ClusterNodeGroupPrivatePoolOptionsArgs']]):
+    def private_pool_options(self, value: pulumi.Input[Optional['ClusterNodeGroupPrivatePoolOptionsArgs']]):
         pulumi.set(self, "private_pool_options", value)
 
     @_builtins.property
     @pulumi.getter(name="spotBidPrices")
-    def spot_bid_prices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]:
+    def spot_bid_prices(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]:
         """
         The spot bid prices of a PayAsYouGo instance. See `spot_bid_prices` below.
         """
         return pulumi.get(self, "spot_bid_prices")
 
     @spot_bid_prices.setter
-    def spot_bid_prices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]):
+    def spot_bid_prices(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupSpotBidPriceArgs']]]]):
         pulumi.set(self, "spot_bid_prices", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstanceRemedy")
-    def spot_instance_remedy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spot_instance_remedy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
         return pulumi.get(self, "spot_instance_remedy")
 
     @spot_instance_remedy.setter
-    def spot_instance_remedy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spot_instance_remedy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spot_instance_remedy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot strategy configuration of emr cluster. Valid values: `NoSpot`, `SpotWithPriceLimit`, `SpotAsPriceGo`.
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionConfig")
-    def subscription_config(self) -> Optional[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs']]:
+    def subscription_config(self) -> pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgs']]:
         """
         The detail configuration of subscription payment type. See `subscription_config` below.
         """
         return pulumi.get(self, "subscription_config")
 
     @subscription_config.setter
-    def subscription_config(self, value: Optional[pulumi.Input['ClusterNodeGroupSubscriptionConfigArgs']]):
+    def subscription_config(self, value: pulumi.Input[Optional['ClusterNodeGroupSubscriptionConfigArgs']]):
         pulumi.set(self, "subscription_config", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="withPublicIp")
-    def with_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def with_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
         """
         return pulumi.get(self, "with_public_ip")
 
     @with_public_ip.setter
-    def with_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def with_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "with_public_ip", value)
 
 
@@ -1159,47 +1159,47 @@ class ClusterNodeGroupAckConfigArgsDict(TypedDict):
     """
     The job pod resource of request memory.
     """
-    custom_annotations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgsDict']]]]
+    custom_annotations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]]
     """
     The ack cluster custom annotations. See `custom_annotations` below.
     """
-    custom_labels: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgsDict']]]]
+    custom_labels: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]]
     """
     The ack cluster custom labels. See `custom_labels` below.
     """
-    node_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    node_affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ack cluster node affinity.
     """
-    node_selectors: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgsDict']]]]
+    node_selectors: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]]
     """
     The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
     """
-    pod_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    pod_affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The job pod affinity.
     """
-    pod_anti_affinity: NotRequired[pulumi.Input[_builtins.str]]
+    pod_anti_affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The job pod anti-affinity.
     """
-    pre_start_commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    pre_start_commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The job pod pre start command.
     """
-    pvcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgsDict']]]]
+    pvcs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]]
     """
     The ack cluster persistent volume claim. See `pvcs` below.
     """
-    tolerations: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgsDict']]]]
+    tolerations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]]
     """
     The ack cluster tolerations. See `tolerations` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]]
     """
     The ack cluster volume mounts. See `volume_mounts` below.
     """
-    volumes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgsDict']]]]
+    volumes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]]
     """
     The ack cluster volumes. See `volumes` below.
     """
@@ -1213,17 +1213,17 @@ class ClusterNodeGroupAckConfigArgs:
                  namespace: pulumi.Input[_builtins.str],
                  request_cpu: pulumi.Input[_builtins.float],
                  request_memory: pulumi.Input[_builtins.float],
-                 custom_annotations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]] = None,
-                 custom_labels: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]] = None,
-                 node_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]] = None,
-                 pod_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 pod_anti_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_start_commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pvcs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]] = None,
-                 tolerations: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]] = None):
+                 custom_annotations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]] = None,
+                 custom_labels: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]] = None,
+                 node_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_selectors: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]] = None,
+                 pod_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 pod_anti_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_start_commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pvcs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]] = None,
+                 tolerations: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]] = None,
+                 volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] ack_instance_id: The ack cluster instance id.
         :param pulumi.Input[_builtins.float] limit_cpu: The job pod resource of limit cpu.
@@ -1346,134 +1346,134 @@ class ClusterNodeGroupAckConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="customAnnotations")
-    def custom_annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]:
+    def custom_annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]:
         """
         The ack cluster custom annotations. See `custom_annotations` below.
         """
         return pulumi.get(self, "custom_annotations")
 
     @custom_annotations.setter
-    def custom_annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]):
+    def custom_annotations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomAnnotationArgs']]]]):
         pulumi.set(self, "custom_annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="customLabels")
-    def custom_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]:
+    def custom_labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]:
         """
         The ack cluster custom labels. See `custom_labels` below.
         """
         return pulumi.get(self, "custom_labels")
 
     @custom_labels.setter
-    def custom_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]):
+    def custom_labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigCustomLabelArgs']]]]):
         pulumi.set(self, "custom_labels", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAffinity")
-    def node_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ack cluster node affinity.
         """
         return pulumi.get(self, "node_affinity")
 
     @node_affinity.setter
-    def node_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeSelectors")
-    def node_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]:
+    def node_selectors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]:
         """
         The ack cluster node selectors for job pods scheduling. See `node_selectors` below.
         """
         return pulumi.get(self, "node_selectors")
 
     @node_selectors.setter
-    def node_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]):
+    def node_selectors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigNodeSelectorArgs']]]]):
         pulumi.set(self, "node_selectors", value)
 
     @_builtins.property
     @pulumi.getter(name="podAffinity")
-    def pod_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The job pod affinity.
         """
         return pulumi.get(self, "pod_affinity")
 
     @pod_affinity.setter
-    def pod_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="podAntiAffinity")
-    def pod_anti_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pod_anti_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The job pod anti-affinity.
         """
         return pulumi.get(self, "pod_anti_affinity")
 
     @pod_anti_affinity.setter
-    def pod_anti_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pod_anti_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pod_anti_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="preStartCommands")
-    def pre_start_commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pre_start_commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The job pod pre start command.
         """
         return pulumi.get(self, "pre_start_commands")
 
     @pre_start_commands.setter
-    def pre_start_commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pre_start_commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pre_start_commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def pvcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]:
+    def pvcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]:
         """
         The ack cluster persistent volume claim. See `pvcs` below.
         """
         return pulumi.get(self, "pvcs")
 
     @pvcs.setter
-    def pvcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]):
+    def pvcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigPvcArgs']]]]):
         pulumi.set(self, "pvcs", value)
 
     @_builtins.property
     @pulumi.getter
-    def tolerations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]:
+    def tolerations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]:
         """
         The ack cluster tolerations. See `tolerations` below.
         """
         return pulumi.get(self, "tolerations")
 
     @tolerations.setter
-    def tolerations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]):
+    def tolerations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigTolerationArgs']]]]):
         pulumi.set(self, "tolerations", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]:
         """
         The ack cluster volume mounts. See `volume_mounts` below.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]:
+    def volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]:
         """
         The ack cluster volumes. See `volumes` below.
         """
         return pulumi.get(self, "volumes")
 
     @volumes.setter
-    def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]):
+    def volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAckConfigVolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
 
@@ -1482,7 +1482,7 @@ class ClusterNodeGroupAckConfigCustomAnnotationArgsDict(TypedDict):
     """
     The tag key for this scaling rule specific metrics trigger.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value for this scaling rule specific metrics trigger.
     """
@@ -1491,7 +1491,7 @@ class ClusterNodeGroupAckConfigCustomAnnotationArgsDict(TypedDict):
 class ClusterNodeGroupAckConfigCustomAnnotationArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The tag key for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.str] value: The tag value for this scaling rule specific metrics trigger.
@@ -1514,14 +1514,14 @@ class ClusterNodeGroupAckConfigCustomAnnotationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1530,7 +1530,7 @@ class ClusterNodeGroupAckConfigCustomLabelArgsDict(TypedDict):
     """
     The tag key for this scaling rule specific metrics trigger.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value for this scaling rule specific metrics trigger.
     """
@@ -1539,7 +1539,7 @@ class ClusterNodeGroupAckConfigCustomLabelArgsDict(TypedDict):
 class ClusterNodeGroupAckConfigCustomLabelArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The tag key for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.str] value: The tag value for this scaling rule specific metrics trigger.
@@ -1562,14 +1562,14 @@ class ClusterNodeGroupAckConfigCustomLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1578,7 +1578,7 @@ class ClusterNodeGroupAckConfigNodeSelectorArgsDict(TypedDict):
     """
     The tag key for this scaling rule specific metrics trigger.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value for this scaling rule specific metrics trigger.
     """
@@ -1587,7 +1587,7 @@ class ClusterNodeGroupAckConfigNodeSelectorArgsDict(TypedDict):
 class ClusterNodeGroupAckConfigNodeSelectorArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The tag key for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.str] value: The tag value for this scaling rule specific metrics trigger.
@@ -1610,14 +1610,14 @@ class ClusterNodeGroupAckConfigNodeSelectorArgs:
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1707,19 +1707,19 @@ class ClusterNodeGroupAckConfigPvcArgs:
 
 
 class ClusterNodeGroupAckConfigTolerationArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The effect of ack cluster tolerations.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag key for this scaling rule specific metrics trigger.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The operator of ack cluster tolerations.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value for this scaling rule specific metrics trigger.
     """
@@ -1727,10 +1727,10 @@ class ClusterNodeGroupAckConfigTolerationArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeGroupAckConfigTolerationArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: The effect of ack cluster tolerations.
         :param pulumi.Input[_builtins.str] key: The tag key for this scaling rule specific metrics trigger.
@@ -1748,50 +1748,50 @@ class ClusterNodeGroupAckConfigTolerationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effect of ack cluster tolerations.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag key for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operator of ack cluster tolerations.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -1909,11 +1909,11 @@ class ClusterNodeGroupAckConfigVolumeMountArgs:
 
 
 class ClusterNodeGroupAutoScalingPolicyArgsDict(TypedDict):
-    constraints: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict']]
+    constraints: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]]
     """
     The constraints of auto scaling policy. See `constraints` below.
     """
-    scaling_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict']]]]
+    scaling_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]]
     """
     The scaling rules of auto scaling policy. See `scaling_rules` below.
     """
@@ -1921,8 +1921,8 @@ class ClusterNodeGroupAutoScalingPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyArgs:
     def __init__(__self__, *,
-                 constraints: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']] = None,
-                 scaling_rules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]] = None):
+                 constraints: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']] = None,
+                 scaling_rules: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]] = None):
         """
         :param pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs'] constraints: The constraints of auto scaling policy. See `constraints` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]] scaling_rules: The scaling rules of auto scaling policy. See `scaling_rules` below.
@@ -1934,35 +1934,35 @@ class ClusterNodeGroupAutoScalingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def constraints(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]:
+    def constraints(self) -> pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]:
         """
         The constraints of auto scaling policy. See `constraints` below.
         """
         return pulumi.get(self, "constraints")
 
     @constraints.setter
-    def constraints(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]):
+    def constraints(self, value: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyConstraintsArgs']]):
         pulumi.set(self, "constraints", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRules")
-    def scaling_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]:
+    def scaling_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]:
         """
         The scaling rules of auto scaling policy. See `scaling_rules` below.
         """
         return pulumi.get(self, "scaling_rules")
 
     @scaling_rules.setter
-    def scaling_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]):
+    def scaling_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleArgs']]]]):
         pulumi.set(self, "scaling_rules", value)
 
 
 class ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict(TypedDict):
-    max_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    max_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum capacity of constraints for emr node group auto scaling policy.
     """
-    min_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    min_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum capacity of constraints for emr node group auto scaling policy.
     """
@@ -1970,8 +1970,8 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
     def __init__(__self__, *,
-                 max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_capacity: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_capacity: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_capacity: The maximum capacity of constraints for emr node group auto scaling policy.
         :param pulumi.Input[_builtins.int] min_capacity: The minimum capacity of constraints for emr node group auto scaling policy.
@@ -1983,26 +1983,26 @@ class ClusterNodeGroupAutoScalingPolicyConstraintsArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxCapacity")
-    def max_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum capacity of constraints for emr node group auto scaling policy.
         """
         return pulumi.get(self, "max_capacity")
 
     @max_capacity.setter
-    def max_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="minCapacity")
-    def min_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum capacity of constraints for emr node group auto scaling policy.
         """
         return pulumi.get(self, "min_capacity")
 
     @min_capacity.setter
-    def min_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_capacity", value)
 
 
@@ -2023,19 +2023,19 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgsDict(TypedDict):
     """
     The trigger type of auto scaling policy. Valid values: `TIME_TRIGGER` and `METRICS_TRIGGER`.
     """
-    adjustment_type: NotRequired[pulumi.Input[_builtins.str]]
+    adjustment_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
     """
-    metrics_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict']]
+    metrics_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]]
     """
     The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
     """
-    min_adjustment_value: NotRequired[pulumi.Input[_builtins.int]]
+    min_adjustment_value: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The minimum adjustment value of auto scaling policy.
     """
-    time_trigger: NotRequired[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict']]
+    time_trigger: NotRequired[pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]]
     """
     The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
     """
@@ -2047,10 +2047,10 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
                  adjustment_value: pulumi.Input[_builtins.int],
                  rule_name: pulumi.Input[_builtins.str],
                  trigger_type: pulumi.Input[_builtins.str],
-                 adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']] = None,
-                 min_adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_trigger: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']] = None):
+                 adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_trigger: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']] = None,
+                 min_adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_trigger: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] activity_type: The activity type of auto scaling policy. Valid values: `SCALE_OUT` and `SCALE_IN`.
         :param pulumi.Input[_builtins.int] adjustment_value: The adjustment value of auto scaling policy. The value should between 1 and 5000.
@@ -2124,50 +2124,50 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="adjustmentType")
-    def adjustment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The adjustment type of auto scaling policy. Valid values: `CHANGE_IN_CAPACITY` and `EXACT_CAPACITY`.
         """
         return pulumi.get(self, "adjustment_type")
 
     @adjustment_type.setter
-    def adjustment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsTrigger")
-    def metrics_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]:
+    def metrics_trigger(self) -> pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]:
         """
         The trigger metrics of scaling rules for emr node group auto scaling policy. See `metrics_trigger` below.
         """
         return pulumi.get(self, "metrics_trigger")
 
     @metrics_trigger.setter
-    def metrics_trigger(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]):
+    def metrics_trigger(self, value: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs']]):
         pulumi.set(self, "metrics_trigger", value)
 
     @_builtins.property
     @pulumi.getter(name="minAdjustmentValue")
-    def min_adjustment_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_adjustment_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum adjustment value of auto scaling policy.
         """
         return pulumi.get(self, "min_adjustment_value")
 
     @min_adjustment_value.setter
-    def min_adjustment_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_adjustment_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_adjustment_value", value)
 
     @_builtins.property
     @pulumi.getter(name="timeTrigger")
-    def time_trigger(self) -> Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]:
+    def time_trigger(self) -> pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]:
         """
         The trigger time of scaling rules for emr node group auto scaling policy. See `time_trigger` below.
         """
         return pulumi.get(self, "time_trigger")
 
     @time_trigger.setter
-    def time_trigger(self, value: Optional[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]):
+    def time_trigger(self, value: pulumi.Input[Optional['ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs']]):
         pulumi.set(self, "time_trigger", value)
 
 
@@ -2180,19 +2180,19 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgsDict(TypedDi
     """
     The time window for this scaling rule specific metrics trigger.
     """
-    condition_logic_operator: NotRequired[pulumi.Input[_builtins.str]]
+    condition_logic_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
     """
-    conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDict']]]]
+    conditions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]]
     """
     The conditions for this scaling rule specific metrics trigger. See `conditions` below.
     """
-    cool_down_interval: NotRequired[pulumi.Input[_builtins.int]]
+    cool_down_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time of cool down interval for this scaling rule specific metrics trigger.
     """
-    time_constraints: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict']]]]
+    time_constraints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]]
     """
     The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
     """
@@ -2202,10 +2202,10 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
     def __init__(__self__, *,
                  evaluation_count: pulumi.Input[_builtins.int],
                  time_window: pulumi.Input[_builtins.int],
-                 condition_logic_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]] = None,
-                 cool_down_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_constraints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]] = None):
+                 condition_logic_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]] = None,
+                 cool_down_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_constraints: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.int] evaluation_count: The evaluation count for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.int] time_window: The time window for this scaling rule specific metrics trigger.
@@ -2251,50 +2251,50 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="conditionLogicOperator")
-    def condition_logic_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition_logic_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition logic operator for this scaling rule specific metrics trigger. Valid values: `And` and `Or`.
         """
         return pulumi.get(self, "condition_logic_operator")
 
     @condition_logic_operator.setter
-    def condition_logic_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition_logic_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition_logic_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]:
+    def conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]:
         """
         The conditions for this scaling rule specific metrics trigger. See `conditions` below.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]):
+    def conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="coolDownInterval")
-    def cool_down_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cool_down_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time of cool down interval for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "cool_down_interval")
 
     @cool_down_interval.setter
-    def cool_down_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cool_down_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cool_down_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="timeConstraints")
-    def time_constraints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]:
+    def time_constraints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]:
         """
         The time constraints for this scaling rule specific metrics trigger. See `time_constraints` below.
         """
         return pulumi.get(self, "time_constraints")
 
     @time_constraints.setter
-    def time_constraints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]):
+    def time_constraints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs']]]]):
         pulumi.set(self, "time_constraints", value)
 
 
@@ -2315,7 +2315,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgsDic
     """
     The threshold for this scaling rule specific metrics trigger.
     """
-    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgsDict']]]]
+    tags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]]
     """
     A mapping of tags to assign to the resource.
     """
@@ -2327,7 +2327,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
                  metric_name: pulumi.Input[_builtins.str],
                  statistics: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.float],
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]] = None):
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator for this scaling rule specific metrics trigger. Invalid values: `EQ`, `NE`, `GT`, `LT`, `GE`, `LE`.
         :param pulumi.Input[_builtins.str] metric_name: The metric name for this scaling rule specific metrics trigger.
@@ -2392,14 +2392,14 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs']]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -2408,7 +2408,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
     """
     The tag key for this scaling rule specific metrics trigger.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value for this scaling rule specific metrics trigger.
     """
@@ -2417,7 +2417,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[_builtins.str],
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The tag key for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.str] value: The tag value for this scaling rule specific metrics trigger.
@@ -2440,23 +2440,23 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTagArgs
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The end time for this scaling rule specific metrics trigger.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The start time for this scaling rule specific metrics trigger.
     """
@@ -2464,8 +2464,8 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
 @pulumi.input_type
 class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: The end time for this scaling rule specific metrics trigger.
         :param pulumi.Input[_builtins.str] start_time: The start time for this scaling rule specific metrics trigger.
@@ -2477,26 +2477,26 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraintAr
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -2505,23 +2505,23 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict(TypedDict)
     """
     The launch time for this scaling rule specific time trigger.
     """
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The end time for this scaling rule specific metrics trigger.
     """
-    launch_expiration_time: NotRequired[pulumi.Input[_builtins.int]]
+    launch_expiration_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
     """
-    recurrence_type: NotRequired[pulumi.Input[_builtins.str]]
+    recurrence_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
     """
-    recurrence_value: NotRequired[pulumi.Input[_builtins.str]]
+    recurrence_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The recurrence value for this scaling rule specific time trigger.
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The start time for this scaling rule specific metrics trigger.
     """
@@ -2530,11 +2530,11 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgsDict(TypedDict)
 class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
     def __init__(__self__, *,
                  launch_time: pulumi.Input[_builtins.str],
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_expiration_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 recurrence_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 recurrence_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_expiration_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 recurrence_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 recurrence_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] launch_time: The launch time for this scaling rule specific time trigger.
         :param pulumi.Input[_builtins.str] end_time: The end time for this scaling rule specific metrics trigger.
@@ -2569,62 +2569,62 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleTimeTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="launchExpirationTime")
-    def launch_expiration_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def launch_expiration_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The launch expiration time for this scaling rule specific time trigger. The value should between 0 and 3600.
         """
         return pulumi.get(self, "launch_expiration_time")
 
     @launch_expiration_time.setter
-    def launch_expiration_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def launch_expiration_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "launch_expiration_time", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceType")
-    def recurrence_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recurrence type for this scaling rule specific time trigger. Valid values: `MINUTELY`, `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`.
         """
         return pulumi.get(self, "recurrence_type")
 
     @recurrence_type.setter
-    def recurrence_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_type", value)
 
     @_builtins.property
     @pulumi.getter(name="recurrenceValue")
-    def recurrence_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def recurrence_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recurrence value for this scaling rule specific time trigger.
         """
         return pulumi.get(self, "recurrence_value")
 
     @recurrence_value.setter
-    def recurrence_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def recurrence_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "recurrence_value", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time for this scaling rule specific metrics trigger.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
 
@@ -2703,11 +2703,11 @@ class ClusterNodeGroupDataDiskArgsDict(TypedDict):
     """
     The size of a data disk, at least 40. Unit: GiB.
     """
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The count of a data disk.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
     """
@@ -2717,8 +2717,8 @@ class ClusterNodeGroupDataDiskArgs:
     def __init__(__self__, *,
                  category: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param pulumi.Input[_builtins.int] size: The size of a data disk, at least 40. Unit: GiB.
@@ -2758,35 +2758,35 @@ class ClusterNodeGroupDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of a data disk.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
 
 class ClusterNodeGroupPrivatePoolOptionsArgsDict(TypedDict):
-    match_criteria: NotRequired[pulumi.Input[_builtins.str]]
+    match_criteria: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
     """
-    private_pool_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    private_pool_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The node group specific private pool resource ids.
     """
@@ -2794,8 +2794,8 @@ class ClusterNodeGroupPrivatePoolOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeGroupPrivatePoolOptionsArgs:
     def __init__(__self__, *,
-                 match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] match_criteria: The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] private_pool_ids: The node group specific private pool resource ids.
@@ -2807,26 +2807,26 @@ class ClusterNodeGroupPrivatePoolOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchCriteria")
-    def match_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
         """
         return pulumi.get(self, "match_criteria")
 
     @match_criteria.setter
-    def match_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolIds")
-    def private_pool_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_pool_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The node group specific private pool resource ids.
         """
         return pulumi.get(self, "private_pool_ids")
 
     @private_pool_ids.setter
-    def private_pool_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_pool_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_pool_ids", value)
 
 
@@ -2886,19 +2886,19 @@ class ClusterNodeGroupSubscriptionConfigArgsDict(TypedDict):
     """
     If paymentType is Subscription, this should be specified. Supported value: Month or Year.
     """
-    auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_pay_order: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
     """
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
     """
-    auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
+    auto_renew_duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
     """
-    auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
+    auto_renew_duration_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If paymentType is Subscription, this should be specified. Supported value: Month or Year.
     """
@@ -2908,10 +2908,10 @@ class ClusterNodeGroupSubscriptionConfigArgs:
     def __init__(__self__, *,
                  payment_duration: pulumi.Input[_builtins.int],
                  payment_duration_unit: pulumi.Input[_builtins.str],
-                 auto_pay_order: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_duration_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay_order: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_duration_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[_builtins.str] payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -2957,50 +2957,50 @@ class ClusterNodeGroupSubscriptionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPayOrder")
-    def auto_pay_order(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay_order(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 
     @auto_pay_order.setter
-    def auto_pay_order(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay_order(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay_order", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDurationUnit")
-    def auto_renew_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         return pulumi.get(self, "auto_renew_duration_unit")
 
     @auto_renew_duration_unit.setter
-    def auto_renew_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_duration_unit", value)
 
 
@@ -3013,11 +3013,11 @@ class ClusterNodeGroupSystemDiskArgsDict(TypedDict):
     """
     The size of a data disk, at least 40. Unit: GiB.
     """
-    count: NotRequired[pulumi.Input[_builtins.int]]
+    count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The count of a data disk.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
     """
@@ -3027,8 +3027,8 @@ class ClusterNodeGroupSystemDiskArgs:
     def __init__(__self__, *,
                  category: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
-                 count: Optional[pulumi.Input[_builtins.int]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 count: pulumi.Input[Optional[_builtins.int]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The type of the data disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro`. **NOTE:** Since version v1.230.0, the categories `cloud`, `local_hdd_pro`, `local_disk`, `local_ssd_pro` are available.
         :param pulumi.Input[_builtins.int] size: The size of a data disk, at least 40. Unit: GiB.
@@ -3068,26 +3068,26 @@ class ClusterNodeGroupSystemDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of a data disk.
         """
         return pulumi.get(self, "count")
 
     @count.setter
-    def count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "count", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
 
@@ -3100,19 +3100,19 @@ class ClusterSubscriptionConfigArgsDict(TypedDict):
     """
     If paymentType is Subscription, this should be specified. Supported value: Month or Year.
     """
-    auto_pay_order: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_pay_order: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
     """
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
     """
-    auto_renew_duration: NotRequired[pulumi.Input[_builtins.int]]
+    auto_renew_duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
     """
-    auto_renew_duration_unit: NotRequired[pulumi.Input[_builtins.str]]
+    auto_renew_duration_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If paymentType is Subscription, this should be specified. Supported value: Month or Year.
     """
@@ -3122,10 +3122,10 @@ class ClusterSubscriptionConfigArgs:
     def __init__(__self__, *,
                  payment_duration: pulumi.Input[_builtins.int],
                  payment_duration_unit: pulumi.Input[_builtins.str],
-                 auto_pay_order: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_duration_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay_order: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_duration_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] payment_duration: If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         :param pulumi.Input[_builtins.str] payment_duration_unit: If paymentType is Subscription, this should be specified. Supported value: Month or Year.
@@ -3171,50 +3171,50 @@ class ClusterSubscriptionConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPayOrder")
-    def auto_pay_order(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay_order(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto pay order for payment type of subscription, ’true’ or ‘false’ .  Default value is ’true’.
         """
         return pulumi.get(self, "auto_pay_order")
 
     @auto_pay_order.setter
-    def auto_pay_order(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay_order(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay_order", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If paymentType is Subscription, this should be specified. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36、48.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDurationUnit")
-    def auto_renew_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If paymentType is Subscription, this should be specified. Supported value: Month or Year.
         """
         return pulumi.get(self, "auto_renew_duration_unit")
 
     @auto_renew_duration_unit.setter
-    def auto_renew_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_duration_unit", value)
 
 

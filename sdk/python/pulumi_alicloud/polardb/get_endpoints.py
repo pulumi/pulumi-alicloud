@@ -138,8 +138,8 @@ def get_endpoints(db_cluster_id: Optional[_builtins.str] = None,
         db_endpoint_id=pulumi.get(__ret__, 'db_endpoint_id'),
         endpoints=pulumi.get(__ret__, 'endpoints'),
         id=pulumi.get(__ret__, 'id'))
-def get_endpoints_output(db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         db_endpoint_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_endpoints_output(db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         db_endpoint_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointsResult]:
     """
     The `polardb_get_endpoints` data source provides a collection of PolarDB endpoints available in Alibaba Cloud account.

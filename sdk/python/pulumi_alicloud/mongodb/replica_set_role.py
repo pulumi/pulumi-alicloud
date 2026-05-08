@@ -22,8 +22,8 @@ class ReplicaSetRoleArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  network_type: pulumi.Input[_builtins.str],
                  role_id: pulumi.Input[_builtins.str],
-                 connection_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReplicaSetRole resource.
 
@@ -83,39 +83,39 @@ class ReplicaSetRoleArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionPort")
-    def connection_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the connection string, will be computed if not specified.`
         """
         return pulumi.get(self, "connection_port")
 
     @connection_port.setter
-    def connection_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_port", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the connection string, will be computed if not specified.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
 
 @pulumi.input_type
 class _ReplicaSetRoleState:
     def __init__(__self__, *,
-                 connection_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_set_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_set_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReplicaSetRole resources.
 
@@ -146,55 +146,55 @@ class _ReplicaSetRoleState:
 
     @_builtins.property
     @pulumi.getter(name="connectionDomain")
-    def connection_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection address of the role.
         """
         return pulumi.get(self, "connection_domain")
 
     @connection_domain.setter
-    def connection_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPort")
-    def connection_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the connection string, will be computed if not specified.`
         """
         return pulumi.get(self, "connection_port")
 
     @connection_port.setter
-    def connection_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_port", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the connection string, will be computed if not specified.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the connection string. Valid values:
         - `VPC`: private network address.
@@ -203,31 +203,31 @@ class _ReplicaSetRoleState:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaSetRole")
-    def replica_set_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_set_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the related connection string.
         """
         return pulumi.get(self, "replica_set_role")
 
     @replica_set_role.setter
-    def replica_set_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_set_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_set_role", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role ID in the replica set.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
@@ -237,11 +237,11 @@ class ReplicaSetRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an Alicloud MongoDB replica set role resource to modify the connection string of the replica set.
@@ -404,11 +404,11 @@ class ReplicaSetRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connection_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -441,13 +441,13 @@ class ReplicaSetRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            connection_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_port: Optional[pulumi.Input[_builtins.int]] = None,
-            connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_set_role: Optional[pulumi.Input[_builtins.str]] = None,
-            role_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReplicaSetRole':
+            connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_port: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_set_role: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReplicaSetRole':
         """
         Get an existing ReplicaSetRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

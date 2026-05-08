@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

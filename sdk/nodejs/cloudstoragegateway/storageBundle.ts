@@ -104,11 +104,11 @@ export interface StorageBundleState {
     /**
      * The description of storage bundle.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of storage bundle.
      */
-    storageBundleName?: pulumi.Input<string>;
+    storageBundleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -118,7 +118,7 @@ export interface StorageBundleArgs {
     /**
      * The description of storage bundle.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of storage bundle.
      */

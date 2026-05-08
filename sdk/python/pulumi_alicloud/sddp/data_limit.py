@@ -20,15 +20,15 @@ __all__ = ['DataLimitArgs', 'DataLimit']
 class DataLimitArgs:
     def __init__(__self__, *,
                  resource_type: pulumi.Input[_builtins.str],
-                 audit_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DataLimit resource.
 
@@ -77,126 +77,126 @@ class DataLimitArgs:
 
     @_builtins.property
     @pulumi.getter(name="auditStatus")
-    def audit_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audit_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to enable the log auditing feature. Valid values: `0`, `1`.
         """
         return pulumi.get(self, "audit_status")
 
     @audit_status.setter
-    def audit_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audit_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audit_status", value)
 
     @_builtins.property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the database. Valid values: `MySQL`, `SQLServer`.
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="logStoreDay")
-    def log_store_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_store_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
         """
         return pulumi.get(self, "log_store_day")
 
     @log_store_day.setter
-    def log_store_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_store_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_store_day", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data asset.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password that is used to connect to the database.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port that is used to connect to the database.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceRegionId")
-    def service_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the data asset.
         """
         return pulumi.get(self, "service_region_id")
 
     @service_region_id.setter
-    def service_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which the data asset belongs.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 @pulumi.input_type
 class _DataLimitState:
     def __init__(__self__, *,
-                 audit_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DataLimit resources.
 
@@ -234,122 +234,122 @@ class _DataLimitState:
 
     @_builtins.property
     @pulumi.getter(name="auditStatus")
-    def audit_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audit_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to enable the log auditing feature. Valid values: `0`, `1`.
         """
         return pulumi.get(self, "audit_status")
 
     @audit_status.setter
-    def audit_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audit_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audit_status", value)
 
     @_builtins.property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the database. Valid values: `MySQL`, `SQLServer`.
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="logStoreDay")
-    def log_store_day(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_store_day(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
         """
         return pulumi.get(self, "log_store_day")
 
     @log_store_day.setter
-    def log_store_day(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_store_day(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_store_day", value)
 
     @_builtins.property
     @pulumi.getter(name="parentId")
-    def parent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data asset.
         """
         return pulumi.get(self, "parent_id")
 
     @parent_id.setter
-    def parent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password that is used to connect to the database.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port that is used to connect to the database.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceRegionId")
-    def service_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the data asset.
         """
         return pulumi.get(self, "service_region_id")
 
     @service_region_id.setter
-    def service_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the service to which the data asset belongs.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -359,16 +359,16 @@ class DataLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Data Security Center Data Limit resource.
@@ -417,7 +417,7 @@ class DataLimit(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=default_switch.id,
@@ -528,7 +528,7 @@ class DataLimit(pulumi.CustomResource):
             engine="MySQL",
             engine_version="8.0",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             instance_charge_type="Postpaid",
             instance_name=name,
             vswitch_id=default_switch.id,
@@ -588,16 +588,16 @@ class DataLimit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store_day: Optional[pulumi.Input[_builtins.int]] = None,
-                 parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+                 parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -629,16 +629,16 @@ class DataLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_status: Optional[pulumi.Input[_builtins.int]] = None,
-            engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            log_store_day: Optional[pulumi.Input[_builtins.int]] = None,
-            parent_id: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            service_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DataLimit':
+            audit_status: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            log_store_day: pulumi.Input[Optional[_builtins.int]] = None,
+            parent_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            service_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DataLimit':
         """
         Get an existing DataLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

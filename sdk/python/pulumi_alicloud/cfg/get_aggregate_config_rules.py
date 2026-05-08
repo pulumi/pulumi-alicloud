@@ -220,14 +220,14 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[_builtins.st
         risk_level=pulumi.get(__ret__, 'risk_level'),
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'))
-def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      risk_level: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_aggregate_config_rules_output(aggregate_config_rule_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      risk_level: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAggregateConfigRulesResult]:
     """
     This data source provides the Config Aggregate Config Rules of the current Alibaba Cloud user.

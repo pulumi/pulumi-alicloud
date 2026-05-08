@@ -144,10 +144,10 @@ def get_listeners(ids: Optional[Sequence[_builtins.str]] = None,
         listeners=pulumi.get(__ret__, 'listeners'),
         load_balancer_ids=pulumi.get(__ret__, 'load_balancer_ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_listeners_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         listener_protocol: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         load_balancer_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_listeners_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         listener_protocol: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         load_balancer_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListenersResult]:
     """
     This data source provides the Nlb Listeners of the current Alibaba Cloud user.

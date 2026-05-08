@@ -28,7 +28,7 @@ class ServiceLinkedRoleArgs:
 @pulumi.input_type
 class _ServiceLinkedRoleState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.bool]] = None):
+                 status: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
 
@@ -39,14 +39,14 @@ class _ServiceLinkedRoleState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "status", value)
 
 
@@ -159,7 +159,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ServiceLinkedRole':
+            status: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServiceLinkedRole':
         """
         Get an existing ServiceLinkedRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

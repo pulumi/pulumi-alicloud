@@ -23,9 +23,9 @@ class PoolArgs:
                  address_pool_type: pulumi.Input[_builtins.str],
                  enable_status: pulumi.Input[_builtins.str],
                  health_judgement: pulumi.Input[_builtins.str],
-                 address_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pool resource.
 
@@ -124,7 +124,7 @@ class PoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressLbStrategy")
-    def address_lb_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_lb_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Load balancing strategy among addresses in the address pool:
         - round_robin: Round robin. For any incoming DNS query, all addresses are returned, and their order is rotated with each request.
@@ -135,24 +135,24 @@ class PoolArgs:
         return pulumi.get(self, "address_lb_strategy")
 
     @address_lb_strategy.setter
-    def address_lb_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_lb_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_lb_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A remark for the address pool to help users distinguish its usage scenario.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="sequenceLbStrategyMode")
-    def sequence_lb_strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
         - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
@@ -161,21 +161,21 @@ class PoolArgs:
         return pulumi.get(self, "sequence_lb_strategy_mode")
 
     @sequence_lb_strategy_mode.setter
-    def sequence_lb_strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sequence_lb_strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sequence_lb_strategy_mode", value)
 
 
 @pulumi.input_type
 class _PoolState:
     def __init__(__self__, *,
-                 address_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pool resources.
 
@@ -223,7 +223,7 @@ class _PoolState:
 
     @_builtins.property
     @pulumi.getter(name="addressLbStrategy")
-    def address_lb_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_lb_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Load balancing strategy among addresses in the address pool:
         - round_robin: Round robin. For any incoming DNS query, all addresses are returned, and their order is rotated with each request.
@@ -234,24 +234,24 @@ class _PoolState:
         return pulumi.get(self, "address_lb_strategy")
 
     @address_lb_strategy.setter
-    def address_lb_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_lb_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_lb_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="addressPoolName")
-    def address_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the address pool. Fuzzy search is supported for the entered address pool name.
         """
         return pulumi.get(self, "address_pool_name")
 
     @address_pool_name.setter
-    def address_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="addressPoolType")
-    def address_pool_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_pool_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address pool type:
         - IPv4: Indicates that the service address to be resolved is an IPv4 address.
@@ -261,24 +261,24 @@ class _PoolState:
         return pulumi.get(self, "address_pool_type")
 
     @address_pool_type.setter
-    def address_pool_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_pool_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_pool_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time of the address pool.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStatus")
-    def enable_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable status of the address pool:
         - enable: Enabled. The address pool participates in DNS resolution when its health check is normal.
@@ -287,12 +287,12 @@ class _PoolState:
         return pulumi.get(self, "enable_status")
 
     @enable_status.setter
-    def enable_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_status", value)
 
     @_builtins.property
     @pulumi.getter(name="healthJudgement")
-    def health_judgement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_judgement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Conditions for determining the health status of the address pool:  
         - any_ok: At least one address in the address pool is available.
@@ -304,24 +304,24 @@ class _PoolState:
         return pulumi.get(self, "health_judgement")
 
     @health_judgement.setter
-    def health_judgement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_judgement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_judgement", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A remark for the address pool to help users distinguish its usage scenario.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="sequenceLbStrategyMode")
-    def sequence_lb_strategy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sequence_lb_strategy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service recovery mode for preceding resources when the load balancing strategy among addresses is set to sequential mode:  
         - preemptive: Preemptive mode. When a preceding resource recovers, the address with the smaller sequence number is prioritized.
@@ -330,7 +330,7 @@ class _PoolState:
         return pulumi.get(self, "sequence_lb_strategy_mode")
 
     @sequence_lb_strategy_mode.setter
-    def sequence_lb_strategy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sequence_lb_strategy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sequence_lb_strategy_mode", value)
 
 
@@ -340,13 +340,13 @@ class Pool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Cloud Gtm Address Pool resource.
@@ -479,13 +479,13 @@ class Pool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 address_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 address_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,14 +521,14 @@ class Pool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_lb_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            address_pool_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-            health_judgement: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence_lb_strategy_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pool':
+            address_lb_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            address_pool_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            health_judgement: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence_lb_strategy_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pool':
         """
         Get an existing Pool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

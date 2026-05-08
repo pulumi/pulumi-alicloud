@@ -24,9 +24,9 @@ class TransportLayerApplicationArgs:
                  record_name: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]],
                  site_id: pulumi.Input[_builtins.str],
-                 cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_access_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.str]] = None):
+                 cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransportLayerApplication resource.
 
@@ -85,52 +85,52 @@ class TransportLayerApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossBorderOptimization")
-    def cross_border_optimization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_border_optimization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable China mainland network access optimization, default is disabled. Value range:
         """
         return pulumi.get(self, "cross_border_optimization")
 
     @cross_border_optimization.setter
-    def cross_border_optimization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_border_optimization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_border_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAccessRule")
-    def ip_access_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_access_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         """
         return pulumi.get(self, "ip_access_rule")
 
     @ip_access_rule.setter
-    def ip_access_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_access_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_access_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 switch.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6", value)
 
 
 @pulumi.input_type
 class _TransportLayerApplicationState:
     def __init__(__self__, *,
-                 application_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_access_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransportLayerApplication resources.
 
@@ -162,98 +162,98 @@ class _TransportLayerApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def application_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Layer 4 application ID.
         """
         return pulumi.get(self, "application_id")
 
     @application_id.setter
-    def application_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def application_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "application_id", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBorderOptimization")
-    def cross_border_optimization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_border_optimization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable China mainland network access optimization, default is disabled. Value range:
         """
         return pulumi.get(self, "cross_border_optimization")
 
     @cross_border_optimization.setter
-    def cross_border_optimization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_border_optimization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_border_optimization", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAccessRule")
-    def ip_access_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_access_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
         """
         return pulumi.get(self, "ip_access_rule")
 
     @ip_access_rule.setter
-    def ip_access_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_access_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_access_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 switch.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="recordName")
-    def record_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Domain name of the transport layer application
         """
         return pulumi.get(self, "record_name")
 
     @record_name.setter
-    def record_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]]:
         """
         The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TransportLayerApplicationRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the transport layer application, modification and deletion are not allowed.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -263,12 +263,12 @@ class TransportLayerApplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_access_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Transport Layer Application resource.
@@ -295,7 +295,7 @@ class TransportLayerApplication(pulumi.CustomResource):
             site_name="gositecdn.cn")
         default_transport_layer_application = alicloud.esa.TransportLayerApplication("default",
             record_name="resource2.gositecdn.cn",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             ip_access_rule="off",
             ipv6="off",
             cross_border_optimization="off",
@@ -367,7 +367,7 @@ class TransportLayerApplication(pulumi.CustomResource):
             site_name="gositecdn.cn")
         default_transport_layer_application = alicloud.esa.TransportLayerApplication("default",
             record_name="resource2.gositecdn.cn",
-            site_id=default.sites[0].site_id,
+            site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
             ip_access_rule="off",
             ipv6="off",
             cross_border_optimization="off",
@@ -414,12 +414,12 @@ class TransportLayerApplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_access_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -453,14 +453,14 @@ class TransportLayerApplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[_builtins.int]] = None,
-            cross_border_optimization: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_access_rule: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-            record_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransportLayerApplication':
+            application_id: pulumi.Input[Optional[_builtins.int]] = None,
+            cross_border_optimization: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_access_rule: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            record_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransportLayerApplicationRuleArgs', 'TransportLayerApplicationRuleArgsDict']]]]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransportLayerApplication':
         """
         Get an existing TransportLayerApplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

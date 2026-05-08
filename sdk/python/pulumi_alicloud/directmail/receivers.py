@@ -21,7 +21,7 @@ class ReceiversArgs:
     def __init__(__self__, *,
                  receivers_alias: pulumi.Input[_builtins.str],
                  receivers_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Receivers resource.
 
@@ -60,24 +60,24 @@ class ReceiversArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of receivers and 1-50 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _ReceiversState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Receivers resources.
 
@@ -97,50 +97,50 @@ class _ReceiversState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of receivers and 1-50 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="receiversAlias")
-    def receivers_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def receivers_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of receivers. Must email address and less than 30 characters in length.
         """
         return pulumi.get(self, "receivers_alias")
 
     @receivers_alias.setter
-    def receivers_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def receivers_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "receivers_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="receiversName")
-    def receivers_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def receivers_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource. The length that cannot be repeated is 1-30 characters.
         """
         return pulumi.get(self, "receivers_name")
 
     @receivers_name.setter
-    def receivers_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def receivers_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "receivers_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the resource. `0` means uploading, `1` means upload completed.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
@@ -150,9 +150,9 @@ class Receivers(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Direct Mail Receivers resource.
@@ -257,9 +257,9 @@ class Receivers(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 receivers_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 receivers_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,10 +287,10 @@ class Receivers(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            receivers_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            receivers_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None) -> 'Receivers':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            receivers_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            receivers_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> 'Receivers':
         """
         Get an existing Receivers resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

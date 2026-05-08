@@ -159,31 +159,31 @@ export interface ParameterState {
      * * `MinLength`: The minimum length of the common parameter.
      * * `MaxLength`: The maximum length of the common parameter.
      */
-    constraints?: pulumi.Input<string>;
+    constraints?: pulumi.Input<string | undefined>;
     /**
      * The description of the common parameter. The description must be `1` to `200` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
-    parameterName?: pulumi.Input<string>;
+    parameterName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the common parameter. The value must be `1` to `4096` characters in length.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,11 +197,11 @@ export interface ParameterArgs {
      * * `MinLength`: The minimum length of the common parameter.
      * * `MaxLength`: The maximum length of the common parameter.
      */
-    constraints?: pulumi.Input<string>;
+    constraints?: pulumi.Input<string | undefined>;
     /**
      * The description of the common parameter. The description must be `1` to `200` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the common parameter. The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      */
@@ -209,11 +209,11 @@ export interface ParameterArgs {
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The data type of the common parameter. Valid values: `String` and `StringList`.
      */

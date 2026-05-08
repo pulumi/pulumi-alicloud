@@ -192,47 +192,47 @@ export interface WorkspaceCodeSourceState {
      * - PRIVATE: In this workspace, it is only visible to you and the administrator.
      * - PUBLIC: In this workspace, it is visible to everyone.
      */
-    accessibility?: pulumi.Input<string>;
+    accessibility?: pulumi.Input<string | undefined>;
     /**
      * Code repository branch.
      */
-    codeBranch?: pulumi.Input<string>;
+    codeBranch?: pulumi.Input<string | undefined>;
     /**
      * The code CommitId.
      */
-    codeCommit?: pulumi.Input<string>;
+    codeCommit?: pulumi.Input<string | undefined>;
     /**
      * Code repository address.
      */
-    codeRepo?: pulumi.Input<string>;
+    codeRepo?: pulumi.Input<string | undefined>;
     /**
      * The Token used to access the code repository.
      */
-    codeRepoAccessToken?: pulumi.Input<string>;
+    codeRepoAccessToken?: pulumi.Input<string | undefined>;
     /**
      * The user name of the code repository.
      */
-    codeRepoUserName?: pulumi.Input<string>;
+    codeRepoUserName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * A detailed description of the code configuration.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Code source configuration name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The local Mount Directory of the code.
      */
-    mountPath?: pulumi.Input<string>;
+    mountPath?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workspace.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,11 +248,11 @@ export interface WorkspaceCodeSourceArgs {
     /**
      * Code repository branch.
      */
-    codeBranch?: pulumi.Input<string>;
+    codeBranch?: pulumi.Input<string | undefined>;
     /**
      * The code CommitId.
      */
-    codeCommit?: pulumi.Input<string>;
+    codeCommit?: pulumi.Input<string | undefined>;
     /**
      * Code repository address.
      */
@@ -260,15 +260,15 @@ export interface WorkspaceCodeSourceArgs {
     /**
      * The Token used to access the code repository.
      */
-    codeRepoAccessToken?: pulumi.Input<string>;
+    codeRepoAccessToken?: pulumi.Input<string | undefined>;
     /**
      * The user name of the code repository.
      */
-    codeRepoUserName?: pulumi.Input<string>;
+    codeRepoUserName?: pulumi.Input<string | undefined>;
     /**
      * A detailed description of the code configuration.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Code source configuration name.
      */

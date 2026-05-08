@@ -21,7 +21,7 @@ class PolicyVersionArgs:
     def __init__(__self__, *,
                  policy_document: pulumi.Input[_builtins.str],
                  policy_name: pulumi.Input[_builtins.str],
-                 is_default_version: Optional[pulumi.Input[_builtins.bool]] = None):
+                 is_default_version: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a PolicyVersion resource.
 
@@ -64,23 +64,23 @@ class PolicyVersionArgs:
     @_builtins.property
     @pulumi.getter(name="isDefaultVersion")
     @_utilities.deprecated("""Field 'is_default_version' has been deprecated from provider version 1.90.0""")
-    def is_default_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
-    def is_default_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_version", value)
 
 
 @pulumi.input_type
 class _PolicyVersionState:
     def __init__(__self__, *,
-                 is_default_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_default_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyVersion resources.
 
@@ -101,38 +101,38 @@ class _PolicyVersionState:
     @_builtins.property
     @pulumi.getter(name="isDefaultVersion")
     @_utilities.deprecated("""Field 'is_default_version' has been deprecated from provider version 1.90.0""")
-    def is_default_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_default_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the policy version as the default version. Default to `false`.
         """
         return pulumi.get(self, "is_default_version")
 
     @is_default_version.setter
-    def is_default_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_default_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_default_version", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDocument")
-    def policy_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the policy. The content must be 1 to 2,048 characters in length.
         """
         return pulumi.get(self, "policy_document")
 
     @policy_document.setter
-    def policy_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_document", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
 
@@ -142,9 +142,9 @@ class PolicyVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_default_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_default_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Policy Version resource.
@@ -283,9 +283,9 @@ class PolicyVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 is_default_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_default_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,9 +312,9 @@ class PolicyVersion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            is_default_version: Optional[pulumi.Input[_builtins.bool]] = None,
-            policy_document: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyVersion':
+            is_default_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            policy_document: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolicyVersion':
         """
         Get an existing PolicyVersion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

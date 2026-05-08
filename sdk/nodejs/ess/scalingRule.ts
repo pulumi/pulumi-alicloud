@@ -317,102 +317,102 @@ export interface ScalingRuleState {
      * - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      */
-    adjustmentType?: pulumi.Input<string>;
+    adjustmentType?: pulumi.Input<string | undefined>;
     /**
      * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
-    adjustmentValue?: pulumi.Input<number>;
+    adjustmentValue?: pulumi.Input<number | undefined>;
     /**
      * AlarmDimension for StepScalingRule. See `alarmDimension` below.
      */
-    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension>;
+    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension | undefined>;
     /**
      * The unique identifier of the scaling rule.
      */
-    ari?: pulumi.Input<string>;
+    ari?: pulumi.Input<string | undefined>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
-    cooldown?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      */
-    disableScaleIn?: pulumi.Input<boolean>;
+    disableScaleIn?: pulumi.Input<boolean | undefined>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      */
-    estimatedInstanceWarmup?: pulumi.Input<number>;
+    estimatedInstanceWarmup?: pulumi.Input<number | undefined>;
     /**
      * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      */
-    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[]>;
+    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[] | undefined>;
     /**
      * The ID of the Hybrid Cloud Monitoring metric repository.
      */
-    hybridMonitorNamespace?: pulumi.Input<string>;
+    hybridMonitorNamespace?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
-    initialMaxSize?: pulumi.Input<number>;
+    initialMaxSize?: pulumi.Input<number | undefined>;
     /**
      * A CloudMonitor metric name.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The type of the metric. Valid values: system, custom, hybrid.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */
-    minAdjustmentMagnitude?: pulumi.Input<number>;
+    minAdjustmentMagnitude?: pulumi.Input<number | undefined>;
     /**
      * The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
      */
-    predictiveScalingMode?: pulumi.Input<string>;
+    predictiveScalingMode?: pulumi.Input<string | undefined>;
     /**
      * The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
      */
-    predictiveTaskBufferTime?: pulumi.Input<number>;
+    predictiveTaskBufferTime?: pulumi.Input<number | undefined>;
     /**
      * The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
      */
-    predictiveValueBehavior?: pulumi.Input<string>;
+    predictiveValueBehavior?: pulumi.Input<string | undefined>;
     /**
      * The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
      */
-    predictiveValueBuffer?: pulumi.Input<number>;
+    predictiveValueBuffer?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    scaleInEvaluationCount?: pulumi.Input<number>;
+    scaleInEvaluationCount?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    scaleOutEvaluationCount?: pulumi.Input<number>;
+    scaleOutEvaluationCount?: pulumi.Input<number | undefined>;
     /**
      * ID of the scaling group of a scaling rule.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
-    scalingRuleName?: pulumi.Input<string>;
+    scalingRuleName?: pulumi.Input<string | undefined>;
     /**
      * The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
      */
-    scalingRuleType?: pulumi.Input<string>;
+    scalingRuleType?: pulumi.Input<string | undefined>;
     /**
      * Steps for StepScalingRule. See `stepAdjustment` below.
      */
-    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[] | undefined>;
     /**
      * The target value for the metric.
      */
-    targetValue?: pulumi.Input<number>;
+    targetValue?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -425,78 +425,78 @@ export interface ScalingRuleArgs {
      * - PercentChangeInCapacity: It is used to increase or decrease a specified proportion of ECS instances.
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      */
-    adjustmentType?: pulumi.Input<string>;
+    adjustmentType?: pulumi.Input<string | undefined>;
     /**
      * The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
      * - QuantityChangeInCapacity：(0, 500] U (-500, 0]
      * - PercentChangeInCapacity：[0, 10000] U [-100, 0]
      * - TotalCapacity：[0, 1000]
      */
-    adjustmentValue?: pulumi.Input<number>;
+    adjustmentValue?: pulumi.Input<number | undefined>;
     /**
      * AlarmDimension for StepScalingRule. See `alarmDimension` below.
      */
-    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension>;
+    alarmDimension?: pulumi.Input<inputs.ess.ScalingRuleAlarmDimension | undefined>;
     /**
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      */
-    cooldown?: pulumi.Input<number>;
+    cooldown?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      */
-    disableScaleIn?: pulumi.Input<boolean>;
+    disableScaleIn?: pulumi.Input<boolean | undefined>;
     /**
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      */
-    estimatedInstanceWarmup?: pulumi.Input<number>;
+    estimatedInstanceWarmup?: pulumi.Input<number | undefined>;
     /**
      * The Hybrid Cloud Monitoring metrics. See `hybridMetrics` below.
      */
-    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[]>;
+    hybridMetrics?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleHybridMetric>[] | undefined>;
     /**
      * The ID of the Hybrid Cloud Monitoring metric repository.
      */
-    hybridMonitorNamespace?: pulumi.Input<string>;
+    hybridMonitorNamespace?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
      */
-    initialMaxSize?: pulumi.Input<number>;
+    initialMaxSize?: pulumi.Input<number | undefined>;
     /**
      * A CloudMonitor metric name.
      */
-    metricName?: pulumi.Input<string>;
+    metricName?: pulumi.Input<string | undefined>;
     /**
      * The type of the metric. Valid values: system, custom, hybrid.
      */
-    metricType?: pulumi.Input<string>;
+    metricType?: pulumi.Input<string | undefined>;
     /**
      * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
      */
-    minAdjustmentMagnitude?: pulumi.Input<number>;
+    minAdjustmentMagnitude?: pulumi.Input<number | undefined>;
     /**
      * The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
      */
-    predictiveScalingMode?: pulumi.Input<string>;
+    predictiveScalingMode?: pulumi.Input<string | undefined>;
     /**
      * The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
      */
-    predictiveTaskBufferTime?: pulumi.Input<number>;
+    predictiveTaskBufferTime?: pulumi.Input<number | undefined>;
     /**
      * The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
      */
-    predictiveValueBehavior?: pulumi.Input<string>;
+    predictiveValueBehavior?: pulumi.Input<string | undefined>;
     /**
      * The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
      */
-    predictiveValueBuffer?: pulumi.Input<number>;
+    predictiveValueBuffer?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    scaleInEvaluationCount?: pulumi.Input<number>;
+    scaleInEvaluationCount?: pulumi.Input<number | undefined>;
     /**
      * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
      */
-    scaleOutEvaluationCount?: pulumi.Input<number>;
+    scaleOutEvaluationCount?: pulumi.Input<number | undefined>;
     /**
      * ID of the scaling group of a scaling rule.
      */
@@ -504,17 +504,17 @@ export interface ScalingRuleArgs {
     /**
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      */
-    scalingRuleName?: pulumi.Input<string>;
+    scalingRuleName?: pulumi.Input<string | undefined>;
     /**
      * The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
      */
-    scalingRuleType?: pulumi.Input<string>;
+    scalingRuleType?: pulumi.Input<string | undefined>;
     /**
      * Steps for StepScalingRule. See `stepAdjustment` below.
      */
-    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[]>;
+    stepAdjustments?: pulumi.Input<pulumi.Input<inputs.ess.ScalingRuleStepAdjustment>[] | undefined>;
     /**
      * The target value for the metric.
      */
-    targetValue?: pulumi.Input<number>;
+    targetValue?: pulumi.Input<number | undefined>;
 }

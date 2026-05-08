@@ -531,247 +531,247 @@ export interface EcsLaunchTemplateState {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[] | undefined>;
     /**
      * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      */
-    defaultVersionNumber?: pulumi.Input<number>;
+    defaultVersionNumber?: pulumi.Input<number | undefined>;
     /**
      * The Deployment Set Id.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the instance operating system configuration.
      */
-    enableVmOsConfig?: pulumi.Input<boolean>;
+    enableVmOsConfig?: pulumi.Input<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
      * **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      */
-    httpPutResponseHopLimit?: pulumi.Input<number>;
+    httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
     /**
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
      * **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      */
-    httpTokens?: pulumi.Input<string>;
+    httpTokens?: pulumi.Input<string | undefined>;
     /**
      * The Image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The options of images. See `imageOptions` below.
      */
-    imageOptions?: pulumi.Input<inputs.ecs.EcsLaunchTemplateImageOptions>;
+    imageOptions?: pulumi.Input<inputs.ecs.EcsLaunchTemplateImageOptions | undefined>;
     /**
      * Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
      */
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The latest version number of the launch template.
      */
-    latestVersionNumber?: pulumi.Input<number>;
+    latestVersionNumber?: pulumi.Input<number | undefined>;
     /**
      * The name of Launch Template.
      */
-    launchTemplateName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of network interfaces created with instance. See `networkInterfaces` below.
      */
-    networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces | undefined>;
     /**
      * Network type of the instance. Valid values: `classic`, `vpc`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the password preset by the mirror.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
      * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
      * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The private IP address of the instance.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of security group N to which to assign the instance.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
      */
-    spotDuration?: pulumi.Input<string>;
+    spotDuration?: pulumi.Input<string | undefined>;
     /**
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The System Disk. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to instance, block storage, and elastic network.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The template resource group id.
      */
-    templateResourceGroupId?: pulumi.Input<string>;
+    templateResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the launch template.
      */
-    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      */
-    updateDefaultVersionNumber?: pulumi.Input<boolean>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean | undefined>;
     /**
      * The User Data.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `userData` instead.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    userdata?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string | undefined>;
     /**
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    versionDescription?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -781,241 +781,241 @@ export interface EcsLaunchTemplateArgs {
     /**
      * Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the instance. This parameter is valid only if `internetChargeType` is set to `PrePaid`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period of the instance. Valid values when `periodUnit` is set to `Month`: 1, 2, 3, 6, 12, 24, 36, 48, and 60. Default value: 1.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The list of data disks created with instance. See `dataDisks` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.EcsLaunchTemplateDataDisk>[] | undefined>;
     /**
      * The version number of the default launch template version. Default to 1. It is conflict with `updateDefaultVersionNumber`.
      */
-    defaultVersionNumber?: pulumi.Input<number>;
+    defaultVersionNumber?: pulumi.Input<number | undefined>;
     /**
      * The Deployment Set Id.
      */
-    deploymentSetId?: pulumi.Input<string>;
+    deploymentSetId?: pulumi.Input<string | undefined>;
     /**
      * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the instance operating system configuration.
      */
-    enableVmOsConfig?: pulumi.Input<boolean>;
+    enableVmOsConfig?: pulumi.Input<boolean | undefined>;
     /**
      * Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable access to instance metadata. Valid values:
      * - enabled: Enabled.
      * - disabled: Disabled.
      * **NOTE:** From version 1.260.0, `httpEndpoint` can be modified.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The HTTP PUT response hop limit required for instance metadata requests. **NOTE:** From version 1.260.0, `httpPutResponseHopLimit` can be modified.
      */
-    httpPutResponseHopLimit?: pulumi.Input<number>;
+    httpPutResponseHopLimit?: pulumi.Input<number | undefined>;
     /**
      * Whether to use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
      * - optional: Not mandatory.
      * - required: Mandatory. After this value is set, the normal mode cannot access instance metadata.
      * **NOTE:** From version 1.260.0, `httpTokens` can be modified.
      */
-    httpTokens?: pulumi.Input<string>;
+    httpTokens?: pulumi.Input<string | undefined>;
     /**
      * The Image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The options of images. See `imageOptions` below.
      */
-    imageOptions?: pulumi.Input<inputs.ecs.EcsLaunchTemplateImageOptions>;
+    imageOptions?: pulumi.Input<inputs.ecs.EcsLaunchTemplateImageOptions | undefined>;
     /**
      * Mirror source. Valid values: `system`, `self`, `others`, `marketplace`, `""`. Default to: `""`.
      */
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * Billing methods. Valid values: `PostPaid`, `PrePaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), periods (.), commas (,), brackets ([]), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance type. For more information, call resourceAlicloudInstances to obtain the latest instance type list.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Internet bandwidth billing method. Valid values: `PayByTraffic`, `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The maximum inbound bandwidth from the Internet network, measured in Mbit/s. Value range: [1, 200].
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outbound bandwidth from the Internet, its unit of measurement is Mbit/s. Value range: [0, 100].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * Whether it is an I/O-optimized instance or not. Valid values: `none`, `optimized`.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair.
      * - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
      * - The password logon method for Linux instances is set to forbidden upon initialization.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The name of Launch Template.
      */
-    launchTemplateName?: pulumi.Input<string>;
+    launchTemplateName?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of network interfaces created with instance. See `networkInterfaces` below.
      */
-    networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces>;
+    networkInterfaces?: pulumi.Input<inputs.ecs.EcsLaunchTemplateNetworkInterfaces | undefined>;
     /**
      * Network type of the instance. Valid values: `classic`, `vpc`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the password preset by the mirror.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * The subscription period of the instance. Unit: months. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If the DedicatedHostId parameter is specified, the value of the Period parameter must be within the subscription period of the dedicated host.
      * - When the `periodUnit` is set to `Week`, the valid values of the Period parameter are `1`, `2`, `3`.
      * - When the `periodUnit` is set to `Month`, the valid values of the Period parameter are `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, and `60`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription period. Default value: `Month`. Valid values: `Week`, `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The private IP address of the instance.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which to assign the instance, Elastic Block Storage (EBS) device, and ENI.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Whether or not to activate the security enhancement feature and install network security software free of charge. Valid values: `Active`, `Deactive`.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of security group N to which to assign the instance.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protection period of the preemptible instance. Unit: hours. Valid values: `0`, `1`, `2`, `3`, `4`, `5`, and `6`. Default to: `1`.
      */
-    spotDuration?: pulumi.Input<string>;
+    spotDuration?: pulumi.Input<string | undefined>;
     /**
      * Sets the maximum hourly instance price. Supports up to three decimal places.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The System Disk. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.ecs.EcsLaunchTemplateSystemDisk | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
      *
      * @deprecated Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to instance, block storage, and elastic network.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The template resource group id.
      */
-    templateResourceGroupId?: pulumi.Input<string>;
+    templateResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the launch template.
      */
-    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    templateTags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to update the default version of the launch template to the latest version automatically. It is conflict with `defaultVersionNumber`.
      */
-    updateDefaultVersionNumber?: pulumi.Input<boolean>;
+    updateDefaultVersionNumber?: pulumi.Input<boolean | undefined>;
     /**
      * The User Data.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.120.0, and use field `userData` instead.
      *
      * @deprecated Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
      */
-    userdata?: pulumi.Input<string>;
+    userdata?: pulumi.Input<string | undefined>;
     /**
      * The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    versionDescription?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

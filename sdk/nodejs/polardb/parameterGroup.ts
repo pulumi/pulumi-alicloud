@@ -165,28 +165,28 @@ export interface ParameterGroupState {
     /**
      * The time when the parameter template was created. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The type of the database engine. Only `MySQL` is supported.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * The version of the database engine. Valid values: 
      * - **5.6**
      * - **5.7**
      * - **8.0**
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the parameter template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parameter template. The name must meet the following requirements:
      *
@@ -194,7 +194,7 @@ export interface ParameterGroupState {
      *
      * - It must be 8 to 64 characters in length.
      */
-    parameterGroupName?: pulumi.Input<string>;
+    parameterGroupName?: pulumi.Input<string | undefined>;
     /**
      * Details about the parameters. See `parameters` below.
      *
@@ -203,7 +203,7 @@ export interface ParameterGroupState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ParameterGroupParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.polardb.ParameterGroupParameter>[] | undefined>;
 }
 
 /**
@@ -224,13 +224,13 @@ export interface ParameterGroupArgs {
     /**
      * The description of the parameter template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.263.0. New field 'parameter_group_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the parameter template. The name must meet the following requirements:
      *
@@ -238,7 +238,7 @@ export interface ParameterGroupArgs {
      *
      * - It must be 8 to 64 characters in length.
      */
-    parameterGroupName?: pulumi.Input<string>;
+    parameterGroupName?: pulumi.Input<string | undefined>;
     /**
      * Details about the parameters. See `parameters` below.
      *

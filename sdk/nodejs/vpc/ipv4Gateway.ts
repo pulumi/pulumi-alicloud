@@ -179,51 +179,51 @@ export interface Ipv4GatewayState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
      */
-    internetMode?: pulumi.Input<string>;
+    internetMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */
-    ipv4GatewayDescription?: pulumi.Input<string>;
+    ipv4GatewayDescription?: pulumi.Input<string | undefined>;
     /**
      * Resource primary key field.
      */
-    ipv4GatewayId?: pulumi.Input<string>;
+    ipv4GatewayId?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
-    ipv4GatewayName?: pulumi.Input<string>;
+    ipv4GatewayName?: pulumi.Input<string | undefined>;
     /**
      * ID of the route table associated with IPv4 Gateway
      */
-    ipv4GatewayRouteTableId?: pulumi.Input<string>;
+    ipv4GatewayRouteTableId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,31 +233,31 @@ export interface Ipv4GatewayArgs {
     /**
      * Whether to PreCheck only this request. Value:-**true**: The check request is sent without creating an IPv4 Gateway. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.-**false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates an IPv4 Gateway.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the IPv4 gateway is active or not. Valid values are `true` and `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The public network traffic mode of the VPC after the IPv4 Gateway is deleted:
      */
-    internetMode?: pulumi.Input<string>;
+    internetMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPv4 gateway. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
      */
-    ipv4GatewayDescription?: pulumi.Input<string>;
+    ipv4GatewayDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv4 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
      */
-    ipv4GatewayName?: pulumi.Input<string>;
+    ipv4GatewayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
      */

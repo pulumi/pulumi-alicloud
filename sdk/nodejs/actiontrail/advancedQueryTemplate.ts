@@ -121,15 +121,15 @@ export interface AdvancedQueryTemplateState {
     /**
      * Distinguish whether the current template is a simple query
      */
-    simpleQuery?: pulumi.Input<boolean>;
+    simpleQuery?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the resource
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * SQL content saved on behalf of the current template
      */
-    templateSql?: pulumi.Input<string>;
+    templateSql?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface AdvancedQueryTemplateArgs {
     /**
      * The name of the resource
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * SQL content saved on behalf of the current template
      */

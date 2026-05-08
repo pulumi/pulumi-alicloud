@@ -20,7 +20,7 @@ __all__ = ['RecycleBinArgs', 'RecycleBin']
 class RecycleBinArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[_builtins.str],
-                 reserved_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 reserved_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RecycleBin resource.
 
@@ -45,23 +45,23 @@ class RecycleBinArgs:
 
     @_builtins.property
     @pulumi.getter(name="reservedDays")
-    def reserved_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         """
         return pulumi.get(self, "reserved_days")
 
     @reserved_days.setter
-    def reserved_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_days", value)
 
 
 @pulumi.input_type
 class _RecycleBinState:
     def __init__(__self__, *,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RecycleBin resources.
 
@@ -78,38 +78,38 @@ class _RecycleBinState:
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system for which you want to enable the recycle bin feature.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedDays")
-    def reserved_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
         """
         return pulumi.get(self, "reserved_days")
 
     @reserved_days.setter
-    def reserved_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the recycle bin.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -119,8 +119,8 @@ class RecycleBin(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Recycle Bin resource.
@@ -224,8 +224,8 @@ class RecycleBin(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,9 +250,9 @@ class RecycleBin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_days: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'RecycleBin':
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'RecycleBin':
         """
         Get an existing RecycleBin resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

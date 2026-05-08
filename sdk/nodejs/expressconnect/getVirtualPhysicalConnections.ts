@@ -155,41 +155,41 @@ export interface GetVirtualPhysicalConnectionsOutputArgs {
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * A list of Virtual Physical Connection IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    isConfirmed?: pulumi.Input<boolean>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    isConfirmed?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance of the physical connection.
      */
-    parentPhysicalConnectionId?: pulumi.Input<string>;
+    parentPhysicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the hosted connection. You can specify multiple hosted connection IDs.
      */
-    virtualPhysicalConnectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    virtualPhysicalConnectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
      */
-    virtualPhysicalConnectionStatus?: pulumi.Input<string>;
+    virtualPhysicalConnectionStatus?: pulumi.Input<string | undefined>;
     /**
      * The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
      */
-    vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
+    vlanIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      */
-    vpconnAliUid?: pulumi.Input<string>;
+    vpconnAliUid?: pulumi.Input<string | undefined>;
 }

@@ -163,40 +163,40 @@ export interface IpsConfigState {
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    basicRules?: pulumi.Input<number>;
+    basicRules?: pulumi.Input<number | undefined>;
     /**
      * Threat intelligence. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    ctiRules?: pulumi.Input<number>;
+    ctiRules?: pulumi.Input<number | undefined>;
     /**
      * Language
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Sensitive data detection Daily detection traffic limit. Defaults to 0.
      */
-    maxSdl?: pulumi.Input<number>;
+    maxSdl?: pulumi.Input<number | undefined>;
     /**
      * Virtual patch switch. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    patchRules?: pulumi.Input<number>;
+    patchRules?: pulumi.Input<number | undefined>;
     /**
      * The IPS rule Group. Value:
      * - 1: loose rule Group.
      * - 2: Medium rule Group.
      * - 3: Strict rule groups.
      */
-    ruleClass?: pulumi.Input<number>;
+    ruleClass?: pulumi.Input<number | undefined>;
     /**
      * IPS defense mode. Value:
      * - 1: Intercept mode.
      * - 0: Observation mode (Default).
      */
-    runMode?: pulumi.Input<number>;
+    runMode?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -208,38 +208,38 @@ export interface IpsConfigArgs {
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    basicRules?: pulumi.Input<number>;
+    basicRules?: pulumi.Input<number | undefined>;
     /**
      * Threat intelligence. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    ctiRules?: pulumi.Input<number>;
+    ctiRules?: pulumi.Input<number | undefined>;
     /**
      * Language
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Sensitive data detection Daily detection traffic limit. Defaults to 0.
      */
-    maxSdl?: pulumi.Input<number>;
+    maxSdl?: pulumi.Input<number | undefined>;
     /**
      * Virtual patch switch. Value:
      * - 1: Open.
      * - 0: Closed (Default).
      */
-    patchRules?: pulumi.Input<number>;
+    patchRules?: pulumi.Input<number | undefined>;
     /**
      * The IPS rule Group. Value:
      * - 1: loose rule Group.
      * - 2: Medium rule Group.
      * - 3: Strict rule groups.
      */
-    ruleClass?: pulumi.Input<number>;
+    ruleClass?: pulumi.Input<number | undefined>;
     /**
      * IPS defense mode. Value:
      * - 1: Intercept mode.
      * - 0: Observation mode (Default).
      */
-    runMode?: pulumi.Input<number>;
+    runMode?: pulumi.Input<number | undefined>;
 }

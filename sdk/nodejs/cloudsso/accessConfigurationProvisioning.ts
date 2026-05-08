@@ -166,23 +166,23 @@ export interface AccessConfigurationProvisioningState {
     /**
      * The Access configuration ID.
      */
-    accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target to create the resource range.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,7 +200,7 @@ export interface AccessConfigurationProvisioningArgs {
     /**
      * The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target to create the resource range.
      */

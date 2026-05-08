@@ -161,45 +161,45 @@ export interface GetAnycastEipAddressesOutputArgs {
     /**
      * Anycast EIP instance name.
      */
-    anycastEipAddressName?: pulumi.Input<string>;
+    anycastEipAddressName?: pulumi.Input<string | undefined>;
     /**
      * The bind instance ids.
      */
-    bindInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    bindInstanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The business status of the Anycast EIP instance. -`Normal`: Normal state. -`FinancialLocked`: The status of arrears locked.
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * A list of Anycast Eip Address IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The billing method of Anycast EIP instance. `PayByBandwidth`: refers to the method of billing based on traffic.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Anycast EIP instance IP address.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Anycast Eip Address name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
      */
-    serviceLocation?: pulumi.Input<string>;
+    serviceLocation?: pulumi.Input<string | undefined>;
     /**
      * IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

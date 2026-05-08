@@ -239,31 +239,31 @@ export interface PbrRouteEntryState {
     /**
      * The next hop of the policy-based route.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string | undefined>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    publishVpc?: pulumi.Input<boolean>;
+    publishVpc?: pulumi.Input<boolean | undefined>;
     /**
      * The destination CIDR block of the policy-based route.
      */
-    routeDest?: pulumi.Input<string>;
+    routeDest?: pulumi.Input<string | undefined>;
     /**
      * The source CIDR block of the policy-based route.
      */
-    routeSource?: pulumi.Input<string>;
+    routeSource?: pulumi.Input<string | undefined>;
     /**
      * The status of the vpn pbr route entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vpn gateway.
      */
-    vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The weight of the policy-based route. Valid values: 0 and 100.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**

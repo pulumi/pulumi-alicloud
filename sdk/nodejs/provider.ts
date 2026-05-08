@@ -155,90 +155,90 @@ export interface ProviderArgs {
     /**
      * The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
      */
-    accountId?: pulumi.Input<string>;
-    accountType?: pulumi.Input<string>;
-    assumeRole?: pulumi.Input<inputs.ProviderAssumeRole>;
-    assumeRoleWithOidc?: pulumi.Input<inputs.ProviderAssumeRoleWithOidc>;
+    accountId?: pulumi.Input<string | undefined>;
+    accountType?: pulumi.Input<string | undefined>;
+    assumeRole?: pulumi.Input<inputs.ProviderAssumeRole | undefined>;
+    assumeRoleWithOidc?: pulumi.Input<inputs.ProviderAssumeRoleWithOidc | undefined>;
     /**
      * The maximum timeout of the client connection server.
      */
-    clientConnectTimeout?: pulumi.Input<number>;
+    clientConnectTimeout?: pulumi.Input<number | undefined>;
     /**
      * The maximum timeout of the client read request.
      */
-    clientReadTimeout?: pulumi.Input<number>;
+    clientReadTimeout?: pulumi.Input<number | undefined>;
     /**
      * Use this to mark a terraform configuration file source.
      */
-    configurationSource?: pulumi.Input<string>;
+    configurationSource?: pulumi.Input<string | undefined>;
     /**
      * The URI of sidecar credentials service.
      */
-    credentialsUri?: pulumi.Input<string>;
+    credentialsUri?: pulumi.Input<string | undefined>;
     /**
      * The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
      */
-    ecsRoleName?: pulumi.Input<string>;
-    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[]>;
+    ecsRoleName?: pulumi.Input<string | undefined>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.ProviderEndpoint>[] | undefined>;
     /**
      * @deprecated Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.
      */
-    fc?: pulumi.Input<string>;
+    fc?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.
      */
-    logEndpoint?: pulumi.Input<string>;
+    logEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The maximum retry timeout of the request.
      */
-    maxRetryTimeout?: pulumi.Input<number>;
+    maxRetryTimeout?: pulumi.Input<number | undefined>;
     /**
      * @deprecated Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.
      */
-    mnsEndpoint?: pulumi.Input<string>;
+    mnsEndpoint?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.
      */
-    otsInstanceName?: pulumi.Input<string>;
+    otsInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
      */
-    profile?: pulumi.Input<string>;
-    protocol?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
      */
-    secretKey?: pulumi.Input<string>;
+    secretKey?: pulumi.Input<string | undefined>;
     /**
      * The security transport for the assume role invoking.
      */
-    secureTransport?: pulumi.Input<string>;
+    secureTransport?: pulumi.Input<string | undefined>;
     /**
      * security token. A security token is only required if you are using Security Token Service.
      */
-    securityToken?: pulumi.Input<string>;
-    securityTransport?: pulumi.Input<string>;
+    securityToken?: pulumi.Input<string | undefined>;
+    securityTransport?: pulumi.Input<string | undefined>;
     /**
      * The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
      */
-    sharedCredentialsFile?: pulumi.Input<string>;
-    signVersion?: pulumi.Input<inputs.ProviderSignVersion>;
+    sharedCredentialsFile?: pulumi.Input<string | undefined>;
+    signVersion?: pulumi.Input<inputs.ProviderSignVersion | undefined>;
     /**
      * Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
      */
-    skipRegionValidation?: pulumi.Input<boolean>;
+    skipRegionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The source ip for the assume role invoking.
      */
-    sourceIp?: pulumi.Input<string>;
+    sourceIp?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

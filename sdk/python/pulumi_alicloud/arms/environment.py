@@ -21,13 +21,13 @@ class EnvironmentArgs:
     def __init__(__self__, *,
                  environment_sub_type: pulumi.Input[_builtins.str],
                  environment_type: pulumi.Input[_builtins.str],
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_metrics: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Environment resource.
 
@@ -93,55 +93,55 @@ class EnvironmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The locale. The default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="bindResourceId")
-    def bind_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id or vpcId of the bound container instance.
         """
         return pulumi.get(self, "bind_resource_id")
 
     @bind_resource_id.setter
-    def bind_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dropMetrics")
-    def drop_metrics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drop_metrics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of abandoned indicators.
         """
         return pulumi.get(self, "drop_metrics")
 
     @drop_metrics.setter
-    def drop_metrics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drop_metrics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drop_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentName")
-    def environment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "environment_name")
 
     @environment_name.setter
-    def environment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="managedType")
-    def managed_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hosting type:
         - none: unmanaged. The default value of the ACK cluster.
@@ -151,47 +151,47 @@ class EnvironmentArgs:
         return pulumi.get(self, "managed_type")
 
     @managed_type.setter
-    def managed_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EnvironmentState:
     def __init__(__self__, *,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_metrics: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_sub_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_sub_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
 
@@ -235,67 +235,67 @@ class _EnvironmentState:
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The locale. The default is Chinese zh | en.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="bindResourceId")
-    def bind_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id or vpcId of the bound container instance.
         """
         return pulumi.get(self, "bind_resource_id")
 
     @bind_resource_id.setter
-    def bind_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dropMetrics")
-    def drop_metrics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def drop_metrics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of abandoned indicators.
         """
         return pulumi.get(self, "drop_metrics")
 
     @drop_metrics.setter
-    def drop_metrics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def drop_metrics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "drop_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentName")
-    def environment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "environment_name")
 
     @environment_name.setter
-    def environment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentSubType")
-    def environment_sub_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_sub_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subtype of environment:
         - Type of CS: ACK is currently supported. ManagedKubernetes, Kubernetes, ExternalKubernetes, and One are also supported.
@@ -305,24 +305,24 @@ class _EnvironmentState:
         return pulumi.get(self, "environment_sub_type")
 
     @environment_sub_type.setter
-    def environment_sub_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_sub_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_sub_type", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentType")
-    def environment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of environment.
         """
         return pulumi.get(self, "environment_type")
 
     @environment_type.setter
-    def environment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="managedType")
-    def managed_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def managed_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hosting type:
         - none: unmanaged. The default value of the ACK cluster.
@@ -332,31 +332,31 @@ class _EnvironmentState:
         return pulumi.get(self, "managed_type")
 
     @managed_type.setter
-    def managed_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def managed_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "managed_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -366,15 +366,15 @@ class Environment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_metrics: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_sub_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_sub_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ARMS Environment resource. The arms environment.
@@ -410,9 +410,9 @@ class Environment(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -426,11 +426,11 @@ class Environment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -527,9 +527,9 @@ class Environment(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -543,11 +543,11 @@ class Environment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -601,15 +601,15 @@ class Environment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 drop_metrics: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_sub_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 managed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_sub_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -643,16 +643,16 @@ class Environment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            drop_metrics: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_sub_type: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            managed_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            drop_metrics: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_sub_type: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            managed_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

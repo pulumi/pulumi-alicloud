@@ -170,5 +170,5 @@ export interface GetDatabasesOutputArgs {
     /**
      * A regex string to filter results by database name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
 }

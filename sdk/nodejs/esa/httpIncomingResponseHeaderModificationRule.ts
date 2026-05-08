@@ -195,37 +195,37 @@ export interface HttpIncomingResponseHeaderModificationRuleState {
     /**
      * Config Id
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Modify response headers, supporting add, delete, and modify operations. See `responseHeaderModification` below.
      */
-    responseHeaderModifications?: pulumi.Input<pulumi.Input<inputs.esa.HttpIncomingResponseHeaderModificationRuleResponseHeaderModification>[]>;
+    responseHeaderModifications?: pulumi.Input<pulumi.Input<inputs.esa.HttpIncomingResponseHeaderModificationRuleResponseHeaderModification>[] | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Order of rule execution. The smaller the value, the higher the priority for execution.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -241,19 +241,19 @@ export interface HttpIncomingResponseHeaderModificationRuleArgs {
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Order of rule execution. The smaller the value, the higher the priority for execution.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID.
      */
@@ -261,5 +261,5 @@ export interface HttpIncomingResponseHeaderModificationRuleArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }

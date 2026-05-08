@@ -131,9 +131,9 @@ def get_endpoint_group_ip_address_cidr_blocks(accelerator_id: Optional[_builtins
         endpoint_group_region=pulumi.get(__ret__, 'endpoint_group_region'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_endpoint_group_ip_address_cidr_blocks_output(accelerator_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                     endpoint_group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_endpoint_group_ip_address_cidr_blocks_output(accelerator_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                     endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointGroupIpAddressCidrBlocksResult]:
     """
     This data source provides the Global Accelerator (GA) Endpoint Group Ip Address Cidr Blocks of the current Alibaba Cloud user.

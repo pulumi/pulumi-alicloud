@@ -750,37 +750,37 @@ export interface ManagedKubernetesState {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    apiAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Audit log configuration. See `auditLogConfig` below.
      */
-    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
+    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig | undefined>;
     /**
      * Auto mode cluster configuration. See `autoMode` below.
      */
-    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode>;
+    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode | undefined>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.ManagedKubernetesCertificateAuthority>;
+    certificateAuthority?: pulumi.Input<inputs.cs.ManagedKubernetesCertificateAuthority | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -788,113 +788,113 @@ export interface ManagedKubernetesState {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    clusterDomain?: pulumi.Input<string>;
+    clusterDomain?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Map of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections>;
+    connections?: pulumi.Input<inputs.cs.ManagedKubernetesConnections | undefined>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */
-    controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
      */
-    controlPlaneLogProject?: pulumi.Input<string>;
+    controlPlaneLogProject?: pulumi.Input<string | undefined>;
     /**
      * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
-    controlPlaneLogTtl?: pulumi.Input<string>;
+    controlPlaneLogTtl?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
      *
      * > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
      */
-    disableEncryption?: pulumi.Input<boolean>;
+    disableEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    enableRrsa?: pulumi.Input<boolean>;
+    enableRrsa?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
      *
      * > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
      */
-    encryptionProviderKey?: pulumi.Input<string>;
+    encryptionProviderKey?: pulumi.Input<string | undefined>;
     /**
      * The IP address family that the cluster network uses. Valid values:
      */
-    ipStack?: pulumi.Input<string>;
+    ipStack?: pulumi.Input<string | undefined>;
     /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      */
-    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
+    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The profile of cluster. Valid values:
      * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
@@ -902,23 +902,23 @@ export interface ManagedKubernetesState {
      * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
      * * `Acs`: ACS cluster.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Optional, Available since v1.185.0) Nested attribute containing RRSA related data for your cluster.
      */
-    rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata>;
+    rrsaMetadata?: pulumi.Input<inputs.cs.ManagedKubernetesRrsaMetadata | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      *
@@ -927,39 +927,39 @@ export interface ManagedKubernetesState {
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    serviceAccountIssuer?: pulumi.Input<string>;
+    serviceAccountIssuer?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of APIServer load balancer.
      */
-    slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string | undefined>;
     /**
      * The public ip of load balancer.
      */
-    slbInternet?: pulumi.Input<string>;
+    slbInternet?: pulumi.Input<string | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    slbIntranet?: pulumi.Input<string>;
+    slbIntranet?: pulumi.Input<string | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster timezone, works for control plane and Worker nodes.
      *
@@ -968,7 +968,7 @@ export interface ManagedKubernetesState {
      * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
      *
@@ -976,19 +976,19 @@ export interface ManagedKubernetesState {
      *
      * *Network params*
      */
-    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy>;
+    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    userCa?: pulumi.Input<string>;
+    userCa?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitches of the control plane.
      *
@@ -998,21 +998,21 @@ export interface ManagedKubernetesState {
      * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
      * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The RamRole Name attached to worker node.
      */
-    workerRamRoleName?: pulumi.Input<string>;
+    workerRamRoleName?: pulumi.Input<string | undefined>;
     /**
      * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
-    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
      */
-    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
+    zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -1022,31 +1022,31 @@ export interface ManagedKubernetesArgs {
     /**
      * The addon you want to install in cluster. See `addons` below. Only works for **Create** Operation, use resource csKubernetesAddon to manage addons if cluster is created.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesAddon>[] | undefined>;
     /**
      * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `serviceAccountIssuer` as well. From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    apiAudiences?: pulumi.Input<pulumi.Input<string>[]>;
+    apiAudiences?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Audit log configuration. See `auditLogConfig` below.
      */
-    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig>;
+    auditLogConfig?: pulumi.Input<inputs.cs.ManagedKubernetesAuditLogConfig | undefined>;
     /**
      * Auto mode cluster configuration. See `autoMode` below.
      */
-    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode>;
+    autoMode?: pulumi.Input<inputs.cs.ManagedKubernetesAutoMode | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -1054,105 +1054,105 @@ export interface ManagedKubernetesArgs {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
      */
-    clusterDomain?: pulumi.Input<string>;
+    clusterDomain?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
      * * ack.standard : Basic managed clusters.
      * * ack.pro.small : Professional managed clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
      */
-    controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[]>;
+    controlPlaneLogComponents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
      */
-    controlPlaneLogProject?: pulumi.Input<string>;
+    controlPlaneLogProject?: pulumi.Input<string | undefined>;
     /**
      * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `controlPlaneLogTtl` and `controlPlaneLogComponents` must be specified.
      */
-    controlPlaneLogTtl?: pulumi.Input<string>;
+    controlPlaneLogTtl?: pulumi.Input<string | undefined>;
     /**
      * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
      *
      * > **NOTE:** Make sure you have specified all certificate SANs before updating. Updating this field will lead APIServer to restart.
      */
-    customSan?: pulumi.Input<string>;
+    customSan?: pulumi.Input<string | undefined>;
     /**
      * Delete options, only work for deleting resource. Make sure you have run `pulumi up` to make the configuration applied. See `deleteOptions` below.
      */
-    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[]>;
+    deleteOptions?: pulumi.Input<pulumi.Input<inputs.cs.ManagedKubernetesDeleteOption>[] | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to disable encryption for Kubernetes Secrets. Default value is `false`. Set to `true` to disable encryption.
      *
      * > **Note:** When enabling encryption, you must explicitly set `disableEncryption = false` along with `encryptionProviderKey`. When disabling encryption, you only need to set `disableEncryption = true`, and the `encryptionProviderKey` will be ignored.
      */
-    disableEncryption?: pulumi.Input<boolean>;
+    disableEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable cluster to support RRSA for kubernetes version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
      */
-    enableRrsa?: pulumi.Input<boolean>;
+    enableRrsa?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Key Management Service (KMS) key that is used to encrypt Kubernetes Secrets.
      *
      * > **Note:** To enable encryption, you must specify both `encryptionProviderKey` and `disableEncryption = false`. When `disableEncryption` is set to `true`, changes to `encryptionProviderKey` will be ignored.
      */
-    encryptionProviderKey?: pulumi.Input<string>;
+    encryptionProviderKey?: pulumi.Input<string | undefined>;
     /**
      * The IP address family that the cluster network uses. Valid values:
      */
-    ipStack?: pulumi.Input<string>;
+    ipStack?: pulumi.Input<string | undefined>;
     /**
      * Enable to create advanced security group. default: false. Only works for **Create** Operation. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster api server load balancer instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html). Only works for **Create** Operation. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU.
      *
      * @deprecated Field 'load_balancer_spec' has been deprecated from provider version 1.232.0. The spec will not take effect because the charge of the load balancer has been changed to PayByCLCU
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * The cluster maintenance window. Managed node pool will use it. See `maintenanceWindow` below.
      */
-    maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow>;
+    maintenanceWindow?: pulumi.Input<inputs.cs.ManagedKubernetesMaintenanceWindow | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will use it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice. Only works for **Create** Operation.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The cluster automatic operation policy, only works when `maintenanceWindow` is enabled. See `operationPolicy` below.
      */
-    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy>;
+    operationPolicy?: pulumi.Input<inputs.cs.ManagedKubernetesOperationPolicy | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * [Terway Specific] The vswitches for the pod network when using Terway. It is recommended that `podVswitchIds` is not belong to `vswitchIds` but must be in same availability zones. Only works for **Create** Operation.
      */
-    podVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    podVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The profile of cluster. Valid values:
      * * `Default`: ACK managed cluster. ACK managed clusters include ACK Basic clusters and ACK Pro clusters.
@@ -1160,19 +1160,19 @@ export interface ManagedKubernetesArgs {
      * * `Serverless`: ACK Serverless cluster. ACK Serverless clusters include ACK Serverless Basic clusters and ACK Serverless Pro clusters.
      * * `Acs`: ACS cluster.
      */
-    profile?: pulumi.Input<string>;
+    profile?: pulumi.Input<string | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      *
@@ -1181,27 +1181,27 @@ export interface ManagedKubernetesArgs {
      * * During security group updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the control plane security group, the Elastic Network Interfaces (ENIs) used by the control plane and managed components will automatically join the new security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `apiAudiences` as well). From cluster version 1.22, Service Account Token Volume Projection will be enabled by default.
      */
-    serviceAccountIssuer?: pulumi.Input<string>;
+    serviceAccountIssuer?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true. Only works for **Create** Operation.
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cluster timezone, works for control plane and Worker nodes.
      *
@@ -1210,7 +1210,7 @@ export interface ManagedKubernetesArgs {
      * * During timezone updates, the cluster control plane and managed components (e.g., terway-controlplane) will restart briefly. Perform this operation during off-peak hours.
      * * After updating the timezone: Newly scaled-out nodes will automatically apply the new timezone. Existing nodes remain unaffected. Reset the node to apply changes to existing nodes.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Configuration block for cluster upgrade operations. See `upgradePolicy` below.
      *
@@ -1218,15 +1218,15 @@ export interface ManagedKubernetesArgs {
      *
      * *Network params*
      */
-    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy>;
+    upgradePolicy?: pulumi.Input<inputs.cs.ManagedKubernetesUpgradePolicy | undefined>;
     /**
      * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
      */
-    userCa?: pulumi.Input<string>;
+    userCa?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK. Do not specify if cluster auto upgrade is enabled, see clusterAutoUpgrade for more information.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The vSwitches of the control plane.
      *
@@ -1236,15 +1236,15 @@ export interface ManagedKubernetesArgs {
      * * Ensure that all security groups of the cluster, including the security groups of the control plane, all node pools, and container network, are allowed to access the CIDR blocks of the new vSwitches. This ensures that the nodes and containers can connect to the API server.
      * * If the new vSwitches of the control plane are configured with an ACL, ensure that the ACL allows communication between the new vSwitches and CIDR blocks such as those of the cluster nodes and the container network.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitchIds` to managed control plane vSwitches, which supports modifying control plane vSwitches.
      *
      * @deprecated Field 'worker_vswitch_ids' has been deprecated from provider version 1.241.0. Please use 'vswitch_ids' to managed control plane vswtiches
      */
-    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitchIds` together.
      */
-    zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
+    zoneIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

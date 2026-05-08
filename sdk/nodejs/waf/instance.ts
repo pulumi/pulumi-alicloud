@@ -252,31 +252,31 @@ export interface InstanceState {
     /**
      * Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
      */
-    bigScreen?: pulumi.Input<string>;
+    bigScreen?: pulumi.Input<string | undefined>;
     /**
      * Specify the number of exclusive WAF IP addresses.
      */
-    exclusiveIpPackage?: pulumi.Input<string>;
+    exclusiveIpPackage?: pulumi.Input<string | undefined>;
     /**
      * The extra bandwidth. Unit: Mbit/s.
      */
-    extBandwidth?: pulumi.Input<string>;
+    extBandwidth?: pulumi.Input<string | undefined>;
     /**
      * The number of extra domains.
      */
-    extDomainPackage?: pulumi.Input<string>;
+    extDomainPackage?: pulumi.Input<string | undefined>;
     /**
      * Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
      */
-    logStorage?: pulumi.Input<string>;
+    logStorage?: pulumi.Input<string | undefined>;
     /**
      * Log storage period. Unit: day. Valid values: [180, 360].
      */
-    logTime?: pulumi.Input<string>;
+    logTime?: pulumi.Input<string | undefined>;
     /**
      * Type of configuration change. Valid value: Upgrade.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Subscription plan:
      * * China site customers can purchase the following versions of China Mainland region, valid values: ["version3", "version4", "version5"].
@@ -284,45 +284,45 @@ export interface InstanceState {
      * * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
      * * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
      */
-    packageCode?: pulumi.Input<string>;
+    packageCode?: pulumi.Input<string | undefined>;
     /**
      * Service time of Web Application Firewall.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Specify whether professional service is supported. Valid values: ["true", "false"]
      */
-    prefessionalService?: pulumi.Input<string>;
+    prefessionalService?: pulumi.Input<string | undefined>;
     /**
      * The instance region ID.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Renewal period of WAF service. Unit: month
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Renewal status of WAF service. Valid values: 
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the instance.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
      */
-    subscriptionType?: pulumi.Input<string>;
+    subscriptionType?: pulumi.Input<string | undefined>;
     /**
      * Specify whether Log service is supported. Valid values: ["true", "false"]
      */
-    wafLog?: pulumi.Input<string>;
+    wafLog?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -356,7 +356,7 @@ export interface InstanceArgs {
     /**
      * Type of configuration change. Valid value: Upgrade.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Subscription plan:
      * * China site customers can purchase the following versions of China Mainland region, valid values: ["version3", "version4", "version5"].
@@ -368,7 +368,7 @@ export interface InstanceArgs {
     /**
      * Service time of Web Application Firewall.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Specify whether professional service is supported. Valid values: ["true", "false"]
      */
@@ -376,21 +376,21 @@ export interface InstanceArgs {
     /**
      * The instance region ID.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Renewal period of WAF service. Unit: month
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Renewal status of WAF service. Valid values: 
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
      */

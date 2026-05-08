@@ -27,13 +27,13 @@ class SiteDeliveryTaskArgs:
                  field_name: pulumi.Input[_builtins.str],
                  site_id: pulumi.Input[_builtins.str],
                  task_name: pulumi.Input[_builtins.str],
-                 discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 http_delivery: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']] = None,
-                 kafka_delivery: Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']] = None,
-                 oss_delivery: Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']] = None,
-                 s3_delivery: Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']] = None,
-                 sls_delivery: Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 http_delivery: pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']] = None,
+                 kafka_delivery: pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']] = None,
+                 oss_delivery: pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']] = None,
+                 s3_delivery: pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']] = None,
+                 sls_delivery: pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SiteDeliveryTask resource.
 
@@ -158,19 +158,19 @@ class SiteDeliveryTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="discardRate")
-    def discard_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def discard_rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         If the discard rate is not filled, the default value is 0.
         """
         return pulumi.get(self, "discard_rate")
 
     @discard_rate.setter
-    def discard_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def discard_rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "discard_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="httpDelivery")
-    def http_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]:
+    def http_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']]:
         """
         HTTP delivery configuration parameters. See `http_delivery` below.
 
@@ -179,12 +179,12 @@ class SiteDeliveryTaskArgs:
         return pulumi.get(self, "http_delivery")
 
     @http_delivery.setter
-    def http_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]):
+    def http_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']]):
         pulumi.set(self, "http_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaDelivery")
-    def kafka_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]:
+    def kafka_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']]:
         """
         Kafka delivery configuration parameters. See `kafka_delivery` below.
 
@@ -193,12 +193,12 @@ class SiteDeliveryTaskArgs:
         return pulumi.get(self, "kafka_delivery")
 
     @kafka_delivery.setter
-    def kafka_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]):
+    def kafka_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']]):
         pulumi.set(self, "kafka_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="ossDelivery")
-    def oss_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]:
+    def oss_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']]:
         """
         OSS delivery configuration. See `oss_delivery` below.
 
@@ -207,12 +207,12 @@ class SiteDeliveryTaskArgs:
         return pulumi.get(self, "oss_delivery")
 
     @oss_delivery.setter
-    def oss_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]):
+    def oss_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']]):
         pulumi.set(self, "oss_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Delivery")
-    def s3_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]:
+    def s3_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']]:
         """
         S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
 
@@ -221,12 +221,12 @@ class SiteDeliveryTaskArgs:
         return pulumi.get(self, "s3_delivery")
 
     @s3_delivery.setter
-    def s3_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]):
+    def s3_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']]):
         pulumi.set(self, "s3_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="slsDelivery")
-    def sls_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]:
+    def sls_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']]:
         """
         SLS delivery configuration. See `sls_delivery` below.
 
@@ -235,38 +235,38 @@ class SiteDeliveryTaskArgs:
         return pulumi.get(self, "sls_delivery")
 
     @sls_delivery.setter
-    def sls_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]):
+    def sls_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']]):
         pulumi.set(self, "sls_delivery", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task status, value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _SiteDeliveryTaskState:
     def __init__(__self__, *,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 field_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_delivery: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']] = None,
-                 kafka_delivery: Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']] = None,
-                 oss_delivery: Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']] = None,
-                 s3_delivery: Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_delivery: Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 field_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_delivery: pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']] = None,
+                 kafka_delivery: pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']] = None,
+                 oss_delivery: pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']] = None,
+                 s3_delivery: pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_delivery: pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SiteDeliveryTask resources.
 
@@ -324,7 +324,7 @@ class _SiteDeliveryTaskState:
 
     @_builtins.property
     @pulumi.getter(name="businessType")
-    def business_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Real-time log type. Valid values:
         - `dcdn_log_access_l1 (default)`: access log.
@@ -332,60 +332,60 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "business_type")
 
     @business_type.setter
-    def business_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCenter")
-    def data_center(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_center(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Center. Values:
         """
         return pulumi.get(self, "data_center")
 
     @data_center.setter
-    def data_center(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_center(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_center", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryType")
-    def delivery_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery Type:
         """
         return pulumi.get(self, "delivery_type")
 
     @delivery_type.setter
-    def delivery_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_type", value)
 
     @_builtins.property
     @pulumi.getter(name="discardRate")
-    def discard_rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def discard_rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         If the discard rate is not filled, the default value is 0.
         """
         return pulumi.get(self, "discard_rate")
 
     @discard_rate.setter
-    def discard_rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def discard_rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "discard_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="fieldName")
-    def field_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of delivery fields to be modified, separated by commas.
         """
         return pulumi.get(self, "field_name")
 
     @field_name.setter
-    def field_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpDelivery")
-    def http_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]:
+    def http_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']]:
         """
         HTTP delivery configuration parameters. See `http_delivery` below.
 
@@ -394,12 +394,12 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "http_delivery")
 
     @http_delivery.setter
-    def http_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskHttpDeliveryArgs']]):
+    def http_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskHttpDeliveryArgs']]):
         pulumi.set(self, "http_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaDelivery")
-    def kafka_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]:
+    def kafka_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']]:
         """
         Kafka delivery configuration parameters. See `kafka_delivery` below.
 
@@ -408,12 +408,12 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "kafka_delivery")
 
     @kafka_delivery.setter
-    def kafka_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskKafkaDeliveryArgs']]):
+    def kafka_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskKafkaDeliveryArgs']]):
         pulumi.set(self, "kafka_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="ossDelivery")
-    def oss_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]:
+    def oss_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']]:
         """
         OSS delivery configuration. See `oss_delivery` below.
 
@@ -422,12 +422,12 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "oss_delivery")
 
     @oss_delivery.setter
-    def oss_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskOssDeliveryArgs']]):
+    def oss_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskOssDeliveryArgs']]):
         pulumi.set(self, "oss_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="s3Delivery")
-    def s3_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]:
+    def s3_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']]:
         """
         S3/S3 compatible delivery configuration parameters. See `s3_delivery` below.
 
@@ -436,24 +436,24 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "s3_delivery")
 
     @s3_delivery.setter
-    def s3_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskS3DeliveryArgs']]):
+    def s3_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskS3DeliveryArgs']]):
         pulumi.set(self, "s3_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) interface.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slsDelivery")
-    def sls_delivery(self) -> Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]:
+    def sls_delivery(self) -> pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']]:
         """
         SLS delivery configuration. See `sls_delivery` below.
 
@@ -462,31 +462,31 @@ class _SiteDeliveryTaskState:
         return pulumi.get(self, "sls_delivery")
 
     @sls_delivery.setter
-    def sls_delivery(self, value: Optional[pulumi.Input['SiteDeliveryTaskSlsDeliveryArgs']]):
+    def sls_delivery(self, value: pulumi.Input[Optional['SiteDeliveryTaskSlsDeliveryArgs']]):
         pulumi.set(self, "sls_delivery", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task status, value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="taskName")
-    def task_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task name.
         """
         return pulumi.get(self, "task_name")
 
     @task_name.setter
-    def task_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_name", value)
 
 
@@ -496,19 +496,19 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 field_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
-                 kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
-                 oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
-                 s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 field_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
+                 kafka_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
+                 oss_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
+                 s3_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Site Delivery Task resource.
@@ -553,7 +553,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                 "max_batch_size": 1000,
             },
             data_center="global",
-            discard_rate=0,
+            discard_rate=float(0),
             task_name="dcdn-example-task",
             business_type="dcdn_log_access_l1",
             field_name="ConsoleLog,CPUTime,Duration,ErrorCode,ErrorMessage,ResponseSize,ResponseStatus,RoutineName,ClientRequestID,LogTimestamp,FetchStatus,SubRequestID",
@@ -648,7 +648,7 @@ class SiteDeliveryTask(pulumi.CustomResource):
                 "max_batch_size": 1000,
             },
             data_center="global",
-            discard_rate=0,
+            discard_rate=float(0),
             task_name="dcdn-example-task",
             business_type="dcdn_log_access_l1",
             field_name="ConsoleLog,CPUTime,Duration,ErrorCode,ErrorMessage,ResponseSize,ResponseStatus,RoutineName,ClientRequestID,LogTimestamp,FetchStatus,SubRequestID",
@@ -682,19 +682,19 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 business_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 field_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
-                 kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
-                 oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
-                 s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 task_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 business_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 field_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
+                 kafka_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
+                 oss_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
+                 s3_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 task_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -739,19 +739,19 @@ class SiteDeliveryTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            business_type: Optional[pulumi.Input[_builtins.str]] = None,
-            data_center: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_type: Optional[pulumi.Input[_builtins.str]] = None,
-            discard_rate: Optional[pulumi.Input[_builtins.float]] = None,
-            field_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
-            kafka_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
-            oss_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
-            s3_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_delivery: Optional[pulumi.Input[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            task_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'SiteDeliveryTask':
+            business_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_type: pulumi.Input[Optional[_builtins.str]] = None,
+            discard_rate: pulumi.Input[Optional[_builtins.float]] = None,
+            field_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskHttpDeliveryArgs', 'SiteDeliveryTaskHttpDeliveryArgsDict']]] = None,
+            kafka_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskKafkaDeliveryArgs', 'SiteDeliveryTaskKafkaDeliveryArgsDict']]] = None,
+            oss_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskOssDeliveryArgs', 'SiteDeliveryTaskOssDeliveryArgsDict']]] = None,
+            s3_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskS3DeliveryArgs', 'SiteDeliveryTaskS3DeliveryArgsDict']]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_delivery: pulumi.Input[Optional[Union['SiteDeliveryTaskSlsDeliveryArgs', 'SiteDeliveryTaskSlsDeliveryArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            task_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'SiteDeliveryTask':
         """
         Get an existing SiteDeliveryTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

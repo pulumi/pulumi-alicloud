@@ -185,53 +185,53 @@ export interface Ipv6GatewayState {
     /**
      * The status of the IPv6 gateway.
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of IPv6 gateway.
      */
-    expiredTime?: pulumi.Input<string>;
+    expiredTime?: pulumi.Input<string | undefined>;
     /**
      * The charge type of IPv6 gateway.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Resource primary key attribute field.
      */
-    ipv6GatewayId?: pulumi.Input<string>;
+    ipv6GatewayId?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    ipv6GatewayName?: pulumi.Input<string>;
+    ipv6GatewayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      *
      * @deprecated Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: Available, Pending and Deleting.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -241,25 +241,25 @@ export interface Ipv6GatewayArgs {
     /**
      * The description of the IPv6 gateway. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv6 gateway. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    ipv6GatewayName?: pulumi.Input<string>;
+    ipv6GatewayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      *
      * @deprecated Field 'Spec' has been deprecated from provider version 1.205.0. IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
      */

@@ -106,7 +106,7 @@ export interface PolicyAdvancedConfigState {
     /**
      * Access control policy strict mode of on-state. Valid values:
      */
-    internetSwitch?: pulumi.Input<string>;
+    internetSwitch?: pulumi.Input<string | undefined>;
 }
 
 /**

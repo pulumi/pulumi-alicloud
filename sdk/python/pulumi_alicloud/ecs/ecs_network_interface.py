@@ -20,28 +20,28 @@ __all__ = ['EcsNetworkInterfaceArgs', 'EcsNetworkInterface']
 class EcsNetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
-                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterface resource.
 
@@ -144,302 +144,302 @@ class EcsNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
-    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "delete_on_release")
 
     @delete_on_release.setter
-    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_release(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4PrefixCount")
-    def ipv4_prefix_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv4_prefix_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         """
         return pulumi.get(self, "ipv4_prefix_count")
 
     @ipv4_prefix_count.setter
-    def ipv4_prefix_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv4_prefix_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv4_prefix_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Prefixes")
-    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv4_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         """
         return pulumi.get(self, "ipv4_prefixes")
 
     @ipv4_prefixes.setter
-    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv4_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
-    def ipv6_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv6_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         """
         return pulumi.get(self, "ipv6_address_count")
 
     @ipv6_address_count.setter
-    def ipv6_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv6_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv6_address_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         """
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
-    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv6_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_addresses", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
-    def network_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         """
         return pulumi.get(self, "network_interface_name")
 
     @network_interface_name.setter
-    def network_interface_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
-    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @network_interface_traffic_mode.setter
-    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_traffic_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_traffic_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
-    def primary_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         """
         return pulumi.get(self, "primary_ip_address")
 
     @primary_ip_address.setter
-    def primary_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
-    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
         """
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
-    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
     @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpsCount")
     @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
-    def private_ips_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def private_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
         """
         return pulumi.get(self, "private_ips_count")
 
     @private_ips_count.setter
-    def private_ips_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def private_ips_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "private_ips_count", value)
 
     @_builtins.property
     @pulumi.getter(name="queueNumber")
-    def queue_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The queue number of the ENI.
         """
         return pulumi.get(self, "queue_number")
 
     @queue_number.setter
-    def queue_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_number", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
-    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private IP addresses that can be automatically created by ECS.
         """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
     @secondary_private_ip_address_count.setter
-    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_private_ip_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_private_ip_address_count", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
-    def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
-    def source_dest_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def source_dest_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "source_dest_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EcsNetworkInterfaceState:
     def __init__(__self__, *,
-                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mac: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mac: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
 
@@ -537,307 +537,307 @@ class _EcsNetworkInterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="deleteOnRelease")
-    def delete_on_release(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_on_release(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "delete_on_release")
 
     @delete_on_release.setter
-    def delete_on_release(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_on_release(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_on_release", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4PrefixCount")
-    def ipv4_prefix_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv4_prefix_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         """
         return pulumi.get(self, "ipv4_prefix_count")
 
     @ipv4_prefix_count.setter
-    def ipv4_prefix_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv4_prefix_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv4_prefix_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Prefixes")
-    def ipv4_prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv4_prefixes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         """
         return pulumi.get(self, "ipv4_prefixes")
 
     @ipv4_prefixes.setter
-    def ipv4_prefixes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv4_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4_prefixes", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6AddressCount")
-    def ipv6_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ipv6_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         """
         return pulumi.get(self, "ipv6_address_count")
 
     @ipv6_address_count.setter
-    def ipv6_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ipv6_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv6_address_count", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Addresses")
-    def ipv6_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ipv6_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         """
         return pulumi.get(self, "ipv6_addresses")
 
     @ipv6_addresses.setter
-    def ipv6_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ipv6_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_addresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def mac(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MAC address of the ENI.
         """
         return pulumi.get(self, "mac")
 
     @mac.setter
-    def mac(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceName")
-    def network_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         """
         return pulumi.get(self, "network_interface_name")
 
     @network_interface_name.setter
-    def network_interface_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceTrafficMode")
-    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_traffic_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         """
         return pulumi.get(self, "network_interface_traffic_mode")
 
     @network_interface_traffic_mode.setter
-    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_traffic_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_traffic_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryIpAddress")
-    def primary_ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         """
         return pulumi.get(self, "primary_ip_address")
 
     @primary_ip_address.setter
-    def primary_ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIp")
     @_utilities.deprecated("""Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead""")
-    def private_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         """
         return pulumi.get(self, "private_ip")
 
     @private_ip.setter
-    def private_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpAddresses")
-    def private_ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ip_addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
         """
         return pulumi.get(self, "private_ip_addresses")
 
     @private_ip_addresses.setter
-    def private_ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ip_addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ip_addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIps")
     @_utilities.deprecated("""Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead""")
-    def private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `private_ips` has been deprecated from provider version 1.123.1. New field `private_ip_addresses` instead
         """
         return pulumi.get(self, "private_ips")
 
     @private_ips.setter
-    def private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "private_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="privateIpsCount")
     @_utilities.deprecated("""Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead""")
-    def private_ips_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def private_ips_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `private_ips_count` has been deprecated from provider version 1.123.1. New field `secondary_private_ip_address_count` instead
         """
         return pulumi.get(self, "private_ips_count")
 
     @private_ips_count.setter
-    def private_ips_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def private_ips_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "private_ips_count", value)
 
     @_builtins.property
     @pulumi.getter(name="queueNumber")
-    def queue_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queue_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The queue number of the ENI.
         """
         return pulumi.get(self, "queue_number")
 
     @queue_number.setter
-    def queue_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queue_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queue_number", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryPrivateIpAddressCount")
-    def secondary_private_ip_address_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_private_ip_address_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of private IP addresses that can be automatically created by ECS.
         """
         return pulumi.get(self, "secondary_private_ip_address_count")
 
     @secondary_private_ip_address_count.setter
-    def secondary_private_ip_address_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_private_ip_address_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_private_ip_address_count", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroups")
     @_utilities.deprecated("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
-    def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `security_groups` has been deprecated from provider version 1.123.1. New field `security_group_ids` instead. **NOTE:** Either `security_group_ids` or `security_groups` must be set with valid security group IDs.
         """
         return pulumi.get(self, "security_groups")
 
     @security_groups.setter
-    def security_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceDestCheck")
-    def source_dest_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def source_dest_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "source_dest_check")
 
     @source_dest_check.setter
-    def source_dest_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def source_dest_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "source_dest_check", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the ENI.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -847,29 +847,29 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Network Interface resource.
@@ -1034,29 +1034,29 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 private_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 queue_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1103,31 +1103,31 @@ class EcsNetworkInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_on_release: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_prefix_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ipv6_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-            ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            mac: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interface_traffic_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            private_ips_count: Optional[pulumi.Input[_builtins.int]] = None,
-            queue_number: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_private_ip_address_count: Optional[pulumi.Input[_builtins.int]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_dest_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsNetworkInterface':
+            delete_on_release: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_prefix_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_traffic_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            private_ip_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            private_ips_count: pulumi.Input[Optional[_builtins.int]] = None,
+            queue_number: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_private_ip_address_count: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_dest_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsNetworkInterface':
         """
         Get an existing EcsNetworkInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

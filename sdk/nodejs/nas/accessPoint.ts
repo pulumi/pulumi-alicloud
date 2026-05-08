@@ -229,55 +229,55 @@ export interface AccessPointState {
     /**
      * The name of the permission group.
      */
-    accessGroup?: pulumi.Input<string>;
+    accessGroup?: pulumi.Input<string | undefined>;
     /**
      * The ID of the access point.
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * The name of the access point.
      */
-    accessPointName?: pulumi.Input<string>;
+    accessPointName?: pulumi.Input<string | undefined>;
     /**
      * The time when the access point was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
-    enabledRam?: pulumi.Input<boolean>;
+    enabledRam?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The Posix user. See `posixUser` below.
      */
-    posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser>;
+    posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser | undefined>;
     /**
      * (Available since v1.254.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The root directory of the access point.
      */
-    rootPath?: pulumi.Input<string>;
+    rootPath?: pulumi.Input<string | undefined>;
     /**
      * Root permissions. See `rootPathPermission` below.
      */
-    rootPathPermission?: pulumi.Input<inputs.nas.AccessPointRootPathPermission>;
+    rootPathPermission?: pulumi.Input<inputs.nas.AccessPointRootPathPermission | undefined>;
     /**
      * The status of the access point.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -291,11 +291,11 @@ export interface AccessPointArgs {
     /**
      * The name of the access point.
      */
-    accessPointName?: pulumi.Input<string>;
+    accessPointName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
      */
-    enabledRam?: pulumi.Input<boolean>;
+    enabledRam?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -303,15 +303,15 @@ export interface AccessPointArgs {
     /**
      * The Posix user. See `posixUser` below.
      */
-    posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser>;
+    posixUser?: pulumi.Input<inputs.nas.AccessPointPosixUser | undefined>;
     /**
      * The root directory of the access point.
      */
-    rootPath?: pulumi.Input<string>;
+    rootPath?: pulumi.Input<string | undefined>;
     /**
      * Root permissions. See `rootPathPermission` below.
      */
-    rootPathPermission?: pulumi.Input<inputs.nas.AccessPointRootPathPermission>;
+    rootPathPermission?: pulumi.Input<inputs.nas.AccessPointRootPathPermission | undefined>;
     /**
      * The ID of the VPC.
      */

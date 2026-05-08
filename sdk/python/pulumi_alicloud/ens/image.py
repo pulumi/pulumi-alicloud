@@ -20,9 +20,9 @@ __all__ = ['ImageArgs', 'Image']
 class ImageArgs:
     def __init__(__self__, *,
                  image_name: pulumi.Input[_builtins.str],
-                 delete_after_image_upload: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -53,50 +53,50 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteAfterImageUpload")
-    def delete_after_image_upload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_after_image_upload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "delete_after_image_upload")
 
     @delete_after_image_upload.setter
-    def delete_after_image_upload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_after_image_upload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_after_image_upload", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetOssRegionId")
-    def target_oss_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_oss_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the target OSS where the image is to be stored.
         """
         return pulumi.get(self, "target_oss_region_id")
 
     @target_oss_region_id.setter
-    def target_oss_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_oss_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_oss_region_id", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_after_image_upload: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -122,74 +122,74 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteAfterImageUpload")
-    def delete_after_image_upload(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_after_image_upload(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "delete_after_image_upload")
 
     @delete_after_image_upload.setter
-    def delete_after_image_upload(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_after_image_upload(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_after_image_upload", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the image.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetOssRegionId")
-    def target_oss_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_oss_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the target OSS where the image is to be stored.
         """
         return pulumi.get(self, "target_oss_region_id")
 
     @target_oss_region_id.setter
-    def target_oss_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_oss_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_oss_region_id", value)
 
 
@@ -199,10 +199,10 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_image_upload: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Image resource.
@@ -334,10 +334,10 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_after_image_upload: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -365,12 +365,12 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_after_image_upload: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_oss_region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_after_image_upload: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_oss_region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

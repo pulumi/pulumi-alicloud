@@ -20,9 +20,9 @@ __all__ = ['AlarmContactGroupArgs', 'AlarmContactGroup']
 class AlarmContactGroupArgs:
     def __init__(__self__, *,
                  alarm_contact_group_name: pulumi.Input[_builtins.str],
-                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 describe: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None):
+                 contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 describe: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AlarmContactGroup resource.
 
@@ -53,48 +53,48 @@ class AlarmContactGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def contacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contacts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The name of the alert contact.
         """
         return pulumi.get(self, "contacts")
 
     @contacts.setter
-    def contacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contacts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contacts", value)
 
     @_builtins.property
     @pulumi.getter
-    def describe(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def describe(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the alert group.
         """
         return pulumi.get(self, "describe")
 
     @describe.setter
-    def describe(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def describe(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "describe", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSubscribed")
-    def enable_subscribed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_subscribed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to open weekly subscription.
         """
         return pulumi.get(self, "enable_subscribed")
 
     @enable_subscribed.setter
-    def enable_subscribed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_subscribed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_subscribed", value)
 
 
 @pulumi.input_type
 class _AlarmContactGroupState:
     def __init__(__self__, *,
-                 alarm_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 describe: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alarm_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 describe: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AlarmContactGroup resources.
 
@@ -114,50 +114,50 @@ class _AlarmContactGroupState:
 
     @_builtins.property
     @pulumi.getter(name="alarmContactGroupName")
-    def alarm_contact_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alarm_contact_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alarm group.
         """
         return pulumi.get(self, "alarm_contact_group_name")
 
     @alarm_contact_group_name.setter
-    def alarm_contact_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alarm_contact_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alarm_contact_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def contacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contacts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The name of the alert contact.
         """
         return pulumi.get(self, "contacts")
 
     @contacts.setter
-    def contacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contacts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contacts", value)
 
     @_builtins.property
     @pulumi.getter
-    def describe(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def describe(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the alert group.
         """
         return pulumi.get(self, "describe")
 
     @describe.setter
-    def describe(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def describe(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "describe", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSubscribed")
-    def enable_subscribed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_subscribed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to open weekly subscription.
         """
         return pulumi.get(self, "enable_subscribed")
 
     @enable_subscribed.setter
-    def enable_subscribed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_subscribed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_subscribed", value)
 
 
@@ -167,10 +167,10 @@ class AlarmContactGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 describe: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alarm_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 describe: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a CMS Alarm Contact Group resource.
@@ -258,10 +258,10 @@ class AlarmContactGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alarm_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contacts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 describe: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alarm_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 describe: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,10 +287,10 @@ class AlarmContactGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alarm_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            contacts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            describe: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_subscribed: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AlarmContactGroup':
+            alarm_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            contacts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            describe: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_subscribed: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AlarmContactGroup':
         """
         Get an existing AlarmContactGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

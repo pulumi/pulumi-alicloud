@@ -20,17 +20,17 @@ __all__ = ['SmartagFlowLogArgs', 'SmartagFlowLog']
 class SmartagFlowLogArgs:
     def __init__(__self__, *,
                  output_type: pulumi.Input[_builtins.str],
-                 active_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_log_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inactive_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 netflow_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SmartagFlowLog resource.
 
@@ -85,152 +85,152 @@ class SmartagFlowLogArgs:
 
     @_builtins.property
     @pulumi.getter(name="activeAging")
-    def active_aging(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def active_aging(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
         """
         return pulumi.get(self, "active_aging")
 
     @active_aging.setter
-    def active_aging(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def active_aging(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "active_aging", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flow log.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="flowLogName")
-    def flow_log_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flow_log_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flow log.
         """
         return pulumi.get(self, "flow_log_name")
 
     @flow_log_name.setter
-    def flow_log_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flow_log_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flow_log_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveAging")
-    def inactive_aging(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_aging(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
         """
         return pulumi.get(self, "inactive_aging")
 
     @inactive_aging.setter
-    def inactive_aging(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_aging(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_aging", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowServerIp")
-    def netflow_server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netflow_server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_server_ip")
 
     @netflow_server_ip.setter
-    def netflow_server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netflow_server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netflow_server_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowServerPort")
-    def netflow_server_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def netflow_server_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_server_port")
 
     @netflow_server_port.setter
-    def netflow_server_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def netflow_server_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "netflow_server_port", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowVersion")
-    def netflow_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netflow_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_version")
 
     @netflow_version.setter
-    def netflow_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netflow_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netflow_version", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsRegionId")
-    def sls_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "sls_region_id")
 
     @sls_region_id.setter
-    def sls_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _SmartagFlowLogState:
     def __init__(__self__, *,
-                 active_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_log_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inactive_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 netflow_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SmartagFlowLog resources.
 
@@ -274,146 +274,146 @@ class _SmartagFlowLogState:
 
     @_builtins.property
     @pulumi.getter(name="activeAging")
-    def active_aging(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def active_aging(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval at which log data of active connections is collected. Valid values: `60` to `6000`. Default value: `300`. Unit: second.
         """
         return pulumi.get(self, "active_aging")
 
     @active_aging.setter
-    def active_aging(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def active_aging(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "active_aging", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the flow log.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="flowLogName")
-    def flow_log_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flow_log_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flow log.
         """
         return pulumi.get(self, "flow_log_name")
 
     @flow_log_name.setter
-    def flow_log_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flow_log_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flow_log_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inactiveAging")
-    def inactive_aging(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def inactive_aging(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time interval at which log data of inactive connections is connected. Valid values: `10` to `600`. Default value: `15`. Unit: second.
         """
         return pulumi.get(self, "inactive_aging")
 
     @inactive_aging.setter
-    def inactive_aging(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def inactive_aging(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "inactive_aging", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Logstore in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowServerIp")
-    def netflow_server_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netflow_server_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the NetFlow collector where the flow log is stored. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_server_ip")
 
     @netflow_server_ip.setter
-    def netflow_server_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netflow_server_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netflow_server_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowServerPort")
-    def netflow_server_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def netflow_server_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the NetFlow collector. Default value: `9995`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_server_port")
 
     @netflow_server_port.setter
-    def netflow_server_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def netflow_server_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "netflow_server_port", value)
 
     @_builtins.property
     @pulumi.getter(name="netflowVersion")
-    def netflow_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def netflow_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NetFlow version. Default value: `V9`. Valid values: `V10`, `V5`, `V9`. If `output_type` is set to `netflow` or `all`, this parameter is required.
         """
         return pulumi.get(self, "netflow_version")
 
     @netflow_version.setter
-    def netflow_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def netflow_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "netflow_version", value)
 
     @_builtins.property
     @pulumi.getter(name="outputType")
-    def output_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location where the flow log is stored. Valid values:
         """
         return pulumi.get(self, "output_type")
 
     @output_type.setter
-    def output_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_type", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project in Log Service. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsRegionId")
-    def sls_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where Log Service is deployed. If `output_type` is set to `sls` or `all`, this parameter is required.
         """
         return pulumi.get(self, "sls_region_id")
 
     @sls_region_id.setter
-    def sls_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the flow log. Valid values:  `Active`: The flow log is enabled. `Inactive`: The flow log is disabled.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -423,18 +423,18 @@ class SmartagFlowLog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_log_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inactive_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 netflow_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Smartag Flow Log resource.
@@ -538,18 +538,18 @@ class SmartagFlowLog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 flow_log_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 inactive_aging: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 netflow_server_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 netflow_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,18 +583,18 @@ class SmartagFlowLog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active_aging: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            flow_log_name: Optional[pulumi.Input[_builtins.str]] = None,
-            inactive_aging: Optional[pulumi.Input[_builtins.int]] = None,
-            logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-            netflow_server_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            netflow_server_port: Optional[pulumi.Input[_builtins.int]] = None,
-            netflow_version: Optional[pulumi.Input[_builtins.str]] = None,
-            output_type: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SmartagFlowLog':
+            active_aging: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            flow_log_name: pulumi.Input[Optional[_builtins.str]] = None,
+            inactive_aging: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            netflow_server_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            netflow_server_port: pulumi.Input[Optional[_builtins.int]] = None,
+            netflow_version: pulumi.Input[Optional[_builtins.str]] = None,
+            output_type: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SmartagFlowLog':
         """
         Get an existing SmartagFlowLog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

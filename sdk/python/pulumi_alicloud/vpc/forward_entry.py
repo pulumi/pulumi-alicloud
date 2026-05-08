@@ -25,9 +25,9 @@ class ForwardEntryArgs:
                  internal_ip: pulumi.Input[_builtins.str],
                  internal_port: pulumi.Input[_builtins.str],
                  ip_protocol: pulumi.Input[_builtins.str],
-                 forward_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_break: Optional[pulumi.Input[_builtins.bool]] = None):
+                 forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_break: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ForwardEntry resource.
 
@@ -143,56 +143,56 @@ class ForwardEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardEntryName")
-    def forward_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the DNAT entry.
         """
         return pulumi.get(self, "forward_entry_name")
 
     @forward_entry_name.setter
-    def forward_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_entry_name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portBreak")
-    def port_break(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_break(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable port break. Valid values:
         """
         return pulumi.get(self, "port_break")
 
     @port_break.setter
-    def port_break(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_break(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_break", value)
 
 
 @pulumi.input_type
 class _ForwardEntryState:
     def __init__(__self__, *,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_break: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_break: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ForwardEntry resources.
 
@@ -242,7 +242,7 @@ class _ForwardEntryState:
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
         - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
@@ -250,12 +250,12 @@ class _ForwardEntryState:
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPort")
-    def external_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
         - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
@@ -264,48 +264,48 @@ class _ForwardEntryState:
         return pulumi.get(self, "external_port")
 
     @external_port.setter
-    def external_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_port", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardEntryId")
-    def forward_entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_entry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.43.0) The id of the forward entry on the server.
         """
         return pulumi.get(self, "forward_entry_id")
 
     @forward_entry_id.setter
-    def forward_entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_entry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_entry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardEntryName")
-    def forward_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the DNAT entry.
         """
         return pulumi.get(self, "forward_entry_name")
 
     @forward_entry_name.setter
-    def forward_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardTableId")
-    def forward_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the DNAT table to which the DNAT entry belongs.
         """
         return pulumi.get(self, "forward_table_id")
 
     @forward_table_id.setter
-    def forward_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private IP address.
         - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
@@ -314,12 +314,12 @@ class _ForwardEntryState:
         return pulumi.get(self, "internal_ip")
 
     @internal_ip.setter
-    def internal_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="internalPort")
-    def internal_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
         - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
@@ -327,56 +327,56 @@ class _ForwardEntryState:
         return pulumi.get(self, "internal_port")
 
     @internal_port.setter
-    def internal_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Valid values:
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from provider version 1.119.1. New field `forward_entry_name` instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="portBreak")
-    def port_break(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def port_break(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable port break. Valid values:
         """
         return pulumi.get(self, "port_break")
 
     @port_break.setter
-    def port_break(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def port_break(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "port_break", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.119.1) The status of forward entry.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -386,15 +386,15 @@ class ForwardEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_break: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_break: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Nat Gateway Forward Entry resource.
@@ -559,15 +559,15 @@ class ForwardEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 forward_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_break: Optional[pulumi.Input[_builtins.bool]] = None,
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 forward_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_break: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -610,17 +610,17 @@ class ForwardEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            external_port: Optional[pulumi.Input[_builtins.str]] = None,
-            forward_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            forward_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-            forward_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port_break: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ForwardEntry':
+            external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            external_port: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            forward_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port_break: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ForwardEntry':
         """
         Get an existing ForwardEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

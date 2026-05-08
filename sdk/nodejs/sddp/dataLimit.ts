@@ -58,7 +58,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: defaultSwitch.id,
@@ -229,43 +229,43 @@ export interface DataLimitState {
     /**
      * Whether to enable the log auditing feature. Valid values: `0`, `1`.
      */
-    auditStatus?: pulumi.Input<number>;
+    auditStatus?: pulumi.Input<number | undefined>;
     /**
      * The type of the database. Valid values: `MySQL`, `SQLServer`.
      */
-    engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      */
-    logStoreDay?: pulumi.Input<number>;
+    logStoreDay?: pulumi.Input<number | undefined>;
     /**
      * The ID of the data asset.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The password that is used to connect to the database.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The port that is used to connect to the database.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the data asset.
      */
-    serviceRegionId?: pulumi.Input<string>;
+    serviceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the service to which the data asset belongs.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,31 +275,31 @@ export interface DataLimitArgs {
     /**
      * Whether to enable the log auditing feature. Valid values: `0`, `1`.
      */
-    auditStatus?: pulumi.Input<number>;
+    auditStatus?: pulumi.Input<number | undefined>;
     /**
      * The type of the database. Valid values: `MySQL`, `SQLServer`.
      */
-    engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`logStoreDay` is valid when the `auditStatus` is `1`.
      */
-    logStoreDay?: pulumi.Input<number>;
+    logStoreDay?: pulumi.Input<number | undefined>;
     /**
      * The ID of the data asset.
      */
-    parentId?: pulumi.Input<string>;
+    parentId?: pulumi.Input<string | undefined>;
     /**
      * The password that is used to connect to the database.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The port that is used to connect to the database.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      */
@@ -307,9 +307,9 @@ export interface DataLimitArgs {
     /**
      * The region ID of the data asset.
      */
-    serviceRegionId?: pulumi.Input<string>;
+    serviceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the service to which the data asset belongs.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

@@ -127,19 +127,19 @@ export interface GetTransitRouterCidrsOutputArgs {
     /**
      * A list of Cen Transit Router Cidr IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Transit Router Cidr name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router cidr.
      */
-    transitRouterCidrId?: pulumi.Input<string>;
+    transitRouterCidrId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */

@@ -253,79 +253,79 @@ export interface DesktopState {
     /**
      * The amount of the Desktop.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The bundle id of the Desktop.
      */
-    bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string | undefined>;
     /**
      * The desktop name of the Desktop.
      */
-    desktopName?: pulumi.Input<string>;
+    desktopName?: pulumi.Input<string | undefined>;
     /**
      * The desktop type of the Desktop.
      */
-    desktopType?: pulumi.Input<string>;
+    desktopType?: pulumi.Input<string | undefined>;
     /**
      * The desktop end user id of the Desktop.
      */
-    endUserIds?: pulumi.Input<pulumi.Input<string>[]>;
+    endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The hostname of the Desktop.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Simple Office Site.
      */
-    officeSiteId?: pulumi.Input<string>;
+    officeSiteId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The period of the Desktop.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The period unit of the Desktop.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The policy group id of the Desktop.
      */
-    policyGroupId?: pulumi.Input<string>;
+    policyGroupId?: pulumi.Input<string | undefined>;
     /**
      * The root disk size gib of the Desktop.
      */
-    rootDiskSizeGib?: pulumi.Input<number>;
+    rootDiskSizeGib?: pulumi.Input<number | undefined>;
     /**
      * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The stopped mode of the Desktop.
      */
-    stoppedMode?: pulumi.Input<string>;
+    stoppedMode?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      */
-    userAssignMode?: pulumi.Input<string>;
+    userAssignMode?: pulumi.Input<string | undefined>;
     /**
      * The user disk size gib of the Desktop.
      */
-    userDiskSizeGib?: pulumi.Input<number>;
+    userDiskSizeGib?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -335,15 +335,15 @@ export interface DesktopArgs {
     /**
      * The amount of the Desktop.
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The bundle id of the Desktop.
      */
@@ -351,19 +351,19 @@ export interface DesktopArgs {
     /**
      * The desktop name of the Desktop.
      */
-    desktopName?: pulumi.Input<string>;
+    desktopName?: pulumi.Input<string | undefined>;
     /**
      * The desktop type of the Desktop.
      */
-    desktopType?: pulumi.Input<string>;
+    desktopType?: pulumi.Input<string | undefined>;
     /**
      * The desktop end user id of the Desktop.
      */
-    endUserIds?: pulumi.Input<pulumi.Input<string>[]>;
+    endUserIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The hostname of the Desktop.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Simple Office Site.
      */
@@ -371,15 +371,15 @@ export interface DesktopArgs {
     /**
      * The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The period of the Desktop.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The period unit of the Desktop.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The policy group id of the Desktop.
      */
@@ -387,25 +387,25 @@ export interface DesktopArgs {
     /**
      * The root disk size gib of the Desktop.
      */
-    rootDiskSizeGib?: pulumi.Input<number>;
+    rootDiskSizeGib?: pulumi.Input<number | undefined>;
     /**
      * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The stopped mode of the Desktop.
      */
-    stoppedMode?: pulumi.Input<string>;
+    stoppedMode?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      */
-    userAssignMode?: pulumi.Input<string>;
+    userAssignMode?: pulumi.Input<string | undefined>;
     /**
      * The user disk size gib of the Desktop.
      */
-    userDiskSizeGib?: pulumi.Input<number>;
+    userDiskSizeGib?: pulumi.Input<number | undefined>;
 }

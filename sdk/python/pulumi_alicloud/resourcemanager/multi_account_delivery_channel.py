@@ -24,8 +24,8 @@ class MultiAccountDeliveryChannelArgs:
                  delivery_channel_description: pulumi.Input[_builtins.str],
                  delivery_channel_filter: pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs'],
                  multi_account_delivery_channel_name: pulumi.Input[_builtins.str],
-                 resource_change_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
+                 resource_change_delivery: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         The set of arguments for constructing a MultiAccountDeliveryChannel resource.
 
@@ -81,37 +81,37 @@ class MultiAccountDeliveryChannelArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceChangeDelivery")
-    def resource_change_delivery(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]:
+    def resource_change_delivery(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]:
         """
         The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
         """
         return pulumi.get(self, "resource_change_delivery")
 
     @resource_change_delivery.setter
-    def resource_change_delivery(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]):
+    def resource_change_delivery(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]):
         pulumi.set(self, "resource_change_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSnapshotDelivery")
-    def resource_snapshot_delivery(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]:
+    def resource_snapshot_delivery(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]:
         """
         The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
         """
         return pulumi.get(self, "resource_snapshot_delivery")
 
     @resource_snapshot_delivery.setter
-    def resource_snapshot_delivery(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]):
+    def resource_snapshot_delivery(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]):
         pulumi.set(self, "resource_snapshot_delivery", value)
 
 
 @pulumi.input_type
 class _MultiAccountDeliveryChannelState:
     def __init__(__self__, *,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']] = None,
-                 multi_account_delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']] = None,
+                 multi_account_delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         Input properties used for looking up and filtering MultiAccountDeliveryChannel resources.
 
@@ -134,62 +134,62 @@ class _MultiAccountDeliveryChannelState:
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelDescription")
-    def delivery_channel_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_description")
 
     @delivery_channel_description.setter
-    def delivery_channel_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelFilter")
-    def delivery_channel_filter(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']]:
+    def delivery_channel_filter(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']]:
         """
         The effective scope of the delivery channel. See `delivery_channel_filter` below.
         """
         return pulumi.get(self, "delivery_channel_filter")
 
     @delivery_channel_filter.setter
-    def delivery_channel_filter(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']]):
+    def delivery_channel_filter(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelDeliveryChannelFilterArgs']]):
         pulumi.set(self, "delivery_channel_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="multiAccountDeliveryChannelName")
-    def multi_account_delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_account_delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "multi_account_delivery_channel_name")
 
     @multi_account_delivery_channel_name.setter
-    def multi_account_delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_account_delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_account_delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceChangeDelivery")
-    def resource_change_delivery(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]:
+    def resource_change_delivery(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]:
         """
         The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
         """
         return pulumi.get(self, "resource_change_delivery")
 
     @resource_change_delivery.setter
-    def resource_change_delivery(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]):
+    def resource_change_delivery(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliveryArgs']]):
         pulumi.set(self, "resource_change_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSnapshotDelivery")
-    def resource_snapshot_delivery(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]:
+    def resource_snapshot_delivery(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]:
         """
         The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
         """
         return pulumi.get(self, "resource_snapshot_delivery")
 
     @resource_snapshot_delivery.setter
-    def resource_snapshot_delivery(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]):
+    def resource_snapshot_delivery(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs']]):
         pulumi.set(self, "resource_snapshot_delivery", value)
 
 
@@ -199,11 +199,11 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-                 multi_account_delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+                 multi_account_delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Multi Account Delivery Channel resource.
@@ -372,11 +372,11 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-                 multi_account_delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+                 multi_account_delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,11 +407,11 @@ class MultiAccountDeliveryChannel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_filter: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-            multi_account_delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_change_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-            resource_snapshot_delivery: Optional[pulumi.Input[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None) -> 'MultiAccountDeliveryChannel':
+            delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_filter: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelDeliveryChannelFilterArgs', 'MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+            multi_account_delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_change_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceChangeDeliveryArgs', 'MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+            resource_snapshot_delivery: pulumi.Input[Optional[Union['MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs', 'MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None) -> 'MultiAccountDeliveryChannel':
         """
         Get an existing MultiAccountDeliveryChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

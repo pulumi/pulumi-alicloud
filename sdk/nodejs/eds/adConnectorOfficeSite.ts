@@ -250,86 +250,86 @@ export interface AdConnectorOfficeSiteState {
     /**
      * The name of the workspace. The name must be 2 to 255 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain digits, colons (:), underscores (_), and hyphens (-).
      */
-    adConnectorOfficeSiteName?: pulumi.Input<string>;
+    adConnectorOfficeSiteName?: pulumi.Input<string | undefined>;
     /**
      * The ad hostname.
      */
-    adHostname?: pulumi.Input<string>;
+    adHostname?: pulumi.Input<string | undefined>;
     /**
      * The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The cen owner id.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The method that you use to connect to cloud desktops. **Note:** The VPC connection method is provided by Alibaba Cloud PrivateLink. You are not charged for PrivateLink. When you set this parameter to VPC or Any, PrivateLink is automatically activated. Default value: `INTERNET`. Valid values:
      * - `INTERNET`: connects clients to cloud desktops only over the Internet.
      * - `VPC`: connects clients to cloud desktops only over a VPC.
      * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
      */
-    dnsAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    dnsAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The domain name of the enterprise AD system. You can register each domain name only once.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The password of the domain administrator. The password can be up to 64 characters in length.
      */
-    domainPassword?: pulumi.Input<string>;
+    domainPassword?: pulumi.Input<string | undefined>;
     /**
      * The username of the domain administrator. The username can be up to 64 characters in length.
      */
-    domainUserName?: pulumi.Input<string>;
+    domainUserName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable Internet access.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable multi-factor authentication (MFA).
      */
-    mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The protocol type. Valid values: `ASP`, `HDX`.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * The AD Connector specifications. Valid values: `1`, `2`.
      */
-    specification?: pulumi.Input<number>;
+    specification?: pulumi.Input<number | undefined>;
     /**
      * The resource State.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      */
-    subDomainDnsAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    subDomainDnsAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The domain name of the enterprise AD subdomain.
      */
-    subDomainName?: pulumi.Input<string>;
+    subDomainName?: pulumi.Input<string | undefined>;
     /**
      * The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
      */
-    verifyCode?: pulumi.Input<string>;
+    verifyCode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -343,11 +343,11 @@ export interface AdConnectorOfficeSiteArgs {
     /**
      * The ad hostname.
      */
-    adHostname?: pulumi.Input<string>;
+    adHostname?: pulumi.Input<string | undefined>;
     /**
      * The maximum public bandwidth value. Valid values: 0 to 200. If you do not specify this parameter or you set this parameter to 0, Internet access is disabled.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the CEN instance.
      */
@@ -355,7 +355,7 @@ export interface AdConnectorOfficeSiteArgs {
     /**
      * The cen owner id.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
@@ -366,7 +366,7 @@ export interface AdConnectorOfficeSiteArgs {
      * - `VPC`: connects clients to cloud desktops only over a VPC.
      * - `ANY`: connects clients to cloud desktops over the Internet or a VPC. You can select a connection method when you use a client to connect to the cloud desktop.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * The IP address N of the DNS server of the enterprise AD system. You can specify only one IP address.
      */
@@ -378,41 +378,41 @@ export interface AdConnectorOfficeSiteArgs {
     /**
      * The password of the domain administrator. The password can be up to 64 characters in length.
      */
-    domainPassword?: pulumi.Input<string>;
+    domainPassword?: pulumi.Input<string | undefined>;
     /**
      * The username of the domain administrator. The username can be up to 64 characters in length.
      */
-    domainUserName?: pulumi.Input<string>;
+    domainUserName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to grant the permissions of the local administrator to the desktop users. Default value: true.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable Internet access.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable multi-factor authentication (MFA).
      */
-    mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The protocol type. Valid values: `ASP`, `HDX`.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * The AD Connector specifications. Valid values: `1`, `2`.
      */
-    specification?: pulumi.Input<number>;
+    specification?: pulumi.Input<number | undefined>;
     /**
      * The DNS address N of the enterprise AD subdomain. If you specify a value for the `subDomainName` parameter but you do not specify a value for this parameter, the DNS address of the subdomain is the same as the DNS address of the parent domain.
      */
-    subDomainDnsAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    subDomainDnsAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The domain name of the enterprise AD subdomain.
      */
-    subDomainName?: pulumi.Input<string>;
+    subDomainName?: pulumi.Input<string | undefined>;
     /**
      * The verification code. If the CEN instance that you specify for the CenId parameter belongs to another Alibaba Cloud account, you must call the SendVerifyCode operation to obtain the verification code.
      */
-    verifyCode?: pulumi.Input<string>;
+    verifyCode?: pulumi.Input<string | undefined>;
 }

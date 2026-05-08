@@ -146,27 +146,27 @@ export interface UserState {
     /**
      * Alibaba Cloud account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An Alibaba Cloud account, Alibaba Cloud name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * Whether it is the administrator. Valid values: `true` and `false`.
      */
-    adminUser?: pulumi.Input<boolean>;
+    adminUser?: pulumi.Input<boolean | undefined>;
     /**
      * Whether this is a permissions administrator. Valid values: `false`, `true`.
      */
-    authAdminUser?: pulumi.Input<boolean>;
+    authAdminUser?: pulumi.Input<boolean | undefined>;
     /**
      * The nickname of the user.
      */
-    nickName?: pulumi.Input<string>;
+    nickName?: pulumi.Input<string | undefined>;
     /**
      * The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
      */
-    userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface UserArgs {
     /**
      * Alibaba Cloud account ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * An Alibaba Cloud account, Alibaba Cloud name.
      */

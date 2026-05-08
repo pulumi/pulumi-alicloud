@@ -213,45 +213,45 @@ export interface GetDedicatedHostsOutputArgs {
     /**
      * The ID of ECS Dedicated Host.
      */
-    dedicatedHostId?: pulumi.Input<string>;
+    dedicatedHostId?: pulumi.Input<string | undefined>;
     /**
      * The name of ECS Dedicated Host.
      */
-    dedicatedHostName?: pulumi.Input<string>;
+    dedicatedHostName?: pulumi.Input<string | undefined>;
     /**
      * The type of the dedicated host.
      */
-    dedicatedHostType?: pulumi.Input<string>;
+    dedicatedHostType?: pulumi.Input<string | undefined>;
     /**
      * A list of ECS Dedicated Host ids.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by the ECS Dedicated Host name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The reason why the dedicated host resource is locked. See `operationLocks` below.
      */
-    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDedicatedHostsOperationLockArgs>[]>;
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.GetDedicatedHostsOperationLockArgs>[] | undefined>;
     /**
      * Save the result to the file.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the ECS Dedicated Host belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone ID of the ECS Dedicated Host.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

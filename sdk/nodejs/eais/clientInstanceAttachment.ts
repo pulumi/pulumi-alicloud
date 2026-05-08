@@ -204,31 +204,31 @@ export interface ClientInstanceAttachmentState {
     /**
      * EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ECS or ECI instance bound to the EAIS instance.
      */
-    clientInstanceId?: pulumi.Input<string>;
+    clientInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The Ei instance specification, which is used to filter matching specifications for updating.
      */
-    eiInstanceType?: pulumi.Input<string>;
+    eiInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The EAIS instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,7 +238,7 @@ export interface ClientInstanceAttachmentArgs {
     /**
      * EAIS instance category, valid values: `eais`, `ei`, default is `eais`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ECS or ECI instance bound to the EAIS instance.
      */
@@ -246,7 +246,7 @@ export interface ClientInstanceAttachmentArgs {
     /**
      * The Ei instance specification, which is used to filter matching specifications for updating.
      */
-    eiInstanceType?: pulumi.Input<string>;
+    eiInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The EAIS instance ID.
      */
@@ -254,5 +254,5 @@ export interface ClientInstanceAttachmentArgs {
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

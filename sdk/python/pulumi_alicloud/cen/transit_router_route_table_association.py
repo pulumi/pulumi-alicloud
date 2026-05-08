@@ -21,7 +21,7 @@ class TransitRouterRouteTableAssociationArgs:
     def __init__(__self__, *,
                  transit_router_attachment_id: pulumi.Input[_builtins.str],
                  transit_router_route_table_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteTableAssociation resource.
 
@@ -60,24 +60,24 @@ class TransitRouterRouteTableAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
 
 @pulumi.input_type
 class _TransitRouterRouteTableAssociationState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteTableAssociation resources.
 
@@ -97,50 +97,50 @@ class _TransitRouterRouteTableAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
-    def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterAttachmentId
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
-    def transit_router_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteTableId")
-    def transit_router_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TransitRouterRouteTableId
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
-    def transit_router_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_table_id", value)
 
 
@@ -150,9 +150,9 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Route Table Association resource.
@@ -333,9 +333,9 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -363,10 +363,10 @@ class TransitRouterRouteTableAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterRouteTableAssociation':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterRouteTableAssociation':
         """
         Get an existing TransitRouterRouteTableAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

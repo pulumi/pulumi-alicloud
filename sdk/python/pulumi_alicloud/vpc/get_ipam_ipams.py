@@ -221,13 +221,13 @@ def get_ipam_ipams(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_ipam_ipams_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          ipam_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          ipam_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_ipam_ipams_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          ipam_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          ipam_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamsResult]:
     """
     This data source provides Vpc Ipam Ipam available to the user.[What is Ipam](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpam)

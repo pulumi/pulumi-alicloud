@@ -149,19 +149,19 @@ export interface GetTransitRouterMulticastDomainsOutputArgs {
     /**
      * A list of Transit Router Multicast Domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Transit Router Multicast Domain name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the multicast domain. Valid Value: `Active`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */
@@ -169,5 +169,5 @@ export interface GetTransitRouterMulticastDomainsOutputArgs {
     /**
      * The ID of the multicast domain.
      */
-    transitRouterMulticastDomainId?: pulumi.Input<string>;
+    transitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
 }

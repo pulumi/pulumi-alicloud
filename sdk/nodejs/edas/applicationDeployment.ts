@@ -178,23 +178,23 @@ export interface ApplicationDeploymentState {
     /**
      * The ID of the application that you want to deploy.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Last package version deployed.
      */
-    lastPackageVersion?: pulumi.Input<string>;
+    lastPackageVersion?: pulumi.Input<string | undefined>;
     /**
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      */
-    packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string | undefined>;
     /**
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      */
-    warUrl?: pulumi.Input<string>;
+    warUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,7 +212,7 @@ export interface ApplicationDeploymentArgs {
     /**
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      */
-    packageVersion?: pulumi.Input<string>;
+    packageVersion?: pulumi.Input<string | undefined>;
     /**
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      */

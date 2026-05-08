@@ -115,11 +115,11 @@ export interface AssetBindState {
     /**
      * Bind version.
      */
-    authVersion?: pulumi.Input<number>;
+    authVersion?: pulumi.Input<number | undefined>;
     /**
      * The first ID of the resource
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -129,9 +129,9 @@ export interface AssetBindArgs {
     /**
      * Bind version.
      */
-    authVersion?: pulumi.Input<number>;
+    authVersion?: pulumi.Input<number | undefined>;
     /**
      * The first ID of the resource
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }

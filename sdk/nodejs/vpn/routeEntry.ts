@@ -237,31 +237,31 @@ export interface RouteEntryState {
     /**
      * The next hop of the destination route.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<string | undefined>;
     /**
      * Whether to issue the destination route to the VPC.
      */
-    publishVpc?: pulumi.Input<boolean>;
+    publishVpc?: pulumi.Input<boolean | undefined>;
     /**
      * The destination network segment of the destination route.
      */
-    routeDest?: pulumi.Input<string>;
+    routeDest?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.161.0) The type of the vpn route entry.
      */
-    routeEntryType?: pulumi.Input<string>;
+    routeEntryType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.161.0) The status of the vpn route entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the vpn gateway.
      */
-    vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The value should be 0 or 100.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**

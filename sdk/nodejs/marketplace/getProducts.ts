@@ -168,41 +168,41 @@ export interface GetProductsOutputArgs {
     /**
      * The Category ID of products.
      */
-    categoryId?: pulumi.Input<string>;
+    categoryId?: pulumi.Input<string | undefined>;
     /**
      * A list of product code.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to apply to the product name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The type of products, Valid values: `APP`, `SERVICE`, `MIRROR`, `DOWNLOAD` and `API_SERVICE`.
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * Search term in this query.
      */
-    searchTerm?: pulumi.Input<string>;
+    searchTerm?: pulumi.Input<string | undefined>;
     /**
      * This field determines how to sort the filtered results, Valid values: `user_count-desc`, `created_on-desc`, `price-desc` and `score-desc`.
      */
-    sort?: pulumi.Input<string>;
+    sort?: pulumi.Input<string | undefined>;
     /**
      * The suggested price of the product.
      */
-    suggestedPrice?: pulumi.Input<number>;
+    suggestedPrice?: pulumi.Input<number | undefined>;
     /**
      * The supplier id of the product.
      */
-    supplierId?: pulumi.Input<string>;
+    supplierId?: pulumi.Input<string | undefined>;
     /**
      * The supplier name keyword of the product.
      */
-    supplierNameKeyword?: pulumi.Input<string>;
+    supplierNameKeyword?: pulumi.Input<string | undefined>;
 }

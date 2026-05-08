@@ -180,7 +180,7 @@ export interface RdsBackupState {
     /**
      * The backup set ID.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:  
      * * `Logical`: logical backup (supported only for MySQL)
@@ -193,27 +193,27 @@ export interface RdsBackupState {
      *
      * > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      */
-    backupMethod?: pulumi.Input<string>;
+    backupMethod?: pulumi.Input<string | undefined>;
     /**
      * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup strategy. Valid values:
      */
-    backupStrategy?: pulumi.Input<string>;
+    backupStrategy?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:  
      * - FullBackup: full backup
      * - IncrementalBackup: incremental backup
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID. You can call DescribeDBInstances to obtain it.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * A list of databases, separated by commas (,).  
      *
@@ -222,19 +222,19 @@ export interface RdsBackupState {
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
      */
-    removeFromState?: pulumi.Input<boolean>;
+    removeFromState?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the backup can be deleted.
      */
-    storeStatus?: pulumi.Input<string>;
+    storeStatus?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,23 +253,23 @@ export interface RdsBackupArgs {
      *
      * > **NOTE:**  * MariaDB instances support only snapshot backup, but you must specify `Physical` for this parameter.
      */
-    backupMethod?: pulumi.Input<string>;
+    backupMethod?: pulumi.Input<string | undefined>;
     /**
      * When the database engine is SQL Server, `BackupStrategy` is set to `db`, `BackupMethod` is `Physical`, and `BackupType` is `FullBackup`, you can specify the retention period for the backup set. Valid values: 7 to 730 days, or - 1 (permanent retention).  
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup strategy. Valid values:
      */
-    backupStrategy?: pulumi.Input<string>;
+    backupStrategy?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:  
      * - FullBackup: full backup
      * - IncrementalBackup: incremental backup
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID. You can call DescribeDBInstances to obtain it.
      */
@@ -282,9 +282,9 @@ export interface RdsBackupArgs {
      *
      * > **NOTE:** This parameter is immutable. Changing it after creation has no effect.
      */
-    dbName?: pulumi.Input<string>;
+    dbName?: pulumi.Input<string | undefined>;
     /**
      * Remove form state when resource cannot be deleted. Valid values: `true` and `false`.
      */
-    removeFromState?: pulumi.Input<boolean>;
+    removeFromState?: pulumi.Input<boolean | undefined>;
 }

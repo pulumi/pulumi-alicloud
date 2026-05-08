@@ -24,23 +24,23 @@ class AutoProvisioningGroupArgs:
                  launch_template_configs: pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]],
                  launch_template_id: pulumi.Input[_builtins.str],
                  total_target_capacity: pulumi.Input[_builtins.str],
-                 auto_provisioning_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_provisioning_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_target_capacity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 excess_capacity_termination_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_spot_price: Optional[pulumi.Input[_builtins.float]] = None,
-                 pay_as_you_go_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_as_you_go_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools_to_use_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 terminate_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminate_instances_with_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+                 pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoProvisioningGroup resource.
 
@@ -141,232 +141,232 @@ class AutoProvisioningGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoProvisioningGroupName")
-    def auto_provisioning_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_provisioning_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         """
         return pulumi.get(self, "auto_provisioning_group_name")
 
     @auto_provisioning_group_name.setter
-    def auto_provisioning_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_provisioning_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_provisioning_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoProvisioningGroupType")
-    def auto_provisioning_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_provisioning_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         """
         return pulumi.get(self, "auto_provisioning_group_type")
 
     @auto_provisioning_group_type.setter
-    def auto_provisioning_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_provisioning_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_provisioning_group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTargetCapacityType")
-    def default_target_capacity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_target_capacity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         """
         return pulumi.get(self, "default_target_capacity_type")
 
     @default_target_capacity_type.setter
-    def default_target_capacity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_target_capacity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_target_capacity_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the auto provisioning group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excessCapacityTerminationPolicy")
-    def excess_capacity_termination_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def excess_capacity_termination_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
         """
         return pulumi.get(self, "excess_capacity_termination_policy")
 
     @excess_capacity_termination_policy.setter
-    def excess_capacity_termination_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def excess_capacity_termination_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "excess_capacity_termination_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the instance launch template associated with the auto provisioning group.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSpotPrice")
-    def max_spot_price(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_spot_price(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
         """
         return pulumi.get(self, "max_spot_price")
 
     @max_spot_price.setter
-    def max_spot_price(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_spot_price(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_spot_price", value)
 
     @_builtins.property
     @pulumi.getter(name="payAsYouGoAllocationStrategy")
-    def pay_as_you_go_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_as_you_go_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         """
         return pulumi.get(self, "pay_as_you_go_allocation_strategy")
 
     @pay_as_you_go_allocation_strategy.setter
-    def pay_as_you_go_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_as_you_go_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_as_you_go_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="payAsYouGoTargetCapacity")
-    def pay_as_you_go_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_as_you_go_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target capacity of pay-as-you-go instances in the auto provisioning group.
         """
         return pulumi.get(self, "pay_as_you_go_target_capacity")
 
     @pay_as_you_go_target_capacity.setter
-    def pay_as_you_go_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_as_you_go_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_as_you_go_target_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="spotAllocationStrategy")
-    def spot_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
         """
         return pulumi.get(self, "spot_allocation_strategy")
 
     @spot_allocation_strategy.setter
-    def spot_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
-    def spot_instance_interruption_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_instance_interruption_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         """
         return pulumi.get(self, "spot_instance_interruption_behavior")
 
     @spot_instance_interruption_behavior.setter
-    def spot_instance_interruption_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_instance_interruption_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_instance_interruption_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePoolsToUseCount")
-    def spot_instance_pools_to_use_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_instance_pools_to_use_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         """
         return pulumi.get(self, "spot_instance_pools_to_use_count")
 
     @spot_instance_pools_to_use_count.setter
-    def spot_instance_pools_to_use_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_instance_pools_to_use_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_instance_pools_to_use_count", value)
 
     @_builtins.property
     @pulumi.getter(name="spotTargetCapacity")
-    def spot_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target capacity of preemptible instances in the auto provisioning group.
         """
         return pulumi.get(self, "spot_target_capacity")
 
     @spot_target_capacity.setter
-    def spot_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_target_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="terminateInstances")
-    def terminate_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terminate_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
         """
         return pulumi.get(self, "terminate_instances")
 
     @terminate_instances.setter
-    def terminate_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terminate_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terminate_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="terminateInstancesWithExpiration")
-    def terminate_instances_with_expiration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terminate_instances_with_expiration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
         """
         return pulumi.get(self, "terminate_instances_with_expiration")
 
     @terminate_instances_with_expiration.setter
-    def terminate_instances_with_expiration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terminate_instances_with_expiration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terminate_instances_with_expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         """
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
-    def valid_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_from", value)
 
     @_builtins.property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_until(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """
         return pulumi.get(self, "valid_until")
 
     @valid_until.setter
-    def valid_until(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_until(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_until", value)
 
 
 @pulumi.input_type
 class _AutoProvisioningGroupState:
     def __init__(__self__, *,
-                 auto_provisioning_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_provisioning_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_target_capacity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 excess_capacity_termination_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_spot_price: Optional[pulumi.Input[_builtins.float]] = None,
-                 pay_as_you_go_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_as_you_go_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools_to_use_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 terminate_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminate_instances_with_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_configs: pulumi.Input[Optional[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+                 pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoProvisioningGroup resources.
 
@@ -434,242 +434,242 @@ class _AutoProvisioningGroupState:
 
     @_builtins.property
     @pulumi.getter(name="autoProvisioningGroupName")
-    def auto_provisioning_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_provisioning_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
         """
         return pulumi.get(self, "auto_provisioning_group_name")
 
     @auto_provisioning_group_name.setter
-    def auto_provisioning_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_provisioning_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_provisioning_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoProvisioningGroupType")
-    def auto_provisioning_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_provisioning_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
         """
         return pulumi.get(self, "auto_provisioning_group_type")
 
     @auto_provisioning_group_type.setter
-    def auto_provisioning_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_provisioning_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_provisioning_group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTargetCapacityType")
-    def default_target_capacity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_target_capacity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
         """
         return pulumi.get(self, "default_target_capacity_type")
 
     @default_target_capacity_type.setter
-    def default_target_capacity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_target_capacity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_target_capacity_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the auto provisioning group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excessCapacityTerminationPolicy")
-    def excess_capacity_termination_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def excess_capacity_termination_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
         """
         return pulumi.get(self, "excess_capacity_termination_policy")
 
     @excess_capacity_termination_policy.setter
-    def excess_capacity_termination_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def excess_capacity_termination_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "excess_capacity_termination_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateConfigs")
-    def launch_template_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]:
+    def launch_template_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]:
         """
         DataDisk mappings to attach to ecs instance. See `block-config` below for details.
         """
         return pulumi.get(self, "launch_template_configs")
 
     @launch_template_configs.setter
-    def launch_template_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]):
+    def launch_template_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AutoProvisioningGroupLaunchTemplateConfigArgs']]]]):
         pulumi.set(self, "launch_template_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance launch template associated with the auto provisioning group.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
-    def launch_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the instance launch template associated with the auto provisioning group.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSpotPrice")
-    def max_spot_price(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def max_spot_price(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
         """
         return pulumi.get(self, "max_spot_price")
 
     @max_spot_price.setter
-    def max_spot_price(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def max_spot_price(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "max_spot_price", value)
 
     @_builtins.property
     @pulumi.getter(name="payAsYouGoAllocationStrategy")
-    def pay_as_you_go_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_as_you_go_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
         """
         return pulumi.get(self, "pay_as_you_go_allocation_strategy")
 
     @pay_as_you_go_allocation_strategy.setter
-    def pay_as_you_go_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_as_you_go_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_as_you_go_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="payAsYouGoTargetCapacity")
-    def pay_as_you_go_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_as_you_go_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target capacity of pay-as-you-go instances in the auto provisioning group.
         """
         return pulumi.get(self, "pay_as_you_go_target_capacity")
 
     @pay_as_you_go_target_capacity.setter
-    def pay_as_you_go_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_as_you_go_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_as_you_go_target_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="spotAllocationStrategy")
-    def spot_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
         """
         return pulumi.get(self, "spot_allocation_strategy")
 
     @spot_allocation_strategy.setter
-    def spot_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstanceInterruptionBehavior")
-    def spot_instance_interruption_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_instance_interruption_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
         """
         return pulumi.get(self, "spot_instance_interruption_behavior")
 
     @spot_instance_interruption_behavior.setter
-    def spot_instance_interruption_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_instance_interruption_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_instance_interruption_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePoolsToUseCount")
-    def spot_instance_pools_to_use_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_instance_pools_to_use_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
         """
         return pulumi.get(self, "spot_instance_pools_to_use_count")
 
     @spot_instance_pools_to_use_count.setter
-    def spot_instance_pools_to_use_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_instance_pools_to_use_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_instance_pools_to_use_count", value)
 
     @_builtins.property
     @pulumi.getter(name="spotTargetCapacity")
-    def spot_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target capacity of preemptible instances in the auto provisioning group.
         """
         return pulumi.get(self, "spot_target_capacity")
 
     @spot_target_capacity.setter
-    def spot_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_target_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="terminateInstances")
-    def terminate_instances(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terminate_instances(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
         """
         return pulumi.get(self, "terminate_instances")
 
     @terminate_instances.setter
-    def terminate_instances(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terminate_instances(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terminate_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="terminateInstancesWithExpiration")
-    def terminate_instances_with_expiration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def terminate_instances_with_expiration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
         """
         return pulumi.get(self, "terminate_instances_with_expiration")
 
     @terminate_instances_with_expiration.setter
-    def terminate_instances_with_expiration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def terminate_instances_with_expiration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "terminate_instances_with_expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="totalTargetCapacity")
-    def total_target_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def total_target_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
         """
         return pulumi.get(self, "total_target_capacity")
 
     @total_target_capacity.setter
-    def total_target_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def total_target_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "total_target_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="validFrom")
-    def valid_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
         """
         return pulumi.get(self, "valid_from")
 
     @valid_from.setter
-    def valid_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_from", value)
 
     @_builtins.property
     @pulumi.getter(name="validUntil")
-    def valid_until(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def valid_until(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
         """
         return pulumi.get(self, "valid_until")
 
     @valid_until.setter
-    def valid_until(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def valid_until(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "valid_until", value)
 
 
@@ -679,26 +679,26 @@ class AutoProvisioningGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_provisioning_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_provisioning_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_target_capacity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 excess_capacity_termination_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_spot_price: Optional[pulumi.Input[_builtins.float]] = None,
-                 pay_as_you_go_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_as_you_go_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools_to_use_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 terminate_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminate_instances_with_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+                 pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS auto provisioning group resource which is a solution that uses preemptive instances and pay_as_you_go instances to rapidly deploy clusters.
@@ -864,26 +864,26 @@ class AutoProvisioningGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_provisioning_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_provisioning_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_target_capacity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 excess_capacity_termination_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_spot_price: Optional[pulumi.Input[_builtins.float]] = None,
-                 pay_as_you_go_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_as_you_go_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools_to_use_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 terminate_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-                 terminate_instances_with_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 total_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 valid_until: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+                 pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+                 terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 total_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 valid_until: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -929,26 +929,26 @@ class AutoProvisioningGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_provisioning_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_provisioning_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            default_target_capacity_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            excess_capacity_termination_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
-            launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-            max_spot_price: Optional[pulumi.Input[_builtins.float]] = None,
-            pay_as_you_go_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_as_you_go_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_instance_interruption_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_instance_pools_to_use_count: Optional[pulumi.Input[_builtins.int]] = None,
-            spot_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            terminate_instances: Optional[pulumi.Input[_builtins.bool]] = None,
-            terminate_instances_with_expiration: Optional[pulumi.Input[_builtins.bool]] = None,
-            total_target_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-            valid_from: Optional[pulumi.Input[_builtins.str]] = None,
-            valid_until: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutoProvisioningGroup':
+            auto_provisioning_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_provisioning_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            default_target_capacity_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            excess_capacity_termination_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoProvisioningGroupLaunchTemplateConfigArgs', 'AutoProvisioningGroupLaunchTemplateConfigArgsDict']]]]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_spot_price: pulumi.Input[Optional[_builtins.float]] = None,
+            pay_as_you_go_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_as_you_go_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_interruption_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_pools_to_use_count: pulumi.Input[Optional[_builtins.int]] = None,
+            spot_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            terminate_instances: pulumi.Input[Optional[_builtins.bool]] = None,
+            terminate_instances_with_expiration: pulumi.Input[Optional[_builtins.bool]] = None,
+            total_target_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_from: pulumi.Input[Optional[_builtins.str]] = None,
+            valid_until: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutoProvisioningGroup':
         """
         Get an existing AutoProvisioningGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,13 +20,13 @@ __all__ = ['MountTargetArgs', 'MountTarget']
 class MountTargetArgs:
     def __init__(__self__, *,
                  file_system_id: pulumi.Input[_builtins.str],
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dual_stack: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MountTarget resource.
 
@@ -75,19 +75,19 @@ class MountTargetArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
-    def access_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dualStack")
-    def dual_stack(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dual_stack(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create an IPv6 mount point.
 
@@ -100,82 +100,82 @@ class MountTargetArgs:
         return pulumi.get(self, "dual_stack")
 
     @dual_stack.setter
-    def dual_stack(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dual_stack(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dual_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network type.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _MountTargetState:
     def __init__(__self__, *,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dual_stack: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MountTarget resources.
 
@@ -216,19 +216,19 @@ class _MountTargetState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
-    def access_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dualStack")
-    def dual_stack(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dual_stack(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create an IPv6 mount point.
 
@@ -241,91 +241,91 @@ class _MountTargetState:
         return pulumi.get(self, "dual_stack")
 
     @dual_stack.setter
-    def dual_stack(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dual_stack(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dual_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountTargetDomain")
-    def mount_target_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_target_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the Mount point.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @mount_target_domain.setter
-    def mount_target_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_target_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_target_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network type.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the Mount point, including Active and Inactive, can be used to mount the file system only when the status is Active.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -335,14 +335,14 @@ class MountTarget(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dual_stack: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Mount Target resource.
@@ -363,7 +363,7 @@ class MountTarget(pulumi.CustomResource):
 
         default = alicloud.nas.get_zones(file_system_type="extreme")
         count_size = len(default.zones)
-        zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+        zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
         example = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
@@ -444,7 +444,7 @@ class MountTarget(pulumi.CustomResource):
 
         default = alicloud.nas.get_zones(file_system_type="extreme")
         count_size = len(default.zones)
-        zone_id = count_size.apply(lambda count_size: default.zones[count_size - 1]).apply(lambda obj: obj.zone_id)
+        zone_id = count_size.apply(lambda count_size: default.zones[int(count_size - 1)]).apply(lambda obj: obj.zone_id)
         example = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
@@ -498,14 +498,14 @@ class MountTarget(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dual_stack: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -536,15 +536,15 @@ class MountTarget(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dual_stack: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MountTarget':
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dual_stack: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MountTarget':
         """
         Get an existing MountTarget resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -127,11 +127,11 @@ export interface MonitorGroupInstancesState {
     /**
      * The id of Cms Group.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Instance information added to the Cms Group. See `instances` below.
      */
-    instances?: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[]>;
+    instances?: pulumi.Input<pulumi.Input<inputs.cms.MonitorGroupInstancesInstance>[] | undefined>;
 }
 
 /**

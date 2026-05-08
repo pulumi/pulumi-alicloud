@@ -148,23 +148,23 @@ export interface AlertRobotState {
     /**
      * The name of the resource.
      */
-    alertRobotName?: pulumi.Input<string>;
+    alertRobotName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
      */
-    dailyNoc?: pulumi.Input<boolean>;
+    dailyNoc?: pulumi.Input<boolean | undefined>;
     /**
      * The time of the daily notification.
      */
-    dailyNocTime?: pulumi.Input<string>;
+    dailyNocTime?: pulumi.Input<string | undefined>;
     /**
      * The webhook url of the robot.
      */
-    robotAddr?: pulumi.Input<string>;
+    robotAddr?: pulumi.Input<string | undefined>;
     /**
      * The type of the robot, Valid values: `wechat`, `dingding`, `feishu`.
      */
-    robotType?: pulumi.Input<string>;
+    robotType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,11 +178,11 @@ export interface AlertRobotArgs {
     /**
      * Specifies whether the alert robot receives daily notifications. Valid values: `true`: receives daily notifications. `false`: does not receive daily notifications, default to `false`.
      */
-    dailyNoc?: pulumi.Input<boolean>;
+    dailyNoc?: pulumi.Input<boolean | undefined>;
     /**
      * The time of the daily notification.
      */
-    dailyNocTime?: pulumi.Input<string>;
+    dailyNocTime?: pulumi.Input<string | undefined>;
     /**
      * The webhook url of the robot.
      */

@@ -23,8 +23,8 @@ class TransitRouterPrefixListAssociationArgs:
                  prefix_list_id: pulumi.Input[_builtins.str],
                  transit_router_id: pulumi.Input[_builtins.str],
                  transit_router_table_id: pulumi.Input[_builtins.str],
-                 next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_uid: Optional[pulumi.Input[_builtins.int]] = None):
+                 next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_uid: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a TransitRouterPrefixListAssociation resource.
 
@@ -98,7 +98,7 @@ class TransitRouterPrefixListAssociationArgs:
 
     @_builtins.property
     @pulumi.getter(name="nextHopType")
-    def next_hop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the next hop. Valid values:
         - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
@@ -109,32 +109,32 @@ class TransitRouterPrefixListAssociationArgs:
         return pulumi.get(self, "next_hop_type")
 
     @next_hop_type.setter
-    def next_hop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUid")
-    def owner_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the prefix list belongs.
         """
         return pulumi.get(self, "owner_uid")
 
     @owner_uid.setter
-    def owner_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner_uid", value)
 
 
 @pulumi.input_type
 class _TransitRouterPrefixListAssociationState:
     def __init__(__self__, *,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterPrefixListAssociation resources.
 
@@ -167,19 +167,19 @@ class _TransitRouterPrefixListAssociationState:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the next hop. **NOTE:** If `next_hop` is set to `BlackHole`, you must set this parameter to `BlackHole`.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHopType")
-    def next_hop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the next hop. Valid values:
         - `BlackHole`: Specifies that all the CIDR blocks in the prefix list are blackhole routes. Packets destined for the CIDR blocks are dropped.
@@ -190,67 +190,67 @@ class _TransitRouterPrefixListAssociationState:
         return pulumi.get(self, "next_hop_type")
 
     @next_hop_type.setter
-    def next_hop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "next_hop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUid")
-    def owner_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the prefix list belongs.
         """
         return pulumi.get(self, "owner_uid")
 
     @owner_uid.setter
-    def owner_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListId")
-    def prefix_list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the prefix list.
         """
         return pulumi.get(self, "prefix_list_id")
 
     @prefix_list_id.setter
-    def prefix_list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the prefix list.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterTableId")
-    def transit_router_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route table of the transit router.
         """
         return pulumi.get(self, "transit_router_table_id")
 
     @transit_router_table_id.setter
-    def transit_router_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_table_id", value)
 
 
@@ -260,12 +260,12 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Prefix List Association resource.
@@ -299,7 +299,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default.id)
+            owner_uid=output(default.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -364,7 +364,7 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
             transit_router_table_id=example_transit_router_route_table.transit_router_route_table_id,
             next_hop="BlackHole",
             next_hop_type="BlackHole",
-            owner_uid=default.id)
+            owner_uid=output(default.id).apply(lambda x: int(x)))
         ```
 
         📚 Need more examples? VIEW MORE EXAMPLES
@@ -393,12 +393,12 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -433,13 +433,13 @@ class TransitRouterPrefixListAssociation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            next_hop: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_uid: Optional[pulumi.Input[_builtins.int]] = None,
-            prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterPrefixListAssociation':
+            next_hop: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterPrefixListAssociation':
         """
         Get an existing TransitRouterPrefixListAssociation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

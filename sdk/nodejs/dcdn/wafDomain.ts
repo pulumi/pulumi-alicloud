@@ -125,11 +125,11 @@ export interface WafDomainState {
     /**
      * The client ip tag.
      */
-    clientIpTag?: pulumi.Input<string>;
+    clientIpTag?: pulumi.Input<string | undefined>;
     /**
      * The accelerated domain name.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,7 +139,7 @@ export interface WafDomainArgs {
     /**
      * The client ip tag.
      */
-    clientIpTag?: pulumi.Input<string>;
+    clientIpTag?: pulumi.Input<string | undefined>;
     /**
      * The accelerated domain name.
      */

@@ -161,31 +161,31 @@ export interface ScheduledPreloadExecutionState {
     /**
      * The end time of the prefetch plan.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The time interval between each batch execution. Unit: seconds.
      */
-    interval?: pulumi.Input<number>;
+    interval?: pulumi.Input<number | undefined>;
     /**
      * The ID of the prefetch plan.
      */
-    scheduledPreloadExecutionId?: pulumi.Input<string>;
+    scheduledPreloadExecutionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the prefetch task.
      */
-    scheduledPreloadJobId?: pulumi.Input<string>;
+    scheduledPreloadJobId?: pulumi.Input<string | undefined>;
     /**
      * The number of URLs prefetched in each batch.
      */
-    sliceLen?: pulumi.Input<number>;
+    sliceLen?: pulumi.Input<number | undefined>;
     /**
      * The start time of the prefetch plan.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the prefetch plan, including the following statuses.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface ScheduledPreloadExecutionArgs {
     /**
      * The end time of the prefetch plan.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The time interval between each batch execution. Unit: seconds.
      */
@@ -211,5 +211,5 @@ export interface ScheduledPreloadExecutionArgs {
     /**
      * The start time of the prefetch plan.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

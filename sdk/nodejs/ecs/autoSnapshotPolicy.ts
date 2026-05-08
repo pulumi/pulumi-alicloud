@@ -207,59 +207,59 @@ export interface AutoSnapshotPolicyState {
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    autoSnapshotPolicyName?: pulumi.Input<string>;
+    autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
      * - `-1`: The snapshot copy is retained until it is deleted.
      */
-    copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      */
-    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration | undefined>;
     /**
      * (Available since v1.236.0) The time when the automatic snapshot policy was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
      */
-    enableCrossRegionCopy?: pulumi.Input<boolean>;
+    enableCrossRegionCopy?: pulumi.Input<boolean | undefined>;
     /**
      * . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.236.0) The region ID of the automatic snapshot policy.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
      */
-    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[]>;
+    repeatWeekdays?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the automatic snapshots. Unit: days. Valid values:
      * - `-1`: Automatic snapshots are retained until they are deleted.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The status of the automatic snapshot policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The destination region to which to copy the snapshot. You can specify only a single destination region.
      */
-    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The points in time of the day at which to create automatic snapshots.
      *
@@ -269,7 +269,7 @@ export interface AutoSnapshotPolicyState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    timePoints?: pulumi.Input<pulumi.Input<string>[]>;
+    timePoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -279,26 +279,26 @@ export interface AutoSnapshotPolicyArgs {
     /**
      * The name of the automatic snapshot policy. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    autoSnapshotPolicyName?: pulumi.Input<string>;
+    autoSnapshotPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the snapshot copy in the destination region. Unit: days. Valid values:
      * - `-1`: The snapshot copy is retained until it is deleted.
      */
-    copiedSnapshotsRetentionDays?: pulumi.Input<number>;
+    copiedSnapshotsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The encryption parameters for cross-region snapshot replication. See `copyEncryptionConfiguration` below.
      */
-    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration>;
+    copyEncryptionConfiguration?: pulumi.Input<inputs.ecs.AutoSnapshotPolicyCopyEncryptionConfiguration | undefined>;
     /**
      * Specifies whether to enable cross-region replication for snapshots. Valid values: `true`, `false`.
      */
-    enableCrossRegionCopy?: pulumi.Input<boolean>;
+    enableCrossRegionCopy?: pulumi.Input<boolean | undefined>;
     /**
      * . Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.236.0. New field `autoSnapshotPolicyName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The days of the week on which to create automatic snapshots. Valid values: `1` to `7`, which correspond to the days of the week. For example, `1` indicates Monday. One or more days can be specified.
      */
@@ -306,7 +306,7 @@ export interface AutoSnapshotPolicyArgs {
     /**
      * The ID of the resource group. If this parameter is specified to query resources, up to 1,000 resources that belong to the specified resource group can be displayed in the response.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the automatic snapshots. Unit: days. Valid values:
      * - `-1`: Automatic snapshots are retained until they are deleted.
@@ -315,11 +315,11 @@ export interface AutoSnapshotPolicyArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The destination region to which to copy the snapshot. You can specify only a single destination region.
      */
-    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[]>;
+    targetCopyRegions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The points in time of the day at which to create automatic snapshots.
      *

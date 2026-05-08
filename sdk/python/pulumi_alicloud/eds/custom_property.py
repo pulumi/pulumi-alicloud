@@ -22,7 +22,7 @@ __all__ = ['CustomPropertyArgs', 'CustomProperty']
 class CustomPropertyArgs:
     def __init__(__self__, *,
                  property_key: pulumi.Input[_builtins.str],
-                 property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
         """
         The set of arguments for constructing a CustomProperty resource.
 
@@ -47,22 +47,22 @@ class CustomPropertyArgs:
 
     @_builtins.property
     @pulumi.getter(name="propertyValues")
-    def property_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
+    def property_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
         """
         Custom attribute sets the value of. See `property_values` below.
         """
         return pulumi.get(self, "property_values")
 
     @property_values.setter
-    def property_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]):
+    def property_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]):
         pulumi.set(self, "property_values", value)
 
 
 @pulumi.input_type
 class _CustomPropertyState:
     def __init__(__self__, *,
-                 property_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_values: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
+                 property_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]] = None):
         """
         Input properties used for looking up and filtering CustomProperty resources.
 
@@ -76,26 +76,26 @@ class _CustomPropertyState:
 
     @_builtins.property
     @pulumi.getter(name="propertyKey")
-    def property_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Custom attribute key.
         """
         return pulumi.get(self, "property_key")
 
     @property_key.setter
-    def property_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property_key", value)
 
     @_builtins.property
     @pulumi.getter(name="propertyValues")
-    def property_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
+    def property_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]:
         """
         Custom attribute sets the value of. See `property_values` below.
         """
         return pulumi.get(self, "property_values")
 
     @property_values.setter
-    def property_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]):
+    def property_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CustomPropertyPropertyValueArgs']]]]):
         pulumi.set(self, "property_values", value)
 
 
@@ -105,8 +105,8 @@ class CustomProperty(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 property_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
+                 property_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a ECD Custom Property resource.
@@ -204,8 +204,8 @@ class CustomProperty(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 property_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 property_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
+                 property_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,8 +229,8 @@ class CustomProperty(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            property_key: Optional[pulumi.Input[_builtins.str]] = None,
-            property_values: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None) -> 'CustomProperty':
+            property_key: pulumi.Input[Optional[_builtins.str]] = None,
+            property_values: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CustomPropertyPropertyValueArgs', 'CustomPropertyPropertyValueArgsDict']]]]] = None) -> 'CustomProperty':
         """
         Get an existing CustomProperty resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

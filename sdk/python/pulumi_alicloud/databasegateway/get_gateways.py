@@ -176,12 +176,12 @@ def get_gateways(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         search_key=pulumi.get(__ret__, 'search_key'),
         status=pulumi.get(__ret__, 'status'))
-def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        search_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gateways_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        search_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     This data source provides the Database Gateway Gateways of the current Alibaba Cloud user.

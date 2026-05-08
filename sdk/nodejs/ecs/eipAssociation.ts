@@ -209,15 +209,15 @@ export interface EipAssociationState {
     /**
      * The ID of the EIP instance.
      */
-    allocationId?: pulumi.Input<string>;
+    allocationId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance with which you want to associate the EIP. Valid values:
      * - `Nat`: NAT gateway
@@ -229,7 +229,7 @@ export interface EipAssociationState {
      *
      * > **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The association mode. Valid values:
      * - `NAT` (default): NAT mode
@@ -238,7 +238,7 @@ export interface EipAssociationState {
      *
      * > **NOTE:**   This parameter is required only when `instanceType` is set to `NetworkInterface`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The IP address in the CIDR block of the vSwitch.
      *
@@ -246,7 +246,7 @@ export interface EipAssociationState {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
      *
@@ -254,7 +254,7 @@ export interface EipAssociationState {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,7 +268,7 @@ export interface EipAssociationArgs {
     /**
      * Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance with which you want to associate the EIP. You can enter the ID of a NAT gateway, CLB instance, ECS instance, secondary ENI, HAVIP, or IP address.
      */
@@ -284,7 +284,7 @@ export interface EipAssociationArgs {
      *
      * > **NOTE:**   The default value is `EcsInstance`. If the instance with which you want to associate the EIP is not an ECS instance, this parameter is required.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The association mode. Valid values:
      * - `NAT` (default): NAT mode
@@ -293,7 +293,7 @@ export interface EipAssociationArgs {
      *
      * > **NOTE:**   This parameter is required only when `instanceType` is set to `NetworkInterface`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The IP address in the CIDR block of the vSwitch.
      *
@@ -301,7 +301,7 @@ export interface EipAssociationArgs {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC in which an IPv4 gateway is created. The VPC and the EIP must be in the same region.
      *
@@ -309,5 +309,5 @@ export interface EipAssociationArgs {
      *
      * > **NOTE:**   This parameter is required if `instanceType` is set to `IpAddress`, which indicates that the EIP is to be associated with an IP address.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

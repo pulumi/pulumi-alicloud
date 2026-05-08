@@ -228,71 +228,71 @@ export interface TemplateState {
     /**
      * When deleting a template, whether to delete its related executions. Default to `false`.
      */
-    autoDeleteExecutions?: pulumi.Input<boolean>;
+    autoDeleteExecutions?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The creator of the template.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * The time when the template is created.
      */
-    createdDate?: pulumi.Input<string>;
+    createdDate?: pulumi.Input<string | undefined>;
     /**
      * The description of the template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is it triggered successfully.
      */
-    hasTrigger?: pulumi.Input<boolean>;
+    hasTrigger?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of resource group which the template belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      */
-    shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
      */
-    templateFormat?: pulumi.Input<string>;
+    templateFormat?: pulumi.Input<string | undefined>;
     /**
      * The id of OOS Template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
      */
-    templateType?: pulumi.Input<string>;
+    templateType?: pulumi.Input<string | undefined>;
     /**
      * The version of OOS Template.
      */
-    templateVersion?: pulumi.Input<string>;
+    templateVersion?: pulumi.Input<string | undefined>;
     /**
      * The user who updated the template.
      */
-    updatedBy?: pulumi.Input<string>;
+    updatedBy?: pulumi.Input<string | undefined>;
     /**
      * The time when the template was updated.
      */
-    updatedDate?: pulumi.Input<string>;
+    updatedDate?: pulumi.Input<string | undefined>;
     /**
      * The name of template version.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,7 +302,7 @@ export interface TemplateArgs {
     /**
      * When deleting a template, whether to delete its related executions. Default to `false`.
      */
-    autoDeleteExecutions?: pulumi.Input<boolean>;
+    autoDeleteExecutions?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      */
@@ -310,11 +310,11 @@ export interface TemplateArgs {
     /**
      * The ID of resource group which the template belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      */
@@ -322,5 +322,5 @@ export interface TemplateArgs {
     /**
      * The name of template version.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }

@@ -139,25 +139,25 @@ export interface GetFoldersOutputArgs {
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Folders IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Folder name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent folder. **NOTE:** If `parentFolderId` is not set, the information of the first-level subfolders of the Root folder is queried.
      */
-    parentFolderId?: pulumi.Input<string>;
+    parentFolderId?: pulumi.Input<string | undefined>;
     /**
      * The keyword used for the query, such as a folder name. Fuzzy match is supported.
      */
-    queryKeyword?: pulumi.Input<string>;
+    queryKeyword?: pulumi.Input<string | undefined>;
 }

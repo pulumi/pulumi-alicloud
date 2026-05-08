@@ -145,10 +145,10 @@ def get_handshakes(enable_details: Optional[_builtins.bool] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_handshakes_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_handshakes_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHandshakesResult]:
     """
     This data source provides the Resource Manager Handshakes of the current Alibaba Cloud user.

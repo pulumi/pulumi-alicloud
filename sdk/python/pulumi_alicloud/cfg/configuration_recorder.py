@@ -19,8 +19,8 @@ __all__ = ['ConfigurationRecorderArgs', 'ConfigurationRecorder']
 @pulumi.input_type
 class ConfigurationRecorderArgs:
     def __init__(__self__, *,
-                 enterprise_edition: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ConfigurationRecorder resource.
 
@@ -36,19 +36,19 @@ class ConfigurationRecorderArgs:
 
     @_builtins.property
     @pulumi.getter(name="enterpriseEdition")
-    def enterprise_edition(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enterprise_edition(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         """
         return pulumi.get(self, "enterprise_edition")
 
     @enterprise_edition.setter
-    def enterprise_edition(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enterprise_edition(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enterprise_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
@@ -57,18 +57,18 @@ class ConfigurationRecorderArgs:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types", value)
 
 
 @pulumi.input_type
 class _ConfigurationRecorderState:
     def __init__(__self__, *,
-                 enterprise_edition: Optional[pulumi.Input[_builtins.bool]] = None,
-                 organization_enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_master_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+                 organization_enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_master_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ConfigurationRecorder resources.
 
@@ -93,43 +93,43 @@ class _ConfigurationRecorderState:
 
     @_builtins.property
     @pulumi.getter(name="enterpriseEdition")
-    def enterprise_edition(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enterprise_edition(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
         """
         return pulumi.get(self, "enterprise_edition")
 
     @enterprise_edition.setter
-    def enterprise_edition(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enterprise_edition(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enterprise_edition", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationEnableStatus")
-    def organization_enable_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_enable_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
         """
         return pulumi.get(self, "organization_enable_status")
 
     @organization_enable_status.setter
-    def organization_enable_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_enable_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_enable_status", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationMasterId")
-    def organization_master_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def organization_master_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Enterprise management account.
         """
         return pulumi.get(self, "organization_master_id")
 
     @organization_master_id.setter
-    def organization_master_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def organization_master_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "organization_master_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         * If you use an ordinary account, the `resource_types` supports the update operation after the process of creation is completed.
@@ -138,19 +138,19 @@ class _ConfigurationRecorderState:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -160,8 +160,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enterprise_edition: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Alicloud Config Configuration Recorder resource. Cloud Config is a specialized service for evaluating resources. Cloud Config tracks configuration changes of your resources and evaluates configuration compliance. Cloud Config can help you evaluate numerous resources and maintain the continuous compliance of your cloud infrastructure.
@@ -253,8 +253,8 @@ class ConfigurationRecorder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enterprise_edition: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,11 +279,11 @@ class ConfigurationRecorder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enterprise_edition: Optional[pulumi.Input[_builtins.bool]] = None,
-            organization_enable_status: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_master_id: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ConfigurationRecorder':
+            enterprise_edition: pulumi.Input[Optional[_builtins.bool]] = None,
+            organization_enable_status: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_master_id: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ConfigurationRecorder':
         """
         Get an existing ConfigurationRecorder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

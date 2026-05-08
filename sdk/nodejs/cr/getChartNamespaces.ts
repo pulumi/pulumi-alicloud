@@ -80,7 +80,7 @@ export interface GetChartNamespacesOutputArgs {
     /**
      * A list of matched Container Registry Enterprise Edition namespaces.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Container Registry instance.
      */
@@ -88,9 +88,9 @@ export interface GetChartNamespacesOutputArgs {
     /**
      * A regex string to filter results by name space name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

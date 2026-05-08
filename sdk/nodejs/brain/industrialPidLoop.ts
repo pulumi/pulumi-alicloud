@@ -162,35 +162,35 @@ export interface IndustrialPidLoopState {
     /**
      * The Pid Loop Configuration.
      */
-    pidLoopConfiguration?: pulumi.Input<string>;
+    pidLoopConfiguration?: pulumi.Input<string | undefined>;
     /**
      * The dcs type of Pid Loop. Valid values: `standard`.
      */
-    pidLoopDcsType?: pulumi.Input<string>;
+    pidLoopDcsType?: pulumi.Input<string | undefined>;
     /**
      * The desc of Pid Loop.
      */
-    pidLoopDesc?: pulumi.Input<string>;
+    pidLoopDesc?: pulumi.Input<string | undefined>;
     /**
      * Whether is crucial Pid Loop.
      */
-    pidLoopIsCrucial?: pulumi.Input<boolean>;
+    pidLoopIsCrucial?: pulumi.Input<boolean | undefined>;
     /**
      * The name of Pid Loop.
      */
-    pidLoopName?: pulumi.Input<string>;
+    pidLoopName?: pulumi.Input<string | undefined>;
     /**
      * The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
      */
-    pidLoopType?: pulumi.Input<string>;
+    pidLoopType?: pulumi.Input<string | undefined>;
     /**
      * The pid project id.
      */
-    pidProjectId?: pulumi.Input<string>;
+    pidProjectId?: pulumi.Input<string | undefined>;
     /**
      * The status of Pid Loop.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface IndustrialPidLoopArgs {
     /**
      * The desc of Pid Loop.
      */
-    pidLoopDesc?: pulumi.Input<string>;
+    pidLoopDesc?: pulumi.Input<string | undefined>;
     /**
      * Whether is crucial Pid Loop.
      */

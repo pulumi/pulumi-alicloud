@@ -73,10 +73,10 @@ class ShortUrlArgs:
 @pulumi.input_type
 class _ShortUrlState:
     def __init__(__self__, *,
-                 effective_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 short_url_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 short_url_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ShortUrl resources.
 
@@ -96,50 +96,50 @@ class _ShortUrlState:
 
     @_builtins.property
     @pulumi.getter(name="effectiveDays")
-    def effective_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def effective_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
         """
         return pulumi.get(self, "effective_days")
 
     @effective_days.setter
-    def effective_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def effective_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "effective_days", value)
 
     @_builtins.property
     @pulumi.getter(name="shortUrlName")
-    def short_url_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def short_url_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "short_url_name")
 
     @short_url_name.setter
-    def short_url_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def short_url_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "short_url_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceUrl")
-    def source_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The original link address.
         """
         return pulumi.get(self, "source_url")
 
     @source_url.setter
-    def source_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Short chain status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -149,9 +149,9 @@ class ShortUrl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 effective_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 short_url_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 short_url_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SMS Short Url resource.
@@ -244,9 +244,9 @@ class ShortUrl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 effective_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 short_url_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 effective_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 short_url_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,10 +276,10 @@ class ShortUrl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            effective_days: Optional[pulumi.Input[_builtins.int]] = None,
-            short_url_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_url: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ShortUrl':
+            effective_days: pulumi.Input[Optional[_builtins.int]] = None,
+            short_url_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_url: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ShortUrl':
         """
         Get an existing ShortUrl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

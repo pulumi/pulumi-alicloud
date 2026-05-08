@@ -145,33 +145,33 @@ export interface GetServerPlansOutputArgs {
     /**
      * The peak bandwidth. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The number of CPU cores.
      */
-    core?: pulumi.Input<number>;
+    core?: pulumi.Input<number | undefined>;
     /**
      * The size of the enhanced SSD (ESSD). Unit: GB.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The monthly data transfer quota. Unit: GB.
      */
-    flow?: pulumi.Input<number>;
+    flow?: pulumi.Input<number | undefined>;
     /**
      * A list of Instance Plan IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The memory size. Unit: GB.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The platform of Plan supported. Valid values: ["Linux", "Windows"].
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
 }

@@ -127,15 +127,15 @@ export interface ErState {
     /**
      * Routine The description of the routine.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The configurations of the specified environment. See `envConf` below.
      */
-    envConf?: pulumi.Input<inputs.dcdn.ErEnvConf>;
+    envConf?: pulumi.Input<inputs.dcdn.ErEnvConf | undefined>;
     /**
      * The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
      */
-    erName?: pulumi.Input<string>;
+    erName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,11 +145,11 @@ export interface ErArgs {
     /**
      * Routine The description of the routine.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The configurations of the specified environment. See `envConf` below.
      */
-    envConf?: pulumi.Input<inputs.dcdn.ErEnvConf>;
+    envConf?: pulumi.Input<inputs.dcdn.ErEnvConf | undefined>;
     /**
      * The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
      */

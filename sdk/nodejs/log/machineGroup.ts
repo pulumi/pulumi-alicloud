@@ -145,23 +145,23 @@ export interface MachineGroupState {
     /**
      * The specific machine identification, which can be an IP address or user-defined identity.
      */
-    identifyLists?: pulumi.Input<pulumi.Input<string>[]>;
+    identifyLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
      */
-    identifyType?: pulumi.Input<string>;
+    identifyType?: pulumi.Input<string | undefined>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project name to the machine group belongs.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The topic of a machine group.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,11 +175,11 @@ export interface MachineGroupArgs {
     /**
      * The machine identification type, including IP and user-defined identity. Valid values are "ip" and "userdefined". Default to "ip".
      */
-    identifyType?: pulumi.Input<string>;
+    identifyType?: pulumi.Input<string | undefined>;
     /**
      * The machine group name, which is unique in the same project.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The project name to the machine group belongs.
      */
@@ -187,5 +187,5 @@ export interface MachineGroupArgs {
     /**
      * The topic of a machine group.
      */
-    topic?: pulumi.Input<string>;
+    topic?: pulumi.Input<string | undefined>;
 }

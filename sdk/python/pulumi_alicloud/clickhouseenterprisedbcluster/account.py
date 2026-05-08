@@ -25,8 +25,8 @@ class AccountArgs:
                  account_type: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dml_auth_setting: Optional[pulumi.Input['AccountDmlAuthSettingArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dml_auth_setting: pulumi.Input[Optional['AccountDmlAuthSettingArgs']] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -106,38 +106,38 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Note information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dmlAuthSetting")
-    def dml_auth_setting(self) -> Optional[pulumi.Input['AccountDmlAuthSettingArgs']]:
+    def dml_auth_setting(self) -> pulumi.Input[Optional['AccountDmlAuthSettingArgs']]:
         """
         Authorization information. See `dml_auth_setting` below.
         """
         return pulumi.get(self, "dml_auth_setting")
 
     @dml_auth_setting.setter
-    def dml_auth_setting(self, value: Optional[pulumi.Input['AccountDmlAuthSettingArgs']]):
+    def dml_auth_setting(self, value: pulumi.Input[Optional['AccountDmlAuthSettingArgs']]):
         pulumi.set(self, "dml_auth_setting", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dml_auth_setting: Optional[pulumi.Input['AccountDmlAuthSettingArgs']] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dml_auth_setting: pulumi.Input[Optional['AccountDmlAuthSettingArgs']] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -168,19 +168,19 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the database account. Valid values:
         - `NormalAccount`: Normal account number.
@@ -189,48 +189,48 @@ class _AccountState:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Note information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dmlAuthSetting")
-    def dml_auth_setting(self) -> Optional[pulumi.Input['AccountDmlAuthSettingArgs']]:
+    def dml_auth_setting(self) -> pulumi.Input[Optional['AccountDmlAuthSettingArgs']]:
         """
         Authorization information. See `dml_auth_setting` below.
         """
         return pulumi.get(self, "dml_auth_setting")
 
     @dml_auth_setting.setter
-    def dml_auth_setting(self, value: Optional[pulumi.Input['AccountDmlAuthSettingArgs']]):
+    def dml_auth_setting(self, value: pulumi.Input[Optional['AccountDmlAuthSettingArgs']]):
         pulumi.set(self, "dml_auth_setting", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database account password. Set the following rules.
         - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
@@ -240,7 +240,7 @@ class _AccountState:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
@@ -250,12 +250,12 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dml_auth_setting: Optional[pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Click House Enterprise Db Cluster Account resource.
@@ -430,12 +430,12 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dml_auth_setting: Optional[pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -471,12 +471,12 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dml_auth_setting: Optional[pulumi.Input[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dml_auth_setting: pulumi.Input[Optional[Union['AccountDmlAuthSettingArgs', 'AccountDmlAuthSettingArgsDict']]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: defaultGetPhysicalConnections.then(defaultGetPhysicalConnections => defaultGetPhysicalConnections.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: defaultInteger.id,
+ *     vlanId: Number(defaultInteger.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -149,19 +149,19 @@ export interface GrantRuleToCenState {
     /**
      * The ID of the CEN instance to which you want to grant permissions.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The user ID (UID) of the Alibaba Cloud account to which the CEN instance belongs.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.263.0) The time when the instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VBR.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

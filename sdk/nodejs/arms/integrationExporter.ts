@@ -159,19 +159,19 @@ export interface IntegrationExporterState {
     /**
      * The ID of the Prometheus instance.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Integration Exporter instance.
      */
-    instanceId?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<number | undefined>;
     /**
      * The type of prometheus integration.
      */
-    integrationType?: pulumi.Input<string>;
+    integrationType?: pulumi.Input<string | undefined>;
     /**
      * Exporter configuration parameter json string.
      */
-    param?: pulumi.Input<string>;
+    param?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -152,30 +152,30 @@ export interface GetSecretsOutputArgs {
     /**
      * Default to `false`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to include the predetermined resource tag in the return value. Default to `false`.
      */
-    fetchTags?: pulumi.Input<boolean>;
+    fetchTags?: pulumi.Input<boolean | undefined>;
     /**
      * The secret filter. The filter consists of one or more key-value pairs. 
      * More details see API [ListSecrets](https://www.alibabacloud.com/help/en/key-management-service/latest/listsecrets).
      */
-    filters?: pulumi.Input<string>;
+    filters?: pulumi.Input<string | undefined>;
     /**
      * A list of KMS Secret ids. The value is same as KMS secret_name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter the results by the KMS secret_name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource, and can be used to filter secrets.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

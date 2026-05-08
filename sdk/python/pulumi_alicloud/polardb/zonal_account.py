@@ -21,9 +21,9 @@ class ZonalAccountArgs:
     def __init__(__self__, *,
                  account_name: pulumi.Input[_builtins.str],
                  db_cluster_id: pulumi.Input[_builtins.str],
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZonalAccount resource.
 
@@ -68,49 +68,49 @@ class ZonalAccountArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
 
 @pulumi.input_type
 class _ZonalAccountState:
     def __init__(__self__, *,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZonalAccount resources.
 
@@ -133,62 +133,62 @@ class _ZonalAccountState:
 
     @_builtins.property
     @pulumi.getter(name="accountDescription")
-    def account_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         """
         return pulumi.get(self, "account_description")
 
     @account_description.setter
-    def account_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_description", value)
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation account requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 16 characters.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
         """
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster in which account belongs.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
 
@@ -198,11 +198,11 @@ class ZonalAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PolarDB Zonal account resource and used to manage databases.
@@ -245,7 +245,7 @@ class ZonalAccount(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in sorted(config.items()) if v != None}) for node, config in sorted(db_cluster_nodes_configs.items())})
         default_zonal_account = alicloud.polardb.ZonalAccount("default",
             db_cluster_id=default_zonal_db_cluster.id,
             account_name="terraform_example",
@@ -318,7 +318,7 @@ class ZonalAccount(pulumi.CustomResource):
             ens_region_id="tr-Istanbul-1",
             vpc_id=default.id,
             vswitch_id=default_vswitch.id,
-            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in config.items() if v != None}) for node, config in db_cluster_nodes_configs.items()})
+            db_cluster_nodes_configs={node: json.dumps({k: v for k, v in sorted(config.items()) if v != None}) for node, config in sorted(db_cluster_nodes_configs.items())})
         default_zonal_account = alicloud.polardb.ZonalAccount("default",
             db_cluster_id=default_zonal_db_cluster.id,
             account_name="terraform_example",
@@ -351,11 +351,11 @@ class ZonalAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,11 +386,11 @@ class ZonalAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_description: Optional[pulumi.Input[_builtins.str]] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZonalAccount':
+            account_description: pulumi.Input[Optional[_builtins.str]] = None,
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZonalAccount':
         """
         Get an existing ZonalAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

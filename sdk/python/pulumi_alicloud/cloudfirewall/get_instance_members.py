@@ -152,11 +152,11 @@ def get_instance_members(current_page: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_instance_members_output(current_page: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_instance_members_output(current_page: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceMembersResult]:
     """
     This data source provides Cloud Firewall Instance Member available to the user.[What is Instance Member](https://help.aliyun.com/document_detail/261237.html)

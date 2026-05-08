@@ -175,33 +175,33 @@ export interface RegistryEnterpriseRepoState {
     /**
      * The description of the repository.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry Enterprise Edition instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the image repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace to which the image repository belongs.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The ID of the repository.
      */
-    repoId?: pulumi.Input<string>;
+    repoId?: pulumi.Input<string | undefined>;
     /**
      * The type of the repository. Valid values:
      * - `PUBLIC`: The repository is a public repository.
      * - `PRIVATE`: The repository is a private repository.
      */
-    repoType?: pulumi.Input<string>;
+    repoType?: pulumi.Input<string | undefined>;
     /**
      * The summary about the repository.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,7 +211,7 @@ export interface RegistryEnterpriseRepoArgs {
     /**
      * The description of the repository.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Container Registry Enterprise Edition instance.
      */
@@ -219,7 +219,7 @@ export interface RegistryEnterpriseRepoArgs {
     /**
      * The name of the image repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace to which the image repository belongs.
      */

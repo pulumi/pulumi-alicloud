@@ -155,19 +155,19 @@ export interface SwitchDasProState {
     /**
      * The ID of the database instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
      */
-    sqlRetention?: pulumi.Input<number>;
+    sqlRetention?: pulumi.Input<number | undefined>;
     /**
      * Whether the database instance has DAS professional.
      */
-    status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Alibaba Cloud account that is used to create the database instance.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,9 +181,9 @@ export interface SwitchDasProArgs {
     /**
      * The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
      */
-    sqlRetention?: pulumi.Input<number>;
+    sqlRetention?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Alibaba Cloud account that is used to create the database instance.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

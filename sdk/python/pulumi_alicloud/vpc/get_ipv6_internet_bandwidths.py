@@ -157,11 +157,11 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[_builtins.str]] = None,
         ipv6_internet_bandwidth_id=pulumi.get(__ret__, 'ipv6_internet_bandwidth_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        ipv6_address_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        ipv6_internet_bandwidth_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ipv6_internet_bandwidths_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        ipv6_address_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        ipv6_internet_bandwidth_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpv6InternetBandwidthsResult]:
     """
     This data source provides the Vpc Ipv6 Internet Bandwidths of the current Alibaba Cloud user.

@@ -137,27 +137,27 @@ export interface WorkspaceState {
     /**
      * The creation time of the workspace.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the workspace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dispalyName of the workspace.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The region of the workspace.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The project bind to workspace.
      */
-    slsProject?: pulumi.Input<string>;
+    slsProject?: pulumi.Input<string | undefined>;
     /**
      * The name of the workspace.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,11 +167,11 @@ export interface WorkspaceArgs {
     /**
      * The description of the workspace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The dispalyName of the workspace.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The project bind to workspace.
      */

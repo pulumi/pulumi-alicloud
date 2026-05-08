@@ -34,18 +34,18 @@ namespace Pulumi.AliCloud.CloudSso
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.Index.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
     ///     var defaultGetDirectories = AliCloud.CloudSso.GetDirectories.Invoke();
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
     ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
@@ -53,7 +53,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///             DirectoryName = name,
     ///         }));
     ///     }
-    ///     var directoryId = Output.Tuple(defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length, defaultGetDirectories, Std.Index.Concat.Invoke(new()
+    ///     var directoryId = Output.Tuple(defaultGetDirectories.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids).Length(), defaultGetDirectories, Std.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {

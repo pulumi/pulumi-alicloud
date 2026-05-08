@@ -250,13 +250,13 @@ def get_gateway_vco_routes(ids: Optional[Sequence[_builtins.str]] = None,
         routes=pulumi.get(__ret__, 'routes'),
         status=pulumi.get(__ret__, 'status'),
         vpn_connection_id=pulumi.get(__ret__, 'vpn_connection_id'))
-def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                  route_entry_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  vpn_connection_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gateway_vco_routes_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                  route_entry_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  vpn_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayVcoRoutesResult]:
     """
     This data source provides the Vpn Gateway Vco Routes of the current Alibaba Cloud user.

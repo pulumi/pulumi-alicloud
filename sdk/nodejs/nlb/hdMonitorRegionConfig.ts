@@ -120,15 +120,15 @@ export interface HdMonitorRegionConfigState {
     /**
      * The name of the LogProject.
      */
-    logProject?: pulumi.Input<string>;
+    logProject?: pulumi.Input<string | undefined>;
     /**
      * The name of the MetricStore.
      */
-    metricStore?: pulumi.Input<string>;
+    metricStore?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region in which the resource resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }
 
 /**

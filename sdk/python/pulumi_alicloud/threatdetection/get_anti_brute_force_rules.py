@@ -153,9 +153,9 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_anti_brute_force_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_anti_brute_force_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAntiBruteForceRulesResult]:
     """
     This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)

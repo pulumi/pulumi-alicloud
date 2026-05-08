@@ -30,15 +30,15 @@ __all__ = [
 ]
 
 class AccessPointPosixUserArgsDict(TypedDict):
-    posix_group_id: NotRequired[pulumi.Input[_builtins.int]]
+    posix_group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the Posix user group.
     """
-    posix_secondary_group_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    posix_secondary_group_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     The ID of the second user group.
     """
-    posix_user_id: NotRequired[pulumi.Input[_builtins.int]]
+    posix_user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The Posix user ID.
     """
@@ -46,9 +46,9 @@ class AccessPointPosixUserArgsDict(TypedDict):
 @pulumi.input_type
 class AccessPointPosixUserArgs:
     def __init__(__self__, *,
-                 posix_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 posix_secondary_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 posix_user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 posix_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 posix_secondary_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 posix_user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] posix_group_id: The ID of the Posix user group.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] posix_secondary_group_ids: The ID of the second user group.
@@ -63,51 +63,51 @@ class AccessPointPosixUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="posixGroupId")
-    def posix_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def posix_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Posix user group.
         """
         return pulumi.get(self, "posix_group_id")
 
     @posix_group_id.setter
-    def posix_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def posix_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "posix_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="posixSecondaryGroupIds")
-    def posix_secondary_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def posix_secondary_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The ID of the second user group.
         """
         return pulumi.get(self, "posix_secondary_group_ids")
 
     @posix_secondary_group_ids.setter
-    def posix_secondary_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def posix_secondary_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "posix_secondary_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="posixUserId")
-    def posix_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def posix_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Posix user ID.
         """
         return pulumi.get(self, "posix_user_id")
 
     @posix_user_id.setter
-    def posix_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def posix_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "posix_user_id", value)
 
 
 class AccessPointRootPathPermissionArgsDict(TypedDict):
-    owner_group_id: NotRequired[pulumi.Input[_builtins.int]]
+    owner_group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the primary user group.
     """
-    owner_user_id: NotRequired[pulumi.Input[_builtins.int]]
+    owner_user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The owner user ID.
     """
-    permission: NotRequired[pulumi.Input[_builtins.str]]
+    permission: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Portable Operating System Interface for UNIX (POSIX) permission.
     """
@@ -115,9 +115,9 @@ class AccessPointRootPathPermissionArgsDict(TypedDict):
 @pulumi.input_type
 class AccessPointRootPathPermissionArgs:
     def __init__(__self__, *,
-                 owner_group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 owner_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None):
+                 owner_group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 owner_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] owner_group_id: The ID of the primary user group.
         :param pulumi.Input[_builtins.int] owner_user_id: The owner user ID.
@@ -132,43 +132,43 @@ class AccessPointRootPathPermissionArgs:
 
     @_builtins.property
     @pulumi.getter(name="ownerGroupId")
-    def owner_group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner_group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the primary user group.
         """
         return pulumi.get(self, "owner_group_id")
 
     @owner_group_id.setter
-    def owner_group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner_group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerUserId")
-    def owner_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The owner user ID.
         """
         return pulumi.get(self, "owner_user_id")
 
     @owner_user_id.setter
-    def owner_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Portable Operating System Interface for UNIX (POSIX) permission.
         """
         return pulumi.get(self, "permission")
 
     @permission.setter
-    def permission(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission", value)
 
 
 class FileSystemNfsAclArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the NFS ACL function is enabled.
     """
@@ -176,7 +176,7 @@ class FileSystemNfsAclArgsDict(TypedDict):
 @pulumi.input_type
 class FileSystemNfsAclArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether the NFS ACL function is enabled.
         """
@@ -185,19 +185,19 @@ class FileSystemNfsAclArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the NFS ACL function is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class FileSystemOptionsArgsDict(TypedDict):
-    enable_oplock: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_oplock: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the OpLock function. Value:
     - true: On.
@@ -209,7 +209,7 @@ class FileSystemOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class FileSystemOptionsArgs:
     def __init__(__self__, *,
-                 enable_oplock: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_oplock: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_oplock: Whether to enable the OpLock function. Value:
                - true: On.
@@ -222,7 +222,7 @@ class FileSystemOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableOplock")
-    def enable_oplock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_oplock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the OpLock function. Value:
         - true: On.
@@ -233,28 +233,28 @@ class FileSystemOptionsArgs:
         return pulumi.get(self, "enable_oplock")
 
     @enable_oplock.setter
-    def enable_oplock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_oplock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_oplock", value)
 
 
 class FileSystemRecycleBinArgsDict(TypedDict):
-    enable_time: NotRequired[pulumi.Input[_builtins.str]]
+    enable_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Recycle Bin open time
     """
-    reserved_days: NotRequired[pulumi.Input[_builtins.int]]
+    reserved_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Retention time of files in the Recycle Bin. Unit: days.
     """
-    secondary_size: NotRequired[pulumi.Input[_builtins.int]]
+    secondary_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Amount of low-frequency data stored in the recycle bin. Unit: Byte.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The amount of files stored in the Recycle Bin. Unit: Byte.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Recycle Bin Status
     """
@@ -262,11 +262,11 @@ class FileSystemRecycleBinArgsDict(TypedDict):
 @pulumi.input_type
 class FileSystemRecycleBinArgs:
     def __init__(__self__, *,
-                 enable_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 secondary_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 secondary_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] enable_time: Recycle Bin open time
         :param pulumi.Input[_builtins.int] reserved_days: Retention time of files in the Recycle Bin. Unit: days.
@@ -287,83 +287,83 @@ class FileSystemRecycleBinArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableTime")
-    def enable_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recycle Bin open time
         """
         return pulumi.get(self, "enable_time")
 
     @enable_time.setter
-    def enable_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_time", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedDays")
-    def reserved_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retention time of files in the Recycle Bin. Unit: days.
         """
         return pulumi.get(self, "reserved_days")
 
     @reserved_days.setter
-    def reserved_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_days", value)
 
     @_builtins.property
     @pulumi.getter(name="secondarySize")
-    def secondary_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Amount of low-frequency data stored in the recycle bin. Unit: Byte.
         """
         return pulumi.get(self, "secondary_size")
 
     @secondary_size.setter
-    def secondary_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of files stored in the Recycle Bin. Unit: Byte.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recycle Bin Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class FileSystemSmbAclArgsDict(TypedDict):
-    enable_anonymous_access: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_anonymous_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow anonymous access.
     - true: Allow anonymous access.
     - false (default): Anonymous access is not allowed.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether SMB ACL is enabled
     """
-    encrypt_data: NotRequired[pulumi.Input[_builtins.bool]]
+    encrypt_data: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether transmission encryption is enabled.
     - true: Enables encryption in transit.
     - false (default): Transport encryption is not enabled.
     """
-    home_dir_path: NotRequired[pulumi.Input[_builtins.str]]
+    home_dir_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user directory home path for each user. The file path format is as follows:
     - A forward slash (/) or backslash (\\) as a separator.
@@ -375,13 +375,13 @@ class FileSystemSmbAclArgsDict(TypedDict):
 
     > **NOTE:**  Explain that user A needs to have the permission to create A directory, otherwise the/home/A directory cannot be created.
     """
-    reject_unencrypted_access: NotRequired[pulumi.Input[_builtins.bool]]
+    reject_unencrypted_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to reject non-encrypted clients.
     - true: Deny non-encrypted clients.
     - false (default): Non-encrypted clients are not rejected.
     """
-    super_admin_sid: NotRequired[pulumi.Input[_builtins.str]]
+    super_admin_sid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Super User. The ID rules are as follows:
     - Must start with S and no other letters can appear after the S at the beginning.
@@ -393,12 +393,12 @@ class FileSystemSmbAclArgsDict(TypedDict):
 @pulumi.input_type
 class FileSystemSmbAclArgs:
     def __init__(__self__, *,
-                 enable_anonymous_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_data: Optional[pulumi.Input[_builtins.bool]] = None,
-                 home_dir_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 reject_unencrypted_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 super_admin_sid: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_anonymous_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_data: pulumi.Input[Optional[_builtins.bool]] = None,
+                 home_dir_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 reject_unencrypted_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 super_admin_sid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_anonymous_access: Whether to allow anonymous access.
                - true: Allow anonymous access.
@@ -440,7 +440,7 @@ class FileSystemSmbAclArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableAnonymousAccess")
-    def enable_anonymous_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_anonymous_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow anonymous access.
         - true: Allow anonymous access.
@@ -449,24 +449,24 @@ class FileSystemSmbAclArgs:
         return pulumi.get(self, "enable_anonymous_access")
 
     @enable_anonymous_access.setter
-    def enable_anonymous_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_anonymous_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_anonymous_access", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether SMB ACL is enabled
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptData")
-    def encrypt_data(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypt_data(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether transmission encryption is enabled.
         - true: Enables encryption in transit.
@@ -475,12 +475,12 @@ class FileSystemSmbAclArgs:
         return pulumi.get(self, "encrypt_data")
 
     @encrypt_data.setter
-    def encrypt_data(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypt_data(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypt_data", value)
 
     @_builtins.property
     @pulumi.getter(name="homeDirPath")
-    def home_dir_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def home_dir_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user directory home path for each user. The file path format is as follows:
         - A forward slash (/) or backslash (\\) as a separator.
@@ -495,12 +495,12 @@ class FileSystemSmbAclArgs:
         return pulumi.get(self, "home_dir_path")
 
     @home_dir_path.setter
-    def home_dir_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def home_dir_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "home_dir_path", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectUnencryptedAccess")
-    def reject_unencrypted_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reject_unencrypted_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to reject non-encrypted clients.
         - true: Deny non-encrypted clients.
@@ -509,12 +509,12 @@ class FileSystemSmbAclArgs:
         return pulumi.get(self, "reject_unencrypted_access")
 
     @reject_unencrypted_access.setter
-    def reject_unencrypted_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reject_unencrypted_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reject_unencrypted_access", value)
 
     @_builtins.property
     @pulumi.getter(name="superAdminSid")
-    def super_admin_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def super_admin_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Super User. The ID rules are as follows:
         - Must start with S and no other letters can appear after the S at the beginning.
@@ -525,7 +525,7 @@ class FileSystemSmbAclArgs:
         return pulumi.get(self, "super_admin_sid")
 
     @super_admin_sid.setter
-    def super_admin_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def super_admin_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "super_admin_sid", value)
 
 

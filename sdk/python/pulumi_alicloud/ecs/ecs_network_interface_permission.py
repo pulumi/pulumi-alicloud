@@ -22,7 +22,7 @@ class EcsNetworkInterfacePermissionArgs:
                  account_id: pulumi.Input[_builtins.str],
                  network_interface_id: pulumi.Input[_builtins.str],
                  permission: pulumi.Input[_builtins.str],
-                 force: Optional[pulumi.Input[_builtins.bool]] = None):
+                 force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterfacePermission resource.
 
@@ -75,25 +75,25 @@ class EcsNetworkInterfacePermissionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force deletion of Network Interface Permission. Default value: `true`.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
 
 @pulumi.input_type
 class _EcsNetworkInterfacePermissionState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterfacePermission resources.
 
@@ -116,62 +116,62 @@ class _EcsNetworkInterfacePermissionState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force deletion of Network Interface Permission. Default value: `true`.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network interface.
         """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
-    def network_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def permission(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
         """
         return pulumi.get(self, "permission")
 
     @permission.setter
-    def permission(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -181,10 +181,10 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Network Interface Permission resource.
@@ -221,8 +221,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
             description="terraform-example",
-            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -294,8 +294,8 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
             vswitch_id=default_switch.id,
             security_group_ids=[default_security_group.id],
             description="terraform-example",
-            primary_ip_address=default_switch.cidr_block.apply(lambda cidr_block: std.cidrhost_output(input=cidr_block,
-                host=100)).apply(lambda invoke: invoke.result),
+            primary_ip_address=std.cidrhost_output(input=default_switch.cidr_block,
+                host=100).apply(lambda invoke: invoke.result),
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -334,10 +334,10 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -368,11 +368,11 @@ class EcsNetworkInterfacePermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            permission: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsNetworkInterfacePermission':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            permission: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsNetworkInterfacePermission':
         """
         Get an existing EcsNetworkInterfacePermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

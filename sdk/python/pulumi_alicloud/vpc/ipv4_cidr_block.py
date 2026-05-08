@@ -20,9 +20,9 @@ __all__ = ['Ipv4CidrBlockArgs', 'Ipv4CidrBlock']
 class Ipv4CidrBlockArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None):
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Ipv4CidrBlock resource.
 
@@ -55,31 +55,31 @@ class Ipv4CidrBlockArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipv4IpamPoolId")
-    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         """
         return pulumi.get(self, "ipv4_ipam_pool_id")
 
     @ipv4_ipam_pool_id.setter
-    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrBlock")
-    def secondary_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional network segment information.
         """
         return pulumi.get(self, "secondary_cidr_block")
 
     @secondary_cidr_block.setter
-    def secondary_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrMask")
-    def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
 
@@ -88,18 +88,18 @@ class Ipv4CidrBlockArgs:
         return pulumi.get(self, "secondary_cidr_mask")
 
     @secondary_cidr_mask.setter
-    def secondary_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_cidr_mask", value)
 
 
 @pulumi.input_type
 class _Ipv4CidrBlockState:
     def __init__(__self__, *,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ipv4CidrBlock resources.
 
@@ -124,43 +124,43 @@ class _Ipv4CidrBlockState:
 
     @_builtins.property
     @pulumi.getter(name="ipv4IpamPoolId")
-    def ipv4_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
         """
         return pulumi.get(self, "ipv4_ipam_pool_id")
 
     @ipv4_ipam_pool_id.setter
-    def ipv4_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the VPC resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrBlock")
-    def secondary_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secondary_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional network segment information.
         """
         return pulumi.get(self, "secondary_cidr_block")
 
     @secondary_cidr_block.setter
-    def secondary_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secondary_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secondary_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="secondaryCidrMask")
-    def secondary_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def secondary_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
 
@@ -169,19 +169,19 @@ class _Ipv4CidrBlockState:
         return pulumi.get(self, "secondary_cidr_mask")
 
     @secondary_cidr_mask.setter
-    def secondary_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def secondary_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "secondary_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -191,10 +191,10 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Ipv4 Cidr Block resource.
@@ -302,10 +302,10 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,11 +332,11 @@ class Ipv4CidrBlock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ipv4_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            secondary_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ipv4CidrBlock':
+            ipv4_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            secondary_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ipv4CidrBlock':
         """
         Get an existing Ipv4CidrBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

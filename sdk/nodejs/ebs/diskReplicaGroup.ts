@@ -229,25 +229,25 @@ export interface DiskReplicaGroupState {
     /**
      * The description of the consistent replication group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the disaster recovery site belongs.
      */
-    destinationRegionId?: pulumi.Input<string>;
+    destinationRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the disaster recovery site belongs.
      */
-    destinationZoneId?: pulumi.Input<string>;
+    destinationZoneId?: pulumi.Input<string | undefined>;
     /**
      * Consistent replication group name.
      */
-    diskReplicaGroupName?: pulumi.Input<string>;
+    diskReplicaGroupName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *
      * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to synchronize immediately. Value range:
      * - true: Start data synchronization immediately.
@@ -255,31 +255,31 @@ export interface DiskReplicaGroupState {
      *
      * Default value: false.
      */
-    oneShot?: pulumi.Input<boolean>;
+    oneShot?: pulumi.Input<boolean | undefined>;
     /**
      * List of replication pair IDs contained in a consistent replication group.
      */
-    pairIds?: pulumi.Input<pulumi.Input<string>[]>;
+    pairIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * resource group ID of enterprise
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
      */
-    reverseReplicate?: pulumi.Input<boolean>;
+    reverseReplicate?: pulumi.Input<boolean | undefined>;
     /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
-    rpo?: pulumi.Input<number>;
+    rpo?: pulumi.Input<number | undefined>;
     /**
      * The ID of the region to which the production site belongs.
      */
-    sourceRegionId?: pulumi.Input<string>;
+    sourceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone to which the production site belongs.
      */
-    sourceZoneId?: pulumi.Input<string>;
+    sourceZoneId?: pulumi.Input<string | undefined>;
     /**
      * The status of the consistent replication group. Possible values:
      * - invalid: invalid. This state indicates that there is an exception to the replication pair in the consistent replication group.
@@ -301,13 +301,13 @@ export interface DiskReplicaGroupState {
      * - delete_failed: delete failed.
      * - deleted: deleted.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -317,7 +317,7 @@ export interface DiskReplicaGroupArgs {
     /**
      * The description of the consistent replication group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the disaster recovery site belongs.
      */
@@ -329,13 +329,13 @@ export interface DiskReplicaGroupArgs {
     /**
      * Consistent replication group name.
      */
-    diskReplicaGroupName?: pulumi.Input<string>;
+    diskReplicaGroupName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'group_name' has been deprecated from provider version 1.245.0. New field 'disk_replica_group_name' instead.
      *
      * @deprecated Field 'group_name' has been deprecated since provider version 1.245.0. New field 'disk_replica_group_name' instead.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * Whether to synchronize immediately. Value range:
      * - true: Start data synchronization immediately.
@@ -343,23 +343,23 @@ export interface DiskReplicaGroupArgs {
      *
      * Default value: false.
      */
-    oneShot?: pulumi.Input<boolean>;
+    oneShot?: pulumi.Input<boolean | undefined>;
     /**
      * List of replication pair IDs contained in a consistent replication group.
      */
-    pairIds?: pulumi.Input<pulumi.Input<string>[]>;
+    pairIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * resource group ID of enterprise
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the reverse replication sub-feature. Valid values: true and false. Default value: true.
      */
-    reverseReplicate?: pulumi.Input<boolean>;
+    reverseReplicate?: pulumi.Input<boolean | undefined>;
     /**
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      */
-    rpo?: pulumi.Input<number>;
+    rpo?: pulumi.Input<number | undefined>;
     /**
      * The ID of the region to which the production site belongs.
      */
@@ -389,11 +389,11 @@ export interface DiskReplicaGroupArgs {
      * - delete_failed: delete failed.
      * - deleted: deleted.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

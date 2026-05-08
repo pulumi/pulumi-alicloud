@@ -169,31 +169,31 @@ export interface FlowState {
     /**
      * The definition of the flow. It must comply with the Flow Definition Language (FDL) syntax.
      */
-    definition?: pulumi.Input<string>;
+    definition?: pulumi.Input<string | undefined>;
     /**
      * The description of the flow.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the flow.
      */
-    flowId?: pulumi.Input<string>;
+    flowId?: pulumi.Input<string | undefined>;
     /**
      * The time when the flow was last modified.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,11 +211,11 @@ export interface FlowArgs {
     /**
      * The name of the flow. The name must be unique in an Alibaba Cloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The type of the flow. Valid values are `FDL` or `DEFAULT`.
      */

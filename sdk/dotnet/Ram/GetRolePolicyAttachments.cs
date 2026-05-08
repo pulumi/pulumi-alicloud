@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ram
         ///         Description = "this is a role test.",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Ram
         ///         Description = "this is a role test.",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -241,7 +241,7 @@ namespace Pulumi.AliCloud.Ram
         ///         Description = "this is a role test.",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,

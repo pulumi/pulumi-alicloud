@@ -51,8 +51,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -145,8 +145,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -192,8 +192,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -239,8 +239,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetChangeSetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -286,8 +286,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -330,8 +330,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -418,8 +418,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -462,8 +462,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -506,8 +506,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -550,8 +550,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -594,8 +594,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -640,8 +640,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -686,8 +686,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -732,8 +732,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -778,8 +778,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -824,8 +824,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -870,8 +870,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -916,8 +916,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -986,8 +986,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1056,8 +1056,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1126,8 +1126,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1196,8 +1196,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStackInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1266,8 +1266,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1312,8 +1312,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1358,8 +1358,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1404,8 +1404,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1450,8 +1450,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1496,8 +1496,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1542,8 +1542,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetStacksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1588,8 +1588,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1643,8 +1643,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1698,8 +1698,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1753,8 +1753,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1808,8 +1808,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1863,8 +1863,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1918,8 +1918,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplateScratchesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1973,8 +1973,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2019,8 +2019,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2065,8 +2065,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2111,8 +2111,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2157,8 +2157,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2203,8 +2203,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2249,8 +2249,8 @@ public final class RosFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ros.RosFunctions;
      * import com.pulumi.alicloud.ros.inputs.GetTemplatesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -23,10 +23,10 @@ class DomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[_builtins.str],
                  sources: pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]],
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 top_level_domain: Optional[pulumi.Input[_builtins.str]] = None):
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 top_level_domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -76,31 +76,31 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that is used for health checks.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -109,40 +109,40 @@ class DomainArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="topLevelDomain")
-    def top_level_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def top_level_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The top-level domain name.
         """
         return pulumi.get(self, "top_level_domain")
 
     @top_level_domain.setter
-    def top_level_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def top_level_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "top_level_domain", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_created: Optional[pulumi.Input[_builtins.str]] = None,
-                 gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
-                 ssl_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_pub: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 top_level_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 weight: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+                 gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]] = None,
+                 ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 weight: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -197,151 +197,151 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that is used for health checks.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the domain name for CDN.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtCreated")
-    def gmt_created(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_created(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "gmt_created")
 
     @gmt_created.setter
-    def gmt_created(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_created(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_created", value)
 
     @_builtins.property
     @pulumi.getter(name="gmtModified")
-    def gmt_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gmt_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "gmt_modified")
 
     @gmt_modified.setter
-    def gmt_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gmt_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gmt_modified", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]:
         """
         The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter(name="sslProtocol")
-    def ssl_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
         """
         return pulumi.get(self, "ssl_protocol")
 
     @ssl_protocol.setter
-    def ssl_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPub")
-    def ssl_pub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_pub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
         """
         return pulumi.get(self, "ssl_pub")
 
     @ssl_pub.setter
-    def ssl_pub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_pub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_pub", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the domain name for CDN. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         * `Key`: It can be up to 64 characters in length. It cannot be a null string.
@@ -350,31 +350,31 @@ class _DomainState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="topLevelDomain")
-    def top_level_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def top_level_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The top-level domain name.
         """
         return pulumi.get(self, "top_level_domain")
 
     @top_level_domain.setter
-    def top_level_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def top_level_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "top_level_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def weight(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def weight(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The weight of the origin server.
         """
         return pulumi.get(self, "weight")
 
     @weight.setter
-    def weight(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def weight(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "weight", value)
 
 
@@ -384,12 +384,12 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 top_level_domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VOD Domain resource.
@@ -511,12 +511,12 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 top_level_domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -555,21 +555,21 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-            check_url: Optional[pulumi.Input[_builtins.str]] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_created: Optional[pulumi.Input[_builtins.str]] = None,
-            gmt_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
-            ssl_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_pub: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            top_level_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            weight: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_created: pulumi.Input[Optional[_builtins.str]] = None,
+            gmt_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainSourceArgs', 'DomainSourceArgsDict']]]]] = None,
+            ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_pub: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            top_level_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            weight: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

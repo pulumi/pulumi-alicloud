@@ -25,9 +25,9 @@ class DomainArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  listen: pulumi.Input['DomainListenArgs'],
                  redirect: pulumi.Input['DomainRedirectArgs'],
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
@@ -103,7 +103,7 @@ class DomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the domain name is added to WAF. Valid values:
         share: CNAME record mode. This is the default value.
@@ -113,47 +113,47 @@ class DomainArgs:
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
-    def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
-    def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags. You can specify up to 20 tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listen: Optional[pulumi.Input['DomainListenArgs']] = None,
-                 redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listen: pulumi.Input[Optional['DomainListenArgs']] = None,
+                 redirect: pulumi.Input[Optional['DomainRedirectArgs']] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -194,7 +194,7 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter(name="accessType")
-    def access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the domain name is added to WAF. Valid values:
         share: CNAME record mode. This is the default value.
@@ -204,115 +204,115 @@ class _DomainState:
         return pulumi.get(self, "access_type")
 
     @access_type.setter
-    def access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME assigned by WAF to the domain name.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the domain name to query.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain ID.
         """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def listen(self) -> Optional[pulumi.Input['DomainListenArgs']]:
+    def listen(self) -> pulumi.Input[Optional['DomainListenArgs']]:
         """
         Configure listening information. See `listen` below.
         """
         return pulumi.get(self, "listen")
 
     @listen.setter
-    def listen(self, value: Optional[pulumi.Input['DomainListenArgs']]):
+    def listen(self, value: pulumi.Input[Optional['DomainListenArgs']]):
         pulumi.set(self, "listen", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirect(self) -> Optional[pulumi.Input['DomainRedirectArgs']]:
+    def redirect(self) -> pulumi.Input[Optional['DomainRedirectArgs']]:
         """
         Configure forwarding information. See `redirect` below.
         """
         return pulumi.get(self, "redirect")
 
     @redirect.setter
-    def redirect(self, value: Optional[pulumi.Input['DomainRedirectArgs']]):
+    def redirect(self, value: pulumi.Input[Optional['DomainRedirectArgs']]):
         pulumi.set(self, "redirect", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
-    def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud resource group.
         """
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
-    def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the domain name.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags. You can specify up to 20 tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -322,13 +322,13 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-                 redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a WAFV3 Domain resource.
@@ -396,13 +396,13 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-                 redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+                 redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -440,16 +440,16 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            listen: Optional[pulumi.Input[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
-            redirect: Optional[pulumi.Input[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
-            resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Domain':
+            access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listen: pulumi.Input[Optional[Union['DomainListenArgs', 'DomainListenArgsDict']]] = None,
+            redirect: pulumi.Input[Optional[Union['DomainRedirectArgs', 'DomainRedirectArgsDict']]] = None,
+            resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -206,65 +206,65 @@ export interface DomainState {
     /**
      * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The URL that is used for health checks.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * The description of the domain name for CDN.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    gmtCreated?: pulumi.Input<string>;
+    gmtCreated?: pulumi.Input<string | undefined>;
     /**
      * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.vod.DomainSource>[] | undefined>;
     /**
      * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
      */
-    sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string | undefined>;
     /**
      * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
      */
-    sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name for CDN. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The top-level domain name.
      */
-    topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string | undefined>;
     /**
      * The weight of the origin server.
      */
-    weight?: pulumi.Input<string>;
+    weight?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,7 +274,7 @@ export interface DomainArgs {
     /**
      * The URL that is used for health checks.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      */
@@ -282,7 +282,7 @@ export interface DomainArgs {
     /**
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      */
@@ -292,9 +292,9 @@ export interface DomainArgs {
      * * `Key`: It can be up to 64 characters in length. It cannot be a null string.
      * * `Value`: It can be up to 128 characters in length. It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The top-level domain name.
      */
-    topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string | undefined>;
 }

@@ -24,9 +24,9 @@ class SystemGroupArgs:
                  out_protocol: pulumi.Input[_builtins.str],
                  play_domain: pulumi.Input[_builtins.str],
                  push_domain: pulumi.Input[_builtins.str],
-                 callback: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 callback: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SystemGroup resource.
 
@@ -113,59 +113,59 @@ class SystemGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def callback(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
         """
         return pulumi.get(self, "callback")
 
     @callback.setter
-    def callback(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to open Group.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
 class _SystemGroupState:
     def __init__(__self__, *,
-                 callback: Optional[pulumi.Input[_builtins.str]] = None,
-                 capture_image: Optional[pulumi.Input[_builtins.int]] = None,
-                 capture_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 capture_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 capture_oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 capture_video: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 lazy_pull: Optional[pulumi.Input[_builtins.bool]] = None,
-                 out_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 play_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.bool]] = None):
+                 callback: pulumi.Input[Optional[_builtins.str]] = None,
+                 capture_image: pulumi.Input[Optional[_builtins.int]] = None,
+                 capture_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 capture_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 capture_oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 capture_video: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 lazy_pull: pulumi.Input[Optional[_builtins.bool]] = None,
+                 out_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 play_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SystemGroup resources.
 
@@ -218,182 +218,182 @@ class _SystemGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def callback(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The space within the device status update of the callback, need to start with http:// or https:// at the beginning.
         """
         return pulumi.get(self, "callback")
 
     @callback.setter
-    def callback(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback", value)
 
     @_builtins.property
     @pulumi.getter(name="captureImage")
-    def capture_image(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capture_image(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capture image.
         """
         return pulumi.get(self, "capture_image")
 
     @capture_image.setter
-    def capture_image(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capture_image(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capture_image", value)
 
     @_builtins.property
     @pulumi.getter(name="captureInterval")
-    def capture_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capture_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capture interval.
         """
         return pulumi.get(self, "capture_interval")
 
     @capture_interval.setter
-    def capture_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capture_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capture_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="captureOssBucket")
-    def capture_oss_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capture_oss_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The capture oss bucket.
         """
         return pulumi.get(self, "capture_oss_bucket")
 
     @capture_oss_bucket.setter
-    def capture_oss_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capture_oss_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capture_oss_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="captureOssPath")
-    def capture_oss_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capture_oss_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The capture oss path.
         """
         return pulumi.get(self, "capture_oss_path")
 
     @capture_oss_path.setter
-    def capture_oss_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capture_oss_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capture_oss_path", value)
 
     @_builtins.property
     @pulumi.getter(name="captureVideo")
-    def capture_video(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capture_video(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capture video.
         """
         return pulumi.get(self, "capture_video")
 
     @capture_video.setter
-    def capture_video(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capture_video(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capture_video", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to open Group.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Group Name.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="inProtocol")
-    def in_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def in_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         """
         return pulumi.get(self, "in_protocol")
 
     @in_protocol.setter
-    def in_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def in_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "in_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="lazyPull")
-    def lazy_pull(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def lazy_pull(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable on-demand streaming. Default value:`false`.
         """
         return pulumi.get(self, "lazy_pull")
 
     @lazy_pull.setter
-    def lazy_pull(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def lazy_pull(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "lazy_pull", value)
 
     @_builtins.property
     @pulumi.getter(name="outProtocol")
-    def out_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def out_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
         """
         return pulumi.get(self, "out_protocol")
 
     @out_protocol.setter
-    def out_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def out_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "out_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="playDomain")
-    def play_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def play_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of plan streaming used by the group.
         """
         return pulumi.get(self, "play_domain")
 
     @play_domain.setter
-    def play_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def play_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "play_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="pushDomain")
-    def push_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def push_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of push streaming used by the group.
         """
         return pulumi.get(self, "push_domain")
 
     @push_domain.setter
-    def push_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def push_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "push_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to open Group. Valid values: `on`,`off`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "status", value)
 
 
@@ -403,14 +403,14 @@ class SystemGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 callback: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 out_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 play_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 callback: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 out_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 play_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Video Surveillance System Group resource.
@@ -512,14 +512,14 @@ class SystemGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 callback: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 in_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 out_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 play_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 push_domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 callback: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 in_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 out_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 play_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 push_domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -564,21 +564,21 @@ class SystemGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            callback: Optional[pulumi.Input[_builtins.str]] = None,
-            capture_image: Optional[pulumi.Input[_builtins.int]] = None,
-            capture_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            capture_oss_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            capture_oss_path: Optional[pulumi.Input[_builtins.str]] = None,
-            capture_video: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            in_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            lazy_pull: Optional[pulumi.Input[_builtins.bool]] = None,
-            out_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            play_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            push_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.bool]] = None) -> 'SystemGroup':
+            callback: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_image: pulumi.Input[Optional[_builtins.int]] = None,
+            capture_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            capture_oss_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_oss_path: pulumi.Input[Optional[_builtins.str]] = None,
+            capture_video: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            in_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            lazy_pull: pulumi.Input[Optional[_builtins.bool]] = None,
+            out_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            play_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            push_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SystemGroup':
         """
         Get an existing SystemGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

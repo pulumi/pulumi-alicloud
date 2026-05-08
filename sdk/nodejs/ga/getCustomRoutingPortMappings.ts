@@ -141,19 +141,19 @@ export interface GetCustomRoutingPortMappingsOutputArgs {
     /**
      * The ID of the endpoint group.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

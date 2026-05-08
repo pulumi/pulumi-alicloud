@@ -192,14 +192,14 @@ def get_web_lock_configs(ids: Optional[Sequence[_builtins.str]] = None,
         remark=pulumi.get(__ret__, 'remark'),
         source_ip=pulumi.get(__ret__, 'source_ip'),
         status=pulumi.get(__ret__, 'status'))
-def get_web_lock_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                remark: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                source_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_web_lock_configs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                remark: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                source_ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebLockConfigsResult]:
     """
     This data source provides Threat Detection Web Lock Config available to the user.[What is Web Lock Config](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-describeweblockconfiglist)

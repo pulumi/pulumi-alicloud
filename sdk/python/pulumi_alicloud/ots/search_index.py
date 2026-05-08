@@ -25,7 +25,7 @@ class SearchIndexArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  schemas: pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]],
                  table_name: pulumi.Input[_builtins.str],
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a SearchIndex resource.
 
@@ -93,7 +93,7 @@ class SearchIndexArgs:
 
     @_builtins.property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_to_live(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
         If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -101,22 +101,22 @@ class SearchIndexArgs:
         return pulumi.get(self, "time_to_live")
 
     @time_to_live.setter
-    def time_to_live(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_to_live(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_to_live", value)
 
 
 @pulumi.input_type
 class _SearchIndexState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 current_sync_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-                 index_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]] = None,
-                 sync_phase: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 current_sync_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+                 index_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]] = None,
+                 sync_phase: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SearchIndex resources.
 
@@ -152,103 +152,103 @@ class _SearchIndexState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The search index create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="currentSyncTimestamp")
-    def current_sync_timestamp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def current_sync_timestamp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timestamp for sync phase.
         """
         return pulumi.get(self, "current_sync_timestamp")
 
     @current_sync_timestamp.setter
-    def current_sync_timestamp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def current_sync_timestamp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "current_sync_timestamp", value)
 
     @_builtins.property
     @pulumi.getter(name="indexId")
-    def index_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index id of the search index which could not be changed.
         """
         return pulumi.get(self, "index_id")
 
     @index_id.setter
-    def index_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_id", value)
 
     @_builtins.property
     @pulumi.getter(name="indexName")
-    def index_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def index_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The index name of the OTS Table. If changed, a new index would be created.
         """
         return pulumi.get(self, "index_name")
 
     @index_name.setter
-    def index_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def index_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "index_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS instance in which table will located.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]]:
+    def schemas(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]]:
         """
         The schema of the search index. If changed, a new index would be created. See `schema` below.
         """
         return pulumi.get(self, "schemas")
 
     @schemas.setter
-    def schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]]):
+    def schemas(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SearchIndexSchemaArgs']]]]):
         pulumi.set(self, "schemas", value)
 
     @_builtins.property
     @pulumi.getter(name="syncPhase")
-    def sync_phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_phase(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The search index sync phase. possible values: `Full`, `Incr`.
         """
         return pulumi.get(self, "sync_phase")
 
     @sync_phase.setter
-    def sync_phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_phase(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_phase", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS table. If changed, a new table would be created.
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_to_live(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
         If the retention period exceeds the TTL value, OTS automatically deletes expired data.
@@ -256,7 +256,7 @@ class _SearchIndexState:
         return pulumi.get(self, "time_to_live")
 
     @time_to_live.setter
-    def time_to_live(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_to_live(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_to_live", value)
 
 
@@ -266,11 +266,11 @@ class SearchIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides an OTS search index resource.
@@ -528,11 +528,11 @@ class SearchIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 index_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None,
+                 index_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -569,15 +569,15 @@ class SearchIndex(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            current_sync_timestamp: Optional[pulumi.Input[_builtins.int]] = None,
-            index_id: Optional[pulumi.Input[_builtins.str]] = None,
-            index_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            schemas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
-            sync_phase: Optional[pulumi.Input[_builtins.str]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            time_to_live: Optional[pulumi.Input[_builtins.int]] = None) -> 'SearchIndex':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            current_sync_timestamp: pulumi.Input[Optional[_builtins.int]] = None,
+            index_id: pulumi.Input[Optional[_builtins.str]] = None,
+            index_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schemas: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SearchIndexSchemaArgs', 'SearchIndexSchemaArgsDict']]]]] = None,
+            sync_phase: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live: pulumi.Input[Optional[_builtins.int]] = None) -> 'SearchIndex':
         """
         Get an existing SearchIndex resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

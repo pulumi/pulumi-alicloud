@@ -23,9 +23,9 @@ class EcFailoverTestJobArgs:
                  job_type: pulumi.Input[_builtins.str],
                  resource_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  resource_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ec_failover_test_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcFailoverTestJob resource.
 
@@ -98,51 +98,51 @@ class EcFailoverTestJobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ecFailoverTestJobName")
-    def ec_failover_test_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ec_failover_test_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job name.
         """
         return pulumi.get(self, "ec_failover_test_job_name")
 
     @ec_failover_test_job_name.setter
-    def ec_failover_test_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ec_failover_test_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ec_failover_test_job_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _EcFailoverTestJobState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ec_failover_test_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcFailoverTestJob resources.
 
@@ -171,86 +171,86 @@ class _EcFailoverTestJobState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ecFailoverTestJobName")
-    def ec_failover_test_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ec_failover_test_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job name.
         """
         return pulumi.get(self, "ec_failover_test_job_name")
 
     @ec_failover_test_job_name.setter
-    def ec_failover_test_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ec_failover_test_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ec_failover_test_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="jobDuration")
-    def job_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def job_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Job duration.
         """
         return pulumi.get(self, "job_duration")
 
     @job_duration.setter
-    def job_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def job_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "job_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job type.
         """
         return pulumi.get(self, "job_type")
 
     @job_type.setter
-    def job_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceIds")
-    def resource_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource id list.
         """
         return pulumi.get(self, "resource_ids")
 
     @resource_ids.setter
-    def resource_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -260,13 +260,13 @@ class EcFailoverTestJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ec_failover_test_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Ec Failover Test Job resource. Express Connect Failover Test Job.
@@ -385,13 +385,13 @@ class EcFailoverTestJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ec_failover_test_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,13 +426,13 @@ class EcFailoverTestJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ec_failover_test_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            job_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            job_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcFailoverTestJob':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ec_failover_test_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcFailoverTestJob':
         """
         Get an existing EcFailoverTestJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

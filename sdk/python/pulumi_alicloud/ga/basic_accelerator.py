@@ -19,20 +19,20 @@ __all__ = ['BasicAcceleratorArgs', 'BasicAccelerator']
 @pulumi.input_type
 class BasicAcceleratorArgs:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_use_coupon: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_accelerator_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_border_status: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a BasicAccelerator resource.
 
@@ -84,103 +84,103 @@ class BasicAcceleratorArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUseCoupon")
-    def auto_use_coupon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_use_coupon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         """
         return pulumi.get(self, "auto_use_coupon")
 
     @auto_use_coupon.setter
-    def auto_use_coupon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_use_coupon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_use_coupon", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthBillingType")
-    def bandwidth_billing_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_billing_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
     @bandwidth_billing_type.setter
-    def bandwidth_billing_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_billing_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_billing_type", value)
 
     @_builtins.property
     @pulumi.getter(name="basicAcceleratorName")
-    def basic_accelerator_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_accelerator_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Global Accelerator Basic Accelerator instance.
         """
         return pulumi.get(self, "basic_accelerator_name")
 
     @basic_accelerator_name.setter
-    def basic_accelerator_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_accelerator_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_accelerator_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBorderStatus")
-    def cross_border_status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_border_status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "cross_border_status")
 
     @cross_border_status.setter
-    def cross_border_status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_border_status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_border_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Global Accelerator Basic Accelerator instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Default value: `1`.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
@@ -189,88 +189,88 @@ class BasicAcceleratorArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _BasicAcceleratorState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_use_coupon: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_accelerator_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_border_status: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BasicAccelerator resources.
 
@@ -325,103 +325,103 @@ class _BasicAcceleratorState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic payment. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the GA Basic Accelerator instance. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: months. Default value: `1`. Valid values: `1` to `12`. **NOTE:** This parameter is required only if `auto_renew` is set to `true`.
         """
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUseCoupon")
-    def auto_use_coupon(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_use_coupon(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to automatically pay bills by using coupons. Default value: `false`. **NOTE:** This parameter is required only if `auto_pay` is set to `true`.
         """
         return pulumi.get(self, "auto_use_coupon")
 
     @auto_use_coupon.setter
-    def auto_use_coupon(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_use_coupon(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_use_coupon", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthBillingType")
-    def bandwidth_billing_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_billing_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth billing method. Valid values: `BandwidthPackage`, `CDT`, `CDT95`.
         """
         return pulumi.get(self, "bandwidth_billing_type")
 
     @bandwidth_billing_type.setter
-    def bandwidth_billing_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_billing_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_billing_type", value)
 
     @_builtins.property
     @pulumi.getter(name="basicAcceleratorName")
-    def basic_accelerator_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_accelerator_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Global Accelerator Basic Accelerator instance.
         """
         return pulumi.get(self, "basic_accelerator_name")
 
     @basic_accelerator_name.setter
-    def basic_accelerator_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_accelerator_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_accelerator_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBorderStatus")
-    def cross_border_status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_border_status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether cross-border acceleration is enabled. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "cross_border_status")
 
     @cross_border_status.setter
-    def cross_border_status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_border_status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_border_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Global Accelerator Basic Accelerator instance.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration. Default value: `1`.
         * If the `pricing_cycle` parameter is set to `Month`, the valid values for the `duration` parameter are `1` to `9`.
@@ -430,79 +430,79 @@ class _BasicAcceleratorState:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle. Default value: `Month`. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
         """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Basic Accelerator instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -512,20 +512,20 @@ class BasicAccelerator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_use_coupon: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_accelerator_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_border_status: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Accelerator resource.
@@ -639,20 +639,20 @@ class BasicAccelerator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_use_coupon: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth_billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_accelerator_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_border_status: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -687,21 +687,21 @@ class BasicAccelerator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_use_coupon: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth_billing_type: Optional[pulumi.Input[_builtins.str]] = None,
-            basic_accelerator_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_border_status: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'BasicAccelerator':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_use_coupon: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth_billing_type: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_accelerator_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border_status: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'BasicAccelerator':
         """
         Get an existing BasicAccelerator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

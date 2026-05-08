@@ -27,15 +27,15 @@ class LoadBalancerArgs:
                  monitor: pulumi.Input['LoadBalancerMonitorArgs'],
                  site_id: pulumi.Input[_builtins.str],
                  steering_policy: pulumi.Input[_builtins.str],
-                 adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 random_steering: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']] = None,
-                 region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 adaptive_routing: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
+                 region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -154,133 +154,133 @@ class LoadBalancerArgs:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
-    def adaptive_routing(self) -> Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]:
+    def adaptive_routing(self) -> pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]:
         """
         Cross-pool origin configuration. See `adaptive_routing` below.
         """
         return pulumi.get(self, "adaptive_routing")
 
     @adaptive_routing.setter
-    def adaptive_routing(self, value: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]):
+    def adaptive_routing(self, value: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]):
         pulumi.set(self, "adaptive_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed description of the load balancer for easy management and identification.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the load balancer is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="randomSteering")
-    def random_steering(self) -> Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]:
+    def random_steering(self) -> pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]:
         """
         Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
         """
         return pulumi.get(self, "random_steering")
 
     @random_steering.setter
-    def random_steering(self, value: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]):
+    def random_steering(self, value: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]):
         pulumi.set(self, "random_steering", value)
 
     @_builtins.property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_pools(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address pools corresponding to primary regions.
         """
         return pulumi.get(self, "region_pools")
 
     @region_pools.setter
-    def region_pools(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_pools(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
         """
         Rule configuration list, used to define behavior under specific conditions. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Session persistence. Valid values:
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="subRegionPools")
-    def sub_region_pools(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_region_pools(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         """
         return pulumi.get(self, "sub_region_pools")
 
     @sub_region_pools.setter
-    def sub_region_pools(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_region_pools(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 adaptive_routing: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor: Optional[pulumi.Input['LoadBalancerMonitorArgs']] = None,
-                 random_steering: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']] = None,
-                 region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 adaptive_routing: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor: pulumi.Input[Optional['LoadBalancerMonitorArgs']] = None,
+                 random_steering: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']] = None,
+                 region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
 
@@ -339,206 +339,206 @@ class _LoadBalancerState:
 
     @_builtins.property
     @pulumi.getter(name="adaptiveRouting")
-    def adaptive_routing(self) -> Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]:
+    def adaptive_routing(self) -> pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]:
         """
         Cross-pool origin configuration. See `adaptive_routing` below.
         """
         return pulumi.get(self, "adaptive_routing")
 
     @adaptive_routing.setter
-    def adaptive_routing(self, value: Optional[pulumi.Input['LoadBalancerAdaptiveRoutingArgs']]):
+    def adaptive_routing(self, value: pulumi.Input[Optional['LoadBalancerAdaptiveRoutingArgs']]):
         pulumi.set(self, "adaptive_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPools")
-    def default_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def default_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         List of default pool IDs.
         """
         return pulumi.get(self, "default_pools")
 
     @default_pools.setter
-    def default_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def default_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "default_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detailed description of the load balancer for easy management and identification.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the load balancer is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackPool")
-    def fallback_pool(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fallback_pool(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The fallback pool ID, to which traffic will be redirected if all other pools are unavailable.
         """
         return pulumi.get(self, "fallback_pool")
 
     @fallback_pool.setter
-    def fallback_pool(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fallback_pool(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fallback_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The unique identifier ID of the load balancer.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerName")
-    def load_balancer_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the load balancer must meet the domain name format verification and be a subdomain name under the site.
         """
         return pulumi.get(self, "load_balancer_name")
 
     @load_balancer_name.setter
-    def load_balancer_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitor(self) -> Optional[pulumi.Input['LoadBalancerMonitorArgs']]:
+    def monitor(self) -> pulumi.Input[Optional['LoadBalancerMonitorArgs']]:
         """
         Monitor configuration for health check. See `monitor` below.
         """
         return pulumi.get(self, "monitor")
 
     @monitor.setter
-    def monitor(self, value: Optional[pulumi.Input['LoadBalancerMonitorArgs']]):
+    def monitor(self, value: pulumi.Input[Optional['LoadBalancerMonitorArgs']]):
         pulumi.set(self, "monitor", value)
 
     @_builtins.property
     @pulumi.getter(name="randomSteering")
-    def random_steering(self) -> Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]:
+    def random_steering(self) -> pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]:
         """
         Weighted round-robin configuration, used to control the traffic distribution weights among different pools. See `random_steering` below.
         """
         return pulumi.get(self, "random_steering")
 
     @random_steering.setter
-    def random_steering(self, value: Optional[pulumi.Input['LoadBalancerRandomSteeringArgs']]):
+    def random_steering(self, value: pulumi.Input[Optional['LoadBalancerRandomSteeringArgs']]):
         pulumi.set(self, "random_steering", value)
 
     @_builtins.property
     @pulumi.getter(name="regionPools")
-    def region_pools(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_pools(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address pools corresponding to primary regions.
         """
         return pulumi.get(self, "region_pools")
 
     @region_pools.setter
-    def region_pools(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_pools(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]:
         """
         Rule configuration list, used to define behavior under specific conditions. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="sessionAffinity")
-    def session_affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def session_affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Session persistence. Valid values:
         """
         return pulumi.get(self, "session_affinity")
 
     @session_affinity.setter
-    def session_affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def session_affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "session_affinity", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the load balancer.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="steeringPolicy")
-    def steering_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def steering_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Load balancing policy.
         """
         return pulumi.get(self, "steering_policy")
 
     @steering_policy.setter
-    def steering_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def steering_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "steering_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="subRegionPools")
-    def sub_region_pools(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_region_pools(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
         """
         return pulumi.get(self, "sub_region_pools")
 
     @sub_region_pools.setter
-    def sub_region_pools(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_region_pools(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_region_pools", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -548,21 +548,21 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor: Optional[pulumi.Input[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
-                 random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-                 region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
+                 random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+                 region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ESA Load Balancer resource.
@@ -741,21 +741,21 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-                 default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fallback_pool: Optional[pulumi.Input[_builtins.int]] = None,
-                 load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor: Optional[pulumi.Input[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
-                 random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-                 region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-                 session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+                 default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+                 load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
+                 random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+                 region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+                 session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -804,23 +804,23 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adaptive_routing: Optional[pulumi.Input[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
-            default_pools: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            fallback_pool: Optional[pulumi.Input[_builtins.int]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.int]] = None,
-            load_balancer_name: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor: Optional[pulumi.Input[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
-            random_steering: Optional[pulumi.Input[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
-            region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
-            session_affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            steering_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_region_pools: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'LoadBalancer':
+            adaptive_routing: pulumi.Input[Optional[Union['LoadBalancerAdaptiveRoutingArgs', 'LoadBalancerAdaptiveRoutingArgsDict']]] = None,
+            default_pools: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            fallback_pool: pulumi.Input[Optional[_builtins.int]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.int]] = None,
+            load_balancer_name: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor: pulumi.Input[Optional[Union['LoadBalancerMonitorArgs', 'LoadBalancerMonitorArgsDict']]] = None,
+            random_steering: pulumi.Input[Optional[Union['LoadBalancerRandomSteeringArgs', 'LoadBalancerRandomSteeringArgsDict']]] = None,
+            region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerRuleArgs', 'LoadBalancerRuleArgsDict']]]]] = None,
+            session_affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            steering_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_region_pools: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

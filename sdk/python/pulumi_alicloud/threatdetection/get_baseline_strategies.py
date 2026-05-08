@@ -179,11 +179,11 @@ def get_baseline_strategies(custom_type: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         strategies=pulumi.get(__ret__, 'strategies'),
         strategy_ids=pulumi.get(__ret__, 'strategy_ids'))
-def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   strategy_ids: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_baseline_strategies_output(custom_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   strategy_ids: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBaselineStrategiesResult]:
     """
     This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)

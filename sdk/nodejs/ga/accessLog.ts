@@ -210,31 +210,31 @@ export interface AccessLogState {
     /**
      * The ID of the global acceleration instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the endpoint group instance.
      */
-    endpointGroupId?: pulumi.Input<string>;
+    endpointGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Log Store.
      */
-    slsLogStoreName?: pulumi.Input<string>;
+    slsLogStoreName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Log Service project.
      */
-    slsProjectName?: pulumi.Input<string>;
+    slsProjectName?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the Log Service project.
      */
-    slsRegionId?: pulumi.Input<string>;
+    slsRegionId?: pulumi.Input<string | undefined>;
     /**
      * Whether access log is enabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

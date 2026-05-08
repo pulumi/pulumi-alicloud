@@ -35,87 +35,82 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// VpcName: pulumi.String("terraform-example"),
-// CidrBlock: pulumi.String("172.17.3.0/24"),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VswitchName: pulumi.String("terraform-example"),
-// CidrBlock: pulumi.String("172.17.3.0/24"),
-// VpcId: defaultNetwork.ID(),
-// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
-// Name: pulumi.String("terraform-example"),
-// VpcId: defaultNetwork.ID(),
-// })
-// if err != nil {
-// return err
-// }
-// invokeCidrhost, err := std.Cidrhost(ctx, &std.CidrhostArgs{
-// Input: cidrBlock,
-// Host: 100,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
-// NetworkInterfaceName: pulumi.String("terraform-example"),
-// VswitchId: defaultSwitch.ID(),
-// SecurityGroupIds: pulumi.StringArray{
-// defaultSecurityGroup.ID(),
-// },
-// Description: pulumi.String("terraform-example"),
-// PrimaryIpAddress: pulumi.String(defaultSwitch.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrhostResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrhostResultOutput).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
-// Tags: pulumi.StringMap{
-// "Created": pulumi.String("TF"),
-// "For": pulumi.String("example"),
-// },
-// ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
-// })
-// if err != nil {
-// return err
-// }
-// _, err = ecs.NewEcsNetworkInterfacePermission(ctx, "example", &ecs.EcsNetworkInterfacePermissionArgs{
-// AccountId: pulumi.String(pulumi.String(defaultGetAccount.Id)),
-// NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
-// Permission: pulumi.String("InstanceAttach"),
-// Force: pulumi.Bool(true),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetAccount, err := alicloud.GetAccount(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				VpcName:   pulumi.String("terraform-example"),
+//				CidrBlock: pulumi.String("172.17.3.0/24"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VswitchName: pulumi.String("terraform-example"),
+//				CidrBlock:   pulumi.String("172.17.3.0/24"),
+//				VpcId:       defaultNetwork.ID(),
+//				ZoneId:      pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String("terraform-example"),
+//				VpcId: defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
+//				NetworkInterfaceName: pulumi.String("terraform-example"),
+//				VswitchId:            defaultSwitch.ID(),
+//				SecurityGroupIds: pulumi.StringArray{
+//					defaultSecurityGroup.ID(),
+//				},
+//				Description: pulumi.String("terraform-example"),
+//				PrimaryIpAddress: pulumi.String(std.CidrhostOutput(ctx, std.CidrhostOutputArgs{
+//					Input: defaultSwitch.CidrBlock,
+//					Host:  pulumi.Int(100),
+//				}, nil).ApplyT(func(invoke std.CidrhostResult) (*string, error) {
+//					val := invoke.Result
+//					return &val, nil
+//				}).(pulumi.StringPtrOutput)),
+//				Tags: pulumi.StringMap{
+//					"Created": pulumi.String("TF"),
+//					"For":     pulumi.String("example"),
+//				},
+//				ResourceGroupId: pulumi.String(pulumi.String(defaultGetResourceGroups.Ids[0])),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ecs.NewEcsNetworkInterfacePermission(ctx, "example", &ecs.EcsNetworkInterfacePermissionArgs{
+//				AccountId:          pulumi.String(pulumi.String(defaultGetAccount.Id)),
+//				NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
+//				Permission:         pulumi.String("InstanceAttach"),
+//				Force:              pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES

@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     instanceChargeType: "Postpaid",
@@ -260,7 +260,7 @@ export interface RdsAccountState {
      *
      * > **NOTE:** The name cannot start with http:// or https://.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the database account.
      * * The name must be unique.
@@ -276,14 +276,14 @@ export interface RdsAccountState {
      * * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
      * * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The password of the account.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The account type. Valid values:
      * * Normal: standard account (default).
@@ -292,55 +292,55 @@ export interface RdsAccountState {
      *
      * > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Whether to apply password policy
      */
-    checkPolicy?: pulumi.Input<boolean>;
+    checkPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
      */
-    resetPermissionFlag?: pulumi.Input<boolean>;
+    resetPermissionFlag?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
@@ -348,7 +348,7 @@ export interface RdsAccountState {
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -360,7 +360,7 @@ export interface RdsAccountArgs {
      *
      * > **NOTE:** The name cannot start with http:// or https://.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the database account.
      * * The name must be unique.
@@ -376,14 +376,14 @@ export interface RdsAccountArgs {
      * * If the instance runs MariaDB, the value must be 2 to 16 characters in length.
      * * For more information about invalid characters, See [Forbidden keywords](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The password of the account.
      * * The value must be 8 to 32 characters in length.
      * * The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * * Special characters include ! @ # $ % ^ & * ( ) _ + - =
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The account type. Valid values:
      * * Normal: standard account (default).
@@ -392,55 +392,55 @@ export interface RdsAccountArgs {
      *
      * > **NOTE:** Before you create a system admin account, check whether the RDS instance meets all prerequisites. For more information, See [Create a system admin account](https://help.aliyun.com/zh/rds/apsaradb-rds-for-sql-server/create-a-system-admin-account-for-an-apsaradb-rds-for-sql-server-instance?spm=api-workbench.API%20Document.0.0.529e2defHKoZ3o).
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Whether to apply password policy
      */
-    checkPolicy?: pulumi.Input<boolean>;
+    checkPolicy?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountDescription` instead.
      *
      * @deprecated Field 'description' has been deprecated from provider version 1.120.0. New field 'account_description' instead.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `dbInstanceId` instead.
      *
      * @deprecated Field 'instance_id' has been deprecated from provider version 1.120.0. New field 'db_instance_id' instead.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'account_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountPassword` instead.
      *
      * @deprecated Field 'password' has been deprecated from provider version 1.120.0. New field 'account_password' instead.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Resets permissions flag of the privileged account. Default to `false`. Set it to `true` can resets permissions of the privileged account.
      */
-    resetPermissionFlag?: pulumi.Input<boolean>;
+    resetPermissionFlag?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.120.0 and using `accountType` instead.
      *
@@ -448,5 +448,5 @@ export interface RdsAccountArgs {
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.120.0. New field 'account_type' instead.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

@@ -165,11 +165,11 @@ export interface MembershipAttachmentState {
     /**
      * The ID of the cluster to which the membership is being attached.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the member being attached to the cluster.
      */
-    subClusterId?: pulumi.Input<string>;
+    subClusterId?: pulumi.Input<string | undefined>;
 }
 
 /**

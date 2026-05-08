@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //				VpcName:   pulumi.String("yqc-example-vpc"),
 //			})
@@ -56,7 +56,7 @@ import (
 //				return err
 //			}
 //			vpcvsw1, err := vpc.NewSwitch(ctx, "vpcvsw1", &vpc.SwitchArgs{
-//				VpcId:     vpc.ID(),
+//				VpcId:     vpc2.ID(),
 //				ZoneId:    pulumi.String("cn-hangzhou-i"),
 //				CidrBlock: pulumi.String("172.16.3.0/24"),
 //			})
@@ -64,7 +64,7 @@ import (
 //				return err
 //			}
 //			vpcvsw2, err := vpc.NewSwitch(ctx, "vpcvsw2", &vpc.SwitchArgs{
-//				VpcId:     vpc.ID(),
+//				VpcId:     vpc2.ID(),
 //				ZoneId:    pulumi.String("cn-hangzhou-j"),
 //				CidrBlock: pulumi.String("172.16.4.0/24"),
 //			})
@@ -78,7 +78,7 @@ import (
 //				PrimaryVswitchId:   vpcvsw1.ID(),
 //				StandbyDns:         pulumi.String("4.4.4.4"),
 //				PrimaryDns:         pulumi.String("8.8.8.8"),
-//				VpcId:              vpc.ID(),
+//				VpcId:              vpc2.ID(),
 //				PrivateDnsType:     pulumi.String("Custom"),
 //				FirewallTypes: pulumi.StringArray{
 //					pulumi.String("internet"),

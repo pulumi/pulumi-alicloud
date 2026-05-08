@@ -169,17 +169,17 @@ export interface RolePolicyAttachmentState {
     /**
      * The name of the policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Policy type.
      * - Custom: Custom policy.
      * - System: System policy.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * The RAM role name.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
 }
 
 /**

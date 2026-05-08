@@ -38,11 +38,11 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
  *         vpcId: defaultNetwork.id,
- *         cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *             input: cidrBlock,
+ *         cidrBlock: std.cidrsubnetOutput({
+ *             input: defaultNetwork.cidrBlock,
  *             newbits: 8,
  *             netnum: range.value,
- *         })).apply(invoke => invoke.result),
+ *         }).apply(invoke => invoke.result),
  *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
  *     }));
  * }
@@ -188,27 +188,27 @@ export interface EndpointState {
     /**
      * The name of the resource.
      */
-    endpointName?: pulumi.Input<string>;
+    endpointName?: pulumi.Input<string | undefined>;
     /**
      * The Ip Configs. See `ipConfigs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      */
-    ipConfigs?: pulumi.Input<pulumi.Input<inputs.pvtz.EndpointIpConfig>[]>;
+    ipConfigs?: pulumi.Input<pulumi.Input<inputs.pvtz.EndpointIpConfig>[] | undefined>;
     /**
      * The ID of the Security Group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The Region of the VPC.
      */
-    vpcRegionId?: pulumi.Input<string>;
+    vpcRegionId?: pulumi.Input<string | undefined>;
 }
 
 /**

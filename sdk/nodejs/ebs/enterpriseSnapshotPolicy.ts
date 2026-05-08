@@ -197,51 +197,51 @@ export interface EnterpriseSnapshotPolicyState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Snapshot replication information. See `crossRegionCopyInfo` below.
      */
-    crossRegionCopyInfo?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo>;
+    crossRegionCopyInfo?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo | undefined>;
     /**
      * Description information representing the resource.
      */
-    desc?: pulumi.Input<string>;
+    desc?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    enterpriseSnapshotPolicyName?: pulumi.Input<string>;
+    enterpriseSnapshotPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Snapshot retention policy representing resources. See `retainRule` below.
      */
-    retainRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyRetainRule>;
+    retainRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyRetainRule | undefined>;
     /**
      * The scheduling plan that represents the resource. See `schedule` below.
      */
-    schedule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySchedule>;
+    schedule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySchedule | undefined>;
     /**
      * Snapshot special retention rules. See `specialRetainRules` below.
      */
-    specialRetainRules?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules>;
+    specialRetainRules?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Snapshot storage policy. See `storageRule` below.
      */
-    storageRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyStorageRule>;
+    storageRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyStorageRule | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents the target type of resource binding.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,11 +251,11 @@ export interface EnterpriseSnapshotPolicyArgs {
     /**
      * Snapshot replication information. See `crossRegionCopyInfo` below.
      */
-    crossRegionCopyInfo?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo>;
+    crossRegionCopyInfo?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyCrossRegionCopyInfo | undefined>;
     /**
      * Description information representing the resource.
      */
-    desc?: pulumi.Input<string>;
+    desc?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
@@ -263,7 +263,7 @@ export interface EnterpriseSnapshotPolicyArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Snapshot retention policy representing resources. See `retainRule` below.
      */
@@ -275,19 +275,19 @@ export interface EnterpriseSnapshotPolicyArgs {
     /**
      * Snapshot special retention rules. See `specialRetainRules` below.
      */
-    specialRetainRules?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules>;
+    specialRetainRules?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicySpecialRetainRules | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Snapshot storage policy. See `storageRule` below.
      */
-    storageRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyStorageRule>;
+    storageRule?: pulumi.Input<inputs.ebs.EnterpriseSnapshotPolicyStorageRule | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Represents the target type of resource binding.
      */

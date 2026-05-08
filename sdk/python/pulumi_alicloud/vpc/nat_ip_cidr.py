@@ -22,8 +22,8 @@ class NatIpCidrArgs:
                  nat_gateway_id: pulumi.Input[_builtins.str],
                  nat_ip_cidr: pulumi.Input[_builtins.str],
                  nat_ip_cidr_name: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_ip_cidr_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_ip_cidr_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatIpCidr resource.
 
@@ -94,19 +94,19 @@ class NatIpCidrArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck this request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpCidrDescription")
-    def nat_ip_cidr_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_cidr_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the NAT IP CIDR block to modify.
         The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
@@ -114,20 +114,20 @@ class NatIpCidrArgs:
         return pulumi.get(self, "nat_ip_cidr_description")
 
     @nat_ip_cidr_description.setter
-    def nat_ip_cidr_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_cidr_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_cidr_description", value)
 
 
 @pulumi.input_type
 class _NatIpCidrState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatIpCidr resources.
 
@@ -164,43 +164,43 @@ class _NatIpCidrState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.273.0) The time when the NAT IP CIDR block was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck this request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC NAT gateway instance to which the NAT IP address block belongs.
         """
         return pulumi.get(self, "nat_gateway_id")
 
     @nat_gateway_id.setter
-    def nat_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpCidr")
-    def nat_ip_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NAT IP CIDR block to create.
 
@@ -213,12 +213,12 @@ class _NatIpCidrState:
         return pulumi.get(self, "nat_ip_cidr")
 
     @nat_ip_cidr.setter
-    def nat_ip_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpCidrDescription")
-    def nat_ip_cidr_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_cidr_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the NAT IP CIDR block to modify.
         The description must be 2 to 256 characters in length, start with a letter or Chinese character, and cannot start with `http://` or `https://`.
@@ -226,12 +226,12 @@ class _NatIpCidrState:
         return pulumi.get(self, "nat_ip_cidr_description")
 
     @nat_ip_cidr_description.setter
-    def nat_ip_cidr_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_cidr_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_cidr_description", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpCidrName")
-    def nat_ip_cidr_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_cidr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NAT IP address block.
         The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter or a Chinese character, and cannot start with `http://` or `https://`.
@@ -239,19 +239,19 @@ class _NatIpCidrState:
         return pulumi.get(self, "nat_ip_cidr_name")
 
     @nat_ip_cidr_name.setter
-    def nat_ip_cidr_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_cidr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_cidr_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the NAT IP CIDR block to query.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -261,11 +261,11 @@ class NatIpCidr(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Nat Gateway Nat Ip Cidr resource.
@@ -406,11 +406,11 @@ class NatIpCidr(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,13 +443,13 @@ class NatIpCidr(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_cidr_description: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatIpCidr':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_cidr_description: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatIpCidr':
         """
         Get an existing NatIpCidr resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -64,7 +64,7 @@ export class Alias extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Alias resources.
  */
 export interface AliasState {
-    accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string | undefined>;
 }
 
 /**

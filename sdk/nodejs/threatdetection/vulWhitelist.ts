@@ -114,15 +114,15 @@ export interface VulWhitelistState {
     /**
      * Reason for adding whitelist.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */
-    targetInfo?: pulumi.Input<string>;
+    targetInfo?: pulumi.Input<string | undefined>;
     /**
      * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */
-    whitelist?: pulumi.Input<string>;
+    whitelist?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,11 +132,11 @@ export interface VulWhitelistArgs {
     /**
      * Reason for adding whitelist.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
     /**
      * Set the effective range of the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */
-    targetInfo?: pulumi.Input<string>;
+    targetInfo?: pulumi.Input<string | undefined>;
     /**
      * Information about the vulnerability to be added to the whitelist. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-modifycreatevulwhitelist).
      */

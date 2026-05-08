@@ -172,25 +172,25 @@ export interface RouterInterfaceConnectionState {
     /**
      * One side router interface ID.
      */
-    interfaceId?: pulumi.Input<string>;
+    interfaceId?: pulumi.Input<string | undefined>;
     /**
      * Another side router interface ID. It must belong the specified "oppositeInterfaceOwnerId" account.
      */
-    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string | undefined>;
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      *
      * > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
      */
-    oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,15 +208,15 @@ export interface RouterInterfaceConnectionArgs {
     /**
      * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info > Account Management to check the account ID. Default to Provider account_id.
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Another side router ID. It must belong the specified "oppositeInterfaceOwnerId" account. It is valid when field "oppositeInterfaceOwnerId" is specified.
      */
-    oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string | undefined>;
     /**
      * Another side router Type. Optional value: VRouter, VBR. It is valid when field "oppositeInterfaceOwnerId" is specified.
      *
      * > **NOTE:** The value of "oppositeInterfaceOwnerId" or "accountId" must be main account and not be sub account.
      */
-    oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string | undefined>;
 }

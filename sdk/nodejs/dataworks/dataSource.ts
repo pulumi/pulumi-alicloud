@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *         },
  *     }),
  *     connectionPropertiesMode: "UrlMode",
- *     projectId: defaultkguw4R.id,
+ *     projectId: defaultkguw4R.id.apply(x =>Number(x)),
  *     description: name,
  * });
  * ```
@@ -218,51 +218,51 @@ export interface DataSourceState {
     /**
      * Data source connection configuration information, including the connection address, access identity, and environment information. The data source environment EnvType information is a member property of this object, including DEV (Development Environment) and PROD (production environment). The value of EnvType is not case-sensitive.
      */
-    connectionProperties?: pulumi.Input<string>;
+    connectionProperties?: pulumi.Input<string | undefined>;
     /**
      * The configuration mode of the data source. Different types of data sources have different configuration modes. For example, MySQL data sources support UrlMode and InstanceMode.
      */
-    connectionPropertiesMode?: pulumi.Input<string>;
+    connectionPropertiesMode?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Creator of the data source
      */
-    createUser?: pulumi.Input<string>;
+    createUser?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    dataSourceId?: pulumi.Input<number>;
+    dataSourceId?: pulumi.Input<number | undefined>;
     /**
      * The data source name. The name of a data source in a specific environment (development environment or production environment) is unique in a project.
      */
-    dataSourceName?: pulumi.Input<string>;
+    dataSourceName?: pulumi.Input<string | undefined>;
     /**
      * Description of the data source
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Modification time
      */
-    modifyTime?: pulumi.Input<number>;
+    modifyTime?: pulumi.Input<number | undefined>;
     /**
      * Modifier of the data source
      */
-    modifyUser?: pulumi.Input<string>;
+    modifyUser?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to which the data source belongs.
      */
-    projectId?: pulumi.Input<number>;
+    projectId?: pulumi.Input<number | undefined>;
     /**
      * Business Unique Key of Data Source
      */
-    qualifiedName?: pulumi.Input<string>;
+    qualifiedName?: pulumi.Input<string | undefined>;
     /**
      * The type of data source. For a list of data source types, see the values listed in the API documentation.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,7 +284,7 @@ export interface DataSourceArgs {
     /**
      * Description of the data source
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project to which the data source belongs.
      */

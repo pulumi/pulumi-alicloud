@@ -149,23 +149,23 @@ export interface GetTransitRouteTableAggregationsOutputArgs {
     /**
      * A list of Transit Route Table Aggregation IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Transit Route Table Aggregation name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of Transit Route Table Aggregation. Valid Values: `AllConfigured`, `Configuring`, `ConfigFailed`, `PartialConfigured`, `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The destination CIDR block of the aggregate route.
      */
-    transitRouteTableAggregationCidr?: pulumi.Input<string>;
+    transitRouteTableAggregationCidr?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table of the Enterprise Edition transit router.
      */

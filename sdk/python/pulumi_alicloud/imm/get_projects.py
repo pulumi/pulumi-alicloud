@@ -112,8 +112,8 @@ def get_projects(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         projects=pulumi.get(__ret__, 'projects'))
-def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_projects_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     This data source provides the Intelligent Media Management Projects of the current Alibaba Cloud user.

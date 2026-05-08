@@ -125,21 +125,21 @@ export interface GetEcsDeploymentSetsOutputArgs {
     /**
      * The name of the deployment set.
      */
-    deploymentSetName?: pulumi.Input<string>;
+    deploymentSetName?: pulumi.Input<string | undefined>;
     /**
      * A list of Deployment Set IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Deployment Set name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The deployment strategy. Valid values: `Availability`.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }

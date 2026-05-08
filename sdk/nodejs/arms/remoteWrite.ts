@@ -161,15 +161,15 @@ export interface RemoteWriteState {
     /**
      * The ID of the Prometheus instance.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Remote Write configuration item.
      */
-    remoteWriteName?: pulumi.Input<string>;
+    remoteWriteName?: pulumi.Input<string | undefined>;
     /**
      * The details of the Remote Write configuration item. Specify the value in the YAML format.
      */
-    remoteWriteYaml?: pulumi.Input<string>;
+    remoteWriteYaml?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -28,27 +28,27 @@ __all__ = [
 ]
 
 class ClusterBootstrapActionArgsDict(TypedDict):
-    arg: NotRequired[pulumi.Input[_builtins.str]]
+    arg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     bootstrap action args, e.g. "--a=b".
     """
-    execution_fail_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    execution_fail_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
     """
-    execution_moment: NotRequired[pulumi.Input[_builtins.str]]
+    execution_moment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
     """
-    execution_target: NotRequired[pulumi.Input[_builtins.str]]
+    execution_target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     bootstrap action path, e.g. "oss://bucket/path".
     """
@@ -56,12 +56,12 @@ class ClusterBootstrapActionArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterBootstrapActionArgs:
     def __init__(__self__, *,
-                 arg: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_fail_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_moment: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_target: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 arg: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_fail_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_moment: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_target: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arg: bootstrap action args, e.g. "--a=b".
         :param pulumi.Input[_builtins.str] execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
@@ -85,74 +85,74 @@ class ClusterBootstrapActionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arg(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arg(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         bootstrap action args, e.g. "--a=b".
         """
         return pulumi.get(self, "arg")
 
     @arg.setter
-    def arg(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arg(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arg", value)
 
     @_builtins.property
     @pulumi.getter(name="executionFailStrategy")
-    def execution_fail_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_fail_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
         """
         return pulumi.get(self, "execution_fail_strategy")
 
     @execution_fail_strategy.setter
-    def execution_fail_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_fail_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_fail_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="executionMoment")
-    def execution_moment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_moment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
         """
         return pulumi.get(self, "execution_moment")
 
     @execution_moment.setter
-    def execution_moment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_moment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_moment", value)
 
     @_builtins.property
     @pulumi.getter(name="executionTarget")
-    def execution_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
         """
         return pulumi.get(self, "execution_target")
 
     @execution_target.setter
-    def execution_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_target", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         bootstrap action path, e.g. "oss://bucket/path".
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -235,64 +235,64 @@ class ClusterConfigArgs:
 
 
 class ClusterHostGroupArgsDict(TypedDict):
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
     """
-    charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
     """
-    decommission_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    decommission_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Graceful decommission timeout, unit: seconds.
     """
-    disk_capacity: NotRequired[pulumi.Input[_builtins.str]]
+    disk_capacity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk capacity.
     """
-    disk_count: NotRequired[pulumi.Input[_builtins.str]]
+    disk_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk count.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
     """
-    enable_graceful_decommission: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_graceful_decommission: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
     """
-    gpu_driver: NotRequired[pulumi.Input[_builtins.str]]
-    host_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    gpu_driver: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    host_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     host group name.
     """
-    host_group_type: NotRequired[pulumi.Input[_builtins.str]]
+    host_group_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
     """
-    instance_list: NotRequired[pulumi.Input[_builtins.str]]
+    instance_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
     """
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host Ecs instance type.
     """
-    node_count: NotRequired[pulumi.Input[_builtins.str]]
+    node_count: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host number in this group.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
     """
-    sys_disk_capacity: NotRequired[pulumi.Input[_builtins.str]]
+    sys_disk_capacity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System disk capacity.
     """
-    sys_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    sys_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
     """
@@ -300,22 +300,22 @@ class ClusterHostGroupArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterHostGroupArgs:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 decommission_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_graceful_decommission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gpu_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 sys_disk_capacity: Optional[pulumi.Input[_builtins.str]] = None,
-                 sys_disk_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 decommission_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_graceful_decommission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gpu_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 sys_disk_capacity: pulumi.Input[Optional[_builtins.str]] = None,
+                 sys_disk_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[_builtins.str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
@@ -368,191 +368,191 @@ class ClusterHostGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="decommissionTimeout")
-    def decommission_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def decommission_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Graceful decommission timeout, unit: seconds.
         """
         return pulumi.get(self, "decommission_timeout")
 
     @decommission_timeout.setter
-    def decommission_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def decommission_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "decommission_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCapacity")
-    def disk_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk capacity.
         """
         return pulumi.get(self, "disk_capacity")
 
     @disk_capacity.setter
-    def disk_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCount")
-    def disk_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk count.
         """
         return pulumi.get(self, "disk_count")
 
     @disk_count.setter
-    def disk_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_count", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableGracefulDecommission")
-    def enable_graceful_decommission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_graceful_decommission(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
         """
         return pulumi.get(self, "enable_graceful_decommission")
 
     @enable_graceful_decommission.setter
-    def enable_graceful_decommission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_graceful_decommission(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_graceful_decommission", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuDriver")
-    def gpu_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "gpu_driver")
 
     @gpu_driver.setter
-    def gpu_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroupName")
-    def host_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         host group name.
         """
         return pulumi.get(self, "host_group_name")
 
     @host_group_name.setter
-    def host_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroupType")
-    def host_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
         """
         return pulumi.get(self, "host_group_type")
 
     @host_group_type.setter
-    def host_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceList")
-    def instance_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
         """
         return pulumi.get(self, "instance_list")
 
     @instance_list.setter
-    def instance_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_list", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host Ecs instance type.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host number in this group.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="sysDiskCapacity")
-    def sys_disk_capacity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sys_disk_capacity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System disk capacity.
         """
         return pulumi.get(self, "sys_disk_capacity")
 
     @sys_disk_capacity.setter
-    def sys_disk_capacity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sys_disk_capacity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sys_disk_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="sysDiskType")
-    def sys_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sys_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
         return pulumi.get(self, "sys_disk_type")
 
     @sys_disk_type.setter
-    def sys_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sys_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sys_disk_type", value)
 
 
@@ -628,31 +628,31 @@ class ClusterModifyClusterServiceConfigArgsDict(TypedDict):
     Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
     """
     service_name: pulumi.Input[_builtins.str]
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification comment, e.g. "Modify tez configuration".
     """
-    config_type: NotRequired[pulumi.Input[_builtins.str]]
+    config_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification type.
     """
-    custom_config_params: NotRequired[pulumi.Input[_builtins.str]]
+    custom_config_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
     """
-    gateway_cluster_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    gateway_cluster_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Cluster service configuration modification related gateway cluster id list.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.str]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification node group id, e.g. ’G-XXX’.
     """
-    host_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    host_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
     """
-    refresh_host_config: NotRequired[pulumi.Input[_builtins.bool]]
+    refresh_host_config: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Cluster service configuration modification refresh host config, ’true’ or ’false’.
     """
@@ -662,13 +662,13 @@ class ClusterModifyClusterServiceConfigArgs:
     def __init__(__self__, *,
                  config_params: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_config_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway_cluster_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_host_config: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_config_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway_cluster_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_host_config: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
         :param pulumi.Input[_builtins.str] comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
@@ -719,86 +719,86 @@ class ClusterModifyClusterServiceConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster service configuration modification comment, e.g. "Modify tez configuration".
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="configType")
-    def config_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster service configuration modification type.
         """
         return pulumi.get(self, "config_type")
 
     @config_type.setter
-    def config_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_type", value)
 
     @_builtins.property
     @pulumi.getter(name="customConfigParams")
-    def custom_config_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_config_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
         """
         return pulumi.get(self, "custom_config_params")
 
     @custom_config_params.setter
-    def custom_config_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_config_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_config_params", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayClusterIdLists")
-    def gateway_cluster_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def gateway_cluster_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cluster service configuration modification related gateway cluster id list.
         """
         return pulumi.get(self, "gateway_cluster_id_lists")
 
     @gateway_cluster_id_lists.setter
-    def gateway_cluster_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def gateway_cluster_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "gateway_cluster_id_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster service configuration modification node group id, e.g. ’G-XXX’.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostInstanceId")
-    def host_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
         """
         return pulumi.get(self, "host_instance_id")
 
     @host_instance_id.setter
-    def host_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshHostConfig")
-    def refresh_host_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def refresh_host_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cluster service configuration modification refresh host config, ’true’ or ’false’.
         """
         return pulumi.get(self, "refresh_host_config")
 
     @refresh_host_config.setter
-    def refresh_host_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def refresh_host_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "refresh_host_config", value)
 
 

@@ -89,36 +89,36 @@ class InstanceParameterArgs:
 
 
 class InstanceReplicaSetArgsDict(TypedDict):
-    connection_domain: NotRequired[pulumi.Input[_builtins.str]]
+    connection_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection address of the node.
     """
-    connection_port: NotRequired[pulumi.Input[_builtins.str]]
+    connection_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection port of the node.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of the instance. Valid values: `VPC`.
     > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
     """
-    replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
+    replica_set_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    role_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the role.
     """
-    vpc_cloud_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_cloud_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC instance ID.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The virtual switch ID to launch DB instances in one VPC.
     """
@@ -126,14 +126,14 @@ class InstanceReplicaSetArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceReplicaSetArgs:
     def __init__(__self__, *,
-                 connection_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_set_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_cloud_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_set_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_cloud_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_domain: The connection address of the node.
         :param pulumi.Input[_builtins.str] connection_port: The connection port of the node.
@@ -164,31 +164,31 @@ class InstanceReplicaSetArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionDomain")
-    def connection_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection address of the node.
         """
         return pulumi.get(self, "connection_domain")
 
     @connection_domain.setter
-    def connection_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPort")
-    def connection_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection port of the node.
         """
         return pulumi.get(self, "connection_port")
 
     @connection_port.setter
-    def connection_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_port", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance. Valid values: `VPC`.
         > **NOTE:** From 2022.2.21, `network_type` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
@@ -196,88 +196,88 @@ class InstanceReplicaSetArgs:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaSetRole")
-    def replica_set_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_set_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "replica_set_role")
 
     @replica_set_role.setter
-    def replica_set_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_set_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_set_role", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the role.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcCloudInstanceId")
-    def vpc_cloud_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_cloud_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC instance ID.
         """
         return pulumi.get(self, "vpc_cloud_instance_id")
 
     @vpc_cloud_instance_id.setter
-    def vpc_cloud_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_cloud_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_cloud_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. > **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class InstanceZoneInfoArgsDict(TypedDict):
-    ins_name: NotRequired[pulumi.Input[_builtins.str]]
+    ins_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the node.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the node.
     """
-    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    role_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the role.
     """
-    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    role_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Zone to launch the DB instance. it supports multiple zone.
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -287,11 +287,11 @@ class InstanceZoneInfoArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceZoneInfoArgs:
     def __init__(__self__, *,
-                 ins_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ins_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ins_name: The ID of the node.
         :param pulumi.Input[_builtins.str] node_type: The type of the node.
@@ -314,55 +314,55 @@ class InstanceZoneInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="insName")
-    def ins_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ins_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node.
         """
         return pulumi.get(self, "ins_name")
 
     @ins_name.setter
-    def ins_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ins_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ins_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the node.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the role.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleType")
-    def role_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "role_type")
 
     @role_type.setter
-    def role_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance. it supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -371,32 +371,32 @@ class InstanceZoneInfoArgs:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class PublicNetworkAddressReplicaSetArgsDict(TypedDict):
-    connection_domain: NotRequired[pulumi.Input[_builtins.str]]
+    connection_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection address of the node.
     """
-    connection_port: NotRequired[pulumi.Input[_builtins.str]]
+    connection_port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection port of the node.
     """
-    connection_type: NotRequired[pulumi.Input[_builtins.str]]
+    connection_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection type.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type, should be always "Public".
     """
-    replica_set_role: NotRequired[pulumi.Input[_builtins.str]]
+    replica_set_role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    role_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The id of the role.
     """
@@ -404,12 +404,12 @@ class PublicNetworkAddressReplicaSetArgsDict(TypedDict):
 @pulumi.input_type
 class PublicNetworkAddressReplicaSetArgs:
     def __init__(__self__, *,
-                 connection_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_set_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_set_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] connection_domain: The connection address of the node.
         :param pulumi.Input[_builtins.str] connection_port: The connection port of the node.
@@ -433,87 +433,87 @@ class PublicNetworkAddressReplicaSetArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionDomain")
-    def connection_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection address of the node.
         """
         return pulumi.get(self, "connection_domain")
 
     @connection_domain.setter
-    def connection_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPort")
-    def connection_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection port of the node.
         """
         return pulumi.get(self, "connection_port")
 
     @connection_port.setter
-    def connection_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_port", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection type.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type, should be always "Public".
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaSetRole")
-    def replica_set_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replica_set_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "replica_set_role")
 
     @replica_set_role.setter
-    def replica_set_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replica_set_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replica_set_role", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the role.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
 
 class ServerlessInstanceSecurityIpGroupArgsDict(TypedDict):
-    security_ip_group_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_group_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The attribute of the IP whitelist. This parameter is empty by default.
     """
-    security_ip_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the IP whitelist.
     """
-    security_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    security_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP addresses in the whitelist.
     """
@@ -521,9 +521,9 @@ class ServerlessInstanceSecurityIpGroupArgsDict(TypedDict):
 @pulumi.input_type
 class ServerlessInstanceSecurityIpGroupArgs:
     def __init__(__self__, *,
-                 security_ip_group_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 security_ip_group_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
         :param pulumi.Input[_builtins.str] security_ip_group_name: The name of the IP whitelist.
@@ -538,71 +538,71 @@ class ServerlessInstanceSecurityIpGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="securityIpGroupAttribute")
-    def security_ip_group_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_group_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute of the IP whitelist. This parameter is empty by default.
         """
         return pulumi.get(self, "security_ip_group_attribute")
 
     @security_ip_group_attribute.setter
-    def security_ip_group_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_group_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_group_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpGroupName")
-    def security_ip_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP whitelist.
         """
         return pulumi.get(self, "security_ip_group_name")
 
     @security_ip_group_name.setter
-    def security_ip_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpList")
-    def security_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP addresses in the whitelist.
         """
         return pulumi.get(self, "security_ip_list")
 
     @security_ip_list.setter
-    def security_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_list", value)
 
 
 class ShardingInstanceConfigServerListArgsDict(TypedDict):
-    connect_string: NotRequired[pulumi.Input[_builtins.str]]
+    connect_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection address of the Config Server node.
     """
-    max_connections: NotRequired[pulumi.Input[_builtins.int]]
+    max_connections: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The max connections of the Config Server node.
     """
-    max_iops: NotRequired[pulumi.Input[_builtins.int]]
+    max_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum IOPS of the Config Server node.
     """
-    node_class: NotRequired[pulumi.Input[_builtins.str]]
+    node_class: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
     """
-    node_description: NotRequired[pulumi.Input[_builtins.str]]
+    node_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description of the Config Server node.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Config Server node.
     """
-    node_storage: NotRequired[pulumi.Input[_builtins.int]]
+    node_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The storage space of the ConfigServer node.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The connection port of the Config Server node.
     """
@@ -610,14 +610,14 @@ class ShardingInstanceConfigServerListArgsDict(TypedDict):
 @pulumi.input_type
 class ShardingInstanceConfigServerListArgs:
     def __init__(__self__, *,
-                 connect_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 connect_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] connect_string: The connection address of the Config Server node.
         :param pulumi.Input[_builtins.int] max_connections: The max connections of the Config Server node.
@@ -647,98 +647,98 @@ class ShardingInstanceConfigServerListArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectString")
-    def connect_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection address of the Config Server node.
         """
         return pulumi.get(self, "connect_string")
 
     @connect_string.setter
-    def connect_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_string", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max connections of the Config Server node.
         """
         return pulumi.get(self, "max_connections")
 
     @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_connections", value)
 
     @_builtins.property
     @pulumi.getter(name="maxIops")
-    def max_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum IOPS of the Config Server node.
         """
         return pulumi.get(self, "max_iops")
 
     @max_iops.setter
-    def max_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeClass")
-    def node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
         """
         return pulumi.get(self, "node_class")
 
     @node_class.setter
-    def node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeDescription")
-    def node_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Config Server node.
         """
         return pulumi.get(self, "node_description")
 
     @node_description.setter
-    def node_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_description", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Config Server node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeStorage")
-    def node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The storage space of the ConfigServer node.
         """
         return pulumi.get(self, "node_storage")
 
     @node_storage.setter
-    def node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The connection port of the Config Server node.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -747,15 +747,15 @@ class ShardingInstanceMongoListArgsDict(TypedDict):
     """
     The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
     """
-    connect_string: NotRequired[pulumi.Input[_builtins.str]]
+    connect_string: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection address of the Config Server node.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Config Server node.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The connection port of the Config Server node.
     """
@@ -764,9 +764,9 @@ class ShardingInstanceMongoListArgsDict(TypedDict):
 class ShardingInstanceMongoListArgs:
     def __init__(__self__, *,
                  node_class: pulumi.Input[_builtins.str],
-                 connect_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 connect_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] node_class: The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[_builtins.str] connect_string: The connection address of the Config Server node.
@@ -795,38 +795,38 @@ class ShardingInstanceMongoListArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectString")
-    def connect_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection address of the Config Server node.
         """
         return pulumi.get(self, "connect_string")
 
     @connect_string.setter
-    def connect_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_string", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Config Server node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The connection port of the Config Server node.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -888,11 +888,11 @@ class ShardingInstanceShardListArgsDict(TypedDict):
     - Custom storage space; value range: [10, 1,000]
     - 10-GB increments. Unit: GB.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Config Server node.
     """
-    readonly_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    readonly_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
     """
@@ -902,8 +902,8 @@ class ShardingInstanceShardListArgs:
     def __init__(__self__, *,
                  node_class: pulumi.Input[_builtins.str],
                  node_storage: pulumi.Input[_builtins.int],
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None):
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] node_class: The instance type of the shard node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
         :param pulumi.Input[_builtins.int] node_storage: The storage space of the shard node.
@@ -947,47 +947,47 @@ class ShardingInstanceShardListArgs:
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Config Server node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="readonlyReplicas")
-    def readonly_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readonly_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read-only nodes in shard node Default value: `0`. Valid values: `0` to `5`.
         """
         return pulumi.get(self, "readonly_replicas")
 
     @readonly_replicas.setter
-    def readonly_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readonly_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readonly_replicas", value)
 
 
 class ShardingInstanceZoneInfoArgsDict(TypedDict):
-    ins_name: NotRequired[pulumi.Input[_builtins.str]]
+    ins_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the node.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the node.
     """
-    role_id: NotRequired[pulumi.Input[_builtins.str]]
+    role_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role ID.
     """
-    role_type: NotRequired[pulumi.Input[_builtins.str]]
+    role_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
     If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -996,11 +996,11 @@ class ShardingInstanceZoneInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ShardingInstanceZoneInfoArgs:
     def __init__(__self__, *,
-                 ins_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ins_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ins_name: The ID of the node.
         :param pulumi.Input[_builtins.str] node_type: The type of the node.
@@ -1022,55 +1022,55 @@ class ShardingInstanceZoneInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="insName")
-    def ins_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ins_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node.
         """
         return pulumi.get(self, "ins_name")
 
     @ins_name.setter
-    def ins_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ins_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ins_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the node.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="roleId")
-    def role_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role ID.
         """
         return pulumi.get(self, "role_id")
 
     @role_id.setter
-    def role_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleType")
-    def role_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "role_type")
 
     @role_type.setter
-    def role_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in one of them.
@@ -1078,48 +1078,48 @@ class ShardingInstanceZoneInfoArgs:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class ShardingNetworkPrivateAddressNetworkAddressArgsDict(TypedDict):
-    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    expired_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The remaining duration of the classic network endpoint.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the instance.
     """
-    network_address: NotRequired[pulumi.Input[_builtins.str]]
+    network_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The connection string of the instance.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of the instance.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Shard node or ConfigServer node.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the node.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port that is used to connect to the instance.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the VPC.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the vSwitch in the VPC.
     """
@@ -1127,16 +1127,16 @@ class ShardingNetworkPrivateAddressNetworkAddressArgsDict(TypedDict):
 @pulumi.input_type
 class ShardingNetworkPrivateAddressNetworkAddressArgs:
     def __init__(__self__, *,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expired_time: The remaining duration of the classic network endpoint.
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the instance.
@@ -1172,163 +1172,163 @@ class ShardingNetworkPrivateAddressNetworkAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remaining duration of the classic network endpoint.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the instance.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAddress")
-    def network_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection string of the instance.
         """
         return pulumi.get(self, "network_address")
 
     @network_address.setter
-    def network_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the instance.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Shard node or ConfigServer node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the node.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port that is used to connect to the instance.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch in the VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class ShardingNetworkPublicAddressNetworkAddressArgsDict(TypedDict):
-    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    expired_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The remaining duration of the classic network address. Unit: `seconds`.
     """
-    ip_address: NotRequired[pulumi.Input[_builtins.str]]
+    ip_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the instance.
     """
-    network_address: NotRequired[pulumi.Input[_builtins.str]]
+    network_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint of the instance.
     """
-    network_type: NotRequired[pulumi.Input[_builtins.str]]
+    network_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
     """
-    node_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the node.
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The port number.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The role of the node.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the VPC.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The vSwitch ID of the VPC.
     """
@@ -1336,16 +1336,16 @@ class ShardingNetworkPublicAddressNetworkAddressArgsDict(TypedDict):
 @pulumi.input_type
 class ShardingNetworkPublicAddressNetworkAddressArgs:
     def __init__(__self__, *,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expired_time: The remaining duration of the classic network address. Unit: `seconds`.
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the instance.
@@ -1381,122 +1381,122 @@ class ShardingNetworkPublicAddressNetworkAddressArgs:
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remaining duration of the classic network address. Unit: `seconds`.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the instance.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAddress")
-    def network_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint of the instance.
         """
         return pulumi.get(self, "network_address")
 
     @network_address.setter
-    def network_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_address", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type.
         """
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the node.
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port number.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the node.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSwitch ID of the VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 

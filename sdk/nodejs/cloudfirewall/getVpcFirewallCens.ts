@@ -180,39 +180,39 @@ export interface GetVpcFirewallCensOutputArgs {
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * A list of Vpc Firewall Cen IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC instance that created the VPC firewall.
      */
-    networkInstanceId?: pulumi.Input<string>;
+    networkInstanceId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Firewall switch status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * VPC firewall ID
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC firewall instance.
      */
-    vpcFirewallName?: pulumi.Input<string>;
+    vpcFirewallName?: pulumi.Input<string | undefined>;
 }

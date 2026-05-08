@@ -207,24 +207,24 @@ export interface AlbServerGroupAttachmentState {
     /**
      * ID of Alb Server Group.
      */
-    albServerGroupId?: pulumi.Input<string>;
+    albServerGroupId?: pulumi.Input<string | undefined>;
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach alb
      * server group from scaling group. Default to false.
      */
-    forceAttach?: pulumi.Input<boolean>;
+    forceAttach?: pulumi.Input<boolean | undefined>;
     /**
      * The port will be used for Alb Server Group backend server.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * ID of the scaling group.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * The weight of an ECS instance attached to the Alb Server Group.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface AlbServerGroupAttachmentArgs {
      * If instances of scaling group are attached/removed from slb backend server when attach/detach alb
      * server group from scaling group. Default to false.
      */
-    forceAttach?: pulumi.Input<boolean>;
+    forceAttach?: pulumi.Input<boolean | undefined>;
     /**
      * The port will be used for Alb Server Group backend server.
      */

@@ -154,11 +154,11 @@ export interface BucketOverwriteConfigState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Forbid overwrite rule See `rule` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketOverwriteConfigRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketOverwriteConfigRule>[] | undefined>;
 }
 
 /**
@@ -172,5 +172,5 @@ export interface BucketOverwriteConfigArgs {
     /**
      * Forbid overwrite rule See `rule` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketOverwriteConfigRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.oss.BucketOverwriteConfigRule>[] | undefined>;
 }

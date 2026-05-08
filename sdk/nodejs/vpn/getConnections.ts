@@ -132,21 +132,21 @@ export interface GetConnectionsOutputArgs {
     /**
      * Use the VPN customer gateway ID as the search key.
      */
-    customerGatewayId?: pulumi.Input<string>;
+    customerGatewayId?: pulumi.Input<string | undefined>;
     /**
      * IDs of the VPN connections.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string of VPN connection name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Save the result to the file.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Use the VPN gateway ID as the search key.
      */
-    vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string | undefined>;
 }

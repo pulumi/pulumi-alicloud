@@ -20,11 +20,11 @@ __all__ = [
 ]
 
 class MonitorTemplateIspCityNodeArgsDict(TypedDict):
-    city_code: NotRequired[pulumi.Input[_builtins.str]]
+    city_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The city code of the monitoring node.
     """
-    isp_code: NotRequired[pulumi.Input[_builtins.str]]
+    isp_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ISP (Internet Service Provider) code of the monitoring node.
     """
@@ -32,8 +32,8 @@ class MonitorTemplateIspCityNodeArgsDict(TypedDict):
 @pulumi.input_type
 class MonitorTemplateIspCityNodeArgs:
     def __init__(__self__, *,
-                 city_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp_code: Optional[pulumi.Input[_builtins.str]] = None):
+                 city_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp_code: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] city_code: The city code of the monitoring node.
         :param pulumi.Input[_builtins.str] isp_code: The ISP (Internet Service Provider) code of the monitoring node.
@@ -45,26 +45,26 @@ class MonitorTemplateIspCityNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="cityCode")
-    def city_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def city_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The city code of the monitoring node.
         """
         return pulumi.get(self, "city_code")
 
     @city_code.setter
-    def city_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def city_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "city_code", value)
 
     @_builtins.property
     @pulumi.getter(name="ispCode")
-    def isp_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ISP (Internet Service Provider) code of the monitoring node.
         """
         return pulumi.get(self, "isp_code")
 
     @isp_code.setter
-    def isp_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp_code", value)
 
 

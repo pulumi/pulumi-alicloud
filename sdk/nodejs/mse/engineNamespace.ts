@@ -161,29 +161,29 @@ export interface EngineNamespaceState {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The description of the namespace.
      *
      * **NOTE:** You must set `clusterId` or `instanceId` or both.
      */
-    namespaceDesc?: pulumi.Input<string>;
+    namespaceDesc?: pulumi.Input<string | undefined>;
     /**
      * The id of Namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Engine Namespace.
      */
-    namespaceShowName?: pulumi.Input<string>;
+    namespaceShowName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,25 +193,25 @@ export interface EngineNamespaceArgs {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The id of the cluster.It is formatted to `mse-xxxxxxxx`.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The instance id of the cluster. It is formatted to `mse-cn-xxxxxxxxxxx`.Available since v1.232.0.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The description of the namespace.
      *
      * **NOTE:** You must set `clusterId` or `instanceId` or both.
      */
-    namespaceDesc?: pulumi.Input<string>;
+    namespaceDesc?: pulumi.Input<string | undefined>;
     /**
      * The id of Namespace.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Engine Namespace.
      */

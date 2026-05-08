@@ -43,8 +43,8 @@ class DefaultPatchBaselineArgs:
 @pulumi.input_type
 class _DefaultPatchBaselineState:
     def __init__(__self__, *,
-                 patch_baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 patch_baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefaultPatchBaseline resources.
 
@@ -58,26 +58,26 @@ class _DefaultPatchBaselineState:
 
     @_builtins.property
     @pulumi.getter(name="patchBaselineId")
-    def patch_baseline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_baseline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the patch baseline.
         """
         return pulumi.get(self, "patch_baseline_id")
 
     @patch_baseline_id.setter
-    def patch_baseline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_baseline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_baseline_id", value)
 
     @_builtins.property
     @pulumi.getter(name="patchBaselineName")
-    def patch_baseline_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_baseline_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the patch baseline.
         """
         return pulumi.get(self, "patch_baseline_name")
 
     @patch_baseline_name.setter
-    def patch_baseline_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_baseline_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_baseline_name", value)
 
 
@@ -87,7 +87,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Oos Default Patch Baseline resource.
@@ -182,7 +182,7 @@ class DefaultPatchBaseline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -206,8 +206,8 @@ class DefaultPatchBaseline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            patch_baseline_id: Optional[pulumi.Input[_builtins.str]] = None,
-            patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DefaultPatchBaseline':
+            patch_baseline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DefaultPatchBaseline':
         """
         Get an existing DefaultPatchBaseline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

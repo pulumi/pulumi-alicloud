@@ -149,11 +149,11 @@ def get_delegated_administrators(ids: Optional[Sequence[_builtins.str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         service_principal=pulumi.get(__ret__, 'service_principal'))
-def get_delegated_administrators_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        service_principal: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_delegated_administrators_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        service_principal: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDelegatedAdministratorsResult]:
     """
     This data source provides the Resource Manager Delegated Administrators of the current Alibaba Cloud user.

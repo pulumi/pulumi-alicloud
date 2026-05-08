@@ -195,13 +195,13 @@ def get_ecs_dedicated_host_clusters(dedicated_host_cluster_ids: Optional[Sequenc
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                           dedicated_host_cluster_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                           name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                           tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                           zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ecs_dedicated_host_clusters_output(dedicated_host_cluster_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                           dedicated_host_cluster_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                           name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                           tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                           zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsDedicatedHostClustersResult]:
     """
     This data source provides the Ecs Dedicated Host Clusters of the current Alibaba Cloud user.

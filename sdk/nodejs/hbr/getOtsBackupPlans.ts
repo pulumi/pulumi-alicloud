@@ -124,25 +124,25 @@ export interface GetOtsBackupPlansOutputArgs {
     /**
      * A list of OtsBackupPlan IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by OtsBackupPlan name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup plan.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup plan.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The ID of backup vault the OtsBackupPlan used.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }

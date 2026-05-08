@@ -60,8 +60,8 @@ class RuleAttachmentArgs:
 @pulumi.input_type
 class _RuleAttachmentState:
     def __init__(__self__, *,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None):
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering RuleAttachment resources.
 
@@ -75,26 +75,26 @@ class _RuleAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]]:
+    def vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]]:
         """
         The List of the VPC. See `vpcs` below.
         """
         return pulumi.get(self, "vpcs")
 
     @vpcs.setter
-    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]]):
+    def vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RuleAttachmentVpcArgs']]]]):
         pulumi.set(self, "vpcs", value)
 
 
@@ -104,8 +104,8 @@ class RuleAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Private Zone Rule Attachment resource.
@@ -120,6 +120,7 @@ class RuleAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -133,18 +134,18 @@ class RuleAttachment(pulumi.CustomResource):
             max=99999)
         default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
         default_get_regions = alicloud.get_regions(current=True)
-        default_network = []
+        default_network: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             default_network.append(alicloud.vpc.Network(f"default-{range['value']}",
                 vpc_name=name,
                 cidr_block="172.16.0.0/12"))
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network[2].id,
-                cidr_block=default_network[2].cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network[2].cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network[2].id,
@@ -224,6 +225,7 @@ class RuleAttachment(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -237,18 +239,18 @@ class RuleAttachment(pulumi.CustomResource):
             max=99999)
         default = alicloud.pvtz.get_resolver_zones(status="NORMAL")
         default_get_regions = alicloud.get_regions(current=True)
-        default_network = []
+        default_network: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             default_network.append(alicloud.vpc.Network(f"default-{range['value']}",
                 vpc_name=name,
                 cidr_block="172.16.0.0/12"))
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network[2].id,
-                cidr_block=default_network[2].cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network[2].cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network[2].id,
@@ -319,8 +321,8 @@ class RuleAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,8 +348,8 @@ class RuleAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None) -> 'RuleAttachment':
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RuleAttachmentVpcArgs', 'RuleAttachmentVpcArgsDict']]]]] = None) -> 'RuleAttachment':
         """
         Get an existing RuleAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

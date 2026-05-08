@@ -145,23 +145,23 @@ export interface IpaDomainState {
     /**
      * The domain name to be added to IPA. Wildcard domain names are supported. A wildcard domain name must start with a period (.).
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The accelerated region. Valid values: `domestic`, `global`, `overseas`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Sources. See `sources` below.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.IpaDomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.IpaDomainSource>[] | undefined>;
     /**
      * The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,11 +175,11 @@ export interface IpaDomainArgs {
     /**
      * The ID of the resource group. If you do not set this parameter, the system automatically assigns the ID of the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The accelerated region. Valid values: `domestic`, `global`, `overseas`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Sources. See `sources` below.
      */
@@ -187,5 +187,5 @@ export interface IpaDomainArgs {
     /**
      * The status of DCDN Ipa Domain. Valid values: `online`, `offline`. Default to `online`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

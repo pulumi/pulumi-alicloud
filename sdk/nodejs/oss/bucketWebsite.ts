@@ -156,19 +156,19 @@ export interface BucketWebsiteState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The container that holds the error page configuration information. See `errorDocument` below.
      */
-    errorDocument?: pulumi.Input<inputs.oss.BucketWebsiteErrorDocument>;
+    errorDocument?: pulumi.Input<inputs.oss.BucketWebsiteErrorDocument | undefined>;
     /**
      * Static Website Default Home Page Configuration See `indexDocument` below.
      */
-    indexDocument?: pulumi.Input<inputs.oss.BucketWebsiteIndexDocument>;
+    indexDocument?: pulumi.Input<inputs.oss.BucketWebsiteIndexDocument | undefined>;
     /**
      * The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      */
-    routingRules?: pulumi.Input<inputs.oss.BucketWebsiteRoutingRules>;
+    routingRules?: pulumi.Input<inputs.oss.BucketWebsiteRoutingRules | undefined>;
 }
 
 /**
@@ -182,13 +182,13 @@ export interface BucketWebsiteArgs {
     /**
      * The container that holds the error page configuration information. See `errorDocument` below.
      */
-    errorDocument?: pulumi.Input<inputs.oss.BucketWebsiteErrorDocument>;
+    errorDocument?: pulumi.Input<inputs.oss.BucketWebsiteErrorDocument | undefined>;
     /**
      * Static Website Default Home Page Configuration See `indexDocument` below.
      */
-    indexDocument?: pulumi.Input<inputs.oss.BucketWebsiteIndexDocument>;
+    indexDocument?: pulumi.Input<inputs.oss.BucketWebsiteIndexDocument | undefined>;
     /**
      * The container that holds the jump rule or the mirroring back-to-origin rule. See `routingRules` below.
      */
-    routingRules?: pulumi.Input<inputs.oss.BucketWebsiteRoutingRules>;
+    routingRules?: pulumi.Input<inputs.oss.BucketWebsiteRoutingRules | undefined>;
 }

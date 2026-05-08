@@ -181,7 +181,7 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
         name = "terraform-example"
     default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
     default_waf_ruleset = alicloud.esa.WafRuleset("default",
-        site_id=default.sites[0].site_id,
+        site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
         phase="http_custom",
         site_version=0,
         name=name)
@@ -232,14 +232,14 @@ def get_waf_rulesets(ids: Optional[Sequence[_builtins.str]] = None,
         site_id=pulumi.get(__ret__, 'site_id'),
         site_version=pulumi.get(__ret__, 'site_version'),
         status=pulumi.get(__ret__, 'status'))
-def get_waf_rulesets_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            phase: Optional[pulumi.Input[_builtins.str]] = None,
-                            query_args: Optional[pulumi.Input[Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict']]]] = None,
-                            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_waf_rulesets_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            phase: pulumi.Input[Optional[_builtins.str]] = None,
+                            query_args: pulumi.Input[Optional[Optional[Union['GetWafRulesetsQueryArgsArgs', 'GetWafRulesetsQueryArgsArgsDict']]]] = None,
+                            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWafRulesetsResult]:
     """
     This data source provides the ESA Waf Rulesets of the current Alibaba Cloud user.
@@ -260,7 +260,7 @@ def get_waf_rulesets_output(ids: Optional[pulumi.Input[Optional[Sequence[_builti
         name = "terraform-example"
     default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan")
     default_waf_ruleset = alicloud.esa.WafRuleset("default",
-        site_id=default.sites[0].site_id,
+        site_id=output(default.sites[0].site_id).apply(lambda x: str(x)),
         phase="http_custom",
         site_version=0,
         name=name)

@@ -103,11 +103,11 @@ class LifecyclePolicyArgs:
 @pulumi.input_type
 class _LifecyclePolicyState:
     def __init__(__self__, *,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LifecyclePolicy resources.
 
@@ -130,62 +130,62 @@ class _LifecyclePolicyState:
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecyclePolicyName")
-    def lifecycle_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the lifecycle management policy.
         """
         return pulumi.get(self, "lifecycle_policy_name")
 
     @lifecycle_policy_name.setter
-    def lifecycle_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRuleName")
-    def lifecycle_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lifecycle_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rules in the lifecycle management policy. Valid values: `DEFAULT_ATIME_14`, `DEFAULT_ATIME_30`, `DEFAULT_ATIME_60`, `DEFAULT_ATIME_90`.
         """
         return pulumi.get(self, "lifecycle_rule_name")
 
     @lifecycle_rule_name.setter
-    def lifecycle_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lifecycle_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lifecycle_rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The absolute path of the directory for which the lifecycle management policy is configured. Set a maximum of `10` path. The path value must be prefixed by a forward slash (/) and must be an existing path in the mount target.
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "paths", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the data that is dumped to the IA storage medium. Valid values: `InfrequentAccess`.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
 
@@ -195,11 +195,11 @@ class LifecyclePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Lifecycle Policy resource.
@@ -304,11 +304,11 @@ class LifecyclePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,11 +343,11 @@ class LifecyclePolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lifecycle_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            storage_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'LifecyclePolicy':
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lifecycle_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'LifecyclePolicy':
         """
         Get an existing LifecyclePolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

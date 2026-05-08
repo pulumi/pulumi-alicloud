@@ -24,11 +24,11 @@ __all__ = [
 ]
 
 class NestServiceInstanceCommodityArgsDict(TypedDict):
-    pay_period: NotRequired[pulumi.Input[_builtins.int]]
+    pay_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Length of purchase.
     """
-    pay_period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    pay_period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Duration unit. Valid values: `Year`, `Month`, `Day`.
     """
@@ -36,8 +36,8 @@ class NestServiceInstanceCommodityArgsDict(TypedDict):
 @pulumi.input_type
 class NestServiceInstanceCommodityArgs:
     def __init__(__self__, *,
-                 pay_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pay_period_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 pay_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pay_period_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] pay_period: Length of purchase.
         :param pulumi.Input[_builtins.str] pay_period_unit: Duration unit. Valid values: `Year`, `Month`, `Day`.
@@ -49,43 +49,43 @@ class NestServiceInstanceCommodityArgs:
 
     @_builtins.property
     @pulumi.getter(name="payPeriod")
-    def pay_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pay_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of purchase.
         """
         return pulumi.get(self, "pay_period")
 
     @pay_period.setter
-    def pay_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pay_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pay_period", value)
 
     @_builtins.property
     @pulumi.getter(name="payPeriodUnit")
-    def pay_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration unit. Valid values: `Year`, `Month`, `Day`.
         """
         return pulumi.get(self, "pay_period_unit")
 
     @pay_period_unit.setter
-    def pay_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_period_unit", value)
 
 
 class NestServiceInstanceOperationMetadataArgsDict(TypedDict):
-    operated_service_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    operated_service_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the imported service instance.
     """
-    operation_end_time: NotRequired[pulumi.Input[_builtins.str]]
+    operation_end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The end time of O&M.
     """
-    operation_start_time: NotRequired[pulumi.Input[_builtins.str]]
+    operation_start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The start time of O&M.
     """
-    resources: NotRequired[pulumi.Input[_builtins.str]]
+    resources: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of imported resources.
     """
@@ -93,10 +93,10 @@ class NestServiceInstanceOperationMetadataArgsDict(TypedDict):
 @pulumi.input_type
 class NestServiceInstanceOperationMetadataArgs:
     def __init__(__self__, *,
-                 operated_service_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[_builtins.str]] = None):
+                 operated_service_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] operated_service_instance_id: The ID of the imported service instance.
         :param pulumi.Input[_builtins.str] operation_end_time: The end time of O&M.
@@ -114,50 +114,50 @@ class NestServiceInstanceOperationMetadataArgs:
 
     @_builtins.property
     @pulumi.getter(name="operatedServiceInstanceId")
-    def operated_service_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operated_service_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the imported service instance.
         """
         return pulumi.get(self, "operated_service_instance_id")
 
     @operated_service_instance_id.setter
-    def operated_service_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operated_service_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operated_service_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="operationEndTime")
-    def operation_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of O&M.
         """
         return pulumi.get(self, "operation_end_time")
 
     @operation_end_time.setter
-    def operation_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="operationStartTime")
-    def operation_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of O&M.
         """
         return pulumi.get(self, "operation_start_time")
 
     @operation_start_time.setter
-    def operation_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resources(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of imported resources.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resources(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resources", value)
 
 

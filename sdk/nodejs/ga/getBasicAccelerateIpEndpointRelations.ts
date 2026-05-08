@@ -138,7 +138,7 @@ export interface GetBasicAccelerateIpEndpointRelationsOutputArgs {
     /**
      * The ID of the Basic Accelerate IP.
      */
-    accelerateIpId?: pulumi.Input<string>;
+    accelerateIpId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Global Accelerator Basic Accelerator instance.
      */
@@ -146,17 +146,17 @@ export interface GetBasicAccelerateIpEndpointRelationsOutputArgs {
     /**
      * The ID of the Basic Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * A list of Global Accelerator Basic Accelerate Ip Endpoint Relations IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

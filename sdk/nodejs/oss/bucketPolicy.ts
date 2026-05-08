@@ -132,11 +132,11 @@ export interface BucketPolicyState {
     /**
      * The name of the Bucket.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Json-formatted authorization policies for buckets.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
 }
 
 /**

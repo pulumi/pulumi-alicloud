@@ -126,8 +126,8 @@ def get_instance_keywords(key: Optional[_builtins.str] = None,
         key=pulumi.get(__ret__, 'key'),
         keywords=pulumi.get(__ret__, 'keywords'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_instance_keywords_output(key: Optional[pulumi.Input[_builtins.str]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_keywords_output(key: pulumi.Input[Optional[_builtins.str]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceKeywordsResult]:
     """
     Operation to query the reserved keywords of an ApsaraDB RDS instance. The reserved keywords cannot be used for the usernames of accounts or the names of databases.

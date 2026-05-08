@@ -105,11 +105,11 @@ export interface SasTrailState {
     /**
      * The service trace creation timestamp, in milliseconds.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Service trace configuration information.
      */
-    serviceTrail?: pulumi.Input<inputs.threatdetection.SasTrailServiceTrail>;
+    serviceTrail?: pulumi.Input<inputs.threatdetection.SasTrailServiceTrail | undefined>;
 }
 
 /**

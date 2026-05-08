@@ -26,16 +26,16 @@ __all__ = [
 ]
 
 class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
-    address_family: NotRequired[pulumi.Input[_builtins.str]]
+    address_family: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP Address Family
     """
-    dst_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    dst_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The destination network segment of the traffic message.
     The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
     """
-    dst_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    dst_port_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
@@ -46,7 +46,7 @@ class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
     - If you enter 2 port numbers, such as 1 and 200, the system defaults to match the traffic of the destination port in the range of 1 to 200.
     - If you enter 2 port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any destination port.
     """
-    match_dscp: NotRequired[pulumi.Input[_builtins.int]]
+    match_dscp: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The DSCP value of the traffic message. Valid values: `0` to **63 * *.
 
@@ -54,17 +54,17 @@ class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
 
     > **NOTE:**  The current DSCP value refers to the DSCP value that the traffic message has carried before entering the cross-region connection.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type of the traffic message.
     Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
     """
-    src_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    src_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source network segment of the traffic message.
     The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
     """
-    src_port_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    src_port_ranges: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
@@ -75,12 +75,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
     - If you enter two port numbers, such as 1 and 200, the system defaults to match the traffic with the source port in the range of 1 to 200.
     - If you enter two port numbers and one of them is - 1, the other port must also be - 1, indicating that it matches any source port.
     """
-    traffic_match_rule_description: NotRequired[pulumi.Input[_builtins.str]]
+    traffic_match_rule_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The description information of the stream classification rule.
     The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
     """
-    traffic_match_rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    traffic_match_rule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the stream classification rule.
     The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
@@ -89,15 +89,15 @@ class TrafficMarkingPolicyTrafficMatchRuleArgsDict(TypedDict):
 @pulumi.input_type
 class TrafficMarkingPolicyTrafficMatchRuleArgs:
     def __init__(__self__, *,
-                 address_family: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_port_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 traffic_match_rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 traffic_match_rule_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_family: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_port_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 traffic_match_rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 traffic_match_rule_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address_family: IP Address Family
         :param pulumi.Input[_builtins.str] dst_cidr: The destination network segment of the traffic message.
@@ -153,19 +153,19 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressFamily")
-    def address_family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address Family
         """
         return pulumi.get(self, "address_family")
 
     @address_family.setter
-    def address_family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_family", value)
 
     @_builtins.property
     @pulumi.getter(name="dstCidr")
-    def dst_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination network segment of the traffic message.
         The flow classification matches the traffic of the destination IP address in the destination network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any destination IP address.
@@ -173,12 +173,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "dst_cidr")
 
     @dst_cidr.setter
-    def dst_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dstPortRanges")
-    def dst_port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def dst_port_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The destination port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
@@ -192,12 +192,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "dst_port_ranges")
 
     @dst_port_ranges.setter
-    def dst_port_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def dst_port_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "dst_port_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="matchDscp")
-    def match_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def match_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The DSCP value of the traffic message. Valid values: `0` to **63 * *.
 
@@ -208,12 +208,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "match_dscp")
 
     @match_dscp.setter
-    def match_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def match_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "match_dscp", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type of the traffic message.
         Stream classification rules can match traffic of multiple protocol types, such as `HTTP`, `HTTPS`, `TCP`, `UDP`, `SSH`, and **Telnet. For more protocol types, please log on to the [Cloud Enterprise Network Management Console](https://cen.console.aliyun.com/cen/list) to view.
@@ -221,12 +221,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="srcCidr")
-    def src_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source network segment of the traffic message.
         The flow classification rule matches the traffic of the source IP address in the source network segment. If the flow classification rule is not set, it means that the flow classification rule matches the traffic of any source IP address.
@@ -234,12 +234,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "src_cidr")
 
     @src_cidr.setter
-    def src_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="srcPortRanges")
-    def src_port_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def src_port_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The source port of the traffic message. Valid values: **-1**, `1` to `65535`.
 
@@ -253,12 +253,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "src_port_ranges")
 
     @src_port_ranges.setter
-    def src_port_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def src_port_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "src_port_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMatchRuleDescription")
-    def traffic_match_rule_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_match_rule_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description information of the stream classification rule.
         The description must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
@@ -266,12 +266,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "traffic_match_rule_description")
 
     @traffic_match_rule_description.setter
-    def traffic_match_rule_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_match_rule_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_match_rule_description", value)
 
     @_builtins.property
     @pulumi.getter(name="trafficMatchRuleName")
-    def traffic_match_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def traffic_match_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the stream classification rule.
         The name must be 2 to 128 characters in length and can contain numbers, dashes (-), and underscores (_).
@@ -279,12 +279,12 @@ class TrafficMarkingPolicyTrafficMatchRuleArgs:
         return pulumi.get(self, "traffic_match_rule_name")
 
     @traffic_match_rule_name.setter
-    def traffic_match_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def traffic_match_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "traffic_match_rule_name", value)
 
 
 class TransitRouterMulticastDomainOptionsArgsDict(TypedDict):
-    igmpv2_support: NotRequired[pulumi.Input[_builtins.str]]
+    igmpv2_support: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
     """
@@ -292,7 +292,7 @@ class TransitRouterMulticastDomainOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class TransitRouterMulticastDomainOptionsArgs:
     def __init__(__self__, *,
-                 igmpv2_support: Optional[pulumi.Input[_builtins.str]] = None):
+                 igmpv2_support: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] igmpv2_support: Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
         """
@@ -301,14 +301,14 @@ class TransitRouterMulticastDomainOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="igmpv2Support")
-    def igmpv2_support(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def igmpv2_support(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
         """
         return pulumi.get(self, "igmpv2_support")
 
     @igmpv2_support.setter
-    def igmpv2_support(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def igmpv2_support(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "igmpv2_support", value)
 
 

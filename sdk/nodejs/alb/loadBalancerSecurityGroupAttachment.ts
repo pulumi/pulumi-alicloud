@@ -160,15 +160,15 @@ export interface LoadBalancerSecurityGroupAttachmentState {
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Application Load Balancer.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,7 +178,7 @@ export interface LoadBalancerSecurityGroupAttachmentArgs {
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Application Load Balancer.
      */
@@ -186,5 +186,5 @@ export interface LoadBalancerSecurityGroupAttachmentArgs {
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
 }

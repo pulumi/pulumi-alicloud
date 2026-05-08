@@ -215,40 +215,40 @@ export interface RedirectRuleState {
     /**
      * Config Id
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Indicates whether the feature of retaining the query string is enabled. Valid values:
      *
      * - on
      * - off
      */
-    reserveQueryString?: pulumi.Input<string>;
+    reserveQueryString?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * ● Match all incoming requests: value set to true
      * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Order of rule execution. The smaller the value, the higher the priority for execution.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * The response code that you want to use to indicate URL redirection. Valid values:
      *
@@ -258,17 +258,17 @@ export interface RedirectRuleState {
      * - 307
      * - 308
      */
-    statusCode?: pulumi.Input<string>;
+    statusCode?: pulumi.Input<string | undefined>;
     /**
      * The destination URL to which requests are redirected.
      */
-    targetUrl?: pulumi.Input<string>;
+    targetUrl?: pulumi.Input<string | undefined>;
     /**
      * The redirection type. Value range:
      * - static: static mode.
      * - dynamic: dynamic mode.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -287,19 +287,19 @@ export interface RedirectRuleArgs {
      * ● Match all incoming requests: value set to true
      * ● Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * Order of rule execution. The smaller the value, the higher the priority for execution.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -307,7 +307,7 @@ export interface RedirectRuleArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * The response code that you want to use to indicate URL redirection. Valid values:
      *

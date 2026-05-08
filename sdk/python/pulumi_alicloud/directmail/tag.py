@@ -43,7 +43,7 @@ class TagArgs:
 @pulumi.input_type
 class _TagState:
     def __init__(__self__, *,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tag resources.
 
@@ -54,14 +54,14 @@ class _TagState:
 
     @_builtins.property
     @pulumi.getter(name="tagName")
-    def tag_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
         """
         return pulumi.get(self, "tag_name")
 
     @tag_name.setter
-    def tag_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_name", value)
 
 
@@ -71,7 +71,7 @@ class Tag(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Direct Mail Tag resource.
@@ -164,7 +164,7 @@ class Tag(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 tag_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 tag_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -187,7 +187,7 @@ class Tag(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            tag_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tag':
+            tag_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tag':
         """
         Get an existing Tag resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

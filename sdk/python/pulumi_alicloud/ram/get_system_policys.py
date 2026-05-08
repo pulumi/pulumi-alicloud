@@ -146,9 +146,9 @@ def get_system_policys(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         policys=pulumi.get(__ret__, 'policys'))
-def get_system_policys_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_system_policys_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSystemPolicysResult]:
     """
     This data source provides Ram System Policy available to the user.[What is System Policy](https://next.api.alibabacloud.com/document/Ram/2015-05-01/GetPolicy)

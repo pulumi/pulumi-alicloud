@@ -242,16 +242,16 @@ def get_virtual_physical_connections(business_status: Optional[_builtins.str] = 
         virtual_physical_connection_status=pulumi.get(__ret__, 'virtual_physical_connection_status'),
         vlan_ids=pulumi.get(__ret__, 'vlan_ids'),
         vpconn_ali_uid=pulumi.get(__ret__, 'vpconn_ali_uid'))
-def get_virtual_physical_connections_output(business_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            is_confirmed: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            parent_physical_connection_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            virtual_physical_connection_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            virtual_physical_connection_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            vlan_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
-                                            vpconn_ali_uid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_virtual_physical_connections_output(business_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            is_confirmed: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            parent_physical_connection_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            virtual_physical_connection_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            virtual_physical_connection_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            vlan_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
+                                            vpconn_ali_uid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVirtualPhysicalConnectionsResult]:
     """
     This data source provides Express Connect Virtual Physical Connection available to the user.

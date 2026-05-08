@@ -253,83 +253,83 @@ export interface GtmInstanceState {
     /**
      * The alert notification methods. See `alertConfig` below for details.
      */
-    alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[]>;
+    alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[] | undefined>;
     /**
      * The alert group.
      */
-    alertGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    alertGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access type of the CNAME domain name. Valid value: `PUBLIC`.
      */
-    cnameType?: pulumi.Input<string>;
+    cnameType?: pulumi.Input<string | undefined>;
     /**
      * The force update.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The quota of detection tasks.
      */
-    healthCheckTaskCount?: pulumi.Input<number>;
+    healthCheckTaskCount?: pulumi.Input<number | undefined>;
     /**
      * The name of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Paid package version. Valid values: `ultimate`, `standard`.
      */
-    packageEdition?: pulumi.Input<string>;
+    packageEdition?: pulumi.Input<string | undefined>;
     /**
      * The Payment Type of the resource. Valid value: `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
      */
-    publicCnameMode?: pulumi.Input<string>;
+    publicCnameMode?: pulumi.Input<string | undefined>;
     /**
      * The CNAME access domain name.
      */
-    publicRr?: pulumi.Input<string>;
+    publicRr?: pulumi.Input<string | undefined>;
     /**
      * The website domain name that the user uses on the Internet.
      */
-    publicUserDomainName?: pulumi.Input<string>;
+    publicUserDomainName?: pulumi.Input<string | undefined>;
     /**
      * The domain name that is used to access GTM over the Internet.
      */
-    publicZoneName?: pulumi.Input<string>;
+    publicZoneName?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The quota of SMS notifications.
      */
-    smsNotificationCount?: pulumi.Input<number>;
+    smsNotificationCount?: pulumi.Input<number | undefined>;
     /**
      * The type of the access policy. Valid values: `GEO`, `LATENCY`.
      */
-    strategyMode?: pulumi.Input<string>;
+    strategyMode?: pulumi.Input<string | undefined>;
     /**
      * The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -339,19 +339,19 @@ export interface GtmInstanceArgs {
     /**
      * The alert notification methods. See `alertConfig` below for details.
      */
-    alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[]>;
+    alertConfigs?: pulumi.Input<pulumi.Input<inputs.dns.GtmInstanceAlertConfig>[] | undefined>;
     /**
      * The alert group.
      */
-    alertGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    alertGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The access type of the CNAME domain name. Valid value: `PUBLIC`.
      */
-    cnameType?: pulumi.Input<string>;
+    cnameType?: pulumi.Input<string | undefined>;
     /**
      * The force update.
      */
-    forceUpdate?: pulumi.Input<boolean>;
+    forceUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The quota of detection tasks.
      */
@@ -363,7 +363,7 @@ export interface GtmInstanceArgs {
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Paid package version. Valid values: `ultimate`, `standard`.
      */
@@ -379,31 +379,31 @@ export interface GtmInstanceArgs {
     /**
      * The Public Network domain name access method. Valid values: `CUSTOM`, `SYSTEM_ASSIGN`.
      */
-    publicCnameMode?: pulumi.Input<string>;
+    publicCnameMode?: pulumi.Input<string | undefined>;
     /**
      * The CNAME access domain name.
      */
-    publicRr?: pulumi.Input<string>;
+    publicRr?: pulumi.Input<string | undefined>;
     /**
      * The website domain name that the user uses on the Internet.
      */
-    publicUserDomainName?: pulumi.Input<string>;
+    publicUserDomainName?: pulumi.Input<string | undefined>;
     /**
      * The domain name that is used to access GTM over the Internet.
      */
-    publicZoneName?: pulumi.Input<string>;
+    publicZoneName?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period, the unit is month. When setting `renewalStatus` to AutoRenewal, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The quota of SMS notifications.
      */
@@ -411,9 +411,9 @@ export interface GtmInstanceArgs {
     /**
      * The type of the access policy. Valid values: `GEO`, `LATENCY`.
      */
-    strategyMode?: pulumi.Input<string>;
+    strategyMode?: pulumi.Input<string | undefined>;
     /**
      * The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }

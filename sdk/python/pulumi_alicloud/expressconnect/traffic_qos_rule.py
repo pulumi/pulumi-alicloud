@@ -23,16 +23,16 @@ class TrafficQosRuleArgs:
                  protocol: pulumi.Input[_builtins.str],
                  qos_id: pulumi.Input[_builtins.str],
                  queue_id: pulumi.Input[_builtins.str],
-                 dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 remarking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_port_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_port_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosRule resource.
 
@@ -184,7 +184,7 @@ class TrafficQosRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="dstCidr")
-    def dst_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic of the QoS rule matches the Destination IPv4 network segment.
 
@@ -193,12 +193,12 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "dst_cidr")
 
     @dst_cidr.setter
-    def dst_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dstIpv6Cidr")
-    def dst_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_ipv6_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the Destination IPv6 network segment.
 
@@ -207,12 +207,12 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "dst_ipv6_cidr")
 
     @dst_ipv6_cidr.setter
-    def dst_ipv6_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_ipv6_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_ipv6_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dstPortRange")
-    def dst_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
         - `ALL`:-1/-1, not editable.
@@ -235,36 +235,36 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "dst_port_range")
 
     @dst_port_range.setter
-    def dst_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="matchDscp")
-    def match_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def match_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         """
         return pulumi.get(self, "match_dscp")
 
     @match_dscp.setter
-    def match_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def match_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "match_dscp", value)
 
     @_builtins.property
     @pulumi.getter(name="remarkingDscp")
-    def remarking_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remarking_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         """
         return pulumi.get(self, "remarking_dscp")
 
     @remarking_dscp.setter
-    def remarking_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remarking_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remarking_dscp", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleDescription")
-    def rule_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS rule.
         The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
@@ -272,12 +272,12 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "rule_description")
 
     @rule_description.setter
-    def rule_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS rule.
         The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
@@ -285,12 +285,12 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="srcCidr")
-    def src_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv4 CIDR block.
 
@@ -299,12 +299,12 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "src_cidr")
 
     @src_cidr.setter
-    def src_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="srcIpv6Cidr")
-    def src_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_ipv6_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv6 network segment.
 
@@ -313,41 +313,41 @@ class TrafficQosRuleArgs:
         return pulumi.get(self, "src_ipv6_cidr")
 
     @src_ipv6_cidr.setter
-    def src_ipv6_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_ipv6_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_ipv6_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="srcPortRange")
-    def src_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         return pulumi.get(self, "src_port_range")
 
     @src_port_range.setter
-    def src_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_port_range", value)
 
 
 @pulumi.input_type
 class _TrafficQosRuleState:
     def __init__(__self__, *,
-                 dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosRule resources.
 
@@ -445,7 +445,7 @@ class _TrafficQosRuleState:
 
     @_builtins.property
     @pulumi.getter(name="dstCidr")
-    def dst_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic of the QoS rule matches the Destination IPv4 network segment.
 
@@ -454,12 +454,12 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "dst_cidr")
 
     @dst_cidr.setter
-    def dst_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dstIpv6Cidr")
-    def dst_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_ipv6_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the Destination IPv6 network segment.
 
@@ -468,12 +468,12 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "dst_ipv6_cidr")
 
     @dst_ipv6_cidr.setter
-    def dst_ipv6_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_ipv6_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_ipv6_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dstPortRange")
-    def dst_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dst_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
         - `ALL`:-1/-1, not editable.
@@ -496,36 +496,36 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "dst_port_range")
 
     @dst_port_range.setter
-    def dst_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dst_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dst_port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="matchDscp")
-    def match_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def match_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
         """
         return pulumi.get(self, "match_dscp")
 
     @match_dscp.setter
-    def match_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def match_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "match_dscp", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS rule protocol type, value:
         - `ALL`
@@ -548,48 +548,48 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS policy ID.
         """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
-    def qos_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queueId")
-    def queue_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS queue ID.
         """
         return pulumi.get(self, "queue_id")
 
     @queue_id.setter
-    def queue_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_id", value)
 
     @_builtins.property
     @pulumi.getter(name="remarkingDscp")
-    def remarking_dscp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def remarking_dscp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
         """
         return pulumi.get(self, "remarking_dscp")
 
     @remarking_dscp.setter
-    def remarking_dscp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def remarking_dscp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "remarking_dscp", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleDescription")
-    def rule_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS rule.
         The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
@@ -597,24 +597,24 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "rule_description")
 
     @rule_description.setter
-    def rule_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the QoS rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS rule.
         The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
@@ -622,12 +622,12 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="srcCidr")
-    def src_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv4 CIDR block.
 
@@ -636,12 +636,12 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "src_cidr")
 
     @src_cidr.setter
-    def src_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="srcIpv6Cidr")
-    def src_ipv6_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_ipv6_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QoS rule traffic matches the source IPv6 network segment.
 
@@ -650,31 +650,31 @@ class _TrafficQosRuleState:
         return pulumi.get(self, "src_ipv6_cidr")
 
     @src_ipv6_cidr.setter
-    def src_ipv6_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_ipv6_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_ipv6_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="srcPortRange")
-    def src_port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def src_port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
         """
         return pulumi.get(self, "src_port_range")
 
     @src_port_range.setter
-    def src_port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def src_port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "src_port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the QoS rule. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -684,20 +684,20 @@ class TrafficQosRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_port_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Traffic Qos Rule resource.
@@ -901,20 +901,20 @@ class TrafficQosRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dst_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remarking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_port_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -958,22 +958,22 @@ class TrafficQosRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dst_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            dst_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            dst_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-            match_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remarking_dscp: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_description: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            src_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            src_ipv6_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            src_port_range: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficQosRule':
+            dst_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dst_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dst_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            match_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remarking_dscp: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_description: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            src_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            src_ipv6_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            src_port_range: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficQosRule':
         """
         Get an existing TrafficQosRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

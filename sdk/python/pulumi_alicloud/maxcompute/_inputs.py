@@ -50,13 +50,13 @@ __all__ = [
 ]
 
 class ProjectIpWhiteListArgsDict(TypedDict):
-    ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
 
     > **NOTE:** If you only configure a classic network IP address whitelist, access to the classic network is restricted and all access to the VPC is prohibited.
     """
-    vpc_ip_list: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_ip_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
 
@@ -66,8 +66,8 @@ class ProjectIpWhiteListArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectIpWhiteListArgs:
     def __init__(__self__, *,
-                 ip_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ip_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ip_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] ip_list: Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
                
@@ -83,7 +83,7 @@ class ProjectIpWhiteListArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipList")
-    def ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the IP address whitelist in the classic network. Only devices in the whitelist are allowed to access the project.
 
@@ -92,12 +92,12 @@ class ProjectIpWhiteListArgs:
         return pulumi.get(self, "ip_list")
 
     @ip_list.setter
-    def ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_list", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcIpList")
-    def vpc_ip_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_ip_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the IP address whitelist in the VPC network to allow only devices in the whitelist to access the project space.
 
@@ -106,24 +106,24 @@ class ProjectIpWhiteListArgs:
         return pulumi.get(self, "vpc_ip_list")
 
     @vpc_ip_list.setter
-    def vpc_ip_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_ip_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_ip_list", value)
 
 
 class ProjectPropertiesArgsDict(TypedDict):
-    allow_full_scan: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_full_scan: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow full table scan. Default: `false`.
     """
-    enable_decimal2: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_decimal2: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to turn on Decimal2.0.
     """
-    enable_dr: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_dr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
     """
-    encryption: NotRequired[pulumi.Input['ProjectPropertiesEncryptionArgsDict']]
+    encryption: NotRequired[pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]]
     """
     Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
     > **NOTE :**:
@@ -133,27 +133,27 @@ class ProjectPropertiesArgsDict(TypedDict):
 
     You can turn on storage encryption only for projects that have not turned on storage encryption. For projects that have turned on storage encryption, you cannot turn off storage encryption or change the encryption algorithm. See `encryption` below.
     """
-    retention_days: NotRequired[pulumi.Input[_builtins.int]]
+    retention_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
     The effective policy after adjusting the backup cycle is:
     Extend the backup cycle: The new backup cycle takes effect on the same day.
     Shorten the backup cycle: The system will automatically delete backup data that has exceeded the retention cycle.
     """
-    sql_metering_max: NotRequired[pulumi.Input[_builtins.str]]
+    sql_metering_max: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
     Unit: scan volume (GB)* complexity.
     """
-    table_lifecycle: NotRequired[pulumi.Input['ProjectPropertiesTableLifecycleArgsDict']]
+    table_lifecycle: NotRequired[pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgs']]]
     """
     Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
     """
-    timezone: NotRequired[pulumi.Input[_builtins.str]]
+    timezone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project time zone, example value: Asia/Shanghai
     """
-    type_system: NotRequired[pulumi.Input[_builtins.str]]
+    type_system: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data type version. Value:(1/2/hive)
     1: The original MaxCompute type system.
@@ -164,15 +164,15 @@ class ProjectPropertiesArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectPropertiesArgs:
     def __init__(__self__, *,
-                 allow_full_scan: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_decimal2: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input['ProjectPropertiesEncryptionArgs']] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 sql_metering_max: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_lifecycle: Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 type_system: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_full_scan: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_decimal2: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 sql_metering_max: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_lifecycle: pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgs']] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 type_system: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_full_scan: Whether to allow full table scan. Default: `false`.
         :param pulumi.Input[_builtins.bool] enable_decimal2: Whether to turn on Decimal2.0.
@@ -218,43 +218,43 @@ class ProjectPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowFullScan")
-    def allow_full_scan(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_full_scan(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow full table scan. Default: `false`.
         """
         return pulumi.get(self, "allow_full_scan")
 
     @allow_full_scan.setter
-    def allow_full_scan(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_full_scan(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_full_scan", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDecimal2")
-    def enable_decimal2(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_decimal2(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to turn on Decimal2.0.
         """
         return pulumi.get(self, "enable_decimal2")
 
     @enable_decimal2.setter
-    def enable_decimal2(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_decimal2(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_decimal2", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDr")
-    def enable_dr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable multi-AZ storage disaster tolerance. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_dr")
 
     @enable_dr.setter
-    def enable_dr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dr", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input['ProjectPropertiesEncryptionArgs']]:
+    def encryption(self) -> pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]:
         """
         Storage encryption. For details, see [Storage Encryption](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/storage-encryption)
         > **NOTE :**:
@@ -267,12 +267,12 @@ class ProjectPropertiesArgs:
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input['ProjectPropertiesEncryptionArgs']]):
+    def encryption(self, value: pulumi.Input[Optional['ProjectPropertiesEncryptionArgs']]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the number of days to retain backup data. During this time, you can restore the current version to any backup version. The value range of days is [0,30], and the default value is 1. 0 means backup is turned off.
         The effective policy after adjusting the backup cycle is:
@@ -282,12 +282,12 @@ class ProjectPropertiesArgs:
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlMeteringMax")
-    def sql_metering_max(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_metering_max(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the maximum threshold for single SQL Consumption, that is, set the ODPS. SQL. metering.value.max attribute. For more information, see [Consumption control](https://www.alibabacloud.com/help/en/maxcompute/product-overview/consumption-control).
         Unit: scan volume (GB)* complexity.
@@ -295,36 +295,36 @@ class ProjectPropertiesArgs:
         return pulumi.get(self, "sql_metering_max")
 
     @sql_metering_max.setter
-    def sql_metering_max(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_metering_max(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_metering_max", value)
 
     @_builtins.property
     @pulumi.getter(name="tableLifecycle")
-    def table_lifecycle(self) -> Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']]:
+    def table_lifecycle(self) -> pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgs']]:
         """
         Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
         """
         return pulumi.get(self, "table_lifecycle")
 
     @table_lifecycle.setter
-    def table_lifecycle(self, value: Optional[pulumi.Input['ProjectPropertiesTableLifecycleArgs']]):
+    def table_lifecycle(self, value: pulumi.Input[Optional['ProjectPropertiesTableLifecycleArgs']]):
         pulumi.set(self, "table_lifecycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project time zone, example value: Asia/Shanghai
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="typeSystem")
-    def type_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data type version. Value:(1/2/hive)
         1: The original MaxCompute type system.
@@ -334,22 +334,22 @@ class ProjectPropertiesArgs:
         return pulumi.get(self, "type_system")
 
     @type_system.setter
-    def type_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type_system", value)
 
 
 class ProjectPropertiesEncryptionArgsDict(TypedDict):
-    algorithm: NotRequired[pulumi.Input[_builtins.str]]
+    algorithm: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
     """
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only enable function is supported. Value: (true)
 
     > **NOTE:** cannot be turned off after the function is turned on
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
     """
@@ -357,9 +357,9 @@ class ProjectPropertiesEncryptionArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectPropertiesEncryptionArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] algorithm: The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
         :param pulumi.Input[_builtins.bool] enable: Only enable function is supported. Value: (true)
@@ -376,19 +376,19 @@ class ProjectPropertiesEncryptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only enable function is supported. Value: (true)
 
@@ -397,28 +397,28 @@ class ProjectPropertiesEncryptionArgs:
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
 
 class ProjectPropertiesTableLifecycleArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Project type
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
     """
@@ -426,8 +426,8 @@ class ProjectPropertiesTableLifecycleArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectPropertiesTableLifecycleArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: Project type
         :param pulumi.Input[_builtins.str] value: The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
@@ -439,55 +439,55 @@ class ProjectPropertiesTableLifecycleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the life cycle, in days. The value range is 1~37231, and the default value is 37231.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ProjectSecurityPropertiesArgsDict(TypedDict):
-    enable_download_privilege: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_download_privilege: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
     """
-    label_security: NotRequired[pulumi.Input[_builtins.bool]]
+    label_security: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
     """
-    object_creator_has_access_permission: NotRequired[pulumi.Input[_builtins.bool]]
+    object_creator_has_access_permission: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
     """
-    object_creator_has_grant_permission: NotRequired[pulumi.Input[_builtins.bool]]
+    object_creator_has_grant_permission: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
     """
-    project_protection: NotRequired[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgsDict']]
+    project_protection: NotRequired[pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgs']]]
     """
     Project protection See `project_protection` below.
     """
-    using_acl: NotRequired[pulumi.Input[_builtins.bool]]
+    using_acl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
     """
-    using_policy: NotRequired[pulumi.Input[_builtins.bool]]
+    using_policy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
     """
@@ -495,13 +495,13 @@ class ProjectSecurityPropertiesArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectSecurityPropertiesArgs:
     def __init__(__self__, *,
-                 enable_download_privilege: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_creator_has_access_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 object_creator_has_grant_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_protection: Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']] = None,
-                 using_acl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 using_policy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_download_privilege: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_creator_has_access_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 object_creator_has_grant_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_protection: pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgs']] = None,
+                 using_acl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 using_policy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_download_privilege: Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
         :param pulumi.Input[_builtins.bool] label_security: Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
@@ -528,95 +528,95 @@ class ProjectSecurityPropertiesArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableDownloadPrivilege")
-    def enable_download_privilege(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_download_privilege(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether to enable the [Download permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/download-control), that is, set the ODPS. security.enabledownloadprivilege property.
         """
         return pulumi.get(self, "enable_download_privilege")
 
     @enable_download_privilege.setter
-    def enable_download_privilege(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_download_privilege(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_download_privilege", value)
 
     @_builtins.property
     @pulumi.getter(name="labelSecurity")
-    def label_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def label_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether to use the [Label permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/label-based-access-control), that is, set the LabelSecurity attribute, which is not used by default.
         """
         return pulumi.get(self, "label_security")
 
     @label_security.setter
-    def label_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def label_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "label_security", value)
 
     @_builtins.property
     @pulumi.getter(name="objectCreatorHasAccessPermission")
-    def object_creator_has_access_permission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_creator_has_access_permission(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sets whether to allow the creator of the object to have access to the object, I .e. sets the attribute. The default is the allowed state.
         """
         return pulumi.get(self, "object_creator_has_access_permission")
 
     @object_creator_has_access_permission.setter
-    def object_creator_has_access_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_creator_has_access_permission(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_creator_has_access_permission", value)
 
     @_builtins.property
     @pulumi.getter(name="objectCreatorHasGrantPermission")
-    def object_creator_has_grant_permission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_creator_has_grant_permission(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The ObjectCreatorHasGrantPermission attribute is set to allow the object creator to have the authorization permission on the object. The default is the allowed state.
         """
         return pulumi.get(self, "object_creator_has_grant_permission")
 
     @object_creator_has_grant_permission.setter
-    def object_creator_has_grant_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_creator_has_grant_permission(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_creator_has_grant_permission", value)
 
     @_builtins.property
     @pulumi.getter(name="projectProtection")
-    def project_protection(self) -> Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']]:
+    def project_protection(self) -> pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgs']]:
         """
         Project protection See `project_protection` below.
         """
         return pulumi.get(self, "project_protection")
 
     @project_protection.setter
-    def project_protection(self, value: Optional[pulumi.Input['ProjectSecurityPropertiesProjectProtectionArgs']]):
+    def project_protection(self, value: pulumi.Input[Optional['ProjectSecurityPropertiesProjectProtectionArgs']]):
         pulumi.set(self, "project_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="usingAcl")
-    def using_acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def using_acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether to use the [ACL permission control function](https://www.alibabacloud.com/help/en/maxcompute/user-guide/maxcompute-permissions), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_acl")
 
     @using_acl.setter
-    def using_acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def using_acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "using_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="usingPolicy")
-    def using_policy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def using_policy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set whether to use the Policy permission control function (https://www.alibabacloud.com/help/en/maxcompute/user-guide/policy-based-access-control-1), that is, set the CheckPermissionUsingACL attribute, which is in use by default.
         """
         return pulumi.get(self, "using_policy")
 
     @using_policy.setter
-    def using_policy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def using_policy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "using_policy", value)
 
 
 class ProjectSecurityPropertiesProjectProtectionArgsDict(TypedDict):
-    exception_policy: NotRequired[pulumi.Input[_builtins.str]]
+    exception_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
     """
-    protected: NotRequired[pulumi.Input[_builtins.bool]]
+    protected: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether enabled, value:(true/false)
     """
@@ -624,8 +624,8 @@ class ProjectSecurityPropertiesProjectProtectionArgsDict(TypedDict):
 @pulumi.input_type
 class ProjectSecurityPropertiesProjectProtectionArgs:
     def __init__(__self__, *,
-                 exception_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None):
+                 exception_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] exception_policy: Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
         :param pulumi.Input[_builtins.bool] protected: Whether enabled, value:(true/false)
@@ -637,35 +637,35 @@ class ProjectSecurityPropertiesProjectProtectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="exceptionPolicy")
-    def exception_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exception_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set [Exceptions or Trusted Items](https://www.alibabacloud.com/help/en/maxcompute/security-and-compliance/project-data-protection)
         """
         return pulumi.get(self, "exception_policy")
 
     @exception_policy.setter
-    def exception_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exception_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exception_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enabled, value:(true/false)
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
 
 class QuotaPlanQuotaArgsDict(TypedDict):
-    parameter: NotRequired[pulumi.Input['QuotaPlanQuotaParameterArgsDict']]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaParameterArgs']]]
     """
     Level 2 Quota CU configuration See `parameter` below.
     """
-    sub_quota_info_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgsDict']]]]
+    sub_quota_info_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]]
     """
     Secondary Quota list
 
@@ -676,8 +676,8 @@ class QuotaPlanQuotaArgsDict(TypedDict):
 @pulumi.input_type
 class QuotaPlanQuotaArgs:
     def __init__(__self__, *,
-                 parameter: Optional[pulumi.Input['QuotaPlanQuotaParameterArgs']] = None,
-                 sub_quota_info_lists: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]] = None):
+                 parameter: pulumi.Input[Optional['QuotaPlanQuotaParameterArgs']] = None,
+                 sub_quota_info_lists: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]] = None):
         """
         :param pulumi.Input['QuotaPlanQuotaParameterArgs'] parameter: Level 2 Quota CU configuration See `parameter` below.
         :param pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]] sub_quota_info_lists: Secondary Quota list
@@ -692,19 +692,19 @@ class QuotaPlanQuotaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameter(self) -> Optional[pulumi.Input['QuotaPlanQuotaParameterArgs']]:
+    def parameter(self) -> pulumi.Input[Optional['QuotaPlanQuotaParameterArgs']]:
         """
         Level 2 Quota CU configuration See `parameter` below.
         """
         return pulumi.get(self, "parameter")
 
     @parameter.setter
-    def parameter(self, value: Optional[pulumi.Input['QuotaPlanQuotaParameterArgs']]):
+    def parameter(self, value: pulumi.Input[Optional['QuotaPlanQuotaParameterArgs']]):
         pulumi.set(self, "parameter", value)
 
     @_builtins.property
     @pulumi.getter(name="subQuotaInfoLists")
-    def sub_quota_info_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]:
+    def sub_quota_info_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]:
         """
         Secondary Quota list
 
@@ -714,7 +714,7 @@ class QuotaPlanQuotaArgs:
         return pulumi.get(self, "sub_quota_info_lists")
 
     @sub_quota_info_lists.setter
-    def sub_quota_info_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]):
+    def sub_quota_info_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListArgs']]]]):
         pulumi.set(self, "sub_quota_info_lists", value)
 
 
@@ -725,11 +725,11 @@ class QuotaPlanQuotaParameterArgsDict(TypedDict):
 
     > **NOTE:**  The total number of elastically reserved CUs in all the level-2 quotas is equal to the number of elastically reserved CUs in the level-1 quota..
     """
-    max_cu: NotRequired[pulumi.Input[_builtins.int]]
+    max_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The value of maxCU in Reserved CUs.
     """
-    min_cu: NotRequired[pulumi.Input[_builtins.int]]
+    min_cu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The value of minCU in Reserved CUs.
     """
@@ -738,8 +738,8 @@ class QuotaPlanQuotaParameterArgsDict(TypedDict):
 class QuotaPlanQuotaParameterArgs:
     def __init__(__self__, *,
                  elastic_reserved_cu: pulumi.Input[_builtins.int],
-                 max_cu: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_cu: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_cu: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_cu: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] elastic_reserved_cu: The value of elastic Reserved CUs.
                
@@ -769,26 +769,26 @@ class QuotaPlanQuotaParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxCu")
-    def max_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value of maxCU in Reserved CUs.
         """
         return pulumi.get(self, "max_cu")
 
     @max_cu.setter
-    def max_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_cu", value)
 
     @_builtins.property
     @pulumi.getter(name="minCu")
-    def min_cu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_cu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The value of minCU in Reserved CUs.
         """
         return pulumi.get(self, "min_cu")
 
     @min_cu.setter
-    def min_cu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_cu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_cu", value)
 
 
@@ -797,7 +797,7 @@ class QuotaPlanQuotaSubQuotaInfoListArgsDict(TypedDict):
     """
     The nickname of the level-2 quota.
     """
-    parameter: NotRequired[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgsDict']]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]]
     """
     The parameters of level-1 quota.
     """
@@ -806,7 +806,7 @@ class QuotaPlanQuotaSubQuotaInfoListArgsDict(TypedDict):
 class QuotaPlanQuotaSubQuotaInfoListArgs:
     def __init__(__self__, *,
                  nick_name: pulumi.Input[_builtins.str],
-                 parameter: Optional[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgs']] = None):
+                 parameter: pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] nick_name: The nickname of the level-2 quota.
         :param pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgs'] parameter: The parameters of level-1 quota.
@@ -829,14 +829,14 @@ class QuotaPlanQuotaSubQuotaInfoListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameter(self) -> Optional[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]:
+    def parameter(self) -> pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]:
         """
         The parameters of level-1 quota.
         """
         return pulumi.get(self, "parameter")
 
     @parameter.setter
-    def parameter(self, value: Optional[pulumi.Input['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]):
+    def parameter(self, value: pulumi.Input[Optional['QuotaPlanQuotaSubQuotaInfoListParameterArgs']]):
         pulumi.set(self, "parameter", value)
 
 
@@ -923,7 +923,7 @@ class QuotaScheduleScheduleListArgsDict(TypedDict):
 
     > **NOTE:** Currently, only daily is supported.
     """
-    condition: NotRequired[pulumi.Input['QuotaScheduleScheduleListConditionArgsDict']]
+    condition: NotRequired[pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']]]
     """
     The value of effective condition. See `condition` below.
     """
@@ -933,7 +933,7 @@ class QuotaScheduleScheduleListArgs:
     def __init__(__self__, *,
                  plan: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 condition: Optional[pulumi.Input['QuotaScheduleScheduleListConditionArgs']] = None):
+                 condition: pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] plan: The name of the quota plan.
         :param pulumi.Input[_builtins.str] type: The type of the quota plan. Valid values: daily 
@@ -974,14 +974,14 @@ class QuotaScheduleScheduleListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input['QuotaScheduleScheduleListConditionArgs']]:
+    def condition(self) -> pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']]:
         """
         The value of effective condition. See `condition` below.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input['QuotaScheduleScheduleListConditionArgs']]):
+    def condition(self, value: pulumi.Input[Optional['QuotaScheduleScheduleListConditionArgs']]):
         pulumi.set(self, "condition", value)
 
 
@@ -1026,11 +1026,11 @@ class QuotaSubQuotaInfoListArgsDict(TypedDict):
 
     > **NOTE:** -- Subscription: If you enter partNickName, the first-level QuotaNickName created is os_partNickName_p. Each first-level Quota has a default second-level Quota whose QuotaNickName is os_partNickName . -- The first-level quotanicname created by PayAsYouGo is os_PayAsYouGoQuota_p  by default, the second-level quotanicname is os_PayAsYouGoQuota
     """
-    parameter: NotRequired[pulumi.Input['QuotaSubQuotaInfoListParameterArgsDict']]
+    parameter: NotRequired[pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgs']]]
     """
     Parameter See `parameter` below.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The secondary Quota type. The default value is: FUXI_OFFLINE
     """
@@ -1039,8 +1039,8 @@ class QuotaSubQuotaInfoListArgsDict(TypedDict):
 class QuotaSubQuotaInfoListArgs:
     def __init__(__self__, *,
                  nick_name: pulumi.Input[_builtins.str],
-                 parameter: Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter: pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] nick_name: Secondary Quota nickname.
                
@@ -1070,26 +1070,26 @@ class QuotaSubQuotaInfoListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def parameter(self) -> Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']]:
+    def parameter(self) -> pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgs']]:
         """
         Parameter See `parameter` below.
         """
         return pulumi.get(self, "parameter")
 
     @parameter.setter
-    def parameter(self, value: Optional[pulumi.Input['QuotaSubQuotaInfoListParameterArgs']]):
+    def parameter(self, value: pulumi.Input[Optional['QuotaSubQuotaInfoListParameterArgs']]):
         pulumi.set(self, "parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary Quota type. The default value is: FUXI_OFFLINE
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1106,19 +1106,19 @@ class QuotaSubQuotaInfoListParameterArgsDict(TypedDict):
 
     > **NOTE:**  -- The total value of minCU in all the level-2 quotas is equal to the value of minCU in the level-1 quota.    -- The value of minCU must be less than or equal to the value of maxCU in the level-2 quota and less than or equal to the value of minCU in the level-1 quota that you purchased.
     """
-    enable_priority: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_priority: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable priority. Valid values: true/false, default: false
     """
-    force_reserved_min: NotRequired[pulumi.Input[_builtins.bool]]
+    force_reserved_min: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Exclusive or not. Valid values: true/false, default: false
     """
-    scheduler_type: NotRequired[pulumi.Input[_builtins.str]]
+    scheduler_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Scheduling policy. Valid values: Fifo/Fair, default: Fifo
     """
-    single_job_cu_limit: NotRequired[pulumi.Input[_builtins.int]]
+    single_job_cu_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Single job CU upper limit. Valid value: greater than or equal to 1
 
@@ -1130,10 +1130,10 @@ class QuotaSubQuotaInfoListParameterArgs:
     def __init__(__self__, *,
                  max_cu: pulumi.Input[_builtins.int],
                  min_cu: pulumi.Input[_builtins.int],
-                 enable_priority: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_reserved_min: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 single_job_cu_limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 enable_priority: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_reserved_min: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 single_job_cu_limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_cu: The value of maxCU in Reserved CUs.
                
@@ -1189,43 +1189,43 @@ class QuotaSubQuotaInfoListParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="enablePriority")
-    def enable_priority(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_priority(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable priority. Valid values: true/false, default: false
         """
         return pulumi.get(self, "enable_priority")
 
     @enable_priority.setter
-    def enable_priority(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_priority(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="forceReservedMin")
-    def force_reserved_min(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_reserved_min(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Exclusive or not. Valid values: true/false, default: false
         """
         return pulumi.get(self, "force_reserved_min")
 
     @force_reserved_min.setter
-    def force_reserved_min(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_reserved_min(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_reserved_min", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerType")
-    def scheduler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scheduling policy. Valid values: Fifo/Fair, default: Fifo
         """
         return pulumi.get(self, "scheduler_type")
 
     @scheduler_type.setter
-    def scheduler_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler_type", value)
 
     @_builtins.property
     @pulumi.getter(name="singleJobCuLimit")
-    def single_job_cu_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def single_job_cu_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Single job CU upper limit. Valid value: greater than or equal to 1
 
@@ -1234,7 +1234,7 @@ class QuotaSubQuotaInfoListParameterArgs:
         return pulumi.get(self, "single_job_cu_limit")
 
     @single_job_cu_limit.setter
-    def single_job_cu_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def single_job_cu_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "single_job_cu_limit", value)
 
 
@@ -1247,7 +1247,7 @@ class TunnelQuotaTimerQuotaTimerArgsDict(TypedDict):
     """
     The end time of the timesharing configuration. Reference value: 24:00
     """
-    tunnel_quota_parameter: NotRequired[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgsDict']]
+    tunnel_quota_parameter: NotRequired[pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]]
     """
     Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
     """
@@ -1257,7 +1257,7 @@ class TunnelQuotaTimerQuotaTimerArgs:
     def __init__(__self__, *,
                  begin_time: pulumi.Input[_builtins.str],
                  end_time: pulumi.Input[_builtins.str],
-                 tunnel_quota_parameter: Optional[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']] = None):
+                 tunnel_quota_parameter: pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] begin_time: The time-sharing configuration start time. Reference value: 00:00
         :param pulumi.Input[_builtins.str] end_time: The end time of the timesharing configuration. Reference value: 24:00
@@ -1294,14 +1294,14 @@ class TunnelQuotaTimerQuotaTimerArgs:
 
     @_builtins.property
     @pulumi.getter(name="tunnelQuotaParameter")
-    def tunnel_quota_parameter(self) -> Optional[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]:
+    def tunnel_quota_parameter(self) -> pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]:
         """
         Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
         """
         return pulumi.get(self, "tunnel_quota_parameter")
 
     @tunnel_quota_parameter.setter
-    def tunnel_quota_parameter(self, value: Optional[pulumi.Input['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]):
+    def tunnel_quota_parameter(self, value: pulumi.Input[Optional['TunnelQuotaTimerQuotaTimerTunnelQuotaParameterArgs']]):
         pulumi.set(self, "tunnel_quota_parameter", value)
 
 

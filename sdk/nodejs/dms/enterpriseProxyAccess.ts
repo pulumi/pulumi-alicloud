@@ -176,50 +176,50 @@ export interface EnterpriseProxyAccessState {
     /**
      * The authorized account of the security agent.
      */
-    accessId?: pulumi.Input<string>;
+    accessId?: pulumi.Input<string | undefined>;
     /**
      * Secure access agent authorization password.
      */
-    accessSecret?: pulumi.Input<string>;
-    createTime?: pulumi.Input<string>;
+    accessSecret?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Database account.
      */
-    indepAccount?: pulumi.Input<string>;
+    indepAccount?: pulumi.Input<string | undefined>;
     /**
      * Database password.
      */
-    indepPassword?: pulumi.Input<string>;
+    indepPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The source information of the security access agent permission is enabled, and the return value is as follows:
      * * **Owner Authorization**: The UID of the owner in parentheses.
      * * **Work Order Authorization**: The ticket number in parentheses is the number of the user to apply for permission.
      */
-    originInfo?: pulumi.Input<string>;
+    originInfo?: pulumi.Input<string | undefined>;
     /**
      * Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
      */
-    proxyAccessId?: pulumi.Input<string>;
+    proxyAccessId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security agent.
      */
-    proxyId?: pulumi.Input<string>;
+    proxyId?: pulumi.Input<string | undefined>;
     /**
      * The user ID.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * User nickname.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
     /**
      * User UID.
      */
-    userUid?: pulumi.Input<string>;
+    userUid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,15 +229,15 @@ export interface EnterpriseProxyAccessArgs {
     /**
      * Database account.
      */
-    indepAccount?: pulumi.Input<string>;
+    indepAccount?: pulumi.Input<string | undefined>;
     /**
      * Database password.
      */
-    indepPassword?: pulumi.Input<string>;
+    indepPassword?: pulumi.Input<string | undefined>;
     /**
      * Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
      */
-    proxyAccessId?: pulumi.Input<string>;
+    proxyAccessId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security agent.
      */

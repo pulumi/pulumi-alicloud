@@ -134,11 +134,11 @@ export interface GetDomainsOutputArgs {
     /**
      * Default to false and only output `id`, `domainName`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of WAF domain names. Each item is domain name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The Id of waf instance to which waf domain belongs.
      */
@@ -146,13 +146,13 @@ export interface GetDomainsOutputArgs {
     /**
      * A regex string to filter results by domain name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the queried domain belongs in Resource Management.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
 }

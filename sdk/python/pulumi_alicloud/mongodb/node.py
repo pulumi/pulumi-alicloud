@@ -22,17 +22,17 @@ class NodeArgs:
                  db_instance_id: pulumi.Input[_builtins.str],
                  node_class: pulumi.Input[_builtins.str],
                  node_type: pulumi.Input[_builtins.str],
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 business_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_app: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_direct: Optional[pulumi.Input[_builtins.bool]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_app: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
 
@@ -153,7 +153,7 @@ class NodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name, value description:
         - Begins with a lowercase letter.
@@ -169,12 +169,12 @@ class NodeArgs:
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account password, value description:
         - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
@@ -189,24 +189,24 @@ class NodeArgs:
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Value description:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="businessInfo")
-    def business_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional parameters, business information.
 
@@ -215,12 +215,12 @@ class NodeArgs:
         return pulumi.get(self, "business_info")
 
     @business_info.setter
-    def business_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_info", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Effective time of configuration change. Value description:
         - `Immediately` (default): takes effect Immediately.
@@ -231,12 +231,12 @@ class NodeArgs:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fromApp")
-    def from_app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request Source, value description:
         - `OpenApi`: The request source is OpenApi.
@@ -244,12 +244,12 @@ class NodeArgs:
         return pulumi.get(self, "from_app")
 
     @from_app.setter
-    def from_app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_app", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeStorage")
-    def node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk space of the Node. Unit: GB.
 
@@ -260,12 +260,12 @@ class NodeArgs:
         return pulumi.get(self, "node_storage")
 
     @node_storage.setter
-    def node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Order type, value description:
         - `UPGRADE`: UPGRADE.
@@ -276,12 +276,12 @@ class NodeArgs:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readonlyReplicas")
-    def readonly_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readonly_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read-only nodes in the Shard.
 
@@ -292,24 +292,24 @@ class NodeArgs:
         return pulumi.get(self, "readonly_replicas")
 
     @readonly_replicas.setter
-    def readonly_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readonly_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readonly_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="shardDirect")
-    def shard_direct(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shard_direct(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply for the direct connection address of the Shard node. Value description:
         """
         return pulumi.get(self, "shard_direct")
 
     @shard_direct.setter
-    def shard_direct(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shard_direct(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shard_direct", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
 
@@ -318,29 +318,29 @@ class NodeArgs:
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
 
 @pulumi.input_type
 class _NodeState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 business_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_app: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_direct: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_app: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
 
@@ -434,7 +434,7 @@ class _NodeState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name, value description:
         - Begins with a lowercase letter.
@@ -450,12 +450,12 @@ class _NodeState:
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPassword")
-    def account_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account password, value description:
         - Consists of at least three of uppercase letters, lowercase letters, numbers, and special characters.
@@ -470,24 +470,24 @@ class _NodeState:
         return pulumi.get(self, "account_password")
 
     @account_password.setter
-    def account_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. Value description:
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="businessInfo")
-    def business_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Additional parameters, business information.
 
@@ -496,24 +496,24 @@ class _NodeState:
         return pulumi.get(self, "business_info")
 
     @business_info.setter
-    def business_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_info", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the sharded cluster instance.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Effective time of configuration change. Value description:
         - `Immediately` (default): takes effect Immediately.
@@ -524,12 +524,12 @@ class _NodeState:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fromApp")
-    def from_app(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_app(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Request Source, value description:
         - `OpenApi`: The request source is OpenApi.
@@ -537,36 +537,36 @@ class _NodeState:
         return pulumi.get(self, "from_app")
 
     @from_app.setter
-    def from_app(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_app(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_app", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeClass")
-    def node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of the Shard node or Mongos node. For more information, see Instance Specifications.
         """
         return pulumi.get(self, "node_class")
 
     @node_class.setter
-    def node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeStorage")
-    def node_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk space of the Node. Unit: GB.
 
@@ -577,24 +577,24 @@ class _NodeState:
         return pulumi.get(self, "node_storage")
 
     @node_storage.setter
-    def node_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node type, value description:
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Order type, value description:
         - `UPGRADE`: UPGRADE.
@@ -605,12 +605,12 @@ class _NodeState:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="readonlyReplicas")
-    def readonly_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def readonly_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of read-only nodes in the Shard.
 
@@ -621,36 +621,36 @@ class _NodeState:
         return pulumi.get(self, "readonly_replicas")
 
     @readonly_replicas.setter
-    def readonly_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def readonly_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "readonly_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="shardDirect")
-    def shard_direct(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shard_direct(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply for the direct connection address of the Shard node. Value description:
         """
         return pulumi.get(self, "shard_direct")
 
     @shard_direct.setter
-    def shard_direct(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shard_direct(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shard_direct", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Running status of node in sharded cluster
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution time of the change configuration, in the format of  yyyy-MM-dd T  HH:mm:ss Z(UTC time).
 
@@ -659,7 +659,7 @@ class _NodeState:
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
 
@@ -669,20 +669,20 @@ class Node(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 business_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_app: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_direct: Optional[pulumi.Input[_builtins.bool]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_app: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Mongodb Node resource.
@@ -944,20 +944,20 @@ class Node(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 business_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_app: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_direct: Optional[pulumi.Input[_builtins.bool]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 business_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_app: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -999,22 +999,22 @@ class Node(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            account_password: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            business_info: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            from_app: Optional[pulumi.Input[_builtins.str]] = None,
-            node_class: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            node_type: Optional[pulumi.Input[_builtins.str]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            readonly_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-            shard_direct: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            switch_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'Node':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            business_info: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            from_app: pulumi.Input[Optional[_builtins.str]] = None,
+            node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            readonly_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            shard_direct: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

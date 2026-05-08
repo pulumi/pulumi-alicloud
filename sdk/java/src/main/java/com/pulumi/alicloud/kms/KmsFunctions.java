@@ -55,8 +55,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -100,8 +100,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -145,8 +145,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -190,8 +190,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -235,8 +235,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -280,8 +280,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -325,8 +325,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetAliasesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -376,8 +376,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.KeyArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -430,8 +430,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.KeyArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.KeyArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -538,8 +538,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.KeyArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -592,8 +592,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.KeyArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetCiphertextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -650,8 +650,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -803,8 +803,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -956,8 +956,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1109,8 +1109,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1262,8 +1262,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1415,8 +1415,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.inputs.InstanceBindVpcArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1711,8 +1711,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1756,8 +1756,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1801,8 +1801,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1846,8 +1846,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1891,8 +1891,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeyVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1938,8 +1938,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1985,8 +1985,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2032,8 +2032,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2079,8 +2079,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2126,8 +2126,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2173,8 +2173,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2220,8 +2220,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2269,8 +2269,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.CiphertextArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2328,8 +2328,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.CiphertextArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2387,8 +2387,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.CiphertextArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2446,8 +2446,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.CiphertextArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2505,8 +2505,8 @@ public final class KmsFunctions {
      * import com.pulumi.alicloud.kms.CiphertextArgs;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetPlaintextArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2560,8 +2560,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2605,8 +2605,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2650,8 +2650,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2695,8 +2695,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2740,8 +2740,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2785,8 +2785,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2834,8 +2834,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2883,8 +2883,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2932,8 +2932,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2981,8 +2981,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3030,8 +3030,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3079,8 +3079,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetSecretsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3130,8 +3130,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3174,8 +3174,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3218,8 +3218,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3262,8 +3262,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3306,8 +3306,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3350,8 +3350,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3394,8 +3394,8 @@ public final class KmsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.kms.KmsFunctions;
      * import com.pulumi.alicloud.kms.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

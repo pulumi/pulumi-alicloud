@@ -81,10 +81,10 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultMaster.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
  *     description: "Basic test",
- *     primaryIpAddress: defaultMaster.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
- *         input: cidrBlock,
+ *     primaryIpAddress: std.cidrhostOutput({
+ *         input: defaultMaster.cidrBlock,
  *         host: 100,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     tags: {
  *         Created: "TF",
  *         For: "Test",
@@ -210,23 +210,23 @@ export interface TransitRouterMulticastDomainSourceState {
     /**
      * The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
      */
-    groupIpAddress?: pulumi.Input<string>;
+    groupIpAddress?: pulumi.Input<string | undefined>;
     /**
      * ENI ID of the multicast source.
      */
-    networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain to which the multicast source belongs.
      */
-    transitRouterMulticastDomainId?: pulumi.Input<string>;
+    transitRouterMulticastDomainId?: pulumi.Input<string | undefined>;
     /**
      * The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,5 +248,5 @@ export interface TransitRouterMulticastDomainSourceArgs {
     /**
      * The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

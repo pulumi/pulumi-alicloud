@@ -664,171 +664,171 @@ export interface InstanceState {
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to use a coupon. Default value: `false`.
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup file of the source instance.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Backup period.
      */
-    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
      */
-    backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string | undefined>;
     /**
      * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the event or the business information.
      */
-    businessInfo?: pulumi.Input<string>;
+    businessInfo?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Intranet connection address of the KVStore instance.
      */
-    connectionDomain?: pulumi.Input<string>;
+    connectionDomain?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the address is a private endpoint.
      *
      * @deprecated Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
-    couponNo?: pulumi.Input<string>;
+    couponNo?: pulumi.Input<string | undefined>;
     /**
      * The name of KVStore DBInstance. It is a string of 2 to 256 characters.
      */
-    dbInstanceName?: pulumi.Input<string>;
+    dbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * - `Immediately` (Default): The configurations are immediately changed.
      * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
-    enableBackupLog?: pulumi.Input<number>;
+    enableBackupLog?: pulumi.Input<number | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    enablePublic?: pulumi.Input<boolean>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * The Custom key ID, which you can get by calling DescribeEncryptionKeyList.If this parameter is not passed, the key is automatically generated by the key management service. To create a custom key, you can call the CreateKey interface of the key management service.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
      */
-    encryptionName?: pulumi.Input<string>;
+    encryptionName?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of the prepaid instance.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcibly change the type. Default value: `true`.
      */
-    forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a distributed cache. Default value: `false`.
      */
-    globalInstance?: pulumi.Input<boolean>;
+    globalInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of distributed cache.
      */
-    globalInstanceId?: pulumi.Input<string>;
+    globalInstanceId?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Whether to open the release protection.
      */
-    instanceReleaseProtection?: pulumi.Input<boolean>;
+    instanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable automatic minor version update. Valid values:
      */
-    isAutoUpgradeOpen?: pulumi.Input<string>;
+    isAutoUpgradeOpen?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Node type, valid values:
      * - `MASTER_SLAVE`: High availability (dual copies)
@@ -836,130 +836,130 @@ export interface InstanceState {
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[] | undefined>;
     /**
      * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Private network connection port, used to modify the private network connection port.
      */
-    privateConnectionPort?: pulumi.Input<string>;
+    privateConnectionPort?: pulumi.Input<string | undefined>;
     /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
-    privateConnectionPrefix?: pulumi.Input<string>;
+    privateConnectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The internal IP address of the instance.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Theoretical maximum QPS value.
      */
-    qps?: pulumi.Input<number>;
+    qps?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the primary zone. Valid values: `1` to `9`.
      */
-    readOnlyCount?: pulumi.Input<number>;
+    readOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of resource group which the resource belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time of a backup file.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      */
-    securityIpGroupAttribute?: pulumi.Input<string>;
+    securityIpGroupAttribute?: pulumi.Input<string | undefined>;
     /**
      * The name of the whitelist group.
      */
-    securityIpGroupName?: pulumi.Input<string>;
+    securityIpGroupName?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
-    slaveReadOnlyCount?: pulumi.Input<number>;
+    slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the source instance.
      */
-    srcdbInstanceId?: pulumi.Input<string>;
+    srcdbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
-    sslEnable?: pulumi.Input<string>;
+    sslEnable?: pulumi.Input<string | undefined>;
     /**
      * The status of KVStore DBInstance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
      * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
-    vpcAuthMode?: pulumi.Input<string>;
+    vpcAuthMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -969,157 +969,157 @@ export interface InstanceArgs {
     /**
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when paymentType is `PrePaid`. Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when paymentType is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to use a coupon. Default value: `false`.
      */
-    autoUseCoupon?: pulumi.Input<boolean>;
+    autoUseCoupon?: pulumi.Input<boolean | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup file of the source instance.
      */
-    backupId?: pulumi.Input<string>;
+    backupId?: pulumi.Input<string | undefined>;
     /**
      * Backup period.
      */
-    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
      */
-    backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string | undefined>;
     /**
      * The total bandwidth of the instance. **NOTE:** From version 1.232.0, `bandwidth` can be set. If the instance is a cluster instance, `bandwidth` must be divisible by the number of `shardCount` in the instance, and if the instance is a read/write splitting instance, `bandwidth` cannot be set.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The ID of the event or the business information.
      */
-    businessInfo?: pulumi.Input<string>;
+    businessInfo?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
      */
-    config?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    config?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
-    couponNo?: pulumi.Input<string>;
+    couponNo?: pulumi.Input<string | undefined>;
     /**
      * The name of KVStore DBInstance. It is a string of 2 to 256 characters.
      */
-    dbInstanceName?: pulumi.Input<string>;
+    dbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the dedicated cluster. This parameter is required when you create a Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance in a dedicated cluster.
      */
-    dedicatedHostGroupId?: pulumi.Input<string>;
+    dedicatedHostGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck the request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the database is switched after the instance is migrated, or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * - `Immediately` (Default): The configurations are immediately changed.
      * - `MaintainTime`: The configurations are changed within the maintenance window. You can set `maintainStartTime` and `maintainEndTime` to change the maintenance window.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      */
-    enableBackupLog?: pulumi.Input<number>;
+    enableBackupLog?: pulumi.Input<number | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
-    enablePublic?: pulumi.Input<boolean>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * The Custom key ID, which you can get by calling DescribeEncryptionKeyList.If this parameter is not passed, the key is automatically generated by the key management service. To create a custom key, you can call the CreateKey interface of the key management service.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
      */
-    encryptionName?: pulumi.Input<string>;
+    encryptionName?: pulumi.Input<string | undefined>;
     /**
      * The engine version of the KVStore DBInstance. Valid values: ["2.8", "4.0", "5.0", "6.0", "7.0"]. Default value: `5.0`.
      * **NOTE:** When `instanceType = Memcache`, the `engineVersion` only supports "4.0".
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcibly change the type. Default value: `true`.
      */
-    forceUpgrade?: pulumi.Input<boolean>;
+    forceUpgrade?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create a distributed cache. Default value: `false`.
      */
-    globalInstance?: pulumi.Input<boolean>;
+    globalInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of distributed cache.
      */
-    globalInstanceId?: pulumi.Input<string>;
+    globalInstanceId?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Type of the applied Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance. It can be retrieved by data source alicloud.kvstore.getInstanceClasses
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instanceName` has been deprecated from version 1.101.0. Use `dbInstanceName` instead.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Whether to open the release protection.
      */
-    instanceReleaseProtection?: pulumi.Input<boolean>;
+    instanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable automatic minor version update. Valid values:
      */
-    isAutoUpgradeOpen?: pulumi.Input<string>;
+    isAutoUpgradeOpen?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Node type, valid values:
      * - `MASTER_SLAVE`: High availability (dual copies)
@@ -1127,120 +1127,120 @@ export interface InstanceArgs {
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.kvstore.InstanceParameter>[] | undefined>;
     /**
      * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ & * ( ) _ + - =`
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy KVStore DBInstance (in month). It is valid when paymentType is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Private network connection port, used to modify the private network connection port.
      */
-    privateConnectionPort?: pulumi.Input<string>;
+    privateConnectionPort?: pulumi.Input<string | undefined>;
     /**
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      */
-    privateConnectionPrefix?: pulumi.Input<string>;
+    privateConnectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The internal IP address of the instance.
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * The number of read replicas in the primary zone. Valid values: `1` to `9`.
      */
-    readOnlyCount?: pulumi.Input<number>;
+    readOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of resource group which the resource belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time of a backup file.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the secondary zone to which you want to migrate the Tair (Redis OSS-Compatible) And Memcache (KVStore) Classic Instance.
      * > **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The ID of security groups. Separate multiple security group IDs with commas (,), such as `sg-***,sg-***,sg-***`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      */
-    securityIpGroupAttribute?: pulumi.Input<string>;
+    securityIpGroupAttribute?: pulumi.Input<string | undefined>;
     /**
      * The name of the whitelist group.
      */
-    securityIpGroupName?: pulumi.Input<string>;
+    securityIpGroupName?: pulumi.Input<string | undefined>;
     /**
      * The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards. **NOTE:** From version 1.216.0, `shardCount` can be modified.
      */
-    shardCount?: pulumi.Input<number>;
+    shardCount?: pulumi.Input<number | undefined>;
     /**
      * The number of read replicas in the secondary zone. **NOTE:**: When you create a multi-zone read/write splitting instance, you must specify both `secondaryZoneId` and `slaveReadOnlyCount`.
      * > **NOTE:** The sum of `readOnlyCount` and `slaveReadOnlyCount` cannot be greater than `9`.
      */
-    slaveReadOnlyCount?: pulumi.Input<number>;
+    slaveReadOnlyCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of the source instance.
      */
-    srcdbInstanceId?: pulumi.Input<string>;
+    srcdbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Modifies the SSL status. Valid values: `Disable`, `Enable` and `Update`.
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      */
-    sslEnable?: pulumi.Input<string>;
+    sslEnable?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
      * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects.
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * Only meaningful if instanceType is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      */
-    vpcAuthMode?: pulumi.Input<string>;
+    vpcAuthMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -48,43 +48,43 @@ __all__ = [
 ]
 
 class ClusterAdditionalVolumeArgsDict(TypedDict):
-    job_queue: NotRequired[pulumi.Input[_builtins.str]]
+    job_queue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The queue of the nodes to which the additional file system is attached.
     """
-    local_directory: NotRequired[pulumi.Input[_builtins.str]]
+    local_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The local directory on which the additional file system is mounted.
     """
-    location: NotRequired[pulumi.Input[_builtins.str]]
+    location: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the cluster. Valid value: `PublicCloud`.
     """
-    remote_directory: NotRequired[pulumi.Input[_builtins.str]]
+    remote_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The remote directory to which the additional file system is mounted.
     """
-    roles: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgsDict']]]]
+    roles: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]]
     """
     The roles. See `roles` below.
     """
-    volume_id: NotRequired[pulumi.Input[_builtins.str]]
+    volume_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the additional file system.
     """
-    volume_mount_option: NotRequired[pulumi.Input[_builtins.str]]
+    volume_mount_option: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount options of the file system.
     """
-    volume_mountpoint: NotRequired[pulumi.Input[_builtins.str]]
+    volume_mountpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount target of the additional file system.
     """
-    volume_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    volume_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
     """
-    volume_type: NotRequired[pulumi.Input[_builtins.str]]
+    volume_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the additional shared storage. Only NAS file systems are supported.
     """
@@ -92,16 +92,16 @@ class ClusterAdditionalVolumeArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterAdditionalVolumeArgs:
     def __init__(__self__, *,
-                 job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] job_queue: The queue of the nodes to which the additional file system is attached.
         :param pulumi.Input[_builtins.str] local_directory: The local directory on which the additional file system is mounted.
@@ -137,127 +137,127 @@ class ClusterAdditionalVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="jobQueue")
-    def job_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue of the nodes to which the additional file system is attached.
         """
         return pulumi.get(self, "job_queue")
 
     @job_queue.setter
-    def job_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_queue", value)
 
     @_builtins.property
     @pulumi.getter(name="localDirectory")
-    def local_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The local directory on which the additional file system is mounted.
         """
         return pulumi.get(self, "local_directory")
 
     @local_directory.setter
-    def local_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_directory", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cluster. Valid value: `PublicCloud`.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDirectory")
-    def remote_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote directory to which the additional file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
     @remote_directory.setter
-    def remote_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_directory", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]:
         """
         The roles. See `roles` below.
         """
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeRoleArgs']]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the additional file system.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountOption")
-    def volume_mount_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mount_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount options of the file system.
         """
         return pulumi.get(self, "volume_mount_option")
 
     @volume_mount_option.setter
-    def volume_mount_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mount_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mount_option", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountpoint")
-    def volume_mountpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mountpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount target of the additional file system.
         """
         return pulumi.get(self, "volume_mountpoint")
 
     @volume_mountpoint.setter
-    def volume_mountpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mountpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mountpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeProtocol")
-    def volume_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protocol that is used by the additional file system. Valid values: `NFS`, `SMB`. Default value: `NFS`
         """
         return pulumi.get(self, "volume_protocol")
 
     @volume_protocol.setter
-    def volume_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the additional shared storage. Only NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
 
 class ClusterAdditionalVolumeRoleArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the nodes to which the additional file system is attached.
     """
@@ -265,7 +265,7 @@ class ClusterAdditionalVolumeRoleArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterAdditionalVolumeRoleArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The type of the nodes to which the additional file system is attached.
         """
@@ -274,19 +274,19 @@ class ClusterAdditionalVolumeRoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the nodes to which the additional file system is attached.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 class ClusterApplicationArgsDict(TypedDict):
-    tag: NotRequired[pulumi.Input[_builtins.str]]
+    tag: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag of the software.
     """
@@ -294,7 +294,7 @@ class ClusterApplicationArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterApplicationArgs:
     def __init__(__self__, *,
-                 tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] tag: The tag of the software.
         """
@@ -303,23 +303,23 @@ class ClusterApplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag of the software.
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag", value)
 
 
 class ClusterPostInstallScriptArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[_builtins.str]]
+    args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameter that is used to run the script after the cluster is created.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URL that is used to download the script after the cluster is created.
     """
@@ -327,8 +327,8 @@ class ClusterPostInstallScriptArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterPostInstallScriptArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] args: The parameter that is used to run the script after the cluster is created.
         :param pulumi.Input[_builtins.str] url: The URL that is used to download the script after the cluster is created.
@@ -340,26 +340,26 @@ class ClusterPostInstallScriptArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameter that is used to run the script after the cluster is created.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL that is used to download the script after the cluster is created.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
 
@@ -372,11 +372,11 @@ class ClusterV2AddonArgsDict(TypedDict):
     """
     Customize the service component version.
     """
-    resources_spec: NotRequired[pulumi.Input[_builtins.str]]
+    resources_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customize the resource configuration of the service component.
     """
-    services_spec: NotRequired[pulumi.Input[_builtins.str]]
+    services_spec: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Customize the service configuration of the service component.
     """
@@ -386,8 +386,8 @@ class ClusterV2AddonArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 resources_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 services_spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 resources_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 services_spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Customize the specific configuration information of the service component.
         :param pulumi.Input[_builtins.str] version: Customize the service component version.
@@ -427,35 +427,35 @@ class ClusterV2AddonArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourcesSpec")
-    def resources_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resources_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the resource configuration of the service component.
         """
         return pulumi.get(self, "resources_spec")
 
     @resources_spec.setter
-    def resources_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resources_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resources_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="servicesSpec")
-    def services_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def services_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Customize the service configuration of the service component.
         """
         return pulumi.get(self, "services_spec")
 
     @services_spec.setter
-    def services_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def services_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "services_spec", value)
 
 
 class ClusterV2ClusterCredentialsArgsDict(TypedDict):
-    key_pair_name: NotRequired[pulumi.Input[_builtins.str]]
+    key_pair_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSH key of root of the cluster node.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
     """
@@ -463,8 +463,8 @@ class ClusterV2ClusterCredentialsArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterV2ClusterCredentialsArgs:
     def __init__(__self__, *,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key_pair_name: The SSH key of root of the cluster node.
         :param pulumi.Input[_builtins.str] password: The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
@@ -476,43 +476,43 @@ class ClusterV2ClusterCredentialsArgs:
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSH key of root of the cluster node.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
 class ClusterV2ManagerArgsDict(TypedDict):
-    directory_service: NotRequired[pulumi.Input['ClusterV2ManagerDirectoryServiceArgsDict']]
+    directory_service: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgs']]]
     """
     The configurations of the domain account service. See `directory_service` below.
     """
-    dns: NotRequired[pulumi.Input['ClusterV2ManagerDnsArgsDict']]
+    dns: NotRequired[pulumi.Input[Optional['ClusterV2ManagerDnsArgs']]]
     """
     The configurations of the domain name resolution service. See `dns` below.
     """
-    manager_node: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeArgsDict']]
+    manager_node: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgs']]]
     """
     The hardware configurations of the management node. See `manager_node` below.
     """
-    scheduler: NotRequired[pulumi.Input['ClusterV2ManagerSchedulerArgsDict']]
+    scheduler: NotRequired[pulumi.Input[Optional['ClusterV2ManagerSchedulerArgs']]]
     """
     The configurations of the scheduler service. See `scheduler` below.
     """
@@ -520,10 +520,10 @@ class ClusterV2ManagerArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterV2ManagerArgs:
     def __init__(__self__, *,
-                 directory_service: Optional[pulumi.Input['ClusterV2ManagerDirectoryServiceArgs']] = None,
-                 dns: Optional[pulumi.Input['ClusterV2ManagerDnsArgs']] = None,
-                 manager_node: Optional[pulumi.Input['ClusterV2ManagerManagerNodeArgs']] = None,
-                 scheduler: Optional[pulumi.Input['ClusterV2ManagerSchedulerArgs']] = None):
+                 directory_service: pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgs']] = None,
+                 dns: pulumi.Input[Optional['ClusterV2ManagerDnsArgs']] = None,
+                 manager_node: pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgs']] = None,
+                 scheduler: pulumi.Input[Optional['ClusterV2ManagerSchedulerArgs']] = None):
         """
         :param pulumi.Input['ClusterV2ManagerDirectoryServiceArgs'] directory_service: The configurations of the domain account service. See `directory_service` below.
         :param pulumi.Input['ClusterV2ManagerDnsArgs'] dns: The configurations of the domain name resolution service. See `dns` below.
@@ -541,55 +541,55 @@ class ClusterV2ManagerArgs:
 
     @_builtins.property
     @pulumi.getter(name="directoryService")
-    def directory_service(self) -> Optional[pulumi.Input['ClusterV2ManagerDirectoryServiceArgs']]:
+    def directory_service(self) -> pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgs']]:
         """
         The configurations of the domain account service. See `directory_service` below.
         """
         return pulumi.get(self, "directory_service")
 
     @directory_service.setter
-    def directory_service(self, value: Optional[pulumi.Input['ClusterV2ManagerDirectoryServiceArgs']]):
+    def directory_service(self, value: pulumi.Input[Optional['ClusterV2ManagerDirectoryServiceArgs']]):
         pulumi.set(self, "directory_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['ClusterV2ManagerDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['ClusterV2ManagerDnsArgs']]:
         """
         The configurations of the domain name resolution service. See `dns` below.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['ClusterV2ManagerDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['ClusterV2ManagerDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="managerNode")
-    def manager_node(self) -> Optional[pulumi.Input['ClusterV2ManagerManagerNodeArgs']]:
+    def manager_node(self) -> pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgs']]:
         """
         The hardware configurations of the management node. See `manager_node` below.
         """
         return pulumi.get(self, "manager_node")
 
     @manager_node.setter
-    def manager_node(self, value: Optional[pulumi.Input['ClusterV2ManagerManagerNodeArgs']]):
+    def manager_node(self, value: pulumi.Input[Optional['ClusterV2ManagerManagerNodeArgs']]):
         pulumi.set(self, "manager_node", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input['ClusterV2ManagerSchedulerArgs']]:
+    def scheduler(self) -> pulumi.Input[Optional['ClusterV2ManagerSchedulerArgs']]:
         """
         The configurations of the scheduler service. See `scheduler` below.
         """
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input['ClusterV2ManagerSchedulerArgs']]):
+    def scheduler(self, value: pulumi.Input[Optional['ClusterV2ManagerSchedulerArgs']]):
         pulumi.set(self, "scheduler", value)
 
 
 class ClusterV2ManagerDirectoryServiceArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scheduler type. Valid values:
 
@@ -599,13 +599,13 @@ class ClusterV2ManagerDirectoryServiceArgsDict(TypedDict):
     - LSF_PLUGIN
     - PBS_PLUGIN
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterV2ManagerDirectoryServiceArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The scheduler type. Valid values:
                
@@ -622,7 +622,7 @@ class ClusterV2ManagerDirectoryServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduler type. Valid values:
 
@@ -635,21 +635,21 @@ class ClusterV2ManagerDirectoryServiceArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ClusterV2ManagerDnsArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scheduler type. Valid values:
 
@@ -659,13 +659,13 @@ class ClusterV2ManagerDnsArgsDict(TypedDict):
     - LSF_PLUGIN
     - PBS_PLUGIN
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterV2ManagerDnsArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The scheduler type. Valid values:
                
@@ -682,7 +682,7 @@ class ClusterV2ManagerDnsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduler type. Valid values:
 
@@ -695,27 +695,27 @@ class ClusterV2ManagerDnsArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
     - true: Automatic renewal.
     - false: Do not renew automatically (default).
     """
-    auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
+    auto_renew_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The renewal duration of a single automatic renewal. Value range:
     - When PeriodUnit = Week: 1, 2, 3.
@@ -723,7 +723,7 @@ class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
 
     Default value: 1.
     """
-    duration: NotRequired[pulumi.Input[_builtins.int]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The duration of the preemptible instance, in hours. Value:
     - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
@@ -731,57 +731,57 @@ class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
 
     Default value: 1.
     """
-    enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_ht: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     EnableHT
     """
-    expired_time: NotRequired[pulumi.Input[_builtins.str]]
+    expired_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The expiration time of the management node.
     """
-    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    image_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ImageId
     """
-    instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance billing method of the management node. Valid values:
 
     - PostPaid: pay-as-you-go
     - PrePaid: subscription
     """
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance ID of the management node.
     """
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The instance type of the management node.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
     - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
     - When PeriodUnit = Month, the values of Period are 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 48, and 60.
     """
-    period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unit of duration of the year-to-month billing method. Value range:
     - Week.
     - Month (default).
     """
-    spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    spot_price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
     """
-    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    spot_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
     - NoSpot: normal pay-as-you-go instances (default).
     - SpotWithPriceLimit: set the upper limit price for the preemptible instance.
     - SpotAsPriceGo: The system automatically bids, following the actual price of the current market.
     """
-    system_disk: NotRequired[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgsDict']]
+    system_disk: NotRequired[pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']]]
     """
     System disk configuration of the management node. See `system_disk` below.
     """
@@ -789,20 +789,20 @@ class ClusterV2ManagerManagerNodeArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeArgs:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk: Optional[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgs']] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk: pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
                - true: Automatic renewal.
@@ -870,7 +870,7 @@ class ClusterV2ManagerManagerNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to automatically renew. This parameter takes effect only when the value of InstanceChargeType is PrePaid. Value range:
         - true: Automatic renewal.
@@ -879,12 +879,12 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The renewal duration of a single automatic renewal. Value range:
         - When PeriodUnit = Week: 1, 2, 3.
@@ -895,12 +895,12 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the preemptible instance, in hours. Value:
         - : After the instance is created, Alibaba Cloud will ensure that the instance will not be automatically released after one hour of operation. After one hour, the system will compare the bid price with the market price in real time and check the resource inventory to determine the holding and recycling of the instance.
@@ -911,48 +911,48 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHt")
-    def enable_ht(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         EnableHT
         """
         return pulumi.get(self, "enable_ht")
 
     @enable_ht.setter
-    def enable_ht(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ht(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ht", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration time of the management node.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ImageId
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance billing method of the management node. Valid values:
 
@@ -962,36 +962,36 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the management node.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the management node.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the resource purchase. The unit is specified by PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is a required value. Once DedicatedHostId is specified, the value range cannot exceed the subscription duration of the DDH. Value range:
         - When PeriodUnit = Week, the values of Period are 1, 2, 3, and 4.
@@ -1000,12 +1000,12 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of duration of the year-to-month billing method. Value range:
         - Week.
@@ -1014,24 +1014,24 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
         - NoSpot: normal pay-as-you-go instances (default).
@@ -1041,24 +1041,24 @@ class ClusterV2ManagerManagerNodeArgs:
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDisk")
-    def system_disk(self) -> Optional[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgs']]:
+    def system_disk(self) -> pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']]:
         """
         System disk configuration of the management node. See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
     @system_disk.setter
-    def system_disk(self, value: Optional[pulumi.Input['ClusterV2ManagerManagerNodeSystemDiskArgs']]):
+    def system_disk(self, value: pulumi.Input[Optional['ClusterV2ManagerManagerNodeSystemDiskArgs']]):
         pulumi.set(self, "system_disk", value)
 
 
 class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Manage the system disk configuration of the node. Value range:
     - cloud_efficiency: The Ultra cloud disk.
@@ -1066,7 +1066,7 @@ class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
     - cloud_essd:ESSD cloud disk.
     - cloud: ordinary cloud disk.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
     - PL0: maximum random read/write IOPS 10000 for a single disk.
@@ -1074,7 +1074,7 @@ class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
     - PL2: maximum random read/write IOPS 100000 for a single disk.
     - PL3: maximum random read/write IOPS 1 million for a single disk.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The system disk size of the management node. Unit: GiB. Value range:
     - Ordinary cloud tray: 20~500.
@@ -1089,9 +1089,9 @@ class ClusterV2ManagerManagerNodeSystemDiskArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterV2ManagerManagerNodeSystemDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Manage the system disk configuration of the node. Value range:
                - cloud_efficiency: The Ultra cloud disk.
@@ -1121,7 +1121,7 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Manage the system disk configuration of the node. Value range:
         - cloud_efficiency: The Ultra cloud disk.
@@ -1132,12 +1132,12 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
         - PL0: maximum random read/write IOPS 10000 for a single disk.
@@ -1148,12 +1148,12 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The system disk size of the management node. Unit: GiB. Value range:
         - Ordinary cloud tray: 20~500.
@@ -1167,12 +1167,12 @@ class ClusterV2ManagerManagerNodeSystemDiskArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class ClusterV2ManagerSchedulerArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The scheduler type. Valid values:
 
@@ -1182,13 +1182,13 @@ class ClusterV2ManagerSchedulerArgsDict(TypedDict):
     - LSF_PLUGIN
     - PBS_PLUGIN
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterV2ManagerSchedulerArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The scheduler type. Valid values:
                
@@ -1205,7 +1205,7 @@ class ClusterV2ManagerSchedulerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduler type. Valid values:
 
@@ -1218,41 +1218,41 @@ class ClusterV2ManagerSchedulerArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class ClusterV2SharedStorageArgsDict(TypedDict):
-    file_system_id: NotRequired[pulumi.Input[_builtins.str]]
+    file_system_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the mounted file system.
     """
-    mount_directory: NotRequired[pulumi.Input[_builtins.str]]
+    mount_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The local Mount directory where the file system is mounted.
     """
-    mount_options: NotRequired[pulumi.Input[_builtins.str]]
+    mount_options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Storage mount options for the mounted file system.
     """
-    mount_target_domain: NotRequired[pulumi.Input[_builtins.str]]
+    mount_target_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount point address of the mounted file system.
     """
-    nas_directory: NotRequired[pulumi.Input[_builtins.str]]
+    nas_directory: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The remote directory to which the mounted file system needs to be mounted.
     """
-    protocol_type: NotRequired[pulumi.Input[_builtins.str]]
+    protocol_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type of the mounted file system. Value range:
     - NFS
@@ -1262,12 +1262,12 @@ class ClusterV2SharedStorageArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterV2SharedStorageArgs:
     def __init__(__self__, *,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_target_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_target_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] file_system_id: The ID of the mounted file system.
         :param pulumi.Input[_builtins.str] mount_directory: The local Mount directory where the file system is mounted.
@@ -1293,67 +1293,67 @@ class ClusterV2SharedStorageArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the mounted file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountDirectory")
-    def mount_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The local Mount directory where the file system is mounted.
         """
         return pulumi.get(self, "mount_directory")
 
     @mount_directory.setter
-    def mount_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage mount options for the mounted file system.
         """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="mountTargetDomain")
-    def mount_target_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_target_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount point address of the mounted file system.
         """
         return pulumi.get(self, "mount_target_domain")
 
     @mount_target_domain.setter
-    def mount_target_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_target_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_target_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="nasDirectory")
-    def nas_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote directory to which the mounted file system needs to be mounted.
         """
         return pulumi.get(self, "nas_directory")
 
     @nas_directory.setter
-    def nas_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type of the mounted file system. Value range:
         - NFS
@@ -1362,56 +1362,56 @@ class ClusterV2SharedStorageArgs:
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
 
 class QueueComputeNodeArgsDict(TypedDict):
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     AutoRenew
     """
-    auto_renew_period: NotRequired[pulumi.Input[_builtins.int]]
+    auto_renew_period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     AutoRenewPeriod
     """
-    duration: NotRequired[pulumi.Input[_builtins.int]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Duration
     """
-    enable_ht: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_ht: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether HT is enabled for the computing node.
     """
-    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    image_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ImageId
     """
-    instance_charge_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_charge_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     InstanceChargeType
     """
-    instance_type: NotRequired[pulumi.Input[_builtins.str]]
+    instance_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     InstanceTypes
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Period
     """
-    period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PeriodUnit
     """
-    spot_price_limit: NotRequired[pulumi.Input[_builtins.float]]
+    spot_price_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     SpotPriceLimit
     """
-    spot_strategy: NotRequired[pulumi.Input[_builtins.str]]
+    spot_strategy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SpotStrategy
     """
-    system_disk: NotRequired[pulumi.Input['QueueComputeNodeSystemDiskArgsDict']]
+    system_disk: NotRequired[pulumi.Input[Optional['QueueComputeNodeSystemDiskArgs']]]
     """
     SystemDisk See `system_disk` below.
     """
@@ -1419,18 +1419,18 @@ class QueueComputeNodeArgsDict(TypedDict):
 @pulumi.input_type
 class QueueComputeNodeArgs:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_price_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk: Optional[pulumi.Input['QueueComputeNodeSystemDiskArgs']] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_price_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk: pulumi.Input[Optional['QueueComputeNodeSystemDiskArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_renew: AutoRenew
         :param pulumi.Input[_builtins.int] auto_renew_period: AutoRenewPeriod
@@ -1472,159 +1472,159 @@ class QueueComputeNodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         AutoRenew
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         AutoRenewPeriod
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHt")
-    def enable_ht(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether HT is enabled for the computing node.
         """
         return pulumi.get(self, "enable_ht")
 
     @enable_ht.setter
-    def enable_ht(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ht(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ht", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ImageId
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceChargeType
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceTypes
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Period
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PeriodUnit
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimit")
-    def spot_price_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def spot_price_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         SpotPriceLimit
         """
         return pulumi.get(self, "spot_price_limit")
 
     @spot_price_limit.setter
-    def spot_price_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def spot_price_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SpotStrategy
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDisk")
-    def system_disk(self) -> Optional[pulumi.Input['QueueComputeNodeSystemDiskArgs']]:
+    def system_disk(self) -> pulumi.Input[Optional['QueueComputeNodeSystemDiskArgs']]:
         """
         SystemDisk See `system_disk` below.
         """
         return pulumi.get(self, "system_disk")
 
     @system_disk.setter
-    def system_disk(self, value: Optional[pulumi.Input['QueueComputeNodeSystemDiskArgs']]):
+    def system_disk(self, value: pulumi.Input[Optional['QueueComputeNodeSystemDiskArgs']]):
         pulumi.set(self, "system_disk", value)
 
 
 class QueueComputeNodeSystemDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Category
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Level
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Size
     """
@@ -1632,9 +1632,9 @@ class QueueComputeNodeSystemDiskArgsDict(TypedDict):
 @pulumi.input_type
 class QueueComputeNodeSystemDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Category
         :param pulumi.Input[_builtins.str] level: Level
@@ -1649,38 +1649,38 @@ class QueueComputeNodeSystemDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Category
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Level
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 

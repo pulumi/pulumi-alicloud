@@ -162,7 +162,7 @@ export interface TransitRouteTableAggregationState {
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The destination CIDR block of the aggregate route.
      *
@@ -172,31 +172,31 @@ export interface TransitRouteTableAggregationState {
      *
      * > **NOTE:** *   Multicast CIDR blocks, including 224.0.0.1 to 239.255.255.254.
      */
-    transitRouteTableAggregationCidr?: pulumi.Input<string>;
+    transitRouteTableAggregationCidr?: pulumi.Input<string | undefined>;
     /**
      * The list of propagation ranges of the aggregation route.
      *
      * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
-    transitRouteTableAggregationDescription?: pulumi.Input<string>;
+    transitRouteTableAggregationDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the aggregate route.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    transitRouteTableAggregationName?: pulumi.Input<string>;
+    transitRouteTableAggregationName?: pulumi.Input<string | undefined>;
     /**
      * The scope of networks that you want to advertise the aggregate route.
      * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
-    transitRouteTableAggregationScope?: pulumi.Input<string>;
+    transitRouteTableAggregationScope?: pulumi.Input<string | undefined>;
     /**
      * Aggregation Route Scopes
      */
-    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of route table IDs of the Enterprise Edition transit router.
      */
-    transitRouteTableId?: pulumi.Input<string>;
+    transitRouteTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,21 +218,21 @@ export interface TransitRouteTableAggregationArgs {
      *
      * > **NOTE:**   You must specify at least one of the following attributes: Aggregation Scope and Aggregate Scope List. We recommend that you specify the latter. The elements in the two attributes cannot be duplicate.
      */
-    transitRouteTableAggregationDescription?: pulumi.Input<string>;
+    transitRouteTableAggregationDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the aggregate route.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    transitRouteTableAggregationName?: pulumi.Input<string>;
+    transitRouteTableAggregationName?: pulumi.Input<string | undefined>;
     /**
      * The scope of networks that you want to advertise the aggregate route.
      * The valid value is `VPC`, which indicates that the aggregate route is advertised to all VPCs that have associated forwarding correlation with the Enterprise Edition transit router and have route synchronization enabled.
      */
-    transitRouteTableAggregationScope?: pulumi.Input<string>;
+    transitRouteTableAggregationScope?: pulumi.Input<string | undefined>;
     /**
      * Aggregation Route Scopes
      */
-    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouteTableAggregationScopeLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of route table IDs of the Enterprise Edition transit router.
      */

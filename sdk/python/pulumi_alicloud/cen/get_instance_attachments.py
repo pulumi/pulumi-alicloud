@@ -177,11 +177,11 @@ def get_instance_attachments(child_instance_region_id: Optional[_builtins.str] =
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    child_instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_attachments_output(child_instance_region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    child_instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceAttachmentsResult]:
     """
     This data source provides Cen Instance Attachments of the current Alibaba Cloud User.

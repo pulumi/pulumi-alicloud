@@ -162,10 +162,10 @@ def get_delivery_channels(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_delivery_channels_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 status: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_delivery_channels_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 status: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeliveryChannelsResult]:
     """
     > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.173.0`.

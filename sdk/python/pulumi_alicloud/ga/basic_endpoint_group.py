@@ -21,11 +21,11 @@ class BasicEndpointGroupArgs:
     def __init__(__self__, *,
                  accelerator_id: pulumi.Input[_builtins.str],
                  endpoint_group_region: pulumi.Input[_builtins.str],
-                 basic_endpoint_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 basic_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicEndpointGroup resource.
 
@@ -76,76 +76,76 @@ class BasicEndpointGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicEndpointGroupName")
-    def basic_endpoint_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_endpoint_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "basic_endpoint_group_name")
 
     @basic_endpoint_group_name.setter
-    def basic_endpoint_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_endpoint_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_endpoint_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointAddress")
-    def endpoint_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the endpoint.
         """
         return pulumi.get(self, "endpoint_address")
 
     @endpoint_address.setter
-    def endpoint_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddress")
-    def endpoint_sub_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address of the endpoint.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
     @endpoint_sub_address.setter
-    def endpoint_sub_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
 
 @pulumi.input_type
 class _BasicEndpointGroupState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicEndpointGroup resources.
 
@@ -177,98 +177,98 @@ class _BasicEndpointGroupState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the basic GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="basicEndpointGroupName")
-    def basic_endpoint_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_endpoint_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "basic_endpoint_group_name")
 
     @basic_endpoint_group_name.setter
-    def basic_endpoint_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_endpoint_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_endpoint_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointAddress")
-    def endpoint_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the endpoint.
         """
         return pulumi.get(self, "endpoint_address")
 
     @endpoint_address.setter
-    def endpoint_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointGroupRegion")
-    def endpoint_group_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_group_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where you want to create the endpoint group.
         """
         return pulumi.get(self, "endpoint_group_region")
 
     @endpoint_group_region.setter
-    def endpoint_group_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_group_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_group_region", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddress")
-    def endpoint_sub_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address of the endpoint.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
     @endpoint_sub_address.setter
-    def endpoint_sub_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Basic Endpoint Group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -278,13 +278,13 @@ class BasicEndpointGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Endpoint Group resource.
@@ -445,13 +445,13 @@ class BasicEndpointGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -483,14 +483,14 @@ class BasicEndpointGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            basic_endpoint_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_group_region: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BasicEndpointGroup':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_endpoint_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_region: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BasicEndpointGroup':
         """
         Get an existing BasicEndpointGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

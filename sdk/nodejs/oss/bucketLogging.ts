@@ -136,19 +136,19 @@ export interface BucketLoggingState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Authorization role used for bucket logging
      */
-    loggingRole?: pulumi.Input<string>;
+    loggingRole?: pulumi.Input<string | undefined>;
     /**
      * The bucket that stores access logs.
      */
-    targetBucket?: pulumi.Input<string>;
+    targetBucket?: pulumi.Input<string | undefined>;
     /**
      * The prefix of the saved log objects. This element can be left empty.
      */
-    targetPrefix?: pulumi.Input<string>;
+    targetPrefix?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface BucketLoggingArgs {
     /**
      * Authorization role used for bucket logging
      */
-    loggingRole?: pulumi.Input<string>;
+    loggingRole?: pulumi.Input<string | undefined>;
     /**
      * The bucket that stores access logs.
      */
@@ -170,5 +170,5 @@ export interface BucketLoggingArgs {
     /**
      * The prefix of the saved log objects. This element can be left empty.
      */
-    targetPrefix?: pulumi.Input<string>;
+    targetPrefix?: pulumi.Input<string | undefined>;
 }

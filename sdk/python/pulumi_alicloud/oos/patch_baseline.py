@@ -22,14 +22,14 @@ class PatchBaselineArgs:
                  approval_rules: pulumi.Input[_builtins.str],
                  operation_system: pulumi.Input[_builtins.str],
                  patch_baseline_name: pulumi.Input[_builtins.str],
-                 approved_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approved_patches_enable_non_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rejected_patches_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PatchBaseline resource.
 
@@ -125,116 +125,116 @@ class PatchBaselineArgs:
 
     @_builtins.property
     @pulumi.getter(name="approvedPatches")
-    def approved_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def approved_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of approved patches.
         """
         return pulumi.get(self, "approved_patches")
 
     @approved_patches.setter
-    def approved_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def approved_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "approved_patches", value)
 
     @_builtins.property
     @pulumi.getter(name="approvedPatchesEnableNonSecurity")
-    def approved_patches_enable_non_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def approved_patches_enable_non_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether approved patches include updates other than security updates.
         """
         return pulumi.get(self, "approved_patches_enable_non_security")
 
     @approved_patches_enable_non_security.setter
-    def approved_patches_enable_non_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def approved_patches_enable_non_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "approved_patches_enable_non_security", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the patch baseline.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedPatches")
-    def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rejected_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rejected patches.
         """
         return pulumi.get(self, "rejected_patches")
 
     @rejected_patches.setter
-    def rejected_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rejected_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rejected_patches", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedPatchesAction")
-    def rejected_patches_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rejected_patches_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         return pulumi.get(self, "rejected_patches_action")
 
     @rejected_patches_action.setter
-    def rejected_patches_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rejected_patches_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rejected_patches_action", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of patch source configurations.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PatchBaselineState:
     def __init__(__self__, *,
-                 approval_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approved_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approved_patches_enable_non_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rejected_patches_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 approval_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PatchBaseline resources.
 
@@ -289,67 +289,67 @@ class _PatchBaselineState:
 
     @_builtins.property
     @pulumi.getter(name="approvalRules")
-    def approval_rules(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def approval_rules(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
         """
         return pulumi.get(self, "approval_rules")
 
     @approval_rules.setter
-    def approval_rules(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def approval_rules(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "approval_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="approvedPatches")
-    def approved_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def approved_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of approved patches.
         """
         return pulumi.get(self, "approved_patches")
 
     @approved_patches.setter
-    def approved_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def approved_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "approved_patches", value)
 
     @_builtins.property
     @pulumi.getter(name="approvedPatchesEnableNonSecurity")
-    def approved_patches_enable_non_security(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def approved_patches_enable_non_security(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether approved patches include updates other than security updates.
         """
         return pulumi.get(self, "approved_patches_enable_non_security")
 
     @approved_patches_enable_non_security.setter
-    def approved_patches_enable_non_security(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def approved_patches_enable_non_security(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "approved_patches_enable_non_security", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the patch baseline.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="operationSystem")
-    def operation_system(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_system(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Operating system type. Supported values:
         - Windows
@@ -367,79 +367,79 @@ class _PatchBaselineState:
         return pulumi.get(self, "operation_system")
 
     @operation_system.setter
-    def operation_system(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_system(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_system", value)
 
     @_builtins.property
     @pulumi.getter(name="patchBaselineName")
-    def patch_baseline_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def patch_baseline_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Patch baseline name.
         """
         return pulumi.get(self, "patch_baseline_name")
 
     @patch_baseline_name.setter
-    def patch_baseline_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def patch_baseline_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "patch_baseline_name", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedPatches")
-    def rejected_patches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def rejected_patches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of rejected patches.
         """
         return pulumi.get(self, "rejected_patches")
 
     @rejected_patches.setter
-    def rejected_patches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def rejected_patches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rejected_patches", value)
 
     @_builtins.property
     @pulumi.getter(name="rejectedPatchesAction")
-    def rejected_patches_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rejected_patches_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
         """
         return pulumi.get(self, "rejected_patches_action")
 
     @rejected_patches_action.setter
-    def rejected_patches_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rejected_patches_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rejected_patches_action", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of patch source configurations.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A key-value map of tags. The number of key-value pairs must be between 1 and 20.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -449,17 +449,17 @@ class PatchBaseline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approved_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approved_patches_enable_non_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rejected_patches_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 approval_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Operation Orchestration Service (OOS) Patch Baseline resource.
@@ -579,17 +579,17 @@ class PatchBaseline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 approval_rules: Optional[pulumi.Input[_builtins.str]] = None,
-                 approved_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 approved_patches_enable_non_security: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_system: Optional[pulumi.Input[_builtins.str]] = None,
-                 patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rejected_patches_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 approval_rules: pulumi.Input[Optional[_builtins.str]] = None,
+                 approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_system: pulumi.Input[Optional[_builtins.str]] = None,
+                 patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -627,18 +627,18 @@ class PatchBaseline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            approval_rules: Optional[pulumi.Input[_builtins.str]] = None,
-            approved_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            approved_patches_enable_non_security: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_system: Optional[pulumi.Input[_builtins.str]] = None,
-            patch_baseline_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rejected_patches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rejected_patches_action: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'PatchBaseline':
+            approval_rules: pulumi.Input[Optional[_builtins.str]] = None,
+            approved_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            approved_patches_enable_non_security: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_system: pulumi.Input[Optional[_builtins.str]] = None,
+            patch_baseline_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rejected_patches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rejected_patches_action: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'PatchBaseline':
         """
         Get an existing PatchBaseline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

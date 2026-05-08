@@ -25,8 +25,8 @@ class ForwardingRuleArgs:
                  listener_id: pulumi.Input[_builtins.str],
                  rule_actions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]],
                  rule_conditions: pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]],
-                 forwarding_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None):
+                 forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ForwardingRule resource.
 
@@ -96,40 +96,40 @@ class ForwardingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleName")
-    def forwarding_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         """
         return pulumi.get(self, "forwarding_rule_name")
 
     @forwarding_rule_name.setter
-    def forwarding_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Forwarding policy priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
 
 @pulumi.input_type
 class _ForwardingRuleState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]] = None):
         """
         Input properties used for looking up and filtering ForwardingRule resources.
 
@@ -161,98 +161,98 @@ class _ForwardingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Global Accelerator instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleId")
-    def forwarding_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_id")
 
     @forwarding_rule_id.setter
-    def forwarding_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleName")
-    def forwarding_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
         """
         return pulumi.get(self, "forwarding_rule_name")
 
     @forwarding_rule_name.setter
-    def forwarding_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRuleStatus")
-    def forwarding_rule_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forwarding_rule_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Forwarding Rule.
         """
         return pulumi.get(self, "forwarding_rule_status")
 
     @forwarding_rule_status.setter
-    def forwarding_rule_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forwarding_rule_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forwarding_rule_status", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Forwarding policy priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleActions")
-    def rule_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]:
+    def rule_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]:
         """
         Forward action. See `rule_actions` below.
         """
         return pulumi.get(self, "rule_actions")
 
     @rule_actions.setter
-    def rule_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]):
+    def rule_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleActionArgs']]]]):
         pulumi.set(self, "rule_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleConditions")
-    def rule_conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]:
+    def rule_conditions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]:
         """
         Forwarding condition list. See `rule_conditions` below.
         """
         return pulumi.get(self, "rule_conditions")
 
     @rule_conditions.setter
-    def rule_conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]):
+    def rule_conditions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ForwardingRuleRuleConditionArgs']]]]):
         pulumi.set(self, "rule_conditions", value)
 
 
@@ -262,12 +262,12 @@ class ForwardingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Forwarding Rule resource.
@@ -541,12 +541,12 @@ class ForwardingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 forwarding_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-                 rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+                 rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -582,14 +582,14 @@ class ForwardingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            forwarding_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            forwarding_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            forwarding_rule_status: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
-            rule_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None) -> 'ForwardingRule':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            forwarding_rule_status: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleActionArgs', 'ForwardingRuleRuleActionArgsDict']]]]] = None,
+            rule_conditions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ForwardingRuleRuleConditionArgs', 'ForwardingRuleRuleConditionArgsDict']]]]] = None) -> 'ForwardingRule':
         """
         Get an existing ForwardingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

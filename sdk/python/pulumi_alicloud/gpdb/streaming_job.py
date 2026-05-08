@@ -22,24 +22,24 @@ class StreamingJobArgs:
                  data_source_id: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
                  job_name: pulumi.Input[_builtins.str],
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dest_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_limit_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 try_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 update_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StreamingJob resource.
 
@@ -163,19 +163,19 @@ class StreamingJobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def consistency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consistency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delivery guarantee setting.
 
@@ -187,132 +187,132 @@ class StreamingJobArgs:
         return pulumi.get(self, "consistency")
 
     @consistency.setter
-    def consistency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consistency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consistency", value)
 
     @_builtins.property
     @pulumi.getter(name="destColumns")
-    def dest_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dest_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Target Field
         """
         return pulumi.get(self, "dest_columns")
 
     @dest_columns.setter
-    def dest_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dest_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dest_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="destDatabase")
-    def dest_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination database.
         """
         return pulumi.get(self, "dest_database")
 
     @dest_database.setter
-    def dest_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_database", value)
 
     @_builtins.property
     @pulumi.getter(name="destSchema")
-    def dest_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target Schema
         """
         return pulumi.get(self, "dest_schema")
 
     @dest_schema.setter
-    def dest_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="destTable")
-    def dest_table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination table.
         """
         return pulumi.get(self, "dest_table")
 
     @dest_table.setter
-    def dest_table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_table", value)
 
     @_builtins.property
     @pulumi.getter(name="errorLimitCount")
-    def error_limit_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def error_limit_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
         """
         return pulumi.get(self, "error_limit_count")
 
     @error_limit_count.setter
-    def error_limit_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def error_limit_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "error_limit_count", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackOffset")
-    def fallback_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic offset reset
         """
         return pulumi.get(self, "fallback_offset")
 
     @fallback_offset.setter
-    def fallback_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_offset", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group Name
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="jobConfig")
-    def job_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         """
         return pulumi.get(self, "job_config")
 
     @job_config.setter
-    def job_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_config", value)
 
     @_builtins.property
     @pulumi.getter(name="jobDescription")
-    def job_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the job.
         """
         return pulumi.get(self, "job_description")
 
     @job_description.setter
-    def job_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_description", value)
 
     @_builtins.property
     @pulumi.getter(name="matchColumns")
-    def match_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match Field
         """
         return pulumi.get(self, "match_columns")
 
     @match_columns.setter
-    def match_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration mode. Valid values:
 
@@ -323,36 +323,36 @@ class StreamingJobArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="srcColumns")
-    def src_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def src_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Source Field
         """
         return pulumi.get(self, "src_columns")
 
     @src_columns.setter
-    def src_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def src_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="tryRun")
-    def try_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def try_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to test the real-time job. Valid values:
 
@@ -364,24 +364,24 @@ class StreamingJobArgs:
         return pulumi.get(self, "try_run")
 
     @try_run.setter
-    def try_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def try_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "try_run", value)
 
     @_builtins.property
     @pulumi.getter(name="updateColumns")
-    def update_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def update_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Update Field
         """
         return pulumi.get(self, "update_columns")
 
     @update_columns.setter
-    def update_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def update_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "update_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="writeMode")
-    def write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The write mode.
 
@@ -394,37 +394,37 @@ class StreamingJobArgs:
         return pulumi.get(self, "write_mode")
 
     @write_mode.setter
-    def write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "write_mode", value)
 
 
 @pulumi.input_type
 class _StreamingJobState:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dest_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_limit_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 try_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 update_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StreamingJob resources.
 
@@ -524,19 +524,19 @@ class _StreamingJobState:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database account.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter
-    def consistency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def consistency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delivery guarantee setting.
 
@@ -548,192 +548,192 @@ class _StreamingJobState:
         return pulumi.get(self, "consistency")
 
     @consistency.setter
-    def consistency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def consistency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "consistency", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source ID.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destColumns")
-    def dest_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def dest_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Target Field
         """
         return pulumi.get(self, "dest_columns")
 
     @dest_columns.setter
-    def dest_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def dest_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dest_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="destDatabase")
-    def dest_database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination database.
         """
         return pulumi.get(self, "dest_database")
 
     @dest_database.setter
-    def dest_database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_database", value)
 
     @_builtins.property
     @pulumi.getter(name="destSchema")
-    def dest_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target Schema
         """
         return pulumi.get(self, "dest_schema")
 
     @dest_schema.setter
-    def dest_schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_schema", value)
 
     @_builtins.property
     @pulumi.getter(name="destTable")
-    def dest_table(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest_table(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the destination table.
         """
         return pulumi.get(self, "dest_table")
 
     @dest_table.setter
-    def dest_table(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest_table(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest_table", value)
 
     @_builtins.property
     @pulumi.getter(name="errorLimitCount")
-    def error_limit_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def error_limit_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of allowed error rows. Write failures occur when Kafka data does not match the destination table in AnalyticDB for PostgreSQL. If the specified value is exceeded, the job fails.
         """
         return pulumi.get(self, "error_limit_count")
 
     @error_limit_count.setter
-    def error_limit_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def error_limit_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "error_limit_count", value)
 
     @_builtins.property
     @pulumi.getter(name="fallbackOffset")
-    def fallback_offset(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fallback_offset(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic offset reset
         """
         return pulumi.get(self, "fallback_offset")
 
     @fallback_offset.setter
-    def fallback_offset(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fallback_offset(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fallback_offset", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Group Name
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="jobConfig")
-    def job_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The YAML configuration file of the job. This parameter must be specified when Mode is set to professional.
         """
         return pulumi.get(self, "job_config")
 
     @job_config.setter
-    def job_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_config", value)
 
     @_builtins.property
     @pulumi.getter(name="jobDescription")
-    def job_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the job.
         """
         return pulumi.get(self, "job_description")
 
     @job_description.setter
-    def job_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_description", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The job ID.
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobName")
-    def job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the job.
         """
         return pulumi.get(self, "job_name")
 
     @job_name.setter
-    def job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="matchColumns")
-    def match_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Match Field
         """
         return pulumi.get(self, "match_columns")
 
     @match_columns.setter
-    def match_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration mode. Valid values:
 
@@ -744,48 +744,48 @@ class _StreamingJobState:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="srcColumns")
-    def src_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def src_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Source Field
         """
         return pulumi.get(self, "src_columns")
 
     @src_columns.setter
-    def src_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def src_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "src_columns", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service status, value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tryRun")
-    def try_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def try_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to test the real-time job. Valid values:
 
@@ -797,24 +797,24 @@ class _StreamingJobState:
         return pulumi.get(self, "try_run")
 
     @try_run.setter
-    def try_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def try_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "try_run", value)
 
     @_builtins.property
     @pulumi.getter(name="updateColumns")
-    def update_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def update_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Update Field
         """
         return pulumi.get(self, "update_columns")
 
     @update_columns.setter
-    def update_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def update_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "update_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="writeMode")
-    def write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The write mode.
 
@@ -827,7 +827,7 @@ class _StreamingJobState:
         return pulumi.get(self, "write_mode")
 
     @write_mode.setter
-    def write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "write_mode", value)
 
 
@@ -837,27 +837,27 @@ class StreamingJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dest_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_limit_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 try_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 update_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Streaming Job resource.
@@ -919,7 +919,7 @@ class StreamingJob(pulumi.CustomResource):
             }),
             data_source_type="kafka",
             data_source_description="example",
-            service_id=default2d_usz_y.service_id)
+            service_id=default2d_usz_y.service_id.apply(lambda x: int(x)))
         default = alicloud.gpdb.StreamingJob("default",
             account="example_001",
             dest_schema="public",
@@ -1103,7 +1103,7 @@ class StreamingJob(pulumi.CustomResource):
             }),
             data_source_type="kafka",
             data_source_description="example",
-            service_id=default2d_usz_y.service_id)
+            service_id=default2d_usz_y.service_id.apply(lambda x: int(x)))
         default = alicloud.gpdb.StreamingJob("default",
             account="example_001",
             dest_schema="public",
@@ -1192,27 +1192,27 @@ class StreamingJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dest_database: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest_table: Optional[pulumi.Input[_builtins.str]] = None,
-                 error_limit_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 fallback_offset: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 src_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 try_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 update_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 write_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+                 error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 write_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1262,30 +1262,30 @@ class StreamingJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account: Optional[pulumi.Input[_builtins.str]] = None,
-            consistency: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dest_database: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_schema: Optional[pulumi.Input[_builtins.str]] = None,
-            dest_table: Optional[pulumi.Input[_builtins.str]] = None,
-            error_limit_count: Optional[pulumi.Input[_builtins.int]] = None,
-            fallback_offset: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            job_config: Optional[pulumi.Input[_builtins.str]] = None,
-            job_description: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            match_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            src_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            try_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            update_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            write_mode: Optional[pulumi.Input[_builtins.str]] = None) -> 'StreamingJob':
+            account: pulumi.Input[Optional[_builtins.str]] = None,
+            consistency: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dest_database: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_schema: pulumi.Input[Optional[_builtins.str]] = None,
+            dest_table: pulumi.Input[Optional[_builtins.str]] = None,
+            error_limit_count: pulumi.Input[Optional[_builtins.int]] = None,
+            fallback_offset: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_config: pulumi.Input[Optional[_builtins.str]] = None,
+            job_description: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            match_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            src_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            try_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            update_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            write_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'StreamingJob':
         """
         Get an existing StreamingJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

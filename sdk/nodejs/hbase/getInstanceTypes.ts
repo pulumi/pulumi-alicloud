@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *     instanceType: "hbase.sn2.large",
  *     diskType: "cloud_ssd",
  * });
- * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: output(_default.then(_default => _default.types?.[0]?.id)).apply(x =>String(x))});
  * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
@@ -144,7 +144,7 @@ export interface GetInstanceTypesResult {
  *     instanceType: "hbase.sn2.large",
  *     diskType: "cloud_ssd",
  * });
- * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: _default.then(_default => _default.types?.[0]?.id)});
+ * const hbase = new alicloud.hbase.Instance("hbase", {coreInstanceType: output(_default.then(_default => _default.types?.[0]?.id)).apply(x =>String(x))});
  * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTypesResult> {
@@ -169,33 +169,33 @@ export interface GetInstanceTypesOutputArgs {
     /**
      * The charge type of create hbase cluster instance, `PrePaid` or `PostPaid`.
      */
-    chargeType?: pulumi.Input<string>;
+    chargeType?: pulumi.Input<string | undefined>;
     /**
      * The disk type, `cloudSsd`, `cloudEssdPl1`, `cloudEfficiency`, `localHddPro`, `localSsdPro`.
      */
-    diskType?: pulumi.Input<string>;
+    diskType?: pulumi.Input<string | undefined>;
     /**
      * The engine name, `singlehbase`, `hbase`, `hbaseue`, `bds`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The hbase instance type of create hbase cluster instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The dest region id, default client region.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The engine version, singlehbase/hbase=1.1/2.0, bds=1.0.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The zone id, belong to regionId.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

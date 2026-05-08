@@ -275,71 +275,71 @@ export interface GatewayBlockVolumeState {
     /**
      * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
-    cacheMode?: pulumi.Input<string>;
+    cacheMode?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
      */
-    chapEnabled?: pulumi.Input<boolean>;
+    chapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    chapInPassword?: pulumi.Input<string>;
+    chapInPassword?: pulumi.Input<string | undefined>;
     /**
      * The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    chapInUser?: pulumi.Input<string>;
+    chapInUser?: pulumi.Input<string | undefined>;
     /**
      * The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
      */
-    chunkSize?: pulumi.Input<number>;
+    chunkSize?: pulumi.Input<number | undefined>;
     /**
      * The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
      */
-    gatewayBlockVolumeName?: pulumi.Input<string>;
+    gatewayBlockVolumeName?: pulumi.Input<string | undefined>;
     /**
      * The Gateway ID.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the index.
      */
-    indexId?: pulumi.Input<string>;
+    indexId?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      */
-    isSourceDeletion?: pulumi.Input<boolean>;
+    isSourceDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      */
-    localPath?: pulumi.Input<string>;
+    localPath?: pulumi.Input<string | undefined>;
     /**
      * The name of the OSS Bucket.
      */
-    ossBucketName?: pulumi.Input<string>;
+    ossBucketName?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable SSL access your OSS Buckets. Default value: `true`.
      */
-    ossBucketSsl?: pulumi.Input<boolean>;
+    ossBucketSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint of the OSS Bucket.
      */
-    ossEndpoint?: pulumi.Input<string>;
+    ossEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The Protocol. Valid values: `iSCSI`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The recovery.
      */
-    recovery?: pulumi.Input<boolean>;
+    recovery?: pulumi.Input<boolean | undefined>;
     /**
      * The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The status of volume. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -349,23 +349,23 @@ export interface GatewayBlockVolumeArgs {
     /**
      * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      */
-    cacheMode?: pulumi.Input<string>;
+    cacheMode?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
      */
-    chapEnabled?: pulumi.Input<boolean>;
+    chapEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    chapInPassword?: pulumi.Input<string>;
+    chapInPassword?: pulumi.Input<string | undefined>;
     /**
      * The Inbound CHAP user. The `chapInUser` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chapEnabled` is  `true` is,The `chapInPassword` is valid.
      */
-    chapInUser?: pulumi.Input<string>;
+    chapInUser?: pulumi.Input<string | undefined>;
     /**
      * The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
      */
-    chunkSize?: pulumi.Input<number>;
+    chunkSize?: pulumi.Input<number | undefined>;
     /**
      * The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
      */
@@ -377,11 +377,11 @@ export interface GatewayBlockVolumeArgs {
     /**
      * Whether to delete the source data. Default value `true`. **NOTE:** When `isSourceDeletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      */
-    isSourceDeletion?: pulumi.Input<boolean>;
+    isSourceDeletion?: pulumi.Input<boolean | undefined>;
     /**
      * The Cache disk to local path. **NOTE:**  When the `cacheMode` is  `Cache` is,The `chapInPassword` is valid.
      */
-    localPath?: pulumi.Input<string>;
+    localPath?: pulumi.Input<string | undefined>;
     /**
      * The name of the OSS Bucket.
      */
@@ -389,7 +389,7 @@ export interface GatewayBlockVolumeArgs {
     /**
      * Whether to enable SSL access your OSS Buckets. Default value: `true`.
      */
-    ossBucketSsl?: pulumi.Input<boolean>;
+    ossBucketSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint of the OSS Bucket.
      */
@@ -401,9 +401,9 @@ export interface GatewayBlockVolumeArgs {
     /**
      * The recovery.
      */
-    recovery?: pulumi.Input<boolean>;
+    recovery?: pulumi.Input<boolean | undefined>;
     /**
      * The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
 }

@@ -21,19 +21,19 @@ class EcsImagePipelineArgs:
     def __init__(__self__, *,
                  base_image: pulumi.Input[_builtins.str],
                  base_image_type: pulumi.Input[_builtins.str],
-                 add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 build_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_instance_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 build_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsImagePipeline resource.
 
@@ -112,179 +112,179 @@ class EcsImagePipelineArgs:
 
     @_builtins.property
     @pulumi.getter(name="addAccounts")
-    def add_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def add_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of Alibaba Cloud account to which to share the created image.
         """
         return pulumi.get(self, "add_accounts")
 
     @add_accounts.setter
-    def add_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def add_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "add_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="buildContent")
-    def build_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
         """
         return pulumi.get(self, "build_content")
 
     @build_content.setter
-    def build_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_content", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteInstanceOnFailure")
-    def delete_instance_on_failure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_instance_on_failure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the intermediate instance if the image cannot be created.
         """
         return pulumi.get(self, "delete_instance_on_failure")
 
     @delete_instance_on_failure.setter
-    def delete_instance_on_failure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_instance_on_failure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_instance_on_failure", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="toRegionIds")
-    def to_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def to_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of region to which to distribute the created image.
         """
         return pulumi.get(self, "to_region_ids")
 
     @to_region_ids.setter
-    def to_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def to_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "to_region_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _EcsImagePipelineState:
     def __init__(__self__, *,
-                 add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 base_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_image_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_instance_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 base_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_image_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsImagePipeline resources.
 
@@ -339,31 +339,31 @@ class _EcsImagePipelineState:
 
     @_builtins.property
     @pulumi.getter(name="addAccounts")
-    def add_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def add_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of Alibaba Cloud account to which to share the created image.
         """
         return pulumi.get(self, "add_accounts")
 
     @add_accounts.setter
-    def add_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def add_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "add_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="baseImage")
-    def base_image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source image. When you set `base_image_type` to `IMAGE`, set `base_image` to the ID of a custom image. When you set `base_image_type` to `IMAGE_FAMILY`, set `base_image` to the name of an image family.
         """
         return pulumi.get(self, "base_image")
 
     @base_image.setter
-    def base_image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_image", value)
 
     @_builtins.property
     @pulumi.getter(name="baseImageType")
-    def base_image_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_image_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the source image. Valid values: `IMAGE`, `IMAGE_FAMILY`.
         - IMAGE: custom image.
@@ -372,151 +372,151 @@ class _EcsImagePipelineState:
         return pulumi.get(self, "base_image_type")
 
     @base_image_type.setter
-    def base_image_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_image_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_image_type", value)
 
     @_builtins.property
     @pulumi.getter(name="buildContent")
-    def build_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def build_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
         """
         return pulumi.get(self, "build_content")
 
     @build_content.setter
-    def build_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def build_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "build_content", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteInstanceOnFailure")
-    def delete_instance_on_failure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_instance_on_failure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to release the intermediate instance if the image cannot be created.
         """
         return pulumi.get(self, "delete_instance_on_failure")
 
     @delete_instance_on_failure.setter
-    def delete_instance_on_failure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_instance_on_failure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_instance_on_failure", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="toRegionIds")
-    def to_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def to_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of region to which to distribute the created image.
         """
         return pulumi.get(self, "to_region_ids")
 
     @to_region_ids.setter
-    def to_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def to_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "to_region_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -526,21 +526,21 @@ class EcsImagePipeline(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 base_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_image_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_instance_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 base_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_image_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Image Pipeline resource.
@@ -713,21 +713,21 @@ class EcsImagePipeline(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 base_image: Optional[pulumi.Input[_builtins.str]] = None,
-                 base_image_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_instance_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 base_image: pulumi.Input[Optional[_builtins.str]] = None,
+                 base_image_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -766,21 +766,21 @@ class EcsImagePipeline(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            add_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            base_image: Optional[pulumi.Input[_builtins.str]] = None,
-            base_image_type: Optional[pulumi.Input[_builtins.str]] = None,
-            build_content: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_instance_on_failure: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            to_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsImagePipeline':
+            add_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            base_image: pulumi.Input[Optional[_builtins.str]] = None,
+            base_image_type: pulumi.Input[Optional[_builtins.str]] = None,
+            build_content: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_instance_on_failure: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            to_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsImagePipeline':
         """
         Get an existing EcsImagePipeline resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

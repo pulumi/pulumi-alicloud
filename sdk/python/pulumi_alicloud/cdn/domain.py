@@ -23,22 +23,22 @@ class DomainArgs:
     def __init__(__self__, *,
                  cdn_type: pulumi.Input[_builtins.str],
                  domain_name: pulumi.Input[_builtins.str],
-                 auth_config: Optional[pulumi.Input['DomainAuthConfigArgs']] = None,
-                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
-                 certificate_config: Optional[pulumi.Input['DomainCertificateConfigArgs']] = None,
-                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]] = None,
-                 optimize_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 page404_config: Optional[pulumi.Input['DomainPage404ConfigArgs']] = None,
-                 page_compress_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_filter_config: Optional[pulumi.Input['DomainParameterFilterConfigArgs']] = None,
-                 range_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 refer_config: Optional[pulumi.Input['DomainReferConfigArgs']] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_config: pulumi.Input[Optional['DomainAuthConfigArgs']] = None,
+                 block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
+                 certificate_config: pulumi.Input[Optional['DomainCertificateConfigArgs']] = None,
+                 http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]] = None,
+                 optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 page404_config: pulumi.Input[Optional['DomainPage404ConfigArgs']] = None,
+                 page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_filter_config: pulumi.Input[Optional['DomainParameterFilterConfigArgs']] = None,
+                 range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 refer_config: pulumi.Input[Optional['DomainReferConfigArgs']] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
         """
@@ -143,184 +143,184 @@ class DomainArgs:
     @_builtins.property
     @pulumi.getter(name="authConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
+    def auth_config(self) -> pulumi.Input[Optional['DomainAuthConfigArgs']]:
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['DomainAuthConfigArgs']]):
+    def auth_config(self, value: pulumi.Input[Optional['DomainAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="blockIps")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def block_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def block_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "block_ips")
 
     @block_ips.setter
-    def block_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def block_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "block_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheConfigs")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
+    def cache_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
-    def cache_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]):
+    def cache_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]):
         pulumi.set(self, "cache_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def certificate_config(self) -> Optional[pulumi.Input['DomainCertificateConfigArgs']]:
+    def certificate_config(self) -> pulumi.Input[Optional['DomainCertificateConfigArgs']]:
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
-    def certificate_config(self, value: Optional[pulumi.Input['DomainCertificateConfigArgs']]):
+    def certificate_config(self, value: pulumi.Input[Optional['DomainCertificateConfigArgs']]):
         pulumi.set(self, "certificate_config", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaderConfigs")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
+    def http_header_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
-    def http_header_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]):
+    def http_header_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]):
         pulumi.set(self, "http_header_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def optimize_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def optimize_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
-    def optimize_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def optimize_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "optimize_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="page404Config")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
+    def page404_config(self) -> pulumi.Input[Optional['DomainPage404ConfigArgs']]:
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
-    def page404_config(self, value: Optional[pulumi.Input['DomainPage404ConfigArgs']]):
+    def page404_config(self, value: pulumi.Input[Optional['DomainPage404ConfigArgs']]):
         pulumi.set(self, "page404_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pageCompressEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def page_compress_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page_compress_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
-    def page_compress_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page_compress_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page_compress_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterFilterConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
+    def parameter_filter_config(self) -> pulumi.Input[Optional['DomainParameterFilterConfigArgs']]:
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
-    def parameter_filter_config(self, value: Optional[pulumi.Input['DomainParameterFilterConfigArgs']]):
+    def parameter_filter_config(self, value: pulumi.Input[Optional['DomainParameterFilterConfigArgs']]):
         pulumi.set(self, "parameter_filter_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rangeEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def range_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def range_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
-    def range_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def range_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "range_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="referConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
+    def refer_config(self) -> pulumi.Input[Optional['DomainReferConfigArgs']]:
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
-    def refer_config(self, value: Optional[pulumi.Input['DomainReferConfigArgs']]):
+    def refer_config(self, value: pulumi.Input[Optional['DomainReferConfigArgs']]):
         pulumi.set(self, "refer_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` block `port` argument instead.""")
-    def source_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def source_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "source_port")
 
     @source_port.setter
-    def source_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def source_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "source_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` block `type` argument instead.""")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` argument instead.""")
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter(name="videoSeekEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def video_seek_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_seek_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
-    def video_seek_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_seek_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_seek_enable", value)
 
 
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 auth_config: Optional[pulumi.Input['DomainAuthConfigArgs']] = None,
-                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input['DomainCertificateConfigArgs']] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]] = None,
-                 optimize_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 page404_config: Optional[pulumi.Input['DomainPage404ConfigArgs']] = None,
-                 page_compress_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_filter_config: Optional[pulumi.Input['DomainParameterFilterConfigArgs']] = None,
-                 range_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 refer_config: Optional[pulumi.Input['DomainReferConfigArgs']] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_config: pulumi.Input[Optional['DomainAuthConfigArgs']] = None,
+                 block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]] = None,
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional['DomainCertificateConfigArgs']] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]] = None,
+                 optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 page404_config: pulumi.Input[Optional['DomainPage404ConfigArgs']] = None,
+                 page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_filter_config: pulumi.Input[Optional['DomainParameterFilterConfigArgs']] = None,
+                 range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 refer_config: pulumi.Input[Optional['DomainReferConfigArgs']] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
         """
@@ -409,178 +409,178 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter(name="authConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def auth_config(self) -> Optional[pulumi.Input['DomainAuthConfigArgs']]:
+    def auth_config(self) -> pulumi.Input[Optional['DomainAuthConfigArgs']]:
         return pulumi.get(self, "auth_config")
 
     @auth_config.setter
-    def auth_config(self, value: Optional[pulumi.Input['DomainAuthConfigArgs']]):
+    def auth_config(self, value: pulumi.Input[Optional['DomainAuthConfigArgs']]):
         pulumi.set(self, "auth_config", value)
 
     @_builtins.property
     @pulumi.getter(name="blockIps")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def block_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def block_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "block_ips")
 
     @block_ips.setter
-    def block_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def block_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "block_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="cacheConfigs")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def cache_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
+    def cache_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]:
         return pulumi.get(self, "cache_configs")
 
     @cache_configs.setter
-    def cache_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]):
+    def cache_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainCacheConfigArgs']]]]):
         pulumi.set(self, "cache_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="cdnType")
-    def cdn_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cdn_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cdn_type")
 
     @cdn_type.setter
-    def cdn_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cdn_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cdn_type", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def certificate_config(self) -> Optional[pulumi.Input['DomainCertificateConfigArgs']]:
+    def certificate_config(self) -> pulumi.Input[Optional['DomainCertificateConfigArgs']]:
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
-    def certificate_config(self, value: Optional[pulumi.Input['DomainCertificateConfigArgs']]):
+    def certificate_config(self, value: pulumi.Input[Optional['DomainCertificateConfigArgs']]):
         pulumi.set(self, "certificate_config", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHeaderConfigs")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def http_header_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
+    def http_header_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]:
         return pulumi.get(self, "http_header_configs")
 
     @http_header_configs.setter
-    def http_header_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]):
+    def http_header_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainHttpHeaderConfigArgs']]]]):
         pulumi.set(self, "http_header_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="optimizeEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def optimize_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def optimize_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "optimize_enable")
 
     @optimize_enable.setter
-    def optimize_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def optimize_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "optimize_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="page404Config")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def page404_config(self) -> Optional[pulumi.Input['DomainPage404ConfigArgs']]:
+    def page404_config(self) -> pulumi.Input[Optional['DomainPage404ConfigArgs']]:
         return pulumi.get(self, "page404_config")
 
     @page404_config.setter
-    def page404_config(self, value: Optional[pulumi.Input['DomainPage404ConfigArgs']]):
+    def page404_config(self, value: pulumi.Input[Optional['DomainPage404ConfigArgs']]):
         pulumi.set(self, "page404_config", value)
 
     @_builtins.property
     @pulumi.getter(name="pageCompressEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def page_compress_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page_compress_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "page_compress_enable")
 
     @page_compress_enable.setter
-    def page_compress_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page_compress_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page_compress_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterFilterConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def parameter_filter_config(self) -> Optional[pulumi.Input['DomainParameterFilterConfigArgs']]:
+    def parameter_filter_config(self) -> pulumi.Input[Optional['DomainParameterFilterConfigArgs']]:
         return pulumi.get(self, "parameter_filter_config")
 
     @parameter_filter_config.setter
-    def parameter_filter_config(self, value: Optional[pulumi.Input['DomainParameterFilterConfigArgs']]):
+    def parameter_filter_config(self, value: pulumi.Input[Optional['DomainParameterFilterConfigArgs']]):
         pulumi.set(self, "parameter_filter_config", value)
 
     @_builtins.property
     @pulumi.getter(name="rangeEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def range_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def range_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "range_enable")
 
     @range_enable.setter
-    def range_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def range_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "range_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="referConfig")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def refer_config(self) -> Optional[pulumi.Input['DomainReferConfigArgs']]:
+    def refer_config(self) -> pulumi.Input[Optional['DomainReferConfigArgs']]:
         return pulumi.get(self, "refer_config")
 
     @refer_config.setter
-    def refer_config(self, value: Optional[pulumi.Input['DomainReferConfigArgs']]):
+    def refer_config(self, value: pulumi.Input[Optional['DomainReferConfigArgs']]):
         pulumi.set(self, "refer_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePort")
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` block `port` argument instead.""")
-    def source_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def source_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "source_port")
 
     @source_port.setter
-    def source_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def source_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "source_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` block `type` argument instead.""")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Use `cdn.DomainNew` configuration `sources` argument instead.""")
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter(name="videoSeekEnable")
     @_utilities.deprecated("""Use `cdn.DomainConfig` configuration `function_name` and `function_args` arguments instead.""")
-    def video_seek_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_seek_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "video_seek_enable")
 
     @video_seek_enable.setter
-    def video_seek_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_seek_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_seek_enable", value)
 
 
@@ -590,24 +590,24 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
-                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
-                 optimize_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 page404_config: Optional[pulumi.Input[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
-                 page_compress_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_filter_config: Optional[pulumi.Input[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
-                 range_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 refer_config: Optional[pulumi.Input[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_config: pulumi.Input[Optional[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
+                 block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
+                 optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 page404_config: pulumi.Input[Optional[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
+                 page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_filter_config: pulumi.Input[Optional[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
+                 range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 refer_config: pulumi.Input[Optional[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a Domain resource with the given unique name, props, and options.
@@ -639,24 +639,24 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_config: Optional[pulumi.Input[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
-                 block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
-                 optimize_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 page404_config: Optional[pulumi.Input[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
-                 page_compress_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_filter_config: Optional[pulumi.Input[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
-                 range_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 refer_config: Optional[pulumi.Input[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_config: pulumi.Input[Optional[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
+                 block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
+                 optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 page404_config: pulumi.Input[Optional[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
+                 page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_filter_config: pulumi.Input[Optional[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
+                 range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 refer_config: pulumi.Input[Optional[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -698,24 +698,24 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_config: Optional[pulumi.Input[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
-            block_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cache_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
-            cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_config: Optional[pulumi.Input[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http_header_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
-            optimize_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            page404_config: Optional[pulumi.Input[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
-            page_compress_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_filter_config: Optional[pulumi.Input[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
-            range_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            refer_config: Optional[pulumi.Input[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            source_port: Optional[pulumi.Input[_builtins.int]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            video_seek_enable: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            auth_config: pulumi.Input[Optional[Union['DomainAuthConfigArgs', 'DomainAuthConfigArgsDict']]] = None,
+            block_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cache_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainCacheConfigArgs', 'DomainCacheConfigArgsDict']]]]] = None,
+            cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_config: pulumi.Input[Optional[Union['DomainCertificateConfigArgs', 'DomainCertificateConfigArgsDict']]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_header_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainHttpHeaderConfigArgs', 'DomainHttpHeaderConfigArgsDict']]]]] = None,
+            optimize_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            page404_config: pulumi.Input[Optional[Union['DomainPage404ConfigArgs', 'DomainPage404ConfigArgsDict']]] = None,
+            page_compress_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_filter_config: pulumi.Input[Optional[Union['DomainParameterFilterConfigArgs', 'DomainParameterFilterConfigArgsDict']]] = None,
+            range_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            refer_config: pulumi.Input[Optional[Union['DomainReferConfigArgs', 'DomainReferConfigArgsDict']]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            source_port: pulumi.Input[Optional[_builtins.int]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            video_seek_enable: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

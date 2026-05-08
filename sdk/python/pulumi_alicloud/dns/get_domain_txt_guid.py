@@ -153,10 +153,10 @@ def get_domain_txt_guid(domain_name: Optional[_builtins.str] = None,
         rr=pulumi.get(__ret__, 'rr'),
         type=pulumi.get(__ret__, 'type'),
         value=pulumi.get(__ret__, 'value'))
-def get_domain_txt_guid_output(domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                               lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_domain_txt_guid_output(domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               type: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainTxtGuidResult]:
     """
     Provides the generation of txt records to realize the retrieval and verification of domain names.

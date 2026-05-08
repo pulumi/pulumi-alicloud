@@ -43,7 +43,7 @@ class FileUploadLimitArgs:
 @pulumi.input_type
 class _FileUploadLimitState:
     def __init__(__self__, *,
-                 limit: Optional[pulumi.Input[_builtins.int]] = None):
+                 limit: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FileUploadLimit resources.
 
@@ -54,14 +54,14 @@ class _FileUploadLimitState:
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         File Upload Threshold.
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "limit", value)
 
 
@@ -71,7 +71,7 @@ class FileUploadLimit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Threat Detection File Upload Limit resource. User-defined file upload limit.
@@ -172,7 +172,7 @@ class FileUploadLimit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 limit: Optional[pulumi.Input[_builtins.int]] = None,
+                 limit: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -195,7 +195,7 @@ class FileUploadLimit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            limit: Optional[pulumi.Input[_builtins.int]] = None) -> 'FileUploadLimit':
+            limit: pulumi.Input[Optional[_builtins.int]] = None) -> 'FileUploadLimit':
         """
         Get an existing FileUploadLimit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -152,15 +152,15 @@ export interface InstanceAttachmentState {
     /**
      * The ID of the ECS instance.
      */
-    ecsId?: pulumi.Input<string>;
+    ecsId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Database File System.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The status of Instance Attachment.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

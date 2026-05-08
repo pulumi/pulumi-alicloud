@@ -92,15 +92,15 @@ __all__ = [
 ]
 
 class ApplicationConfigMapMountDescV2ArgsDict(TypedDict):
-    config_map_id: NotRequired[pulumi.Input[_builtins.str]]
+    config_map_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the ConfigMap.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key.
     """
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount path.
     """
@@ -108,9 +108,9 @@ class ApplicationConfigMapMountDescV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationConfigMapMountDescV2Args:
     def __init__(__self__, *,
-                 config_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] config_map_id: The ID of the ConfigMap.
         :param pulumi.Input[_builtins.str] key: The key.
@@ -125,47 +125,47 @@ class ApplicationConfigMapMountDescV2Args:
 
     @_builtins.property
     @pulumi.getter(name="configMapId")
-    def config_map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ConfigMap.
         """
         return pulumi.get(self, "config_map_id")
 
     @config_map_id.setter
-    def config_map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_map_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount path.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
 
 class ApplicationCustomHostAliasV2ArgsDict(TypedDict):
-    host_name: NotRequired[pulumi.Input[_builtins.str]]
+    host_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name or hostname.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address.
     """
@@ -173,8 +173,8 @@ class ApplicationCustomHostAliasV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationCustomHostAliasV2Args:
     def __init__(__self__, *,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] host_name: The domain name or hostname.
         :param pulumi.Input[_builtins.str] ip: The IP address.
@@ -186,39 +186,39 @@ class ApplicationCustomHostAliasV2Args:
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name or hostname.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
 
 class ApplicationKafkaConfigsArgsDict(TypedDict):
-    kafka_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgsDict']]]]
+    kafka_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]]
     """
     One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
     """
-    kafka_endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    kafka_endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The endpoint of the ApsaraMQ for Kafka API.
     """
-    kafka_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    kafka_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The  ID of the ApsaraMQ for Kafka instance.
     """
@@ -226,9 +226,9 @@ class ApplicationKafkaConfigsArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationKafkaConfigsArgs:
     def __init__(__self__, *,
-                 kafka_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]] = None,
-                 kafka_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kafka_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 kafka_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]] = None,
+                 kafka_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kafka_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]] kafka_configs: One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         :param pulumi.Input[_builtins.str] kafka_endpoint: The endpoint of the ApsaraMQ for Kafka API.
@@ -243,51 +243,51 @@ class ApplicationKafkaConfigsArgs:
 
     @_builtins.property
     @pulumi.getter(name="kafkaConfigs")
-    def kafka_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]:
+    def kafka_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]:
         """
         One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
         """
         return pulumi.get(self, "kafka_configs")
 
     @kafka_configs.setter
-    def kafka_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]):
+    def kafka_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationKafkaConfigsKafkaConfigArgs']]]]):
         pulumi.set(self, "kafka_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaEndpoint")
-    def kafka_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kafka_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint of the ApsaraMQ for Kafka API.
         """
         return pulumi.get(self, "kafka_endpoint")
 
     @kafka_endpoint.setter
-    def kafka_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kafka_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kafka_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="kafkaInstanceId")
-    def kafka_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kafka_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The  ID of the ApsaraMQ for Kafka instance.
         """
         return pulumi.get(self, "kafka_instance_id")
 
     @kafka_instance_id.setter
-    def kafka_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kafka_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kafka_instance_id", value)
 
 
 class ApplicationKafkaConfigsKafkaConfigArgsDict(TypedDict):
-    kafka_topic: NotRequired[pulumi.Input[_builtins.str]]
+    kafka_topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The topic of the Kafka.
     """
-    log_dir: NotRequired[pulumi.Input[_builtins.str]]
+    log_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path in which logs are stored.
     """
-    log_type: NotRequired[pulumi.Input[_builtins.str]]
+    log_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the log.
     """
@@ -295,9 +295,9 @@ class ApplicationKafkaConfigsKafkaConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationKafkaConfigsKafkaConfigArgs:
     def __init__(__self__, *,
-                 kafka_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 kafka_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] kafka_topic: The topic of the Kafka.
         :param pulumi.Input[_builtins.str] log_dir: The path in which logs are stored.
@@ -312,67 +312,67 @@ class ApplicationKafkaConfigsKafkaConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="kafkaTopic")
-    def kafka_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kafka_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic of the Kafka.
         """
         return pulumi.get(self, "kafka_topic")
 
     @kafka_topic.setter
-    def kafka_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kafka_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kafka_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="logDir")
-    def log_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path in which logs are stored.
         """
         return pulumi.get(self, "log_dir")
 
     @log_dir.setter
-    def log_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="logType")
-    def log_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the log.
         """
         return pulumi.get(self, "log_type")
 
     @log_type.setter
-    def log_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_type", value)
 
 
 class ApplicationLivenessV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['ApplicationLivenessV2ExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2ExecArgs']]]
     """
     Execute. See `exec` below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
     """
-    http_get: NotRequired[pulumi.Input['ApplicationLivenessV2HttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgs']]]
     """
     The liveness check settings of the container. See `http_get` below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The delay of the health check.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which the health check is performed.
     """
-    tcp_socket: NotRequired[pulumi.Input['ApplicationLivenessV2TcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgs']]]
     """
     The liveness check settings of the container. See `tcp_socket` below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timeout period of the health check.
     """
@@ -380,13 +380,13 @@ class ApplicationLivenessV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationLivenessV2Args:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['ApplicationLivenessV2ExecArgs']] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_get: Optional[pulumi.Input['ApplicationLivenessV2HttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['ApplicationLivenessV2TcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 exec_: pulumi.Input[Optional['ApplicationLivenessV2ExecArgs']] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_get: pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['ApplicationLivenessV2ExecArgs'] exec_: Execute. See `exec` below.
         :param pulumi.Input[_builtins.int] failure_threshold: The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
@@ -413,91 +413,91 @@ class ApplicationLivenessV2Args:
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['ApplicationLivenessV2ExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['ApplicationLivenessV2ExecArgs']]:
         """
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['ApplicationLivenessV2ExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['ApplicationLivenessV2ExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ApplicationLivenessV2HttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgs']]:
         """
         The liveness check settings of the container. See `http_get` below.
         """
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ApplicationLivenessV2HttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['ApplicationLivenessV2HttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The delay of the health check.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which the health check is performed.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['ApplicationLivenessV2TcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgs']]:
         """
         The liveness check settings of the container. See `tcp_socket` below.
         """
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['ApplicationLivenessV2TcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['ApplicationLivenessV2TcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of the health check.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ApplicationLivenessV2ExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
     """
@@ -505,7 +505,7 @@ class ApplicationLivenessV2ExecArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationLivenessV2ExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
@@ -514,32 +514,32 @@ class ApplicationLivenessV2ExecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ApplicationLivenessV2HttpGetArgsDict(TypedDict):
-    is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
-    key_word: NotRequired[pulumi.Input[_builtins.str]]
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    is_contain_key_word: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    key_word: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ApplicationLivenessV2HttpGetArgs:
     def __init__(__self__, *,
-                 is_contain_key_word: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_word: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_contain_key_word: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_word: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         if is_contain_key_word is not None:
             pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -553,88 +553,88 @@ class ApplicationLivenessV2HttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="isContainKeyWord")
-    def is_contain_key_word(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_contain_key_word(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_contain_key_word")
 
     @is_contain_key_word.setter
-    def is_contain_key_word(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_contain_key_word(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_contain_key_word", value)
 
     @_builtins.property
     @pulumi.getter(name="keyWord")
-    def key_word(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_word(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_word")
 
     @key_word.setter
-    def key_word(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_word(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_word", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class ApplicationLivenessV2TcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ApplicationLivenessV2TcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class ApplicationNasConfigArgsDict(TypedDict):
-    mount_domain: NotRequired[pulumi.Input[_builtins.str]]
+    mount_domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The domain name of the mount target.
     """
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mount path of the container.
     """
-    nas_id: NotRequired[pulumi.Input[_builtins.str]]
+    nas_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the NAS file system.
     """
-    nas_path: NotRequired[pulumi.Input[_builtins.str]]
+    nas_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The directory in the NAS file system.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
     """
@@ -642,11 +642,11 @@ class ApplicationNasConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationNasConfigArgs:
     def __init__(__self__, *,
-                 mount_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nas_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nas_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] mount_domain: The domain name of the mount target.
         :param pulumi.Input[_builtins.str] mount_path: The mount path of the container.
@@ -667,79 +667,79 @@ class ApplicationNasConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountDomain")
-    def mount_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the mount target.
         """
         return pulumi.get(self, "mount_domain")
 
     @mount_domain.setter
-    def mount_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount path of the container.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter(name="nasId")
-    def nas_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NAS file system.
         """
         return pulumi.get(self, "nas_id")
 
     @nas_id.setter
-    def nas_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nasPath")
-    def nas_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nas_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory in the NAS file system.
         """
         return pulumi.get(self, "nas_path")
 
     @nas_path.setter
-    def nas_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nas_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nas_path", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 class ApplicationOssMountDescsV2ArgsDict(TypedDict):
-    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the OSS bucket.
     """
-    bucket_path: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The directory or object in OSS.
     """
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path of the container in SAE.
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
     """
@@ -747,10 +747,10 @@ class ApplicationOssMountDescsV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationOssMountDescsV2Args:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: The name of the OSS bucket.
         :param pulumi.Input[_builtins.str] bucket_path: The directory or object in OSS.
@@ -768,55 +768,55 @@ class ApplicationOssMountDescsV2Args:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS bucket.
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPath")
-    def bucket_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The directory or object in OSS.
         """
         return pulumi.get(self, "bucket_path")
 
     @bucket_path.setter
-    def bucket_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_path", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the container in SAE.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 class ApplicationPostStartV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['ApplicationPostStartV2ExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationPostStartV2ExecArgs']]]
     """
     Execute. See `exec` below.
     """
@@ -824,7 +824,7 @@ class ApplicationPostStartV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPostStartV2Args:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['ApplicationPostStartV2ExecArgs']] = None):
+                 exec_: pulumi.Input[Optional['ApplicationPostStartV2ExecArgs']] = None):
         """
         :param pulumi.Input['ApplicationPostStartV2ExecArgs'] exec_: Execute. See `exec` below.
         """
@@ -833,19 +833,19 @@ class ApplicationPostStartV2Args:
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['ApplicationPostStartV2ExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['ApplicationPostStartV2ExecArgs']]:
         """
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['ApplicationPostStartV2ExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['ApplicationPostStartV2ExecArgs']]):
         pulumi.set(self, "exec_", value)
 
 
 class ApplicationPostStartV2ExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
     """
@@ -853,7 +853,7 @@ class ApplicationPostStartV2ExecArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPostStartV2ExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
@@ -862,19 +862,19 @@ class ApplicationPostStartV2ExecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ApplicationPreStopV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['ApplicationPreStopV2ExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationPreStopV2ExecArgs']]]
     """
     Execute. See `exec` below.
     """
@@ -882,7 +882,7 @@ class ApplicationPreStopV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPreStopV2Args:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['ApplicationPreStopV2ExecArgs']] = None):
+                 exec_: pulumi.Input[Optional['ApplicationPreStopV2ExecArgs']] = None):
         """
         :param pulumi.Input['ApplicationPreStopV2ExecArgs'] exec_: Execute. See `exec` below.
         """
@@ -891,19 +891,19 @@ class ApplicationPreStopV2Args:
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['ApplicationPreStopV2ExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['ApplicationPreStopV2ExecArgs']]:
         """
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['ApplicationPreStopV2ExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['ApplicationPreStopV2ExecArgs']]):
         pulumi.set(self, "exec_", value)
 
 
 class ApplicationPreStopV2ExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
     """
@@ -911,7 +911,7 @@ class ApplicationPreStopV2ExecArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPreStopV2ExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
@@ -920,31 +920,31 @@ class ApplicationPreStopV2ExecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ApplicationPvtzDiscoverySvcArgsDict(TypedDict):
-    enable: NotRequired[pulumi.Input[_builtins.bool]]
+    enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enables the Kubernetes Service-based registration and discovery feature.
     """
-    namespace_id: NotRequired[pulumi.Input[_builtins.str]]
+    namespace_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the namespace.
     """
-    port_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgsDict']]]]
+    port_protocols: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]]
     """
     The port number and protocol. See `port_protocols` below.
     """
-    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Service.
     """
@@ -952,10 +952,10 @@ class ApplicationPvtzDiscoverySvcArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPvtzDiscoverySvcArgs:
     def __init__(__self__, *,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_protocols: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_protocols: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable: Enables the Kubernetes Service-based registration and discovery feature.
         :param pulumi.Input[_builtins.str] namespace_id: The ID of the namespace.
@@ -973,56 +973,56 @@ class ApplicationPvtzDiscoverySvcArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables the Kubernetes Service-based registration and discovery feature.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter(name="portProtocols")
-    def port_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]:
+    def port_protocols(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]:
         """
         The port number and protocol. See `port_protocols` below.
         """
         return pulumi.get(self, "port_protocols")
 
     @port_protocols.setter
-    def port_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]):
+    def port_protocols(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationPvtzDiscoverySvcPortProtocolArgs']]]]):
         pulumi.set(self, "port_protocols", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
 class ApplicationPvtzDiscoverySvcPortProtocolArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol. Valid values: `TCP` and `UDP`.
     """
@@ -1030,8 +1030,8 @@ class ApplicationPvtzDiscoverySvcPortProtocolArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationPvtzDiscoverySvcPortProtocolArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] protocol: The protocol. Valid values: `TCP` and `UDP`.
         """
@@ -1042,56 +1042,56 @@ class ApplicationPvtzDiscoverySvcPortProtocolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol. Valid values: `TCP` and `UDP`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class ApplicationReadinessV2ArgsDict(TypedDict):
-    exec_: NotRequired[pulumi.Input['ApplicationReadinessV2ExecArgsDict']]
+    exec_: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2ExecArgs']]]
     """
     Execute. See `exec` below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
     """
-    http_get: NotRequired[pulumi.Input['ApplicationReadinessV2HttpGetArgsDict']]
+    http_get: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgs']]]
     """
     The liveness check settings of the container. See `http_get` below.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The delay of the health check.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval at which the health check is performed.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
     """
-    tcp_socket: NotRequired[pulumi.Input['ApplicationReadinessV2TcpSocketArgsDict']]
+    tcp_socket: NotRequired[pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgs']]]
     """
     The liveness check settings of the container. See `tcp_socket` below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timeout period of the health check.
     """
@@ -1099,14 +1099,14 @@ class ApplicationReadinessV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationReadinessV2Args:
     def __init__(__self__, *,
-                 exec_: Optional[pulumi.Input['ApplicationReadinessV2ExecArgs']] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_get: Optional[pulumi.Input['ApplicationReadinessV2HttpGetArgs']] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_socket: Optional[pulumi.Input['ApplicationReadinessV2TcpSocketArgs']] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 exec_: pulumi.Input[Optional['ApplicationReadinessV2ExecArgs']] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_get: pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgs']] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_socket: pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgs']] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input['ApplicationReadinessV2ExecArgs'] exec_: Execute. See `exec` below.
         :param pulumi.Input[_builtins.int] failure_threshold: The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
@@ -1136,103 +1136,103 @@ class ApplicationReadinessV2Args:
 
     @_builtins.property
     @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['ApplicationReadinessV2ExecArgs']]:
+    def exec_(self) -> pulumi.Input[Optional['ApplicationReadinessV2ExecArgs']]:
         """
         Execute. See `exec` below.
         """
         return pulumi.get(self, "exec_")
 
     @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['ApplicationReadinessV2ExecArgs']]):
+    def exec_(self, value: pulumi.Input[Optional['ApplicationReadinessV2ExecArgs']]):
         pulumi.set(self, "exec_", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive failures required before considering the container as unhealthy. Increasing this value makes the container more tolerant to transient failures.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGet")
-    def http_get(self) -> Optional[pulumi.Input['ApplicationReadinessV2HttpGetArgs']]:
+    def http_get(self) -> pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgs']]:
         """
         The liveness check settings of the container. See `http_get` below.
         """
         return pulumi.get(self, "http_get")
 
     @http_get.setter
-    def http_get(self, value: Optional[pulumi.Input['ApplicationReadinessV2HttpGetArgs']]):
+    def http_get(self, value: pulumi.Input[Optional['ApplicationReadinessV2HttpGetArgs']]):
         pulumi.set(self, "http_get", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The delay of the health check.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval at which the health check is performed.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive successes required before considering the container as healthy. Increasing this value makes the container more tolerant to transient successes during recovery.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSocket")
-    def tcp_socket(self) -> Optional[pulumi.Input['ApplicationReadinessV2TcpSocketArgs']]:
+    def tcp_socket(self) -> pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgs']]:
         """
         The liveness check settings of the container. See `tcp_socket` below.
         """
         return pulumi.get(self, "tcp_socket")
 
     @tcp_socket.setter
-    def tcp_socket(self, value: Optional[pulumi.Input['ApplicationReadinessV2TcpSocketArgs']]):
+    def tcp_socket(self, value: pulumi.Input[Optional['ApplicationReadinessV2TcpSocketArgs']]):
         pulumi.set(self, "tcp_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of the health check.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ApplicationReadinessV2ExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
     """
@@ -1240,7 +1240,7 @@ class ApplicationReadinessV2ExecArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationReadinessV2ExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
@@ -1249,32 +1249,32 @@ class ApplicationReadinessV2ExecArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ApplicationReadinessV2HttpGetArgsDict(TypedDict):
-    is_contain_key_word: NotRequired[pulumi.Input[_builtins.bool]]
-    key_word: NotRequired[pulumi.Input[_builtins.str]]
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    is_contain_key_word: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    key_word: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ApplicationReadinessV2HttpGetArgs:
     def __init__(__self__, *,
-                 is_contain_key_word: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_word: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_contain_key_word: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_word: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         if is_contain_key_word is not None:
             pulumi.set(__self__, "is_contain_key_word", is_contain_key_word)
         if key_word is not None:
@@ -1288,88 +1288,88 @@ class ApplicationReadinessV2HttpGetArgs:
 
     @_builtins.property
     @pulumi.getter(name="isContainKeyWord")
-    def is_contain_key_word(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_contain_key_word(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "is_contain_key_word")
 
     @is_contain_key_word.setter
-    def is_contain_key_word(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_contain_key_word(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_contain_key_word", value)
 
     @_builtins.property
     @pulumi.getter(name="keyWord")
-    def key_word(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_word(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_word")
 
     @key_word.setter
-    def key_word(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_word(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_word", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class ApplicationReadinessV2TcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ApplicationReadinessV2TcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
-    max_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    max_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of instances applied.
     """
-    metrics: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgsDict']]]]
+    metrics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]]
     """
     Indicator rule configuration. See `metrics` below.
     """
-    min_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    min_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum number of instances applied.
     """
-    scale_down_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict']]
+    scale_down_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]]
     """
     Apply shrink rules. See `scale_down_rules` below.
     """
-    scale_up_rules: NotRequired[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict']]
+    scale_up_rules: NotRequired[pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]]
     """
     Apply expansion rules. See `scale_up_rules` below.
     """
@@ -1377,11 +1377,11 @@ class ApplicationScalingRuleScalingRuleMetricArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricArgs:
     def __init__(__self__, *,
-                 max_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]] = None,
-                 min_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_down_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']] = None,
-                 scale_up_rules: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']] = None):
+                 max_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]] = None,
+                 min_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_down_rules: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']] = None,
+                 scale_up_rules: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] max_replicas: Maximum number of instances applied.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]] metrics: Indicator rule configuration. See `metrics` below.
@@ -1402,71 +1402,71 @@ class ApplicationScalingRuleScalingRuleMetricArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxReplicas")
-    def max_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of instances applied.
         """
         return pulumi.get(self, "max_replicas")
 
     @max_replicas.setter
-    def max_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]:
         """
         Indicator rule configuration. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleMetricMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicas")
-    def min_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of instances applied.
         """
         return pulumi.get(self, "min_replicas")
 
     @min_replicas.setter
-    def min_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDownRules")
-    def scale_down_rules(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]:
+    def scale_down_rules(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]:
         """
         Apply shrink rules. See `scale_down_rules` below.
         """
         return pulumi.get(self, "scale_down_rules")
 
     @scale_down_rules.setter
-    def scale_down_rules(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]):
+    def scale_down_rules(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs']]):
         pulumi.set(self, "scale_down_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleUpRules")
-    def scale_up_rules(self) -> Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]:
+    def scale_up_rules(self) -> pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]:
         """
         Apply expansion rules. See `scale_up_rules` below.
         """
         return pulumi.get(self, "scale_up_rules")
 
     @scale_up_rules.setter
-    def scale_up_rules(self, value: Optional[pulumi.Input['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]):
+    def scale_up_rules(self, value: pulumi.Input[Optional['ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs']]):
         pulumi.set(self, "scale_up_rules", value)
 
 
 class ApplicationScalingRuleScalingRuleMetricMetricArgsDict(TypedDict):
-    metric_target_average_utilization: NotRequired[pulumi.Input[_builtins.int]]
+    metric_target_average_utilization: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     According to different `metric_type`, set the target value of the corresponding monitoring index.
     """
-    metric_type: NotRequired[pulumi.Input[_builtins.str]]
+    metric_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
     - CPU: CPU usage.
@@ -1480,19 +1480,19 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgsDict(TypedDict):
     - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
     **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
     """
-    slb_id: NotRequired[pulumi.Input[_builtins.str]]
+    slb_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SLB ID.
     """
-    slb_log_store: NotRequired[pulumi.Input[_builtins.str]]
+    slb_log_store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The log store of the Log Service.
     """
-    slb_project: NotRequired[pulumi.Input[_builtins.str]]
+    slb_project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The project of the Log Service.
     """
-    vport: NotRequired[pulumi.Input[_builtins.str]]
+    vport: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     SLB listening port.
     """
@@ -1500,12 +1500,12 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricMetricArgs:
     def __init__(__self__, *,
-                 metric_target_average_utilization: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 vport: Optional[pulumi.Input[_builtins.str]] = None):
+                 metric_target_average_utilization: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 vport: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] metric_target_average_utilization: According to different `metric_type`, set the target value of the corresponding monitoring index.
         :param pulumi.Input[_builtins.str] metric_type: Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
@@ -1539,19 +1539,19 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
 
     @_builtins.property
     @pulumi.getter(name="metricTargetAverageUtilization")
-    def metric_target_average_utilization(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metric_target_average_utilization(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         According to different `metric_type`, set the target value of the corresponding monitoring index.
         """
         return pulumi.get(self, "metric_target_average_utilization")
 
     @metric_target_average_utilization.setter
-    def metric_target_average_utilization(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metric_target_average_utilization(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metric_target_average_utilization", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
         - CPU: CPU usage.
@@ -1568,68 +1568,68 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SLB ID.
         """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
-    def slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbLogStore")
-    def slb_log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log store of the Log Service.
         """
         return pulumi.get(self, "slb_log_store")
 
     @slb_log_store.setter
-    def slb_log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_log_store", value)
 
     @_builtins.property
     @pulumi.getter(name="slbProject")
-    def slb_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project of the Log Service.
         """
         return pulumi.get(self, "slb_project")
 
     @slb_project.setter
-    def slb_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_project", value)
 
     @_builtins.property
     @pulumi.getter
-    def vport(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vport(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SLB listening port.
         """
         return pulumi.get(self, "vport")
 
     @vport.setter
-    def vport(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vport(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vport", value)
 
 
 class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict(TypedDict):
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether shrinkage is prohibited.
     """
-    stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    stabilization_window_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
     """
-    step: NotRequired[pulumi.Input[_builtins.int]]
+    step: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
     """
@@ -1637,9 +1637,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stabilization_window_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 step: Optional[pulumi.Input[_builtins.int]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stabilization_window_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 step: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: Whether shrinkage is prohibited.
         :param pulumi.Input[_builtins.int] stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
@@ -1654,51 +1654,51 @@ class ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether shrinkage is prohibited.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="stabilizationWindowSeconds")
-    def stabilization_window_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stabilization_window_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
         """
         return pulumi.get(self, "stabilization_window_seconds")
 
     @stabilization_window_seconds.setter
-    def stabilization_window_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stabilization_window_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stabilization_window_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def step(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def step(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
         """
         return pulumi.get(self, "step")
 
     @step.setter
-    def step(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def step(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "step", value)
 
 
 class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict(TypedDict):
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether shrinkage is prohibited.
     """
-    stabilization_window_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    stabilization_window_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
     """
-    step: NotRequired[pulumi.Input[_builtins.int]]
+    step: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
     """
@@ -1706,9 +1706,9 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs:
     def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stabilization_window_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 step: Optional[pulumi.Input[_builtins.int]] = None):
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stabilization_window_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 step: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] disabled: Whether shrinkage is prohibited.
         :param pulumi.Input[_builtins.int] stabilization_window_seconds: Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
@@ -1723,55 +1723,55 @@ class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether shrinkage is prohibited.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="stabilizationWindowSeconds")
-    def stabilization_window_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stabilization_window_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
         """
         return pulumi.get(self, "stabilization_window_seconds")
 
     @stabilization_window_seconds.setter
-    def stabilization_window_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stabilization_window_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stabilization_window_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def step(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def step(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
         """
         return pulumi.get(self, "step")
 
     @step.setter
-    def step(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def step(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "step", value)
 
 
 class ApplicationScalingRuleScalingRuleTimerArgsDict(TypedDict):
-    begin_date: NotRequired[pulumi.Input[_builtins.str]]
+    begin_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
     """
-    end_date: NotRequired[pulumi.Input[_builtins.str]]
+    end_date: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
     """
-    period: NotRequired[pulumi.Input[_builtins.str]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The period in which a timed elastic scaling strategy is executed.
     """
-    schedules: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgsDict']]]]
+    schedules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]]
     """
     Resilient Scaling Strategy Trigger Timing. See `schedules` below.
     """
@@ -1779,10 +1779,10 @@ class ApplicationScalingRuleScalingRuleTimerArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleTimerArgs:
     def __init__(__self__, *,
-                 begin_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]] = None):
+                 begin_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedules: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] begin_date: The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
         :param pulumi.Input[_builtins.str] end_date: The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
@@ -1800,61 +1800,61 @@ class ApplicationScalingRuleScalingRuleTimerArgs:
 
     @_builtins.property
     @pulumi.getter(name="beginDate")
-    def begin_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def begin_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Start date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
         """
         return pulumi.get(self, "begin_date")
 
     @begin_date.setter
-    def begin_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def begin_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "begin_date", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
         """
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period in which a timed elastic scaling strategy is executed.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]:
+    def schedules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]:
         """
         Resilient Scaling Strategy Trigger Timing. See `schedules` below.
         """
         return pulumi.get(self, "schedules")
 
     @schedules.setter
-    def schedules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]):
+    def schedules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ApplicationScalingRuleScalingRuleTimerScheduleArgs']]]]):
         pulumi.set(self, "schedules", value)
 
 
 class ApplicationScalingRuleScalingRuleTimerScheduleArgsDict(TypedDict):
-    at_time: NotRequired[pulumi.Input[_builtins.str]]
+    at_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Trigger point in time. When supporting format: minutes, for example: `08:00`.
     """
-    max_replicas: NotRequired[pulumi.Input[_builtins.int]]
-    min_replicas: NotRequired[pulumi.Input[_builtins.int]]
-    target_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    max_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    min_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    target_replicas: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
     """
@@ -1862,10 +1862,10 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
     def __init__(__self__, *,
-                 at_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_replicas: Optional[pulumi.Input[_builtins.int]] = None):
+                 at_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_replicas: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] at_time: Trigger point in time. When supporting format: minutes, for example: `08:00`.
         :param pulumi.Input[_builtins.int] target_replicas: This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
@@ -1881,65 +1881,65 @@ class ApplicationScalingRuleScalingRuleTimerScheduleArgs:
 
     @_builtins.property
     @pulumi.getter(name="atTime")
-    def at_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def at_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger point in time. When supporting format: minutes, for example: `08:00`.
         """
         return pulumi.get(self, "at_time")
 
     @at_time.setter
-    def at_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def at_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "at_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxReplicas")
-    def max_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "max_replicas")
 
     @max_replicas.setter
-    def max_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicas")
-    def min_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "min_replicas")
 
     @min_replicas.setter
-    def min_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replicas", value)
 
     @_builtins.property
     @pulumi.getter(name="targetReplicas")
-    def target_replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
         """
         return pulumi.get(self, "target_replicas")
 
     @target_replicas.setter
-    def target_replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_replicas", value)
 
 
 class ApplicationTomcatConfigV2ArgsDict(TypedDict):
-    context_path: NotRequired[pulumi.Input[_builtins.str]]
+    context_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path.
     """
-    max_threads: NotRequired[pulumi.Input[_builtins.int]]
+    max_threads: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of connections in the connection pool.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port.
     """
-    uri_encoding: NotRequired[pulumi.Input[_builtins.str]]
+    uri_encoding: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The URI encoding scheme in the Tomcat container.
     """
-    use_body_encoding_for_uri: NotRequired[pulumi.Input[_builtins.str]]
+    use_body_encoding_for_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
     """
@@ -1947,11 +1947,11 @@ class ApplicationTomcatConfigV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationTomcatConfigV2Args:
     def __init__(__self__, *,
-                 context_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_threads: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 uri_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_body_encoding_for_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 context_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_threads: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 uri_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_body_encoding_for_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] context_path: The path.
         :param pulumi.Input[_builtins.int] max_threads: The maximum number of connections in the connection pool.
@@ -1972,71 +1972,71 @@ class ApplicationTomcatConfigV2Args:
 
     @_builtins.property
     @pulumi.getter(name="contextPath")
-    def context_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def context_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path.
         """
         return pulumi.get(self, "context_path")
 
     @context_path.setter
-    def context_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def context_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "context_path", value)
 
     @_builtins.property
     @pulumi.getter(name="maxThreads")
-    def max_threads(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_threads(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections in the connection pool.
         """
         return pulumi.get(self, "max_threads")
 
     @max_threads.setter
-    def max_threads(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_threads(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_threads", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="uriEncoding")
-    def uri_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI encoding scheme in the Tomcat container.
         """
         return pulumi.get(self, "uri_encoding")
 
     @uri_encoding.setter
-    def uri_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri_encoding", value)
 
     @_builtins.property
     @pulumi.getter(name="useBodyEncodingForUri")
-    def use_body_encoding_for_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def use_body_encoding_for_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to use the encoding scheme that is specified by BodyEncoding for URL.
         """
         return pulumi.get(self, "use_body_encoding_for_uri")
 
     @use_body_encoding_for_uri.setter
-    def use_body_encoding_for_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def use_body_encoding_for_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "use_body_encoding_for_uri", value)
 
 
 class ApplicationUpdateStrategyV2ArgsDict(TypedDict):
-    batch_update: NotRequired[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgsDict']]
+    batch_update: NotRequired[pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgs']]]
     """
     The phased release policy. See `batch_update` below.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
     """
@@ -2044,8 +2044,8 @@ class ApplicationUpdateStrategyV2ArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationUpdateStrategyV2Args:
     def __init__(__self__, *,
-                 batch_update: Optional[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 batch_update: pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgs'] batch_update: The phased release policy. See `batch_update` below.
         :param pulumi.Input[_builtins.str] type: The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
@@ -2057,39 +2057,39 @@ class ApplicationUpdateStrategyV2Args:
 
     @_builtins.property
     @pulumi.getter(name="batchUpdate")
-    def batch_update(self) -> Optional[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgs']]:
+    def batch_update(self) -> pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgs']]:
         """
         The phased release policy. See `batch_update` below.
         """
         return pulumi.get(self, "batch_update")
 
     @batch_update.setter
-    def batch_update(self, value: Optional[pulumi.Input['ApplicationUpdateStrategyV2BatchUpdateArgs']]):
+    def batch_update(self, value: pulumi.Input[Optional['ApplicationUpdateStrategyV2BatchUpdateArgs']]):
         pulumi.set(self, "batch_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ApplicationUpdateStrategyV2BatchUpdateArgsDict(TypedDict):
-    batch: NotRequired[pulumi.Input[_builtins.int]]
+    batch: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of batches in which you want to release the instances.
     """
-    batch_wait_time: NotRequired[pulumi.Input[_builtins.int]]
+    batch_wait_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The batch wait time.
     """
-    release_type: NotRequired[pulumi.Input[_builtins.str]]
+    release_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The processing method for the batches. Valid values: `auto` and `manual`.
     """
@@ -2097,9 +2097,9 @@ class ApplicationUpdateStrategyV2BatchUpdateArgsDict(TypedDict):
 @pulumi.input_type
 class ApplicationUpdateStrategyV2BatchUpdateArgs:
     def __init__(__self__, *,
-                 batch: Optional[pulumi.Input[_builtins.int]] = None,
-                 batch_wait_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 release_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 batch: pulumi.Input[Optional[_builtins.int]] = None,
+                 batch_wait_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 release_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] batch: The number of batches in which you want to release the instances.
         :param pulumi.Input[_builtins.int] batch_wait_time: The batch wait time.
@@ -2114,63 +2114,63 @@ class ApplicationUpdateStrategyV2BatchUpdateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def batch(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of batches in which you want to release the instances.
         """
         return pulumi.get(self, "batch")
 
     @batch.setter
-    def batch(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch", value)
 
     @_builtins.property
     @pulumi.getter(name="batchWaitTime")
-    def batch_wait_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def batch_wait_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The batch wait time.
         """
         return pulumi.get(self, "batch_wait_time")
 
     @batch_wait_time.setter
-    def batch_wait_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def batch_wait_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "batch_wait_time", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseType")
-    def release_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The processing method for the batches. Valid values: `auto` and `manual`.
         """
         return pulumi.get(self, "release_type")
 
     @release_type.setter
-    def release_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_type", value)
 
 
 class GreyTagRouteDubboRuleArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
     """
-    group: NotRequired[pulumi.Input[_builtins.str]]
+    group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service group.
     """
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]]
     """
     A list of conditions items. See `items` below.
     """
-    method_name: NotRequired[pulumi.Input[_builtins.str]]
+    method_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The method name
     """
-    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service name.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The service version.
     """
@@ -2178,12 +2178,12 @@ class GreyTagRouteDubboRuleArgsDict(TypedDict):
 @pulumi.input_type
 class GreyTagRouteDubboRuleArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]] = None,
-                 method_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]] = None,
+                 method_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
         :param pulumi.Input[_builtins.str] group: The service group.
@@ -2207,98 +2207,98 @@ class GreyTagRouteDubboRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service group.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]:
         """
         A list of conditions items. See `items` below.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteDubboRuleItemArgs']]]]):
         pulumi.set(self, "items", value)
 
     @_builtins.property
     @pulumi.getter(name="methodName")
-    def method_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method name
         """
         return pulumi.get(self, "method_name")
 
     @method_name.setter
-    def method_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service name.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class GreyTagRouteDubboRuleItemArgsDict(TypedDict):
-    cond: NotRequired[pulumi.Input[_builtins.str]]
-    expr: NotRequired[pulumi.Input[_builtins.str]]
+    cond: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    expr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameter value gets the expression.
     """
-    index: NotRequired[pulumi.Input[_builtins.int]]
+    index: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The parameter number.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class GreyTagRouteDubboRuleItemArgs:
     def __init__(__self__, *,
-                 cond: Optional[pulumi.Input[_builtins.str]] = None,
-                 expr: Optional[pulumi.Input[_builtins.str]] = None,
-                 index: Optional[pulumi.Input[_builtins.int]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 cond: pulumi.Input[Optional[_builtins.str]] = None,
+                 expr: pulumi.Input[Optional[_builtins.str]] = None,
+                 index: pulumi.Input[Optional[_builtins.int]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expr: The parameter value gets the expression.
         :param pulumi.Input[_builtins.int] index: The parameter number.
@@ -2316,66 +2316,66 @@ class GreyTagRouteDubboRuleItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cond(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cond(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cond")
 
     @cond.setter
-    def cond(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cond(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cond", value)
 
     @_builtins.property
     @pulumi.getter
-    def expr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameter value gets the expression.
         """
         return pulumi.get(self, "expr")
 
     @expr.setter
-    def expr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expr", value)
 
     @_builtins.property
     @pulumi.getter
-    def index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The parameter number.
         """
         return pulumi.get(self, "index")
 
     @index.setter
-    def index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "index", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class GreyTagRouteScRuleArgsDict(TypedDict):
-    condition: NotRequired[pulumi.Input[_builtins.str]]
+    condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
     """
-    items: NotRequired[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgsDict']]]]
+    items: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]]
     """
     A list of conditions items. See `items` below.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path corresponding to the grayscale rule.
     """
@@ -2383,9 +2383,9 @@ class GreyTagRouteScRuleArgsDict(TypedDict):
 @pulumi.input_type
 class GreyTagRouteScRuleArgs:
     def __init__(__self__, *,
-                 condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 items: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 items: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] condition: The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
         :param pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]] items: A list of conditions items. See `items` below.
@@ -2400,62 +2400,62 @@ class GreyTagRouteScRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The conditional Patterns for Grayscale Rules. Valid values: `AND`, `OR`.
         """
         return pulumi.get(self, "condition")
 
     @condition.setter
-    def condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "condition", value)
 
     @_builtins.property
     @pulumi.getter
-    def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]:
+    def items(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]:
         """
         A list of conditions items. See `items` below.
         """
         return pulumi.get(self, "items")
 
     @items.setter
-    def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]):
+    def items(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GreyTagRouteScRuleItemArgs']]]]):
         pulumi.set(self, "items", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path corresponding to the grayscale rule.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class GreyTagRouteScRuleItemArgsDict(TypedDict):
-    cond: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    cond: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The compare types. Valid values: `param`, `cookie`, `header`.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class GreyTagRouteScRuleItemArgs:
     def __init__(__self__, *,
-                 cond: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 cond: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the parameter.
         :param pulumi.Input[_builtins.str] type: The compare types. Valid values: `param`, `cookie`, `header`.
@@ -2473,66 +2473,66 @@ class GreyTagRouteScRuleItemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cond(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cond(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cond")
 
     @cond.setter
-    def cond(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cond(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cond", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compare types. Valid values: `param`, `cookie`, `header`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class IngressDefaultRuleArgsDict(TypedDict):
-    app_id: NotRequired[pulumi.Input[_builtins.str]]
+    app_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target application ID.
     """
-    app_name: NotRequired[pulumi.Input[_builtins.str]]
+    app_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Target application name.
     """
-    container_port: NotRequired[pulumi.Input[_builtins.int]]
+    container_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Application backend port.
     """
@@ -2540,9 +2540,9 @@ class IngressDefaultRuleArgsDict(TypedDict):
 @pulumi.input_type
 class IngressDefaultRuleArgs:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] app_id: Target application ID.
         :param pulumi.Input[_builtins.str] app_name: Target application name.
@@ -2557,38 +2557,38 @@ class IngressDefaultRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target application ID.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target application name.
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application backend port.
         """
         return pulumi.get(self, "container_port")
 
     @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_port", value)
 
 
@@ -2613,11 +2613,11 @@ class IngressRuleArgsDict(TypedDict):
     """
     URL path.
     """
-    backend_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    backend_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The backend protocol.
     """
-    rewrite_path: NotRequired[pulumi.Input[_builtins.str]]
+    rewrite_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The rewrite path.
     """
@@ -2630,8 +2630,8 @@ class IngressRuleArgs:
                  container_port: pulumi.Input[_builtins.int],
                  domain: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
-                 backend_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] app_id: Target application ID.
         :param pulumi.Input[_builtins.str] app_name: Target application name.
@@ -2713,43 +2713,43 @@ class IngressRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="backendProtocol")
-    def backend_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backend protocol.
         """
         return pulumi.get(self, "backend_protocol")
 
     @backend_protocol.setter
-    def backend_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="rewritePath")
-    def rewrite_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rewrite_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rewrite path.
         """
         return pulumi.get(self, "rewrite_path")
 
     @rewrite_path.setter
-    def rewrite_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rewrite_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rewrite_path", value)
 
 
 class LoadBalancerInternetInternetArgsDict(TypedDict):
-    https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    https_cert_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSL certificate. `https_cert_id` is required when HTTPS is selected
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The SLB Port.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
     """
-    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    target_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The Container port.
     """
@@ -2757,10 +2757,10 @@ class LoadBalancerInternetInternetArgsDict(TypedDict):
 @pulumi.input_type
 class LoadBalancerInternetInternetArgs:
     def __init__(__self__, *,
-                 https_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 https_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
         :param pulumi.Input[_builtins.int] port: The SLB Port.
@@ -2778,67 +2778,67 @@ class LoadBalancerInternetInternetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL certificate. `https_cert_id` is required when HTTPS is selected
         """
         return pulumi.get(self, "https_cert_id")
 
     @https_cert_id.setter
-    def https_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_cert_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SLB Port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Container port.
         """
         return pulumi.get(self, "target_port")
 
     @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_port", value)
 
 
 class LoadBalancerIntranetIntranetArgsDict(TypedDict):
-    https_cert_id: NotRequired[pulumi.Input[_builtins.str]]
+    https_cert_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSL certificate. `https_cert_id` is required when HTTPS is selected
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The SLB Port.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
     """
-    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    target_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The Container port.
     """
@@ -2846,10 +2846,10 @@ class LoadBalancerIntranetIntranetArgsDict(TypedDict):
 @pulumi.input_type
 class LoadBalancerIntranetIntranetArgs:
     def __init__(__self__, *,
-                 https_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 https_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] https_cert_id: The SSL certificate. `https_cert_id` is required when HTTPS is selected
         :param pulumi.Input[_builtins.int] port: The SLB Port.
@@ -2867,50 +2867,50 @@ class LoadBalancerIntranetIntranetArgs:
 
     @_builtins.property
     @pulumi.getter(name="httpsCertId")
-    def https_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL certificate. `https_cert_id` is required when HTTPS is selected
         """
         return pulumi.get(self, "https_cert_id")
 
     @https_cert_id.setter
-    def https_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_cert_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SLB Port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Network protocol. Valid values: `TCP` ,`HTTP`,`HTTPS`.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Container port.
         """
         return pulumi.get(self, "target_port")
 
     @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_port", value)
 
 

@@ -127,17 +127,17 @@ export interface GetAccessGroupsOutputArgs {
     /**
      * A list of Access Group IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    limit?: pulumi.Input<number>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * A regex string to filter results by Access Group name.
      */
-    nameRegex?: pulumi.Input<string>;
-    orderBy?: pulumi.Input<string>;
-    orderType?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    orderBy?: pulumi.Input<string | undefined>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    startOffset?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    startOffset?: pulumi.Input<number | undefined>;
 }

@@ -156,23 +156,23 @@ export interface DeliveryChannelState {
     /**
      * The description of the delivery channel.
      */
-    deliveryChannelDescription?: pulumi.Input<string>;
+    deliveryChannelDescription?: pulumi.Input<string | undefined>;
     /**
      * The effective scope of the delivery channel. See `deliveryChannelFilter` below.
      */
-    deliveryChannelFilter?: pulumi.Input<inputs.resourcemanager.DeliveryChannelDeliveryChannelFilter>;
+    deliveryChannelFilter?: pulumi.Input<inputs.resourcemanager.DeliveryChannelDeliveryChannelFilter | undefined>;
     /**
      * The name of the delivery channel.
      */
-    deliveryChannelName?: pulumi.Input<string>;
+    deliveryChannelName?: pulumi.Input<string | undefined>;
     /**
      * The configurations for delivery of resource configuration change events. See `resourceChangeDelivery` below.
      */
-    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceChangeDelivery>;
+    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceChangeDelivery | undefined>;
     /**
      * The configurations for delivery of scheduled resource snapshots. See `resourceSnapshotDelivery` below.
      */
-    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceSnapshotDelivery>;
+    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceSnapshotDelivery | undefined>;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface DeliveryChannelArgs {
     /**
      * The description of the delivery channel.
      */
-    deliveryChannelDescription?: pulumi.Input<string>;
+    deliveryChannelDescription?: pulumi.Input<string | undefined>;
     /**
      * The effective scope of the delivery channel. See `deliveryChannelFilter` below.
      */
@@ -194,9 +194,9 @@ export interface DeliveryChannelArgs {
     /**
      * The configurations for delivery of resource configuration change events. See `resourceChangeDelivery` below.
      */
-    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceChangeDelivery>;
+    resourceChangeDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceChangeDelivery | undefined>;
     /**
      * The configurations for delivery of scheduled resource snapshots. See `resourceSnapshotDelivery` below.
      */
-    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceSnapshotDelivery>;
+    resourceSnapshotDelivery?: pulumi.Input<inputs.resourcemanager.DeliveryChannelResourceSnapshotDelivery | undefined>;
 }

@@ -97,15 +97,15 @@ export interface BackendServerState {
     /**
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      */
-    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[] | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the load balancer.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -115,11 +115,11 @@ export interface BackendServerArgs {
     /**
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      */
-    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.slb.BackendServerBackendServer>[] | undefined>;
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the load balancer.
      */

@@ -21,7 +21,7 @@ class AclEntryAttachmentArgs:
     def __init__(__self__, *,
                  acl_id: pulumi.Input[_builtins.str],
                  entry: pulumi.Input[_builtins.str],
-                 entry_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 entry_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AclEntryAttachment resource.
 
@@ -60,24 +60,24 @@ class AclEntryAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="entryDescription")
-    def entry_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
     @entry_description.setter
-    def entry_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_description", value)
 
 
 @pulumi.input_type
 class _AclEntryAttachmentState:
     def __init__(__self__, *,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AclEntryAttachment resources.
 
@@ -97,50 +97,50 @@ class _AclEntryAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="aclId")
-    def acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Acl.
         """
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
-    def acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry (IP address or CIDR block) that you want to add.
         """
         return pulumi.get(self, "entry")
 
     @entry.setter
-    def entry(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry", value)
 
     @_builtins.property
     @pulumi.getter(name="entryDescription")
-    def entry_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entry_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
         """
         return pulumi.get(self, "entry_description")
 
     @entry_description.setter
-    def entry_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entry_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entry_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Acl Entry Attachment.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -150,9 +150,9 @@ class AclEntryAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Acl Entry Attachment resource.
@@ -259,9 +259,9 @@ class AclEntryAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry: Optional[pulumi.Input[_builtins.str]] = None,
-                 entry_description: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[_builtins.str]] = None,
+                 entry_description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -289,10 +289,10 @@ class AclEntryAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            entry: Optional[pulumi.Input[_builtins.str]] = None,
-            entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AclEntryAttachment':
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            entry: pulumi.Input[Optional[_builtins.str]] = None,
+            entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AclEntryAttachment':
         """
         Get an existing AclEntryAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

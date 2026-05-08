@@ -179,12 +179,12 @@ def get_tls_cipher_policies(ids: Optional[Sequence[_builtins.str]] = None,
         policies=pulumi.get(__ret__, 'policies'),
         status=pulumi.get(__ret__, 'status'),
         tls_cipher_policy_name=pulumi.get(__ret__, 'tls_cipher_policy_name'))
-def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   include_listener: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                   name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   tls_cipher_policy_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_tls_cipher_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   include_listener: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                   name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   tls_cipher_policy_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTlsCipherPoliciesResult]:
     """
     This data source provides the Slb Tls Cipher Policies of the current Alibaba Cloud user.

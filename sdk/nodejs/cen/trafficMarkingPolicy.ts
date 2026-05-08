@@ -174,44 +174,44 @@ export interface TrafficMarkingPolicyState {
     /**
      * TrafficMarkingPolicyDescription
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to forcibly delete the traffic marker policy. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * MarkingDscp
      */
-    markingDscp?: pulumi.Input<number>;
+    markingDscp?: pulumi.Input<number | undefined>;
     /**
      * Priority
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    trafficMarkingPolicyId?: pulumi.Input<string>;
+    trafficMarkingPolicyId?: pulumi.Input<string | undefined>;
     /**
      * TrafficMarkingPolicyName
      */
-    trafficMarkingPolicyName?: pulumi.Input<string>;
+    trafficMarkingPolicyName?: pulumi.Input<string | undefined>;
     /**
      * List of stream classification rules.
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
-    trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[]>;
+    trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[] | undefined>;
     /**
      * TransitRouterId
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,15 +221,15 @@ export interface TrafficMarkingPolicyArgs {
     /**
      * TrafficMarkingPolicyDescription
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to forcibly delete the traffic marker policy. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * MarkingDscp
      */
@@ -241,12 +241,12 @@ export interface TrafficMarkingPolicyArgs {
     /**
      * TrafficMarkingPolicyName
      */
-    trafficMarkingPolicyName?: pulumi.Input<string>;
+    trafficMarkingPolicyName?: pulumi.Input<string | undefined>;
     /**
      * List of stream classification rules.
      * You can add up to 50 stream classification rules at a time. See `trafficMatchRules` below.
      */
-    trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[]>;
+    trafficMatchRules?: pulumi.Input<pulumi.Input<inputs.cen.TrafficMarkingPolicyTrafficMatchRule>[] | undefined>;
     /**
      * TransitRouterId
      */

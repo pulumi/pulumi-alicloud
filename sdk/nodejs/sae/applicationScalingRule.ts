@@ -242,35 +242,35 @@ export interface ApplicationScalingRuleState {
     /**
      * Application ID.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The min ready instance ratio.
      */
-    minReadyInstanceRatio?: pulumi.Input<number>;
+    minReadyInstanceRatio?: pulumi.Input<number | undefined>;
     /**
      * The min ready instances.
      */
-    minReadyInstances?: pulumi.Input<number>;
+    minReadyInstances?: pulumi.Input<number | undefined>;
     /**
      * True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
      */
-    scalingRuleEnable?: pulumi.Input<boolean>;
+    scalingRuleEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
-    scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric>;
+    scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric | undefined>;
     /**
      * The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
      */
-    scalingRuleName?: pulumi.Input<string>;
+    scalingRuleName?: pulumi.Input<string | undefined>;
     /**
      * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
-    scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer>;
+    scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer | undefined>;
     /**
      * Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
      */
-    scalingRuleType?: pulumi.Input<string>;
+    scalingRuleType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -284,19 +284,19 @@ export interface ApplicationScalingRuleArgs {
     /**
      * The min ready instance ratio.
      */
-    minReadyInstanceRatio?: pulumi.Input<number>;
+    minReadyInstanceRatio?: pulumi.Input<number | undefined>;
     /**
      * The min ready instances.
      */
-    minReadyInstances?: pulumi.Input<number>;
+    minReadyInstances?: pulumi.Input<number | undefined>;
     /**
      * True whether the auto scaling policy is enabled. The value description is as follows: true: enabled state. false: disabled status. Valid values: `false`, `true`.
      */
-    scalingRuleEnable?: pulumi.Input<boolean>;
+    scalingRuleEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Monitor the configuration of the indicator elasticity strategy. See `scalingRuleMetric` below.
      */
-    scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric>;
+    scalingRuleMetric?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleMetric | undefined>;
     /**
      * The name of a custom elastic scaling policy. In the application, the policy name cannot be repeated. It must start with a lowercase letter, and can only contain lowercase letters, numbers, and dashes (-), and no more than 32 characters. After the scaling policy is successfully created, the policy name cannot be modified.
      */
@@ -304,7 +304,7 @@ export interface ApplicationScalingRuleArgs {
     /**
      * Configuration of Timing Resilient Policies. See `scalingRuleTimer` below.
      */
-    scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer>;
+    scalingRuleTimer?: pulumi.Input<inputs.sae.ApplicationScalingRuleScalingRuleTimer | undefined>;
     /**
      * Flexible strategy type. Valid values: `mix`, `timing` and `metric`.
      */

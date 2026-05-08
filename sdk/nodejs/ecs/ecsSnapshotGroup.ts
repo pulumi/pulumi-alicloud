@@ -207,43 +207,43 @@ export interface EcsSnapshotGroupState {
     /**
      * The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
      */
-    diskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    diskIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
      */
-    excludeDiskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeDiskIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the instant access feature.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group to which the snapshot consistency group belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
      */
-    snapshotGroupName?: pulumi.Input<string>;
+    snapshotGroupName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the snapshot group.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -253,37 +253,37 @@ export interface EcsSnapshotGroupArgs {
     /**
      * The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
      */
-    diskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    diskIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
      */
-    excludeDiskIds?: pulumi.Input<pulumi.Input<string>[]>;
+    excludeDiskIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the instant access feature.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group to which the snapshot consistency group belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
      */
-    snapshotGroupName?: pulumi.Input<string>;
+    snapshotGroupName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the snapshot group.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

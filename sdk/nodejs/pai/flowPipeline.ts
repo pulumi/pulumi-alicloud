@@ -221,15 +221,15 @@ export interface FlowPipelineState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The pipeline definition. For more information, see the sample pipeline definition).
      */
-    manifest?: pulumi.Input<string>;
+    manifest?: pulumi.Input<string | undefined>;
     /**
      * The ID of the workspace.
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**

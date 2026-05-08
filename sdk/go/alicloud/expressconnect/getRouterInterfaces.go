@@ -26,21 +26,23 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := expressconnect.GetRouterInterfaces(ctx, &expressconnect.GetRouterInterfacesArgs{
-// Ids: interface{}{
-// defaultAlicloudRouterInterface.Id,
-// },
-// NameRegex: pulumi.StringRef(defaultAlicloudRouterInterface.Name),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudRouterInterfaceExampleId", _default.Interfaces[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := expressconnect.GetRouterInterfaces(ctx, &expressconnect.GetRouterInterfacesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudRouterInterface.Id,
+//				},
+//				NameRegex: pulumi.StringRef(defaultAlicloudRouterInterface.Name),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudRouterInterfaceExampleId", _default.Interfaces[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetRouterInterfaces(ctx *pulumi.Context, args *GetRouterInterfacesArgs, opts ...pulumi.InvokeOption) (*GetRouterInterfacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

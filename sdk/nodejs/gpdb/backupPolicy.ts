@@ -215,18 +215,18 @@ export interface BackupPolicyState {
     /**
      * Data backup retention days.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable automatic recovery points. Value Description:
      * - **true**: enabled.
      * - **false**: Closed.
      */
-    enableRecoveryPoint?: pulumi.Input<boolean>;
+    enableRecoveryPoint?: pulumi.Input<boolean | undefined>;
     /**
      * Data backup cycle. Separate multiple values with commas (,). Value Description:
      * - **Monday**: Monday.
@@ -237,11 +237,11 @@ export interface BackupPolicyState {
      * - **Saturday**: Saturday.
      * - **Sunday**: Sunday.
      */
-    preferredBackupPeriod?: pulumi.Input<string>;
+    preferredBackupPeriod?: pulumi.Input<string | undefined>;
     /**
      * Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
      */
-    preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string | undefined>;
     /**
      * Recovery point frequency. Value Description:
      * - **1**: Hourly.
@@ -249,7 +249,7 @@ export interface BackupPolicyState {
      * - **4**: Every four hours.
      * - **8**: Every eight hours.
      */
-    recoveryPointPeriod?: pulumi.Input<string>;
+    recoveryPointPeriod?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,7 +259,7 @@ export interface BackupPolicyArgs {
     /**
      * Data backup retention days.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The instance ID.
      * > **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
@@ -270,7 +270,7 @@ export interface BackupPolicyArgs {
      * - **true**: enabled.
      * - **false**: Closed.
      */
-    enableRecoveryPoint?: pulumi.Input<boolean>;
+    enableRecoveryPoint?: pulumi.Input<boolean | undefined>;
     /**
      * Data backup cycle. Separate multiple values with commas (,). Value Description:
      * - **Monday**: Monday.
@@ -293,5 +293,5 @@ export interface BackupPolicyArgs {
      * - **4**: Every four hours.
      * - **8**: Every eight hours.
      */
-    recoveryPointPeriod?: pulumi.Input<string>;
+    recoveryPointPeriod?: pulumi.Input<string | undefined>;
 }

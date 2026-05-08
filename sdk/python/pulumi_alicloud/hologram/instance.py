@@ -25,21 +25,21 @@ class InstanceArgs:
                  instance_type: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
-                 gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
-                 leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
+                 gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+                 leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -176,7 +176,7 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. The default value is true. Value:
         - true: automatic payment
@@ -186,12 +186,12 @@ class InstanceArgs:
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="coldStorageSize")
-    def cold_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cold_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance low-frequency storage space. Unit: GB.
         > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
@@ -199,12 +199,12 @@ class InstanceArgs:
         return pulumi.get(self, "cold_storage_size")
 
     @cold_storage_size.setter
-    def cold_storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cold_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cold_storage_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance specifications. Value:
         - 8 cores 32 GB (number of compute nodes: 1)
@@ -218,84 +218,84 @@ class InstanceArgs:
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
         """
         List of domain names. See `endpoints` below.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayCount")
-    def gateway_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gateway_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of gateway nodes.
         """
         return pulumi.get(self, "gateway_count")
 
     @gateway_count.setter
-    def gateway_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gateway_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gateway_count", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDatabases")
-    def initial_databases(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_databases(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initialize the database and split multiple database names ",".
         """
         return pulumi.get(self, "initial_databases")
 
     @initial_databases.setter
-    def initial_databases(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_databases(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_databases", value)
 
     @_builtins.property
     @pulumi.getter(name="leaderInstanceId")
-    def leader_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def leader_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the primary instance.
         """
         return pulumi.get(self, "leader_instance_id")
 
     @leader_instance_id.setter
-    def leader_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def leader_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "leader_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing cycle. Value:
         - Month: monthly billing
@@ -305,24 +305,24 @@ class InstanceArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Change matching type. Value:
         - UPGRADE: UPGRADE
@@ -332,24 +332,24 @@ class InstanceArgs:
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The standard storage space of the instance. Unit: GB.
         > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
@@ -357,46 +357,46 @@ class InstanceArgs:
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Instance tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
-                 gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]] = None,
+                 gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -490,7 +490,7 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. The default value is true. Value:
         - true: automatic payment
@@ -500,12 +500,12 @@ class _InstanceState:
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="coldStorageSize")
-    def cold_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cold_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance low-frequency storage space. Unit: GB.
         > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
@@ -513,12 +513,12 @@ class _InstanceState:
         return pulumi.get(self, "cold_storage_size")
 
     @cold_storage_size.setter
-    def cold_storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cold_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cold_storage_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance specifications. Value:
         - 8 cores 32 GB (number of compute nodes: 1)
@@ -532,96 +532,96 @@ class _InstanceState:
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSsl")
-    def enable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_ssl")
 
     @enable_ssl.setter
-    def enable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]:
         """
         List of domain names. See `endpoints` below.
         """
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayCount")
-    def gateway_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gateway_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of gateway nodes.
         """
         return pulumi.get(self, "gateway_count")
 
     @gateway_count.setter
-    def gateway_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gateway_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gateway_count", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDatabases")
-    def initial_databases(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initial_databases(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Initialize the database and split multiple database names ",".
         """
         return pulumi.get(self, "initial_databases")
 
     @initial_databases.setter
-    def initial_databases(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initial_databases(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initial_databases", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type. Value:
         - Standard: Universal.
@@ -633,36 +633,36 @@ class _InstanceState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="leaderInstanceId")
-    def leader_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def leader_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the primary instance.
         """
         return pulumi.get(self, "leader_instance_id")
 
     @leader_instance_id.setter
-    def leader_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def leader_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "leader_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing cycle. Value:
         - Month: monthly billing
@@ -672,36 +672,36 @@ class _InstanceState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.259.0) The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleType")
-    def scale_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scale_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Change matching type. Value:
         - UPGRADE: UPGRADE
@@ -711,24 +711,24 @@ class _InstanceState:
         return pulumi.get(self, "scale_type")
 
     @scale_type.setter
-    def scale_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scale_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scale_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSize")
-    def storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The standard storage space of the instance. Unit: GB.
         > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
@@ -736,31 +736,31 @@ class _InstanceState:
         return pulumi.get(self, "storage_size")
 
     @storage_size.setter
-    def storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Instance tag.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone Id. Refer to "Instructions for Use".
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -770,25 +770,25 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
-                 gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+                 gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Hologres (Hologram) Instance resource.
@@ -982,25 +982,25 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
-                 gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+                 gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1049,27 +1049,27 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            cold_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-            cpu: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
-            gateway_count: Optional[pulumi.Input[_builtins.int]] = None,
-            initial_databases: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            leader_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            cold_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cpu: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEndpointArgs', 'InstanceEndpointArgsDict']]]]] = None,
+            gateway_count: pulumi.Input[Optional[_builtins.int]] = None,
+            initial_databases: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            leader_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -128,11 +128,11 @@ export interface TenantRoleUserAttachmentState {
      * 3. If the user is a RAM role, the AccountId format is v4_UID.
      * Example: v4_300007628597555555
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      */
-    tenantRole?: pulumi.Input<string>;
+    tenantRole?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -151,9 +151,9 @@ export interface TenantRoleUserAttachmentArgs {
      * 3. If the user is a RAM role, the AccountId format is v4_UID.
      * Example: v4_300007628597555555
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Tenant role. By default, admin and superAdministrator are available. You can add more roles in the console.
      */
-    tenantRole?: pulumi.Input<string>;
+    tenantRole?: pulumi.Input<string | undefined>;
 }

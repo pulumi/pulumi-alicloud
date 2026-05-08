@@ -22,7 +22,7 @@ class WorkspaceUserConfigArgs:
                  category_name: pulumi.Input[_builtins.str],
                  config_key: pulumi.Input[_builtins.str],
                  config_value: pulumi.Input[_builtins.str],
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceUserConfig resource.
 
@@ -75,24 +75,24 @@ class WorkspaceUserConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
 @pulumi.input_type
 class _WorkspaceUserConfigState:
     def __init__(__self__, *,
-                 category_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 category_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceUserConfig resources.
 
@@ -112,50 +112,50 @@ class _WorkspaceUserConfigState:
 
     @_builtins.property
     @pulumi.getter(name="categoryName")
-    def category_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category. Valid values: `DataPrivacyConfig`.
         """
         return pulumi.get(self, "category_name")
 
     @category_name.setter
-    def category_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category_name", value)
 
     @_builtins.property
     @pulumi.getter(name="configKey")
-    def config_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the configuration.
         """
         return pulumi.get(self, "config_key")
 
     @config_key.setter
-    def config_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_key", value)
 
     @_builtins.property
     @pulumi.getter(name="configValue")
-    def config_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the configuration.
         """
         return pulumi.get(self, "config_value")
 
     @config_value.setter
-    def config_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -165,10 +165,10 @@ class WorkspaceUserConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 category_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace User Config resource.
@@ -270,10 +270,10 @@ class WorkspaceUserConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 category_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -303,10 +303,10 @@ class WorkspaceUserConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category_name: Optional[pulumi.Input[_builtins.str]] = None,
-            config_key: Optional[pulumi.Input[_builtins.str]] = None,
-            config_value: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceUserConfig':
+            category_name: pulumi.Input[Optional[_builtins.str]] = None,
+            config_key: pulumi.Input[Optional[_builtins.str]] = None,
+            config_value: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceUserConfig':
         """
         Get an existing WorkspaceUserConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

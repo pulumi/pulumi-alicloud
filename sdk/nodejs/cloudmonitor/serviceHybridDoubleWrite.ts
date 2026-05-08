@@ -135,19 +135,19 @@ export interface ServiceHybridDoubleWriteState {
     /**
      * Target Namespace.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Source Namespace.
      */
-    sourceNamespace?: pulumi.Input<string>;
+    sourceNamespace?: pulumi.Input<string | undefined>;
     /**
      * Source UserId.
      */
-    sourceUserId?: pulumi.Input<string>;
+    sourceUserId?: pulumi.Input<string | undefined>;
     /**
      * Target UserId.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**

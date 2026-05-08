@@ -211,27 +211,27 @@ export interface ServerGroupAttachmentState {
      * If instances of scaling group are attached/removed from backend server when
      * server group from scaling group. Default to false.
      */
-    forceAttach?: pulumi.Input<boolean>;
+    forceAttach?: pulumi.Input<boolean | undefined>;
     /**
      * The port will be used for Server Group backend server.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * ID of the scaling group.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * ID of Server Group.
      */
-    serverGroupId?: pulumi.Input<string>;
+    serverGroupId?: pulumi.Input<string | undefined>;
     /**
      * The type of server group N. Valid values: ALB, NLB.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The weight of an ECS instance attached to the Server Group.
      */
-    weight?: pulumi.Input<number>;
+    weight?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -242,7 +242,7 @@ export interface ServerGroupAttachmentArgs {
      * If instances of scaling group are attached/removed from backend server when
      * server group from scaling group. Default to false.
      */
-    forceAttach?: pulumi.Input<boolean>;
+    forceAttach?: pulumi.Input<boolean | undefined>;
     /**
      * The port will be used for Server Group backend server.
      */

@@ -169,7 +169,7 @@ def get_log_shipper(enable: Optional[_builtins.str] = None,
         sls_project_status=pulumi.get(__ret__, 'sls_project_status'),
         sls_service_status=pulumi.get(__ret__, 'sls_service_status'),
         status=pulumi.get(__ret__, 'status'))
-def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_log_shipper_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogShipperResult]:
     """
     Using this data source can open Threat Detection Log Shipper automatically. If the service has been enabled, it will return `Opened`.

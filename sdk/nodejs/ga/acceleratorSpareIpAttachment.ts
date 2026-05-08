@@ -144,19 +144,19 @@ export interface AcceleratorSpareIpAttachmentState {
     /**
      * The ID of the global acceleration instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
      */
-    spareIp?: pulumi.Input<string>;
+    spareIp?: pulumi.Input<string | undefined>;
     /**
      * The status of the standby CNAME IP address.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,7 +170,7 @@ export interface AcceleratorSpareIpAttachmentArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The standby IP address of CNAME. When the acceleration area is abnormal, the traffic is switched to the standby IP address.
      */

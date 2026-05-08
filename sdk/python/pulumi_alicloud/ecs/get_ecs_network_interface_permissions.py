@@ -173,12 +173,12 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[_builtins.str]]
         permissions=pulumi.get(__ret__, 'permissions'),
         status=pulumi.get(__ret__, 'status'),
         total_count=pulumi.get(__ret__, 'total_count'))
-def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                 page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ecs_network_interface_permissions_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                 page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                 status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsNetworkInterfacePermissionsResult]:
     """
     This data source provides the Ecs Network Interface Permissions of the current Alibaba Cloud user.

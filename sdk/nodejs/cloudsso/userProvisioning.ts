@@ -226,51 +226,51 @@ export interface UserProvisioningState {
     /**
      * The creation time of the synchronization
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The processing policy for users who have been synchronized when deleting synchronization
      */
-    deletionStrategy?: pulumi.Input<string>;
+    deletionStrategy?: pulumi.Input<string | undefined>;
     /**
      * Description of User Synchronization
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the directory to which the synchronization belongs
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * Processing Policy for Synchronization Conflicts
      */
-    duplicationStrategy?: pulumi.Input<string>;
+    duplicationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CloudSSO user/group associated with the synchronization.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CloudSSO user/group associated with the synchronization.
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the destination associated with the synchronization.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * The target type associated with the synchronization
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    userProvisioningId?: pulumi.Input<string>;
+    userProvisioningId?: pulumi.Input<string | undefined>;
     /**
      * User Provisioning statistics
      */
-    userProvisioningStatistics?: pulumi.Input<pulumi.Input<inputs.cloudsso.UserProvisioningUserProvisioningStatistic>[]>;
+    userProvisioningStatistics?: pulumi.Input<pulumi.Input<inputs.cloudsso.UserProvisioningUserProvisioningStatistic>[] | undefined>;
 }
 
 /**
@@ -284,7 +284,7 @@ export interface UserProvisioningArgs {
     /**
      * Description of User Synchronization
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the directory to which the synchronization belongs
      */

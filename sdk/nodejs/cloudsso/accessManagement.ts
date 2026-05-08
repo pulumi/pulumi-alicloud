@@ -197,35 +197,35 @@ export interface AccessManagementState {
     /**
      * The ID of the access configuration.
      */
-    accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.254.0) The time when the access permissions were assigned.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
-    deprovisionStrategy?: pulumi.Input<string>;
+    deprovisionStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CloudSSO identity.
      */
-    principalId?: pulumi.Input<string>;
+    principalId?: pulumi.Input<string | undefined>;
     /**
      * The type of the CloudSSO identity. Valid values: `User`, `Group`.
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the task object.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * The type of the task object. Valid values: `RD-Account`.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -239,7 +239,7 @@ export interface AccessManagementArgs {
     /**
      * Specifies whether to de-provision the access configuration when you remove the access permissions from the CloudSSO identity. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovisionStrategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation.
      */
-    deprovisionStrategy?: pulumi.Input<string>;
+    deprovisionStrategy?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */

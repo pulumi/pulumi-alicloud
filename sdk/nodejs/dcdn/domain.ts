@@ -237,83 +237,83 @@ export interface DomainState {
     /**
      * The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
      */
-    certRegion?: pulumi.Input<string>;
+    certRegion?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
      */
-    certType?: pulumi.Input<string>;
+    certType?: pulumi.Input<string | undefined>;
     /**
      * The URL that is used for health checks.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The CNAME domain name corresponding to the accelerated domain name.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * The time when the accelerated domain name was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
      */
-    env?: pulumi.Input<string>;
+    env?: pulumi.Input<string | undefined>;
     /**
      * Computing service type. Valid values:
      */
-    functionType?: pulumi.Input<string>;
+    functionType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Acceleration scen. Supported:
      */
-    scene?: pulumi.Input<string>;
+    scene?: pulumi.Input<string | undefined>;
     /**
      * The region where the acceleration service is deployed. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Source  See `sources` below.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[] | undefined>;
     /**
      * The private key. Specify the private key only if you want to enable the SSL certificate.
      */
-    sslPri?: pulumi.Input<string>;
+    sslPri?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the SSL certificate. Valid values:
      */
-    sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string | undefined>;
     /**
      * The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
      */
-    sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The top-level domain.
      */
-    topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,23 +323,23 @@ export interface DomainArgs {
     /**
      * The certificate ID. This parameter is required and valid only when `CertType` is set to `cas`. If you specify this parameter, an existing certificate is used.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The name of the new certificate. You can specify only one certificate name. This parameter is optional and valid only when `CertType` is set to `upload`.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The region of the SSL certificate. This parameter takes effect only when `CertType` is set to `cas`. Default value: **cn-hangzhou**. Valid values: **cn-hangzhou** and **ap-southeast-1**.
      */
-    certRegion?: pulumi.Input<string>;
+    certRegion?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
      */
-    certType?: pulumi.Input<string>;
+    certType?: pulumi.Input<string | undefined>;
     /**
      * The URL that is used for health checks.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The accelerated domain name. You can specify multiple domain names and separate them with commas (,). You can specify up to 500 domain names in each request. The query results of multiple domain names are aggregated. If you do not specify this parameter, data of all accelerated domain names under your account is queried.
      */
@@ -347,49 +347,49 @@ export interface DomainArgs {
     /**
      * Specifies whether the certificate is issued in canary releases. If you set this parameter to `staging`, the certificate is issued in canary releases. If you do not specify this parameter or set this parameter to other values, the certificate is officially issued.
      */
-    env?: pulumi.Input<string>;
+    env?: pulumi.Input<string | undefined>;
     /**
      * Computing service type. Valid values:
      */
-    functionType?: pulumi.Input<string>;
+    functionType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. If you do not specify a value for this parameter, the system automatically assigns the ID of the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Acceleration scen. Supported:
      */
-    scene?: pulumi.Input<string>;
+    scene?: pulumi.Input<string | undefined>;
     /**
      * The region where the acceleration service is deployed. Valid values:
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * Source  See `sources` below.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.dcdn.DomainSource>[] | undefined>;
     /**
      * The private key. Specify the private key only if you want to enable the SSL certificate.
      */
-    sslPri?: pulumi.Input<string>;
+    sslPri?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the SSL certificate. Valid values:
      */
-    sslProtocol?: pulumi.Input<string>;
+    sslProtocol?: pulumi.Input<string | undefined>;
     /**
      * The content of the SSL certificate. Specify the content of the SSL certificate only if you want to enable the SSL certificate.
      */
-    sslPub?: pulumi.Input<string>;
+    sslPub?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The top-level domain.
      */
-    topLevelDomain?: pulumi.Input<string>;
+    topLevelDomain?: pulumi.Input<string | undefined>;
 }

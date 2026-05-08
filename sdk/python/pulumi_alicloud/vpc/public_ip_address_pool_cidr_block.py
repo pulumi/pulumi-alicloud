@@ -20,8 +20,8 @@ __all__ = ['PublicIpAddressPoolCidrBlockArgs', 'PublicIpAddressPoolCidrBlock']
 class PublicIpAddressPoolCidrBlockArgs:
     def __init__(__self__, *,
                  public_ip_address_pool_id: pulumi.Input[_builtins.str],
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PublicIpAddressPoolCidrBlock resource.
 
@@ -50,19 +50,19 @@ class PublicIpAddressPoolCidrBlockArgs:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMask")
-    def cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
         > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
@@ -70,18 +70,18 @@ class PublicIpAddressPoolCidrBlockArgs:
         return pulumi.get(self, "cidr_mask")
 
     @cidr_mask.setter
-    def cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cidr_mask", value)
 
 
 @pulumi.input_type
 class _PublicIpAddressPoolCidrBlockState:
     def __init__(__self__, *,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIpAddressPoolCidrBlock resources.
 
@@ -105,19 +105,19 @@ class _PublicIpAddressPoolCidrBlockState:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMask")
-    def cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
         > **NOTE:**  **CidrBlock** and **CidrMask** cannot be configured at the same time. Select one of them to configure.
@@ -125,43 +125,43 @@ class _PublicIpAddressPoolCidrBlockState:
         return pulumi.get(self, "cidr_mask")
 
     @cidr_mask.setter
-    def cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="publicIpAddressPoolId")
-    def public_ip_address_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_ip_address_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC Public IP address pool.
         """
         return pulumi.get(self, "public_ip_address_pool_id")
 
     @public_ip_address_pool_id.setter
-    def public_ip_address_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_ip_address_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_ip_address_pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the VPC Public Ip Address Pool Cidr Block.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -171,9 +171,9 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Public Ip Address Pool Cidr Block resource.
@@ -287,9 +287,9 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,11 +316,11 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIpAddressPoolCidrBlock':
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicIpAddressPoolCidrBlock':
         """
         Get an existing PublicIpAddressPoolCidrBlock resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

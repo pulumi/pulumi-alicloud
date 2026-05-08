@@ -26,17 +26,17 @@ __all__ = [
 ]
 
 class ClusterDbClusterIpArrayArgsDict(TypedDict):
-    db_cluster_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    db_cluster_ip_array_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
     **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
     """
-    modify_mode: NotRequired[pulumi.Input[_builtins.str]]
+    modify_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
     **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
     """
-    security_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    security_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
     """
@@ -44,9 +44,9 @@ class ClusterDbClusterIpArrayArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterDbClusterIpArrayArgs:
     def __init__(__self__, *,
-                 db_cluster_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 db_cluster_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] db_cluster_ip_array_name: The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
                **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
@@ -63,7 +63,7 @@ class ClusterDbClusterIpArrayArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrayName")
-    def db_cluster_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
         **NOTE:** If the specified whitelist group name does not exist, the whitelist group is created. If the specified whitelist group name exists, the whitelist group is modified. If you do not specify this parameter, the default group is modified. You can create a maximum of 50 IP whitelist groups for a cluster.
@@ -71,12 +71,12 @@ class ClusterDbClusterIpArrayArgs:
         return pulumi.get(self, "db_cluster_ip_array_name")
 
     @db_cluster_ip_array_name.setter
-    def db_cluster_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
-    def modify_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method for modifying the IP whitelist. Valid values are `Cover`, `Append`, `Delete`.
         **NOTE:** There does not recommend setting modify_mode to `Append` or `Delete` and it will bring a potential diff error.
@@ -84,36 +84,36 @@ class ClusterDbClusterIpArrayArgs:
         return pulumi.get(self, "modify_mode")
 
     @modify_mode.setter
-    def modify_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of a cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
 
 class ClusterDbRevisionVersionListArgsDict(TypedDict):
-    release_note: NotRequired[pulumi.Input[_builtins.str]]
+    release_note: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
     """
-    release_type: NotRequired[pulumi.Input[_builtins.str]]
+    release_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
     """
-    revision_version_code: NotRequired[pulumi.Input[_builtins.str]]
+    revision_version_code: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
     """
-    revision_version_name: NotRequired[pulumi.Input[_builtins.str]]
+    revision_version_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.216.0) The revision version number of the database engine.
     """
@@ -121,10 +121,10 @@ class ClusterDbRevisionVersionListArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterDbRevisionVersionListArgs:
     def __init__(__self__, *,
-                 release_note: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 revision_version_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 release_note: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 revision_version_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] release_note: (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
         :param pulumi.Input[_builtins.str] release_type: (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
@@ -142,50 +142,50 @@ class ClusterDbRevisionVersionListArgs:
 
     @_builtins.property
     @pulumi.getter(name="releaseNote")
-    def release_note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
         """
         return pulumi.get(self, "release_note")
 
     @release_note.setter
-    def release_note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_note", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseType")
-    def release_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def release_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.216.0) Database version release status. Valid values are `Stable`, `Old`, `HighRisk`.
         """
         return pulumi.get(self, "release_type")
 
     @release_type.setter
-    def release_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def release_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "release_type", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionVersionCode")
-    def revision_version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.216.0) The revised version Code of the database engine is used to specify the upgrade to the target version.
         """
         return pulumi.get(self, "revision_version_code")
 
     @revision_version_code.setter
-    def revision_version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="revisionVersionName")
-    def revision_version_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def revision_version_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.216.0) The revision version number of the database engine.
         """
         return pulumi.get(self, "revision_version_name")
 
     @revision_version_name.setter
-    def revision_version_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def revision_version_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "revision_version_name", value)
 
 
@@ -237,11 +237,11 @@ class ClusterParameterArgs:
 
 
 class ParameterGroupParameterArgsDict(TypedDict):
-    param_name: NotRequired[pulumi.Input[_builtins.str]]
+    param_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter.
     """
-    param_value: NotRequired[pulumi.Input[_builtins.str]]
+    param_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the parameter.
     """
@@ -249,8 +249,8 @@ class ParameterGroupParameterArgsDict(TypedDict):
 @pulumi.input_type
 class ParameterGroupParameterArgs:
     def __init__(__self__, *,
-                 param_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 param_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 param_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 param_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] param_name: The name of the parameter.
         :param pulumi.Input[_builtins.str] param_value: The value of the parameter.
@@ -262,26 +262,26 @@ class ParameterGroupParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="paramName")
-    def param_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter.
         """
         return pulumi.get(self, "param_name")
 
     @param_name.setter
-    def param_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paramValue")
-    def param_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the parameter.
         """
         return pulumi.get(self, "param_value")
 
     @param_value.setter
-    def param_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param_value", value)
 
 

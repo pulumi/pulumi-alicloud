@@ -200,13 +200,13 @@ def get_transit_routers(cen_id: Optional[_builtins.str] = None,
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
         transit_router_ids=pulumi.get(__ret__, 'transit_router_ids'),
         transit_routers=pulumi.get(__ret__, 'transit_routers'))
-def get_transit_routers_output(cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               transit_router_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               transit_router_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_transit_routers_output(cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               transit_router_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               transit_router_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRoutersResult]:
     """
     This data source provides CEN Transit Routers available to the user.[What is Cen Transit Routers](https://help.aliyun.com/document_detail/261219.html)

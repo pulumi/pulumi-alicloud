@@ -46,27 +46,27 @@ class InstanceAdAuthServerArgsDict(TypedDict):
     """
     The address of the AD server.
     """
-    email_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    email_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the email address of a user on the AD server.
     """
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The condition that is used to filter users.
     """
-    mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the mobile phone number of a user on the AD server.
     """
-    name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    name_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the name of a user on the AD server.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password of the account that is used for the AD server.
     """
-    standby_server: NotRequired[pulumi.Input[_builtins.str]]
+    standby_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the secondary AD server.
     """
@@ -80,12 +80,12 @@ class InstanceAdAuthServerArgs:
                  is_ssl: pulumi.Input[_builtins.bool],
                  port: pulumi.Input[_builtins.int],
                  server: pulumi.Input[_builtins.str],
-                 email_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 mobile_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_server: Optional[pulumi.Input[_builtins.str]] = None):
+                 email_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 mobile_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_server: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account: The username of the account that is used for the AD server.
         :param pulumi.Input[_builtins.str] base_dn: The Base distinguished name (DN).
@@ -193,74 +193,74 @@ class InstanceAdAuthServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="emailMapping")
-    def email_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the email address of a user on the AD server.
         """
         return pulumi.get(self, "email_mapping")
 
     @email_mapping.setter
-    def email_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition that is used to filter users.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="mobileMapping")
-    def mobile_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the mobile phone number of a user on the AD server.
         """
         return pulumi.get(self, "mobile_mapping")
 
     @mobile_mapping.setter
-    def mobile_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="nameMapping")
-    def name_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the name of a user on the AD server.
         """
         return pulumi.get(self, "name_mapping")
 
     @name_mapping.setter
-    def name_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the account that is used for the AD server.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyServer")
-    def standby_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the secondary AD server.
         """
         return pulumi.get(self, "standby_server")
 
     @standby_server.setter
-    def standby_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_server", value)
 
 
@@ -281,35 +281,35 @@ class InstanceLdapAuthServerArgsDict(TypedDict):
     """
     The address of the LDAP server.
     """
-    email_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    email_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the email address of a user on the LDAP server.
     """
-    filter: NotRequired[pulumi.Input[_builtins.str]]
+    filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The condition that is used to filter users.
     """
-    is_ssl: NotRequired[pulumi.Input[_builtins.bool]]
+    is_ssl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to support SSL.
     """
-    login_name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    login_name_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the logon name of a user on the LDAP server.
     """
-    mobile_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    mobile_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the mobile phone number of a user on the LDAP server.
     """
-    name_mapping: NotRequired[pulumi.Input[_builtins.str]]
+    name_mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The field that is used to indicate the name of a user on the LDAP server.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password of the account that is used for the LDAP server.
     """
-    standby_server: NotRequired[pulumi.Input[_builtins.str]]
+    standby_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the secondary LDAP server.
     """
@@ -321,14 +321,14 @@ class InstanceLdapAuthServerArgs:
                  base_dn: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  server: pulumi.Input[_builtins.str],
-                 email_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 login_name_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 mobile_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_server: Optional[pulumi.Input[_builtins.str]] = None):
+                 email_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 login_name_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 mobile_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_server: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] account: The username of the account that is used for the LDAP server.
         :param pulumi.Input[_builtins.str] base_dn: The Base distinguished name (DN).
@@ -414,98 +414,98 @@ class InstanceLdapAuthServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="emailMapping")
-    def email_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the email address of a user on the LDAP server.
         """
         return pulumi.get(self, "email_mapping")
 
     @email_mapping.setter
-    def email_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition that is used to filter users.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="isSsl")
-    def is_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to support SSL.
         """
         return pulumi.get(self, "is_ssl")
 
     @is_ssl.setter
-    def is_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="loginNameMapping")
-    def login_name_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_name_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the logon name of a user on the LDAP server.
         """
         return pulumi.get(self, "login_name_mapping")
 
     @login_name_mapping.setter
-    def login_name_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_name_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_name_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="mobileMapping")
-    def mobile_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mobile_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the mobile phone number of a user on the LDAP server.
         """
         return pulumi.get(self, "mobile_mapping")
 
     @mobile_mapping.setter
-    def mobile_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mobile_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mobile_mapping", value)
 
     @_builtins.property
     @pulumi.getter(name="nameMapping")
-    def name_mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name_mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The field that is used to indicate the name of a user on the LDAP server.
         """
         return pulumi.get(self, "name_mapping")
 
     @name_mapping.setter
-    def name_mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name_mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name_mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the account that is used for the LDAP server.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyServer")
-    def standby_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the secondary LDAP server.
         """
         return pulumi.get(self, "standby_server")
 
     @standby_server.setter
-    def standby_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_server", value)
 
 

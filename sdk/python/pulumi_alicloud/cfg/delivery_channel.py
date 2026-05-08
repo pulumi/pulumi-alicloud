@@ -22,10 +22,10 @@ class DeliveryChannelArgs:
                  delivery_channel_assume_role_arn: pulumi.Input[_builtins.str],
                  delivery_channel_target_arn: pulumi.Input[_builtins.str],
                  delivery_channel_type: pulumi.Input[_builtins.str],
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DeliveryChannel resource.
 
@@ -93,63 +93,63 @@ class DeliveryChannelArgs:
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelCondition")
-    def delivery_channel_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         """
         return pulumi.get(self, "delivery_channel_condition")
 
     @delivery_channel_condition.setter
-    def delivery_channel_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
-    def delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_name")
 
     @delivery_channel_name.setter
-    def delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery method.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DeliveryChannelState:
     def __init__(__self__, *,
-                 delivery_channel_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 delivery_channel_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DeliveryChannel resources.
 
@@ -181,43 +181,43 @@ class _DeliveryChannelState:
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelAssumeRoleArn")
-    def delivery_channel_assume_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_assume_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
         """
         return pulumi.get(self, "delivery_channel_assume_role_arn")
 
     @delivery_channel_assume_role_arn.setter
-    def delivery_channel_assume_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_assume_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_assume_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelCondition")
-    def delivery_channel_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         """
         return pulumi.get(self, "delivery_channel_condition")
 
     @delivery_channel_condition.setter
-    def delivery_channel_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
-    def delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_name")
 
     @delivery_channel_name.setter
-    def delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelTargetArn")
-    def delivery_channel_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
         - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
@@ -227,43 +227,43 @@ class _DeliveryChannelState:
         return pulumi.get(self, "delivery_channel_target_arn")
 
     @delivery_channel_target_arn.setter
-    def delivery_channel_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelType")
-    def delivery_channel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         """
         return pulumi.get(self, "delivery_channel_type")
 
     @delivery_channel_type.setter
-    def delivery_channel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery method.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
@@ -273,13 +273,13 @@ class DeliveryChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
+                 delivery_channel_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         > **DEPRECATED:**  This resource is based on Config's old version OpenAPI, and it has been deprecated from version `1.171.0`.
@@ -421,13 +421,13 @@ class DeliveryChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
+                 delivery_channel_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -460,13 +460,13 @@ class DeliveryChannel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_channel_assume_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None) -> 'DeliveryChannel':
+            delivery_channel_assume_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> 'DeliveryChannel':
         """
         Get an existing DeliveryChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

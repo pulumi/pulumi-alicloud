@@ -131,11 +131,11 @@ export interface InstanceSecurityGroupAttachmentState {
     /**
      * Instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,7 +145,7 @@ export interface InstanceSecurityGroupAttachmentArgs {
     /**
      * Instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Security group ID.
      */

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
         ///     var spec = config.Get("spec") ?? "20";
-        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -47,13 +47,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
         ///         {
         ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///             CidrBlock = Std.Index.Cidrsubnet.Invoke(new()
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///             {
         ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
         ///                 Newbits = 8,
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Index.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -129,7 +129,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
         ///     var spec = config.Get("spec") ?? "20";
-        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -146,13 +146,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
         ///         {
         ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///             CidrBlock = Std.Index.Cidrsubnet.Invoke(new()
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///             {
         ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
         ///                 Newbits = 8,
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Index.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {
@@ -228,7 +228,7 @@ namespace Pulumi.AliCloud.Vpn
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
         ///     var spec = config.Get("spec") ?? "20";
-        ///     var @default = AliCloud.Index.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -245,13 +245,13 @@ namespace Pulumi.AliCloud.Vpn
         ///     });
         /// 
         ///     var vswitch = new List&lt;AliCloud.Vpc.Switch&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         vswitch.Add(new AliCloud.Vpc.Switch($"vswitch-{range.Value}", new()
         ///         {
         ///             VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///             CidrBlock = Std.Index.Cidrsubnet.Invoke(new()
+        ///             CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///             {
         ///                 Input = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Vpcs[0]?.CidrBlock),
         ///                 Newbits = 8,
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Vpn
         ///             VswitchName = name,
         ///         }));
         ///     }
-        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length, defaultGetSwitches, Std.Index.Concat.Invoke(new()
+        ///     var vswitchId = Output.Tuple(defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids).Length(), defaultGetSwitches, Std.Concat.Invoke(new()
         ///     {
         ///         Input = new[]
         ///         {

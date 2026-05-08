@@ -221,76 +221,76 @@ export interface IpamIpamPoolState {
      * The default network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationDefaultCidrMask?: pulumi.Input<number>;
+    allocationDefaultCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationMaxCidrMask?: pulumi.Input<number>;
+    allocationMaxCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationMinCidrMask?: pulumi.Input<number>;
+    allocationMinCidrMask?: pulumi.Input<number | undefined>;
     /**
      * Whether the automatic import function is enabled for the address pool.
      */
-    autoImport?: pulumi.Input<boolean>;
+    autoImport?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to clear the default network mask of the IPAM address pool. Value:
      */
-    clearAllocationDefaultCidrMask?: pulumi.Input<boolean>;
+    clearAllocationDefaultCidrMask?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The IP protocol version. Values: IPv4、IPv6.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPAM address pool.
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamPoolDescription?: pulumi.Input<string>;
+    ipamPoolDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamPoolName?: pulumi.Input<string>;
+    ipamPoolName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM scope.
      */
-    ipamScopeId?: pulumi.Input<string>;
+    ipamScopeId?: pulumi.Input<string | undefined>;
     /**
      * The type of the IPv6 CIDR block of the VPC.
      */
-    ipv6Isp?: pulumi.Input<string>;
+    ipv6Isp?: pulumi.Input<string | undefined>;
     /**
      * The effective region of the IPAM address pool.
      */
-    poolRegionId?: pulumi.Input<string>;
+    poolRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM hosting region.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance ID of the source IPAM address pool.
      *
      * > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
      */
-    sourceIpamPoolId?: pulumi.Input<string>;
+    sourceIpamPoolId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -301,38 +301,38 @@ export interface IpamIpamPoolArgs {
      * The default network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationDefaultCidrMask?: pulumi.Input<number>;
+    allocationDefaultCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The maximum network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationMaxCidrMask?: pulumi.Input<number>;
+    allocationMaxCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The minimum Network mask assigned by the IPAM address pool.
      * IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
      */
-    allocationMinCidrMask?: pulumi.Input<number>;
+    allocationMinCidrMask?: pulumi.Input<number | undefined>;
     /**
      * Whether the automatic import function is enabled for the address pool.
      */
-    autoImport?: pulumi.Input<boolean>;
+    autoImport?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to clear the default network mask of the IPAM address pool. Value:
      */
-    clearAllocationDefaultCidrMask?: pulumi.Input<boolean>;
+    clearAllocationDefaultCidrMask?: pulumi.Input<boolean | undefined>;
     /**
      * The IP protocol version. Values: IPv4、IPv6.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPAM address pool.
      * It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
      */
-    ipamPoolDescription?: pulumi.Input<string>;
+    ipamPoolDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamPoolName?: pulumi.Input<string>;
+    ipamPoolName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the IPAM scope.
      */
@@ -340,23 +340,23 @@ export interface IpamIpamPoolArgs {
     /**
      * The type of the IPv6 CIDR block of the VPC.
      */
-    ipv6Isp?: pulumi.Input<string>;
+    ipv6Isp?: pulumi.Input<string | undefined>;
     /**
      * The effective region of the IPAM address pool.
      */
-    poolRegionId?: pulumi.Input<string>;
+    poolRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance ID of the source IPAM address pool.
      *
      * > **NOTE:**  If this parameter is not entered, the created address pool is the parent address pool.
      */
-    sourceIpamPoolId?: pulumi.Input<string>;
+    sourceIpamPoolId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -163,11 +163,11 @@ def get_schedules(flow_name: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         schedules=pulumi.get(__ret__, 'schedules'))
-def get_schedules_output(flow_name: Optional[pulumi.Input[_builtins.str]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_schedules_output(flow_name: pulumi.Input[Optional[_builtins.str]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSchedulesResult]:
     """
     This data source provides the Fnf Schedules of the current Alibaba Cloud user.

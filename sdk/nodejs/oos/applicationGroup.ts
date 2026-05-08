@@ -161,28 +161,28 @@ export interface ApplicationGroupState {
     /**
      * The name of the Application group.
      */
-    applicationGroupName?: pulumi.Input<string>;
+    applicationGroupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the Application.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the deployment.
      */
-    deployRegionId?: pulumi.Input<string>;
+    deployRegionId?: pulumi.Input<string | undefined>;
     /**
      * Application group description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
      */
-    importTagKey?: pulumi.Input<string>;
+    importTagKey?: pulumi.Input<string | undefined>;
     /**
      * The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
      * .
      */
-    importTagValue?: pulumi.Input<string>;
+    importTagValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,14 +204,14 @@ export interface ApplicationGroupArgs {
     /**
      * Application group description information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The tag key must be passed in at the same time as the tag value (import_tag_value) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is app-{ApplicationName} (application name).
      */
-    importTagKey?: pulumi.Input<string>;
+    importTagKey?: pulumi.Input<string | undefined>;
     /**
      * The tag value must be passed in at the same time as the tag key (import_tag_key) or none, not just one. If both `importTagKey` and `importTagValue` are left empty, the default is application group name.
      * .
      */
-    importTagValue?: pulumi.Input<string>;
+    importTagValue?: pulumi.Input<string | undefined>;
 }

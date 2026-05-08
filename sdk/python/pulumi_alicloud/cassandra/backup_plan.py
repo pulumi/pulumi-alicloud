@@ -22,9 +22,9 @@ class BackupPlanArgs:
                  backup_time: pulumi.Input[_builtins.str],
                  cluster_id: pulumi.Input[_builtins.str],
                  data_center_id: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BackupPlan resource.
 
@@ -83,50 +83,50 @@ class BackupPlanArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriod")
-    def backup_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
         """
         return pulumi.get(self, "backup_period")
 
     @backup_period.setter
-    def backup_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_period", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
 
 @pulumi.input_type
 class _BackupPlanState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
 
@@ -152,74 +152,74 @@ class _BackupPlanState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to activate the backup plan. Valid values: `True`, `False`. Default value: `True`.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="backupPeriod")
-    def backup_period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup cycle. Valid values: `Friday`, `Monday`, `Saturday`, `Sunday`, `Thursday`, `Tuesday`, `Wednesday`.
         """
         return pulumi.get(self, "backup_period")
 
     @backup_period.setter
-    def backup_period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupTime")
-    def backup_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the backup task each day. The time is displayed in UTC and denoted by Z.
         """
         return pulumi.get(self, "backup_time")
 
     @backup_time.setter
-    def backup_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_time", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster for the backup.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCenterId")
-    def data_center_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_center_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data center for the backup in the cluster.
         """
         return pulumi.get(self, "data_center_id")
 
     @data_center_id.setter
-    def data_center_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_center_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_center_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days. Default value: `30`.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
 
@@ -229,12 +229,12 @@ class BackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cassandra Backup Plan resource.
@@ -302,12 +302,12 @@ class BackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_center_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,12 +339,12 @@ class BackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            backup_period: Optional[pulumi.Input[_builtins.str]] = None,
-            backup_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            data_center_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_period: Optional[pulumi.Input[_builtins.int]] = None) -> 'BackupPlan':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            backup_period: pulumi.Input[Optional[_builtins.str]] = None,
+            backup_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            data_center_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

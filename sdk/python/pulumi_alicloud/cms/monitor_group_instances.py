@@ -60,8 +60,8 @@ class MonitorGroupInstancesArgs:
 @pulumi.input_type
 class _MonitorGroupInstancesState:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]] = None):
         """
         Input properties used for looking up and filtering MonitorGroupInstances resources.
 
@@ -75,26 +75,26 @@ class _MonitorGroupInstancesState:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of Cms Group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]:
         """
         Instance information added to the Cms Group. See `instances` below.
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorGroupInstancesInstanceArgs']]]]):
         pulumi.set(self, "instances", value)
 
 
@@ -104,8 +104,8 @@ class MonitorGroupInstances(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Monitor Group Instances resource.
@@ -223,8 +223,8 @@ class MonitorGroupInstances(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,8 +250,8 @@ class MonitorGroupInstances(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None) -> 'MonitorGroupInstances':
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorGroupInstancesInstanceArgs', 'MonitorGroupInstancesInstanceArgsDict']]]]] = None) -> 'MonitorGroupInstances':
         """
         Get an existing MonitorGroupInstances resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

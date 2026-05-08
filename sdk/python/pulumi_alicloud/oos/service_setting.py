@@ -19,11 +19,11 @@ __all__ = ['ServiceSettingArgs', 'ServiceSetting']
 @pulumi.input_type
 class ServiceSettingArgs:
     def __init__(__self__, *,
-                 delivery_oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_oss_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_sls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceSetting resource.
 
@@ -46,73 +46,73 @@ class ServiceSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssBucketName")
-    def delivery_oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         """
         return pulumi.get(self, "delivery_oss_bucket_name")
 
     @delivery_oss_bucket_name.setter
-    def delivery_oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssEnabled")
-    def delivery_oss_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delivery_oss_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the recording function for the OSS delivery template enabled.
         """
         return pulumi.get(self, "delivery_oss_enabled")
 
     @delivery_oss_enabled.setter
-    def delivery_oss_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delivery_oss_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delivery_oss_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssKeyPrefix")
-    def delivery_oss_key_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_oss_key_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         """
         return pulumi.get(self, "delivery_oss_key_prefix")
 
     @delivery_oss_key_prefix.setter
-    def delivery_oss_key_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_oss_key_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_oss_key_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="deliverySlsEnabled")
-    def delivery_sls_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delivery_sls_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the execution record function to SLS delivery Template turned on.
         """
         return pulumi.get(self, "delivery_sls_enabled")
 
     @delivery_sls_enabled.setter
-    def delivery_sls_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delivery_sls_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delivery_sls_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deliverySlsProjectName")
-    def delivery_sls_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_sls_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
         """
         return pulumi.get(self, "delivery_sls_project_name")
 
     @delivery_sls_project_name.setter
-    def delivery_sls_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_sls_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_sls_project_name", value)
 
 
 @pulumi.input_type
 class _ServiceSettingState:
     def __init__(__self__, *,
-                 delivery_oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_oss_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_sls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceSetting resources.
 
@@ -135,62 +135,62 @@ class _ServiceSettingState:
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssBucketName")
-    def delivery_oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         """
         return pulumi.get(self, "delivery_oss_bucket_name")
 
     @delivery_oss_bucket_name.setter
-    def delivery_oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssEnabled")
-    def delivery_oss_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delivery_oss_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the recording function for the OSS delivery template enabled.
         """
         return pulumi.get(self, "delivery_oss_enabled")
 
     @delivery_oss_enabled.setter
-    def delivery_oss_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delivery_oss_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delivery_oss_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryOssKeyPrefix")
-    def delivery_oss_key_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_oss_key_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
         """
         return pulumi.get(self, "delivery_oss_key_prefix")
 
     @delivery_oss_key_prefix.setter
-    def delivery_oss_key_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_oss_key_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_oss_key_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="deliverySlsEnabled")
-    def delivery_sls_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delivery_sls_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the execution record function to SLS delivery Template turned on.
         """
         return pulumi.get(self, "delivery_sls_enabled")
 
     @delivery_sls_enabled.setter
-    def delivery_sls_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delivery_sls_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delivery_sls_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="deliverySlsProjectName")
-    def delivery_sls_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_sls_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
         """
         return pulumi.get(self, "delivery_sls_project_name")
 
     @delivery_sls_project_name.setter
-    def delivery_sls_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_sls_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_sls_project_name", value)
 
 
@@ -200,11 +200,11 @@ class ServiceSetting(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_oss_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_sls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OOS Service Setting resource.
@@ -321,11 +321,11 @@ class ServiceSetting(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_oss_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_sls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -350,11 +350,11 @@ class ServiceSetting(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_oss_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            delivery_oss_key_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_sls_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            delivery_sls_project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceSetting':
+            delivery_oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_oss_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delivery_oss_key_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_sls_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            delivery_sls_project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceSetting':
         """
         Get an existing ServiceSetting resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

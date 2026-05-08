@@ -21,16 +21,16 @@ __all__ = ['DirectoryArgs', 'Directory']
 @pulumi.input_type
 class DirectoryArgs:
     def __init__(__self__, *,
-                 directory_global_access_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_preference: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']] = None,
-                 mfa_authentication_setting_info: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
-                 mfa_authentication_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
-                 saml_service_provider: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
+                 directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_preference: pulumi.Input[Optional['DirectoryLoginPreferenceArgs']] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
+                 mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional['DirectoryPasswordPolicyArgs']] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']] = None,
+                 saml_service_provider: pulumi.Input[Optional['DirectorySamlServiceProviderArgs']] = None,
+                 scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         The set of arguments for constructing a Directory resource.
 
@@ -68,139 +68,139 @@ class DirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="directoryGlobalAccessStatus")
-    def directory_global_access_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_global_access_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Directory Global Acceleration activation status
         """
         return pulumi.get(self, "directory_global_access_status")
 
     @directory_global_access_status.setter
-    def directory_global_access_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_global_access_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_global_access_status", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryName")
-    def directory_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DirectoryName
         """
         return pulumi.get(self, "directory_name")
 
     @directory_name.setter
-    def directory_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPreference")
-    def login_preference(self) -> Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]:
+    def login_preference(self) -> pulumi.Input[Optional['DirectoryLoginPreferenceArgs']]:
         """
         Login preferences See `login_preference` below.
         """
         return pulumi.get(self, "login_preference")
 
     @login_preference.setter
-    def login_preference(self, value: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]):
+    def login_preference(self, value: pulumi.Input[Optional['DirectoryLoginPreferenceArgs']]):
         pulumi.set(self, "login_preference", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaAuthenticationSettingInfo")
-    def mfa_authentication_setting_info(self) -> Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]:
+    def mfa_authentication_setting_info(self) -> pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']]:
         """
         Global MFA verification configuration. See `mfa_authentication_setting_info` below.
         """
         return pulumi.get(self, "mfa_authentication_setting_info")
 
     @mfa_authentication_setting_info.setter
-    def mfa_authentication_setting_info(self, value: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]):
+    def mfa_authentication_setting_info(self, value: pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']]):
         pulumi.set(self, "mfa_authentication_setting_info", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaAuthenticationStatus")
-    def mfa_authentication_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mfa_authentication_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MFA Authentication Status
         """
         return pulumi.get(self, "mfa_authentication_status")
 
     @mfa_authentication_status.setter
-    def mfa_authentication_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mfa_authentication_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mfa_authentication_status", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]:
+    def password_policy(self) -> pulumi.Input[Optional['DirectoryPasswordPolicyArgs']]:
         """
         Password policy See `password_policy` below.
         """
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]):
+    def password_policy(self, value: pulumi.Input[Optional['DirectoryPasswordPolicyArgs']]):
         pulumi.set(self, "password_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdentityProviderConfiguration")
-    def saml_identity_provider_configuration(self) -> Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]:
+    def saml_identity_provider_configuration(self) -> pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']]:
         """
         Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         """
         return pulumi.get(self, "saml_identity_provider_configuration")
 
     @saml_identity_provider_configuration.setter
-    def saml_identity_provider_configuration(self, value: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]):
+    def saml_identity_provider_configuration(self, value: pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']]):
         pulumi.set(self, "saml_identity_provider_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="samlServiceProvider")
-    def saml_service_provider(self) -> Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]:
+    def saml_service_provider(self) -> pulumi.Input[Optional['DirectorySamlServiceProviderArgs']]:
         """
         SP information. See `saml_service_provider` below.
         """
         return pulumi.get(self, "saml_service_provider")
 
     @saml_service_provider.setter
-    def saml_service_provider(self, value: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]):
+    def saml_service_provider(self, value: pulumi.Input[Optional['DirectorySamlServiceProviderArgs']]):
         pulumi.set(self, "saml_service_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="scimSynchronizationStatus")
-    def scim_synchronization_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_synchronization_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SCIM Synchronization Status
         """
         return pulumi.get(self, "scim_synchronization_status")
 
     @scim_synchronization_status.setter
-    def scim_synchronization_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_synchronization_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_synchronization_status", value)
 
     @_builtins.property
     @pulumi.getter(name="userProvisioningConfiguration")
-    def user_provisioning_configuration(self) -> Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]:
+    def user_provisioning_configuration(self) -> pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']]:
         """
         User Provisioning configuration See `user_provisioning_configuration` below.
         """
         return pulumi.get(self, "user_provisioning_configuration")
 
     @user_provisioning_configuration.setter
-    def user_provisioning_configuration(self, value: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]):
+    def user_provisioning_configuration(self, value: pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']]):
         pulumi.set(self, "user_provisioning_configuration", value)
 
 
 @pulumi.input_type
 class _DirectoryState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_global_access_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_preference: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']] = None,
-                 mfa_authentication_setting_info: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
-                 mfa_authentication_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']] = None,
-                 saml_service_provider: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_configuration: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_preference: pulumi.Input[Optional['DirectoryLoginPreferenceArgs']] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']] = None,
+                 mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional['DirectoryPasswordPolicyArgs']] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']] = None,
+                 saml_service_provider: pulumi.Input[Optional['DirectorySamlServiceProviderArgs']] = None,
+                 scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']] = None):
         """
         Input properties used for looking up and filtering Directory resources.
 
@@ -241,134 +241,134 @@ class _DirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CreateTime
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryGlobalAccessStatus")
-    def directory_global_access_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_global_access_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Directory Global Acceleration activation status
         """
         return pulumi.get(self, "directory_global_access_status")
 
     @directory_global_access_status.setter
-    def directory_global_access_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_global_access_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_global_access_status", value)
 
     @_builtins.property
     @pulumi.getter(name="directoryName")
-    def directory_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DirectoryName
         """
         return pulumi.get(self, "directory_name")
 
     @directory_name.setter
-    def directory_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPreference")
-    def login_preference(self) -> Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]:
+    def login_preference(self) -> pulumi.Input[Optional['DirectoryLoginPreferenceArgs']]:
         """
         Login preferences See `login_preference` below.
         """
         return pulumi.get(self, "login_preference")
 
     @login_preference.setter
-    def login_preference(self, value: Optional[pulumi.Input['DirectoryLoginPreferenceArgs']]):
+    def login_preference(self, value: pulumi.Input[Optional['DirectoryLoginPreferenceArgs']]):
         pulumi.set(self, "login_preference", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaAuthenticationSettingInfo")
-    def mfa_authentication_setting_info(self) -> Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]:
+    def mfa_authentication_setting_info(self) -> pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']]:
         """
         Global MFA verification configuration. See `mfa_authentication_setting_info` below.
         """
         return pulumi.get(self, "mfa_authentication_setting_info")
 
     @mfa_authentication_setting_info.setter
-    def mfa_authentication_setting_info(self, value: Optional[pulumi.Input['DirectoryMfaAuthenticationSettingInfoArgs']]):
+    def mfa_authentication_setting_info(self, value: pulumi.Input[Optional['DirectoryMfaAuthenticationSettingInfoArgs']]):
         pulumi.set(self, "mfa_authentication_setting_info", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaAuthenticationStatus")
-    def mfa_authentication_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mfa_authentication_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MFA Authentication Status
         """
         return pulumi.get(self, "mfa_authentication_status")
 
     @mfa_authentication_status.setter
-    def mfa_authentication_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mfa_authentication_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mfa_authentication_status", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordPolicy")
-    def password_policy(self) -> Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]:
+    def password_policy(self) -> pulumi.Input[Optional['DirectoryPasswordPolicyArgs']]:
         """
         Password policy See `password_policy` below.
         """
         return pulumi.get(self, "password_policy")
 
     @password_policy.setter
-    def password_policy(self, value: Optional[pulumi.Input['DirectoryPasswordPolicyArgs']]):
+    def password_policy(self, value: pulumi.Input[Optional['DirectoryPasswordPolicyArgs']]):
         pulumi.set(self, "password_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="samlIdentityProviderConfiguration")
-    def saml_identity_provider_configuration(self) -> Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]:
+    def saml_identity_provider_configuration(self) -> pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']]:
         """
         Identity Provider (IDP) See `saml_identity_provider_configuration` below.
         """
         return pulumi.get(self, "saml_identity_provider_configuration")
 
     @saml_identity_provider_configuration.setter
-    def saml_identity_provider_configuration(self, value: Optional[pulumi.Input['DirectorySamlIdentityProviderConfigurationArgs']]):
+    def saml_identity_provider_configuration(self, value: pulumi.Input[Optional['DirectorySamlIdentityProviderConfigurationArgs']]):
         pulumi.set(self, "saml_identity_provider_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="samlServiceProvider")
-    def saml_service_provider(self) -> Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]:
+    def saml_service_provider(self) -> pulumi.Input[Optional['DirectorySamlServiceProviderArgs']]:
         """
         SP information. See `saml_service_provider` below.
         """
         return pulumi.get(self, "saml_service_provider")
 
     @saml_service_provider.setter
-    def saml_service_provider(self, value: Optional[pulumi.Input['DirectorySamlServiceProviderArgs']]):
+    def saml_service_provider(self, value: pulumi.Input[Optional['DirectorySamlServiceProviderArgs']]):
         pulumi.set(self, "saml_service_provider", value)
 
     @_builtins.property
     @pulumi.getter(name="scimSynchronizationStatus")
-    def scim_synchronization_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scim_synchronization_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SCIM Synchronization Status
         """
         return pulumi.get(self, "scim_synchronization_status")
 
     @scim_synchronization_status.setter
-    def scim_synchronization_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scim_synchronization_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scim_synchronization_status", value)
 
     @_builtins.property
     @pulumi.getter(name="userProvisioningConfiguration")
-    def user_provisioning_configuration(self) -> Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]:
+    def user_provisioning_configuration(self) -> pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']]:
         """
         User Provisioning configuration See `user_provisioning_configuration` below.
         """
         return pulumi.get(self, "user_provisioning_configuration")
 
     @user_provisioning_configuration.setter
-    def user_provisioning_configuration(self, value: Optional[pulumi.Input['DirectoryUserProvisioningConfigurationArgs']]):
+    def user_provisioning_configuration(self, value: pulumi.Input[Optional['DirectoryUserProvisioningConfigurationArgs']]):
         pulumi.set(self, "user_provisioning_configuration", value)
 
 
@@ -378,16 +378,16 @@ class Directory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_global_access_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-                 mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
-                 mfa_authentication_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-                 saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
+                 directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+                 mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
+                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+                 scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Cloud SSO Directory resource.
@@ -489,16 +489,16 @@ class Directory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 directory_global_access_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-                 mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
-                 mfa_authentication_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-                 saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-                 saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
-                 scim_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
+                 directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+                 mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+                 mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
+                 saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
+                 saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+                 scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -529,17 +529,17 @@ class Directory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_global_access_status: Optional[pulumi.Input[_builtins.str]] = None,
-            directory_name: Optional[pulumi.Input[_builtins.str]] = None,
-            login_preference: Optional[pulumi.Input[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
-            mfa_authentication_setting_info: Optional[pulumi.Input[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
-            mfa_authentication_status: Optional[pulumi.Input[_builtins.str]] = None,
-            password_policy: Optional[pulumi.Input[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
-            saml_identity_provider_configuration: Optional[pulumi.Input[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
-            saml_service_provider: Optional[pulumi.Input[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
-            scim_synchronization_status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_provisioning_configuration: Optional[pulumi.Input[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None) -> 'Directory':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_global_access_status: pulumi.Input[Optional[_builtins.str]] = None,
+            directory_name: pulumi.Input[Optional[_builtins.str]] = None,
+            login_preference: pulumi.Input[Optional[Union['DirectoryLoginPreferenceArgs', 'DirectoryLoginPreferenceArgsDict']]] = None,
+            mfa_authentication_setting_info: pulumi.Input[Optional[Union['DirectoryMfaAuthenticationSettingInfoArgs', 'DirectoryMfaAuthenticationSettingInfoArgsDict']]] = None,
+            mfa_authentication_status: pulumi.Input[Optional[_builtins.str]] = None,
+            password_policy: pulumi.Input[Optional[Union['DirectoryPasswordPolicyArgs', 'DirectoryPasswordPolicyArgsDict']]] = None,
+            saml_identity_provider_configuration: pulumi.Input[Optional[Union['DirectorySamlIdentityProviderConfigurationArgs', 'DirectorySamlIdentityProviderConfigurationArgsDict']]] = None,
+            saml_service_provider: pulumi.Input[Optional[Union['DirectorySamlServiceProviderArgs', 'DirectorySamlServiceProviderArgsDict']]] = None,
+            scim_synchronization_status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_provisioning_configuration: pulumi.Input[Optional[Union['DirectoryUserProvisioningConfigurationArgs', 'DirectoryUserProvisioningConfigurationArgsDict']]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

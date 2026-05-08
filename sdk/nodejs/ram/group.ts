@@ -132,28 +132,28 @@ export interface GroupState {
     /**
      * The Group comment information. The maximum length is 128 characters.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.245.0) The create time of the group.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,22 +163,22 @@ export interface GroupArgs {
     /**
      * The Group comment information. The maximum length is 128 characters.
      */
-    comments?: pulumi.Input<string>;
+    comments?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Group. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The group name. You must specify at least one of the `groupName` and `name`.
      * It can be 1 to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and dashes (-).
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.120.0. New field 'group_name' instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.245.0. New field `groupName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

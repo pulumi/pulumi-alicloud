@@ -179,11 +179,11 @@ def get_product_versions(enable_details: Optional[_builtins.bool] = None,
         product_id=pulumi.get(__ret__, 'product_id'),
         product_versions=pulumi.get(__ret__, 'product_versions'),
         versions=pulumi.get(__ret__, 'versions'))
-def get_product_versions_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                product_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_product_versions_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                product_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductVersionsResult]:
     """
     This data source provides Service Catalog Product Version available to the user.[What is Product Version](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-listproductversions)

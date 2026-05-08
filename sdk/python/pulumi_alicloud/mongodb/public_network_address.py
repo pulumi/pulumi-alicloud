@@ -45,8 +45,8 @@ class PublicNetworkAddressArgs:
 @pulumi.input_type
 class _PublicNetworkAddressState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica_sets: pulumi.Input[Optional[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]] = None):
         """
         Input properties used for looking up and filtering PublicNetworkAddress resources.
 
@@ -60,26 +60,26 @@ class _PublicNetworkAddressState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="replicaSets")
-    def replica_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]]:
+    def replica_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]]:
         """
         Replica set instance information.
         """
         return pulumi.get(self, "replica_sets")
 
     @replica_sets.setter
-    def replica_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]]):
+    def replica_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PublicNetworkAddressReplicaSetArgs']]]]):
         pulumi.set(self, "replica_sets", value)
 
 
@@ -89,7 +89,7 @@ class PublicNetworkAddress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an Alicloud MongoDB public network address resource.
@@ -218,7 +218,7 @@ class PublicNetworkAddress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -242,8 +242,8 @@ class PublicNetworkAddress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            replica_sets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PublicNetworkAddressReplicaSetArgs', 'PublicNetworkAddressReplicaSetArgsDict']]]]] = None) -> 'PublicNetworkAddress':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            replica_sets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PublicNetworkAddressReplicaSetArgs', 'PublicNetworkAddressReplicaSetArgsDict']]]]] = None) -> 'PublicNetworkAddress':
         """
         Get an existing PublicNetworkAddress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

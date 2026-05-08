@@ -22,9 +22,9 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  network: pulumi.Input['ClusterNetworkArgs'],
-                 argocd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None):
+                 argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -57,31 +57,31 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="argocdEnabled")
-    def argocd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def argocd_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         """
         return pulumi.get(self, "argocd_enabled")
 
     @argocd_enabled.setter
-    def argocd_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def argocd_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "argocd_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster attributes. Valid values: 'Default', 'XFlow'.
 
@@ -90,19 +90,19 @@ class ClusterArgs:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 argocd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['ClusterNetworkArgs']] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['ClusterNetworkArgs']] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -130,55 +130,55 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="argocdEnabled")
-    def argocd_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def argocd_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         (Available since v1.243.0) Whether to enable ArgoCD. Default to true. Only valid when `profile` is 'Default'. It has to be false when cluster is deleted.
         """
         return pulumi.get(self, "argocd_enabled")
 
     @argocd_enabled.setter
-    def argocd_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def argocd_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "argocd_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster name.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['ClusterNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['ClusterNetworkArgs']]:
         """
         Cluster network information. See `network` below.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['ClusterNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['ClusterNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster attributes. Valid values: 'Default', 'XFlow'.
 
@@ -187,19 +187,19 @@ class _ClusterState:
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -209,10 +209,10 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argocd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Ack One Cluster resource. Fleet Manager Cluster.
@@ -338,10 +338,10 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 argocd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
+                 argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -369,12 +369,12 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            argocd_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
-            profile: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            argocd_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['ClusterNetworkArgs', 'ClusterNetworkArgsDict']]] = None,
+            profile: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

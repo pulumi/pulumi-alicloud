@@ -213,63 +213,63 @@ export interface DbInstanceState {
     /**
      * (Available in 1.196.0+)  The connection string of the instance.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The category of the db instance. Valid values: `HA`, `SINGLE`(Available in 1.173.0+).
      */
-    dbInstanceCategory?: pulumi.Input<string>;
+    dbInstanceCategory?: pulumi.Input<string | undefined>;
     /**
      * According to the practical example or notes.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
-    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
+    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[] | undefined>;
     /**
      * The network type of the db instance. Valid values: `vpc`.
      */
-    dbInstanceNetworkType?: pulumi.Input<string>;
+    dbInstanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * Disk storage type. Valid values: `cloudEssd`, `cloudSsd`. Modification is not supported.
      */
-    dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string | undefined>;
     /**
      * The class of the db node. Valid values: `gdb.r.xlarge`, `gdb.r.2xlarge`, `gdb.r.4xlarge`, `gdb.r.8xlarge`, `gdb.r.16xlarge`, `gdb.r.xlarge_basic`, `gdb.r.2xlarge_basic`, `gdb.r.4xlarge_basic`, `gdb.r.8xlarge_basic`, `gdb.r.16xlarge_basic`.
      */
-    dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
      * Instance storage space, which is measured in GB.
      */
-    dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number | undefined>;
     /**
      * Kernel Version. Valid values: `1.0` or `1.0-OpenCypher`. `1.0`: represented as gremlin, `1.0-OpenCypher`: said opencypher.
      */
-    dbVersion?: pulumi.Input<string>;
+    dbVersion?: pulumi.Input<string | undefined>;
     /**
      * The paymen type of the resource. Valid values: `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * (Available in 1.196.0+) The connection port of the instance.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -283,11 +283,11 @@ export interface DbInstanceArgs {
     /**
      * According to the practical example or notes.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * IP ADDRESS whitelist for the instance group list. See `dbInstanceIpArray` below.
      */
-    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[]>;
+    dbInstanceIpArrays?: pulumi.Input<pulumi.Input<inputs.graphdatabase.DbInstanceDbInstanceIpArray>[] | undefined>;
     /**
      * The network type of the db instance. Valid values: `vpc`.
      */
@@ -315,13 +315,13 @@ export interface DbInstanceArgs {
     /**
      * ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

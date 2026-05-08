@@ -185,35 +185,35 @@ export interface EcsImageComponentState {
      *
      * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
-    componentType?: pulumi.Input<string>;
+    componentType?: pulumi.Input<string | undefined>;
     /**
      * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
      *
      * Default value:(x +1).0.0, where x is the maximum major version of the current component.
      */
-    componentVersion?: pulumi.Input<string>;
+    componentVersion?: pulumi.Input<string | undefined>;
     /**
      * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Component creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
      *
      * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
-    imageComponentName?: pulumi.Input<string>;
+    imageComponentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the enterprise resource group to which the created image component belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The operating system supported by the component.
      *
@@ -223,11 +223,11 @@ export interface EcsImageComponentState {
      *
      * Default value: Linux.
      */
-    systemType?: pulumi.Input<string>;
+    systemType?: pulumi.Input<string | undefined>;
     /**
      * List of label key-value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -245,13 +245,13 @@ export interface EcsImageComponentArgs {
      *
      * > **NOTE:**  Build components can only be used in build templates and test components can only be used in test templates.
      */
-    componentType?: pulumi.Input<string>;
+    componentType?: pulumi.Input<string | undefined>;
     /**
      * The component version number, which is used in conjunction with the component name, is in the format of major.minor.patch and is a non-negative integer.
      *
      * Default value:(x +1).0.0, where x is the maximum major version of the current component.
      */
-    componentVersion?: pulumi.Input<string>;
+    componentVersion?: pulumi.Input<string | undefined>;
     /**
      * Component content. Consists of multiple commands. The maximum number of commands cannot exceed 127. Details of supported commands and command formats,
      */
@@ -259,17 +259,17 @@ export interface EcsImageComponentArgs {
     /**
      * Description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The component name. It must be 2 to 128 characters in length and start with an uppercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-length colons (:), underscores (_), half-length periods (.), or dashes (-).
      *
      * > **NOTE:**  When 'Name' is not set, the 'ImageComponentId' return value is used by default.
      */
-    imageComponentName?: pulumi.Input<string>;
+    imageComponentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the enterprise resource group to which the created image component belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The operating system supported by the component.
      *
@@ -279,9 +279,9 @@ export interface EcsImageComponentArgs {
      *
      * Default value: Linux.
      */
-    systemType?: pulumi.Input<string>;
+    systemType?: pulumi.Input<string | undefined>;
     /**
      * List of label key-value pairs.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

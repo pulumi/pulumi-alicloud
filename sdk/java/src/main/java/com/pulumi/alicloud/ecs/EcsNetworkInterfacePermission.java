@@ -49,8 +49,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.std.inputs.CidrhostArgs;
  * import com.pulumi.alicloud.ecs.EcsNetworkInterfacePermission;
  * import com.pulumi.alicloud.ecs.EcsNetworkInterfacePermissionArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -93,10 +93,10 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupIds(defaultSecurityGroup.id())
  *             .description("terraform-example")
- *             .primaryIpAddress(defaultSwitch.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
- *                 .input(_cidrBlock)
+ *             .primaryIpAddress(StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(defaultSwitch.cidrBlock())
  *                 .host(100)
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .tags(Map.ofEntries(
  *                 Map.entry("Created", "TF"),
  *                 Map.entry("For", "example")

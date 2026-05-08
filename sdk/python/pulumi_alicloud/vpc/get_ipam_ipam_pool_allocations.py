@@ -223,13 +223,13 @@ def get_ipam_ipam_pool_allocations(cidr: Optional[_builtins.str] = None,
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_ipam_ipam_pool_allocations_output(cidr: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                          ipam_pool_allocation_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          ipam_pool_allocation_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ipam_ipam_pool_allocations_output(cidr: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                          ipam_pool_allocation_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          ipam_pool_allocation_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpamIpamPoolAllocationsResult]:
     """
     This data source provides Vpc Ipam Ipam Pool Allocation available to the user.[What is Ipam Pool Allocation](https://next.api.alibabacloud.com/document/VpcIpam/2023-02-28/CreateIpamPoolAllocation)

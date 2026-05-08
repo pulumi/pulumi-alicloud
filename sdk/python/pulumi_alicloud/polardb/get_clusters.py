@@ -210,12 +210,12 @@ def get_clusters(db_type: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_clusters_output(db_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        description_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_clusters_output(db_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        description_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClustersResult]:
     """
     The `polardb_get_clusters` data source provides a collection of PolarDB clusters available in Alibaba Cloud account.

@@ -19,16 +19,16 @@ __all__ = ['ServerCertificateArgs', 'ServerCertificate']
 @pulumi.input_type
 class ServerCertificateArgs:
     def __init__(__self__, *,
-                 alicloud_certifacte_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certifacte_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerCertificate resource.
 
@@ -71,133 +71,133 @@ class ServerCertificateArgs:
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
-    def alicloud_certifacte_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certifacte_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
-    def alicloud_certifacte_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certifacte_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certifacte_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteName")
     @_utilities.deprecated("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
-    def alicloud_certifacte_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certifacte_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
-    def alicloud_certifacte_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certifacte_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certifacte_name", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateId")
-    def alicloud_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_id")
 
     @alicloud_certificate_id.setter
-    def alicloud_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateName")
-    def alicloud_certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_name")
 
     @alicloud_certificate_name.setter
-    def alicloud_certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateRegionId")
-    def alicloud_certificate_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_region_id")
 
     @alicloud_certificate_region_id.setter
-    def alicloud_certificate_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Server Certificate.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the slb server certificate belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
-    def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
-    def server_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ServerCertificateState:
     def __init__(__self__, *,
-                 alicloud_certifacte_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certifacte_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ServerCertificate resources.
 
@@ -240,117 +240,117 @@ class _ServerCertificateState:
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteId")
     @_utilities.deprecated("""Field 'alicloud_certifacte_id' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_id' replaces it.""")
-    def alicloud_certifacte_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certifacte_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alicloud_certifacte_id")
 
     @alicloud_certifacte_id.setter
-    def alicloud_certifacte_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certifacte_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certifacte_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertifacteName")
     @_utilities.deprecated("""Field 'alicloud_certifacte_name' has been deprecated from provider version 1.68.0. Use 'alicloud_certificate_name' replaces it.""")
-    def alicloud_certifacte_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certifacte_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "alicloud_certifacte_name")
 
     @alicloud_certifacte_name.setter
-    def alicloud_certifacte_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certifacte_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certifacte_name", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateId")
-    def alicloud_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         an id of server certificate ssued/proxied by alibaba cloud. but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_id")
 
     @alicloud_certificate_id.setter
-    def alicloud_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateName")
-    def alicloud_certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the name of the certificate specified by `alicloud_certificate_id`.but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_name")
 
     @alicloud_certificate_name.setter
-    def alicloud_certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="alicloudCertificateRegionId")
-    def alicloud_certificate_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alicloud_certificate_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the region of the certificate specified by `alicloud_certificate_id`. but it is not supported on the international site of alibaba cloud now.
         """
         return pulumi.get(self, "alicloud_certificate_region_id")
 
     @alicloud_certificate_region_id.setter
-    def alicloud_certificate_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alicloud_certificate_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alicloud_certificate_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Server Certificate.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the content of privat key of the ssl certificate specified by `server_certificate`. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the slb server certificate belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificate")
-    def server_certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the content of the ssl certificate. where `alicloud_certificate_id` is null, it is required, otherwise it is ignored.
         """
         return pulumi.get(self, "server_certificate")
 
     @server_certificate.setter
-    def server_certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -360,16 +360,16 @@ class ServerCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alicloud_certifacte_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certifacte_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         A Load Balancer Server Certificate is an ssl Certificate used by the listener of the protocol https.
@@ -525,16 +525,16 @@ class ServerCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alicloud_certifacte_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certifacte_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 alicloud_certificate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -564,16 +564,16 @@ class ServerCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alicloud_certifacte_id: Optional[pulumi.Input[_builtins.str]] = None,
-            alicloud_certifacte_name: Optional[pulumi.Input[_builtins.str]] = None,
-            alicloud_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            alicloud_certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-            alicloud_certificate_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServerCertificate':
+            alicloud_certifacte_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certifacte_name: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            alicloud_certificate_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'ServerCertificate':
         """
         Get an existing ServerCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

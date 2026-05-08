@@ -154,7 +154,7 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[_builtins
         peering_subnet_mask="255.255.255.252",
         physical_connection_id=default.connections[0].id,
         virtual_border_router_name=name,
-        vlan_id=default_integer["id"],
+        vlan_id=int(default_integer["id"]),
         min_rx_interval=1000,
         min_tx_interval=1000,
         detect_multiplier=10)
@@ -200,11 +200,11 @@ def get_transit_router_route_table_propagations(ids: Optional[Sequence[_builtins
         status=pulumi.get(__ret__, 'status'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_route_table_id=pulumi.get(__ret__, 'transit_router_route_table_id'))
-def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_attachment_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_route_table_propagations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_attachment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterRouteTablePropagationsResult]:
     """
     This data source provides the CEN Transit Router Route Table Propagations of the current Alibaba Cloud user.
@@ -238,7 +238,7 @@ def get_transit_router_route_table_propagations_output(ids: Optional[pulumi.Inpu
         peering_subnet_mask="255.255.255.252",
         physical_connection_id=default.connections[0].id,
         virtual_border_router_name=name,
-        vlan_id=default_integer["id"],
+        vlan_id=int(default_integer["id"]),
         min_rx_interval=1000,
         min_tx_interval=1000,
         detect_multiplier=10)

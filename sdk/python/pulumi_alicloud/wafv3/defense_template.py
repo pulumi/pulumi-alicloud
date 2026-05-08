@@ -25,10 +25,10 @@ class DefenseTemplateArgs:
                  status: pulumi.Input[_builtins.str],
                  template_origin: pulumi.Input[_builtins.str],
                  template_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DefenseTemplate resource.
 
@@ -138,31 +138,31 @@ class DefenseTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the protection rule template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroups")
-    def resource_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
         """
         return pulumi.get(self, "resource_groups")
 
     @resource_groups.setter
-    def resource_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
-    def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud resource group.
 
@@ -171,36 +171,36 @@ class DefenseTemplateArgs:
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
-    def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
 
 @pulumi.input_type
 class _DefenseTemplateState:
     def __init__(__self__, *,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_template_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 defense_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_template_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 defense_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DefenseTemplate resources.
 
@@ -245,79 +245,79 @@ class _DefenseTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="defenseScene")
-    def defense_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The WAF protection scenario to be created. Valid values:
         """
         return pulumi.get(self, "defense_scene")
 
     @defense_scene.setter
-    def defense_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_scene", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseTemplateId")
-    def defense_template_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def defense_template_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Template ID
         """
         return pulumi.get(self, "defense_template_id")
 
     @defense_template_id.setter
-    def defense_template_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def defense_template_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "defense_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseTemplateName")
-    def defense_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the protection rule template.
         """
         return pulumi.get(self, "defense_template_name")
 
     @defense_template_name.setter
-    def defense_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_template_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the protection rule template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroups")
-    def resource_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
         """
         return pulumi.get(self, "resource_groups")
 
     @resource_groups.setter
-    def resource_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceManagerResourceGroupId")
-    def resource_manager_resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_manager_resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud resource group.
 
@@ -326,48 +326,48 @@ class _DefenseTemplateState:
         return pulumi.get(self, "resource_manager_resource_group_id")
 
     @resource_manager_resource_group_id.setter
-    def resource_manager_resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_manager_resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_manager_resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the protection rule template. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="templateOrigin")
-    def template_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
         """
         return pulumi.get(self, "template_origin")
 
     @template_origin.setter
-    def template_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="templateType")
-    def template_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protection rule template. Valid values:
         - **user_default:** default template.
@@ -376,7 +376,7 @@ class _DefenseTemplateState:
         return pulumi.get(self, "template_type")
 
     @template_type.setter
-    def template_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_type", value)
 
 
@@ -386,16 +386,16 @@ class DefenseTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a WAFV3 Defense Template resource.
@@ -519,16 +519,16 @@ class DefenseTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -571,17 +571,17 @@ class DefenseTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-            defense_template_id: Optional[pulumi.Input[_builtins.int]] = None,
-            defense_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_manager_resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            template_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            template_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DefenseTemplate':
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_template_id: pulumi.Input[Optional[_builtins.int]] = None,
+            defense_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_manager_resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            template_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DefenseTemplate':
         """
         Get an existing DefenseTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

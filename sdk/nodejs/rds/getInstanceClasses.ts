@@ -195,7 +195,7 @@ export interface GetInstanceClassesOutputArgs {
     /**
      * DB Instance category. the value like [`Basic`, `HighAvailability`, `Finance`, `AlwaysOn`, `serverlessBasic`, `serverlessStandard`, `serverlessHa`, `cluster`], [detail info](https://www.alibabacloud.com/help/doc-detail/69795.htm).
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The commodity code of the instance. Valid values:
      * * **bards**: The instance is a pay-as-you-go primary instance. This value is available on the China site (aliyun.com).
@@ -211,51 +211,51 @@ export interface GetInstanceClassesOutputArgs {
      *
      * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
-    commodityCode?: pulumi.Input<string>;
+    commodityCode?: pulumi.Input<string | undefined>;
     /**
      * The DB instance class type by the user.
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      *
      * > **NOTE**: The field `dbInstanceId` will be ignored when `commodityCode` is not a read-only type.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The DB instance storage space required by the user. Valid values: "cloudSsd", "localSsd", "cloudEssd", "cloudEssd2", "cloudEssd3", "generalEssd".
      */
-    dbInstanceStorageType?: pulumi.Input<string>;
+    dbInstanceStorageType?: pulumi.Input<string | undefined>;
     /**
      * Database type. Valid values:"MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Whether to show multi available zone. Default false to not show multi availability zone.
      */
-    multiZone?: pulumi.Input<boolean>;
+    multiZone?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi up`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Sort the results by specified fields. The supported value is' Price '. Modifying this field will trigger resource reconstruction.
      */
-    sortedBy?: pulumi.Input<string>;
+    sortedBy?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.134.0+ and using `dbInstanceStorageType` instead.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DB instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

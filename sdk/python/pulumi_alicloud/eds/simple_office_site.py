@@ -20,16 +20,16 @@ __all__ = ['SimpleOfficeSiteArgs', 'SimpleOfficeSite']
 class SimpleOfficeSiteArgs:
     def __init__(__self__, *,
                  cidr_block: pulumi.Input[_builtins.str],
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cross_desktop_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SimpleOfficeSite resource.
 
@@ -88,141 +88,141 @@ class SimpleOfficeSiteArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Enterprise Network Instance ID.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cen owner id.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         """
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrossDesktopAccess")
-    def enable_cross_desktop_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cross_desktop_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Cross-Desktop Access.
         """
         return pulumi.get(self, "enable_cross_desktop_access")
 
     @enable_cross_desktop_access.setter
-    def enable_cross_desktop_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cross_desktop_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cross_desktop_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
     @_utilities.deprecated("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Open Internet Access Function.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaEnabled")
-    def mfa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Multi-Factor Authentication MFA.
         """
         return pulumi.get(self, "mfa_enabled")
 
     @mfa_enabled.setter
-    def mfa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteName")
-    def office_site_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The office site name.
         """
         return pulumi.get(self, "office_site_name")
 
     @office_site_name.setter
-    def office_site_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoEnabled")
-    def sso_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sso_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Single Sign-on (SSO) for User-Based SSO.
         """
         return pulumi.get(self, "sso_enabled")
 
     @sso_enabled.setter
-    def sso_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sso_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sso_enabled", value)
 
 
 @pulumi.input_type
 class _SimpleOfficeSiteState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cross_desktop_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SimpleOfficeSite resources.
 
@@ -273,147 +273,147 @@ class _SimpleOfficeSiteState:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Enterprise Network Instance ID.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cen owner id.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace Corresponds to the Security Office Network of IPv4 Segment.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopAccessType")
-    def desktop_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         """
         return pulumi.get(self, "desktop_access_type")
 
     @desktop_access_type.setter
-    def desktop_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_access_type", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAdminAccess")
-    def enable_admin_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_admin_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         """
         return pulumi.get(self, "enable_admin_access")
 
     @enable_admin_access.setter
-    def enable_admin_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_admin_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_admin_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrossDesktopAccess")
-    def enable_cross_desktop_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_cross_desktop_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Cross-Desktop Access.
         """
         return pulumi.get(self, "enable_cross_desktop_access")
 
     @enable_cross_desktop_access.setter
-    def enable_cross_desktop_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_cross_desktop_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_cross_desktop_access", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInternetAccess")
     @_utilities.deprecated("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
-    def enable_internet_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_internet_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Open Internet Access Function.
         """
         return pulumi.get(self, "enable_internet_access")
 
     @enable_internet_access.setter
-    def enable_internet_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_internet_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_internet_access", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaEnabled")
-    def mfa_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Multi-Factor Authentication MFA.
         """
         return pulumi.get(self, "mfa_enabled")
 
     @mfa_enabled.setter
-    def mfa_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteName")
-    def office_site_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The office site name.
         """
         return pulumi.get(self, "office_site_name")
 
     @office_site_name.setter
-    def office_site_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ssoEnabled")
-    def sso_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sso_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Single Sign-on (SSO) for User-Based SSO.
         """
         return pulumi.get(self, "sso_enabled")
 
     @sso_enabled.setter
-    def sso_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sso_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sso_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -423,17 +423,17 @@ class SimpleOfficeSite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cross_desktop_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a ECD Simple Office Site resource.
@@ -544,17 +544,17 @@ class SimpleOfficeSite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_cross_desktop_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -588,18 +588,18 @@ class SimpleOfficeSite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_access_type: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_admin_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_cross_desktop_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_internet_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            mfa_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            office_site_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sso_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SimpleOfficeSite':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_access_type: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_admin_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_cross_desktop_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_internet_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            mfa_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            office_site_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sso_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SimpleOfficeSite':
         """
         Get an existing SimpleOfficeSite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -199,35 +199,35 @@ export interface IndexState {
     /**
      * Field index
      */
-    keys?: pulumi.Input<string>;
+    keys?: pulumi.Input<string | undefined>;
     /**
      * Full-text index See `line` below.
      */
-    line?: pulumi.Input<inputs.sls.IndexLine>;
+    line?: pulumi.Input<inputs.sls.IndexLine | undefined>;
     /**
      * Whether log clustering is enabled
      */
-    logReduce?: pulumi.Input<boolean>;
+    logReduce?: pulumi.Input<boolean | undefined>;
     /**
      * The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
      */
-    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
      */
-    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Logstore name
      */
-    logstoreName?: pulumi.Input<string>;
+    logstoreName?: pulumi.Input<string | undefined>;
     /**
      * Maximum length of statistical field
      */
-    maxTextLen?: pulumi.Input<number>;
+    maxTextLen?: pulumi.Input<number | undefined>;
     /**
      * Project name
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,23 +237,23 @@ export interface IndexArgs {
     /**
      * Field index
      */
-    keys?: pulumi.Input<string>;
+    keys?: pulumi.Input<string | undefined>;
     /**
      * Full-text index See `line` below.
      */
-    line?: pulumi.Input<inputs.sls.IndexLine>;
+    line?: pulumi.Input<inputs.sls.IndexLine | undefined>;
     /**
      * Whether log clustering is enabled
      */
-    logReduce?: pulumi.Input<boolean>;
+    logReduce?: pulumi.Input<boolean | undefined>;
     /**
      * The blacklist of the cluster fields of log clustering is filtered only when log clustering is enabled.
      */
-    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceBlackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The whitelist of the cluster fields for log clustering. This filter is valid only when log clustering is enabled.
      */
-    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    logReduceWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Logstore name
      */
@@ -261,7 +261,7 @@ export interface IndexArgs {
     /**
      * Maximum length of statistical field
      */
-    maxTextLen?: pulumi.Input<number>;
+    maxTextLen?: pulumi.Input<number | undefined>;
     /**
      * Project name
      */

@@ -115,5 +115,5 @@ export interface GetLogShipperOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the Threat Detection Log Shipper that means you have read and agreed the [Threat Detection Log Shipper Terms of Service](https://help.aliyun.com/document_detail/170157.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

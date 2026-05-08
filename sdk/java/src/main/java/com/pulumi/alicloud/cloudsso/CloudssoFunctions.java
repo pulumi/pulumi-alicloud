@@ -56,8 +56,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -106,8 +106,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -156,8 +156,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -206,8 +206,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -256,8 +256,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessAssignmentsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -306,8 +306,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -362,8 +362,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -418,8 +418,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -474,8 +474,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -530,8 +530,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetAccessConfigurationsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -586,8 +586,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -638,8 +638,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -690,8 +690,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -742,8 +742,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -794,8 +794,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -846,8 +846,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetDirectoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -950,8 +950,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1006,8 +1006,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1062,8 +1062,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1174,8 +1174,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1230,8 +1230,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1280,8 +1280,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1330,8 +1330,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1380,8 +1380,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1430,8 +1430,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetScimServerCredentialsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1482,8 +1482,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1530,8 +1530,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1578,8 +1578,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1626,8 +1626,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1674,8 +1674,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1720,8 +1720,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1785,8 +1785,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1850,8 +1850,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1915,8 +1915,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1980,8 +1980,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.alicloud.cloudsso.inputs.DirectoryMfaAuthenticationSettingInfoArgs;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUserProvisioningEventsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2045,8 +2045,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2115,8 +2115,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2185,8 +2185,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2255,8 +2255,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2325,8 +2325,8 @@ public final class CloudssoFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cloudsso.CloudssoFunctions;
      * import com.pulumi.alicloud.cloudsso.inputs.GetUsersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

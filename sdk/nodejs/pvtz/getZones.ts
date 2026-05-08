@@ -169,43 +169,43 @@ export interface GetZonesOutputArgs {
     /**
      * Whether to query the detailed list of resource attributes. Default value: `false`.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Zones IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The keyword of the zone name.
      */
-    keyword?: pulumi.Input<string>;
+    keyword?: pulumi.Input<string | undefined>;
     /**
      * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Zone name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the virtual private cloud (VPC) associated with the zone.
      */
-    queryRegionId?: pulumi.Input<string>;
+    queryRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC associated with the zone.
      */
-    queryVpcId?: pulumi.Input<string>;
+    queryVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the zone belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The search mode. The value of Keyword is the search scope. Default value: `LIKE`. Valid values:
      * - `LIKE`: Fuzzy search.
      * - `EXACT`: Exact search.
      */
-    searchMode?: pulumi.Input<string>;
+    searchMode?: pulumi.Input<string | undefined>;
 }

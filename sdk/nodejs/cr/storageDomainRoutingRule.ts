@@ -140,19 +140,19 @@ export interface StorageDomainRoutingRuleState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Container Registry Instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Domain name routing entry See `routes` below.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.cr.StorageDomainRoutingRuleRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.cr.StorageDomainRoutingRuleRoute>[] | undefined>;
     /**
      * The ID of the Rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
 }
 
 /**

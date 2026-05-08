@@ -130,9 +130,9 @@ def get_pbr_route_entries(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         vpn_gateway_id=pulumi.get(__ret__, 'vpn_gateway_id'))
-def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pbr_route_entries_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPbrRouteEntriesResult]:
     """
     > **NOTE:** Available in v1.162.0+.

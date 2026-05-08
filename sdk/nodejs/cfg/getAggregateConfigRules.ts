@@ -158,7 +158,7 @@ export interface GetAggregateConfigRulesOutputArgs {
     /**
      * The config rule name.
      */
-    aggregateConfigRuleName?: pulumi.Input<string>;
+    aggregateConfigRuleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of aggregator.
      */
@@ -166,25 +166,25 @@ export interface GetAggregateConfigRulesOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Aggregate Config Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Aggregate Config Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Risk Level. Valid values `1`: critical, `2`: warning, `3`: info.
      */
-    riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number | undefined>;
     /**
      * The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

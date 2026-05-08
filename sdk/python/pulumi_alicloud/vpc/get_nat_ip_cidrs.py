@@ -204,13 +204,13 @@ def get_nat_ip_cidrs(ids: Optional[Sequence[_builtins.str]] = None,
         nat_ip_cidrs=pulumi.get(__ret__, 'nat_ip_cidrs'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_nat_ip_cidrs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            nat_ip_cidr_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            nat_ip_cidrs: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_nat_ip_cidrs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            nat_ip_cidr_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            nat_ip_cidrs: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNatIpCidrsResult]:
     """
     This data source provides the Vpc Nat Ip Cidrs of the current Alibaba Cloud user.

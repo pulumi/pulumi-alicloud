@@ -22,17 +22,17 @@ __all__ = ['TransitRouterVpnAttachmentArgs', 'TransitRouterVpnAttachment']
 class TransitRouterVpnAttachmentArgs:
     def __init__(__self__, *,
                  vpn_id: pulumi.Input[_builtins.str],
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
         """
         The set of arguments for constructing a TransitRouterVpnAttachment resource.
 
@@ -103,31 +103,31 @@ class TransitRouterVpnAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method.
         Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
@@ -135,12 +135,12 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entity that pays the fees of the network instance. Valid values:
 
@@ -150,24 +150,24 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the VPN attachment.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -175,37 +175,37 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpnAttachmentName")
-    def transit_router_vpn_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_vpn_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPN attachment.
         The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -213,12 +213,12 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "transit_router_vpn_attachment_name")
 
     @transit_router_vpn_attachment_name.setter
-    def transit_router_vpn_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_vpn_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_vpn_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnOwnerId")
-    def vpn_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 
@@ -228,12 +228,12 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "vpn_owner_id")
 
     @vpn_owner_id.setter
-    def vpn_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_owner_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]:
         """
         The Zone ID in the current region.
         System will create resources under the Zone that you specify.
@@ -244,28 +244,28 @@ class TransitRouterVpnAttachmentArgs:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]):
         pulumi.set(self, "zones", value)
 
 
 @pulumi.input_type
 class _TransitRouterVpnAttachmentState:
     def __init__(__self__, *,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpnAttachment resources.
 
@@ -334,31 +334,31 @@ class _TransitRouterVpnAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow the transit router to automatically advertise routes to the IPsec-VPN attachment. Valid values:
         """
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method.
         Set the value to `POSTPAY`, which is the default value and specifies the pay-as-you-go billing method.
@@ -366,24 +366,24 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entity that pays the fees of the network instance. Valid values:
 
@@ -393,48 +393,48 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the transit router is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the VPN attachment.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -442,37 +442,37 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'transit_router_attachment_name' has been deprecated from provider version 1.274.0. New field 'transit_router_vpn_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpnAttachmentName")
-    def transit_router_vpn_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_vpn_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPN attachment.
         The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -480,24 +480,24 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "transit_router_vpn_attachment_name")
 
     @transit_router_vpn_attachment_name.setter
-    def transit_router_vpn_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_vpn_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_vpn_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnId")
-    def vpn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPsec-VPN attachment.
         """
         return pulumi.get(self, "vpn_id")
 
     @vpn_id.setter
-    def vpn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnOwnerId")
-    def vpn_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
 
@@ -507,12 +507,12 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "vpn_owner_id")
 
     @vpn_owner_id.setter
-    def vpn_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_owner_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]:
+    def zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]:
         """
         The Zone ID in the current region.
         System will create resources under the Zone that you specify.
@@ -523,7 +523,7 @@ class _TransitRouterVpnAttachmentState:
         return pulumi.get(self, "zones")
 
     @zones.setter
-    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]):
+    def zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpnAttachmentZoneArgs']]]]):
         pulumi.set(self, "zones", value)
 
 
@@ -533,18 +533,18 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpn Attachment resource.
@@ -817,18 +817,18 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -865,21 +865,21 @@ class TransitRouterVpnAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_vpn_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zones: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None) -> 'TransitRouterVpnAttachment':
+            auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_vpn_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zones: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpnAttachmentZoneArgs', 'TransitRouterVpnAttachmentZoneArgsDict']]]]] = None) -> 'TransitRouterVpnAttachment':
         """
         Get an existing TransitRouterVpnAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -252,97 +252,97 @@ export interface HyperNodeState {
     /**
      * Cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[] | undefined>;
     /**
      * The host name prefix of the sub computing node
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Number of the cluster to which the hyper computing node belongs
      */
-    hpnZone?: pulumi.Input<string>;
+    hpnZone?: pulumi.Input<string | undefined>;
     /**
      * Login Password of the sub computing node
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * The model used by the hyper computing node
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Node group ID
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the instance purchase, in units.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment type of the resource
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Number of auto-renewal cycles
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Hyper Node Architecture
      */
-    serverArch?: pulumi.Input<string>;
+    serverArch?: pulumi.Input<string | undefined>;
     /**
      * The number of installments of the hyper computing node of the fixed fee installment.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    stageNum?: pulumi.Input<string>;
+    stageNum?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Custom user data for the sub computing node
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vpc to which the sub computing node
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vswitch to which the sub computing node
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone where the hyper compute node is located
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -352,39 +352,39 @@ export interface HyperNodeArgs {
     /**
      * Cluster ID
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * List of disk information of attaching to each sub computing node.  See `dataDisk` below.
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.eflo.HyperNodeDataDisk>[] | undefined>;
     /**
      * The host name prefix of the sub computing node
      */
-    hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string | undefined>;
     /**
      * Number of the cluster to which the hyper computing node belongs
      */
-    hpnZone?: pulumi.Input<string>;
+    hpnZone?: pulumi.Input<string | undefined>;
     /**
      * Login Password of the sub computing node
      */
-    loginPassword?: pulumi.Input<string>;
+    loginPassword?: pulumi.Input<string | undefined>;
     /**
      * The model used by the hyper computing node
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * Node group ID
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the instance purchase, in units.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * The payment type of the resource
      */
@@ -392,43 +392,43 @@ export interface HyperNodeArgs {
     /**
      * Number of auto-renewal cycles
      */
-    renewalDuration?: pulumi.Input<number>;
+    renewalDuration?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Value: AutoRenewal: automatic renewal. ManualRenewal: manual renewal. The default ManualRenewal.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Hyper Node Architecture
      */
-    serverArch?: pulumi.Input<string>;
+    serverArch?: pulumi.Input<string | undefined>;
     /**
      * The number of installments of the hyper computing node of the fixed fee installment.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    stageNum?: pulumi.Input<string>;
+    stageNum?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Custom user data for the sub computing node
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vpc to which the sub computing node
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vswitch to which the sub computing node
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone where the hyper compute node is located
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -184,39 +184,39 @@ export interface LoadBalancerState {
     /**
      * The list of backend servers. See `backendServers` below.
      */
-    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[] | undefined>;
     /**
      * The creation Time (UTC) of the load balancing instance.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ENS node.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * The network ID of the created edge load balancing (ELB) instance.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * Server Load Balancer Instance Payment Type. Value:PayAsYouGo
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The status of the SLB instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch to which the VPC instance belongs.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface LoadBalancerArgs {
     /**
      * The list of backend servers. See `backendServers` below.
      */
-    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[]>;
+    backendServers?: pulumi.Input<pulumi.Input<inputs.ens.LoadBalancerBackendServer>[] | undefined>;
     /**
      * The ID of the ENS node.
      */
@@ -234,7 +234,7 @@ export interface LoadBalancerArgs {
     /**
      * Name of the Server Load Balancer instance. The length is 1~80 English or Chinese characters. When this parameter is not specified, the system randomly assigns an instance name. Cannot start with http:// and https.
      */
-    loadBalancerName?: pulumi.Input<string>;
+    loadBalancerName?: pulumi.Input<string | undefined>;
     /**
      * Specifications of the Server Load Balancer instance. Optional values: elb.s1.small,elb.s3.medium,elb.s2.small,elb.s2.medium,elb.s3.small.
      */

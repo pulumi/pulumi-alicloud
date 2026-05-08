@@ -194,45 +194,45 @@ export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOutp
  * A collection of arguments for invoking getEips.
  */
 export interface GetEipsOutputArgs {
-    addressName?: pulumi.Input<string>;
-    associatedInstanceId?: pulumi.Input<string>;
-    associatedInstanceType?: pulumi.Input<string>;
-    dryRun?: pulumi.Input<boolean>;
-    enableDetails?: pulumi.Input<boolean>;
+    addressName?: pulumi.Input<string | undefined>;
+    associatedInstanceId?: pulumi.Input<string | undefined>;
+    associatedInstanceType?: pulumi.Input<string | undefined>;
+    dryRun?: pulumi.Input<boolean | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of EIP IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    includeReservationData?: pulumi.Input<boolean>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
      * Public IP Address of the the EIP.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
     /**
      * A list of EIP public IP addresses.
      *
      * @deprecated Field 'ip_addresses' has been deprecated from provider version 1.126.0 and it will be removed in the future version. Please use the new attribute 'ip_address' instead.
      */
-    ipAddresses?: pulumi.Input<pulumi.Input<string>[]>;
-    isp?: pulumi.Input<string>;
-    lockReason?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
+    ipAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    isp?: pulumi.Input<string | undefined>;
+    lockReason?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    paymentType?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the eips belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
-    segmentInstanceId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    segmentInstanceId?: pulumi.Input<string | undefined>;
     /**
      * EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

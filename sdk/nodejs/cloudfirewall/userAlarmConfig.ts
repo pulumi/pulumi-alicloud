@@ -156,31 +156,31 @@ export interface UserAlarmConfigState {
     /**
      * The alarm configuration. More details see `alarmConfig` below.
      */
-    alarmConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigAlarmConfig>[]>;
+    alarmConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigAlarmConfig>[] | undefined>;
     /**
      * The alarm language. Possible values are `zh`, `en`.
      */
-    alarmLang?: pulumi.Input<string>;
+    alarmLang?: pulumi.Input<string | undefined>;
     /**
      * Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
      */
-    contactConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigContactConfig>[]>;
+    contactConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigContactConfig>[] | undefined>;
     /**
      * The language type. Possible values are `zh`, `en`.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
      */
-    notifyConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigNotifyConfig>[]>;
+    notifyConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigNotifyConfig>[] | undefined>;
     /**
      * Whether to Use the default contact.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    useDefaultContact?: pulumi.Input<string>;
+    useDefaultContact?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,25 +194,25 @@ export interface UserAlarmConfigArgs {
     /**
      * The alarm language. Possible values are `zh`, `en`.
      */
-    alarmLang?: pulumi.Input<string>;
+    alarmLang?: pulumi.Input<string | undefined>;
     /**
      * Conflict with `notifyConfig`. The contact configuration. More details see `contactConfig` below.
      */
-    contactConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigContactConfig>[]>;
+    contactConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigContactConfig>[] | undefined>;
     /**
      * The language type. Possible values are `zh`, `en`.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Conflict with `contactConfig`. The notification configuration. More details see `notifyConfig` below.
      */
-    notifyConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigNotifyConfig>[]>;
+    notifyConfigs?: pulumi.Input<pulumi.Input<inputs.cloudfirewall.UserAlarmConfigNotifyConfig>[] | undefined>;
     /**
      * Whether to Use the default contact.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    useDefaultContact?: pulumi.Input<string>;
+    useDefaultContact?: pulumi.Input<string | undefined>;
 }

@@ -150,31 +150,31 @@ export interface AppState {
     /**
      * AppName.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string | undefined>;
     /**
      * Base64 string of picture.
      */
-    encodedIcon?: pulumi.Input<string>;
+    encodedIcon?: pulumi.Input<string | undefined>;
     /**
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      */
-    industryId?: pulumi.Input<string>;
+    industryId?: pulumi.Input<string | undefined>;
     /**
      * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Product.
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * The type of the Product. Valid values: `Android` and `iOS`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -188,19 +188,19 @@ export interface AppArgs {
     /**
      * The app id of iOS. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    bundleId?: pulumi.Input<string>;
+    bundleId?: pulumi.Input<string | undefined>;
     /**
      * Base64 string of picture.
      */
-    encodedIcon?: pulumi.Input<string>;
+    encodedIcon?: pulumi.Input<string | undefined>;
     /**
      * The Industry ID of the app. For information about Industry and how to use it, MHUB[Industry](https://help.aliyun.com/document_detail/201638.html).
      */
-    industryId?: pulumi.Input<string>;
+    industryId?: pulumi.Input<string | undefined>;
     /**
      * Android App package name. **NOTE:** Either `bundleId` or `packageName` must be set.
      */
-    packageName?: pulumi.Input<string>;
+    packageName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Product.
      */

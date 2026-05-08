@@ -26,11 +26,11 @@ class PrometheusAlertRuleArgs:
                  expression: pulumi.Input[_builtins.str],
                  message: pulumi.Input[_builtins.str],
                  prometheus_alert_rule_name: pulumi.Input[_builtins.str],
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
-                 dispatch_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
-                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
+                 dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
+                 notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrometheusAlertRule resource.
 
@@ -123,80 +123,80 @@ class PrometheusAlertRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
+    def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
         """
         The annotations of the alert rule. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]):
+    def annotations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="dispatchRuleId")
-    def dispatch_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dispatch_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
         """
         return pulumi.get(self, "dispatch_rule_id")
 
     @dispatch_rule_id.setter
-    def dispatch_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dispatch_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dispatch_rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
         """
         The labels of the resource. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyType")
-    def notify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         """
         return pulumi.get(self, "notify_type")
 
     @notify_type.setter
-    def notify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the alert rule.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _PrometheusAlertRuleState:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_alert_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheus_alert_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_alert_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheus_alert_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusAlertRule resources.
 
@@ -240,146 +240,146 @@ class _PrometheusAlertRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
+    def annotations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]:
         """
         The annotations of the alert rule. See `annotations` below.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]):
+    def annotations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleAnnotationArgs']]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dispatchRuleId")
-    def dispatch_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dispatch_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
         """
         return pulumi.get(self, "dispatch_rule_id")
 
     @dispatch_rule_id.setter
-    def dispatch_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dispatch_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dispatch_rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration of the alert.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert rule expression that follows the PromQL syntax.
         """
         return pulumi.get(self, "expression")
 
     @expression.setter
-    def expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]:
         """
         The labels of the resource. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrometheusAlertRuleLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The message of the alert notification.
         """
         return pulumi.get(self, "message")
 
     @message.setter
-    def message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyType")
-    def notify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
         """
         return pulumi.get(self, "notify_type")
 
     @notify_type.setter
-    def notify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusAlertRuleId")
-    def prometheus_alert_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def prometheus_alert_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "prometheus_alert_rule_id")
 
     @prometheus_alert_rule_id.setter
-    def prometheus_alert_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def prometheus_alert_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "prometheus_alert_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="prometheusAlertRuleName")
-    def prometheus_alert_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prometheus_alert_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "prometheus_alert_rule_name")
 
     @prometheus_alert_rule_name.setter
-    def prometheus_alert_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prometheus_alert_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prometheus_alert_rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the resource. Valid values: `0`, `1`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the alert rule.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -389,16 +389,16 @@ class PrometheusAlertRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_alert_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_alert_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Prometheus Alert Rule resource.
@@ -528,16 +528,16 @@ class PrometheusAlertRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
-                 message: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheus_alert_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
+                 message: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheus_alert_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -579,18 +579,18 @@ class PrometheusAlertRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            annotations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dispatch_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.str]] = None,
-            expression: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
-            message: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            prometheus_alert_rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            prometheus_alert_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrometheusAlertRule':
+            annotations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleAnnotationArgs', 'PrometheusAlertRuleAnnotationArgsDict']]]]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dispatch_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            expression: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrometheusAlertRuleLabelArgs', 'PrometheusAlertRuleLabelArgsDict']]]]] = None,
+            message: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheus_alert_rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            prometheus_alert_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrometheusAlertRule':
         """
         Get an existing PrometheusAlertRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

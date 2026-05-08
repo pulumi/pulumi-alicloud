@@ -73,9 +73,9 @@ class SnatEntryArgs:
 @pulumi.input_type
 class _SnatEntryState:
     def __init__(__self__, *,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SnatEntry resources.
 
@@ -92,38 +92,38 @@ class _SnatEntryState:
 
     @_builtins.property
     @pulumi.getter(name="cidrBlock")
-    def cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block.
         """
         return pulumi.get(self, "cidr_block")
 
     @cidr_block.setter
-    def cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SAG instance.
         """
         return pulumi.get(self, "sag_id")
 
     @sag_id.setter
-    def sag_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sag_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sag_id", value)
 
     @_builtins.property
     @pulumi.getter(name="snatIp")
-    def snat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snat_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IP address.
         """
         return pulumi.get(self, "snat_ip")
 
     @snat_ip.setter
-    def snat_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snat_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snat_ip", value)
 
 
@@ -138,9 +138,9 @@ class SnatEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Sag SnatEntry resource. This topic describes how to add a SNAT entry to enable the SNAT function. The SNAT function can hide internal IP addresses and resolve private IP address conflicts. With this function, on-premises sites can access internal IP addresses, but cannot be accessed by internal IP addresses. If you do not add a SNAT entry, on-premises sites can access each other only when all related IP addresses do not conflict.
@@ -245,9 +245,9 @@ class SnatEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""SnatEntry is deprecated: alicloud.rocketmq/snatentry.SnatEntry has been deprecated in favor of alicloud.sag/snatentry.SnatEntry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -277,9 +277,9 @@ class SnatEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-            snat_ip: Optional[pulumi.Input[_builtins.str]] = None) -> 'SnatEntry':
+            cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+            snat_ip: pulumi.Input[Optional[_builtins.str]] = None) -> 'SnatEntry':
         """
         Get an existing SnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

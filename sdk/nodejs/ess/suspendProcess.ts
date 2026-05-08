@@ -161,11 +161,11 @@ export interface SuspendProcessState {
     /**
      * Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
      */
-    process?: pulumi.Input<string>;
+    process?: pulumi.Input<string | undefined>;
     /**
      * ID of the scaling group.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**

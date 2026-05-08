@@ -23,46 +23,46 @@ class ScalingGroupArgs:
     def __init__(__self__, *,
                  max_size: pulumi.Input[_builtins.int],
                  min_size: pulumi.Input[_builtins.int],
-                 alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
-                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_price_comparison_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 multi_az_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stop_instance_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScalingGroup resource.
 
@@ -238,151 +238,151 @@ class ScalingGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="albServerGroups")
-    def alb_server_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]:
+    def alb_server_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]:
         """
         If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         """
         return pulumi.get(self, "alb_server_groups")
 
     @alb_server_groups.setter
-    def alb_server_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]):
+    def alb_server_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]):
         pulumi.set(self, "alb_server_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationStrategy")
-    def allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "allocation_strategy")
 
     @allocation_strategy.setter
-    def allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRebalance")
-    def auto_rebalance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         """
         return pulumi.get(self, "auto_rebalance")
 
     @auto_rebalance.setter
-    def auto_rebalance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_rebalance", value)
 
     @_builtins.property
     @pulumi.getter(name="azBalance")
-    def az_balance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def az_balance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "az_balance")
 
     @az_balance.setter
-    def az_balance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def az_balance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "az_balance", value)
 
     @_builtins.property
     @pulumi.getter(name="balanceMode")
-    def balance_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def balance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         """
         return pulumi.get(self, "balance_mode")
 
     @balance_mode.setter
-    def balance_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def balance_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "balance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")
-    def capacity_options_compensate_with_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def capacity_options_compensate_with_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         """
         return pulumi.get(self, "capacity_options_compensate_with_on_demand")
 
     @capacity_options_compensate_with_on_demand.setter
-    def capacity_options_compensate_with_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def capacity_options_compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "capacity_options_compensate_with_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsOnDemandBaseCapacity")
-    def capacity_options_on_demand_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity_options_on_demand_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         """
         return pulumi.get(self, "capacity_options_on_demand_base_capacity")
 
     @capacity_options_on_demand_base_capacity.setter
-    def capacity_options_on_demand_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity_options_on_demand_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsOnDemandPercentageAboveBaseCapacity")
-    def capacity_options_on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity_options_on_demand_percentage_above_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
         """
         return pulumi.get(self, "capacity_options_on_demand_percentage_above_base_capacity")
 
     @capacity_options_on_demand_percentage_above_base_capacity.setter
-    def capacity_options_on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity_options_on_demand_percentage_above_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_percentage_above_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsPriceComparisonMode")
-    def capacity_options_price_comparison_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_options_price_comparison_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         """
         return pulumi.get(self, "capacity_options_price_comparison_mode")
 
     @capacity_options_price_comparison_mode.setter
-    def capacity_options_price_comparison_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_options_price_comparison_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_options_price_comparison_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")
-    def capacity_options_spot_auto_replace_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def capacity_options_spot_auto_replace_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         """
         return pulumi.get(self, "capacity_options_spot_auto_replace_on_demand")
 
     @capacity_options_spot_auto_replace_on_demand.setter
-    def capacity_options_spot_auto_replace_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def capacity_options_spot_auto_replace_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "capacity_options_spot_auto_replace_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="compensateWithOnDemand")
-    def compensate_with_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compensate_with_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         """
         return pulumi.get(self, "compensate_with_on_demand")
 
     @compensate_with_on_demand.setter
-    def compensate_with_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compensate_with_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
-    def container_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic container instance.
         """
         return pulumi.get(self, "container_group_id")
 
     @container_group_id.setter
-    def container_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIds")
-    def db_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def db_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         - The specified RDS instance must be in running status.
@@ -391,132 +391,132 @@ class ScalingGroupArgs:
         return pulumi.get(self, "db_instance_ids")
 
     @db_instance_ids.setter
-    def db_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def db_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "db_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCooldown")
-    def default_cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         """
         return pulumi.get(self, "default_cooldown")
 
     @default_cooldown.setter
-    def default_cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDeletionProtection")
-    def group_deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         """
         return pulumi.get(self, "group_deletion_protection")
 
     @group_deletion_protection.setter
-    def group_deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
         """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTypes")
-    def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def health_check_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         """
         return pulumi.get(self, "health_check_types")
 
     @health_check_types.setter
-    def health_check_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def health_check_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "health_check_types", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
-    def launch_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateOverrides")
-    def launch_template_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
+    def launch_template_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
         """
         The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         """
         return pulumi.get(self, "launch_template_overrides")
 
     @launch_template_overrides.setter
-    def launch_template_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
+    def launch_template_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
         pulumi.set(self, "launch_template_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerIds")
-    def loadbalancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def loadbalancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
@@ -528,72 +528,72 @@ class ScalingGroupArgs:
         return pulumi.get(self, "loadbalancer_ids")
 
     @loadbalancer_ids.setter
-    def loadbalancer_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def loadbalancer_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "loadbalancer_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceLifetime")
-    def max_instance_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum life span of an instance in the scaling group. Unit: seconds.
         """
         return pulumi.get(self, "max_instance_lifetime")
 
     @max_instance_lifetime.setter
-    def max_instance_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="multiAzPolicy")
-    def multi_az_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_az_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         """
         return pulumi.get(self, "multi_az_policy")
 
     @multi_az_policy.setter
-    def multi_az_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_az_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_az_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
-    def on_demand_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_percentage_above_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
-    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_percentage_above_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedInstances")
-    def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protected_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set or unset instances within group into protected status.
         """
         return pulumi.get(self, "protected_instances")
 
     @protected_instances.setter
-    def protected_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protected_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protected_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="removalPolicies")
-    def removal_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def removal_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
         - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -604,96 +604,96 @@ class ScalingGroupArgs:
         return pulumi.get(self, "removal_policies")
 
     @removal_policies.setter
-    def removal_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def removal_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "removal_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to add the scaling group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupName")
-    def scaling_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         """
         return pulumi.get(self, "scaling_group_name")
 
     @scaling_group_name.setter
-    def scaling_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingPolicy")
-    def scaling_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         """
         return pulumi.get(self, "scaling_policy")
 
     @scaling_policy.setter
-    def scaling_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotAllocationStrategy")
-    def spot_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "spot_allocation_strategy")
 
     @spot_allocation_strategy.setter
-    def spot_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePools")
-    def spot_instance_pools(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_instance_pools(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         """
         return pulumi.get(self, "spot_instance_pools")
 
     @spot_instance_pools.setter
-    def spot_instance_pools(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_instance_pools(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_instance_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstanceRemedy")
-    def spot_instance_remedy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spot_instance_remedy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
         return pulumi.get(self, "spot_instance_remedy")
 
     @spot_instance_remedy.setter
-    def spot_instance_remedy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spot_instance_remedy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spot_instance_remedy", value)
 
     @_builtins.property
     @pulumi.getter(name="stopInstanceTimeout")
-    def stop_instance_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_instance_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         """
         return pulumi.get(self, "stop_instance_timeout")
 
     @stop_instance_timeout.setter
-    def stop_instance_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_instance_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_instance_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -702,80 +702,80 @@ class ScalingGroupArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of virtual switch IDs in which the ecs instances to be launched.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
 @pulumi.input_type
 class _ScalingGroupState:
     def __init__(__self__, *,
-                 alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
-                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_price_comparison_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 multi_az_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stop_instance_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]] = None,
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ScalingGroup resources.
 
@@ -927,151 +927,151 @@ class _ScalingGroupState:
 
     @_builtins.property
     @pulumi.getter(name="albServerGroups")
-    def alb_server_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]:
+    def alb_server_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]:
         """
         If a Serve ALB instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server ALB instance.  See `alb_server_group` below for details.
         """
         return pulumi.get(self, "alb_server_groups")
 
     @alb_server_groups.setter
-    def alb_server_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]):
+    def alb_server_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupAlbServerGroupArgs']]]]):
         pulumi.set(self, "alb_server_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationStrategy")
-    def allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation policy of instances. Auto Scaling selects instance types based on the allocation policy to create instances. The policy can be applied to pay-as-you-go instances and preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "allocation_strategy")
 
     @allocation_strategy.setter
-    def allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRebalance")
-    def auto_rebalance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic rebalancing for the scaling group. This parameter takes effect only when BalancedOnly is enabled for a zone-balanced scaling group. Valid values: false, true.
         """
         return pulumi.get(self, "auto_rebalance")
 
     @auto_rebalance.setter
-    def auto_rebalance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_rebalance", value)
 
     @_builtins.property
     @pulumi.getter(name="azBalance")
-    def az_balance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def az_balance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to evenly distribute instances in the scaling group across multiple zones. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "az_balance")
 
     @az_balance.setter
-    def az_balance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def az_balance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "az_balance", value)
 
     @_builtins.property
     @pulumi.getter(name="balanceMode")
-    def balance_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def balance_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone balancing mode. This parameter takes effect only when zone balancing is enabled. Valid values: BalancedBestEffort, BalancedOnly.
         """
         return pulumi.get(self, "balance_mode")
 
     @balance_mode.setter
-    def balance_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def balance_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "balance_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsCompensateWithOnDemand")
-    def capacity_options_compensate_with_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def capacity_options_compensate_with_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         """
         return pulumi.get(self, "capacity_options_compensate_with_on_demand")
 
     @capacity_options_compensate_with_on_demand.setter
-    def capacity_options_compensate_with_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def capacity_options_compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "capacity_options_compensate_with_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsOnDemandBaseCapacity")
-    def capacity_options_on_demand_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity_options_on_demand_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of pay-as-you-go instances that must be contained in the scaling group. When the actual number of pay-as-you-go instances in the scaling group drops below the value of this parameter, Auto Scaling preferentially creates pay-as-you-go instances. Valid values: 0 to 1000. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 0.
         """
         return pulumi.get(self, "capacity_options_on_demand_base_capacity")
 
     @capacity_options_on_demand_base_capacity.setter
-    def capacity_options_on_demand_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity_options_on_demand_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsOnDemandPercentageAboveBaseCapacity")
-    def capacity_options_on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def capacity_options_on_demand_percentage_above_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The percentage of pay-as-you-go instances in the excess instances when the minimum number of pay-as-you-go instances is reached. 'on_demand_base_capacity' specifies the minimum number of pay-as-you-go instances that must be contained in the scaling group. Valid values: 0 to 100. If you set 'multi_az_policy' to COMPOSABLE, the default value of this parameter is 100.
         """
         return pulumi.get(self, "capacity_options_on_demand_percentage_above_base_capacity")
 
     @capacity_options_on_demand_percentage_above_base_capacity.setter
-    def capacity_options_on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def capacity_options_on_demand_percentage_above_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "capacity_options_on_demand_percentage_above_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsPriceComparisonMode")
-    def capacity_options_price_comparison_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def capacity_options_price_comparison_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The price comparison mode. Valid values: PricePerUnit,PricePerVCpu. Default value: PricePerUnit.
         """
         return pulumi.get(self, "capacity_options_price_comparison_mode")
 
     @capacity_options_price_comparison_mode.setter
-    def capacity_options_price_comparison_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def capacity_options_price_comparison_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "capacity_options_price_comparison_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="capacityOptionsSpotAutoReplaceOnDemand")
-    def capacity_options_spot_auto_replace_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def capacity_options_spot_auto_replace_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to replace pay-as-you-go instances with preemptible instances. If you specify 'compensate_with_on_demand', it may result in a higher percentage of pay-as-you-go instances compared to the value of 'on_demand_percentage_above_base_capacity'. If you specify this parameter, Auto Scaling preferentially deploys preemptible instances to replace the surplus pay-as-you-go instances when preemptible instance types are available. If you specify 'compensate_with_on_demand', Auto Scaling creates pay-as-you-go instances when preemptible instance types are insufficient. To avoid retaining these pay-as-you-go instances for extended periods, Auto Scaling attempts to replace them with preemptible instances when sufficient preemptible instance types become available. Valid values: true, false.
         """
         return pulumi.get(self, "capacity_options_spot_auto_replace_on_demand")
 
     @capacity_options_spot_auto_replace_on_demand.setter
-    def capacity_options_spot_auto_replace_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def capacity_options_spot_auto_replace_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "capacity_options_spot_auto_replace_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="compensateWithOnDemand")
-    def compensate_with_on_demand(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compensate_with_on_demand(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create pay-as-you-go instances to meet the requirement on the number of ECS instances when the expected capacity of preemptible instances cannot be provided due to reasons such as cost-related issues and insufficient resources. This parameter is supported only if you set 'multi_az_policy' to COST_OPTIMIZED. Valid values: true, false.
         """
         return pulumi.get(self, "compensate_with_on_demand")
 
     @compensate_with_on_demand.setter
-    def compensate_with_on_demand(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compensate_with_on_demand(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compensate_with_on_demand", value)
 
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
-    def container_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the elastic container instance.
         """
         return pulumi.get(self, "container_group_id")
 
     @container_group_id.setter
-    def container_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIds")
-    def db_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def db_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If an RDS instance is specified in the scaling group, the scaling group automatically attaches the Intranet IP addresses of its ECS instances to the RDS access whitelist.
         - The specified RDS instance must be in running status.
@@ -1080,132 +1080,132 @@ class _ScalingGroupState:
         return pulumi.get(self, "db_instance_ids")
 
     @db_instance_ids.setter
-    def db_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def db_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "db_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCooldown")
-    def default_cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
         """
         return pulumi.get(self, "default_cooldown")
 
     @default_cooldown.setter
-    def default_cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredCapacity")
-    def desired_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def desired_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
         """
         return pulumi.get(self, "desired_capacity")
 
     @desired_capacity.setter
-    def desired_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def desired_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "desired_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDeletionProtection")
-    def group_deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def group_deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
         """
         return pulumi.get(self, "group_deletion_protection")
 
     @group_deletion_protection.setter
-    def group_deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def group_deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "group_deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
         """
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type within scaling group. Optional values: ECS, ECI, NONE, LOAD_BALANCER. Default to ECS.
         """
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTypes")
-    def health_check_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def health_check_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The health check modes of the scaling group. Valid values: ECS, NONE, LOAD_BALANCER.
         """
         return pulumi.get(self, "health_check_types")
 
     @health_check_types.setter
-    def health_check_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def health_check_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "health_check_types", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance from which Auto Scaling obtains the required configuration information and uses the information to automatically create a scaling configuration.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateId")
-    def launch_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
         """
         return pulumi.get(self, "launch_template_id")
 
     @launch_template_id.setter
-    def launch_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateOverrides")
-    def launch_template_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
+    def launch_template_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]:
         """
         The details of the instance types that are specified by using the Extend Instance Type of Launch Template feature.  See `launch_template_override` below for details.
         """
         return pulumi.get(self, "launch_template_overrides")
 
     @launch_template_overrides.setter
-    def launch_template_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
+    def launch_template_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingGroupLaunchTemplateOverrideArgs']]]]):
         pulumi.set(self, "launch_template_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="launchTemplateVersion")
-    def launch_template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launch_template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
         """
         return pulumi.get(self, "launch_template_version")
 
     @launch_template_version.setter
-    def launch_template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launch_template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launch_template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerIds")
-    def loadbalancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def loadbalancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
@@ -1217,24 +1217,24 @@ class _ScalingGroupState:
         return pulumi.get(self, "loadbalancer_ids")
 
     @loadbalancer_ids.setter
-    def loadbalancer_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def loadbalancer_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "loadbalancer_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="maxInstanceLifetime")
-    def max_instance_lifetime(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_instance_lifetime(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum life span of an instance in the scaling group. Unit: seconds.
         """
         return pulumi.get(self, "max_instance_lifetime")
 
     @max_instance_lifetime.setter
-    def max_instance_lifetime(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_instance_lifetime(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_instance_lifetime", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSize")
-    def max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
         **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
@@ -1242,12 +1242,12 @@ class _ScalingGroupState:
         return pulumi.get(self, "max_size")
 
     @max_size.setter
-    def max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minSize")
-    def min_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of ECS instances in the scaling group. Value range: [0, 2000].
         **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
@@ -1255,60 +1255,60 @@ class _ScalingGroupState:
         return pulumi.get(self, "min_size")
 
     @min_size.setter
-    def min_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_size", value)
 
     @_builtins.property
     @pulumi.getter(name="multiAzPolicy")
-    def multi_az_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_az_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, COMPOSABLE, BALANCE or COST_OPTIMIZED(Available since v1.54.0).
         """
         return pulumi.get(self, "multi_az_policy")
 
     @multi_az_policy.setter
-    def multi_az_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_az_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_az_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandBaseCapacity")
-    def on_demand_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum amount of the Auto Scaling group's capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
         """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
-    def on_demand_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
-    def on_demand_percentage_above_base_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def on_demand_percentage_above_base_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
         """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
-    def on_demand_percentage_above_base_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def on_demand_percentage_above_base_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "on_demand_percentage_above_base_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="protectedInstances")
-    def protected_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def protected_instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set or unset instances within group into protected status.
         """
         return pulumi.get(self, "protected_instances")
 
     @protected_instances.setter
-    def protected_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def protected_instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "protected_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="removalPolicies")
-    def removal_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def removal_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         RemovalPolicy is used to select the ECS instances you want to remove from the scaling group when multiple candidates for removal exist. Optional values:
         - OldestInstance: removes the ECS instance that is added to the scaling group at the earliest point in time.
@@ -1319,96 +1319,96 @@ class _ScalingGroupState:
         return pulumi.get(self, "removal_policies")
 
     @removal_policies.setter
-    def removal_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def removal_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "removal_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which you want to add the scaling group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupName")
-    def scaling_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
         """
         return pulumi.get(self, "scaling_group_name")
 
     @scaling_group_name.setter
-    def scaling_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingPolicy")
-    def scaling_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reclaim mode of the scaling group. Optional values: recycle, release, forceRecycle, forceRelease.
         """
         return pulumi.get(self, "scaling_policy")
 
     @scaling_policy.setter
-    def scaling_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotAllocationStrategy")
-    def spot_allocation_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_allocation_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy for preemptible instances. This parameter takes effect only if you set MultiAZPolicy to COMPOSABLE.
         """
         return pulumi.get(self, "spot_allocation_strategy")
 
     @spot_allocation_strategy.setter
-    def spot_allocation_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_allocation_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_allocation_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstancePools")
-    def spot_instance_pools(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_instance_pools(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
         """
         return pulumi.get(self, "spot_instance_pools")
 
     @spot_instance_pools.setter
-    def spot_instance_pools(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_instance_pools(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_instance_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="spotInstanceRemedy")
-    def spot_instance_remedy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def spot_instance_remedy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
         """
         return pulumi.get(self, "spot_instance_remedy")
 
     @spot_instance_remedy.setter
-    def spot_instance_remedy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def spot_instance_remedy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "spot_instance_remedy", value)
 
     @_builtins.property
     @pulumi.getter(name="stopInstanceTimeout")
-    def stop_instance_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stop_instance_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period of time required by the ECS instance to enter the Stopped state. Unit: seconds. Valid values: 30 to 240.
         """
         return pulumi.get(self, "stop_instance_timeout")
 
     @stop_instance_timeout.setter
-    def stop_instance_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stop_instance_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stop_instance_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1417,32 +1417,32 @@ class _ScalingGroupState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
     @_utilities.deprecated("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of virtual switch IDs in which the ecs instances to be launched.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
@@ -1452,48 +1452,48 @@ class ScalingGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
-                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_price_comparison_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 multi_az_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stop_instance_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ESS scaling group resource which is a collection of ECS instances with the same application scenarios.
@@ -1525,7 +1525,7 @@ class ScalingGroup(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1681,7 +1681,7 @@ class ScalingGroup(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1756,48 +1756,48 @@ class ScalingGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
-                 allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 capacity_options_price_comparison_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-                 container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
-                 launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 multi_az_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 spot_instance_pools: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stop_instance_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+                 allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+                 container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+                 launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1863,48 +1863,48 @@ class ScalingGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alb_server_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
-            allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_rebalance: Optional[pulumi.Input[_builtins.bool]] = None,
-            az_balance: Optional[pulumi.Input[_builtins.bool]] = None,
-            balance_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            capacity_options_compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-            capacity_options_on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            capacity_options_on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            capacity_options_price_comparison_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            capacity_options_spot_auto_replace_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-            compensate_with_on_demand: Optional[pulumi.Input[_builtins.bool]] = None,
-            container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            default_cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-            desired_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            group_deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            launch_template_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
-            launch_template_version: Optional[pulumi.Input[_builtins.str]] = None,
-            loadbalancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            max_instance_lifetime: Optional[pulumi.Input[_builtins.int]] = None,
-            max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_size: Optional[pulumi.Input[_builtins.int]] = None,
-            multi_az_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            on_demand_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            on_demand_percentage_above_base_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-            protected_instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            removal_policies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_allocation_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            spot_instance_pools: Optional[pulumi.Input[_builtins.int]] = None,
-            spot_instance_remedy: Optional[pulumi.Input[_builtins.bool]] = None,
-            stop_instance_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ScalingGroup':
+            alb_server_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupAlbServerGroupArgs', 'ScalingGroupAlbServerGroupArgsDict']]]]] = None,
+            allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+            az_balance: pulumi.Input[Optional[_builtins.bool]] = None,
+            balance_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity_options_compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            capacity_options_on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            capacity_options_on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            capacity_options_price_comparison_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            capacity_options_spot_auto_replace_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            compensate_with_on_demand: pulumi.Input[Optional[_builtins.bool]] = None,
+            container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+            desired_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            group_deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            launch_template_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingGroupLaunchTemplateOverrideArgs', 'ScalingGroupLaunchTemplateOverrideArgsDict']]]]] = None,
+            launch_template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            loadbalancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            max_instance_lifetime: pulumi.Input[Optional[_builtins.int]] = None,
+            max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_size: pulumi.Input[Optional[_builtins.int]] = None,
+            multi_az_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            on_demand_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            on_demand_percentage_above_base_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+            protected_instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            removal_policies: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_allocation_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            spot_instance_pools: pulumi.Input[Optional[_builtins.int]] = None,
+            spot_instance_remedy: pulumi.Input[Optional[_builtins.bool]] = None,
+            stop_instance_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ScalingGroup':
         """
         Get an existing ScalingGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

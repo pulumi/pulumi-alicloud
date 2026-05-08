@@ -57,8 +57,8 @@ export function getRdsParameterGroupsOutput(args?: GetRdsParameterGroupsOutputAr
  * A collection of arguments for invoking getRdsParameterGroups.
  */
 export interface GetRdsParameterGroupsOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

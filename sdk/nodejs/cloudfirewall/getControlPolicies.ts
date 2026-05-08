@@ -175,19 +175,19 @@ export interface GetControlPoliciesOutputArgs {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the access control policy.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The description of the access control policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination address defined in the access control policy.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      */
@@ -195,21 +195,21 @@ export interface GetControlPoliciesOutputArgs {
     /**
      * The IP version of the address in the access control policy.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The language of the content within the response. Valid values: `en`, `zh`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
-    proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string | undefined>;
     /**
      * The source address in the access control policy.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
 }

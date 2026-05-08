@@ -23,7 +23,7 @@ class BackupPolicyArgs:
                  policy: pulumi.Input[_builtins.str],
                  policy_version: pulumi.Input[_builtins.str],
                  uuid_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 policy_region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy_region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BackupPolicy resource.
 
@@ -90,26 +90,26 @@ class BackupPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="policyRegionId")
-    def policy_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         return pulumi.get(self, "policy_region_id")
 
     @policy_region_id.setter
-    def policy_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_region_id", value)
 
 
 @pulumi.input_type
 class _BackupPolicyState:
     def __init__(__self__, *,
-                 backup_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backup_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering BackupPolicy resources.
 
@@ -135,74 +135,74 @@ class _BackupPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="backupPolicyName")
-    def backup_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protection of the Name of the Policy.
         """
         return pulumi.get(self, "backup_policy_name")
 
     @backup_policy_name.setter
-    def backup_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_policy_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="policyRegionId")
-    def policy_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
         """
         return pulumi.get(self, "policy_region_id")
 
     @policy_region_id.setter
-    def policy_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyVersion")
-    def policy_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
         """
         return pulumi.get(self, "policy_version")
 
     @policy_version.setter
-    def policy_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Backup Policy instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="uuidLists")
-    def uuid_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def uuid_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Specify the Protection of Server UUID List.
         """
         return pulumi.get(self, "uuid_lists")
 
     @uuid_lists.setter
-    def uuid_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def uuid_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "uuid_lists", value)
 
 
@@ -212,11 +212,11 @@ class BackupPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Backup Policy resource.
@@ -315,11 +315,11 @@ class BackupPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -353,12 +353,12 @@ class BackupPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_version: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BackupPolicy':
+            backup_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'BackupPolicy':
         """
         Get an existing BackupPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

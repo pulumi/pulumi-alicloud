@@ -127,11 +127,11 @@ export interface CloudPhoneInstanceState {
     /**
      * The ID of the instance group to which the instance belongs
      */
-    androidInstanceGroupId?: pulumi.Input<string>;
+    androidInstanceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance name
      */
-    androidInstanceName?: pulumi.Input<string>;
+    androidInstanceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -141,9 +141,9 @@ export interface CloudPhoneInstanceArgs {
     /**
      * The ID of the instance group to which the instance belongs
      */
-    androidInstanceGroupId?: pulumi.Input<string>;
+    androidInstanceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The instance name
      */
-    androidInstanceName?: pulumi.Input<string>;
+    androidInstanceName?: pulumi.Input<string | undefined>;
 }

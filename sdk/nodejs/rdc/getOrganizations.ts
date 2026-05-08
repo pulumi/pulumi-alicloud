@@ -140,17 +140,17 @@ export interface GetOrganizationsOutputArgs {
     /**
      * A list of Organization IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Organization name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * User pk, not required, only required when the ak used by the calling interface is inconsistent with the user pk
      */
-    realPk?: pulumi.Input<string>;
+    realPk?: pulumi.Input<string | undefined>;
 }

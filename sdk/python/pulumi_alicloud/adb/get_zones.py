@@ -126,8 +126,8 @@ def get_zones(multi: Optional[_builtins.bool] = None,
         multi=pulumi.get(__ret__, 'multi'),
         output_file=pulumi.get(__ret__, 'output_file'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(multi: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(multi: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for ADB that can be accessed by an Alibaba Cloud account within the region configured in the provider.

@@ -147,30 +147,30 @@ export interface GetBasicAcceleratorsOutputArgs {
     /**
      * The ID of the Global Accelerator Basic Accelerator instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth billing method. Valid values:
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed through Cloud Data Transfer (CDT) and based on data transfer.
      * - `CDT95`: billed through CDT and based on the 95th percentile bandwidth. This bandwidth billing method is available only for users that are included in the whitelist.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * A list of Global Accelerator Basic Accelerator IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Global Accelerator Basic Accelerator name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

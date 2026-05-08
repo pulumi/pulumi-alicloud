@@ -113,15 +113,15 @@ export interface KvNamespaceState {
     /**
      * The description of the namespace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */
-    kvNamespace?: pulumi.Input<string>;
+    kvNamespace?: pulumi.Input<string | undefined>;
     /**
      * The status of the namespace.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -131,7 +131,7 @@ export interface KvNamespaceArgs {
     /**
      * The description of the namespace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace.
      */

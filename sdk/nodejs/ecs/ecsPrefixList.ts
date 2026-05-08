@@ -142,23 +142,23 @@ export interface EcsPrefixListState {
     /**
      * The IP address family. Valid values: `IPv4`,`IPv6`.
      */
-    addressFamily?: pulumi.Input<string>;
+    addressFamily?: pulumi.Input<string | undefined>;
     /**
      * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Entry. The details see Block `entry`.
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.ecs.EcsPrefixListEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.ecs.EcsPrefixListEntry>[] | undefined>;
     /**
      * The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
      */
-    maxEntries?: pulumi.Input<number>;
+    maxEntries?: pulumi.Input<number | undefined>;
     /**
      * The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
-    prefixListName?: pulumi.Input<string>;
+    prefixListName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface EcsPrefixListArgs {
     /**
      * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Entry. The details see Block `entry`.
      */

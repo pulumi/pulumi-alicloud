@@ -37,57 +37,54 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
-// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
-// CidrBlock: pulumi.String("192.168.0.0/16"),
-// })
-// if err != nil {
-// return err
-// }
-// invokeCidrsubnet, err := std.Cidrsubnet(ctx, &std.CidrsubnetArgs{
-// Input: cidrBlock,
-// Newbits: 8,
-// Netnum: 2,
-// }, nil)
-// if err != nil {
-// return err
-// }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
-// VpcId: defaultNetwork.ID(),
-// CidrBlock: pulumi.String(defaultNetwork.CidrBlock.ApplyT(func(cidrBlock string) (std.CidrsubnetResult, error) {
-// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(std.CidrsubnetResultOutput).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
-// val := invoke.Result
-// return &val, nil
-// }).(pulumi.StringPtrOutput)),
-// ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
-// })
-// if err != nil {
-// return err
-// }
-// defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "default", &vpc.NetworkAclArgs{
-// VpcId: defaultSwitch.VpcId,
-// })
-// if err != nil {
-// return err
-// }
-// _, err = vpc.NewVpcNetworkAclAttachment(ctx, "default", &vpc.VpcNetworkAclAttachmentArgs{
-// NetworkAclId: defaultNetworkAcl.ID(),
-// ResourceId: defaultSwitch.ID(),
-// ResourceType: pulumi.String("VSwitch"),
-// })
-// if err != nil {
-// return err
-// }
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				CidrBlock: pulumi.String("192.168.0.0/16"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId: defaultNetwork.ID(),
+//				CidrBlock: pulumi.String(std.CidrsubnetOutput(ctx, std.CidrsubnetOutputArgs{
+//					Input:   defaultNetwork.CidrBlock,
+//					Newbits: pulumi.Int(8),
+//					Netnum:  pulumi.Int(2),
+//				}, nil).ApplyT(func(invoke std.CidrsubnetResult) (*string, error) {
+//					val := invoke.Result
+//					return &val, nil
+//				}).(pulumi.StringPtrOutput)),
+//				ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "default", &vpc.NetworkAclArgs{
+//				VpcId: defaultSwitch.VpcId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vpc.NewVpcNetworkAclAttachment(ctx, "default", &vpc.VpcNetworkAclAttachmentArgs{
+//				NetworkAclId: defaultNetworkAcl.ID(),
+//				ResourceId:   defaultSwitch.ID(),
+//				ResourceType: pulumi.String("VSwitch"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // 📚 Need more examples? VIEW MORE EXAMPLES

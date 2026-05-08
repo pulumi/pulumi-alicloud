@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *     nickname: "os_terrform_p",
  *     quota: {
  *         parameter: {
- *             elasticReservedCu: elasticReservedCu,
+ *             elasticReservedCu: Number(elasticReservedCu),
  *         },
  *         subQuotaInfoLists: [
  *             {
@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *                 parameter: {
  *                     minCu: 0,
  *                     maxCu: 20,
- *                     elasticReservedCu: elasticReservedCu,
+ *                     elasticReservedCu: Number(elasticReservedCu),
  *                 },
  *             },
  *             {
@@ -152,19 +152,19 @@ export interface QuotaPlanState {
      * Whether to take effect immediately. “Valid values: true”  
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
-    isEffective?: pulumi.Input<boolean>;
+    isEffective?: pulumi.Input<boolean | undefined>;
     /**
      * Quota Name
      */
-    nickname?: pulumi.Input<string>;
+    nickname?: pulumi.Input<string | undefined>;
     /**
      * The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * Quota property See `quota` below.
      */
-    quota?: pulumi.Input<inputs.maxcompute.QuotaPlanQuota>;
+    quota?: pulumi.Input<inputs.maxcompute.QuotaPlanQuota | undefined>;
 }
 
 /**
@@ -175,7 +175,7 @@ export interface QuotaPlanArgs {
      * Whether to take effect immediately. “Valid values: true”  
      * .> **NOTE:** when other quota plans in the same quota group take effect, the effective quota group will become invalid. That is, IsEffective will become false. The effective quota plan cannot be deleted.
      */
-    isEffective?: pulumi.Input<boolean>;
+    isEffective?: pulumi.Input<boolean | undefined>;
     /**
      * Quota Name
      */
@@ -187,5 +187,5 @@ export interface QuotaPlanArgs {
     /**
      * Quota property See `quota` below.
      */
-    quota?: pulumi.Input<inputs.maxcompute.QuotaPlanQuota>;
+    quota?: pulumi.Input<inputs.maxcompute.QuotaPlanQuota | undefined>;
 }

@@ -103,11 +103,11 @@ export interface GroupState {
     /**
      * GroupId.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * GroupName.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -117,9 +117,9 @@ export interface GroupArgs {
     /**
      * GroupId.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * GroupName.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
 }

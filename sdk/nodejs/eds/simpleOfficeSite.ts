@@ -180,53 +180,53 @@ export interface SimpleOfficeSiteState {
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The cen owner id.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Cross-Desktop Access.
      */
-    enableCrossDesktopAccess?: pulumi.Input<boolean>;
+    enableCrossDesktopAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
-    mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The office site name.
      */
-    officeSiteName?: pulumi.Input<string>;
+    officeSiteName?: pulumi.Input<string | undefined>;
     /**
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      */
-    ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,15 +238,15 @@ export interface SimpleOfficeSiteArgs {
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * Cloud Enterprise Network Instance ID.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The cen owner id.
      */
-    cenOwnerId?: pulumi.Input<string>;
+    cenOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      */
@@ -254,31 +254,31 @@ export interface SimpleOfficeSiteArgs {
     /**
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Enable Cross-Desktop Access.
      */
-    enableCrossDesktopAccess?: pulumi.Input<boolean>;
+    enableCrossDesktopAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable Multi-Factor Authentication MFA.
      */
-    mfaEnabled?: pulumi.Input<boolean>;
+    mfaEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The office site name.
      */
-    officeSiteName?: pulumi.Input<string>;
+    officeSiteName?: pulumi.Input<string | undefined>;
     /**
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      */
-    ssoEnabled?: pulumi.Input<boolean>;
+    ssoEnabled?: pulumi.Input<boolean | undefined>;
 }

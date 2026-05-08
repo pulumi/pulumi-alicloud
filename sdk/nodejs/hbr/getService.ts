@@ -95,5 +95,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the HBR service that means you have read and agreed the [HBR Terms of Service](https://help.aliyun.com/document_detail/62906.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

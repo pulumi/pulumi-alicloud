@@ -25,23 +25,23 @@ class ListenerArgs:
                  listener_port: pulumi.Input[_builtins.int],
                  listener_protocol: pulumi.Input[_builtins.str],
                  load_balancer_id: pulumi.Input[_builtins.str],
-                 access_log_record_customized_headers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
-                 acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
-                 ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gzip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 quic_config: Optional[pulumi.Input['ListenerQuicConfigArgs']] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
+                 access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']] = None,
+                 acl_config: pulumi.Input[Optional['ListenerAclConfigArgs']] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificates: pulumi.Input[Optional['ListenerCertificatesArgs']] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 quic_config: pulumi.Input[Optional['ListenerQuicConfigArgs']] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional['ListenerXForwardedForConfigArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -161,7 +161,7 @@ class ListenerArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
-    def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_log_record_customized_headers_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 
@@ -170,227 +170,227 @@ class ListenerArgs:
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
     @access_log_record_customized_headers_enabled.setter
-    def access_log_record_customized_headers_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_log_record_customized_headers_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_log_record_customized_headers_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLogTracingConfig")
-    def access_log_tracing_config(self) -> Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']]:
+    def access_log_tracing_config(self) -> pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']]:
         """
         Xtrace Configuration Information. See `access_log_tracing_config` below.
         """
         return pulumi.get(self, "access_log_tracing_config")
 
     @access_log_tracing_config.setter
-    def access_log_tracing_config(self, value: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']]):
+    def access_log_tracing_config(self, value: pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']]):
         pulumi.set(self, "access_log_tracing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="aclConfig")
     @_utilities.deprecated("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
-    def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
+    def acl_config(self) -> pulumi.Input[Optional['ListenerAclConfigArgs']]:
         """
         The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         """
         return pulumi.get(self, "acl_config")
 
     @acl_config.setter
-    def acl_config(self, value: Optional[pulumi.Input['ListenerAclConfigArgs']]):
+    def acl_config(self, value: pulumi.Input[Optional['ListenerAclConfigArgs']]):
         pulumi.set(self, "acl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificates")
-    def ca_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]:
+    def ca_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]:
         """
         The list of certificates. See `ca_certificates` below.
         """
         return pulumi.get(self, "ca_certificates")
 
     @ca_certificates.setter
-    def ca_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]):
+    def ca_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]):
         pulumi.set(self, "ca_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="caEnabled")
-    def ca_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to turn on two-way authentication. Value:
         """
         return pulumi.get(self, "ca_enabled")
 
     @ca_enabled.setter
-    def ca_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['ListenerCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['ListenerCertificatesArgs']]:
         """
         The list of certificates. See `certificates` below.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['ListenerCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['ListenerCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="gzipEnabled")
-    def gzip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gzip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         """
         return pulumi.get(self, "gzip_enabled")
 
     @gzip_enabled.setter
-    def gzip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gzip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gzip_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Enabled")
-    def http2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def http2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
         """
         return pulumi.get(self, "http2_enabled")
 
     @http2_enabled.setter
-    def http2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def http2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "http2_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the Connection Idle Timeout Value: 0~600 Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         """
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter(name="quicConfig")
-    def quic_config(self) -> Optional[pulumi.Input['ListenerQuicConfigArgs']]:
+    def quic_config(self) -> pulumi.Input[Optional['ListenerQuicConfigArgs']]:
         """
         Configuration Associated with the QuIC Listening See `quic_config` below.
         """
         return pulumi.get(self, "quic_config")
 
     @quic_config.setter
-    def quic_config(self, value: Optional[pulumi.Input['ListenerQuicConfigArgs']]):
+    def quic_config(self, value: pulumi.Input[Optional['ListenerQuicConfigArgs']]):
         pulumi.set(self, "quic_config", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Policy
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Current IP Address of the Listened State
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="xForwardedForConfig")
-    def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
+    def x_forwarded_for_config(self) -> pulumi.Input[Optional['ListenerXForwardedForConfigArgs']]:
         """
         xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         """
         return pulumi.get(self, "x_forwarded_for_config")
 
     @x_forwarded_for_config.setter
-    def x_forwarded_for_config(self, value: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]):
+    def x_forwarded_for_config(self, value: pulumi.Input[Optional['ListenerXForwardedForConfigArgs']]):
         pulumi.set(self, "x_forwarded_for_config", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 access_log_record_customized_headers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 access_log_tracing_config: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']] = None,
-                 acl_config: Optional[pulumi.Input['ListenerAclConfigArgs']] = None,
-                 ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificates: Optional[pulumi.Input['ListenerCertificatesArgs']] = None,
-                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gzip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quic_config: Optional[pulumi.Input['ListenerQuicConfigArgs']] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']] = None):
+                 access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']] = None,
+                 acl_config: pulumi.Input[Optional['ListenerAclConfigArgs']] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificates: pulumi.Input[Optional['ListenerCertificatesArgs']] = None,
+                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quic_config: pulumi.Input[Optional['ListenerQuicConfigArgs']] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional['ListenerXForwardedForConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -466,7 +466,7 @@ class _ListenerState:
 
     @_builtins.property
     @pulumi.getter(name="accessLogRecordCustomizedHeadersEnabled")
-    def access_log_record_customized_headers_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def access_log_record_customized_headers_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Access Log Whether to Enable Carry Custom Header Field. Valid values: `true`, `false`. Default Value: `false`.
 
@@ -475,248 +475,248 @@ class _ListenerState:
         return pulumi.get(self, "access_log_record_customized_headers_enabled")
 
     @access_log_record_customized_headers_enabled.setter
-    def access_log_record_customized_headers_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def access_log_record_customized_headers_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "access_log_record_customized_headers_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="accessLogTracingConfig")
-    def access_log_tracing_config(self) -> Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']]:
+    def access_log_tracing_config(self) -> pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']]:
         """
         Xtrace Configuration Information. See `access_log_tracing_config` below.
         """
         return pulumi.get(self, "access_log_tracing_config")
 
     @access_log_tracing_config.setter
-    def access_log_tracing_config(self, value: Optional[pulumi.Input['ListenerAccessLogTracingConfigArgs']]):
+    def access_log_tracing_config(self, value: pulumi.Input[Optional['ListenerAccessLogTracingConfigArgs']]):
         pulumi.set(self, "access_log_tracing_config", value)
 
     @_builtins.property
     @pulumi.getter(name="aclConfig")
     @_utilities.deprecated("""Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.""")
-    def acl_config(self) -> Optional[pulumi.Input['ListenerAclConfigArgs']]:
+    def acl_config(self) -> pulumi.Input[Optional['ListenerAclConfigArgs']]:
         """
         The configurations of the access control lists (ACLs). See `acl_config` below for details. **NOTE:** Field `acl_config` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alb.ListenerAclAttachment`.,
         """
         return pulumi.get(self, "acl_config")
 
     @acl_config.setter
-    def acl_config(self, value: Optional[pulumi.Input['ListenerAclConfigArgs']]):
+    def acl_config(self, value: pulumi.Input[Optional['ListenerAclConfigArgs']]):
         pulumi.set(self, "acl_config", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificates")
-    def ca_certificates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]:
+    def ca_certificates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]:
         """
         The list of certificates. See `ca_certificates` below.
         """
         return pulumi.get(self, "ca_certificates")
 
     @ca_certificates.setter
-    def ca_certificates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]):
+    def ca_certificates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerCaCertificateArgs']]]]):
         pulumi.set(self, "ca_certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="caEnabled")
-    def ca_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to turn on two-way authentication. Value:
         """
         return pulumi.get(self, "ca_enabled")
 
     @ca_enabled.setter
-    def ca_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificates(self) -> Optional[pulumi.Input['ListenerCertificatesArgs']]:
+    def certificates(self) -> pulumi.Input[Optional['ListenerCertificatesArgs']]:
         """
         The list of certificates. See `certificates` below.
         """
         return pulumi.get(self, "certificates")
 
     @certificates.setter
-    def certificates(self, value: Optional[pulumi.Input['ListenerCertificatesArgs']]):
+    def certificates(self, value: pulumi.Input[Optional['ListenerCertificatesArgs']]):
         pulumi.set(self, "certificates", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultActions")
-    def default_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]]:
+    def default_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]]:
         """
         The Default Rule Action List See `default_actions` below.
         """
         return pulumi.get(self, "default_actions")
 
     @default_actions.setter
-    def default_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]]):
+    def default_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ListenerDefaultActionArgs']]]]):
         pulumi.set(self, "default_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="gzipEnabled")
-    def gzip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gzip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
         """
         return pulumi.get(self, "gzip_enabled")
 
     @gzip_enabled.setter
-    def gzip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gzip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gzip_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Enabled")
-    def http2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def http2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
         """
         return pulumi.get(self, "http2_enabled")
 
     @http2_enabled.setter
-    def http2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def http2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "http2_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specify the Connection Idle Timeout Value: 0~600 Seconds.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
         """
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
         """
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocol")
-    def listener_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
         """
         return pulumi.get(self, "listener_protocol")
 
     @listener_protocol.setter
-    def listener_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SLB Instance Id.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="quicConfig")
-    def quic_config(self) -> Optional[pulumi.Input['ListenerQuicConfigArgs']]:
+    def quic_config(self) -> pulumi.Input[Optional['ListenerQuicConfigArgs']]:
         """
         Configuration Associated with the QuIC Listening See `quic_config` below.
         """
         return pulumi.get(self, "quic_config")
 
     @quic_config.setter
-    def quic_config(self, value: Optional[pulumi.Input['ListenerQuicConfigArgs']]):
+    def quic_config(self, value: pulumi.Input[Optional['ListenerQuicConfigArgs']]):
         pulumi.set(self, "quic_config", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
         """
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Policy
         """
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Current IP Address of the Listened State
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="xForwardedForConfig")
-    def x_forwarded_for_config(self) -> Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]:
+    def x_forwarded_for_config(self) -> pulumi.Input[Optional['ListenerXForwardedForConfigArgs']]:
         """
         xforwardfor Related Attribute Configuration See `x_forwarded_for_config` below.
         """
         return pulumi.get(self, "x_forwarded_for_config")
 
     @x_forwarded_for_config.setter
-    def x_forwarded_for_config(self, value: Optional[pulumi.Input['ListenerXForwardedForConfigArgs']]):
+    def x_forwarded_for_config(self, value: pulumi.Input[Optional['ListenerXForwardedForConfigArgs']]):
         pulumi.set(self, "x_forwarded_for_config", value)
 
 
@@ -726,27 +726,27 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_log_record_customized_headers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 access_log_tracing_config: Optional[pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-                 acl_config: Optional[pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-                 ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificates: Optional[pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gzip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quic_config: Optional[pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: Optional[pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
+                 access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
+                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
+                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Application Load Balancer (ALB) Listener resource.
@@ -761,6 +761,7 @@ class Listener(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -772,13 +773,13 @@ class Listener(pulumi.CustomResource):
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -931,6 +932,7 @@ class Listener(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -942,13 +944,13 @@ class Listener(pulumi.CustomResource):
         default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
@@ -1071,27 +1073,27 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_log_record_customized_headers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 access_log_tracing_config: Optional[pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-                 acl_config: Optional[pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-                 ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificates: Optional[pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-                 default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gzip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 quic_config: Optional[pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 x_forwarded_for_config: Optional[pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
+                 access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
+                 acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
+                 ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
+                 default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1140,27 +1142,27 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_log_record_customized_headers_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            access_log_tracing_config: Optional[pulumi.Input[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
-            acl_config: Optional[pulumi.Input[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
-            ca_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
-            ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            certificates: Optional[pulumi.Input[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
-            default_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            gzip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            http2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            quic_config: Optional[pulumi.Input[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
-            request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            x_forwarded_for_config: Optional[pulumi.Input[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None) -> 'Listener':
+            access_log_record_customized_headers_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            access_log_tracing_config: pulumi.Input[Optional[Union['ListenerAccessLogTracingConfigArgs', 'ListenerAccessLogTracingConfigArgsDict']]] = None,
+            acl_config: pulumi.Input[Optional[Union['ListenerAclConfigArgs', 'ListenerAclConfigArgsDict']]] = None,
+            ca_certificates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerCaCertificateArgs', 'ListenerCaCertificateArgsDict']]]]] = None,
+            ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificates: pulumi.Input[Optional[Union['ListenerCertificatesArgs', 'ListenerCertificatesArgsDict']]] = None,
+            default_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ListenerDefaultActionArgs', 'ListenerDefaultActionArgsDict']]]]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            gzip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            http2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            quic_config: pulumi.Input[Optional[Union['ListenerQuicConfigArgs', 'ListenerQuicConfigArgsDict']]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            x_forwarded_for_config: pulumi.Input[Optional[Union['ListenerXForwardedForConfigArgs', 'ListenerXForwardedForConfigArgsDict']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

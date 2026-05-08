@@ -198,8 +198,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -248,8 +248,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -348,8 +348,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -448,8 +448,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -498,8 +498,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -548,8 +548,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -598,8 +598,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -648,8 +648,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -698,8 +698,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -748,8 +748,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -798,8 +798,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -848,8 +848,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerCustomImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -963,8 +963,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1028,8 +1028,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1093,8 +1093,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1158,8 +1158,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1223,8 +1223,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1288,8 +1288,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerDisksArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1353,8 +1353,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1401,8 +1401,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1449,8 +1449,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1497,8 +1497,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1545,8 +1545,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerFirewallRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1593,8 +1593,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1607,7 +1607,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1642,8 +1642,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1656,7 +1656,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1691,8 +1691,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1705,7 +1705,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1740,8 +1740,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1754,7 +1754,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1789,8 +1789,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1803,7 +1803,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1838,8 +1838,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1852,7 +1852,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1887,8 +1887,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerPlansArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1901,7 +1901,7 @@ public final class SimpleapplicationserverFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = SimpleapplicationserverFunctions.getServerPlans(GetServerPlansArgs.builder()
-     *             .memory(1)
+     *             .memory(1.0)
      *             .bandwidth(3)
      *             .diskSize(40)
      *             .flow(6)
@@ -1936,8 +1936,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1998,8 +1998,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2060,8 +2060,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2122,8 +2122,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2184,8 +2184,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2246,8 +2246,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2308,8 +2308,8 @@ public final class SimpleapplicationserverFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.simpleapplicationserver.SimpleapplicationserverFunctions;
      * import com.pulumi.alicloud.simpleapplicationserver.inputs.GetServerSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

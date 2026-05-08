@@ -28,7 +28,7 @@ class MonitorConfigArgs:
                  monitor_extend_info: pulumi.Input[_builtins.str],
                  protocol_type: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.int],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MonitorConfig resource.
 
@@ -137,28 +137,28 @@ class MonitorConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
 
 @pulumi.input_type
 class _MonitorConfigState:
     def __init__(__self__, *,
-                 addr_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering MonitorConfig resources.
 
@@ -190,98 +190,98 @@ class _MonitorConfigState:
 
     @_builtins.property
     @pulumi.getter(name="addrPoolId")
-    def addr_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addr_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the address pool.
         """
         return pulumi.get(self, "addr_pool_id")
 
     @addr_pool_id.setter
-    def addr_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addr_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addr_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="evaluationCount")
-    def evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
         """
         return pulumi.get(self, "evaluation_count")
 
     @evaluation_count.setter
-    def evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The health check interval. Unit: seconds. Valid values: `60`.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ispCityNodes")
-    def isp_city_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]]:
+    def isp_city_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]]:
         """
         The Monitoring node. See `isp_city_node` below for details.
         """
         return pulumi.get(self, "isp_city_nodes")
 
     @isp_city_nodes.setter
-    def isp_city_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]]):
+    def isp_city_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MonitorConfigIspCityNodeArgs']]]]):
         pulumi.set(self, "isp_city_nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lang.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorExtendInfo")
-    def monitor_extend_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_extend_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
         """
         return pulumi.get(self, "monitor_extend_info")
 
     @monitor_extend_info.setter
-    def monitor_extend_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_extend_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_extend_info", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -291,14 +291,14 @@ class MonitorConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addr_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DNS Monitor Config resource.
@@ -492,14 +492,14 @@ class MonitorConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addr_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -541,14 +541,14 @@ class MonitorConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addr_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-            interval: Optional[pulumi.Input[_builtins.int]] = None,
-            isp_city_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_extend_info: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'MonitorConfig':
+            addr_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            interval: pulumi.Input[Optional[_builtins.int]] = None,
+            isp_city_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MonitorConfigIspCityNodeArgs', 'MonitorConfigIspCityNodeArgsDict']]]]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_extend_info: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'MonitorConfig':
         """
         Get an existing MonitorConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

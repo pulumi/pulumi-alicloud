@@ -236,16 +236,16 @@ def get_custom_routing_endpoint_group_destinations(accelerator_id: Optional[_bui
         page_size=pulumi.get(__ret__, 'page_size'),
         protocols=pulumi.get(__ret__, 'protocols'),
         to_port=pulumi.get(__ret__, 'to_port'))
-def get_custom_routing_endpoint_group_destinations_output(accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                          endpoint_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                          from_port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                          ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                          listener_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                          page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                          page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                          protocols: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                          to_port: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_custom_routing_endpoint_group_destinations_output(accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                          endpoint_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                          from_port: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                          ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                          listener_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                          page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                          page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                          protocols: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                          to_port: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCustomRoutingEndpointGroupDestinationsResult]:
     """
     This data source provides the Global Accelerator (GA) Custom Routing Endpoint Group Destinations of the current Alibaba Cloud user.

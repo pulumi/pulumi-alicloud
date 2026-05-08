@@ -20,15 +20,15 @@ __all__ = [
 ]
 
 class DbInstanceDbInstanceIpArrayArgsDict(TypedDict):
-    db_instance_ip_array_attribute: NotRequired[pulumi.Input[_builtins.str]]
+    db_instance_ip_array_attribute: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
     """
-    db_instance_ip_array_name: NotRequired[pulumi.Input[_builtins.str]]
+    db_instance_ip_array_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP ADDRESS whitelist group name.
     """
-    security_ips: NotRequired[pulumi.Input[_builtins.str]]
+    security_ips: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
     """
@@ -36,9 +36,9 @@ class DbInstanceDbInstanceIpArrayArgsDict(TypedDict):
 @pulumi.input_type
 class DbInstanceDbInstanceIpArrayArgs:
     def __init__(__self__, *,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] db_instance_ip_array_attribute: The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
         :param pulumi.Input[_builtins.str] db_instance_ip_array_name: IP ADDRESS whitelist group name.
@@ -53,38 +53,38 @@ class DbInstanceDbInstanceIpArrayArgs:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
-    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
         """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @db_instance_ip_array_attribute.setter
-    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayName")
-    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP ADDRESS whitelist group name.
         """
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @db_instance_ip_array_name.setter
-    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ips(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ips(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ips", value)
 
 

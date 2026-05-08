@@ -224,66 +224,66 @@ export interface ClientUserDefineRuleState {
      * - **0**: plus White
      * - **1**: Plus Black.
      */
-    actionType?: pulumi.Input<number>;
+    actionType?: pulumi.Input<number | undefined>;
     /**
      * The custom rule name.
      */
-    clientUserDefineRuleName?: pulumi.Input<string>;
+    clientUserDefineRuleName?: pulumi.Input<string | undefined>;
     /**
      * Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
      */
-    cmdline?: pulumi.Input<string>;
+    cmdline?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
      */
-    hash?: pulumi.Input<string>;
+    hash?: pulumi.Input<string | undefined>;
     /**
      * IP address. When the value of the Type attribute is 3, the Ip attribute is required.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
      */
-    newFilePath?: pulumi.Input<string>;
+    newFilePath?: pulumi.Input<string | undefined>;
     /**
      * The parent command line.
      */
-    parentCmdline?: pulumi.Input<string>;
+    parentCmdline?: pulumi.Input<string | undefined>;
     /**
      * Parent process path.
      */
-    parentProcPath?: pulumi.Input<string>;
+    parentProcPath?: pulumi.Input<string | undefined>;
     /**
      * The operating system type. Value:
      * - **windows**:widows
      * - **linux**:linux
      * - **all**: all.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
      */
-    portStr?: pulumi.Input<string>;
+    portStr?: pulumi.Input<string | undefined>;
     /**
      * The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
      */
-    procPath?: pulumi.Input<string>;
+    procPath?: pulumi.Input<string | undefined>;
     /**
      * The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
      */
-    registryContent?: pulumi.Input<string>;
+    registryContent?: pulumi.Input<string | undefined>;
     /**
      * The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
      */
-    registryKey?: pulumi.Input<string>;
+    registryKey?: pulumi.Input<string | undefined>;
     /**
      * The rule type. Value:
      * - **1**: Process hash
@@ -294,7 +294,7 @@ export interface ClientUserDefineRuleState {
      * - **6**: Load Dynamic Link Library
      * - **7**: File Rename.
      */
-    type?: pulumi.Input<number>;
+    type?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -314,31 +314,31 @@ export interface ClientUserDefineRuleArgs {
     /**
      * Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
      */
-    cmdline?: pulumi.Input<string>;
+    cmdline?: pulumi.Input<string | undefined>;
     /**
      * The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
      */
-    hash?: pulumi.Input<string>;
+    hash?: pulumi.Input<string | undefined>;
     /**
      * IP address. When the value of the Type attribute is 3, the Ip attribute is required.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
      */
-    newFilePath?: pulumi.Input<string>;
+    newFilePath?: pulumi.Input<string | undefined>;
     /**
      * The parent command line.
      */
-    parentCmdline?: pulumi.Input<string>;
+    parentCmdline?: pulumi.Input<string | undefined>;
     /**
      * Parent process path.
      */
-    parentProcPath?: pulumi.Input<string>;
+    parentProcPath?: pulumi.Input<string | undefined>;
     /**
      * The operating system type. Value:
      * - **windows**:widows
@@ -349,19 +349,19 @@ export interface ClientUserDefineRuleArgs {
     /**
      * The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
      */
-    portStr?: pulumi.Input<string>;
+    portStr?: pulumi.Input<string | undefined>;
     /**
      * The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
      */
-    procPath?: pulumi.Input<string>;
+    procPath?: pulumi.Input<string | undefined>;
     /**
      * The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
      */
-    registryContent?: pulumi.Input<string>;
+    registryContent?: pulumi.Input<string | undefined>;
     /**
      * The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
      */
-    registryKey?: pulumi.Input<string>;
+    registryKey?: pulumi.Input<string | undefined>;
     /**
      * The rule type. Value:
      * - **1**: Process hash

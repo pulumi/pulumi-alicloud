@@ -210,43 +210,43 @@ export interface RecordState {
     /**
      * The origin authentication information of the CNAME record. See `authConf` below.
      */
-    authConf?: pulumi.Input<inputs.esa.RecordAuthConf>;
+    authConf?: pulumi.Input<inputs.esa.RecordAuthConf | undefined>;
     /**
      * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      */
-    bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string | undefined>;
     /**
      * The comment of the record. The maximum length is 100 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The time when the record was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      */
-    data?: pulumi.Input<inputs.esa.RecordData>;
+    data?: pulumi.Input<inputs.esa.RecordData | undefined>;
     /**
      * The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
      */
-    hostPolicy?: pulumi.Input<string>;
+    hostPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * The record name. This parameter specifies a filter condition for the query.
      */
-    recordName?: pulumi.Input<string>;
+    recordName?: pulumi.Input<string | undefined>;
     /**
      * The type of the DNS record, such as A/AAAA, CNAME, and TXT.
      */
-    recordType?: pulumi.Input<string>;
+    recordType?: pulumi.Input<string | undefined>;
     /**
      * The website ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The origin type for the CNAME record. This parameter is required when you add a CNAME record. Valid values:
      * - `OSS`: OSS bucket.
@@ -256,11 +256,11 @@ export interface RecordState {
      * - `Domain`: domain name.
      * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -270,15 +270,15 @@ export interface RecordArgs {
     /**
      * The origin authentication information of the CNAME record. See `authConf` below.
      */
-    authConf?: pulumi.Input<inputs.esa.RecordAuthConf>;
+    authConf?: pulumi.Input<inputs.esa.RecordAuthConf | undefined>;
     /**
      * The business scenario of the record for acceleration. Leave the parameter empty if your record is not proxied. Valid values:
      */
-    bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string | undefined>;
     /**
      * The comment of the record. The maximum length is 100 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The DNS record information. The format of this field varies based on the record type. For more information, see [References](https://www.alibabacloud.com/help/doc-detail/2708761.html?spm=openapi-amp.newDocPublishment.0.0.6a0f281feoeVWr). See `data` below.
      */
@@ -286,11 +286,11 @@ export interface RecordArgs {
     /**
      * The origin host policy. This policy takes effect when the record type is CNAME. You can set the policy in two modes:
      */
-    hostPolicy?: pulumi.Input<string>;
+    hostPolicy?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to proxy the record. Only CNAME and A/AAAA records can be proxied. Valid values:
      */
-    proxied?: pulumi.Input<boolean>;
+    proxied?: pulumi.Input<boolean | undefined>;
     /**
      * The record name. This parameter specifies a filter condition for the query.
      */
@@ -312,9 +312,9 @@ export interface RecordArgs {
      * - `Domain`: domain name.
      * - If you do not pass this parameter or if you leave its value empty, Domain is used by default.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The TTL of the record. Unit: seconds. If the value is 1, the TTL of the record is determined by the system.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }

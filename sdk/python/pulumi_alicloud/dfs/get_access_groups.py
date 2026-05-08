@@ -185,13 +185,13 @@ def get_access_groups(ids: Optional[Sequence[_builtins.str]] = None,
         order_type=pulumi.get(__ret__, 'order_type'),
         output_file=pulumi.get(__ret__, 'output_file'),
         start_offset=pulumi.get(__ret__, 'start_offset'))
-def get_access_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             limit: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             order_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             order_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             start_offset: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_access_groups_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             limit: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             order_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             order_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             start_offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessGroupsResult]:
     """
     This data source provides the Apsara File Storage for HDFS Access Groups of the current Alibaba Cloud user.

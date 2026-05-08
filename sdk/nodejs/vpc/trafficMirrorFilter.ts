@@ -175,35 +175,35 @@ export interface TrafficMirrorFilterState {
      * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the outbound rule. See the following `Block EgressRules`.
      */
-    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[]>;
+    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[] | undefined>;
     /**
      * Inward direction rule information. See the following `Block IngressRules`.
      */
-    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[]>;
+    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[] | undefined>;
     /**
      * The ID of the resource group to which the VPC belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The description of the TrafficMirrorFilter.
      */
-    trafficMirrorFilterDescription?: pulumi.Input<string>;
+    trafficMirrorFilterDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the TrafficMirrorFilter.
      */
-    trafficMirrorFilterName?: pulumi.Input<string>;
+    trafficMirrorFilterName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,29 +215,29 @@ export interface TrafficMirrorFilterArgs {
      * - **true**: The check request is sent without creating traffic Image filter conditions. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Information about the outbound rule. See the following `Block EgressRules`.
      */
-    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[]>;
+    egressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterEgressRule>[] | undefined>;
     /**
      * Inward direction rule information. See the following `Block IngressRules`.
      */
-    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[]>;
+    ingressRules?: pulumi.Input<pulumi.Input<inputs.vpc.TrafficMirrorFilterIngressRule>[] | undefined>;
     /**
      * The ID of the resource group to which the VPC belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The description of the TrafficMirrorFilter.
      */
-    trafficMirrorFilterDescription?: pulumi.Input<string>;
+    trafficMirrorFilterDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the TrafficMirrorFilter.
      */
-    trafficMirrorFilterName?: pulumi.Input<string>;
+    trafficMirrorFilterName?: pulumi.Input<string | undefined>;
 }

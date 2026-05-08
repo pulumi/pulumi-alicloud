@@ -195,7 +195,7 @@ export interface BindingState {
      * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
      */
-    argument?: pulumi.Input<string>;
+    argument?: pulumi.Input<string | undefined>;
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
@@ -204,27 +204,27 @@ export interface BindingState {
      * If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
      * The binding key must be 1 to 255 characters in length.
      */
-    bindingKey?: pulumi.Input<string>;
+    bindingKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the object that you want to bind to the source exchange. Valid values: `EXCHANGE`, `QUEUE`.
      */
-    bindingType?: pulumi.Input<string>;
+    bindingType?: pulumi.Input<string | undefined>;
     /**
      * The name of the object that you want to bind to the source exchange.
      */
-    destinationName?: pulumi.Input<string>;
+    destinationName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the source exchange.
      */
-    sourceExchange?: pulumi.Input<string>;
+    sourceExchange?: pulumi.Input<string | undefined>;
     /**
      * The name of the vhost.
      */
-    virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -237,7 +237,7 @@ export interface BindingArgs {
      * - `x-match:any`: A headers exchange routes a message to a queue if one or more binding attributes of the queue except for x-match match the headers attributes of the message.
      * - > **NOTE:** If the exchange type is not 'HEADERS', the `argument` should not been set, otherwise, there are always "forces replacement" changes.
      */
-    argument?: pulumi.Input<string>;
+    argument?: pulumi.Input<string | undefined>;
     /**
      * The Binding Key.
      * * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).

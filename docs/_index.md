@@ -193,7 +193,7 @@ return await Deployment.RunAsync(() =>
 {
     var config = new Config();
     var name = config.Get("name") ?? "pulumi-example";
-    var @default = AliCloud.Index.GetZones.Invoke(new()
+    var @default = AliCloud.GetZones.Invoke(new()
     {
         AvailableDiskCategory = "cloud_efficiency",
         AvailableResourceCreation = "VSwitch",
@@ -305,7 +305,7 @@ if err != nil {
 return err
 }
 // Create a new ECS instance for VPC
-vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 VpcName: pulumi.String(pulumi.String(name)),
 CidrBlock: pulumi.String("172.16.0.0/16"),
 })
@@ -313,7 +313,7 @@ if err != nil {
 return err
 }
 vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-VpcId: vpc.ID(),
+VpcId: vpc2.ID(),
 CidrBlock: pulumi.String("172.16.0.0/24"),
 ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 VswitchName: pulumi.String(pulumi.String(name)),
@@ -325,7 +325,7 @@ return err
 group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 Name: pulumi.String(pulumi.String(name)),
 Description: pulumi.String("foo"),
-VpcId: vpc.ID(),
+VpcId: vpc2.ID(),
 })
 if err != nil {
 return err
@@ -428,8 +428,8 @@ import com.pulumi.alicloud.kms.KeyArgs;
 import com.pulumi.alicloud.ecs.Instance;
 import com.pulumi.alicloud.ecs.InstanceArgs;
 import com.pulumi.alicloud.ecs.inputs.InstanceDataDiskArgs;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

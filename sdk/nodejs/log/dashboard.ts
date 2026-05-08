@@ -181,24 +181,24 @@ export interface DashboardState {
     /**
      * Dashboard attribute.
      */
-    attribute?: pulumi.Input<string>;
+    attribute?: pulumi.Input<string | undefined>;
     /**
      * Configuration of charts in the dashboard.
      * **Note:** From version 1.164.0, `charList` can set parameter "action".
      */
-    charList?: pulumi.Input<string>;
+    charList?: pulumi.Input<string | undefined>;
     /**
      * The name of the Log Dashboard.
      */
-    dashboardName?: pulumi.Input<string>;
+    dashboardName?: pulumi.Input<string | undefined>;
     /**
      * Dashboard alias.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,7 +208,7 @@ export interface DashboardArgs {
     /**
      * Dashboard attribute.
      */
-    attribute?: pulumi.Input<string>;
+    attribute?: pulumi.Input<string | undefined>;
     /**
      * Configuration of charts in the dashboard.
      * **Note:** From version 1.164.0, `charList` can set parameter "action".
@@ -221,7 +221,7 @@ export interface DashboardArgs {
     /**
      * Dashboard alias.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The name of the log project. It is the only in one Alicloud account.
      */

@@ -149,10 +149,10 @@ def get_integration_exporters(cluster_id: Optional[_builtins.str] = None,
         integration_exporters=pulumi.get(__ret__, 'integration_exporters'),
         integration_type=pulumi.get(__ret__, 'integration_type'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_integration_exporters_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_integration_exporters_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIntegrationExportersResult]:
     """
     This data source provides the Arms Integration Exporters of the current Alibaba Cloud user.

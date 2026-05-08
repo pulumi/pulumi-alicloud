@@ -22,8 +22,8 @@ class ExpressSyncArgs:
                  bucket_name: pulumi.Input[_builtins.str],
                  bucket_region: pulumi.Input[_builtins.str],
                  express_sync_name: pulumi.Input[_builtins.str],
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExpressSync resource.
 
@@ -79,37 +79,37 @@ class ExpressSyncArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefix")
-    def bucket_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the OSS Bucket.
         """
         return pulumi.get(self, "bucket_prefix")
 
     @bucket_prefix.setter
-    def bucket_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _ExpressSyncState:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 express_sync_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_sync_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExpressSync resources.
 
@@ -132,62 +132,62 @@ class _ExpressSyncState:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS Bucket.
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPrefix")
-    def bucket_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prefix of the OSS Bucket.
         """
         return pulumi.get(self, "bucket_prefix")
 
     @bucket_prefix.setter
-    def bucket_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketRegion")
-    def bucket_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the OSS Bucket.
         """
         return pulumi.get(self, "bucket_region")
 
     @bucket_region.setter
-    def bucket_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expressSyncName")
-    def express_sync_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def express_sync_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
         """
         return pulumi.get(self, "express_sync_name")
 
     @express_sync_name.setter
-    def express_sync_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def express_sync_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "express_sync_name", value)
 
 
@@ -197,11 +197,11 @@ class ExpressSync(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 express_sync_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_sync_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Express Sync resource.
@@ -422,11 +422,11 @@ class ExpressSync(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 express_sync_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 express_sync_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,11 +457,11 @@ class ExpressSync(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_region: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            express_sync_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExpressSync':
+            bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_region: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            express_sync_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExpressSync':
         """
         Get an existing ExpressSync resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

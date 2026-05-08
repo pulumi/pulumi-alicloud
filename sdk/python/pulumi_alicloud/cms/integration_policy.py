@@ -24,8 +24,8 @@ class IntegrationPolicyArgs:
                  integration_policy_name: pulumi.Input[_builtins.str],
                  policy_type: pulumi.Input[_builtins.str],
                  workspace: pulumi.Input[_builtins.str],
-                 entity_group: Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None):
+                 entity_group: pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IntegrationPolicy resource.
 
@@ -81,38 +81,38 @@ class IntegrationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="entityGroup")
-    def entity_group(self) -> Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']]:
+    def entity_group(self) -> pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']]:
         """
         The entity group used to create the policy. See `entity_group` below.
         """
         return pulumi.get(self, "entity_group")
 
     @entity_group.setter
-    def entity_group(self, value: Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']]):
+    def entity_group(self, value: pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']]):
         pulumi.set(self, "entity_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the cloud native appliance. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
 
 @pulumi.input_type
 class _IntegrationPolicyState:
     def __init__(__self__, *,
-                 entity_group: Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 integration_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None):
+                 entity_group: pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationPolicy resources.
 
@@ -138,74 +138,74 @@ class _IntegrationPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="entityGroup")
-    def entity_group(self) -> Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']]:
+    def entity_group(self) -> pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']]:
         """
         The entity group used to create the policy. See `entity_group` below.
         """
         return pulumi.get(self, "entity_group")
 
     @entity_group.setter
-    def entity_group(self, value: Optional[pulumi.Input['IntegrationPolicyEntityGroupArgs']]):
+    def entity_group(self, value: pulumi.Input[Optional['IntegrationPolicyEntityGroupArgs']]):
         pulumi.set(self, "entity_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the cloud native appliance. Valid values:
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationPolicyName")
-    def integration_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy name.
         """
         return pulumi.get(self, "integration_policy_name")
 
     @integration_policy_name.setter
-    def integration_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="policyType")
-    def policy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy type.
         """
         return pulumi.get(self, "policy_type")
 
     @policy_type.setter
-    def policy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def workspace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The workspace.
         """
         return pulumi.get(self, "workspace")
 
     @workspace.setter
-    def workspace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace", value)
 
 
@@ -215,11 +215,11 @@ class IntegrationPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_group: Optional[pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 integration_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cms Integration Policy resource.
@@ -342,11 +342,11 @@ class IntegrationPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entity_group: Optional[pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 integration_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace: Optional[pulumi.Input[_builtins.str]] = None,
+                 entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,12 +378,12 @@ class IntegrationPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            entity_group: Optional[pulumi.Input[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            integration_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace: Optional[pulumi.Input[_builtins.str]] = None) -> 'IntegrationPolicy':
+            entity_group: pulumi.Input[Optional[Union['IntegrationPolicyEntityGroupArgs', 'IntegrationPolicyEntityGroupArgsDict']]] = None,
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            integration_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace: pulumi.Input[Optional[_builtins.str]] = None) -> 'IntegrationPolicy':
         """
         Get an existing IntegrationPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -28,9 +28,9 @@ class VpcCenTrFirewallArgs:
                  tr_attachment_master_cidr: pulumi.Input[_builtins.str],
                  tr_attachment_slave_cidr: pulumi.Input[_builtins.str],
                  transit_router_id: pulumi.Input[_builtins.str],
-                 firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcCenTrFirewall resource.
 
@@ -177,19 +177,19 @@ class VpcCenTrFirewallArgs:
 
     @_builtins.property
     @pulumi.getter(name="firewallDescription")
-    def firewall_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the firewall.
         """
         return pulumi.get(self, "firewall_description")
 
     @firewall_description.setter
-    def firewall_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_description", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentMasterZone")
-    def tr_attachment_master_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_master_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary zone of the vSwitch.
 
@@ -198,12 +198,12 @@ class VpcCenTrFirewallArgs:
         return pulumi.get(self, "tr_attachment_master_zone")
 
     @tr_attachment_master_zone.setter
-    def tr_attachment_master_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_master_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_master_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentSlaveZone")
-    def tr_attachment_slave_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_slave_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary zone of the vSwitch.
 
@@ -212,29 +212,29 @@ class VpcCenTrFirewallArgs:
         return pulumi.get(self, "tr_attachment_slave_zone")
 
     @tr_attachment_slave_zone.setter
-    def tr_attachment_slave_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_slave_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_slave_zone", value)
 
 
 @pulumi.input_type
 class _VpcCenTrFirewallState:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_eni_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_vpc_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_eni_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_vpc_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_vpc_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcCenTrFirewall resources.
 
@@ -294,151 +294,151 @@ class _VpcCenTrFirewallState:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallDescription")
-    def firewall_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the firewall.
         """
         return pulumi.get(self, "firewall_description")
 
     @firewall_description.setter
-    def firewall_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_description", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallEniId")
-    def firewall_eni_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_eni_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the firewall ENI.
         """
         return pulumi.get(self, "firewall_eni_id")
 
     @firewall_eni_id.setter
-    def firewall_eni_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_eni_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_eni_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallEniVpcId")
-    def firewall_eni_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_eni_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the firewall ENI resides.
         """
         return pulumi.get(self, "firewall_eni_vpc_id")
 
     @firewall_eni_vpc_id.setter
-    def firewall_eni_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_eni_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_eni_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallName")
-    def firewall_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Cloud Firewall.
         """
         return pulumi.get(self, "firewall_name")
 
     @firewall_name.setter
-    def firewall_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_name", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallSubnetCidr")
-    def firewall_subnet_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_subnet_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block of the subnet in the firewall VPC that hosts the firewall ENI in automatic mode.
         """
         return pulumi.get(self, "firewall_subnet_cidr")
 
     @firewall_subnet_cidr.setter
-    def firewall_subnet_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_subnet_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_subnet_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallVpcAttachmentId")
-    def firewall_vpc_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_vpc_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the firewall VPC connection.
         """
         return pulumi.get(self, "firewall_vpc_attachment_id")
 
     @firewall_vpc_attachment_id.setter
-    def firewall_vpc_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_vpc_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_vpc_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="firewallVpcCidr")
-    def firewall_vpc_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def firewall_vpc_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block of the firewall VPC in automatic mode.
         """
         return pulumi.get(self, "firewall_vpc_cidr")
 
     @firewall_vpc_cidr.setter
-    def firewall_vpc_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def firewall_vpc_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "firewall_vpc_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="regionNo")
-    def region_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the transit router instance.
         """
         return pulumi.get(self, "region_no")
 
     @region_no.setter
-    def region_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_no", value)
 
     @_builtins.property
     @pulumi.getter(name="routeMode")
-    def route_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing mode. Valid values:
         """
         return pulumi.get(self, "route_mode")
 
     @route_mode.setter
-    def route_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the firewall.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentMasterCidr")
-    def tr_attachment_master_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_master_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary CIDR block of the subnet in the firewall VPC used to connect to the transit router (TR) in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_master_cidr")
 
     @tr_attachment_master_cidr.setter
-    def tr_attachment_master_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_master_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_master_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentMasterZone")
-    def tr_attachment_master_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_master_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary zone of the vSwitch.
 
@@ -447,24 +447,24 @@ class _VpcCenTrFirewallState:
         return pulumi.get(self, "tr_attachment_master_zone")
 
     @tr_attachment_master_zone.setter
-    def tr_attachment_master_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_master_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_master_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentSlaveCidr")
-    def tr_attachment_slave_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_slave_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary CIDR block of the subnet in the firewall VPC used to connect to TR in automatic mode.
         """
         return pulumi.get(self, "tr_attachment_slave_cidr")
 
     @tr_attachment_slave_cidr.setter
-    def tr_attachment_slave_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_slave_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_slave_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="trAttachmentSlaveZone")
-    def tr_attachment_slave_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tr_attachment_slave_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secondary zone of the vSwitch.
 
@@ -473,19 +473,19 @@ class _VpcCenTrFirewallState:
         return pulumi.get(self, "tr_attachment_slave_zone")
 
     @tr_attachment_slave_zone.setter
-    def tr_attachment_slave_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tr_attachment_slave_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tr_attachment_slave_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Transit Router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
 
@@ -495,18 +495,18 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_vpc_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Cen Tr Firewall resource.
@@ -790,18 +790,18 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_master_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 firewall_vpc_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -855,22 +855,22 @@ class VpcCenTrFirewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_description: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_eni_id: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_eni_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_vpc_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            firewall_vpc_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            region_no: Optional[pulumi.Input[_builtins.str]] = None,
-            route_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tr_attachment_master_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            tr_attachment_master_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            tr_attachment_slave_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            tr_attachment_slave_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcCenTrFirewall':
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_description: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_eni_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_eni_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_vpc_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            firewall_vpc_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            region_no: pulumi.Input[Optional[_builtins.str]] = None,
+            route_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_master_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_master_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_slave_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            tr_attachment_slave_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcCenTrFirewall':
         """
         Get an existing VpcCenTrFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

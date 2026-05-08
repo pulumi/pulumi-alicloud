@@ -83,5 +83,5 @@ export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: p
  * A collection of arguments for invoking getCrossRegions.
  */
 export interface GetCrossRegionsOutputArgs {
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

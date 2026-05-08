@@ -110,16 +110,16 @@ export class Folder extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Folder resources.
  */
 export interface FolderState {
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Folder Path. The folder path composed with for part: `Business Flow/{Business Flow Name}/[folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined]/{Directory Name}`. The first segment of path must be `Business Flow`, and sencond segment of path must be a Business Flow Name within the project. The third part of path must be one of those keywords:`folderDi|folderMaxCompute|folderGeneral|folderJdbc|folderUserDefined`. Then the finial part of folder path can be specified in yourself.
      */
-    folderPath?: pulumi.Input<string>;
+    folderPath?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project.
      */
-    projectId?: pulumi.Input<string>;
-    projectIdentifier?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -133,6 +133,6 @@ export interface FolderArgs {
     /**
      * The ID of the project.
      */
-    projectId?: pulumi.Input<string>;
-    projectIdentifier?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    projectIdentifier?: pulumi.Input<string | undefined>;
 }

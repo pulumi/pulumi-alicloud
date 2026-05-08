@@ -40,8 +40,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -83,8 +83,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -126,8 +126,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -169,8 +169,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -212,8 +212,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -255,8 +255,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetQueuesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -347,8 +347,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -539,8 +539,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -587,8 +587,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -635,8 +635,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -677,8 +677,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -721,8 +721,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -765,8 +765,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -809,8 +809,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -853,8 +853,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicSubscriptionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -897,8 +897,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -940,8 +940,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -983,8 +983,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1026,8 +1026,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1069,8 +1069,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1112,8 +1112,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1155,8 +1155,8 @@ public final class MnsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.mns.MnsFunctions;
      * import com.pulumi.alicloud.mns.inputs.GetTopicsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -136,23 +136,23 @@ export interface GetAlarmContactsOutputArgs {
     /**
      * The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
      */
-    chanelType?: pulumi.Input<string>;
+    chanelType?: pulumi.Input<string | undefined>;
     /**
      * The alarm notification target.
      */
-    chanelValue?: pulumi.Input<string>;
+    chanelValue?: pulumi.Input<string | undefined>;
     /**
      * A list of alarm contact IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by alarm contact name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`). 
      *
      * > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

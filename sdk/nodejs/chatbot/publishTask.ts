@@ -132,27 +132,27 @@ export interface PublishTaskState {
     /**
      * The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
      */
-    agentKey?: pulumi.Input<string>;
+    agentKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
      */
-    bizType?: pulumi.Input<string>;
+    bizType?: pulumi.Input<string | undefined>;
     /**
      * UTC time of task creation
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
      */
-    dataIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dataIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * UTC time for task modification
      */
-    modifyTime?: pulumi.Input<string>;
+    modifyTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the task.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface PublishTaskArgs {
     /**
      * The business space key. If you do not set it, the default business space is accessed. The key value is obtained on the business management page of the primary account.
      */
-    agentKey?: pulumi.Input<string>;
+    agentKey?: pulumi.Input<string | undefined>;
     /**
      * The type of the publishing unit. Please use the CreateInstancePublishTask API to publish the robot.
      */
@@ -170,5 +170,5 @@ export interface PublishTaskArgs {
     /**
      * Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
      */
-    dataIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    dataIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

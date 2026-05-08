@@ -151,31 +151,31 @@ export interface VswitchState {
     /**
      * The CIDR block of the vSwitch.
      */
-    cidrBlock?: pulumi.Input<string>;
+    cidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The time when the VPC was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the vSwitch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ENS Region ID.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network to which the vSwitch that you want to create belongs.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The status of the vSwitch.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the vSwitch.
      */
-    vswitchName?: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -189,7 +189,7 @@ export interface VswitchArgs {
     /**
      * The description of the vSwitch.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ENS Region ID.
      */
@@ -197,9 +197,9 @@ export interface VswitchArgs {
     /**
      * The ID of the network to which the vSwitch that you want to create belongs.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The name of the vSwitch.
      */
-    vswitchName?: pulumi.Input<string>;
+    vswitchName?: pulumi.Input<string | undefined>;
 }

@@ -201,14 +201,14 @@ def get_hana_backup_plans(cluster_id: Optional[_builtins.str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         plans=pulumi.get(__ret__, 'plans'),
         vault_id=pulumi.get(__ret__, 'vault_id'))
-def get_hana_backup_plans_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 database_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 vault_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_hana_backup_plans_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 database_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 vault_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHanaBackupPlansResult]:
     """
     This data source provides the Hbr Hana Backup Plans of the current Alibaba Cloud user.

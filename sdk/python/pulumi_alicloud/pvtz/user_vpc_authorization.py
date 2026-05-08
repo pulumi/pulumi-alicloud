@@ -20,8 +20,8 @@ __all__ = ['UserVpcAuthorizationArgs', 'UserVpcAuthorization']
 class UserVpcAuthorizationArgs:
     def __init__(__self__, *,
                  authorized_user_id: pulumi.Input[_builtins.str],
-                 auth_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a UserVpcAuthorization resource.
 
@@ -49,35 +49,35 @@ class UserVpcAuthorizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="authChannel")
-    def auth_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auth channel. Valid values: `RESOURCE_DIRECTORY`.
         """
         return pulumi.get(self, "auth_channel")
 
     @auth_channel.setter
-    def auth_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
         """
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
 
 @pulumi.input_type
 class _UserVpcAuthorizationState:
     def __init__(__self__, *,
-                 auth_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UserVpcAuthorization resources.
 
@@ -94,38 +94,38 @@ class _UserVpcAuthorizationState:
 
     @_builtins.property
     @pulumi.getter(name="authChannel")
-    def auth_channel(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_channel(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The auth channel. Valid values: `RESOURCE_DIRECTORY`.
         """
         return pulumi.get(self, "auth_channel")
 
     @auth_channel.setter
-    def auth_channel(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_channel(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_channel", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Authorization. Valid values: `NORMAL` and `CLOUD_PRODUCT`.
         """
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizedUserId")
-    def authorized_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorized_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary account ID of the user who authorizes the resource.
         """
         return pulumi.get(self, "authorized_user_id")
 
     @authorized_user_id.setter
-    def authorized_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorized_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorized_user_id", value)
 
 
@@ -135,9 +135,9 @@ class UserVpcAuthorization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Zone User Vpc Authorization resource.
@@ -157,7 +157,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         if authorized_user_id is None:
             authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
+            authorized_user_id=str(authorized_user_id),
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
@@ -202,7 +202,7 @@ class UserVpcAuthorization(pulumi.CustomResource):
         if authorized_user_id is None:
             authorized_user_id = 123456789
         example = alicloud.pvtz.UserVpcAuthorization("example",
-            authorized_user_id=authorized_user_id,
+            authorized_user_id=str(authorized_user_id),
             auth_channel="RESOURCE_DIRECTORY")
         ```
 
@@ -232,9 +232,9 @@ class UserVpcAuthorization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_channel: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorized_user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorized_user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -259,9 +259,9 @@ class UserVpcAuthorization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_channel: Optional[pulumi.Input[_builtins.str]] = None,
-            auth_type: Optional[pulumi.Input[_builtins.str]] = None,
-            authorized_user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'UserVpcAuthorization':
+            auth_channel: pulumi.Input[Optional[_builtins.str]] = None,
+            auth_type: pulumi.Input[Optional[_builtins.str]] = None,
+            authorized_user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'UserVpcAuthorization':
         """
         Get an existing UserVpcAuthorization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

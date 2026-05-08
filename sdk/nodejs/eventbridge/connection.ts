@@ -190,23 +190,23 @@ export interface ConnectionState {
     /**
      * The parameters that are configured for authentication. See `authParameters` below.
      */
-    authParameters?: pulumi.Input<inputs.eventbridge.ConnectionAuthParameters>;
+    authParameters?: pulumi.Input<inputs.eventbridge.ConnectionAuthParameters | undefined>;
     /**
      * The name of the connection.
      */
-    connectionName?: pulumi.Input<string>;
+    connectionName?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the Connection.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parameters that are configured for the network. See `networkParameters` below.
      */
-    networkParameters?: pulumi.Input<inputs.eventbridge.ConnectionNetworkParameters>;
+    networkParameters?: pulumi.Input<inputs.eventbridge.ConnectionNetworkParameters | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface ConnectionArgs {
     /**
      * The parameters that are configured for authentication. See `authParameters` below.
      */
-    authParameters?: pulumi.Input<inputs.eventbridge.ConnectionAuthParameters>;
+    authParameters?: pulumi.Input<inputs.eventbridge.ConnectionAuthParameters | undefined>;
     /**
      * The name of the connection.
      */
@@ -224,7 +224,7 @@ export interface ConnectionArgs {
     /**
      * The description of the connection.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The parameters that are configured for the network. See `networkParameters` below.
      */

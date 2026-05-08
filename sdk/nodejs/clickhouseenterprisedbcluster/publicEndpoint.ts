@@ -142,16 +142,16 @@ export interface PublicEndpointState {
     /**
      * The public network connection string prefix of the instance.
      */
-    connectionStringPrefix?: pulumi.Input<string>;
+    connectionStringPrefix?: pulumi.Input<string | undefined>;
     /**
      * The cluster ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Network type of the connection address. Valid values:
      * - Public: Public network.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
 }
 
 /**

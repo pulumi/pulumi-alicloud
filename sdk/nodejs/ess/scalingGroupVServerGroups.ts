@@ -116,15 +116,15 @@ export interface ScalingGroupVServerGroupsState {
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the scaling group.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * A list of vserver groups attached on scaling group. See `vserverGroups` below.
      */
-    vserverGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[]>;
+    vserverGroups?: pulumi.Input<pulumi.Input<inputs.ess.ScalingGroupVServerGroupsVserverGroup>[] | undefined>;
 }
 
 /**
@@ -134,7 +134,7 @@ export interface ScalingGroupVServerGroupsArgs {
     /**
      * If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * ID of the scaling group.
      */

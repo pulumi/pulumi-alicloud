@@ -145,7 +145,7 @@ def get_account_deletion_check_task(account_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         not_allow_reasons=pulumi.get(__ret__, 'not_allow_reasons'),
         status=pulumi.get(__ret__, 'status'))
-def get_account_deletion_check_task_output(account_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_account_deletion_check_task_output(account_id: pulumi.Input[Optional[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountDeletionCheckTaskResult]:
     """
     Using this data source can open Resource Manager Account Deletion Check Task.

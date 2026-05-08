@@ -20,19 +20,19 @@ __all__ = ['IpamIpamPoolArgs', 'IpamIpamPool']
 class IpamIpamPoolArgs:
     def __init__(__self__, *,
                  ipam_scope_id: pulumi.Input[_builtins.str],
-                 allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_max_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_min_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clear_allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a IpamIpamPool resource.
 
@@ -99,7 +99,7 @@ class IpamIpamPoolArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationDefaultCidrMask")
-    def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_default_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -107,12 +107,12 @@ class IpamIpamPoolArgs:
         return pulumi.get(self, "allocation_default_cidr_mask")
 
     @allocation_default_cidr_mask.setter
-    def allocation_default_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_default_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_default_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationMaxCidrMask")
-    def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_max_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -120,12 +120,12 @@ class IpamIpamPoolArgs:
         return pulumi.get(self, "allocation_max_cidr_mask")
 
     @allocation_max_cidr_mask.setter
-    def allocation_max_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_max_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_max_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationMinCidrMask")
-    def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_min_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -133,48 +133,48 @@ class IpamIpamPoolArgs:
         return pulumi.get(self, "allocation_min_cidr_mask")
 
     @allocation_min_cidr_mask.setter
-    def allocation_min_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_min_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_min_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="autoImport")
-    def auto_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the automatic import function is enabled for the address pool.
         """
         return pulumi.get(self, "auto_import")
 
     @auto_import.setter
-    def auto_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_import", value)
 
     @_builtins.property
     @pulumi.getter(name="clearAllocationDefaultCidrMask")
-    def clear_allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def clear_allocation_default_cidr_mask(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to clear the default network mask of the IPAM address pool. Value:
         """
         return pulumi.get(self, "clear_allocation_default_cidr_mask")
 
     @clear_allocation_default_cidr_mask.setter
-    def clear_allocation_default_cidr_mask(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def clear_allocation_default_cidr_mask(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "clear_allocation_default_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol version. Values: IPv4、IPv6.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolDescription")
-    def ipam_pool_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the IPAM address pool.
         It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -182,60 +182,60 @@ class IpamIpamPoolArgs:
         return pulumi.get(self, "ipam_pool_description")
 
     @ipam_pool_description.setter
-    def ipam_pool_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolName")
-    def ipam_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "ipam_pool_name")
 
     @ipam_pool_name.setter
-    def ipam_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the IPv6 CIDR block of the VPC.
         """
         return pulumi.get(self, "ipv6_isp")
 
     @ipv6_isp.setter
-    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="poolRegionId")
-    def pool_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective region of the IPAM address pool.
         """
         return pulumi.get(self, "pool_region_id")
 
     @pool_region_id.setter
-    def pool_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpamPoolId")
-    def source_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the source IPAM address pool.
 
@@ -244,42 +244,42 @@ class IpamIpamPoolArgs:
         return pulumi.get(self, "source_ipam_pool_id")
 
     @source_ipam_pool_id.setter
-    def source_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _IpamIpamPoolState:
     def __init__(__self__, *,
-                 allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_max_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_min_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clear_allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPool resources.
 
@@ -344,7 +344,7 @@ class _IpamIpamPoolState:
 
     @_builtins.property
     @pulumi.getter(name="allocationDefaultCidrMask")
-    def allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_default_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -352,12 +352,12 @@ class _IpamIpamPoolState:
         return pulumi.get(self, "allocation_default_cidr_mask")
 
     @allocation_default_cidr_mask.setter
-    def allocation_default_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_default_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_default_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationMaxCidrMask")
-    def allocation_max_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_max_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -365,12 +365,12 @@ class _IpamIpamPoolState:
         return pulumi.get(self, "allocation_max_cidr_mask")
 
     @allocation_max_cidr_mask.setter
-    def allocation_max_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_max_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_max_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="allocationMinCidrMask")
-    def allocation_min_cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def allocation_min_cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum Network mask assigned by the IPAM address pool.
         IPv4 network mask value range: 0 to 32 bits, and the IPv6 network mask value range is 0 to 128 bits.
@@ -378,60 +378,60 @@ class _IpamIpamPoolState:
         return pulumi.get(self, "allocation_min_cidr_mask")
 
     @allocation_min_cidr_mask.setter
-    def allocation_min_cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def allocation_min_cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "allocation_min_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="autoImport")
-    def auto_import(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_import(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the automatic import function is enabled for the address pool.
         """
         return pulumi.get(self, "auto_import")
 
     @auto_import.setter
-    def auto_import(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_import(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_import", value)
 
     @_builtins.property
     @pulumi.getter(name="clearAllocationDefaultCidrMask")
-    def clear_allocation_default_cidr_mask(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def clear_allocation_default_cidr_mask(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to clear the default network mask of the IPAM address pool. Value:
         """
         return pulumi.get(self, "clear_allocation_default_cidr_mask")
 
     @clear_allocation_default_cidr_mask.setter
-    def clear_allocation_default_cidr_mask(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def clear_allocation_default_cidr_mask(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "clear_allocation_default_cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP protocol version. Values: IPv4、IPv6.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolDescription")
-    def ipam_pool_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the IPAM address pool.
         It must be 2 to 256 characters in length and must start with an English letter or a Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -439,84 +439,84 @@ class _IpamIpamPoolState:
         return pulumi.get(self, "ipam_pool_description")
 
     @ipam_pool_description.setter
-    def ipam_pool_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolName")
-    def ipam_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "ipam_pool_name")
 
     @ipam_pool_name.setter
-    def ipam_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamScopeId")
-    def ipam_scope_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_scope_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPAM scope.
         """
         return pulumi.get(self, "ipam_scope_id")
 
     @ipam_scope_id.setter
-    def ipam_scope_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_scope_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_scope_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Isp")
-    def ipv6_isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the IPv6 CIDR block of the VPC.
         """
         return pulumi.get(self, "ipv6_isp")
 
     @ipv6_isp.setter
-    def ipv6_isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_isp", value)
 
     @_builtins.property
     @pulumi.getter(name="poolRegionId")
-    def pool_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective region of the IPAM address pool.
         """
         return pulumi.get(self, "pool_region_id")
 
     @pool_region_id.setter
-    def pool_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPAM hosting region.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIpamPoolId")
-    def source_ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the source IPAM address pool.
 
@@ -525,31 +525,31 @@ class _IpamIpamPoolState:
         return pulumi.get(self, "source_ipam_pool_id")
 
     @source_ipam_pool_id.setter
-    def source_ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -559,20 +559,20 @@ class IpamIpamPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_max_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_min_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clear_allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Vpc Ipam Ipam Pool resource.
@@ -712,20 +712,20 @@ class IpamIpamPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_max_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 allocation_min_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_import: Optional[pulumi.Input[_builtins.bool]] = None,
-                 clear_allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+                 clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -764,23 +764,23 @@ class IpamIpamPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            allocation_max_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            allocation_min_cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_import: Optional[pulumi.Input[_builtins.bool]] = None,
-            clear_allocation_default_cidr_mask: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_pool_description: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_scope_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6_isp: Optional[pulumi.Input[_builtins.str]] = None,
-            pool_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamPool':
+            allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            allocation_max_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            allocation_min_cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_import: pulumi.Input[Optional[_builtins.bool]] = None,
+            clear_allocation_default_cidr_mask: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_isp: pulumi.Input[Optional[_builtins.str]] = None,
+            pool_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'IpamIpamPool':
         """
         Get an existing IpamIpamPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

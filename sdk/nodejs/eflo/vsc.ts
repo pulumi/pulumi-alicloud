@@ -136,27 +136,27 @@ export interface VscState {
     /**
      * The ID of the Node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Vsc.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Vsc.
      */
-    vscName?: pulumi.Input<string>;
+    vscName?: pulumi.Input<string | undefined>;
     /**
      * The type of the Vsc. Default value: `primary`. Valid values: `primary`.
      */
-    vscType?: pulumi.Input<string>;
+    vscType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,17 +170,17 @@ export interface VscArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the Vsc.
      */
-    vscName?: pulumi.Input<string>;
+    vscName?: pulumi.Input<string | undefined>;
     /**
      * The type of the Vsc. Default value: `primary`. Valid values: `primary`.
      */
-    vscType?: pulumi.Input<string>;
+    vscType?: pulumi.Input<string | undefined>;
 }

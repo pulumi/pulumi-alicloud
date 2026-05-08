@@ -253,81 +253,81 @@ export interface ClusterState {
     /**
      * Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    dataCenterName?: pulumi.Input<string>;
+    dataCenterName?: pulumi.Input<string | undefined>;
     /**
      * User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [160, 2000].
      * - 80-GB increments.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
-    diskType?: pulumi.Input<string>;
-    enablePublic?: pulumi.Input<boolean>;
+    diskType?: pulumi.Input<string | undefined>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Set the instance's IP whitelist in VPC network.
      */
-    ipWhite?: pulumi.Input<string>;
+    ipWhite?: pulumi.Input<string | undefined>;
     /**
      * The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Cassandra major version. Now only support version `3.11`.
      */
-    majorVersion?: pulumi.Input<string>;
+    majorVersion?: pulumi.Input<string | undefined>;
     /**
      * The node count of Cassandra dataCenter-1 default to 2.
      */
-    nodeCount?: pulumi.Input<number>;
-    password?: pulumi.Input<string>;
+    nodeCount?: pulumi.Input<number | undefined>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
      */
-    payType?: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
-    publicPoints?: pulumi.Input<pulumi.Input<string>[]>;
+    payType?: pulumi.Input<string | undefined>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
+    publicPoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of security group ids to associate with.
      *
      * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
-    status?: pulumi.Input<string>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vswitchId of dataCenter-1, can not empty.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,30 +337,30 @@ export interface ClusterArgs {
     /**
      * Auto renew of dataCenter-1,`true` or `false`. System default to `false`, valid when payType = PrePaid.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Period of dataCenter-1 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when payType = Subscription. Unit: month.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Cassandra cluster name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Cassandra dataCenter-1 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      */
-    dataCenterName?: pulumi.Input<string>;
+    dataCenterName?: pulumi.Input<string | undefined>;
     /**
      * User-defined Cassandra dataCenter-1 one node's storage space.Unit: GB. Value range:
      * - Custom storage space; value range: [160, 2000].
      * - 80-GB increments.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of Cassandra dataCenter-1. Valid values are `cloudSsd`, `cloudEfficiency`, `localHddPro`, `localSsdPro`, localDisk size is fixed.
      */
-    diskType?: pulumi.Input<string>;
-    enablePublic?: pulumi.Input<boolean>;
+    diskType?: pulumi.Input<string | undefined>;
+    enablePublic?: pulumi.Input<boolean | undefined>;
     /**
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      */
@@ -368,15 +368,15 @@ export interface ClusterArgs {
     /**
      * Set the instance's IP whitelist in VPC network.
      */
-    ipWhite?: pulumi.Input<string>;
+    ipWhite?: pulumi.Input<string | undefined>;
     /**
      * The end time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the cluster, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * Cassandra major version. Now only support version `3.11`.
      */
@@ -385,23 +385,23 @@ export interface ClusterArgs {
      * The node count of Cassandra dataCenter-1 default to 2.
      */
     nodeCount: pulumi.Input<number>;
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The pay type of Cassandra dataCenter-1. Valid values are `Subscription`, `PayAsYouGo`,System default to `PayAsYouGo`.
      */
     payType: pulumi.Input<string>;
-    period?: pulumi.Input<number>;
-    periodUnit?: pulumi.Input<string>;
+    period?: pulumi.Input<number | undefined>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * A list of security group ids to associate with.
      *
      * > **NOTE:** Now cluster_name,data_center_name,instance_type,node_count,disk_type,disk_size,maintain_start_time,maintain_end_time,tags,ip_white,security_groups can be change. The others(auto_renew, autoRenewPeriod and so on) will be supported in the furture.
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vswitchId of dataCenter-1, can not empty.
      */
@@ -409,5 +409,5 @@ export interface ClusterArgs {
     /**
      * The Zone to launch the Cassandra cluster. If vswitchId is not empty, this zoneId can be "" or consistent.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

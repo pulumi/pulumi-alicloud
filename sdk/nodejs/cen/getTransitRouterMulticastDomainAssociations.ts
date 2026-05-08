@@ -158,27 +158,27 @@ export interface GetTransitRouterMulticastDomainAssociationsOutputArgs {
     /**
      * A list of Transit Router Multicast Domain Association IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource associated with the multicast domain.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of resource associated with the multicast domain. Valid Value: `VPC`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the associated resource. Valid Value: `Associated`, `Associating`, `Dissociating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network instance connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain.
      */
@@ -186,5 +186,5 @@ export interface GetTransitRouterMulticastDomainAssociationsOutputArgs {
     /**
      * The ID of the vSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

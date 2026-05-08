@@ -182,12 +182,12 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[_builtins.str]] = None,
         product_code=pulumi.get(__ret__, 'product_code'),
         product_type=pulumi.get(__ret__, 'product_type'),
         subscription_type=pulumi.get(__ret__, 'subscription_type'))
-def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                                        product_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_open_api_pricing_modules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                                        product_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenApiPricingModulesResult]:
     """
     This data source provides Bss Open Api Pricing Module available to the user.[What is Pricing Module](https://www.alibabacloud.com/help/en/boa/latest/api-bssopenapi-2017-12-14-describepricingmodule)

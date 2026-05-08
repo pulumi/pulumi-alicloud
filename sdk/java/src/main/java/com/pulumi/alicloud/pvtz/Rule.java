@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.pvtz.RuleArgs;
  * import com.pulumi.alicloud.pvtz.inputs.RuleForwardIpArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -91,11 +91,11 @@ import javax.annotation.Nullable;
  *         for (var i = 0; i < 2; i++) {
  *             new Switch("defaultSwitch-" + i, SwitchArgs.builder()
  *                 .vpcId(defaultNetwork.id())
- *                 .cidrBlock(defaultNetwork.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
- *                     .input(_cidrBlock)
+ *                 .cidrBlock(StdFunctions.cidrsubnet(CidrsubnetArgs.builder()
+ *                     .input(defaultNetwork.cidrBlock())
  *                     .newbits(8)
  *                     .netnum(range.value())
- *                     .build())).applyValue(_invoke -> _invoke.result()))
+ *                     .build()).applyValue(_invoke -> _invoke.result()))
  *                 .zoneId(default_.zones()[range.value()].zoneId())
  *                 .build());
  * 

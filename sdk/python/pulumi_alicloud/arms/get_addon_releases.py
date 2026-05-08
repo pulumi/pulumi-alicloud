@@ -149,9 +149,9 @@ def get_addon_releases(environment_id: Optional[_builtins.str] = None,
         vpc_id=vpc.id,
         vswitch_name=f"{name}-{default_integer['result']}",
         zone_id=enhanced.zones[0].zone_id,
-        cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+        cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
             newbits=8,
-            netnum=8)).apply(lambda invoke: invoke.result))
+            netnum=8).apply(lambda invoke: invoke.result))
     default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
         name=f"{name}-{default_integer['result']}",
         repeat_weekdays=[
@@ -165,11 +165,11 @@ def get_addon_releases(environment_id: Optional[_builtins.str] = None,
             "22",
             "23",
         ])
-    default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+    default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
         cpu_core_count=2,
-        memory_size=4,
+        memory_size=float(4),
         kubernetes_node_role="Worker",
-        instance_type_family="ecs.sn1ne"))
+        instance_type_family="ecs.sn1ne")
     default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
         name=f"{name}-{default_integer['result']}",
         cluster_spec="ack.pro.small",
@@ -233,10 +233,10 @@ def get_addon_releases(environment_id: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         releases=pulumi.get(__ret__, 'releases'))
-def get_addon_releases_output(environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_addon_releases_output(environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddonReleasesResult]:
     """
     This data source provides the ARMS Addon Releases of the current Alibaba Cloud user.
@@ -269,9 +269,9 @@ def get_addon_releases_output(environment_id: Optional[pulumi.Input[_builtins.st
         vpc_id=vpc.id,
         vswitch_name=f"{name}-{default_integer['result']}",
         zone_id=enhanced.zones[0].zone_id,
-        cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+        cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
             newbits=8,
-            netnum=8)).apply(lambda invoke: invoke.result))
+            netnum=8).apply(lambda invoke: invoke.result))
     default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
         name=f"{name}-{default_integer['result']}",
         repeat_weekdays=[
@@ -285,11 +285,11 @@ def get_addon_releases_output(environment_id: Optional[pulumi.Input[_builtins.st
             "22",
             "23",
         ])
-    default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+    default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
         cpu_core_count=2,
-        memory_size=4,
+        memory_size=float(4),
         kubernetes_node_role="Worker",
-        instance_type_family="ecs.sn1ne"))
+        instance_type_family="ecs.sn1ne")
     default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
         name=f"{name}-{default_integer['result']}",
         cluster_spec="ack.pro.small",

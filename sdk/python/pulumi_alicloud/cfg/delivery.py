@@ -21,14 +21,14 @@ class DeliveryArgs:
     def __init__(__self__, *,
                  delivery_channel_target_arn: pulumi.Input[_builtins.str],
                  delivery_channel_type: pulumi.Input[_builtins.str],
-                 configuration_item_change_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configuration_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 non_compliant_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 non_compliant_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Delivery resource.
 
@@ -118,7 +118,7 @@ class DeliveryArgs:
 
     @_builtins.property
     @pulumi.getter(name="configurationItemChangeNotification")
-    def configuration_item_change_notification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def configuration_item_change_notification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
         - true: The specified destination receives resource change logs.
@@ -127,12 +127,12 @@ class DeliveryArgs:
         return pulumi.get(self, "configuration_item_change_notification")
 
     @configuration_item_change_notification.setter
-    def configuration_item_change_notification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def configuration_item_change_notification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "configuration_item_change_notification", value)
 
     @_builtins.property
     @pulumi.getter(name="configurationSnapshot")
-    def configuration_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def configuration_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
         - true: The specified destination receives scheduled resource snapshots.
@@ -141,12 +141,12 @@ class DeliveryArgs:
         return pulumi.get(self, "configuration_snapshot")
 
     @configuration_snapshot.setter
-    def configuration_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def configuration_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "configuration_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelCondition")
-    def delivery_channel_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule that is attached to the delivery channel.  
 
@@ -163,36 +163,36 @@ class DeliveryArgs:
         return pulumi.get(self, "delivery_channel_condition")
 
     @delivery_channel_condition.setter
-    def delivery_channel_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
-    def delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_name")
 
     @delivery_channel_name.setter
-    def delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery channel.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="nonCompliantNotification")
-    def non_compliant_notification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def non_compliant_notification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
         - true: The specified destination receives resource non-compliance events.
@@ -201,24 +201,24 @@ class DeliveryArgs:
         return pulumi.get(self, "non_compliant_notification")
 
     @non_compliant_notification.setter
-    def non_compliant_notification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def non_compliant_notification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "non_compliant_notification", value)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
         """
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the delivery channel. Valid values:  
         - 0: The delivery channel is disabled.
@@ -227,23 +227,23 @@ class DeliveryArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DeliveryState:
     def __init__(__self__, *,
-                 configuration_item_change_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configuration_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 non_compliant_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None):
+                 configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 non_compliant_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Delivery resources.
 
@@ -305,7 +305,7 @@ class _DeliveryState:
 
     @_builtins.property
     @pulumi.getter(name="configurationItemChangeNotification")
-    def configuration_item_change_notification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def configuration_item_change_notification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
         - true: The specified destination receives resource change logs.
@@ -314,12 +314,12 @@ class _DeliveryState:
         return pulumi.get(self, "configuration_item_change_notification")
 
     @configuration_item_change_notification.setter
-    def configuration_item_change_notification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def configuration_item_change_notification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "configuration_item_change_notification", value)
 
     @_builtins.property
     @pulumi.getter(name="configurationSnapshot")
-    def configuration_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def configuration_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
         - true: The specified destination receives scheduled resource snapshots.
@@ -328,12 +328,12 @@ class _DeliveryState:
         return pulumi.get(self, "configuration_snapshot")
 
     @configuration_snapshot.setter
-    def configuration_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def configuration_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "configuration_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelCondition")
-    def delivery_channel_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule that is attached to the delivery channel.  
 
@@ -350,24 +350,24 @@ class _DeliveryState:
         return pulumi.get(self, "delivery_channel_condition")
 
     @delivery_channel_condition.setter
-    def delivery_channel_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_condition", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
-    def delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_name")
 
     @delivery_channel_name.setter
-    def delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelTargetArn")
-    def delivery_channel_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the delivery destination.  
         - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
@@ -377,12 +377,12 @@ class _DeliveryState:
         return pulumi.get(self, "delivery_channel_target_arn")
 
     @delivery_channel_target_arn.setter
-    def delivery_channel_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelType")
-    def delivery_channel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery channel. Valid values:  
         - OSS: Object Storage Service (OSS)
@@ -392,24 +392,24 @@ class _DeliveryState:
         return pulumi.get(self, "delivery_channel_type")
 
     @delivery_channel_type.setter
-    def delivery_channel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery channel.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="nonCompliantNotification")
-    def non_compliant_notification(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def non_compliant_notification(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
         - true: The specified destination receives resource non-compliance events.
@@ -418,24 +418,24 @@ class _DeliveryState:
         return pulumi.get(self, "non_compliant_notification")
 
     @non_compliant_notification.setter
-    def non_compliant_notification(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def non_compliant_notification(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "non_compliant_notification", value)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The oss ARN of the delivery channel when the value data oversized limit.  The value must be in one of the following formats:  acs:oss:{RegionId}:{Aliuid}:{bucketName} if your delivery destination is an Object Storage Service (OSS) bucket.
         """
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the delivery channel. Valid values:  
         - 0: The delivery channel is disabled.
@@ -444,7 +444,7 @@ class _DeliveryState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
 
@@ -454,16 +454,16 @@ class Delivery(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration_item_change_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configuration_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 non_compliant_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
+                 configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 non_compliant_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Config Delivery resource.
@@ -625,16 +625,16 @@ class Delivery(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configuration_item_change_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 configuration_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 non_compliant_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
+                 configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 non_compliant_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -668,16 +668,16 @@ class Delivery(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configuration_item_change_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-            configuration_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-            delivery_channel_condition: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            non_compliant_notification: Optional[pulumi.Input[_builtins.bool]] = None,
-            oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None) -> 'Delivery':
+            configuration_item_change_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+            configuration_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            delivery_channel_condition: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            non_compliant_notification: pulumi.Input[Optional[_builtins.bool]] = None,
+            oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None) -> 'Delivery':
         """
         Get an existing Delivery resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

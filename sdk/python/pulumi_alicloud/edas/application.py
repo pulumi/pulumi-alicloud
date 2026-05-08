@@ -22,14 +22,14 @@ class ApplicationArgs:
                  application_name: pulumi.Input[_builtins.str],
                  cluster_id: pulumi.Input[_builtins.str],
                  package_type: pulumi.Input[_builtins.str],
-                 build_pack_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Application resource.
 
@@ -103,115 +103,115 @@ class ApplicationArgs:
 
     @_builtins.property
     @pulumi.getter(name="buildPackId")
-    def build_pack_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def build_pack_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         """
         return pulumi.get(self, "build_pack_id")
 
     @build_pack_id.setter
-    def build_pack_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def build_pack_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "build_pack_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def descriotion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def descriotion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the application that you want to create.
         """
         return pulumi.get(self, "descriotion")
 
     @descriotion.setter
-    def descriotion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def descriotion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "descriotion", value)
 
     @_builtins.property
     @pulumi.getter(name="ecuInfos")
-    def ecu_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ecu_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         """
         return pulumi.get(self, "ecu_infos")
 
     @ecu_infos.setter
-    def ecu_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ecu_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ecu_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUrl")
-    def health_check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL for health checking of the application.
         """
         return pulumi.get(self, "health_check_url")
 
     @health_check_url.setter
-    def health_check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_url", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter(name="warUrl")
-    def war_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def war_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
         return pulumi.get(self, "war_url")
 
     @war_url.setter
-    def war_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def war_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "war_url", value)
 
 
 @pulumi.input_type
 class _ApplicationState:
     def __init__(__self__, *,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_pack_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Application resources.
 
@@ -252,134 +252,134 @@ class _ApplicationState:
 
     @_builtins.property
     @pulumi.getter(name="applicationName")
-    def application_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def application_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of your EDAS application. Only letters '-' '_' and numbers are allowed. The length cannot exceed 36 characters.
         """
         return pulumi.get(self, "application_name")
 
     @application_name.setter
-    def application_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def application_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "application_name", value)
 
     @_builtins.property
     @pulumi.getter(name="buildPackId")
-    def build_pack_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def build_pack_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The package ID of Enterprise Distributed Application Service (EDAS) Container, which can be retrieved by calling container version list interface ListBuildPack or the "Pack ID" column in container version list. When creating High-speed Service Framework (HSF) application, this parameter is required.
         """
         return pulumi.get(self, "build_pack_id")
 
     @build_pack_id.setter
-    def build_pack_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def build_pack_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "build_pack_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster that you want to create the application. The default cluster will be used if you do not specify this parameter.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def descriotion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def descriotion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the application that you want to create.
         """
         return pulumi.get(self, "descriotion")
 
     @descriotion.setter
-    def descriotion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def descriotion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "descriotion", value)
 
     @_builtins.property
     @pulumi.getter(name="ecuInfos")
-    def ecu_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ecu_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
         """
         return pulumi.get(self, "ecu_infos")
 
     @ecu_infos.setter
-    def ecu_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ecu_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ecu_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUrl")
-    def health_check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL for health checking of the application.
         """
         return pulumi.get(self, "health_check_url")
 
     @health_check_url.setter
-    def health_check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_url", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalRegionId")
-    def logical_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
         """
         return pulumi.get(self, "logical_region_id")
 
     @logical_region_id.setter
-    def logical_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
         """
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageVersion")
-    def package_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         """
         return pulumi.get(self, "package_version")
 
     @package_version.setter
-    def package_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_version", value)
 
     @_builtins.property
     @pulumi.getter(name="warUrl")
-    def war_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def war_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
         return pulumi.get(self, "war_url")
 
     @war_url.setter
-    def war_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def war_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "war_url", value)
 
 
@@ -389,17 +389,17 @@ class Application(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_pack_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Creates an EDAS ecs application on EDAS, see [What is EDAS Application](https://www.alibabacloud.com/help/en/edas/developer-reference/api-edas-2017-08-01-insertapplication). The application will be deployed when `group_id` and `war_url` are given.
@@ -532,17 +532,17 @@ class Application(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 build_pack_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 war_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 application_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 war_url: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -579,17 +579,17 @@ class Application(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_name: Optional[pulumi.Input[_builtins.str]] = None,
-            build_pack_id: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            descriotion: Optional[pulumi.Input[_builtins.str]] = None,
-            ecu_infos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_url: Optional[pulumi.Input[_builtins.str]] = None,
-            logical_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            package_version: Optional[pulumi.Input[_builtins.str]] = None,
-            war_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'Application':
+            application_name: pulumi.Input[Optional[_builtins.str]] = None,
+            build_pack_id: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            descriotion: pulumi.Input[Optional[_builtins.str]] = None,
+            ecu_infos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_version: pulumi.Input[Optional[_builtins.str]] = None,
+            war_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -180,29 +180,29 @@ export interface SmbAclAttachmentState {
     /**
      * The method that is used to authenticate network identities.
      */
-    authMethod?: pulumi.Input<string>;
+    authMethod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to allow anonymous access. Valid values:
      * true: The file system allows anonymous access.
      * false: The file system denies anonymous access. Default value: false.
      */
-    enableAnonymousAccess?: pulumi.Input<boolean>;
+    enableAnonymousAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the ACL feature.
      * true: enables the ACL feature.
      * false: disables the ACL feature.
      */
-    enabled?: pulumi.Input<string>;
+    enabled?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable encryption in transit. Valid values:
      * true: enables encryption in transit.
      * false: disables encryption in transit. Default value: false.
      */
-    encryptData?: pulumi.Input<boolean>;
+    encryptData?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The home directory of each user. Each user-specific home directory must meet the following requirements:    
      * Each segment starts with a forward slash (/) or a backslash (\).
@@ -211,28 +211,28 @@ export interface SmbAclAttachmentState {
      * The total length is 0 to 32,767 characters.
      * For example, if you create a user named A and the home directory is /home, the file system automatically creates a directory named /home/A when User A logs on to the file system. If the /home/A directory already exists, the file system does not create the directory.
      */
-    homeDirPath?: pulumi.Input<string>;
+    homeDirPath?: pulumi.Input<string | undefined>;
     /**
      * The string that is generated after the system encodes the keytab file by using Base64.
      */
-    keytab?: pulumi.Input<string>;
+    keytab?: pulumi.Input<string | undefined>;
     /**
      * RThe string that is generated after the system encodes the keytab file by using MD5.
      */
-    keytabMd5?: pulumi.Input<string>;
+    keytabMd5?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to deny access from non-encrypted clients. Valid values:
      * true: The file system denies access from non-encrypted clients.
      * false: The file system allows access from non-encrypted clients. Default value: false.
      */
-    rejectUnencryptedAccess?: pulumi.Input<boolean>;
+    rejectUnencryptedAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a super admin. The ID must meet the following requirements:
      * The ID starts with S and does not contain letters except S.
      * The ID contains at least three hyphens (-) as delimiters.
      * Example: S-1-5-22 and S-1-5-22-23.
      */
-    superAdminSid?: pulumi.Input<string>;
+    superAdminSid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,13 +244,13 @@ export interface SmbAclAttachmentArgs {
      * true: The file system allows anonymous access.
      * false: The file system denies anonymous access. Default value: false.
      */
-    enableAnonymousAccess?: pulumi.Input<boolean>;
+    enableAnonymousAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable encryption in transit. Valid values:
      * true: enables encryption in transit.
      * false: disables encryption in transit. Default value: false.
      */
-    encryptData?: pulumi.Input<boolean>;
+    encryptData?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -263,7 +263,7 @@ export interface SmbAclAttachmentArgs {
      * The total length is 0 to 32,767 characters.
      * For example, if you create a user named A and the home directory is /home, the file system automatically creates a directory named /home/A when User A logs on to the file system. If the /home/A directory already exists, the file system does not create the directory.
      */
-    homeDirPath?: pulumi.Input<string>;
+    homeDirPath?: pulumi.Input<string | undefined>;
     /**
      * The string that is generated after the system encodes the keytab file by using Base64.
      */
@@ -277,12 +277,12 @@ export interface SmbAclAttachmentArgs {
      * true: The file system denies access from non-encrypted clients.
      * false: The file system allows access from non-encrypted clients. Default value: false.
      */
-    rejectUnencryptedAccess?: pulumi.Input<boolean>;
+    rejectUnencryptedAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of a super admin. The ID must meet the following requirements:
      * The ID starts with S and does not contain letters except S.
      * The ID contains at least three hyphens (-) as delimiters.
      * Example: S-1-5-22 and S-1-5-22-23.
      */
-    superAdminSid?: pulumi.Input<string>;
+    superAdminSid?: pulumi.Input<string | undefined>;
 }

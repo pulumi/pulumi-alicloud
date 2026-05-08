@@ -43,8 +43,8 @@ class ServiceLinkedRoleArgs:
 @pulumi.input_type
 class _ServiceLinkedRoleState:
     def __init__(__self__, *,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.bool]] = None):
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
 
@@ -58,26 +58,26 @@ class _ServiceLinkedRoleState:
 
     @_builtins.property
     @pulumi.getter(name="productName")
-    def product_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
         """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
-    def product_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "status", value)
 
 
@@ -87,7 +87,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Using this data source can create Dbfs service-linked roles(SLR). Dbfs may need to access another Alibaba Cloud service to implement a specific feature. In this case, Dbfs must assume a specific service-linked role, which is a Resource Access Management (RAM) role, to obtain permissions to access another Alibaba Cloud service.
@@ -168,7 +168,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -192,8 +192,8 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            product_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ServiceLinkedRole':
+            product_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServiceLinkedRole':
         """
         Get an existing ServiceLinkedRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

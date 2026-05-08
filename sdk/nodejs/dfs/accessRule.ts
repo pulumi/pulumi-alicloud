@@ -156,31 +156,31 @@ export interface AccessRuleState {
     /**
      * Permission group resource ID. You must specify the permission group ID when creating a permission rule.
      */
-    accessGroupId?: pulumi.Input<string>;
+    accessGroupId?: pulumi.Input<string | undefined>;
     /**
      * The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
      */
-    accessRuleId?: pulumi.Input<string>;
+    accessRuleId?: pulumi.Input<string | undefined>;
     /**
      * Permission rule resource creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Permission rule description.  No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP address or network segment of the authorized object.
      */
-    networkSegment?: pulumi.Input<string>;
+    networkSegment?: pulumi.Input<string | undefined>;
     /**
      * Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
      */
-    rwAccessType?: pulumi.Input<string>;
+    rwAccessType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,7 +194,7 @@ export interface AccessRuleArgs {
     /**
      * Permission rule description.  No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The IP address or network segment of the authorized object.
      */

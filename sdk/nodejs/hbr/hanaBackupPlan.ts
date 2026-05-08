@@ -201,46 +201,46 @@ export interface HanaBackupPlanState {
     /**
      * The backup prefix.
      */
-    backupPrefix?: pulumi.Input<string>;
+    backupPrefix?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:
      * - `COMPLETE`: full backup.
      * - `INCREMENTAL`: incremental backup.
      * - `DIFFERENTIAL`: differential backup.
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAP HANA instance.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The id of the plan.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * The name of the backup plan.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The resource attribute field that represents the resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface HanaBackupPlanArgs {
     /**
      * The backup prefix.
      */
-    backupPrefix?: pulumi.Input<string>;
+    backupPrefix?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Valid values:
      * - `COMPLETE`: full backup.
@@ -273,7 +273,7 @@ export interface HanaBackupPlanArgs {
     /**
      * The resource attribute field that represents the resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
      */
@@ -281,7 +281,7 @@ export interface HanaBackupPlanArgs {
     /**
      * The status of the resource. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the backup vault.
      */

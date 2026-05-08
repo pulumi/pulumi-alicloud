@@ -118,19 +118,19 @@ export interface ProjectState {
     /**
      * Comment of the datahub project. It cannot be longer than 255 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Create time of the datahub project. It is a human-readable string rather than 64-bits UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Last modify time of the datahub project. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      */
-    lastModifyTime?: pulumi.Input<string>;
+    lastModifyTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -140,9 +140,9 @@ export interface ProjectArgs {
     /**
      * Comment of the datahub project. It cannot be longer than 255 characters.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

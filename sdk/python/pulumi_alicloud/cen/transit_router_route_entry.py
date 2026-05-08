@@ -22,10 +22,10 @@ class TransitRouterRouteEntryArgs:
                  transit_router_route_entry_destination_cidr_block: pulumi.Input[_builtins.str],
                  transit_router_route_entry_next_hop_type: pulumi.Input[_builtins.str],
                  transit_router_route_table_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_route_entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterRouteEntry resource.
 
@@ -90,7 +90,7 @@ class TransitRouterRouteEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
 
@@ -100,58 +100,58 @@ class TransitRouterRouteEntryArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryDescription")
-    def transit_router_route_entry_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the transit router route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_description")
 
     @transit_router_route_entry_description.setter
-    def transit_router_route_entry_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryName")
-    def transit_router_route_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the transit router route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_name")
 
     @transit_router_route_entry_name.setter
-    def transit_router_route_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryNextHopId")
-    def transit_router_route_entry_next_hop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_next_hop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router route entry next hop.
         """
         return pulumi.get(self, "transit_router_route_entry_next_hop_id")
 
     @transit_router_route_entry_next_hop_id.setter
-    def transit_router_route_entry_next_hop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_next_hop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_next_hop_id", value)
 
 
 @pulumi.input_type
 class _TransitRouterRouteEntryState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterRouteEntry resources.
 
@@ -189,7 +189,7 @@ class _TransitRouterRouteEntryState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
 
@@ -199,103 +199,103 @@ class _TransitRouterRouteEntryState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associating status of the Transit Router.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryDescription")
-    def transit_router_route_entry_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the transit router route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_description")
 
     @transit_router_route_entry_description.setter
-    def transit_router_route_entry_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryDestinationCidrBlock")
-    def transit_router_route_entry_destination_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR of the transit router route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_destination_cidr_block")
 
     @transit_router_route_entry_destination_cidr_block.setter
-    def transit_router_route_entry_destination_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_destination_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryId")
-    def transit_router_route_entry_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_id")
 
     @transit_router_route_entry_id.setter
-    def transit_router_route_entry_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryName")
-    def transit_router_route_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the transit router route entry.
         """
         return pulumi.get(self, "transit_router_route_entry_name")
 
     @transit_router_route_entry_name.setter
-    def transit_router_route_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryNextHopId")
-    def transit_router_route_entry_next_hop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_next_hop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router route entry next hop.
         """
         return pulumi.get(self, "transit_router_route_entry_next_hop_id")
 
     @transit_router_route_entry_next_hop_id.setter
-    def transit_router_route_entry_next_hop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_next_hop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_next_hop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteEntryNextHopType")
-    def transit_router_route_entry_next_hop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_entry_next_hop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
         """
         return pulumi.get(self, "transit_router_route_entry_next_hop_type")
 
     @transit_router_route_entry_next_hop_type.setter
-    def transit_router_route_entry_next_hop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_entry_next_hop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_entry_next_hop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteTableId")
-    def transit_router_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router route table.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
-    def transit_router_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_table_id", value)
 
 
@@ -305,13 +305,13 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_route_entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CEN transit router route entry resource.[What is Cen Transit Router Route Entry](https://www.alibabacloud.com/help/en/cloud-enterprise-network/latest/api-cbn-2017-09-12-createtransitrouterrouteentry)
@@ -348,7 +348,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -433,7 +433,7 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
             peering_subnet_mask="255.255.255.252",
             physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
-            vlan_id=vlan_id["id"],
+            vlan_id=int(vlan_id["id"]),
             min_rx_interval=1000,
             min_tx_interval=1000,
             detect_multiplier=10)
@@ -479,13 +479,13 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_route_entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_entry_next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_entry_next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -520,15 +520,15 @@ class TransitRouterRouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_next_hop_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_entry_next_hop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterRouteEntry':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_next_hop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_entry_next_hop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterRouteEntry':
         """
         Get an existing TransitRouterRouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

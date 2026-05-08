@@ -24,29 +24,29 @@ class RouteMapArgs:
                  map_result: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
                  transmit_direction: pulumi.Input[_builtins.str],
-                 as_path_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_operate_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 next_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preference: Optional[pulumi.Input[_builtins.int]] = None,
-                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preference: pulumi.Input[Optional[_builtins.int]] = None,
+                 prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteMap resource.
 
@@ -193,314 +193,314 @@ class RouteMapArgs:
 
     @_builtins.property
     @pulumi.getter(name="asPathMatchMode")
-    def as_path_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def as_path_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "as_path_match_mode")
 
     @as_path_match_mode.setter
-    def as_path_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def as_path_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "as_path_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMatchMode")
-    def cidr_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "cidr_match_mode")
 
     @cidr_match_mode.setter
-    def cidr_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="communityMatchMode")
-    def community_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def community_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "community_match_mode")
 
     @community_match_mode.setter
-    def community_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def community_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "community_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="communityOperateMode")
-    def community_operate_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def community_operate_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         """
         return pulumi.get(self, "community_operate_mode")
 
     @community_operate_mode.setter
-    def community_operate_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def community_operate_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "community_operate_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the route map.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationChildInstanceTypes")
-    def destination_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_child_instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         """
         return pulumi.get(self, "destination_child_instance_types")
 
     @destination_child_instance_types.setter
-    def destination_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_child_instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_child_instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlocks")
-    def destination_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         """
         return pulumi.get(self, "destination_cidr_blocks")
 
     @destination_cidr_blocks.setter
-    def destination_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationInstanceIds")
-    def destination_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the destination instances.
         """
         return pulumi.get(self, "destination_instance_ids")
 
     @destination_instance_ids.setter
-    def destination_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationInstanceIdsReverseMatch")
-    def destination_instance_ids_reverse_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def destination_instance_ids_reverse_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
         return pulumi.get(self, "destination_instance_ids_reverse_match")
 
     @destination_instance_ids_reverse_match.setter
-    def destination_instance_ids_reverse_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def destination_instance_ids_reverse_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "destination_instance_ids_reverse_match", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRouteTableIds")
-    def destination_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         """
         return pulumi.get(self, "destination_route_table_ids")
 
     @destination_route_table_ids.setter
-    def destination_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="matchAsns")
-    def match_asns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_asns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         """
         return pulumi.get(self, "match_asns")
 
     @match_asns.setter
-    def match_asns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_asns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_asns", value)
 
     @_builtins.property
     @pulumi.getter(name="matchCommunitySets")
-    def match_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_community_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
         return pulumi.get(self, "match_community_sets")
 
     @match_community_sets.setter
-    def match_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_community_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_community_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="nextPriority")
-    def next_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def next_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
         """
         return pulumi.get(self, "next_priority")
 
     @next_priority.setter
-    def next_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def next_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "next_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="operateCommunitySets")
-    def operate_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def operate_community_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
         return pulumi.get(self, "operate_community_sets")
 
     @operate_community_sets.setter
-    def operate_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def operate_community_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "operate_community_sets", value)
 
     @_builtins.property
     @pulumi.getter
-    def preference(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preference(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         """
         return pulumi.get(self, "preference")
 
     @preference.setter
-    def preference(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preference(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preference", value)
 
     @_builtins.property
     @pulumi.getter(name="prependAsPaths")
-    def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def prepend_as_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         """
         return pulumi.get(self, "prepend_as_paths")
 
     @prepend_as_paths.setter
-    def prepend_as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def prepend_as_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prepend_as_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTypes")
-    def route_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         """
         return pulumi.get(self, "route_types")
 
     @route_types.setter
-    def route_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_types", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceChildInstanceTypes")
-    def source_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_child_instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         """
         return pulumi.get(self, "source_child_instance_types")
 
     @source_child_instance_types.setter
-    def source_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_child_instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_child_instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceIds")
-    def source_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source instances.
         """
         return pulumi.get(self, "source_instance_ids")
 
     @source_instance_ids.setter
-    def source_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceIdsReverseMatch")
-    def source_instance_ids_reverse_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def source_instance_ids_reverse_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
         return pulumi.get(self, "source_instance_ids_reverse_match")
 
     @source_instance_ids_reverse_match.setter
-    def source_instance_ids_reverse_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def source_instance_ids_reverse_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "source_instance_ids_reverse_match", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionIds")
-    def source_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         """
         return pulumi.get(self, "source_region_ids")
 
     @source_region_ids.setter
-    def source_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_region_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRouteTableIds")
-    def source_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         """
         return pulumi.get(self, "source_route_table_ids")
 
     @source_route_table_ids.setter
-    def source_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteTableId")
-    def transit_router_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
-    def transit_router_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_table_id", value)
 
 
 @pulumi.input_type
 class _RouteMapState:
     def __init__(__self__, *,
-                 as_path_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_operate_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 map_result: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 next_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preference: Optional[pulumi.Input[_builtins.int]] = None,
-                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transmit_direction: Optional[pulumi.Input[_builtins.str]] = None):
+                 as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 map_result: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preference: pulumi.Input[Optional[_builtins.int]] = None,
+                 prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transmit_direction: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteMap resources.
 
@@ -598,362 +598,362 @@ class _RouteMapState:
 
     @_builtins.property
     @pulumi.getter(name="asPathMatchMode")
-    def as_path_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def as_path_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "as_path_match_mode")
 
     @as_path_match_mode.setter
-    def as_path_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def as_path_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "as_path_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenRegionId")
-    def cen_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region to which the CEN instance belongs.
         """
         return pulumi.get(self, "cen_region_id")
 
     @cen_region_id.setter
-    def cen_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMatchMode")
-    def cidr_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "cidr_match_mode")
 
     @cidr_match_mode.setter
-    def cidr_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="communityMatchMode")
-    def community_match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def community_match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A match statement. It indicates the mode in which the community attribute is matched. Valid values: ["Include", "Complete"].
         """
         return pulumi.get(self, "community_match_mode")
 
     @community_match_mode.setter
-    def community_match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def community_match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "community_match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="communityOperateMode")
-    def community_operate_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def community_operate_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An action statement. It indicates the mode in which the community attribute is operated. Valid values: ["Additive", "Replace"].
         """
         return pulumi.get(self, "community_operate_mode")
 
     @community_operate_mode.setter
-    def community_operate_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def community_operate_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "community_operate_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the route map.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationChildInstanceTypes")
-    def destination_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_child_instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of destination instance types. Valid values: ["VPC", "VBR", "CCN", "VPN"].
         """
         return pulumi.get(self, "destination_child_instance_types")
 
     @destination_child_instance_types.setter
-    def destination_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_child_instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_child_instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlocks")
-    def destination_cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_cidr_blocks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
         """
         return pulumi.get(self, "destination_cidr_blocks")
 
     @destination_cidr_blocks.setter
-    def destination_cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_cidr_blocks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_cidr_blocks", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationInstanceIds")
-    def destination_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the destination instances.
         """
         return pulumi.get(self, "destination_instance_ids")
 
     @destination_instance_ids.setter
-    def destination_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationInstanceIdsReverseMatch")
-    def destination_instance_ids_reverse_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def destination_instance_ids_reverse_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
         return pulumi.get(self, "destination_instance_ids_reverse_match")
 
     @destination_instance_ids_reverse_match.setter
-    def destination_instance_ids_reverse_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def destination_instance_ids_reverse_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "destination_instance_ids_reverse_match", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRouteTableIds")
-    def destination_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def destination_route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
         """
         return pulumi.get(self, "destination_route_table_ids")
 
     @destination_route_table_ids.setter
-    def destination_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def destination_route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "destination_route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="mapResult")
-    def map_result(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_result(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action that is performed to a route if the route matches all the match conditions. Valid values: ["Permit", "Deny"].
         """
         return pulumi.get(self, "map_result")
 
     @map_result.setter
-    def map_result(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_result(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_result", value)
 
     @_builtins.property
     @pulumi.getter(name="matchAsns")
-    def match_asns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_asns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
         """
         return pulumi.get(self, "match_asns")
 
     @match_asns.setter
-    def match_asns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_asns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_asns", value)
 
     @_builtins.property
     @pulumi.getter(name="matchCommunitySets")
-    def match_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def match_community_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
         return pulumi.get(self, "match_community_sets")
 
     @match_community_sets.setter
-    def match_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def match_community_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "match_community_sets", value)
 
     @_builtins.property
     @pulumi.getter(name="nextPriority")
-    def next_priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def next_priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
         """
         return pulumi.get(self, "next_priority")
 
     @next_priority.setter
-    def next_priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def next_priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "next_priority", value)
 
     @_builtins.property
     @pulumi.getter(name="operateCommunitySets")
-    def operate_community_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def operate_community_sets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
         """
         return pulumi.get(self, "operate_community_sets")
 
     @operate_community_sets.setter
-    def operate_community_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def operate_community_sets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "operate_community_sets", value)
 
     @_builtins.property
     @pulumi.getter
-    def preference(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def preference(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
         """
         return pulumi.get(self, "preference")
 
     @preference.setter
-    def preference(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def preference(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "preference", value)
 
     @_builtins.property
     @pulumi.getter(name="prependAsPaths")
-    def prepend_as_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def prepend_as_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
         """
         return pulumi.get(self, "prepend_as_paths")
 
     @prepend_as_paths.setter
-    def prepend_as_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def prepend_as_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prepend_as_paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="routeMapId")
-    def route_map_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_map_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the RouteMap. It is available in 1.161.0+.
         """
         return pulumi.get(self, "route_map_id")
 
     @route_map_id.setter
-    def route_map_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_map_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_map_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTypes")
-    def route_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def route_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of route types. Valid values: ["System", "Custom", "BGP"].
         """
         return pulumi.get(self, "route_types")
 
     @route_types.setter
-    def route_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def route_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "route_types", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceChildInstanceTypes")
-    def source_child_instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_child_instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of source instance types. Valid values: ["VPC", "VBR", "CCN"].
         """
         return pulumi.get(self, "source_child_instance_types")
 
     @source_child_instance_types.setter
-    def source_child_instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_child_instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_child_instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceIds")
-    def source_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source instances.
         """
         return pulumi.get(self, "source_instance_ids")
 
     @source_instance_ids.setter
-    def source_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceInstanceIdsReverseMatch")
-    def source_instance_ids_reverse_match(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def source_instance_ids_reverse_match(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: ["false", "true"]. Default to "false".
         """
         return pulumi.get(self, "source_instance_ids_reverse_match")
 
     @source_instance_ids_reverse_match.setter
-    def source_instance_ids_reverse_match(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def source_instance_ids_reverse_match(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "source_instance_ids_reverse_match", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRegionIds")
-    def source_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
         """
         return pulumi.get(self, "source_region_ids")
 
     @source_region_ids.setter
-    def source_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_region_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRouteTableIds")
-    def source_route_table_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_route_table_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
         """
         return pulumi.get(self, "source_route_table_ids")
 
     @source_route_table_ids.setter
-    def source_route_table_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_route_table_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_route_table_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Computed) The status of route map. Valid values: ["Creating", "Active", "Deleting"].
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterRouteTableId")
-    def transit_router_route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
         """
         return pulumi.get(self, "transit_router_route_table_id")
 
     @transit_router_route_table_id.setter
-    def transit_router_route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_route_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transmitDirection")
-    def transmit_direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transmit_direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction in which the route map is applied. Valid values: ["RegionIn", "RegionOut"].
         """
         return pulumi.get(self, "transmit_direction")
 
     @transmit_direction.setter
-    def transmit_direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transmit_direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transmit_direction", value)
 
 
@@ -963,34 +963,34 @@ class RouteMap(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 as_path_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_operate_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 map_result: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 next_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preference: Optional[pulumi.Input[_builtins.int]] = None,
-                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transmit_direction: Optional[pulumi.Input[_builtins.str]] = None,
+                 as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 map_result: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preference: pulumi.Input[Optional[_builtins.int]] = None,
+                 prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transmit_direction: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This topic provides an overview of the route map function of Cloud Enterprise Networks (CENs).
@@ -1212,34 +1212,34 @@ class RouteMap(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 as_path_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 community_operate_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 destination_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 map_result: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 next_priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preference: Optional[pulumi.Input[_builtins.int]] = None,
-                 prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 route_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transmit_direction: Optional[pulumi.Input[_builtins.str]] = None,
+                 as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 map_result: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preference: pulumi.Input[Optional[_builtins.int]] = None,
+                 prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transmit_direction: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1299,36 +1299,36 @@ class RouteMap(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            as_path_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            community_match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            community_operate_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            destination_cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            destination_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            destination_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-            destination_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            map_result: Optional[pulumi.Input[_builtins.str]] = None,
-            match_asns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            match_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            next_priority: Optional[pulumi.Input[_builtins.int]] = None,
-            operate_community_sets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            preference: Optional[pulumi.Input[_builtins.int]] = None,
-            prepend_as_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            route_map_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_child_instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_instance_ids_reverse_match: Optional[pulumi.Input[_builtins.bool]] = None,
-            source_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source_route_table_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transmit_direction: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouteMap':
+            as_path_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            community_match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            community_operate_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_cidr_blocks: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            destination_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+            destination_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            map_result: pulumi.Input[Optional[_builtins.str]] = None,
+            match_asns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            match_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            next_priority: pulumi.Input[Optional[_builtins.int]] = None,
+            operate_community_sets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preference: pulumi.Input[Optional[_builtins.int]] = None,
+            prepend_as_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            route_map_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_child_instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_instance_ids_reverse_match: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source_route_table_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transmit_direction: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouteMap':
         """
         Get an existing RouteMap resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

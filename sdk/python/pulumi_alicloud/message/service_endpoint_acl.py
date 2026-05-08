@@ -79,9 +79,9 @@ class ServiceEndpointAclArgs:
 @pulumi.input_type
 class _ServiceEndpointAclState:
     def __init__(__self__, *,
-                 acl_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEndpointAcl resources.
 
@@ -101,7 +101,7 @@ class _ServiceEndpointAclState:
 
     @_builtins.property
     @pulumi.getter(name="aclStrategy")
-    def acl_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACL policy. Valid value:
         - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
@@ -109,12 +109,12 @@ class _ServiceEndpointAclState:
         return pulumi.get(self, "acl_strategy")
 
     @acl_strategy.setter
-    def acl_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block.
         > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
@@ -122,12 +122,12 @@ class _ServiceEndpointAclState:
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point type. Value:
         - public: indicates a public access point. (Currently only public is supported)
@@ -135,7 +135,7 @@ class _ServiceEndpointAclState:
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
 
@@ -145,9 +145,9 @@ class ServiceEndpointAcl(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Endpoint Acl resource.
@@ -249,9 +249,9 @@ class ServiceEndpointAcl(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -280,9 +280,9 @@ class ServiceEndpointAcl(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceEndpointAcl':
+            acl_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceEndpointAcl':
         """
         Get an existing ServiceEndpointAcl resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

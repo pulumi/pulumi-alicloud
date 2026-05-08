@@ -193,6 +193,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
@@ -207,7 +208,7 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id="me-east-1a")
-    vswitch = []
+    vswitch: list[Any] = []
     def create_vswitch(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -226,13 +227,13 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=vswitch_id,
+        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",
         payment_type="Subscription",
         enable_ipsec=True,
-        bandwidth=spec)
+        bandwidth=int(spec))
     vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
         include_reservation_data=True,
         output_file="/tmp/vpns")
@@ -275,15 +276,15 @@ def get_gateways(business_status: Optional[_builtins.str] = None,
         ssl_vpn=pulumi.get(__ret__, 'ssl_vpn'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        enable_ipsec: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        include_reservation_data: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        ssl_vpn: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gateways_output(business_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        enable_ipsec: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        include_reservation_data: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        ssl_vpn: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     The VPNs data source lists a number of VPNs resource information owned by an Alicloud account.
@@ -294,6 +295,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtin
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
     import pulumi_std as std
 
@@ -308,7 +310,7 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtin
     default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
     default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
         zone_id="me-east-1a")
-    vswitch = []
+    vswitch: list[Any] = []
     def create_vswitch(range_body):
         for range in [{"value": i} for i in range(0, range_body)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
@@ -327,13 +329,13 @@ def get_gateways_output(business_status: Optional[pulumi.Input[Optional[_builtin
     default_gateway = alicloud.vpn.Gateway("default",
         vpn_type="Normal",
         vpn_gateway_name=name,
-        vswitch_id=vswitch_id,
+        vswitch_id=output(vswitch_id).apply(lambda x: str(x)),
         auto_pay=True,
         vpc_id=default_get_networks.ids[0],
         network_type="public",
         payment_type="Subscription",
         enable_ipsec=True,
-        bandwidth=spec)
+        bandwidth=int(spec))
     vpn_gateways = alicloud.vpn.get_gateways_output(ids=[default_gateway.id],
         include_reservation_data=True,
         output_file="/tmp/vpns")

@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Oss
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.Index.Uuid("default");
+    ///     var @default = new Random.Uuid("default");
     /// 
     ///     var defaultnVj9x3 = new AliCloud.Oss.Bucket("defaultnVj9x3", new()
     ///     {

@@ -157,11 +157,11 @@ def get_server_group_server_attachments(ids: Optional[Sequence[_builtins.str]] =
         server_group_id=pulumi.get(__ret__, 'server_group_id'),
         server_ids=pulumi.get(__ret__, 'server_ids'),
         server_ips=pulumi.get(__ret__, 'server_ips'))
-def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               server_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               server_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                               server_ips: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_server_group_server_attachments_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               server_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               server_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                               server_ips: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerGroupServerAttachmentsResult]:
     """
     This data source provides the Nlb Server Group Server Attachments of the current Alibaba Cloud user.

@@ -206,13 +206,13 @@ def get_policy_attachments(language: Optional[_builtins.str] = None,
         principal_name=pulumi.get(__ret__, 'principal_name'),
         principal_type=pulumi.get(__ret__, 'principal_type'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-def get_policy_attachments_output(language: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  policy_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  principal_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  principal_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_policy_attachments_output(language: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  policy_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  policy_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  principal_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  principal_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyAttachmentsResult]:
     """
     This data source provides the Resource Manager Policy Attachments of the current Alibaba Cloud user.

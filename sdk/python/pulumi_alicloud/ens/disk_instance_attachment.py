@@ -21,7 +21,7 @@ class DiskInstanceAttachmentArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_with_instance: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskInstanceAttachment resource.
 
@@ -60,23 +60,23 @@ class DiskInstanceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
         """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_with_instance", value)
 
 
 @pulumi.input_type
 class _DiskInstanceAttachmentState:
     def __init__(__self__, *,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 delete_with_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskInstanceAttachment resources.
 
@@ -93,38 +93,38 @@ class _DiskInstanceAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the cloud disk to be mounted is released with the instance  Value: true: When the instance is released, the cloud disk is released together with the instance. false: When the instance is released, the cloud disk is retained and is not released together with the instance. Empty means false by default.
         """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete_with_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud disk to be mounted. The Cloud Disk (DiskId) and the instance (InstanceId) must be on the same node.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -134,9 +134,9 @@ class DiskInstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ENS Disk Instance Attachment resource. Disk instance mount.
@@ -279,9 +279,9 @@ class DiskInstanceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,9 +308,9 @@ class DiskInstanceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delete_with_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DiskInstanceAttachment':
+            delete_with_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DiskInstanceAttachment':
         """
         Get an existing DiskInstanceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

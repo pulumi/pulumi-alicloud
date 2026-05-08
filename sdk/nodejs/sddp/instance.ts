@@ -247,87 +247,87 @@ export interface InstanceState {
     /**
      * Whether the required RAM authorization is configured.
      */
-    authed?: pulumi.Input<boolean>;
+    authed?: pulumi.Input<boolean | undefined>;
     /**
      * The dataphin. Valid values: `yes`,`no`.
      */
-    dataphin?: pulumi.Input<string>;
+    dataphin?: pulumi.Input<string | undefined>;
     /**
      * The dataphin count. Valid values: 1 to 20.
      */
-    dataphinCount?: pulumi.Input<string>;
+    dataphinCount?: pulumi.Input<string | undefined>;
     /**
      * The number of instances.
      */
-    instanceNum?: pulumi.Input<string>;
+    instanceNum?: pulumi.Input<string | undefined>;
     /**
      * The logistics.
      */
-    logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string | undefined>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Whether the authorized MaxCompute (ODPS) assets.
      */
-    odpsSet?: pulumi.Input<boolean>;
+    odpsSet?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the authorized oss assets.
      */
-    ossBucketSet?: pulumi.Input<boolean>;
+    ossBucketSet?: pulumi.Input<boolean | undefined>;
     /**
      * The OSS storage capacity.
      */
-    ossSize?: pulumi.Input<string>;
+    ossSize?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Whether the authorized rds assets.
      */
-    rdsSet?: pulumi.Input<boolean>;
+    rdsSet?: pulumi.Input<boolean | undefined>;
     /**
      * The remaining days of the protection period of the assets in the current login account.
      */
-    remainDays?: pulumi.Input<string>;
+    remainDays?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the database. Valid values:`yes`,`no`.
      */
-    sdCbool?: pulumi.Input<string>;
+    sdCbool?: pulumi.Input<string | undefined>;
     /**
      * The number of instances.
      */
-    sdc?: pulumi.Input<string>;
+    sdc?: pulumi.Input<string | undefined>;
     /**
      * The sddp version. Valid values: `versionAudit`,`versionCompany`,`versionDlp`.
      */
-    sddpVersion?: pulumi.Input<string>;
+    sddpVersion?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether to use OSS. Valid values: `yes`,`no`.
      */
-    udCbool?: pulumi.Input<string>;
+    udCbool?: pulumi.Input<string | undefined>;
     /**
      * OSS Size.
      */
-    udc?: pulumi.Input<string>;
+    udc?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,23 +337,23 @@ export interface InstanceArgs {
     /**
      * The dataphin. Valid values: `yes`,`no`.
      */
-    dataphin?: pulumi.Input<string>;
+    dataphin?: pulumi.Input<string | undefined>;
     /**
      * The dataphin count. Valid values: 1 to 20.
      */
-    dataphinCount?: pulumi.Input<string>;
+    dataphinCount?: pulumi.Input<string | undefined>;
     /**
      * The logistics.
      */
-    logistics?: pulumi.Input<string>;
+    logistics?: pulumi.Input<string | undefined>;
     /**
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute a update operation.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * The OSS storage capacity.
      */
-    ossSize?: pulumi.Input<string>;
+    ossSize?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `Subscription`.
      */
@@ -365,11 +365,11 @@ export interface InstanceArgs {
     /**
      * Automatic renewal period. **NOTE:** The `renewPeriod` is required under the condition that renewalStatus is `AutoRenewal`,
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Whether to use the database. Valid values:`yes`,`no`.
      */

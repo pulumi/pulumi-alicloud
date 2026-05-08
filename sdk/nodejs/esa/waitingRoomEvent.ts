@@ -301,87 +301,87 @@ export interface WaitingRoomEventState {
     /**
      * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * Waiting room description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable session renewal. Value:
      */
-    disableSessionRenewalEnable?: pulumi.Input<string>;
+    disableSessionRenewalEnable?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the end time of the event.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * JSON response switch. Value:
      */
-    jsonResponseEnable?: pulumi.Input<string>;
+    jsonResponseEnable?: pulumi.Input<string | undefined>;
     /**
      * Default language setting. Values include:
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Number of new users per minute.
      */
-    newUsersPerMinute?: pulumi.Input<string>;
+    newUsersPerMinute?: pulumi.Input<string | undefined>;
     /**
      * Pre-queue switch.
      */
-    preQueueEnable?: pulumi.Input<string>;
+    preQueueEnable?: pulumi.Input<string | undefined>;
     /**
      * Pre-queue start time.
      */
-    preQueueStartTime?: pulumi.Input<string>;
+    preQueueStartTime?: pulumi.Input<string | undefined>;
     /**
      * Way of queuing. Value:
      */
-    queuingMethod?: pulumi.Input<string>;
+    queuingMethod?: pulumi.Input<string | undefined>;
     /**
      * Waiting room status code. Value:
      */
-    queuingStatusCode?: pulumi.Input<string>;
+    queuingStatusCode?: pulumi.Input<string | undefined>;
     /**
      * Random queue switch.
      */
-    randomPreQueueEnable?: pulumi.Input<string>;
+    randomPreQueueEnable?: pulumi.Input<string | undefined>;
     /**
      * User session duration in minutes.
      */
-    sessionDuration?: pulumi.Input<string>;
+    sessionDuration?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the event start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Enabled status. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Total number of active users.
      */
-    totalActiveUsers?: pulumi.Input<string>;
+    totalActiveUsers?: pulumi.Input<string | undefined>;
     /**
      * The waiting room event ID, which can be obtained by calling the [ListWaitingRoomEvents](https://help.aliyun.com/document_detail/2850279.html) operation.
      */
-    waitingRoomEventId?: pulumi.Input<number>;
+    waitingRoomEventId?: pulumi.Input<number | undefined>;
     /**
      * Event name, custom event description.
      */
-    waitingRoomEventName?: pulumi.Input<string>;
+    waitingRoomEventName?: pulumi.Input<string | undefined>;
     /**
      * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
-    waitingRoomId?: pulumi.Input<string>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * Waiting room type. The following types are supported:
      */
-    waitingRoomType?: pulumi.Input<string>;
+    waitingRoomType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -391,15 +391,15 @@ export interface WaitingRoomEventArgs {
     /**
      * User-defined waiting room page content, when the waiting room type is custom type, you need to enter. The incoming content needs to be base64 encoded.
      */
-    customPageHtml?: pulumi.Input<string>;
+    customPageHtml?: pulumi.Input<string | undefined>;
     /**
      * Waiting room description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disable session renewal. Value:
      */
-    disableSessionRenewalEnable?: pulumi.Input<string>;
+    disableSessionRenewalEnable?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the end time of the event.
      */
@@ -407,11 +407,11 @@ export interface WaitingRoomEventArgs {
     /**
      * JSON response switch. Value:
      */
-    jsonResponseEnable?: pulumi.Input<string>;
+    jsonResponseEnable?: pulumi.Input<string | undefined>;
     /**
      * Default language setting. Values include:
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Number of new users per minute.
      */
@@ -419,11 +419,11 @@ export interface WaitingRoomEventArgs {
     /**
      * Pre-queue switch.
      */
-    preQueueEnable?: pulumi.Input<string>;
+    preQueueEnable?: pulumi.Input<string | undefined>;
     /**
      * Pre-queue start time.
      */
-    preQueueStartTime?: pulumi.Input<string>;
+    preQueueStartTime?: pulumi.Input<string | undefined>;
     /**
      * Way of queuing. Value:
      */
@@ -435,7 +435,7 @@ export interface WaitingRoomEventArgs {
     /**
      * Random queue switch.
      */
-    randomPreQueueEnable?: pulumi.Input<string>;
+    randomPreQueueEnable?: pulumi.Input<string | undefined>;
     /**
      * User session duration in minutes.
      */
@@ -463,7 +463,7 @@ export interface WaitingRoomEventArgs {
     /**
      * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
-    waitingRoomId?: pulumi.Input<string>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * Waiting room type. The following types are supported:
      */

@@ -247,38 +247,38 @@ export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getSnapshots.
  */
 export interface GetSnapshotsOutputArgs {
-    category?: pulumi.Input<string>;
-    dryRun?: pulumi.Input<boolean>;
+    category?: pulumi.Input<string | undefined>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the snapshot is encrypted or not.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * A list of snapshot IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    kmsKeyId?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
-    snapshotLinkId?: pulumi.Input<string>;
-    snapshotName?: pulumi.Input<string>;
-    snapshotType?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    snapshotLinkId?: pulumi.Input<string | undefined>;
+    snapshotName?: pulumi.Input<string | undefined>;
+    snapshotType?: pulumi.Input<string | undefined>;
     /**
      * Source disk attribute. Value range: `System`,`Data`.
      */
-    sourceDiskType?: pulumi.Input<string>;
+    sourceDiskType?: pulumi.Input<string | undefined>;
     /**
      * The snapshot status. Value range: `progressing`, `accomplished` and `failed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the snapshot.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    type?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `imageDisk` and `none`.
      */
-    usage?: pulumi.Input<string>;
+    usage?: pulumi.Input<string | undefined>;
 }

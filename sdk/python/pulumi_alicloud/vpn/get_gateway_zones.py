@@ -136,9 +136,9 @@ def get_gateway_zones(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         spec=pulumi.get(__ret__, 'spec'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_gateway_zones_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             spec: Optional[pulumi.Input[_builtins.str]] = None,
+def get_gateway_zones_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             spec: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayZonesResult]:
     """
     This data source provides VPN Gateway Zone available to the user.[What is Zone](https://next.api.alibabacloud.com/api/Vpc/2016-04-28/DescribeVpnGatewayAvailableZones?lang=JAVA)

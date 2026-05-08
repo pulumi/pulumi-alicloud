@@ -149,11 +149,11 @@ export interface UserPermissionState {
     /**
      * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[] | undefined>;
     /**
      * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      */
-    subAccountUserId?: pulumi.Input<string>;
+    subAccountUserId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface UserPermissionArgs {
     /**
      * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      */
-    permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[]>;
+    permissions?: pulumi.Input<pulumi.Input<inputs.servicemesh.UserPermissionPermission>[] | undefined>;
     /**
      * The configuration of the Load Balancer. See the following `Block loadBalancer`.
      */

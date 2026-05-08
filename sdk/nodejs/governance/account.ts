@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     accountNamePrefix: `${name}-${defaultInteger.result}`,
  *     folderId: defaultGetFolders.then(defaultGetFolders => defaultGetFolders.ids?.[0]),
  *     baselineId: defaultGetBaselines.then(defaultGetBaselines => defaultGetBaselines.ids?.[0]),
- *     payerAccountId: _default.then(_default => _default.id),
+ *     payerAccountId: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  *     displayName: `${name}-${defaultInteger.result}`,
  * });
  * ```
@@ -184,33 +184,33 @@ export interface AccountState {
      * - If you are creating a new resource account, this parameter is not required.
      * - If you are enrolling a existing account to account factory, this parameter is required.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * Account name prefix.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The tags of the account See `accountTags` below.
      */
-    accountTags?: pulumi.Input<pulumi.Input<inputs.governance.AccountAccountTag>[]>;
+    accountTags?: pulumi.Input<pulumi.Input<inputs.governance.AccountAccountTag>[] | undefined>;
     /**
      * The baseline ID.
      *
      * If it is left blank, the system default baseline is used by default.
      */
-    baselineId?: pulumi.Input<string>;
+    baselineId?: pulumi.Input<string | undefined>;
     /**
      * The domain name is used to qualify the login name of RAM users and RAM roles.
      */
-    defaultDomainName?: pulumi.Input<string>;
+    defaultDomainName?: pulumi.Input<string | undefined>;
     /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent resource folder.
      *
@@ -218,15 +218,15 @@ export interface AccountState {
      *
      * If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
-    payerAccountId?: pulumi.Input<number>;
+    payerAccountId?: pulumi.Input<number | undefined>;
     /**
      * Account registration status. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -238,17 +238,17 @@ export interface AccountArgs {
      * - If you are creating a new resource account, this parameter is not required.
      * - If you are enrolling a existing account to account factory, this parameter is required.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * Account name prefix.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    accountNamePrefix?: pulumi.Input<string>;
+    accountNamePrefix?: pulumi.Input<string | undefined>;
     /**
      * The tags of the account See `accountTags` below.
      */
-    accountTags?: pulumi.Input<pulumi.Input<inputs.governance.AccountAccountTag>[]>;
+    accountTags?: pulumi.Input<pulumi.Input<inputs.governance.AccountAccountTag>[] | undefined>;
     /**
      * The baseline ID.
      *
@@ -258,13 +258,13 @@ export interface AccountArgs {
     /**
      * The domain name is used to qualify the login name of RAM users and RAM roles.
      */
-    defaultDomainName?: pulumi.Input<string>;
+    defaultDomainName?: pulumi.Input<string | undefined>;
     /**
      * The account display name.
      * - This parameter is required if you are creating a new resource account.
      * - If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the parent resource folder.
      *
@@ -272,9 +272,9 @@ export interface AccountArgs {
      *
      * If the registration application is applied to an existing account, this parameter does not need to be filled in.
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
      */
-    payerAccountId?: pulumi.Input<number>;
+    payerAccountId?: pulumi.Input<number | undefined>;
 }

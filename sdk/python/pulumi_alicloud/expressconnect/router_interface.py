@@ -24,28 +24,28 @@ class RouterInterfaceArgs:
                  router_id: pulumi.Input[_builtins.str],
                  router_type: pulumi.Input[_builtins.str],
                  spec: pulumi.Input[_builtins.str],
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_target_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_health_check_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fast_link_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hc_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 hc_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RouterInterface resource.
 
@@ -262,177 +262,177 @@ class RouterInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point ID
         """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
-    def access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
     @_utilities.deprecated("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field 'name' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. Value:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteHealthCheckIp")
-    def delete_health_check_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_health_check_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the health check IP address configured on the router interface. Value:
         """
         return pulumi.get(self, "delete_health_check_ip")
 
     @delete_health_check_ip.setter
-    def delete_health_check_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_health_check_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_health_check_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fastLinkMode")
-    def fast_link_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_link_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
         """
         return pulumi.get(self, "fast_link_mode")
 
     @fast_link_mode.setter
-    def fast_link_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_link_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_link_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="hcRate")
-    def hc_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hc_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         """
         return pulumi.get(self, "hc_rate")
 
     @hc_rate.setter
-    def hc_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hc_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hc_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="hcThreshold")
-    def hc_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hc_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         """
         return pulumi.get(self, "hc_threshold")
 
     @hc_threshold.setter
-    def hc_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hc_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hc_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckSourceIp")
-    def health_check_source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_source_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check source IP address
         """
         return pulumi.get(self, "health_check_source_ip")
 
     @health_check_source_ip.setter
-    def health_check_source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_source_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_source_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTargetIp")
-    def health_check_target_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_target_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check destination IP address
         """
         return pulumi.get(self, "health_check_target_ip")
 
     @health_check_target_ip.setter
-    def health_check_target_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_target_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_target_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeAccessPointId")
-    def opposite_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peer access point ID
         """
         return pulumi.get(self, "opposite_access_point_id")
 
     @opposite_access_point_id.setter
-    def opposite_access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
     @_utilities.deprecated("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
-    def opposite_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "opposite_interface_id")
 
     @opposite_interface_id.setter
-    def opposite_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID of the peer router interface
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @opposite_interface_owner_id.setter
-    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router to which the opposite router interface belongs.
         """
         return pulumi.get(self, "opposite_router_id")
 
     @opposite_router_id.setter
-    def opposite_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The router type associated with the peer router interface. Valid values:
         - VRouter: VPC router.
@@ -441,12 +441,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "opposite_router_type")
 
     @opposite_router_type.setter
-    def opposite_router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of the router interface. Valid values:
         - Subscription : PrePaid.
@@ -455,12 +455,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Purchase duration, value:
         - When you choose to pay on a monthly basis, the value range is **1 to 9**.
@@ -474,12 +474,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the prepaid fee. Valid values:
         - `Month` (default): monthly payment.
@@ -494,36 +494,36 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceName")
-    def router_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "router_interface_name")
 
     @router_interface_name.setter
-    def router_interface_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_interface_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_interface_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource. Value range:
         - Idle : Initialize.
@@ -540,12 +540,12 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -554,58 +554,58 @@ class RouterInterfaceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _RouterInterfaceState:
     def __init__(__self__, *,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 connected_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_border: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 has_reservation_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_target_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 opposite_interface_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_active_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reservation_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 connected_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_border: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_health_check_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 fast_link_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 has_reservation_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 hc_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 hc_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 opposite_interface_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_active_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reservation_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
 
@@ -803,321 +803,321 @@ class _RouterInterfaceState:
 
     @_builtins.property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point ID
         """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
-    def access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
     @_utilities.deprecated("""Field 'auto_pay' has been deprecated since provider version 1.263.0.""")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field 'name' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. Value:
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the router interface
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="businessStatus")
-    def business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service status of the router interface.
         """
         return pulumi.get(self, "business_status")
 
     @business_status.setter
-    def business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="connectedTime")
-    def connected_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connected_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time the connection was established
         """
         return pulumi.get(self, "connected_time")
 
     @connected_time.setter
-    def connected_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connected_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connected_time", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossBorder")
-    def cross_border(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cross_border(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         CrossBorder
         """
         return pulumi.get(self, "cross_border")
 
     @cross_border.setter
-    def cross_border(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cross_border(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cross_border", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteHealthCheckIp")
-    def delete_health_check_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_health_check_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the health check IP address configured on the router interface. Value:
         """
         return pulumi.get(self, "delete_health_check_ip")
 
     @delete_health_check_ip.setter
-    def delete_health_check_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_health_check_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_health_check_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         End Time of Prepaid
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fastLinkMode")
-    def fast_link_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fast_link_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
         """
         return pulumi.get(self, "fast_link_mode")
 
     @fast_link_mode.setter
-    def fast_link_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fast_link_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fast_link_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="hasReservationData")
-    def has_reservation_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def has_reservation_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether there is renewal data
         """
         return pulumi.get(self, "has_reservation_data")
 
     @has_reservation_data.setter
-    def has_reservation_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def has_reservation_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "has_reservation_data", value)
 
     @_builtins.property
     @pulumi.getter(name="hcRate")
-    def hc_rate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hc_rate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
         """
         return pulumi.get(self, "hc_rate")
 
     @hc_rate.setter
-    def hc_rate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hc_rate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hc_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="hcThreshold")
-    def hc_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hc_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
         """
         return pulumi.get(self, "hc_threshold")
 
     @hc_threshold.setter
-    def hc_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hc_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hc_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckSourceIp")
-    def health_check_source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_source_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check source IP address
         """
         return pulumi.get(self, "health_check_source_ip")
 
     @health_check_source_ip.setter
-    def health_check_source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_source_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_source_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTargetIp")
-    def health_check_target_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_target_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health check destination IP address
         """
         return pulumi.get(self, "health_check_target_ip")
 
     @health_check_target_ip.setter
-    def health_check_target_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_target_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_target_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeAccessPointId")
-    def opposite_access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Peer access point ID
         """
         return pulumi.get(self, "opposite_access_point_id")
 
     @opposite_access_point_id.setter
-    def opposite_access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeBandwidth")
-    def opposite_bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opposite_bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         opposite bandwidth
         """
         return pulumi.get(self, "opposite_bandwidth")
 
     @opposite_bandwidth.setter
-    def opposite_bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opposite_bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opposite_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceBusinessStatus")
-    def opposite_interface_business_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_business_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service status of the router interface on the opposite end of the connection.
         """
         return pulumi.get(self, "opposite_interface_business_status")
 
     @opposite_interface_business_status.setter
-    def opposite_interface_business_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_business_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_business_status", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceId")
     @_utilities.deprecated("""Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.""")
-    def opposite_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'router_table_id' has been deprecated from provider version 1.263.0.
         """
         return pulumi.get(self, "opposite_interface_id")
 
     @opposite_interface_id.setter
-    def opposite_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceOwnerId")
-    def opposite_interface_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account ID of the peer router interface
         """
         return pulumi.get(self, "opposite_interface_owner_id")
 
     @opposite_interface_owner_id.setter
-    def opposite_interface_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceSpec")
-    def opposite_interface_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifications of the interface of the peer router.
         """
         return pulumi.get(self, "opposite_interface_spec")
 
     @opposite_interface_spec.setter
-    def opposite_interface_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeInterfaceStatus")
-    def opposite_interface_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_interface_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the router interface on the peer of the connection.
         """
         return pulumi.get(self, "opposite_interface_status")
 
     @opposite_interface_status.setter
-    def opposite_interface_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_interface_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_interface_status", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRegionId")
-    def opposite_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region of the connection peer
         """
         return pulumi.get(self, "opposite_region_id")
 
     @opposite_region_id.setter
-    def opposite_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterId")
-    def opposite_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router to which the opposite router interface belongs.
         """
         return pulumi.get(self, "opposite_router_id")
 
     @opposite_router_id.setter
-    def opposite_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeRouterType")
-    def opposite_router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The router type associated with the peer router interface. Valid values:
         - VRouter: VPC router.
@@ -1126,24 +1126,24 @@ class _RouterInterfaceState:
         return pulumi.get(self, "opposite_router_type")
 
     @opposite_router_type.setter
-    def opposite_router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_router_type", value)
 
     @_builtins.property
     @pulumi.getter(name="oppositeVpcInstanceId")
-    def opposite_vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opposite_vpc_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The peer VPC ID
         """
         return pulumi.get(self, "opposite_vpc_instance_id")
 
     @opposite_vpc_instance_id.setter
-    def opposite_vpc_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opposite_vpc_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opposite_vpc_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of the router interface. Valid values:
         - Subscription : PrePaid.
@@ -1152,12 +1152,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Purchase duration, value:
         - When you choose to pay on a monthly basis, the value range is **1 to 9**.
@@ -1171,12 +1171,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing cycle of the prepaid fee. Valid values:
         - `Month` (default): monthly payment.
@@ -1191,72 +1191,72 @@ class _RouterInterfaceState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationActiveTime")
-    def reservation_active_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_active_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ReservationActiveTime
         """
         return pulumi.get(self, "reservation_active_time")
 
     @reservation_active_time.setter
-    def reservation_active_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_active_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_active_time", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationBandwidth")
-    def reservation_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Renew Bandwidth
         """
         return pulumi.get(self, "reservation_bandwidth")
 
     @reservation_bandwidth.setter
-    def reservation_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationInternetChargeType")
-    def reservation_internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type for Renewal
         """
         return pulumi.get(self, "reservation_internet_charge_type")
 
     @reservation_internet_charge_type.setter
-    def reservation_internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="reservationOrderType")
-    def reservation_order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reservation_order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Renewal Order Type
         """
         return pulumi.get(self, "reservation_order_type")
 
     @reservation_order_type.setter
-    def reservation_order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reservation_order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reservation_order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role of the router interface. Valid values:
         - InitiatingSide : the initiator of the connection.
@@ -1265,48 +1265,48 @@ class _RouterInterfaceState:
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the router where the route entry is located.
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceId")
-    def router_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "router_interface_id")
 
     @router_interface_id.setter
-    def router_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerInterfaceName")
-    def router_interface_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_interface_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
         """
         return pulumi.get(self, "router_interface_name")
 
     @router_interface_name.setter
-    def router_interface_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_interface_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_interface_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routerType")
-    def router_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the router where the routing table resides. Valid values:
         - VRouter:VPC router
@@ -1315,12 +1315,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "router_type")
 
     @router_type.setter
-    def router_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
         - Mini.2: 2 Mbps
@@ -1341,12 +1341,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource. Value range:
         - Idle : Initialize.
@@ -1363,12 +1363,12 @@ class _RouterInterfaceState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
 
@@ -1377,19 +1377,19 @@ class _RouterInterfaceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcInstanceId")
-    def vpc_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the local VPC in the peering connection
         """
         return pulumi.get(self, "vpc_instance_id")
 
     @vpc_instance_id.setter
-    def vpc_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_instance_id", value)
 
 
@@ -1399,33 +1399,33 @@ class RouterInterface(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_target_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_health_check_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fast_link_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hc_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 hc_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Express Connect Router Interface resource.
@@ -1669,33 +1669,33 @@ class RouterInterface(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
-                 hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_target_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_health_check_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fast_link_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 hc_rate: pulumi.Input[Optional[_builtins.int]] = None,
+                 hc_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1770,51 +1770,51 @@ class RouterInterface(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            connected_time: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_border: Optional[pulumi.Input[_builtins.bool]] = None,
-            delete_health_check_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            fast_link_mode: Optional[pulumi.Input[_builtins.bool]] = None,
-            has_reservation_data: Optional[pulumi.Input[_builtins.str]] = None,
-            hc_rate: Optional[pulumi.Input[_builtins.int]] = None,
-            hc_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_source_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_target_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            opposite_interface_business_status: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_interface_status: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_router_type: Optional[pulumi.Input[_builtins.str]] = None,
-            opposite_vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_active_time: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            reservation_order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            router_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            router_interface_name: Optional[pulumi.Input[_builtins.str]] = None,
-            router_type: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouterInterface':
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            connected_time: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_border: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_health_check_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            fast_link_mode: pulumi.Input[Optional[_builtins.bool]] = None,
+            has_reservation_data: pulumi.Input[Optional[_builtins.str]] = None,
+            hc_rate: pulumi.Input[Optional[_builtins.int]] = None,
+            hc_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_source_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_target_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            opposite_interface_business_status: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_interface_status: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_router_type: pulumi.Input[Optional[_builtins.str]] = None,
+            opposite_vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_active_time: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reservation_order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_interface_name: pulumi.Input[Optional[_builtins.str]] = None,
+            router_type: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouterInterface':
         """
         Get an existing RouterInterface resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

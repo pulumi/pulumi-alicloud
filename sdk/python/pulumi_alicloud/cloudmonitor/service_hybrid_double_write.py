@@ -88,10 +88,10 @@ class ServiceHybridDoubleWriteArgs:
 @pulumi.input_type
 class _ServiceHybridDoubleWriteState:
     def __init__(__self__, *,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceHybridDoubleWrite resources.
 
@@ -111,50 +111,50 @@ class _ServiceHybridDoubleWriteState:
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target Namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceNamespace")
-    def source_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source Namespace.
         """
         return pulumi.get(self, "source_namespace")
 
     @source_namespace.setter
-    def source_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceUserId")
-    def source_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Source UserId.
         """
         return pulumi.get(self, "source_user_id")
 
     @source_user_id.setter
-    def source_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target UserId.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -164,10 +164,10 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Hybrid Double Write resource.
@@ -277,10 +277,10 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -312,10 +312,10 @@ class ServiceHybridDoubleWrite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            source_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            source_user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceHybridDoubleWrite':
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            source_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            source_user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceHybridDoubleWrite':
         """
         Get an existing ServiceHybridDoubleWrite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

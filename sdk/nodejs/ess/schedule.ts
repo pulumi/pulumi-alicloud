@@ -100,36 +100,36 @@ export class Schedule extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Schedule resources.
  */
 export interface ScheduleState {
-    description?: pulumi.Input<string>;
-    desiredCapacity?: pulumi.Input<number>;
-    launchExpirationTime?: pulumi.Input<number>;
-    launchTime?: pulumi.Input<string>;
-    maxValue?: pulumi.Input<number>;
-    minValue?: pulumi.Input<number>;
-    recurrenceEndTime?: pulumi.Input<string>;
-    recurrenceType?: pulumi.Input<string>;
-    recurrenceValue?: pulumi.Input<string>;
-    scalingGroupId?: pulumi.Input<string>;
-    scheduledAction?: pulumi.Input<string>;
-    scheduledTaskName?: pulumi.Input<string>;
-    taskEnabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
+    launchExpirationTime?: pulumi.Input<number | undefined>;
+    launchTime?: pulumi.Input<string | undefined>;
+    maxValue?: pulumi.Input<number | undefined>;
+    minValue?: pulumi.Input<number | undefined>;
+    recurrenceEndTime?: pulumi.Input<string | undefined>;
+    recurrenceType?: pulumi.Input<string | undefined>;
+    recurrenceValue?: pulumi.Input<string | undefined>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
+    scheduledAction?: pulumi.Input<string | undefined>;
+    scheduledTaskName?: pulumi.Input<string | undefined>;
+    taskEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**
  * The set of arguments for constructing a Schedule resource.
  */
 export interface ScheduleArgs {
-    description?: pulumi.Input<string>;
-    desiredCapacity?: pulumi.Input<number>;
-    launchExpirationTime?: pulumi.Input<number>;
-    launchTime?: pulumi.Input<string>;
-    maxValue?: pulumi.Input<number>;
-    minValue?: pulumi.Input<number>;
-    recurrenceEndTime?: pulumi.Input<string>;
-    recurrenceType?: pulumi.Input<string>;
-    recurrenceValue?: pulumi.Input<string>;
-    scalingGroupId?: pulumi.Input<string>;
-    scheduledAction?: pulumi.Input<string>;
-    scheduledTaskName?: pulumi.Input<string>;
-    taskEnabled?: pulumi.Input<boolean>;
+    description?: pulumi.Input<string | undefined>;
+    desiredCapacity?: pulumi.Input<number | undefined>;
+    launchExpirationTime?: pulumi.Input<number | undefined>;
+    launchTime?: pulumi.Input<string | undefined>;
+    maxValue?: pulumi.Input<number | undefined>;
+    minValue?: pulumi.Input<number | undefined>;
+    recurrenceEndTime?: pulumi.Input<string | undefined>;
+    recurrenceType?: pulumi.Input<string | undefined>;
+    recurrenceValue?: pulumi.Input<string | undefined>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
+    scheduledAction?: pulumi.Input<string | undefined>;
+    scheduledTaskName?: pulumi.Input<string | undefined>;
+    taskEnabled?: pulumi.Input<boolean | undefined>;
 }

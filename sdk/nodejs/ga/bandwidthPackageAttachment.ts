@@ -135,19 +135,19 @@ export interface BandwidthPackageAttachmentState {
     /**
      * The ID of the Global Accelerator instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * Accelerators bound with current Bandwidth Package.
      */
-    accelerators?: pulumi.Input<pulumi.Input<string>[]>;
+    accelerators?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidthPackageId` can be modified.
      */
-    bandwidthPackageId?: pulumi.Input<string>;
+    bandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * State of Bandwidth Package.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

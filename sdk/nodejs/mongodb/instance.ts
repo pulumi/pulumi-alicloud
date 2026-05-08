@@ -497,202 +497,202 @@ export interface InstanceState {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
-    backupInterval?: pulumi.Input<string>;
+    backupInterval?: pulumi.Input<string | undefined>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of full backups.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup retention policy configured for the instance. Valid values:
      */
-    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number | undefined>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key.
      */
-    cloudDiskEncryptionKey?: pulumi.Input<string>;
+    cloudDiskEncryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
-    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
      * - 10-GB increments.
      */
-    dbInstanceStorage?: pulumi.Input<number>;
+    dbInstanceStorage?: pulumi.Input<number | undefined>;
     /**
      * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
      */
-    enableBackupLog?: pulumi.Input<number>;
+    enableBackupLog?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the custom key.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      */
-    encryptorName?: pulumi.Input<string>;
+    encryptorName?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
      */
-    forceEncryption?: pulumi.Input<string>;
+    forceEncryption?: pulumi.Input<string | undefined>;
     /**
      * The list of Global Security Group Ids.
      */
-    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
-    hiddenZoneId?: pulumi.Input<string>;
+    hiddenZoneId?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.271.0) A list of instance keys.
      */
-    keyIds?: pulumi.Input<pulumi.Input<string>[]>;
+    keyIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      */
-    logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The name of DB instance. It must be 2 to 256 characters in length.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values: `VPC`.
      * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
      * > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[] | undefined>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The provisioned IOPS. Valid values: `0` to `50000`.
      */
-    provisionedIops?: pulumi.Input<number>;
+    provisionedIops?: pulumi.Input<number | undefined>;
     /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
-    readonlyReplicas?: pulumi.Input<number>;
+    readonlyReplicas?: pulumi.Input<number | undefined>;
     /**
      * The name of the mongo replica set.
      */
-    replicaSetName?: pulumi.Input<string>;
+    replicaSetName?: pulumi.Input<string | undefined>;
     /**
      * Replica set instance information.
      */
-    replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[]>;
+    replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceReplicaSet>[] | undefined>;
     /**
      * Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * Instance data backup retention days. Available since v1.42.0.
      */
-    retentionPeriod?: pulumi.Input<number>;
+    retentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The Security Group ID of ECS.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
      * - `Flash `: single-digit second backup.
      */
-    snapshotBackupType?: pulumi.Input<string>;
+    snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
      * The source instance ID.
      */
-    srcDbInstanceId?: pulumi.Input<string>;
+    srcDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Actions performed on SSL functions. Valid values:
      * - `Open`: turn on SSL encryption.
@@ -700,45 +700,45 @@ export interface InstanceState {
      * - `Update`: update SSL certificate.
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
-    sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string | undefined>;
     /**
      * Status of the SSL feature.
      */
-    sslStatus?: pulumi.Input<string>;
+    sslStatus?: pulumi.Input<string | undefined>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
-    storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string | undefined>;
     /**
      * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.271.0) The information of nodes in the zone.
      */
-    zoneInfos?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceZoneInfo>[]>;
+    zoneInfos?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceZoneInfo>[] | undefined>;
 }
 
 /**
@@ -748,40 +748,40 @@ export interface InstanceArgs {
     /**
      * Password of the root account. It is a string of 6 to 32 characters and is composed of letters, numbers, and underlines.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period. Unit: months. Valid values: `1` to `12`.
      * > **NOTE:** If `autoRenew` is set to `true`, `autoRenewDuration` must be set.
      */
-    autoRenewDuration?: pulumi.Input<number>;
+    autoRenewDuration?: pulumi.Input<number | undefined>;
     /**
      * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
      */
-    backupInterval?: pulumi.Input<string>;
+    backupInterval?: pulumi.Input<string | undefined>;
     /**
      * MongoDB Instance backup period. It is required when `backupTime` was existed. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]. Default to [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      */
-    backupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    backupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of full backups.
      */
-    backupRetentionPeriod?: pulumi.Input<number>;
+    backupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The backup retention policy configured for the instance. Valid values:
      */
-    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number>;
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<number | undefined>;
     /**
      * MongoDB instance backup time. It is required when `backupPeriod` was existed. In the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. If not set, the system will return a default, like "23:00Z-24:00Z".
      */
-    backupTime?: pulumi.Input<string>;
+    backupTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the encryption key.
      */
-    cloudDiskEncryptionKey?: pulumi.Input<string>;
+    cloudDiskEncryptionKey?: pulumi.Input<string | undefined>;
     /**
      * Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
      */
@@ -789,7 +789,7 @@ export interface InstanceArgs {
     /**
      * Indicates whether release protection is enabled for the instance. Valid values: `true`, `false`.
      */
-    dbInstanceReleaseProtection?: pulumi.Input<boolean>;
+    dbInstanceReleaseProtection?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined DB instance storage space.Unit: GB. Value range:
      * - Custom storage space.
@@ -799,23 +799,23 @@ export interface InstanceArgs {
     /**
      * The time when the changed configurations take effect. Valid values: `Immediately`, `MaintainTime`.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the log backup feature. Valid values:
      */
-    enableBackupLog?: pulumi.Input<number>;
+    enableBackupLog?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the custom key.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The encryption method. **NOTE:** `encryptorName` is valid only when `tdeStatus` is set to `enabled`.
      */
-    encryptorName?: pulumi.Input<string>;
+    encryptorName?: pulumi.Input<string | undefined>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`. **NOTE:** From version 1.225.0, `engineVersion` can be modified.
      */
@@ -823,111 +823,111 @@ export interface InstanceArgs {
     /**
      * Specifies whether to forcibly enable SSL encryption for connections. Valid values:
      */
-    forceEncryption?: pulumi.Input<string>;
+    forceEncryption?: pulumi.Input<string | undefined>;
     /**
      * The list of Global Security Group Ids.
      */
-    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
+    globalSecurityGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configure the zone where the hidden node is located to deploy multiple zones. **NOTE:** This parameter value cannot be the same as `zoneId` and `secondaryZoneId` parameter values. From version 1.253.0, `hiddenZoneId` can be modified.
      */
-    hiddenZoneId?: pulumi.Input<string>;
+    hiddenZoneId?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a instance. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating instance with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The number of days for which log backups are retained. Valid values: `7` to `730`. **NOTE:** `logBackupRetentionPeriod` is valid only when `enableBackupLog` is set to `1`.
      */
-    logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      */
-    maintainEndTime?: pulumi.Input<string>;
+    maintainEndTime?: pulumi.Input<string | undefined>;
     /**
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time).
      */
-    maintainStartTime?: pulumi.Input<string>;
+    maintainStartTime?: pulumi.Input<string | undefined>;
     /**
      * The name of DB instance. It must be 2 to 256 characters in length.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Valid values: `VPC`.
      * > **NOTE:** From 2022.2.21, `networkType` cannot be set to `Classic`. For more information, see[Product Notification](https://www.alibabacloud.com/help/en/mongodb/product-overview/eol-notice-for-apsaradb-for-mongodb-instances-in-the-classic-network)
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * - `UPGRADE`: The specifications are upgraded.
      * - `DOWNGRADE`: The specifications are downgraded.
      * > **NOTE:** `orderType` is only applicable to instances when `instanceChargeType` is `PrePaid`.
      */
-    orderType?: pulumi.Input<string>;
+    orderType?: pulumi.Input<string | undefined>;
     /**
      * Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.mongodb.InstanceParameter>[] | undefined>;
     /**
      * The duration that you will buy DB instance (in month). It is valid when `instanceChargeType` is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The provisioned IOPS. Valid values: `0` to `50000`.
      */
-    provisionedIops?: pulumi.Input<number>;
+    provisionedIops?: pulumi.Input<number | undefined>;
     /**
      * The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
      */
-    readonlyReplicas?: pulumi.Input<number>;
+    readonlyReplicas?: pulumi.Input<number | undefined>;
     /**
      * Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Resource Group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time to which you want to restore the instance. You can specify any point in time within the last seven days. The time must be in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
      * > **NOTE:** You must specify `srcDbInstanceId` and `restoreTime` only when you clone an instance based on a point in time.
      */
-    restoreTime?: pulumi.Input<string>;
+    restoreTime?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud Resource Name (ARN) of the specified Resource Access Management (RAM) role.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Configure the available area where the slave node (Secondary node) is located to realize multi-available area deployment. **NOTE:** This parameter value cannot be the same as `zoneId` and `hiddenZoneId` parameter values. From version 1.253.0, `secondaryZoneId` can be modified.
      */
-    secondaryZoneId?: pulumi.Input<string>;
+    secondaryZoneId?: pulumi.Input<string | undefined>;
     /**
      * The Security Group ID of ECS.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The snapshot backup type. Default value: `Standard`. Valid values:
      * - `Standard`: standard backup.
      * - `Flash `: single-digit second backup.
      */
-    snapshotBackupType?: pulumi.Input<string>;
+    snapshotBackupType?: pulumi.Input<string | undefined>;
     /**
      * The source instance ID.
      */
-    srcDbInstanceId?: pulumi.Input<string>;
+    srcDbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Actions performed on SSL functions. Valid values:
      * - `Open`: turn on SSL encryption.
@@ -935,35 +935,35 @@ export interface InstanceArgs {
      * - `Update`: update SSL certificate.
      * > **NOTE:** Once `sslAction` is set, it isn't allowed to be removed from the Terraform code.
      */
-    sslAction?: pulumi.Input<string>;
+    sslAction?: pulumi.Input<string | undefined>;
     /**
      * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      */
-    storageEngine?: pulumi.Input<string>;
+    storageEngine?: pulumi.Input<string | undefined>;
     /**
      * The storage type of the instance. Valid values: `cloudEssd1`, `cloudEssd2`, `cloudEssd3`, `cloudAuto`, `localSsd`. **NOTE:** From version 1.229.0, `storageType` can be modified. However, `storageType` can only be modified to `cloudAuto`.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The TDE(Transparent Data Encryption) status. Note: `tdeStatus` cannot be set to `disabled` after it is enabled, see [Transparent Data Encryption](https://www.alibabacloud.com/help/en/mongodb/user-guide/configure-tde-for-an-apsaradb-for-mongodb-instance) for more details.
      */
-    tdeStatus?: pulumi.Input<string>;
+    tdeStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The virtual switch ID to launch DB instances in one VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DB instance. it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

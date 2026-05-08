@@ -145,10 +145,10 @@ def get_endpoint_acl_service(enable: Optional[_builtins.bool] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         module_name=pulumi.get(__ret__, 'module_name'),
         status=pulumi.get(__ret__, 'status'))
-def get_endpoint_acl_service_output(enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                                    endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                    instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    module_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_endpoint_acl_service_output(enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                                    endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                    instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    module_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEndpointAclServiceResult]:
     """
     This data source provides the CR Endpoint Acl Service of the current Alibaba Cloud user.

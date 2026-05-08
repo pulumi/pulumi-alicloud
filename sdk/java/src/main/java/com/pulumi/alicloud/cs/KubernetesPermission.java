@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cs.KubernetesPermissionArgs;
  * import com.pulumi.alicloud.cs.inputs.KubernetesPermissionPermissionArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  * 
  *         final var name = config.get("name").orElse("terraform-example");
  *         final var vpcCidr = config.get("vpcCidr").orElse("10.0.0.0/8");
- *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(List.of(        
+ *         final var vswitchCidrs = config.get("vswitchCidrs").orElse(Arrays.asList(        
  *             "10.1.0.0/16",
  *             "10.2.0.0/16"));
  *         final var podCidr = config.get("podCidr").orElse("172.16.0.0/16");

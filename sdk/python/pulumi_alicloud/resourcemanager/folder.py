@@ -20,8 +20,8 @@ __all__ = ['FolderArgs', 'Folder']
 class FolderArgs:
     def __init__(__self__, *,
                  folder_name: pulumi.Input[_builtins.str],
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 parent_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Folder resource.
 
@@ -49,36 +49,36 @@ class FolderArgs:
 
     @_builtins.property
     @pulumi.getter(name="parentFolderId")
-    def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
 
     @parent_folder_id.setter
-    def parent_folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_folder_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _FolderState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Folder resources.
 
@@ -98,50 +98,50 @@ class _FolderState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.259.0) The time when the folder was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="folderName")
-    def folder_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the folder.
         """
         return pulumi.get(self, "folder_name")
 
     @folder_name.setter
-    def folder_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_name", value)
 
     @_builtins.property
     @pulumi.getter(name="parentFolderId")
-    def parent_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent folder.
         """
         return pulumi.get(self, "parent_folder_id")
 
     @parent_folder_id.setter
-    def parent_folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_folder_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -151,9 +151,9 @@ class Folder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 folder_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Folder resource.
@@ -260,9 +260,9 @@ class Folder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 folder_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -288,10 +288,10 @@ class Folder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            folder_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Folder':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Folder':
         """
         Get an existing Folder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

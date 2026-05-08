@@ -161,15 +161,15 @@ export interface GatewaySmbUserState {
     /**
      * The Gateway ID of the Gateway SMB User.
      */
-    gatewayId?: pulumi.Input<string>;
+    gatewayId?: pulumi.Input<string | undefined>;
     /**
      * The password of the Gateway SMB User.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The username of the Gateway SMB User.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

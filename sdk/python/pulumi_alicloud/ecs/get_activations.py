@@ -159,11 +159,11 @@ def get_activations(ids: Optional[Sequence[_builtins.str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         total_count=pulumi.get(__ret__, 'total_count'))
-def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           instance_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_activations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           instance_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                           page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActivationsResult]:
     """
     This data source provides the Ecs Activations of the current Alibaba Cloud user.

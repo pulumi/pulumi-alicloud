@@ -86,19 +86,19 @@ __all__ = [
 ]
 
 class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
-    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    domains: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
     """
-    instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ACR enterprise edition example ID.
     """
-    instance_name: NotRequired[pulumi.Input[_builtins.str]]
+    instance_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the ACR enterprise edition instance.
     """
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ACR enterprise edition instance belongs to the region.
     """
@@ -106,10 +106,10 @@ class ContainerGroupAcrRegistryInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupAcrRegistryInfoArgs:
     def __init__(__self__, *,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] domains: The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
         :param pulumi.Input[_builtins.str] instance_id: The ACR enterprise edition example ID.
@@ -127,50 +127,50 @@ class ContainerGroupAcrRegistryInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The domain name of the ACR Enterprise Edition instance. Defaults to all domain names of the corresponding instance. Support specifying individual domain names, multiple separated by half comma.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACR enterprise edition example ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ACR enterprise edition instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACR enterprise edition instance belongs to the region.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -183,67 +183,67 @@ class ContainerGroupContainerArgsDict(TypedDict):
     """
     The name of the mounted volume.
     """
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The arguments passed to the commands.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Commands to be executed inside the container when performing health checks using the command line method.
     """
-    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of CPU resources allocated to the container. Default value: `0`.
     """
-    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgsDict']]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]]
     """
     The structure of environmentVars. See `environment_vars` below.
     """
-    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    gpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number GPUs. Default value: `0`.
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
     """
-    lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    lifecycle_pre_stop_handler_execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The commands to be executed in containers when you use the CLI to specify the preStop callback function.
     """
-    liveness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgsDict']]]]
+    liveness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]]
     """
     The health check of the container. See `liveness_probe` below.
     """
-    memory: NotRequired[pulumi.Input[_builtins.float]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of memory resources allocated to the container. Default value: `0`.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]]
     """
     The structure of port. See `ports` below.
     """
-    readiness_probes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgsDict']]]]
+    readiness_probes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]]
     """
     The health check of the container. See `readiness_probe` below.
     """
-    ready: NotRequired[pulumi.Input[_builtins.bool]]
+    ready: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the container passed the readiness probe.
     """
-    restart_count: NotRequired[pulumi.Input[_builtins.int]]
+    restart_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of times that the container restarted.
     """
-    security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgsDict']]]]
+    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]]
     """
     The security context of the container. See `security_context` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The working directory of the container.
     """
@@ -253,22 +253,22 @@ class ContainerGroupContainerArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 lifecycle_pre_stop_handler_execs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 liveness_probes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]] = None,
-                 readiness_probes: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]] = None,
-                 ready: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restart_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 lifecycle_pre_stop_handler_execs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 liveness_probes: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]] = None,
+                 readiness_probes: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]] = None,
+                 ready: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restart_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image: The image of the container.
         :param pulumi.Input[_builtins.str] name: The name of the mounted volume.
@@ -350,208 +350,208 @@ class ContainerGroupContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The arguments passed to the commands.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Commands to be executed inside the container when performing health checks using the command line method.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container. Default value: `0`.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars. See `environment_vars` below.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number GPUs. Default value: `0`.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecyclePreStopHandlerExecs")
-    def lifecycle_pre_stop_handler_execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def lifecycle_pre_stop_handler_execs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The commands to be executed in containers when you use the CLI to specify the preStop callback function.
         """
         return pulumi.get(self, "lifecycle_pre_stop_handler_execs")
 
     @lifecycle_pre_stop_handler_execs.setter
-    def lifecycle_pre_stop_handler_execs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def lifecycle_pre_stop_handler_execs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "lifecycle_pre_stop_handler_execs", value)
 
     @_builtins.property
     @pulumi.getter(name="livenessProbes")
-    def liveness_probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]:
+    def liveness_probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]:
         """
         The health check of the container. See `liveness_probe` below.
         """
         return pulumi.get(self, "liveness_probes")
 
     @liveness_probes.setter
-    def liveness_probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]):
+    def liveness_probes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeArgs']]]]):
         pulumi.set(self, "liveness_probes", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container. Default value: `0`.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]:
         """
         The structure of port. See `ports` below.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="readinessProbes")
-    def readiness_probes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]:
+    def readiness_probes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]:
         """
         The health check of the container. See `readiness_probe` below.
         """
         return pulumi.get(self, "readiness_probes")
 
     @readiness_probes.setter
-    def readiness_probes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]):
+    def readiness_probes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeArgs']]]]):
         pulumi.set(self, "readiness_probes", value)
 
     @_builtins.property
     @pulumi.getter
-    def ready(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the container passed the readiness probe.
         """
         return pulumi.get(self, "ready")
 
     @ready.setter
-    def ready(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ready", value)
 
     @_builtins.property
     @pulumi.getter(name="restartCount")
-    def restart_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def restart_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that the container restarted.
         """
         return pulumi.get(self, "restart_count")
 
     @restart_count.setter
-    def restart_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def restart_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "restart_count", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContexts")
-    def security_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]:
+    def security_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]:
         """
         The security context of the container. See `security_context` below.
         """
         return pulumi.get(self, "security_contexts")
 
     @security_contexts.setter
-    def security_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]):
+    def security_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextArgs']]]]):
         pulumi.set(self, "security_contexts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts. See `volume_mounts` below.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working directory of the container.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 class ContainerGroupContainerEnvironmentVarArgsDict(TypedDict):
-    field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgsDict']]]]
-    key: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupContainerEnvironmentVarArgs:
     def __init__(__self__, *,
-                 field_reves: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_reves: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if field_reves is not None:
             pulumi.set(__self__, "field_reves", field_reves)
         if key is not None:
@@ -561,84 +561,84 @@ class ContainerGroupContainerEnvironmentVarArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldReves")
-    def field_reves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]:
+    def field_reves(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]:
         return pulumi.get(self, "field_reves")
 
     @field_reves.setter
-    def field_reves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]):
+    def field_reves(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerEnvironmentVarFieldRefArgs']]]]):
         pulumi.set(self, "field_reves", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ContainerGroupContainerEnvironmentVarFieldRefArgsDict(TypedDict):
-    field_path: NotRequired[pulumi.Input[_builtins.str]]
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupContainerEnvironmentVarFieldRefArgs:
     def __init__(__self__, *,
-                 field_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None):
         if field_path is not None:
             pulumi.set(__self__, "field_path", field_path)
 
     @_builtins.property
     @pulumi.getter(name="fieldPath")
-    def field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "field_path")
 
     @field_path.setter
-    def field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_path", value)
 
 
 class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
-    execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgsDict']]]]
+    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]]
     """
     Health check using command line method. See `exec` below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
     """
-    http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgsDict']]]]
+    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]]
     """
     Health check using HTTP request method. See `http_get` below.
 
     > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Check the time to start execution, calculated from the completion of container startup.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Buffer time for the program to handle operations before closing.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
     """
-    tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgsDict']]]]
+    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]]
     """
     Health check using TCP socket method. See `tcp_socket` below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Check the timeout, the default is 1 second, the minimum is 1 second.
     """
@@ -646,14 +646,14 @@ class ContainerGroupContainerLivenessProbeArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeArgs:
     def __init__(__self__, *,
-                 execs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_gets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 execs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_gets: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_sockets: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
         :param pulumi.Input[_builtins.int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
@@ -685,31 +685,31 @@ class ContainerGroupContainerLivenessProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]:
+    def execs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]:
         """
         Health check using command line method. See `exec` below.
         """
         return pulumi.get(self, "execs")
 
     @execs.setter
-    def execs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]):
+    def execs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeExecArgs']]]]):
         pulumi.set(self, "execs", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGets")
-    def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]:
+    def http_gets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]:
         """
         Health check using HTTP request method. See `http_get` below.
 
@@ -718,94 +718,94 @@ class ContainerGroupContainerLivenessProbeArgs:
         return pulumi.get(self, "http_gets")
 
     @http_gets.setter
-    def http_gets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]):
+    def http_gets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeHttpGetArgs']]]]):
         pulumi.set(self, "http_gets", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the time to start execution, calculated from the completion of container startup.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Buffer time for the program to handle operations before closing.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSockets")
-    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]:
+    def tcp_sockets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]:
         """
         Health check using TCP socket method. See `tcp_socket` below.
         """
         return pulumi.get(self, "tcp_sockets")
 
     @tcp_sockets.setter
-    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]):
+    def tcp_sockets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerLivenessProbeTcpSocketArgs']]]]):
         pulumi.set(self, "tcp_sockets", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the timeout, the default is 1 second, the minimum is 1 second.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ContainerGroupContainerLivenessProbeExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ContainerGroupContainerLivenessProbeHttpGetArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
     """
@@ -813,9 +813,9 @@ class ContainerGroupContainerLivenessProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
@@ -828,64 +828,64 @@ class ContainerGroupContainerLivenessProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class ContainerGroupContainerLivenessProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ContainerGroupContainerLivenessProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class ContainerGroupContainerPortArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupContainerPortArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -893,55 +893,55 @@ class ContainerGroupContainerPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
-    execs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgsDict']]]]
+    execs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]]
     """
     Health check using command line method. See `exec` below.
     """
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
     """
-    http_gets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgsDict']]]]
+    http_gets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]]
     """
     Health check using HTTP request method. See `http_get` below.
 
     > **NOTE:** When you configure `readiness_probe`, you can select only one of the `exec`, `tcp_socket`, `http_get`.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Check the time to start execution, calculated from the completion of container startup.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Buffer time for the program to handle operations before closing.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
     """
-    tcp_sockets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgsDict']]]]
+    tcp_sockets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]]
     """
     Health check using TCP socket method. See `tcp_socket` below.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Check the timeout, the default is 1 second, the minimum is 1 second.
     """
@@ -949,14 +949,14 @@ class ContainerGroupContainerReadinessProbeArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeArgs:
     def __init__(__self__, *,
-                 execs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]] = None,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_gets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 tcp_sockets: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 execs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]] = None,
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_gets: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 tcp_sockets: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]] execs: Health check using command line method. See `exec` below.
         :param pulumi.Input[_builtins.int] failure_threshold: Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
@@ -988,31 +988,31 @@ class ContainerGroupContainerReadinessProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def execs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]:
+    def execs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]:
         """
         Health check using command line method. See `exec` below.
         """
         return pulumi.get(self, "execs")
 
     @execs.setter
-    def execs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]):
+    def execs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeExecArgs']]]]):
         pulumi.set(self, "execs", value)
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGets")
-    def http_gets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]:
+    def http_gets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]:
         """
         Health check using HTTP request method. See `http_get` below.
 
@@ -1021,94 +1021,94 @@ class ContainerGroupContainerReadinessProbeArgs:
         return pulumi.get(self, "http_gets")
 
     @http_gets.setter
-    def http_gets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]):
+    def http_gets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeHttpGetArgs']]]]):
         pulumi.set(self, "http_gets", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the time to start execution, calculated from the completion of container startup.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Buffer time for the program to handle operations before closing.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpSockets")
-    def tcp_sockets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]:
+    def tcp_sockets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]:
         """
         Health check using TCP socket method. See `tcp_socket` below.
         """
         return pulumi.get(self, "tcp_sockets")
 
     @tcp_sockets.setter
-    def tcp_sockets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]):
+    def tcp_sockets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerReadinessProbeTcpSocketArgs']]]]):
         pulumi.set(self, "tcp_sockets", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the timeout, the default is 1 second, the minimum is 1 second.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class ContainerGroupContainerReadinessProbeExecArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeExecArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if commands is not None:
             pulumi.set(__self__, "commands", commands)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class ContainerGroupContainerReadinessProbeHttpGetArgsDict(TypedDict):
-    path: NotRequired[pulumi.Input[_builtins.str]]
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    scheme: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
     """
@@ -1116,9 +1116,9 @@ class ContainerGroupContainerReadinessProbeHttpGetArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeHttpGetArgs:
     def __init__(__self__, *,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None):
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] scheme: The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
@@ -1131,69 +1131,69 @@ class ContainerGroupContainerReadinessProbeHttpGetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
 
 class ContainerGroupContainerReadinessProbeTcpSocketArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ContainerGroupContainerReadinessProbeTcpSocketArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class ContainerGroupContainerSecurityContextArgsDict(TypedDict):
-    capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgsDict']]]]
-    privileged: NotRequired[pulumi.Input[_builtins.bool]]
+    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]]
+    privileged: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
     """
-    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ContainerGroupContainerSecurityContextArgs:
     def __init__(__self__, *,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]] = None,
-                 privileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None):
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]] = None,
+                 privileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] privileged: Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
         """
@@ -1206,66 +1206,66 @@ class ContainerGroupContainerSecurityContextArgs:
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]:
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupContainerSecurityContextCapabilityArgs']]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
-    def privileged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def privileged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
         """
         return pulumi.get(self, "privileged")
 
     @privileged.setter
-    def privileged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def privileged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "privileged", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
 
 class ContainerGroupContainerSecurityContextCapabilityArgsDict(TypedDict):
-    adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ContainerGroupContainerSecurityContextCapabilityArgs:
     def __init__(__self__, *,
-                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 adds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if adds is not None:
             pulumi.set(__self__, "adds", adds)
 
     @_builtins.property
     @pulumi.getter
-    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def adds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "adds")
 
     @adds.setter
-    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def adds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "adds", value)
 
 
 class ContainerGroupContainerVolumeMountArgsDict(TypedDict):
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class ContainerGroupContainerVolumeMountArgs:
     def __init__(__self__, *,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -1275,42 +1275,42 @@ class ContainerGroupContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 class ContainerGroupDnsConfigArgsDict(TypedDict):
-    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    name_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of DNS server IP addresses.
     """
-    options: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgsDict']]]]
+    options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]]
     """
     The structure of options. See `options` below.
     """
-    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    searches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of DNS lookup domains.
     """
@@ -1318,9 +1318,9 @@ class ContainerGroupDnsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupDnsConfigArgs:
     def __init__(__self__, *,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]] = None,
-                 searches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]] = None,
+                 searches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The list of DNS server IP addresses.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]] options: The structure of options. See `options` below.
@@ -1335,50 +1335,50 @@ class ContainerGroupDnsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of DNS server IP addresses.
         """
         return pulumi.get(self, "name_servers")
 
     @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "name_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]:
+    def options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]:
         """
         The structure of options. See `options` below.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]):
+    def options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupDnsConfigOptionArgs']]]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def searches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of DNS lookup domains.
         """
         return pulumi.get(self, "searches")
 
     @searches.setter
-    def searches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def searches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "searches", value)
 
 
 class ContainerGroupDnsConfigOptionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupDnsConfigOptionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
@@ -1386,29 +1386,29 @@ class ContainerGroupDnsConfigOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ContainerGroupHostAliasArgsDict(TypedDict):
-    hostnames: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    hostnames: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The information about the host.
     """
-    ip: NotRequired[pulumi.Input[_builtins.str]]
+    ip: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the host.
     """
@@ -1416,8 +1416,8 @@ class ContainerGroupHostAliasArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupHostAliasArgs:
     def __init__(__self__, *,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] hostnames: The information about the host.
         :param pulumi.Input[_builtins.str] ip: The IP address of the host.
@@ -1429,26 +1429,26 @@ class ContainerGroupHostAliasArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The information about the host.
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the host.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
 
@@ -1519,63 +1519,63 @@ class ContainerGroupImageRegistryCredentialArgs:
 
 
 class ContainerGroupInitContainerArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The arguments passed to the commands.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The commands run by the init container.
     """
-    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    cpu: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of CPU resources allocated to the container. Default value: `0`.
     """
-    environment_vars: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgsDict']]]]
+    environment_vars: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]]
     """
     The structure of environmentVars. See `environment_vars` below.
     """
-    gpu: NotRequired[pulumi.Input[_builtins.int]]
+    gpu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number GPUs. Default value: `0`.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The image of the container.
     """
-    image_pull_policy: NotRequired[pulumi.Input[_builtins.str]]
+    image_pull_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
     """
-    memory: NotRequired[pulumi.Input[_builtins.float]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The amount of memory resources allocated to the container. Default value: `0`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the mounted volume.
     """
-    ports: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgsDict']]]]
+    ports: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]]
     """
     The structure of port. See `ports` below.
     """
-    ready: NotRequired[pulumi.Input[_builtins.bool]]
+    ready: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicates whether the container passed the readiness probe.
     """
-    restart_count: NotRequired[pulumi.Input[_builtins.int]]
+    restart_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of times that the container restarted.
     """
-    security_contexts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgsDict']]]]
+    security_contexts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]]
     """
     The security context of the container. See `security_context` below.
     """
-    volume_mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgsDict']]]]
+    volume_mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]]
     """
     The structure of volumeMounts. See `volume_mounts` below.
     """
-    working_dir: NotRequired[pulumi.Input[_builtins.str]]
+    working_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The working directory of the container.
     """
@@ -1583,21 +1583,21 @@ class ContainerGroupInitContainerArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupInitContainerArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 environment_vars: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]] = None,
-                 gpu: Optional[pulumi.Input[_builtins.int]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pull_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.float]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]] = None,
-                 ready: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restart_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]] = None,
-                 volume_mounts: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 environment_vars: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]] = None,
+                 gpu: pulumi.Input[Optional[_builtins.int]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pull_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.float]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]] = None,
+                 ready: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restart_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_contexts: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]] = None,
+                 volume_mounts: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: The arguments passed to the commands.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: The commands run by the init container.
@@ -1648,196 +1648,196 @@ class ContainerGroupInitContainerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The arguments passed to the commands.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The commands run by the init container.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of CPU resources allocated to the container. Default value: `0`.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVars")
-    def environment_vars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]:
+    def environment_vars(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]:
         """
         The structure of environmentVars. See `environment_vars` below.
         """
         return pulumi.get(self, "environment_vars")
 
     @environment_vars.setter
-    def environment_vars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]):
+    def environment_vars(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarArgs']]]]):
         pulumi.set(self, "environment_vars", value)
 
     @_builtins.property
     @pulumi.getter
-    def gpu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number GPUs. Default value: `0`.
         """
         return pulumi.get(self, "gpu")
 
     @gpu.setter
-    def gpu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image of the container.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePullPolicy")
-    def image_pull_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pull_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The restart policy of the image. Default value: `IfNotPresent`. Valid values: `Always`, `IfNotPresent`, `Never`.
         """
         return pulumi.get(self, "image_pull_policy")
 
     @image_pull_policy.setter
-    def image_pull_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pull_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pull_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The amount of memory resources allocated to the container. Default value: `0`.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the mounted volume.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]:
         """
         The structure of port. See `ports` below.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerPortArgs']]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def ready(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether the container passed the readiness probe.
         """
         return pulumi.get(self, "ready")
 
     @ready.setter
-    def ready(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ready", value)
 
     @_builtins.property
     @pulumi.getter(name="restartCount")
-    def restart_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def restart_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of times that the container restarted.
         """
         return pulumi.get(self, "restart_count")
 
     @restart_count.setter
-    def restart_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def restart_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "restart_count", value)
 
     @_builtins.property
     @pulumi.getter(name="securityContexts")
-    def security_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]:
+    def security_contexts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]:
         """
         The security context of the container. See `security_context` below.
         """
         return pulumi.get(self, "security_contexts")
 
     @security_contexts.setter
-    def security_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]):
+    def security_contexts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextArgs']]]]):
         pulumi.set(self, "security_contexts", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMounts")
-    def volume_mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]:
+    def volume_mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]:
         """
         The structure of volumeMounts. See `volume_mounts` below.
         """
         return pulumi.get(self, "volume_mounts")
 
     @volume_mounts.setter
-    def volume_mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]):
+    def volume_mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerVolumeMountArgs']]]]):
         pulumi.set(self, "volume_mounts", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The working directory of the container.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 class ContainerGroupInitContainerEnvironmentVarArgsDict(TypedDict):
-    field_reves: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict']]]]
-    key: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    field_reves: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerEnvironmentVarArgs:
     def __init__(__self__, *,
-                 field_reves: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_reves: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if field_reves is not None:
             pulumi.set(__self__, "field_reves", field_reves)
         if key is not None:
@@ -1847,61 +1847,61 @@ class ContainerGroupInitContainerEnvironmentVarArgs:
 
     @_builtins.property
     @pulumi.getter(name="fieldReves")
-    def field_reves(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]:
+    def field_reves(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]:
         return pulumi.get(self, "field_reves")
 
     @field_reves.setter
-    def field_reves(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]):
+    def field_reves(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerEnvironmentVarFieldRefArgs']]]]):
         pulumi.set(self, "field_reves", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ContainerGroupInitContainerEnvironmentVarFieldRefArgsDict(TypedDict):
-    field_path: NotRequired[pulumi.Input[_builtins.str]]
+    field_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerEnvironmentVarFieldRefArgs:
     def __init__(__self__, *,
-                 field_path: Optional[pulumi.Input[_builtins.str]] = None):
+                 field_path: pulumi.Input[Optional[_builtins.str]] = None):
         if field_path is not None:
             pulumi.set(__self__, "field_path", field_path)
 
     @_builtins.property
     @pulumi.getter(name="fieldPath")
-    def field_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def field_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "field_path")
 
     @field_path.setter
-    def field_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def field_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "field_path", value)
 
 
 class ContainerGroupInitContainerPortArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerPortArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -1909,32 +1909,32 @@ class ContainerGroupInitContainerPortArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 class ContainerGroupInitContainerSecurityContextArgsDict(TypedDict):
-    capabilities: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgsDict']]]]
-    run_as_user: NotRequired[pulumi.Input[_builtins.int]]
+    capabilities: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]]
+    run_as_user: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerSecurityContextArgs:
     def __init__(__self__, *,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]] = None,
-                 run_as_user: Optional[pulumi.Input[_builtins.int]] = None):
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]] = None,
+                 run_as_user: pulumi.Input[Optional[_builtins.int]] = None):
         if capabilities is not None:
             pulumi.set(__self__, "capabilities", capabilities)
         if run_as_user is not None:
@@ -1942,54 +1942,54 @@ class ContainerGroupInitContainerSecurityContextArgs:
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]:
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupInitContainerSecurityContextCapabilityArgs']]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter(name="runAsUser")
-    def run_as_user(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_as_user(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "run_as_user")
 
     @run_as_user.setter
-    def run_as_user(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_as_user(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_as_user", value)
 
 
 class ContainerGroupInitContainerSecurityContextCapabilityArgsDict(TypedDict):
-    adds: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    adds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerSecurityContextCapabilityArgs:
     def __init__(__self__, *,
-                 adds: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 adds: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         if adds is not None:
             pulumi.set(__self__, "adds", adds)
 
     @_builtins.property
     @pulumi.getter
-    def adds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def adds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "adds")
 
     @adds.setter
-    def adds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def adds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "adds", value)
 
 
 class ContainerGroupInitContainerVolumeMountArgsDict(TypedDict):
-    mount_path: NotRequired[pulumi.Input[_builtins.str]]
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    mount_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
 
 @pulumi.input_type
 class ContainerGroupInitContainerVolumeMountArgs:
     def __init__(__self__, *,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -1999,34 +1999,34 @@ class ContainerGroupInitContainerVolumeMountArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 class ContainerGroupSecurityContextArgsDict(TypedDict):
-    sysctls: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgsDict']]]]
+    sysctls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]]
     """
     Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
     """
@@ -2034,7 +2034,7 @@ class ContainerGroupSecurityContextArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupSecurityContextArgs:
     def __init__(__self__, *,
-                 sysctls: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]] = None):
+                 sysctls: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]] sysctls: Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
         """
@@ -2043,26 +2043,26 @@ class ContainerGroupSecurityContextArgs:
 
     @_builtins.property
     @pulumi.getter
-    def sysctls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]:
+    def sysctls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]:
         """
         Sysctls hold a list of namespaced sysctls used for the pod. Pods with unsupported sysctls (by the container runtime) might fail to launch. See `sysctl` below.
         """
         return pulumi.get(self, "sysctls")
 
     @sysctls.setter
-    def sysctls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]):
+    def sysctls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupSecurityContextSysctlArgs']]]]):
         pulumi.set(self, "sysctls", value)
 
 
 class ContainerGroupSecurityContextSysctlArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupSecurityContextSysctlArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
@@ -2070,66 +2070,66 @@ class ContainerGroupSecurityContextSysctlArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class ContainerGroupVolumeArgsDict(TypedDict):
-    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict']]]]
+    config_file_volume_config_file_to_paths: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]]
     """
     The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
     > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
     """
-    disk_volume_disk_id: NotRequired[pulumi.Input[_builtins.str]]
+    disk_volume_disk_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of DiskVolume.
     """
-    disk_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_volume_fs_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The system type of DiskVolume.
     """
-    flex_volume_driver: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_driver: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the FlexVolume driver.
     """
-    flex_volume_fs_type: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_fs_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the mounted file system. The default value is determined by the script of FlexVolume.
     """
-    flex_volume_options: NotRequired[pulumi.Input[_builtins.str]]
+    flex_volume_options: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the volume.
     """
-    nfs_volume_path: NotRequired[pulumi.Input[_builtins.str]]
+    nfs_volume_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the NFS volume.
     """
-    nfs_volume_read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    nfs_volume_read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     The nfs volume read only. Default value: `false`.
     """
-    nfs_volume_server: NotRequired[pulumi.Input[_builtins.str]]
+    nfs_volume_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of the NFS server.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the volume.
     """
@@ -2137,17 +2137,17 @@ class ContainerGroupVolumeArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerGroupVolumeArgs:
     def __init__(__self__, *,
-                 config_file_volume_config_file_to_paths: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
-                 disk_volume_disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_volume_fs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_fs_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 flex_volume_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_volume_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_volume_read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nfs_volume_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_file_volume_config_file_to_paths: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]] = None,
+                 disk_volume_disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_volume_fs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_fs_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 flex_volume_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_volume_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 nfs_volume_read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nfs_volume_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]] config_file_volume_config_file_to_paths: The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
                > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
@@ -2187,7 +2187,7 @@ class ContainerGroupVolumeArgs:
 
     @_builtins.property
     @pulumi.getter(name="configFileVolumeConfigFileToPaths")
-    def config_file_volume_config_file_to_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
+    def config_file_volume_config_file_to_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]:
         """
         The paths of the ConfigFile volume. See `config_file_volume_config_file_to_paths` below.
         > **NOTE:** Every volumes mounted must have `name` and `type` attributes.
@@ -2195,142 +2195,142 @@ class ContainerGroupVolumeArgs:
         return pulumi.get(self, "config_file_volume_config_file_to_paths")
 
     @config_file_volume_config_file_to_paths.setter
-    def config_file_volume_config_file_to_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]):
+    def config_file_volume_config_file_to_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs']]]]):
         pulumi.set(self, "config_file_volume_config_file_to_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="diskVolumeDiskId")
-    def disk_volume_disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_volume_disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of DiskVolume.
         """
         return pulumi.get(self, "disk_volume_disk_id")
 
     @disk_volume_disk_id.setter
-    def disk_volume_disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_volume_disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_volume_disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskVolumeFsType")
-    def disk_volume_fs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_volume_fs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The system type of DiskVolume.
         """
         return pulumi.get(self, "disk_volume_fs_type")
 
     @disk_volume_fs_type.setter
-    def disk_volume_fs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_volume_fs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_volume_fs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeDriver")
-    def flex_volume_driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the FlexVolume driver.
         """
         return pulumi.get(self, "flex_volume_driver")
 
     @flex_volume_driver.setter
-    def flex_volume_driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_driver", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeFsType")
-    def flex_volume_fs_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_fs_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the mounted file system. The default value is determined by the script of FlexVolume.
         """
         return pulumi.get(self, "flex_volume_fs_type")
 
     @flex_volume_fs_type.setter
-    def flex_volume_fs_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_fs_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_fs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="flexVolumeOptions")
-    def flex_volume_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flex_volume_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of FlexVolume objects. Each object is a key-value pair contained in a JSON string.
         """
         return pulumi.get(self, "flex_volume_options")
 
     @flex_volume_options.setter
-    def flex_volume_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flex_volume_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flex_volume_options", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the volume.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumePath")
-    def nfs_volume_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nfs_volume_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the NFS volume.
         """
         return pulumi.get(self, "nfs_volume_path")
 
     @nfs_volume_path.setter
-    def nfs_volume_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nfs_volume_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nfs_volume_path", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumeReadOnly")
-    def nfs_volume_read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nfs_volume_read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The nfs volume read only. Default value: `false`.
         """
         return pulumi.get(self, "nfs_volume_read_only")
 
     @nfs_volume_read_only.setter
-    def nfs_volume_read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nfs_volume_read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nfs_volume_read_only", value)
 
     @_builtins.property
     @pulumi.getter(name="nfsVolumeServer")
-    def nfs_volume_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nfs_volume_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the NFS server.
         """
         return pulumi.get(self, "nfs_volume_server")
 
     @nfs_volume_server.setter
-    def nfs_volume_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nfs_volume_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nfs_volume_server", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the volume.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the configuration file. Maximum size: 32 KB.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The content of the configuration file. Maximum size: 32 KB.
         """
@@ -2341,36 +2341,36 @@ class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the configuration file. Maximum size: 32 KB.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
 class ImageCacheImageRegistryCredentialArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password of the Image Registry.
     """
-    server: NotRequired[pulumi.Input[_builtins.str]]
+    server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address of Image Registry without `http://` or `https://`.
     """
-    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The user name of Image Registry.
     """
@@ -2378,9 +2378,9 @@ class ImageCacheImageRegistryCredentialArgsDict(TypedDict):
 @pulumi.input_type
 class ImageCacheImageRegistryCredentialArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] password: The password of the Image Registry.
         :param pulumi.Input[_builtins.str] server: The address of Image Registry without `http://` or `https://`.
@@ -2395,52 +2395,52 @@ class ImageCacheImageRegistryCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the Image Registry.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of Image Registry without `http://` or `https://`.
         """
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name of Image Registry.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 class OpenApiImageCacheImageRegistryCredentialArgsDict(TypedDict):
-    password: NotRequired[pulumi.Input[_builtins.str]]
-    server: NotRequired[pulumi.Input[_builtins.str]]
-    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class OpenApiImageCacheImageRegistryCredentialArgs:
     def __init__(__self__, *,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         if password is not None:
             pulumi.set(__self__, "password", password)
         if server is not None:
@@ -2450,42 +2450,42 @@ class OpenApiImageCacheImageRegistryCredentialArgs:
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 class VirtualNodeTaintArgsDict(TypedDict):
-    effect: NotRequired[pulumi.Input[_builtins.str]]
+    effect: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
     """
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The key of the taint.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the taint.
     """
@@ -2493,9 +2493,9 @@ class VirtualNodeTaintArgsDict(TypedDict):
 @pulumi.input_type
 class VirtualNodeTaintArgs:
     def __init__(__self__, *,
-                 effect: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 effect: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] effect: The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
         :param pulumi.Input[_builtins.str] key: The key of the taint.
@@ -2510,38 +2510,38 @@ class VirtualNodeTaintArgs:
 
     @_builtins.property
     @pulumi.getter
-    def effect(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effect(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
         """
         return pulumi.get(self, "effect")
 
     @effect.setter
-    def effect(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effect(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effect", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key of the taint.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the taint.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

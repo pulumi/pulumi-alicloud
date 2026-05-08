@@ -19,7 +19,7 @@ __all__ = ['ServiceAgentConfigArgs', 'ServiceAgentConfig']
 @pulumi.input_type
 class ServiceAgentConfigArgs:
     def __init__(__self__, *,
-                 enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ServiceAgentConfig resource.
 
@@ -32,7 +32,7 @@ class ServiceAgentConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableInstallAgentNewEcs")
-    def enable_install_agent_new_ecs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_install_agent_new_ecs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
         - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
@@ -41,14 +41,14 @@ class ServiceAgentConfigArgs:
         return pulumi.get(self, "enable_install_agent_new_ecs")
 
     @enable_install_agent_new_ecs.setter
-    def enable_install_agent_new_ecs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_install_agent_new_ecs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_install_agent_new_ecs", value)
 
 
 @pulumi.input_type
 class _ServiceAgentConfigState:
     def __init__(__self__, *,
-                 enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ServiceAgentConfig resources.
 
@@ -61,7 +61,7 @@ class _ServiceAgentConfigState:
 
     @_builtins.property
     @pulumi.getter(name="enableInstallAgentNewEcs")
-    def enable_install_agent_new_ecs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_install_agent_new_ecs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
         - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
@@ -70,7 +70,7 @@ class _ServiceAgentConfigState:
         return pulumi.get(self, "enable_install_agent_new_ecs")
 
     @enable_install_agent_new_ecs.setter
-    def enable_install_agent_new_ecs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_install_agent_new_ecs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_install_agent_new_ecs", value)
 
 
@@ -80,7 +80,7 @@ class ServiceAgentConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Agent Config resource.
@@ -187,7 +187,7 @@ class ServiceAgentConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -208,7 +208,7 @@ class ServiceAgentConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable_install_agent_new_ecs: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ServiceAgentConfig':
+            enable_install_agent_new_ecs: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ServiceAgentConfig':
         """
         Get an existing ServiceAgentConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

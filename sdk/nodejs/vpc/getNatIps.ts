@@ -199,11 +199,11 @@ export interface GetNatIpsOutputArgs {
     /**
      * A list of Nat Ip IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Nat Ip name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
      */
@@ -211,18 +211,18 @@ export interface GetNatIpsOutputArgs {
     /**
      * NAT IP ADDRESS of the address segment.
      */
-    natIpCidr?: pulumi.Input<string>;
-    natIpIds?: pulumi.Input<pulumi.Input<string>[]>;
+    natIpCidr?: pulumi.Input<string | undefined>;
+    natIpIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
      */
-    natIpNames?: pulumi.Input<pulumi.Input<string>[]>;
+    natIpNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

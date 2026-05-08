@@ -142,17 +142,17 @@ export interface GetSharedTargetsOutputArgs {
     /**
      * A list of Shared Target IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The resource share ID of resource manager.
      */
-    resourceShareId?: pulumi.Input<string>;
+    resourceShareId?: pulumi.Input<string | undefined>;
     /**
      * The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

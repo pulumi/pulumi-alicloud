@@ -146,26 +146,26 @@ export interface NatFirewallControlPolicyOrderState {
     /**
      * The unique identifier ID of the security access control policy.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The page number of the current page for paginated queries.
      *
      * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      */
-    currentPage?: pulumi.Input<string>;
+    currentPage?: pulumi.Input<string | undefined>;
     /**
      * The traffic direction controlled by the access control policy. Valid values:
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NAT gateway to query.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The priority at which the access control policy takes effect.
      * Priority numbers start from 1 and increment sequentially. A smaller priority number indicates a higher priority.
      */
-    order?: pulumi.Input<string>;
+    order?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,11 +181,11 @@ export interface NatFirewallControlPolicyOrderArgs {
      *
      * > **NOTE:** This parameter is only evaluated during resource creation and update. Modifying it in isolation will not trigger any action.
      */
-    currentPage?: pulumi.Input<string>;
+    currentPage?: pulumi.Input<string | undefined>;
     /**
      * The traffic direction controlled by the access control policy. Valid values:
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NAT gateway to query.
      */

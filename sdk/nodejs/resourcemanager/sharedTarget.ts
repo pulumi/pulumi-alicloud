@@ -131,19 +131,19 @@ export interface SharedTargetState {
     /**
      * (Available since v1.259.0) The time when the association of the entity was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource share.
      */
-    resourceShareId?: pulumi.Input<string>;
+    resourceShareId?: pulumi.Input<string | undefined>;
     /**
      * The status of shared target.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the principal.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
 }
 
 /**

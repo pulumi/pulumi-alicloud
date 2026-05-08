@@ -26,13 +26,13 @@ class InstanceArgs:
                  sddp_version: pulumi.Input[_builtins.str],
                  ud_cbool: pulumi.Input[_builtins.str],
                  udc: pulumi.Input[_builtins.str],
-                 dataphin: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataphin_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None):
+                 dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -159,113 +159,113 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dataphin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataphin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataphin. Valid values: `yes`,`no`.
         """
         return pulumi.get(self, "dataphin")
 
     @dataphin.setter
-    def dataphin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataphin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataphin", value)
 
     @_builtins.property
     @pulumi.getter(name="dataphinCount")
-    def dataphin_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataphin_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataphin count. Valid values: 1 to 20.
         """
         return pulumi.get(self, "dataphin_count")
 
     @dataphin_count.setter
-    def dataphin_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataphin_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataphin_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logistics.
         """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logistics", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ossSize")
-    def oss_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS storage capacity.
         """
         return pulumi.get(self, "oss_size")
 
     @oss_size.setter
-    def oss_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_size", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 authed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dataphin: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataphin_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 odps_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_bucket_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 oss_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 rds_set: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remain_days: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sd_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdc: Optional[pulumi.Input[_builtins.str]] = None,
-                 sddp_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ud_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 udc: Optional[pulumi.Input[_builtins.str]] = None):
+                 authed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 odps_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_bucket_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 rds_set: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remain_days: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sd_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdc: pulumi.Input[Optional[_builtins.str]] = None,
+                 sddp_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ud_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 udc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -336,254 +336,254 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def authed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def authed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the required RAM authorization is configured.
         """
         return pulumi.get(self, "authed")
 
     @authed.setter
-    def authed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def authed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "authed", value)
 
     @_builtins.property
     @pulumi.getter
-    def dataphin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataphin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataphin. Valid values: `yes`,`no`.
         """
         return pulumi.get(self, "dataphin")
 
     @dataphin.setter
-    def dataphin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataphin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataphin", value)
 
     @_builtins.property
     @pulumi.getter(name="dataphinCount")
-    def dataphin_count(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dataphin_count(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dataphin count. Valid values: 1 to 20.
         """
         return pulumi.get(self, "dataphin_count")
 
     @dataphin_count.setter
-    def dataphin_count(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dataphin_count(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dataphin_count", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNum")
-    def instance_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of instances.
         """
         return pulumi.get(self, "instance_num")
 
     @instance_num.setter
-    def instance_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def logistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logistics.
         """
         return pulumi.get(self, "logistics")
 
     @logistics.setter
-    def logistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logistics", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="odpsSet")
-    def odps_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def odps_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the authorized MaxCompute (ODPS) assets.
         """
         return pulumi.get(self, "odps_set")
 
     @odps_set.setter
-    def odps_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def odps_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "odps_set", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketSet")
-    def oss_bucket_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def oss_bucket_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the authorized oss assets.
         """
         return pulumi.get(self, "oss_bucket_set")
 
     @oss_bucket_set.setter
-    def oss_bucket_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def oss_bucket_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "oss_bucket_set", value)
 
     @_builtins.property
     @pulumi.getter(name="ossSize")
-    def oss_size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS storage capacity.
         """
         return pulumi.get(self, "oss_size")
 
     @oss_size.setter
-    def oss_size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_size", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="rdsSet")
-    def rds_set(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rds_set(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the authorized rds assets.
         """
         return pulumi.get(self, "rds_set")
 
     @rds_set.setter
-    def rds_set(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rds_set(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rds_set", value)
 
     @_builtins.property
     @pulumi.getter(name="remainDays")
-    def remain_days(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remain_days(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remaining days of the protection period of the assets in the current login account.
         """
         return pulumi.get(self, "remain_days")
 
     @remain_days.setter
-    def remain_days(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remain_days(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remain_days", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="sdCbool")
-    def sd_cbool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sd_cbool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use the database. Valid values:`yes`,`no`.
         """
         return pulumi.get(self, "sd_cbool")
 
     @sd_cbool.setter
-    def sd_cbool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sd_cbool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sd_cbool", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sdc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of instances.
         """
         return pulumi.get(self, "sdc")
 
     @sdc.setter
-    def sdc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sdc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sdc", value)
 
     @_builtins.property
     @pulumi.getter(name="sddpVersion")
-    def sddp_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sddp_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
         """
         return pulumi.get(self, "sddp_version")
 
     @sddp_version.setter
-    def sddp_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sddp_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sddp_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="udCbool")
-    def ud_cbool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ud_cbool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use OSS. Valid values: `yes`,`no`.
         """
         return pulumi.get(self, "ud_cbool")
 
     @ud_cbool.setter
-    def ud_cbool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ud_cbool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ud_cbool", value)
 
     @_builtins.property
     @pulumi.getter
-    def udc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def udc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS Size.
         """
         return pulumi.get(self, "udc")
 
     @udc.setter
-    def udc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def udc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "udc", value)
 
 
@@ -593,20 +593,20 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataphin: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataphin_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sd_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdc: Optional[pulumi.Input[_builtins.str]] = None,
-                 sddp_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ud_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 udc: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sd_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdc: pulumi.Input[Optional[_builtins.str]] = None,
+                 sddp_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ud_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 udc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Data Security Center Instance resource.
@@ -724,20 +724,20 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dataphin: Optional[pulumi.Input[_builtins.str]] = None,
-                 dataphin_count: Optional[pulumi.Input[_builtins.str]] = None,
-                 logistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_size: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sd_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 sdc: Optional[pulumi.Input[_builtins.str]] = None,
-                 sddp_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ud_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-                 udc: Optional[pulumi.Input[_builtins.str]] = None,
+                 dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+                 dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+                 logistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sd_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 sdc: pulumi.Input[Optional[_builtins.str]] = None,
+                 sddp_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ud_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+                 udc: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -792,27 +792,27 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authed: Optional[pulumi.Input[_builtins.bool]] = None,
-            dataphin: Optional[pulumi.Input[_builtins.str]] = None,
-            dataphin_count: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_num: Optional[pulumi.Input[_builtins.str]] = None,
-            logistics: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            odps_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            oss_bucket_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            oss_size: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            rds_set: Optional[pulumi.Input[_builtins.bool]] = None,
-            remain_days: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            sd_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-            sdc: Optional[pulumi.Input[_builtins.str]] = None,
-            sddp_version: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            ud_cbool: Optional[pulumi.Input[_builtins.str]] = None,
-            udc: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            authed: pulumi.Input[Optional[_builtins.bool]] = None,
+            dataphin: pulumi.Input[Optional[_builtins.str]] = None,
+            dataphin_count: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_num: pulumi.Input[Optional[_builtins.str]] = None,
+            logistics: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            odps_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_bucket_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            oss_size: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            rds_set: pulumi.Input[Optional[_builtins.bool]] = None,
+            remain_days: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            sd_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+            sdc: pulumi.Input[Optional[_builtins.str]] = None,
+            sddp_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ud_cbool: pulumi.Input[Optional[_builtins.str]] = None,
+            udc: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

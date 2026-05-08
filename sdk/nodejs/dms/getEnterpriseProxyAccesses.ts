@@ -120,15 +120,15 @@ export function getEnterpriseProxyAccessesOutput(args: GetEnterpriseProxyAccesse
  * A collection of arguments for invoking getEnterpriseProxyAccesses.
  */
 export interface GetEnterpriseProxyAccessesOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Proxy Access IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security agent.
      */

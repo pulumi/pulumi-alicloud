@@ -151,31 +151,31 @@ export interface TransitRouterMulticastDomainState {
     /**
      * The function options of the multicast domain. See `options` below.
      */
-    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions>;
+    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions | undefined>;
     /**
      * (Available since v1.242.0) The region ID of the transit router.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Transit Router Multicast Domain.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the forwarding router instance.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the multicast domain.
      */
-    transitRouterMulticastDomainDescription?: pulumi.Input<string>;
+    transitRouterMulticastDomainDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the multicast domain.
      */
-    transitRouterMulticastDomainName?: pulumi.Input<string>;
+    transitRouterMulticastDomainName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,11 +185,11 @@ export interface TransitRouterMulticastDomainArgs {
     /**
      * The function options of the multicast domain. See `options` below.
      */
-    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions>;
+    options?: pulumi.Input<inputs.cen.TransitRouterMulticastDomainOptions | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the forwarding router instance.
      */
@@ -197,9 +197,9 @@ export interface TransitRouterMulticastDomainArgs {
     /**
      * The description of the multicast domain.
      */
-    transitRouterMulticastDomainDescription?: pulumi.Input<string>;
+    transitRouterMulticastDomainDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the multicast domain.
      */
-    transitRouterMulticastDomainName?: pulumi.Input<string>;
+    transitRouterMulticastDomainName?: pulumi.Input<string | undefined>;
 }

@@ -21,10 +21,10 @@ class TopicSubscriptionArgs:
     def __init__(__self__, *,
                  endpoint: pulumi.Input[_builtins.str],
                  topic_name: pulumi.Input[_builtins.str],
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TopicSubscription resource.
 
@@ -78,62 +78,62 @@ class TopicSubscriptionArgs:
 
     @_builtins.property
     @pulumi.getter(name="filterTag")
-    def filter_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The length should be shorter than 16.
         """
         return pulumi.get(self, "filter_tag")
 
     @filter_tag.setter
-    def filter_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyContentFormat")
-    def notify_content_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_content_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         """
         return pulumi.get(self, "notify_content_format")
 
     @notify_content_format.setter
-    def notify_content_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_content_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_content_format", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyStrategy")
-    def notify_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         return pulumi.get(self, "notify_strategy")
 
     @notify_strategy.setter
-    def notify_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_strategy", value)
 
 
 @pulumi.input_type
 class _TopicSubscriptionState:
     def __init__(__self__, *,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TopicSubscription resources.
 
@@ -162,7 +162,7 @@ class _TopicSubscriptionState:
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint has three format. Available values format:
         - `HTTP Format`: http://xxx.com/xxx
@@ -172,67 +172,67 @@ class _TopicSubscriptionState:
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="filterTag")
-    def filter_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The length should be shorter than 16.
         """
         return pulumi.get(self, "filter_tag")
 
     @filter_tag.setter
-    def filter_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyContentFormat")
-    def notify_content_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_content_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
         """
         return pulumi.get(self, "notify_content_format")
 
     @notify_content_format.setter
-    def notify_content_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_content_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_content_format", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyStrategy")
-    def notify_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
         """
         return pulumi.get(self, "notify_strategy")
 
     @notify_strategy.setter
-    def notify_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -242,12 +242,12 @@ class TopicSubscription(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MNS topic subscription resource.
@@ -360,12 +360,12 @@ class TopicSubscription(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -395,12 +395,12 @@ class TopicSubscription(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            filter_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_content_format: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'TopicSubscription':
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            filter_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_content_format: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'TopicSubscription':
         """
         Get an existing TopicSubscription resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

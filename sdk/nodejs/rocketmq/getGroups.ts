@@ -162,26 +162,26 @@ export interface GetGroupsOutputArgs {
     /**
      * A regex string to filter results by the group name.
      */
-    groupIdRegex?: pulumi.Input<string>;
+    groupIdRegex?: pulumi.Input<string | undefined>;
     /**
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * A list of group names.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the ONS Instance that owns the groups.
      */
     instanceId: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A map of tags assigned to the Ons instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -19,11 +19,11 @@ __all__ = ['CustomDeploymentSetArgs', 'CustomDeploymentSet']
 @pulumi.input_type
 class CustomDeploymentSetArgs:
     def __init__(__self__, *,
-                 custom_deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CustomDeploymentSet resource.
 
@@ -59,31 +59,31 @@ class CustomDeploymentSetArgs:
 
     @_builtins.property
     @pulumi.getter(name="customDeploymentSetName")
-    def custom_deployment_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_deployment_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "custom_deployment_set_name")
 
     @custom_deployment_set_name.setter
-    def custom_deployment_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_deployment_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_deployment_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupCount")
-    def group_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
 
@@ -94,12 +94,12 @@ class CustomDeploymentSetArgs:
         return pulumi.get(self, "group_count")
 
     @group_count.setter
-    def group_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_count", value)
 
     @_builtins.property
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
-    def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_unable_to_redeploy_failed_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
         - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
@@ -110,12 +110,12 @@ class CustomDeploymentSetArgs:
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
     @on_unable_to_redeploy_failed_instance.setter
-    def on_unable_to_redeploy_failed_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_unable_to_redeploy_failed_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_unable_to_redeploy_failed_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment strategy. Value range:
         - `Availability`: High Availability policy.
@@ -127,19 +127,19 @@ class CustomDeploymentSetArgs:
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
 @pulumi.input_type
 class _CustomDeploymentSetState:
     def __init__(__self__, *,
-                 custom_deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomDeploymentSet resources.
 
@@ -178,31 +178,31 @@ class _CustomDeploymentSetState:
 
     @_builtins.property
     @pulumi.getter(name="customDeploymentSetName")
-    def custom_deployment_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_deployment_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "custom_deployment_set_name")
 
     @custom_deployment_set_name.setter
-    def custom_deployment_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_deployment_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_deployment_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="groupCount")
-    def group_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
 
@@ -213,12 +213,12 @@ class _CustomDeploymentSetState:
         return pulumi.get(self, "group_count")
 
     @group_count.setter
-    def group_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_count", value)
 
     @_builtins.property
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
-    def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_unable_to_redeploy_failed_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
         - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
@@ -229,24 +229,24 @@ class _CustomDeploymentSetState:
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
     @on_unable_to_redeploy_failed_instance.setter
-    def on_unable_to_redeploy_failed_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_unable_to_redeploy_failed_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_unable_to_redeploy_failed_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment strategy. Value range:
         - `Availability`: High Availability policy.
@@ -258,7 +258,7 @@ class _CustomDeploymentSetState:
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
@@ -268,11 +268,11 @@ class CustomDeploymentSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS Custom Deployment Set resource.
@@ -396,11 +396,11 @@ class CustomDeploymentSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 custom_deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -426,12 +426,12 @@ class CustomDeploymentSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            custom_deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            group_count: Optional[pulumi.Input[_builtins.int]] = None,
-            on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'CustomDeploymentSet':
+            custom_deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            group_count: pulumi.Input[Optional[_builtins.int]] = None,
+            on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'CustomDeploymentSet':
         """
         Get an existing CustomDeploymentSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

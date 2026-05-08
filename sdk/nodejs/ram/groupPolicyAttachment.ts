@@ -153,17 +153,17 @@ export interface GroupPolicyAttachmentState {
     /**
      * The name of the group.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The name of the policy.
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * Policy type.
      * - Custom: Custom policy.
      * - System: System policy.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
 }
 
 /**

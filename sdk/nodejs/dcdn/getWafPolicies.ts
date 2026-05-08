@@ -116,18 +116,18 @@ export interface GetWafPoliciesOutputArgs {
     /**
      * A list of Waf Policy IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    nameRegex?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
      */
-    queryArgs?: pulumi.Input<string>;
+    queryArgs?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `on`, `off`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -358,89 +358,89 @@ export interface ListenerState {
      *
      * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      */
-    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
+    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Xtrace Configuration Information. See `accessLogTracingConfig` below.
      */
-    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
+    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig | undefined>;
     /**
      * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      *
      * @deprecated Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
      */
-    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig | undefined>;
     /**
      * The list of certificates. See `caCertificates` below.
      */
-    caCertificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCaCertificate>[]>;
+    caCertificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCaCertificate>[] | undefined>;
     /**
      * Whether to turn on two-way authentication. Value:
      */
-    caEnabled?: pulumi.Input<boolean>;
+    caEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of certificates. See `certificates` below.
      */
-    certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
+    certificates?: pulumi.Input<inputs.alb.ListenerCertificates | undefined>;
     /**
      * The Default Rule Action List See `defaultActions` below.
      */
-    defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[]>;
+    defaultActions?: pulumi.Input<pulumi.Input<inputs.alb.ListenerDefaultAction>[] | undefined>;
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      */
-    gzipEnabled?: pulumi.Input<boolean>;
+    gzipEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      */
-    http2Enabled?: pulumi.Input<boolean>;
+    http2Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      */
-    listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * Snooping Protocols. Valid Values: HTTP, HTTPS Or QuIC.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The SLB Instance Id.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * Configuration Associated with the QuIC Listening See `quicConfig` below.
      */
-    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
+    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig | undefined>;
     /**
      * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * Security Policy
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The Current IP Address of the Listened State
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      */
-    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
+    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig | undefined>;
 }
 
 /**
@@ -452,29 +452,29 @@ export interface ListenerArgs {
      *
      * > **NOTE:**  Only Instances outside the Security Group to Access the Log Switch `accesslogenabled` Open, in Order to Set This Parameter to the `true`.
      */
-    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean>;
+    accessLogRecordCustomizedHeadersEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Xtrace Configuration Information. See `accessLogTracingConfig` below.
      */
-    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig>;
+    accessLogTracingConfig?: pulumi.Input<inputs.alb.ListenerAccessLogTracingConfig | undefined>;
     /**
      * The configurations of the access control lists (ACLs). See `aclConfig` below for details. **NOTE:** Field `aclConfig` has been deprecated from provider version 1.163.0, and it will be removed in the future version. Please use the new resource `alicloud.alb.ListenerAclAttachment`.,
      *
      * @deprecated Field 'acl_config' has been deprecated from provider version 1.163.0 and it will be removed in the future version. Please use the new resource 'alicloud_alb_listener_acl_attachment'.
      */
-    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig>;
+    aclConfig?: pulumi.Input<inputs.alb.ListenerAclConfig | undefined>;
     /**
      * The list of certificates. See `caCertificates` below.
      */
-    caCertificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCaCertificate>[]>;
+    caCertificates?: pulumi.Input<pulumi.Input<inputs.alb.ListenerCaCertificate>[] | undefined>;
     /**
      * Whether to turn on two-way authentication. Value:
      */
-    caEnabled?: pulumi.Input<boolean>;
+    caEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The list of certificates. See `certificates` below.
      */
-    certificates?: pulumi.Input<inputs.alb.ListenerCertificates>;
+    certificates?: pulumi.Input<inputs.alb.ListenerCertificates | undefined>;
     /**
      * The Default Rule Action List See `defaultActions` below.
      */
@@ -482,23 +482,23 @@ export interface ListenerArgs {
     /**
      * Whether to PreCheck only this request. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable Gzip Compression, as a Specific File Type on a Compression. Valid Values: True Or False. Default Value: TRUE.
      */
-    gzipEnabled?: pulumi.Input<boolean>;
+    gzipEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to Enable HTTP/2 Features. Valid Values: True Or False. Default Value: TRUE.
      */
-    http2Enabled?: pulumi.Input<boolean>;
+    http2Enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specify the Connection Idle Timeout Value: 0~600 Seconds.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * Set the IP Address of the Listened Description. Length Is from 2 to 256 Characters.
      */
-    listenerDescription?: pulumi.Input<string>;
+    listenerDescription?: pulumi.Input<string | undefined>;
     /**
      * The SLB Instance Front-End, and Those of the Ports Used. Value: 1~65535.
      */
@@ -514,25 +514,25 @@ export interface ListenerArgs {
     /**
      * Configuration Associated with the QuIC Listening See `quicConfig` below.
      */
-    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig>;
+    quicConfig?: pulumi.Input<inputs.alb.ListenerQuicConfig | undefined>;
     /**
      * The Specified Request Timeout Time. Value: 0~600 Seconds. Default Value: 60 seconds. If the Timeout Time Within the Back-End Server Has Not Answered the SLB Will Give up Waiting, the Client Returns the HTTP 504 Error Code.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * Security Policy
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The Current IP Address of the Listened State
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * xforwardfor Related Attribute Configuration See `xForwardedForConfig` below.
      */
-    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig>;
+    xForwardedForConfig?: pulumi.Input<inputs.alb.ListenerXForwardedForConfig | undefined>;
 }

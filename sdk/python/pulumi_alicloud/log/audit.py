@@ -21,9 +21,9 @@ class AuditArgs:
     def __init__(__self__, *,
                  aliuid: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
-                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_directory_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 multi_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Audit resource.
 
@@ -68,49 +68,49 @@ class AuditArgs:
 
     @_builtins.property
     @pulumi.getter(name="multiAccounts")
-    def multi_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def multi_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Multi-account configuration, please fill in multiple aliuid.
         """
         return pulumi.get(self, "multi_accounts")
 
     @multi_accounts.setter
-    def multi_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def multi_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "multi_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectoryType")
-    def resource_directory_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_directory_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         """
         return pulumi.get(self, "resource_directory_type")
 
     @resource_directory_type.setter
-    def resource_directory_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_directory_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_directory_type", value)
 
     @_builtins.property
     @pulumi.getter(name="variableMap")
-    def variable_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def variable_map(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Log audit detailed configuration.
         """
         return pulumi.get(self, "variable_map")
 
     @variable_map.setter
-    def variable_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def variable_map(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "variable_map", value)
 
 
 @pulumi.input_type
 class _AuditState:
     def __init__(__self__, *,
-                 aliuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_directory_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 aliuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Audit resources.
 
@@ -133,62 +133,62 @@ class _AuditState:
 
     @_builtins.property
     @pulumi.getter
-    def aliuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Aliuid value of your account.
         """
         return pulumi.get(self, "aliuid")
 
     @aliuid.setter
-    def aliuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliuid", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of SLS log audit.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="multiAccounts")
-    def multi_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def multi_accounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Multi-account configuration, please fill in multiple aliuid.
         """
         return pulumi.get(self, "multi_accounts")
 
     @multi_accounts.setter
-    def multi_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def multi_accounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "multi_accounts", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectoryType")
-    def resource_directory_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_directory_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
         """
         return pulumi.get(self, "resource_directory_type")
 
     @resource_directory_type.setter
-    def resource_directory_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_directory_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_directory_type", value)
 
     @_builtins.property
     @pulumi.getter(name="variableMap")
-    def variable_map(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def variable_map(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Log audit detailed configuration.
         """
         return pulumi.get(self, "variable_map")
 
     @variable_map.setter
-    def variable_map(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def variable_map(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "variable_map", value)
 
 
@@ -198,11 +198,11 @@ class Audit(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_directory_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aliuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         SLS log audit exists in the form of log service app.
@@ -589,11 +589,11 @@ class Audit(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aliuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_directory_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 aliuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 variable_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -622,11 +622,11 @@ class Audit(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aliuid: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_directory_type: Optional[pulumi.Input[_builtins.str]] = None,
-            variable_map: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Audit':
+            aliuid: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_accounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_directory_type: pulumi.Input[Optional[_builtins.str]] = None,
+            variable_map: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Audit':
         """
         Get an existing Audit resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

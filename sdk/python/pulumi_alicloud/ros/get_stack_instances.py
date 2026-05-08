@@ -199,13 +199,13 @@ def get_stack_instances(enable_details: Optional[_builtins.bool] = None,
         stack_instance_account_id=pulumi.get(__ret__, 'stack_instance_account_id'),
         stack_instance_region_id=pulumi.get(__ret__, 'stack_instance_region_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                               stack_instance_account_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               stack_instance_region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_stack_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                               stack_instance_account_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               stack_instance_region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStackInstancesResult]:
     """
     This data source provides the Ros Stack Instances of the current Alibaba Cloud user.

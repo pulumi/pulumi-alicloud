@@ -20,11 +20,11 @@ __all__ = ['RouteEntryArgs', 'RouteEntry']
 class RouteEntryArgs:
     def __init__(__self__, *,
                  route_table_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidrblock: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidrblock: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RouteEntry resource.
 
@@ -73,55 +73,55 @@ class RouteEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrblock")
-    def destination_cidrblock(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidrblock(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the custom route entry.
         """
         return pulumi.get(self, "destination_cidrblock")
 
     @destination_cidrblock.setter
-    def destination_cidrblock(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidrblock(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidrblock", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Next Hop.
         """
         return pulumi.get(self, "nexthop_id")
 
     @nexthop_id.setter
-    def nexthop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Next Hop. Valid values:
         - `Instance`: An Elastic Compute Service (ECS) instance.
@@ -140,20 +140,20 @@ class RouteEntryArgs:
         return pulumi.get(self, "nexthop_type")
 
     @nexthop_type.setter
-    def nexthop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_type", value)
 
 
 @pulumi.input_type
 class _RouteEntryState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidrblock: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidrblock: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
 
@@ -197,55 +197,55 @@ class _RouteEntryState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Route Entry. The description must be `1` to `256` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrblock")
-    def destination_cidrblock(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidrblock(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination CIDR block of the custom route entry.
         """
         return pulumi.get(self, "destination_cidrblock")
 
     @destination_cidrblock.setter
-    def destination_cidrblock(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidrblock(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidrblock", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Route Entry. The name must be `1` to `128` characters in length, and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Next Hop.
         """
         return pulumi.get(self, "nexthop_id")
 
     @nexthop_id.setter
-    def nexthop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Next Hop. Valid values:
         - `Instance`: An Elastic Compute Service (ECS) instance.
@@ -264,32 +264,32 @@ class _RouteEntryState:
         return pulumi.get(self, "nexthop_type")
 
     @nexthop_type.setter
-    def nexthop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Route Table.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routerId")
     @_utilities.deprecated("""Attribute router_id has been deprecated and suggest removing it from your template.""")
-    def router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         return pulumi.get(self, "router_id")
 
     @router_id.setter
-    def router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "router_id", value)
 
 
@@ -299,12 +299,12 @@ class RouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidrblock: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidrblock: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Route Entry resource. A Route Entry represents a route item of one VPC Route Table.
@@ -331,7 +331,7 @@ class RouteEntry(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -430,7 +430,7 @@ class RouteEntry(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=8,
+            memory_size=float(8),
             instance_type_family="ecs.g6")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -492,12 +492,12 @@ class RouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidrblock: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidrblock: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -526,13 +526,13 @@ class RouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_cidrblock: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RouteEntry':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidrblock: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RouteEntry':
         """
         Get an existing RouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

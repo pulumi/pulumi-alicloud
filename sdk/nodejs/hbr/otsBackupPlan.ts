@@ -81,7 +81,7 @@ import * as utilities from "../utilities";
  *     retention: "1",
  *     instanceName: defaultInstance.name,
  *     crossAccountType: "SELF_ACCOUNT",
- *     crossAccountUserId: _default.then(_default => _default.id),
+ *     crossAccountUserId: output(_default.then(_default => _default.id)).apply(x =>Number(x)),
  *     crossAccountRoleName: defaultRole.id,
  *     otsDetails: [{
  *         tableNames: [defaultTable.tableName],
@@ -247,54 +247,54 @@ export interface OtsBackupPlanState {
     /**
      * Backup type. Valid values: `COMPLETE`.
      */
-    backupType?: pulumi.Input<string>;
+    backupType?: pulumi.Input<string | undefined>;
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
-    otsBackupPlanName?: pulumi.Input<string>;
+    otsBackupPlanName?: pulumi.Input<string | undefined>;
     /**
      * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
+    otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[] | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
-    retention?: pulumi.Input<string>;
+    retention?: pulumi.Input<string | undefined>;
     /**
      * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[] | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * - `startTime` Backup start time, UNIX time seconds.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The ID of backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -308,23 +308,23 @@ export interface OtsBackupPlanArgs {
     /**
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * The original account ID of the cross account backup managed by the current account.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Table store instance. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      */
@@ -332,7 +332,7 @@ export interface OtsBackupPlanArgs {
     /**
      * The details about the Table store instance. See the following `Block otsDetail`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
+    otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[] | undefined>;
     /**
      * Backup retention days, the minimum is 1.
      */
@@ -340,16 +340,16 @@ export interface OtsBackupPlanArgs {
     /**
      * The backup plan rule. See the following `Block rules`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanRule>[] | undefined>;
     /**
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * - `startTime` Backup start time, UNIX time seconds.
      *
      * @deprecated Field 'schedule' has been deprecated from version 1.163.0. Use 'rules' instead.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * The ID of backup vault.
      */
-    vaultId?: pulumi.Input<string>;
+    vaultId?: pulumi.Input<string | undefined>;
 }

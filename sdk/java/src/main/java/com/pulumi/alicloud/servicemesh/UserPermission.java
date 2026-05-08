@@ -51,8 +51,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.servicemesh.UserPermission;
  * import com.pulumi.alicloud.servicemesh.UserPermissionArgs;
  * import com.pulumi.alicloud.servicemesh.inputs.UserPermissionPermissionArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  *             .version(default_.versions()[0].version())
  *             .network(ServiceMeshNetworkArgs.builder()
  *                 .vpcId(defaultGetNetworks.ids()[0])
- *                 .vswitcheLists(List.of(defaultGetSwitches.ids()[0]))
+ *                 .vswitcheLists(Arrays.asList(defaultGetSwitches.ids()[0]))
  *                 .build())
  *             .loadBalancer(ServiceMeshLoadBalancerArgs.builder()
  *                 .pilotPublicEip(false)

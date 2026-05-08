@@ -21,8 +21,8 @@ class ChartNamespaceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  namespace_name: pulumi.Input[_builtins.str],
-                 auto_create_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_repo_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_repo_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ChartNamespace resource.
 
@@ -64,36 +64,36 @@ class ChartNamespaceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateRepo")
-    def auto_create_repo(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_repo(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create repositories in the namespace. Valid values:
         """
         return pulumi.get(self, "auto_create_repo")
 
     @auto_create_repo.setter
-    def auto_create_repo(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_repo(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRepoType")
-    def default_repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
         """
         return pulumi.get(self, "default_repo_type")
 
     @default_repo_type.setter
-    def default_repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_repo_type", value)
 
 
 @pulumi.input_type
 class _ChartNamespaceState:
     def __init__(__self__, *,
-                 auto_create_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ChartNamespace resources.
 
@@ -113,50 +113,50 @@ class _ChartNamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateRepo")
-    def auto_create_repo(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_repo(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create repositories in the namespace. Valid values:
         """
         return pulumi.get(self, "auto_create_repo")
 
     @auto_create_repo.setter
-    def auto_create_repo(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_repo(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRepoType")
-    def default_repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
         """
         return pulumi.get(self, "default_repo_type")
 
     @default_repo_type.setter
-    def default_repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_repo_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the namespace that you want to create.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
 
@@ -166,10 +166,10 @@ class ChartNamespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Chart Namespace resource.
@@ -291,10 +291,10 @@ class ChartNamespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -322,10 +322,10 @@ class ChartNamespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create_repo: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ChartNamespace':
+            auto_create_repo: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ChartNamespace':
         """
         Get an existing ChartNamespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

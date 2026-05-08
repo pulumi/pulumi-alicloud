@@ -26,10 +26,10 @@ class CollectionPolicyArgs:
                  policy_config: pulumi.Input['CollectionPolicyPolicyConfigArgs'],
                  policy_name: pulumi.Input[_builtins.str],
                  product_code: pulumi.Input[_builtins.str],
-                 centralize_config: Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']] = None,
-                 centralize_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_config: Optional[pulumi.Input['CollectionPolicyDataConfigArgs']] = None,
-                 resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
+                 centralize_config: pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']] = None,
+                 centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_config: pulumi.Input[Optional['CollectionPolicyDataConfigArgs']] = None,
+                 resource_directory: pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         The set of arguments for constructing a CollectionPolicy resource.
 
@@ -125,65 +125,65 @@ class CollectionPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="centralizeConfig")
-    def centralize_config(self) -> Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]:
+    def centralize_config(self) -> pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']]:
         """
         Centralized forwarding configuration. See `centralize_config` below.
         """
         return pulumi.get(self, "centralize_config")
 
     @centralize_config.setter
-    def centralize_config(self, value: Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]):
+    def centralize_config(self, value: pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']]):
         pulumi.set(self, "centralize_config", value)
 
     @_builtins.property
     @pulumi.getter(name="centralizeEnabled")
-    def centralize_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def centralize_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable centralized forwarding. Default value: false.
         """
         return pulumi.get(self, "centralize_enabled")
 
     @centralize_enabled.setter
-    def centralize_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def centralize_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "centralize_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dataConfig")
-    def data_config(self) -> Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]:
+    def data_config(self) -> pulumi.Input[Optional['CollectionPolicyDataConfigArgs']]:
         """
         This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         """
         return pulumi.get(self, "data_config")
 
     @data_config.setter
-    def data_config(self, value: Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]):
+    def data_config(self, value: pulumi.Input[Optional['CollectionPolicyDataConfigArgs']]):
         pulumi.set(self, "data_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectory")
-    def resource_directory(self) -> Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]:
+    def resource_directory(self) -> pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]:
         """
         Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         return pulumi.get(self, "resource_directory")
 
     @resource_directory.setter
-    def resource_directory(self, value: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]):
+    def resource_directory(self, value: pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]):
         pulumi.set(self, "resource_directory", value)
 
 
 @pulumi.input_type
 class _CollectionPolicyState:
     def __init__(__self__, *,
-                 centralize_config: Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']] = None,
-                 centralize_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_config: Optional[pulumi.Input['CollectionPolicyDataConfigArgs']] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_config: Optional[pulumi.Input['CollectionPolicyPolicyConfigArgs']] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_directory: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']] = None):
+                 centralize_config: pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']] = None,
+                 centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_config: pulumi.Input[Optional['CollectionPolicyDataConfigArgs']] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_config: pulumi.Input[Optional['CollectionPolicyPolicyConfigArgs']] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_directory: pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']] = None):
         """
         Input properties used for looking up and filtering CollectionPolicy resources.
 
@@ -221,79 +221,79 @@ class _CollectionPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="centralizeConfig")
-    def centralize_config(self) -> Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]:
+    def centralize_config(self) -> pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']]:
         """
         Centralized forwarding configuration. See `centralize_config` below.
         """
         return pulumi.get(self, "centralize_config")
 
     @centralize_config.setter
-    def centralize_config(self, value: Optional[pulumi.Input['CollectionPolicyCentralizeConfigArgs']]):
+    def centralize_config(self, value: pulumi.Input[Optional['CollectionPolicyCentralizeConfigArgs']]):
         pulumi.set(self, "centralize_config", value)
 
     @_builtins.property
     @pulumi.getter(name="centralizeEnabled")
-    def centralize_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def centralize_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable centralized forwarding. Default value: false.
         """
         return pulumi.get(self, "centralize_enabled")
 
     @centralize_enabled.setter
-    def centralize_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def centralize_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "centralize_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dataCode")
-    def data_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log type code.
         """
         return pulumi.get(self, "data_code")
 
     @data_code.setter
-    def data_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_code", value)
 
     @_builtins.property
     @pulumi.getter(name="dataConfig")
-    def data_config(self) -> Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]:
+    def data_config(self) -> pulumi.Input[Optional['CollectionPolicyDataConfigArgs']]:
         """
         This parameter can be configured only when the log type is a global log type—for example, when productCode is sls. It indicates that global logs will be collected to the specified region upon initial configuration. See `data_config` below.
         """
         return pulumi.get(self, "data_config")
 
     @data_config.setter
-    def data_config(self, value: Optional[pulumi.Input['CollectionPolicyDataConfigArgs']]):
+    def data_config(self, value: pulumi.Input[Optional['CollectionPolicyDataConfigArgs']]):
         pulumi.set(self, "data_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="policyConfig")
-    def policy_config(self) -> Optional[pulumi.Input['CollectionPolicyPolicyConfigArgs']]:
+    def policy_config(self) -> pulumi.Input[Optional['CollectionPolicyPolicyConfigArgs']]:
         """
         Collection rule configuration. See `policy_config` below.
         """
         return pulumi.get(self, "policy_config")
 
     @policy_config.setter
-    def policy_config(self, value: Optional[pulumi.Input['CollectionPolicyPolicyConfigArgs']]):
+    def policy_config(self, value: pulumi.Input[Optional['CollectionPolicyPolicyConfigArgs']]):
         pulumi.set(self, "policy_config", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The naming rules are as follows:
         - It can contain only lowercase letters, digits, hyphens (-), and underscores (_).
@@ -303,31 +303,31 @@ class _CollectionPolicyState:
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="productCode")
-    def product_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Product code.
         """
         return pulumi.get(self, "product_code")
 
     @product_code.setter
-    def product_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_code", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectory")
-    def resource_directory(self) -> Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]:
+    def resource_directory(self) -> pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]:
         """
         Resource Directory configuration. The account must have Resource Directory enabled and be either a management account or a delegated administrator. See `resource_directory` below.
         """
         return pulumi.get(self, "resource_directory")
 
     @resource_directory.setter
-    def resource_directory(self, value: Optional[pulumi.Input['CollectionPolicyResourceDirectoryArgs']]):
+    def resource_directory(self, value: pulumi.Input[Optional['CollectionPolicyResourceDirectoryArgs']]):
         pulumi.set(self, "resource_directory", value)
 
 
@@ -337,15 +337,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 centralize_config: Optional[pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
-                 centralize_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_config: Optional[pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_config: Optional[pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_directory: Optional[pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
+                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+                 centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Log Service (SLS) Collection Policy resource.
@@ -699,15 +699,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 centralize_config: Optional[pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
-                 centralize_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_config: Optional[pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy_config: Optional[pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_directory: Optional[pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
+                 centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+                 centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -746,15 +746,15 @@ class CollectionPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            centralize_config: Optional[pulumi.Input[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
-            centralize_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            data_code: Optional[pulumi.Input[_builtins.str]] = None,
-            data_config: Optional[pulumi.Input[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            policy_config: Optional[pulumi.Input[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            product_code: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_directory: Optional[pulumi.Input[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None) -> 'CollectionPolicy':
+            centralize_config: pulumi.Input[Optional[Union['CollectionPolicyCentralizeConfigArgs', 'CollectionPolicyCentralizeConfigArgsDict']]] = None,
+            centralize_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_code: pulumi.Input[Optional[_builtins.str]] = None,
+            data_config: pulumi.Input[Optional[Union['CollectionPolicyDataConfigArgs', 'CollectionPolicyDataConfigArgsDict']]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            policy_config: pulumi.Input[Optional[Union['CollectionPolicyPolicyConfigArgs', 'CollectionPolicyPolicyConfigArgsDict']]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            product_code: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory: pulumi.Input[Optional[Union['CollectionPolicyResourceDirectoryArgs', 'CollectionPolicyResourceDirectoryArgsDict']]] = None) -> 'CollectionPolicy':
         """
         Get an existing CollectionPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

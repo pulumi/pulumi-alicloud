@@ -270,9 +270,9 @@ def get_policy_document(output_file: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         statements=pulumi.get(__ret__, 'statements'),
         version=pulumi.get(__ret__, 'version'))
-def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               statements: Optional[pulumi.Input[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
-                               version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_policy_document_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               statements: pulumi.Input[Optional[Optional[Sequence[Union['GetPolicyDocumentStatementArgs', 'GetPolicyDocumentStatementArgsDict']]]]] = None,
+                               version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyDocumentResult]:
     """
     This data source Generates a RAM policy document of the current Alibaba Cloud user.

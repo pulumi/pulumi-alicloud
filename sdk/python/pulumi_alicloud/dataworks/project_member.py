@@ -23,7 +23,7 @@ class ProjectMemberArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.int],
                  user_id: pulumi.Input[_builtins.str],
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]] = None):
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]] = None):
         """
         The set of arguments for constructing a ProjectMember resource.
 
@@ -62,24 +62,24 @@ class ProjectMemberArgs:
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]:
         """
         List of roles owned by members. See `roles` below.
         """
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]):
         pulumi.set(self, "roles", value)
 
 
 @pulumi.input_type
 class _ProjectMemberState:
     def __init__(__self__, *,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProjectMember resources.
 
@@ -99,50 +99,50 @@ class _ProjectMemberState:
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Project ID
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]:
+    def roles(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]:
         """
         List of roles owned by members. See `roles` below.
         """
         return pulumi.get(self, "roles")
 
     @roles.setter
-    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]):
+    def roles(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProjectMemberRoleArgs']]]]):
         pulumi.set(self, "roles", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the user in project
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID of the member.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
 
@@ -152,9 +152,9 @@ class ProjectMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Data Works Project Member resource.
@@ -197,7 +197,7 @@ class ProjectMember(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         default_project_member = alicloud.dataworks.ProjectMember("default",
             user_id=default_kc_tr_b2.id,
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             roles=[{
                 "code": admin_code,
             }])
@@ -267,7 +267,7 @@ class ProjectMember(pulumi.CustomResource):
             resource_group_id=default.ids[0])
         default_project_member = alicloud.dataworks.ProjectMember("default",
             user_id=default_kc_tr_b2.id,
-            project_id=default_qe_rfv_u.id,
+            project_id=default_qe_rfv_u.id.apply(lambda x: int(x)),
             roles=[{
                 "code": admin_code,
             }])
@@ -299,9 +299,9 @@ class ProjectMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -329,10 +329,10 @@ class ProjectMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            project_id: Optional[pulumi.Input[_builtins.int]] = None,
-            roles: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProjectMember':
+            project_id: pulumi.Input[Optional[_builtins.int]] = None,
+            roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProjectMemberRoleArgs', 'ProjectMemberRoleArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProjectMember':
         """
         Get an existing ProjectMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

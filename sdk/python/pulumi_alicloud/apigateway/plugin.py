@@ -22,8 +22,8 @@ class PluginArgs:
                  plugin_data: pulumi.Input[_builtins.str],
                  plugin_name: pulumi.Input[_builtins.str],
                  plugin_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Plugin resource.
 
@@ -107,38 +107,38 @@ class PluginArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the plug-in, which cannot exceed 200 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PluginState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Plugin resources.
 
@@ -178,55 +178,55 @@ class _PluginState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the plug-in, which cannot exceed 200 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginData")
-    def plugin_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The definition statement of the plug-in. Plug-in definition statements in the JSON and YAML formats are supported.
         """
         return pulumi.get(self, "plugin_data")
 
     @plugin_data.setter
-    def plugin_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_data", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginName")
-    def plugin_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
         """
         return pulumi.get(self, "plugin_name")
 
     @plugin_name.setter
-    def plugin_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginType")
-    def plugin_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the plug-in. Valid values:
         - "trafficControl"
@@ -247,19 +247,19 @@ class _PluginState:
         return pulumi.get(self, "plugin_type")
 
     @plugin_type.setter
-    def plugin_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -269,11 +269,11 @@ class Plugin(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Plugin resource.
@@ -460,11 +460,11 @@ class Plugin(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -496,12 +496,12 @@ class Plugin(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_data: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_name: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Plugin':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_data: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Plugin':
         """
         Get an existing Plugin resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

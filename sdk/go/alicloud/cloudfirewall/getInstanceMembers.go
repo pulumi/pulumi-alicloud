@@ -26,20 +26,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := cloudfirewall.GetInstanceMembers(ctx, &cloudfirewall.GetInstanceMembersArgs{
-// Ids: interface{}{
-// defaultAlicloudCloudFirewallInstanceMember.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCloudFirewallInstanceMemberExampleId", _default.Members[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := cloudfirewall.GetInstanceMembers(ctx, &cloudfirewall.GetInstanceMembersArgs{
+//				Ids: pulumi.StringArray{
+//					defaultAlicloudCloudFirewallInstanceMember.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCloudFirewallInstanceMemberExampleId", _default.Members[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetInstanceMembers(ctx *pulumi.Context, args *GetInstanceMembersArgs, opts ...pulumi.InvokeOption) (*GetInstanceMembersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

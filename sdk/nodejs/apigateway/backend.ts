@@ -125,19 +125,19 @@ export interface BackendState {
     /**
      * The name of the Backend.
      */
-    backendName?: pulumi.Input<string>;
+    backendName?: pulumi.Input<string | undefined>;
     /**
      * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
      */
-    backendType?: pulumi.Input<string>;
+    backendType?: pulumi.Input<string | undefined>;
     /**
      * Whether to create an Event bus service association role.
      */
-    createEventBridgeServiceLinkedRole?: pulumi.Input<boolean>;
+    createEventBridgeServiceLinkedRole?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Backend.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -155,9 +155,9 @@ export interface BackendArgs {
     /**
      * Whether to create an Event bus service association role.
      */
-    createEventBridgeServiceLinkedRole?: pulumi.Input<boolean>;
+    createEventBridgeServiceLinkedRole?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the Backend.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }

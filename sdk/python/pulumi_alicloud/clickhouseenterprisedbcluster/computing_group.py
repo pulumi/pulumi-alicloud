@@ -24,7 +24,7 @@ class ComputingGroupArgs:
                  node_count: pulumi.Input[_builtins.int],
                  node_scale_max: pulumi.Input[_builtins.int],
                  node_scale_min: pulumi.Input[_builtins.int],
-                 computing_group_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 computing_group_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ComputingGroup resource.
 
@@ -105,31 +105,31 @@ class ComputingGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="computingGroupDescription")
-    def computing_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Computing group name
         """
         return pulumi.get(self, "computing_group_description")
 
     @computing_group_description.setter
-    def computing_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_group_description", value)
 
 
 @pulumi.input_type
 class _ComputingGroupState:
     def __init__(__self__, *,
-                 computing_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_group_endpoint_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 computing_group_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 computing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_group_public_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 computing_group_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_readonly: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None):
+                 computing_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_group_endpoint_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 computing_group_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 computing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_group_public_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 computing_group_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_readonly: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_min: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ComputingGroup resources.
 
@@ -170,134 +170,134 @@ class _ComputingGroupState:
 
     @_builtins.property
     @pulumi.getter(name="computingGroupDescription")
-    def computing_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Computing group name
         """
         return pulumi.get(self, "computing_group_description")
 
     @computing_group_description.setter
-    def computing_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_group_description", value)
 
     @_builtins.property
     @pulumi.getter(name="computingGroupEndpointNames")
-    def computing_group_endpoint_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def computing_group_endpoint_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of computing group endpoint names.
         """
         return pulumi.get(self, "computing_group_endpoint_names")
 
     @computing_group_endpoint_names.setter
-    def computing_group_endpoint_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def computing_group_endpoint_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "computing_group_endpoint_names", value)
 
     @_builtins.property
     @pulumi.getter(name="computingGroupEndpoints")
-    def computing_group_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def computing_group_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of computing group endpoints.
         """
         return pulumi.get(self, "computing_group_endpoints")
 
     @computing_group_endpoints.setter
-    def computing_group_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def computing_group_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "computing_group_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="computingGroupId")
-    def computing_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A resource property field representing the primary resource ID.
         """
         return pulumi.get(self, "computing_group_id")
 
     @computing_group_id.setter
-    def computing_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computingGroupPublicEndpoints")
-    def computing_group_public_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def computing_group_public_endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of public endpoints for the computing group.
         """
         return pulumi.get(self, "computing_group_public_endpoints")
 
     @computing_group_public_endpoints.setter
-    def computing_group_public_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def computing_group_public_endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "computing_group_public_endpoints", value)
 
     @_builtins.property
     @pulumi.getter(name="computingGroupStatus")
-    def computing_group_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_group_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Computing group status.
         """
         return pulumi.get(self, "computing_group_status")
 
     @computing_group_status.setter
-    def computing_group_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_group_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_group_status", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ClickHouse Enterprise Edition instance ID
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isReadonly")
-    def is_readonly(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_readonly(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Computing group read-only
         """
         return pulumi.get(self, "is_readonly")
 
     @is_readonly.setter
-    def is_readonly(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_readonly(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_readonly", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of computing group nodes
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeScaleMax")
-    def node_scale_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_scale_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Computing group node elasticity upper limit
         """
         return pulumi.get(self, "node_scale_max")
 
     @node_scale_max.setter
-    def node_scale_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_scale_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_scale_max", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeScaleMin")
-    def node_scale_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_scale_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Lower limit of computing group node elasticity
         """
         return pulumi.get(self, "node_scale_min")
 
     @node_scale_min.setter
-    def node_scale_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_scale_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_scale_min", value)
 
 
@@ -307,12 +307,12 @@ class ComputingGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 computing_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_readonly: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 computing_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_readonly: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Click House Enterprise Db Cluster Computing Group resource.
@@ -498,12 +498,12 @@ class ComputingGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 computing_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_readonly: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_scale_min: Optional[pulumi.Input[_builtins.int]] = None,
+                 computing_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_readonly: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_scale_min: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -544,17 +544,17 @@ class ComputingGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            computing_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-            computing_group_endpoint_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            computing_group_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            computing_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            computing_group_public_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            computing_group_status: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_readonly: Optional[pulumi.Input[_builtins.bool]] = None,
-            node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            node_scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-            node_scale_min: Optional[pulumi.Input[_builtins.int]] = None) -> 'ComputingGroup':
+            computing_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_group_endpoint_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_group_public_endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            computing_group_status: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_readonly: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+            node_scale_min: pulumi.Input[Optional[_builtins.int]] = None) -> 'ComputingGroup':
         """
         Get an existing ComputingGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

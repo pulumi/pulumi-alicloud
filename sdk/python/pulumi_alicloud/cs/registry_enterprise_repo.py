@@ -23,8 +23,8 @@ class RegistryEnterpriseRepoArgs:
                  namespace: pulumi.Input[_builtins.str],
                  repo_type: pulumi.Input[_builtins.str],
                  summary: pulumi.Input[_builtins.str],
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RegistryEnterpriseRepo resource.
 
@@ -98,39 +98,39 @@ class RegistryEnterpriseRepoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the repository.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RegistryEnterpriseRepoState:
     def __init__(__self__, *,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RegistryEnterpriseRepo resources.
 
@@ -161,67 +161,67 @@ class _RegistryEnterpriseRepoState:
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the repository.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Container Registry Enterprise Edition instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the namespace to which the image repository belongs.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="repoId")
-    def repo_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the repository.
         """
         return pulumi.get(self, "repo_id")
 
     @repo_id.setter
-    def repo_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repoType")
-    def repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the repository. Valid values:
         - `PUBLIC`: The repository is a public repository.
@@ -230,19 +230,19 @@ class _RegistryEnterpriseRepoState:
         return pulumi.get(self, "repo_type")
 
     @repo_type.setter
-    def repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The summary about the repository.
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
 
@@ -252,12 +252,12 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Container Registry Enterprise Edition Repository resource.
@@ -405,12 +405,12 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -445,13 +445,13 @@ class RegistryEnterpriseRepo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            detail: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-            summary: Optional[pulumi.Input[_builtins.str]] = None) -> 'RegistryEnterpriseRepo':
+            detail: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None) -> 'RegistryEnterpriseRepo':
         """
         Get an existing RegistryEnterpriseRepo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

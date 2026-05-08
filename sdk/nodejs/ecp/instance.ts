@@ -245,73 +245,73 @@ export interface InstanceState {
     /**
      * Specifies whether to enable the auto-payment feature. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the auto-renewal feature. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The specifications of the ECP instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair that you want to use to connect to the instance.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Default value: `1`. Valid values:
      * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
      * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      */
-    resolution?: pulumi.Input<string>;
+    resolution?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the Instance. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      */
-    vncPassword?: pulumi.Input<string>;
+    vncPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -321,23 +321,23 @@ export interface InstanceArgs {
     /**
      * Specifies whether to enable the auto-payment feature. Valid values:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the auto-renewal feature. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the ECP instance. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the elastic IP address (EIP). **NOTE:** From version 1.232.0, `eipBandwidth` cannot be modified.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to forcefully stop and release the instance. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the image.
      */
@@ -345,7 +345,7 @@ export interface InstanceArgs {
     /**
      * The name of the ECP instance. The name must be `2` to `128` characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The specifications of the ECP instance.
      */
@@ -353,25 +353,25 @@ export interface InstanceArgs {
     /**
      * The name of the key pair that you want to use to connect to the instance.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the ECP instance. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`,`Subscription`. **NOTE:** From version 1.232.0, `paymentType` cannot be modified.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The subscription duration. Default value: `1`. Valid values:
      * - If `periodUnit` is set to `Month`. Valid values: `1`, `2`, `3`, and `6`.
      * - If `periodUnit` is set to `Year`. Valid values: `1` to `5`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The unit of the subscription duration. Default value: `Month`. Valid values: `Month`, `Year`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The resolution that you want to select for the ECP instance. **NOTE:** From version 1.232.0, `resolution` can be modified.
      */
-    resolution?: pulumi.Input<string>;
+    resolution?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group.
      */
@@ -379,11 +379,11 @@ export interface InstanceArgs {
     /**
      * The status of the Instance. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
      */
-    vncPassword?: pulumi.Input<string>;
+    vncPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch.
      */

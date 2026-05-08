@@ -181,12 +181,12 @@ def get_service_queues(ids: Optional[Sequence[_builtins.str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         queue_name=pulumi.get(__ret__, 'queue_name'),
         queues=pulumi.get(__ret__, 'queues'))
-def get_service_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              queue_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_queues_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              queue_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceQueuesResult]:
     """
     This data source provides the Message Notification Service Queues of the current Alibaba Cloud user.

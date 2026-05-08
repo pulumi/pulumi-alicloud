@@ -175,11 +175,11 @@ def get_v3_functions(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         prefix=pulumi.get(__ret__, 'prefix'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-def get_v3_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_v3_functions_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV3FunctionsResult]:
     """
     This data source provides Fcv3 Function available to the user.[What is Function](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateFunction)

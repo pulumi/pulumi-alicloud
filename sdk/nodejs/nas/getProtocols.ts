@@ -101,7 +101,7 @@ export interface GetProtocolsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The file system type. Valid Values: `Performance` and `Capacity`.
      */
@@ -109,5 +109,5 @@ export interface GetProtocolsOutputArgs {
     /**
      * String to filter results by zone id.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -184,13 +184,13 @@ def get_resolution_lines(domain_name: Optional[_builtins.str] = None,
         lines=pulumi.get(__ret__, 'lines'),
         output_file=pulumi.get(__ret__, 'output_file'),
         user_client_ip=pulumi.get(__ret__, 'user_client_ip'))
-def get_resolution_lines_output(domain_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                line_codes: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                line_display_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                line_names: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                user_client_ip: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resolution_lines_output(domain_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                line_codes: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                line_display_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                line_names: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                user_client_ip: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResolutionLinesResult]:
     """
     This data source provides a list of DNS Resolution Lines in an Alibaba Cloud account according to the specified filters.

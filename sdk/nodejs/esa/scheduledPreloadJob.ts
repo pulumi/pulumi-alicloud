@@ -158,35 +158,35 @@ export interface ScheduledPreloadJobState {
     /**
      * The time when the task was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The method to submit the URLs to be prefetched.
      */
-    insertWay?: pulumi.Input<string>;
+    insertWay?: pulumi.Input<string | undefined>;
     /**
      * Preheat OSS files regularly and fill in the OSS file address. Note: The OSS file contains the URL that you need to warm up.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    ossUrl?: pulumi.Input<string>;
+    ossUrl?: pulumi.Input<string | undefined>;
     /**
      * The ID of the prefetch task.
      */
-    scheduledPreloadJobId?: pulumi.Input<string>;
+    scheduledPreloadJobId?: pulumi.Input<string | undefined>;
     /**
      * The task name.
      */
-    scheduledPreloadJobName?: pulumi.Input<string>;
+    scheduledPreloadJobName?: pulumi.Input<string | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    urlList?: pulumi.Input<string>;
+    urlList?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface ScheduledPreloadJobArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    ossUrl?: pulumi.Input<string>;
+    ossUrl?: pulumi.Input<string | undefined>;
     /**
      * The task name.
      */
@@ -216,5 +216,5 @@ export interface ScheduledPreloadJobArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    urlList?: pulumi.Input<string>;
+    urlList?: pulumi.Input<string | undefined>;
 }

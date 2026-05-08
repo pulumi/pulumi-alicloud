@@ -111,7 +111,7 @@ def get_cross_regions(output_file: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         regions=pulumi.get(__ret__, 'regions'))
-def get_cross_regions_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_cross_regions_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCrossRegionsResult]:
     """
     This data source provides an available area for remote disaster recovery for RDS.

@@ -162,44 +162,44 @@ export interface IpamIpamState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of IPAM.
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
-    ipamDescription?: pulumi.Input<string>;
+    ipamDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamName?: pulumi.Input<string>;
+    ipamName?: pulumi.Input<string | undefined>;
     /**
      * List of IPAM effective regions.
      */
-    operatingRegionLists?: pulumi.Input<pulumi.Input<string>[]>;
+    operatingRegionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * After an IPAM is created, the scope of the private network IPAM created by the system by default.
      */
-    privateDefaultScopeId?: pulumi.Input<string>;
+    privateDefaultScopeId?: pulumi.Input<string | undefined>;
     /**
      * After an IPAM is created, the public network IPAM is created by default.
      */
-    publicDefaultScopeId?: pulumi.Input<string>;
+    publicDefaultScopeId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -210,11 +210,11 @@ export interface IpamIpamArgs {
      * The description of IPAM.
      * It must be 2 to 256 characters in length and must start with an uppercase letter or a Chinese character, but cannot start with 'http: // 'or 'https. If the description is not filled in, it is blank. The default value is blank.
      */
-    ipamDescription?: pulumi.Input<string>;
+    ipamDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamName?: pulumi.Input<string>;
+    ipamName?: pulumi.Input<string | undefined>;
     /**
      * List of IPAM effective regions.
      */
@@ -222,9 +222,9 @@ export interface IpamIpamArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

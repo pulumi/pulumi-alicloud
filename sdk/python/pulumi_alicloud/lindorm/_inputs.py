@@ -43,23 +43,23 @@ class InstanceV2EngineListArgsDict(TypedDict):
     - `LROW`: Wide table Engine 3.0
     - `LSTREAM`: Stream engine
     """
-    connect_address_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgsDict']]]]
+    connect_address_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]]
     """
     Connect Address List
     """
-    is_last_version: NotRequired[pulumi.Input[_builtins.bool]]
+    is_last_version: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether it is the latest version
     """
-    latest_version: NotRequired[pulumi.Input[_builtins.str]]
+    latest_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Latest Version
     """
-    node_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgsDict']]]]
+    node_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]]
     """
     Node Group List See `node_group` below.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Engine Version
     """
@@ -68,11 +68,11 @@ class InstanceV2EngineListArgsDict(TypedDict):
 class InstanceV2EngineListArgs:
     def __init__(__self__, *,
                  engine_type: pulumi.Input[_builtins.str],
-                 connect_address_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]] = None,
-                 is_last_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 latest_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 connect_address_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]] = None,
+                 is_last_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 latest_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] engine_type: Engine
                
@@ -133,75 +133,75 @@ class InstanceV2EngineListArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectAddressLists")
-    def connect_address_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]:
+    def connect_address_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]:
         """
         Connect Address List
         """
         return pulumi.get(self, "connect_address_lists")
 
     @connect_address_lists.setter
-    def connect_address_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]):
+    def connect_address_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListConnectAddressListArgs']]]]):
         pulumi.set(self, "connect_address_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="isLastVersion")
-    def is_last_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_last_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is the latest version
         """
         return pulumi.get(self, "is_last_version")
 
     @is_last_version.setter
-    def is_last_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_last_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_last_version", value)
 
     @_builtins.property
     @pulumi.getter(name="latestVersion")
-    def latest_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def latest_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Latest Version
         """
         return pulumi.get(self, "latest_version")
 
     @latest_version.setter
-    def latest_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def latest_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "latest_version", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroups")
-    def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]:
+    def node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]:
         """
         Node Group List See `node_group` below.
         """
         return pulumi.get(self, "node_groups")
 
     @node_groups.setter
-    def node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]):
+    def node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListNodeGroupArgs']]]]):
         pulumi.set(self, "node_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine Version
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class InstanceV2EngineListConnectAddressListArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Connect Address
     """
-    port: NotRequired[pulumi.Input[_builtins.str]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Connect Port
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Connect Type:
     """
@@ -209,9 +209,9 @@ class InstanceV2EngineListConnectAddressListArgsDict(TypedDict):
 @pulumi.input_type
 class InstanceV2EngineListConnectAddressListArgs:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: Connect Address
         :param pulumi.Input[_builtins.str] port: Connect Port
@@ -226,38 +226,38 @@ class InstanceV2EngineListConnectAddressListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connect Address
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connect Port
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Connect Type:
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -309,35 +309,35 @@ class InstanceV2EngineListNodeGroupArgsDict(TypedDict):
     """
     Resource group name
     """
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node Type
     """
-    cpu_core_count: NotRequired[pulumi.Input[_builtins.int]]
+    cpu_core_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of CPU cores
     """
-    enable_attach_local_disk: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_attach_local_disk: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to mount  local cloud disks
     """
-    memory_size_gi_b: NotRequired[pulumi.Input[_builtins.int]]
+    memory_size_gi_b: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Node memory size
     """
-    node_disk_size: NotRequired[pulumi.Input[_builtins.int]]
+    node_disk_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Local cloud disk storage capacity
     """
-    node_disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    node_disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node Disk Type
     """
-    spec_id: NotRequired[pulumi.Input[_builtins.str]]
+    spec_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Spec Id
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node Status
     """
@@ -348,14 +348,14 @@ class InstanceV2EngineListNodeGroupArgs:
                  node_count: pulumi.Input[_builtins.int],
                  node_spec: pulumi.Input[_builtins.str],
                  resource_group_name: pulumi.Input[_builtins.str],
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_core_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_attach_local_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory_size_gi_b: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_core_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_attach_local_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory_size_gi_b: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] node_count: Number of nodes
         :param pulumi.Input[_builtins.str] node_spec: Node Specifications
@@ -497,98 +497,98 @@ class InstanceV2EngineListNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Type
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuCoreCount")
-    def cpu_core_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_core_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of CPU cores
         """
         return pulumi.get(self, "cpu_core_count")
 
     @cpu_core_count.setter
-    def cpu_core_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_core_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_core_count", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAttachLocalDisk")
-    def enable_attach_local_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_attach_local_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to mount  local cloud disks
         """
         return pulumi.get(self, "enable_attach_local_disk")
 
     @enable_attach_local_disk.setter
-    def enable_attach_local_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_attach_local_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_attach_local_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySizeGiB")
-    def memory_size_gi_b(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size_gi_b(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Node memory size
         """
         return pulumi.get(self, "memory_size_gi_b")
 
     @memory_size_gi_b.setter
-    def memory_size_gi_b(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size_gi_b(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size_gi_b", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeDiskSize")
-    def node_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Local cloud disk storage capacity
         """
         return pulumi.get(self, "node_disk_size")
 
     @node_disk_size.setter
-    def node_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeDiskType")
-    def node_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Disk Type
         """
         return pulumi.get(self, "node_disk_type")
 
     @node_disk_type.setter
-    def node_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="specId")
-    def spec_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Spec Id
         """
         return pulumi.get(self, "spec_id")
 
     @spec_id.setter
-    def spec_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 

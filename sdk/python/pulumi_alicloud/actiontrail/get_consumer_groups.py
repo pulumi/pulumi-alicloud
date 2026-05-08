@@ -167,10 +167,10 @@ def get_consumer_groups(consumer_id_regex: Optional[_builtins.str] = None,
         instance_id=pulumi.get(__ret__, 'instance_id'),
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_consumer_groups_output(consumer_id_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsumerGroupsResult]:
     """
     This data source provides a list of ALIKAFKA Consumer Groups in an Alibaba Cloud account according to the specified filters.

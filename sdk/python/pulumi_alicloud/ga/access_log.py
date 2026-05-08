@@ -118,13 +118,13 @@ class AccessLogArgs:
 @pulumi.input_type
 class _AccessLogState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessLog resources.
 
@@ -153,86 +153,86 @@ class _AccessLogState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the global acceleration instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointGroupId")
-    def endpoint_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the endpoint group instance.
         """
         return pulumi.get(self, "endpoint_group_id")
 
     @endpoint_group_id.setter
-    def endpoint_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerId")
-    def listener_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the listener.
         """
         return pulumi.get(self, "listener_id")
 
     @listener_id.setter
-    def listener_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slsLogStoreName")
-    def sls_log_store_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_log_store_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Log Store.
         """
         return pulumi.get(self, "sls_log_store_name")
 
     @sls_log_store_name.setter
-    def sls_log_store_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_log_store_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_log_store_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProjectName")
-    def sls_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Log Service project.
         """
         return pulumi.get(self, "sls_project_name")
 
     @sls_project_name.setter
-    def sls_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="slsRegionId")
-    def sls_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the Log Service project.
         """
         return pulumi.get(self, "sls_region_id")
 
     @sls_region_id.setter
-    def sls_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether access log is enabled.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -242,12 +242,12 @@ class AccessLog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Access Log resource.
@@ -445,12 +445,12 @@ class AccessLog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_log_store_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -489,13 +489,13 @@ class AccessLog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_log_store_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sls_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessLog':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_log_store_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sls_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessLog':
         """
         Get an existing AccessLog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

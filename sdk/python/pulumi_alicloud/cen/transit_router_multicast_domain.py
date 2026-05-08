@@ -22,10 +22,10 @@ __all__ = ['TransitRouterMulticastDomainArgs', 'TransitRouterMulticastDomain']
 class TransitRouterMulticastDomainArgs:
     def __init__(__self__, *,
                  transit_router_id: pulumi.Input[_builtins.str],
-                 options: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_multicast_domain_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 options: pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterMulticastDomain resource.
 
@@ -59,63 +59,63 @@ class TransitRouterMulticastDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']]:
         """
         The function options of the multicast domain. See `options` below.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainDescription")
-    def transit_router_multicast_domain_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_description")
 
     @transit_router_multicast_domain_description.setter
-    def transit_router_multicast_domain_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainName")
-    def transit_router_multicast_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_name")
 
     @transit_router_multicast_domain_name.setter
-    def transit_router_multicast_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_name", value)
 
 
 @pulumi.input_type
 class _TransitRouterMulticastDomainState:
     def __init__(__self__, *,
-                 options: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 options: pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterMulticastDomain resources.
 
@@ -144,86 +144,86 @@ class _TransitRouterMulticastDomainState:
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']]:
         """
         The function options of the multicast domain. See `options` below.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['TransitRouterMulticastDomainOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['TransitRouterMulticastDomainOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.242.0) The region ID of the transit router.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Transit Router Multicast Domain.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the forwarding router instance.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainDescription")
-    def transit_router_multicast_domain_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_description")
 
     @transit_router_multicast_domain_description.setter
-    def transit_router_multicast_domain_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterMulticastDomainName")
-    def transit_router_multicast_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_multicast_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the multicast domain.
         """
         return pulumi.get(self, "transit_router_multicast_domain_name")
 
     @transit_router_multicast_domain_name.setter
-    def transit_router_multicast_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_multicast_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_multicast_domain_name", value)
 
 
@@ -233,11 +233,11 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Multicast Domain resource.
@@ -356,11 +356,11 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -389,13 +389,13 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            options: Optional[pulumi.Input[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_multicast_domain_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_multicast_domain_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterMulticastDomain':
+            options: pulumi.Input[Optional[Union['TransitRouterMulticastDomainOptionsArgs', 'TransitRouterMulticastDomainOptionsArgsDict']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_multicast_domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterMulticastDomain':
         """
         Get an existing TransitRouterMulticastDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

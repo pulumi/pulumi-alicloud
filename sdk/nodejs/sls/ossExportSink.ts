@@ -211,31 +211,31 @@ export interface OssExportSinkState {
     /**
      * OSSExportConfiguration See `configuration` below.
      */
-    configuration?: pulumi.Input<inputs.sls.OssExportSinkConfiguration>;
+    configuration?: pulumi.Input<inputs.sls.OssExportSinkConfiguration | undefined>;
     /**
      * Creation time. Example value: 1718787534
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The description of the job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the job.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the OSS data shipping job.
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * The name of the project.
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The status of the post task. Example value: RUNNING
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,7 +249,7 @@ export interface OssExportSinkArgs {
     /**
      * The description of the job.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name of the job.
      */

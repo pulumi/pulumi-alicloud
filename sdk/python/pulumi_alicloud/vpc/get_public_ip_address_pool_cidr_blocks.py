@@ -169,11 +169,11 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[_builtins.str] =
         output_file=pulumi.get(__ret__, 'output_file'),
         public_ip_address_pool_id=pulumi.get(__ret__, 'public_ip_address_pool_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                  public_ip_address_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                  status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_public_ip_address_pool_cidr_blocks_output(cidr_block: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                  public_ip_address_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                  status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpAddressPoolCidrBlocksResult]:
     """
     This data source provides the Vpc Public Ip Address Pool Cidr Blocks of the current Alibaba Cloud user.

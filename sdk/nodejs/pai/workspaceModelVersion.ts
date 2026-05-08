@@ -269,11 +269,11 @@ export interface WorkspaceModelVersionState {
      * - Approved: Allow to go online.
      * - Rejected: Online is not allowed.
      */
-    approvalStatus?: pulumi.Input<string>;
+    approvalStatus?: pulumi.Input<string | undefined>;
     /**
      * Other information.
      */
-    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format of the model. Valid values:
      * - OfflineModel
@@ -287,7 +287,7 @@ export interface WorkspaceModelVersionState {
      * - AlinkModel
      * - ONNX
      */
-    formatType?: pulumi.Input<string>;
+    formatType?: pulumi.Input<string | undefined>;
     /**
      * The framework of the model. Valid values:
      * - Pytorch
@@ -298,54 +298,54 @@ export interface WorkspaceModelVersionState {
      * - Xflow
      * - TensorFlow
      */
-    frameworkType?: pulumi.Input<string>;
+    frameworkType?: pulumi.Input<string | undefined>;
     /**
      * Describes how to apply to downstream inference services.
      */
-    inferenceSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    inferenceSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of model version labels. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelVersionLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelVersionLabel>[] | undefined>;
     /**
      * The metrics for the model. The serialized length is limited to 8192.
      */
-    metrics?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metrics?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The model ID.
      */
-    modelId?: pulumi.Input<string>;
+    modelId?: pulumi.Input<string | undefined>;
     /**
      * The extended field. This is a JSON string.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The source ID.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the model source. Valid values:
      * - Custom: Custom.
      * - PAIFlow:PAI workflow.
      * - TrainingService:PAI training service.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The training configurations. Used for fine-tuning and incremental training.
      */
-    trainingSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    trainingSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URI of the model version.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * The version descriptions.
      */
-    versionDescription?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string | undefined>;
     /**
      * The Model version.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -358,11 +358,11 @@ export interface WorkspaceModelVersionArgs {
      * - Approved: Allow to go online.
      * - Rejected: Online is not allowed.
      */
-    approvalStatus?: pulumi.Input<string>;
+    approvalStatus?: pulumi.Input<string | undefined>;
     /**
      * Other information.
      */
-    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extraInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The format of the model. Valid values:
      * - OfflineModel
@@ -376,7 +376,7 @@ export interface WorkspaceModelVersionArgs {
      * - AlinkModel
      * - ONNX
      */
-    formatType?: pulumi.Input<string>;
+    formatType?: pulumi.Input<string | undefined>;
     /**
      * The framework of the model. Valid values:
      * - Pytorch
@@ -387,19 +387,19 @@ export interface WorkspaceModelVersionArgs {
      * - Xflow
      * - TensorFlow
      */
-    frameworkType?: pulumi.Input<string>;
+    frameworkType?: pulumi.Input<string | undefined>;
     /**
      * Describes how to apply to downstream inference services.
      */
-    inferenceSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    inferenceSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of model version labels. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelVersionLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceModelVersionLabel>[] | undefined>;
     /**
      * The metrics for the model. The serialized length is limited to 8192.
      */
-    metrics?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    metrics?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The model ID.
      */
@@ -407,22 +407,22 @@ export interface WorkspaceModelVersionArgs {
     /**
      * The extended field. This is a JSON string.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The source ID.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the model source. Valid values:
      * - Custom: Custom.
      * - PAIFlow:PAI workflow.
      * - TrainingService:PAI training service.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The training configurations. Used for fine-tuning and incremental training.
      */
-    trainingSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    trainingSpec?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The URI of the model version.
      */
@@ -430,9 +430,9 @@ export interface WorkspaceModelVersionArgs {
     /**
      * The version descriptions.
      */
-    versionDescription?: pulumi.Input<string>;
+    versionDescription?: pulumi.Input<string | undefined>;
     /**
      * The Model version.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }

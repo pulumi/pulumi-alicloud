@@ -154,10 +154,10 @@ def get_instances(description_regex: Optional[_builtins.str] = None,
         instances=pulumi.get(__ret__, 'instances'),
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_instances_output(description_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_instances_output(description_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     > **NOTE:** From the version 1.132.0, the data source has been renamed to `bastionhost_get_instances`.

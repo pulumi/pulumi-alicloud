@@ -200,43 +200,43 @@ export interface MonitorTemplateState {
     /**
      * The number of retries after a probe failure. A service is marked abnormal only after this many consecutive failures, preventing transient network fluctuations from triggering false alarms. Valid values: `0`, `1`, `2`, `3`.
      */
-    evaluationCount?: pulumi.Input<number>;
+    evaluationCount?: pulumi.Input<number | undefined>;
     /**
      * A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
      */
-    extendInfo?: pulumi.Input<string>;
+    extendInfo?: pulumi.Input<string | undefined>;
     /**
      * The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
      */
-    failureRate?: pulumi.Input<number>;
+    failureRate?: pulumi.Input<number | undefined>;
     /**
      * The interval between consecutive probes, in seconds. Valid values: `15`, `60`, `300`, `900`, `1800`, `3600`. The `15` seconds interval is only available for Flagship Edition instances.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The IP version of the probing node. Valid values: `IPv4`, `IPv6`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The set of monitoring nodes that this template will probe from. Use the [ListCloudGtmMonitorNodes](https://help.aliyun.com/document_detail/2797349.html) API to look up available `cityCode` / `ispCode` combinations. See `ispCityNodes` below.
      */
-    ispCityNodes?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtm.MonitorTemplateIspCityNode>[]>;
+    ispCityNodes?: pulumi.Input<pulumi.Input<inputs.alidnscloudgtm.MonitorTemplateIspCityNode>[] | undefined>;
     /**
      * The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The probing protocol of the template. Valid values: `ping`, `tcp`, `http`, `https`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The remark of the monitor template. Passing an empty value clears the existing remark.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * Probe request timeout, in milliseconds. Probe packets that do not return within this duration are treated as timeouts. Valid values: `2000`, `3000`, `5000`, `10000`.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,7 +250,7 @@ export interface MonitorTemplateArgs {
     /**
      * A JSON string containing protocol-specific probe configuration. The supported keys depend on `protocol`. See `extendInfo` below.
      */
-    extendInfo?: pulumi.Input<string>;
+    extendInfo?: pulumi.Input<string | undefined>;
     /**
      * The failure-rate threshold (%) among selected probe nodes. If the percentage of failing nodes exceeds this value, the service address is marked as abnormal. Valid values: `0`, `20`, `50`, `80`, `100`.
      */
@@ -270,7 +270,7 @@ export interface MonitorTemplateArgs {
     /**
      * The name of the monitor template. It is recommended to use a name that reflects the health-check protocol for easier identification.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The probing protocol of the template. Valid values: `ping`, `tcp`, `http`, `https`.
      */
@@ -278,7 +278,7 @@ export interface MonitorTemplateArgs {
     /**
      * The remark of the monitor template. Passing an empty value clears the existing remark.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * Probe request timeout, in milliseconds. Probe packets that do not return within this duration are treated as timeouts. Valid values: `2000`, `3000`, `5000`, `10000`.
      */

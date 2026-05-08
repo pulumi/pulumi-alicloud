@@ -73,9 +73,9 @@ class HostAccountShareKeyAttachmentArgs:
 @pulumi.input_type
 class _HostAccountShareKeyAttachmentState:
     def __init__(__self__, *,
-                 host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostAccountShareKeyAttachment resources.
 
@@ -92,38 +92,38 @@ class _HostAccountShareKeyAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="hostAccountId")
-    def host_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID list of the host account.
         """
         return pulumi.get(self, "host_account_id")
 
     @host_account_id.setter
-    def host_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostShareKeyId")
-    def host_share_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_share_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the host shared key.
         """
         return pulumi.get(self, "host_share_key_id")
 
     @host_share_key_id.setter
-    def host_share_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_share_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_share_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Bastion machine instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
 
@@ -133,9 +133,9 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Bastion Host Account Share Key Attachment resource.
@@ -308,9 +308,9 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -339,9 +339,9 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            host_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_share_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostAccountShareKeyAttachment':
+            host_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_share_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostAccountShareKeyAttachment':
         """
         Get an existing HostAccountShareKeyAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

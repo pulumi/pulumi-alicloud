@@ -207,49 +207,49 @@ export interface CycleTaskState {
     /**
      * Whether to enable. Value:
      */
-    enable?: pulumi.Input<number>;
+    enable?: pulumi.Input<number | undefined>;
     /**
      * First execution time.
      */
-    firstDateStr?: pulumi.Input<number>;
+    firstDateStr?: pulumi.Input<number | undefined>;
     /**
      * Interval period.
      */
-    intervalPeriod?: pulumi.Input<number>;
+    intervalPeriod?: pulumi.Input<number | undefined>;
     /**
      * Extended information field.
      */
-    param?: pulumi.Input<string>;
+    param?: pulumi.Input<string | undefined>;
     /**
      * Unit of scan cycle, value:
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * Added the source of the task.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Task end time (hours).
      */
-    targetEndTime?: pulumi.Input<number>;
+    targetEndTime?: pulumi.Input<number | undefined>;
     /**
      * Task start time (hours).
      */
-    targetStartTime?: pulumi.Input<number>;
+    targetStartTime?: pulumi.Input<number | undefined>;
     /**
      * The task name.
      * - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
      * - **IMAGE_SCAN**: Image scan.
      * - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
      */
-    taskName?: pulumi.Input<string>;
+    taskName?: pulumi.Input<string | undefined>;
     /**
      * The task type.
      * - **VIRUS_VUL_SCHEDULE_SCAN**: scans for viruses.
      * - **IMAGE_SCAN**: Image scan.
      * - **EMG_VUL_SCHEDULE_SCAN**: Emergency vulnerability scanning.
      */
-    taskType?: pulumi.Input<string>;
+    taskType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -271,7 +271,7 @@ export interface CycleTaskArgs {
     /**
      * Extended information field.
      */
-    param?: pulumi.Input<string>;
+    param?: pulumi.Input<string | undefined>;
     /**
      * Unit of scan cycle, value:
      */
@@ -279,7 +279,7 @@ export interface CycleTaskArgs {
     /**
      * Added the source of the task.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Task end time (hours).
      */

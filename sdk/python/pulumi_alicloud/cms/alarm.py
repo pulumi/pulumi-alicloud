@@ -24,23 +24,23 @@ class AlarmArgs:
                  contact_groups: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  metric: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
-                 escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
-                 escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
-                 metric_dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 composite_expression: pulumi.Input[Optional['AlarmCompositeExpressionArgs']] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalations_critical: pulumi.Input[Optional['AlarmEscalationsCriticalArgs']] = None,
+                 escalations_info: pulumi.Input[Optional['AlarmEscalationsInfoArgs']] = None,
+                 escalations_warn: pulumi.Input[Optional['AlarmEscalationsWarnArgs']] = None,
+                 metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Alarm resource.
 
@@ -152,236 +152,236 @@ class AlarmArgs:
 
     @_builtins.property
     @pulumi.getter(name="compositeExpression")
-    def composite_expression(self) -> Optional[pulumi.Input['AlarmCompositeExpressionArgs']]:
+    def composite_expression(self) -> pulumi.Input[Optional['AlarmCompositeExpressionArgs']]:
         """
         The trigger conditions for multiple metrics. See `composite_expression` below.
         """
         return pulumi.get(self, "composite_expression")
 
     @composite_expression.setter
-    def composite_expression(self, value: Optional[pulumi.Input['AlarmCompositeExpressionArgs']]):
+    def composite_expression(self, value: pulumi.Input[Optional['AlarmCompositeExpressionArgs']]):
         pulumi.set(self, "composite_expression", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         """
         return pulumi.get(self, "effective_interval")
 
     @effective_interval.setter
-    def effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable alarm rule. Default value: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     @_utilities.deprecated("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsCritical")
-    def escalations_critical(self) -> Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]:
+    def escalations_critical(self) -> pulumi.Input[Optional['AlarmEscalationsCriticalArgs']]:
         """
         A configuration of critical alarm. See `escalations_critical` below.
         """
         return pulumi.get(self, "escalations_critical")
 
     @escalations_critical.setter
-    def escalations_critical(self, value: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]):
+    def escalations_critical(self, value: pulumi.Input[Optional['AlarmEscalationsCriticalArgs']]):
         pulumi.set(self, "escalations_critical", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsInfo")
-    def escalations_info(self) -> Optional[pulumi.Input['AlarmEscalationsInfoArgs']]:
+    def escalations_info(self) -> pulumi.Input[Optional['AlarmEscalationsInfoArgs']]:
         """
         A configuration of critical info. See `escalations_info` below.
         """
         return pulumi.get(self, "escalations_info")
 
     @escalations_info.setter
-    def escalations_info(self, value: Optional[pulumi.Input['AlarmEscalationsInfoArgs']]):
+    def escalations_info(self, value: pulumi.Input[Optional['AlarmEscalationsInfoArgs']]):
         pulumi.set(self, "escalations_info", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsWarn")
-    def escalations_warn(self) -> Optional[pulumi.Input['AlarmEscalationsWarnArgs']]:
+    def escalations_warn(self) -> pulumi.Input[Optional['AlarmEscalationsWarnArgs']]:
         """
         A configuration of critical warn. See `escalations_warn` below.
         """
         return pulumi.get(self, "escalations_warn")
 
     @escalations_warn.setter
-    def escalations_warn(self, value: Optional[pulumi.Input['AlarmEscalationsWarnArgs']]):
+    def escalations_warn(self, value: pulumi.Input[Optional['AlarmEscalationsWarnArgs']]):
         pulumi.set(self, "escalations_warn", value)
 
     @_builtins.property
     @pulumi.getter(name="metricDimensions")
-    def metric_dimensions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_dimensions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_dimensions")
 
     @metric_dimensions.setter
-    def metric_dimensions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_dimensions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def prometheuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
+    def prometheuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
         """
         The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "prometheuses")
 
     @prometheuses.setter
-    def prometheuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]):
+    def prometheuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]):
         pulumi.set(self, "prometheuses", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     @_utilities.deprecated("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
         Adds or modifies the push channels of an alert rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
 @pulumi.input_type
 class _AlarmState:
     def __init__(__self__, *,
-                 composite_expression: Optional[pulumi.Input['AlarmCompositeExpressionArgs']] = None,
-                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 escalations_critical: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']] = None,
-                 escalations_info: Optional[pulumi.Input['AlarmEscalationsInfoArgs']] = None,
-                 escalations_warn: Optional[pulumi.Input['AlarmEscalationsWarnArgs']] = None,
-                 metric: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 composite_expression: pulumi.Input[Optional['AlarmCompositeExpressionArgs']] = None,
+                 contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalations_critical: pulumi.Input[Optional['AlarmEscalationsCriticalArgs']] = None,
+                 escalations_info: pulumi.Input[Optional['AlarmEscalationsInfoArgs']] = None,
+                 escalations_warn: pulumi.Input[Optional['AlarmEscalationsWarnArgs']] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Alarm resources.
 
@@ -462,165 +462,165 @@ class _AlarmState:
 
     @_builtins.property
     @pulumi.getter(name="compositeExpression")
-    def composite_expression(self) -> Optional[pulumi.Input['AlarmCompositeExpressionArgs']]:
+    def composite_expression(self) -> pulumi.Input[Optional['AlarmCompositeExpressionArgs']]:
         """
         The trigger conditions for multiple metrics. See `composite_expression` below.
         """
         return pulumi.get(self, "composite_expression")
 
     @composite_expression.setter
-    def composite_expression(self, value: Optional[pulumi.Input['AlarmCompositeExpressionArgs']]):
+    def composite_expression(self, value: pulumi.Input[Optional['AlarmCompositeExpressionArgs']]):
         pulumi.set(self, "composite_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List contact groups of the alarm rule, which must have been created on the console.
         """
         return pulumi.get(self, "contact_groups")
 
     @contact_groups.setter
-    def contact_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_groups", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.""")
-    def dimensions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def dimensions(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Field `dimensions` has been deprecated from provider version 1.173.0. New field `metric_dimensions` instead.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def dimensions(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval of effecting alarm rule. It format as "hh:mm-hh:mm", like "0:00-4:00". Default value: `00:00-23:59`.
         """
         return pulumi.get(self, "effective_interval")
 
     @effective_interval.setter
-    def effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable alarm rule. Default value: `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
     @_utilities.deprecated("""Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `end_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsCritical")
-    def escalations_critical(self) -> Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]:
+    def escalations_critical(self) -> pulumi.Input[Optional['AlarmEscalationsCriticalArgs']]:
         """
         A configuration of critical alarm. See `escalations_critical` below.
         """
         return pulumi.get(self, "escalations_critical")
 
     @escalations_critical.setter
-    def escalations_critical(self, value: Optional[pulumi.Input['AlarmEscalationsCriticalArgs']]):
+    def escalations_critical(self, value: pulumi.Input[Optional['AlarmEscalationsCriticalArgs']]):
         pulumi.set(self, "escalations_critical", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsInfo")
-    def escalations_info(self) -> Optional[pulumi.Input['AlarmEscalationsInfoArgs']]:
+    def escalations_info(self) -> pulumi.Input[Optional['AlarmEscalationsInfoArgs']]:
         """
         A configuration of critical info. See `escalations_info` below.
         """
         return pulumi.get(self, "escalations_info")
 
     @escalations_info.setter
-    def escalations_info(self, value: Optional[pulumi.Input['AlarmEscalationsInfoArgs']]):
+    def escalations_info(self, value: pulumi.Input[Optional['AlarmEscalationsInfoArgs']]):
         pulumi.set(self, "escalations_info", value)
 
     @_builtins.property
     @pulumi.getter(name="escalationsWarn")
-    def escalations_warn(self) -> Optional[pulumi.Input['AlarmEscalationsWarnArgs']]:
+    def escalations_warn(self) -> pulumi.Input[Optional['AlarmEscalationsWarnArgs']]:
         """
         A configuration of critical warn. See `escalations_warn` below.
         """
         return pulumi.get(self, "escalations_warn")
 
     @escalations_warn.setter
-    def escalations_warn(self, value: Optional[pulumi.Input['AlarmEscalationsWarnArgs']]):
+    def escalations_warn(self, value: pulumi.Input[Optional['AlarmEscalationsWarnArgs']]):
         pulumi.set(self, "escalations_warn", value)
 
     @_builtins.property
     @pulumi.getter
-    def metric(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the metric, such as `CPUUtilization` and `networkin_rate`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric")
 
     @metric.setter
-    def metric(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric", value)
 
     @_builtins.property
     @pulumi.getter(name="metricDimensions")
-    def metric_dimensions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_dimensions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Map of the resources associated with the alarm rule, such as "instanceId", "device" and "port". Each key's value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         """
         return pulumi.get(self, "metric_dimensions")
 
     @metric_dimensions.setter
-    def metric_dimensions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_dimensions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_dimensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert rule.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the cloud service, such as `acs_ecs_dashboard` and `acs_rds_dashboard`. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
         **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
@@ -628,92 +628,92 @@ class _AlarmState:
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def prometheuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
+    def prometheuses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]:
         """
         The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
         """
         return pulumi.get(self, "prometheuses")
 
     @prometheuses.setter
-    def prometheuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]):
+    def prometheuses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmPrometheusArgs']]]]):
         pulumi.set(self, "prometheuses", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Notification silence period in the alarm state, in seconds. Default value: `86400`. Valid value range: [300, 86400].
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
     @_utilities.deprecated("""Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.""")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Field `start_time` has been deprecated from provider version 1.50.0. New field `effective_interval` instead.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Alarm.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]]:
         """
         Adds or modifies the push channels of an alert rule. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
@@ -723,26 +723,26 @@ class Alarm(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
-                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
-                 escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
-                 escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
-                 metric: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 composite_expression: pulumi.Input[Optional[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
+                 contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalations_critical: pulumi.Input[Optional[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+                 escalations_info: pulumi.Input[Optional[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+                 escalations_warn: pulumi.Input[Optional[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Alarm resource.
@@ -943,26 +943,26 @@ class Alarm(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
-                 contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
-                 escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
-                 escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
-                 metric: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 composite_expression: pulumi.Input[Optional[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
+                 contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 escalations_critical: pulumi.Input[Optional[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+                 escalations_info: pulumi.Input[Optional[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+                 escalations_warn: pulumi.Input[Optional[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
+                 metric: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1009,27 +1009,27 @@ class Alarm(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            composite_expression: Optional[pulumi.Input[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
-            contact_groups: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            dimensions: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            escalations_critical: Optional[pulumi.Input[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
-            escalations_info: Optional[pulumi.Input[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
-            escalations_warn: Optional[pulumi.Input[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
-            metric: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            prometheuses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
-            silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
-            webhook: Optional[pulumi.Input[_builtins.str]] = None) -> 'Alarm':
+            composite_expression: pulumi.Input[Optional[Union['AlarmCompositeExpressionArgs', 'AlarmCompositeExpressionArgsDict']]] = None,
+            contact_groups: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            dimensions: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            escalations_critical: pulumi.Input[Optional[Union['AlarmEscalationsCriticalArgs', 'AlarmEscalationsCriticalArgsDict']]] = None,
+            escalations_info: pulumi.Input[Optional[Union['AlarmEscalationsInfoArgs', 'AlarmEscalationsInfoArgsDict']]] = None,
+            escalations_warn: pulumi.Input[Optional[Union['AlarmEscalationsWarnArgs', 'AlarmEscalationsWarnArgsDict']]] = None,
+            metric: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            prometheuses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmPrometheusArgs', 'AlarmPrometheusArgsDict']]]]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlarmTargetArgs', 'AlarmTargetArgsDict']]]]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'Alarm':
         """
         Get an existing Alarm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

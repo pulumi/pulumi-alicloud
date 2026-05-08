@@ -58,8 +58,8 @@ class MembershipAttachmentArgs:
 @pulumi.input_type
 class _MembershipAttachmentState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MembershipAttachment resources.
 
@@ -73,26 +73,26 @@ class _MembershipAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster to which the membership is being attached.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="subClusterId")
-    def sub_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the member being attached to the cluster.
         """
         return pulumi.get(self, "sub_cluster_id")
 
     @sub_cluster_id.setter
-    def sub_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_cluster_id", value)
 
 
@@ -102,8 +102,8 @@ class MembershipAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an Ack One Membership Attachment resource. Fleet Manager Membership Attachment.
@@ -131,7 +131,7 @@ class MembershipAttachment(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_efficiency")
         default = alicloud.vpc.Network("default", cidr_block="10.4.0.0/16")
@@ -221,7 +221,7 @@ class MembershipAttachment(pulumi.CustomResource):
         enhanced = alicloud.vpc.get_enhanced_nat_available_zones()
         cloud_efficiency = alicloud.ecs.get_instance_types(availability_zone=enhanced.zones[0].zone_id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_efficiency")
         default = alicloud.vpc.Network("default", cidr_block="10.4.0.0/16")
@@ -289,8 +289,8 @@ class MembershipAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,8 +316,8 @@ class MembershipAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_cluster_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MembershipAttachment':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_cluster_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MembershipAttachment':
         """
         Get an existing MembershipAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

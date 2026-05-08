@@ -21,7 +21,7 @@ class IndustrialPidProjectArgs:
     def __init__(__self__, *,
                  pid_organization_id: pulumi.Input[_builtins.str],
                  pid_project_name: pulumi.Input[_builtins.str],
-                 pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidProject resource.
 
@@ -60,23 +60,23 @@ class IndustrialPidProjectArgs:
 
     @_builtins.property
     @pulumi.getter(name="pidProjectDesc")
-    def pid_project_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_project_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Pid Project.
         """
         return pulumi.get(self, "pid_project_desc")
 
     @pid_project_desc.setter
-    def pid_project_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_project_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_project_desc", value)
 
 
 @pulumi.input_type
 class _IndustrialPidProjectState:
     def __init__(__self__, *,
-                 pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidProject resources.
 
@@ -93,38 +93,38 @@ class _IndustrialPidProjectState:
 
     @_builtins.property
     @pulumi.getter(name="pidOrganizationId")
-    def pid_organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Pid Organization.
         """
         return pulumi.get(self, "pid_organization_id")
 
     @pid_organization_id.setter
-    def pid_organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pidProjectDesc")
-    def pid_project_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_project_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of Pid Project.
         """
         return pulumi.get(self, "pid_project_desc")
 
     @pid_project_desc.setter
-    def pid_project_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_project_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_project_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="pidProjectName")
-    def pid_project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of Pid Project.
         """
         return pulumi.get(self, "pid_project_name")
 
     @pid_project_name.setter
-    def pid_project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_project_name", value)
 
 
@@ -134,9 +134,9 @@ class IndustrialPidProject(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Brain Industrial Pid Project resource.
@@ -227,9 +227,9 @@ class IndustrialPidProject(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_project_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_project_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -256,9 +256,9 @@ class IndustrialPidProject(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_project_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_project_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'IndustrialPidProject':
+            pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_project_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'IndustrialPidProject':
         """
         Get an existing IndustrialPidProject resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -163,33 +163,33 @@ export interface GetRulesOutputArgs {
      *
      * @deprecated Field 'config_rule_state' has been deprecated from provider version 1.124.1. New field 'status' instead.
      */
-    configRuleState?: pulumi.Input<string>;
+    configRuleState?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Config Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The risk level of Config Rule. Valid values: `1`: Critical ,`2`: Warning , `3`: Info.
      */
-    riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number | undefined>;
     /**
      * The name of config rule.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -21,22 +21,22 @@ __all__ = ['StoreArgs', 'Store']
 @pulumi.input_type
 class StoreArgs:
     def __init__(__self__, *,
-                 append_meta: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_split: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_web_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
-                 hot_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 infrequent_access_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_split_shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 metering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 telemetry_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_conf: pulumi.Input[Optional['StoreEncryptConfArgs']] = None,
+                 hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 telemetry_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Store resource.
 
@@ -100,189 +100,189 @@ class StoreArgs:
 
     @_builtins.property
     @pulumi.getter(name="appendMeta")
-    def append_meta(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def append_meta(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         """
         return pulumi.get(self, "append_meta")
 
     @append_meta.setter
-    def append_meta(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def append_meta(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "append_meta", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSplit")
-    def auto_split(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_split(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to automatically split a shard. Default to `false`.
         """
         return pulumi.get(self, "auto_split")
 
     @auto_split.setter
-    def auto_split(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_split(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_split", value)
 
     @_builtins.property
     @pulumi.getter(name="enableWebTracking")
-    def enable_web_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_web_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         """
         return pulumi.get(self, "enable_web_tracking")
 
     @enable_web_tracking.setter
-    def enable_web_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_web_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_web_tracking", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptConf")
-    def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
+    def encrypt_conf(self) -> pulumi.Input[Optional['StoreEncryptConfArgs']]:
         """
         Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
     @encrypt_conf.setter
-    def encrypt_conf(self, value: Optional[pulumi.Input['StoreEncryptConfArgs']]):
+    def encrypt_conf(self, value: pulumi.Input[Optional['StoreEncryptConfArgs']]):
         pulumi.set(self, "encrypt_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTtl")
-    def hot_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hot_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
 
     @hot_ttl.setter
-    def hot_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hot_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hot_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="infrequentAccessTtl")
-    def infrequent_access_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def infrequent_access_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Low frequency storage time
         """
         return pulumi.get(self, "infrequent_access_ttl")
 
     @infrequent_access_ttl.setter
-    def infrequent_access_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def infrequent_access_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "infrequent_access_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSplitShardCount")
-    def max_split_shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_split_shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
 
     @max_split_shard_count.setter
-    def max_split_shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_split_shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_split_shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="meteringMode")
-    def metering_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         """
         return pulumi.get(self, "metering_mode")
 
     @metering_mode.setter
-    def metering_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metering_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryType")
-    def telemetry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def telemetry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines whether store type is metric. `Metrics` means metric store, empty means log store.
 
@@ -291,31 +291,31 @@ class StoreArgs:
         return pulumi.get(self, "telemetry_type")
 
     @telemetry_type.setter
-    def telemetry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def telemetry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "telemetry_type", value)
 
 
 @pulumi.input_type
 class _StoreState:
     def __init__(__self__, *,
-                 append_meta: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_split: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_web_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input['StoreEncryptConfArgs']] = None,
-                 hot_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 infrequent_access_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_split_shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 metering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 shards: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
-                 telemetry_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_conf: pulumi.Input[Optional['StoreEncryptConfArgs']] = None,
+                 hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 shards: pulumi.Input[Optional[Sequence[pulumi.Input['StoreShardArgs']]]] = None,
+                 telemetry_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Store resources.
 
@@ -385,213 +385,213 @@ class _StoreState:
 
     @_builtins.property
     @pulumi.getter(name="appendMeta")
-    def append_meta(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def append_meta(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to append log meta automatically. The meta includes log receive time and client IP address. Default to `true`.
         """
         return pulumi.get(self, "append_meta")
 
     @append_meta.setter
-    def append_meta(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def append_meta(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "append_meta", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSplit")
-    def auto_split(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_split(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Determines whether to automatically split a shard. Default to `false`.
         """
         return pulumi.get(self, "auto_split")
 
     @auto_split.setter
-    def auto_split(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_split(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_split", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log library creation time. Unix timestamp format that represents the number of seconds from 1970-1-1 00:00:00 UTC calculation.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableWebTracking")
-    def enable_web_tracking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_web_tracking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether open webtracking. webtracking network tracing, support the collection of HTML log, H5, Ios and android platforms.
         """
         return pulumi.get(self, "enable_web_tracking")
 
     @enable_web_tracking.setter
-    def enable_web_tracking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_web_tracking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_web_tracking", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptConf")
-    def encrypt_conf(self) -> Optional[pulumi.Input['StoreEncryptConfArgs']]:
+    def encrypt_conf(self) -> pulumi.Input[Optional['StoreEncryptConfArgs']]:
         """
         Encrypted storage of data, providing data static protection capability, encrypt_conf can be updated since 1.188.0 (only enable change is supported when updating logstore). See `encrypt_conf` below.
         """
         return pulumi.get(self, "encrypt_conf")
 
     @encrypt_conf.setter
-    def encrypt_conf(self, value: Optional[pulumi.Input['StoreEncryptConfArgs']]):
+    def encrypt_conf(self, value: pulumi.Input[Optional['StoreEncryptConfArgs']]):
         pulumi.set(self, "encrypt_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hotTtl")
-    def hot_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hot_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ttl of hot storage. Default to 30, at least 30, hot storage ttl must be less than ttl.
         """
         return pulumi.get(self, "hot_ttl")
 
     @hot_ttl.setter
-    def hot_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hot_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hot_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="infrequentAccessTtl")
-    def infrequent_access_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def infrequent_access_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Low frequency storage time
         """
         return pulumi.get(self, "infrequent_access_ttl")
 
     @infrequent_access_ttl.setter
-    def infrequent_access_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def infrequent_access_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "infrequent_access_ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The log store, which is unique in the same project. You need to specify one of the attributes: `logstore_name`, `name`.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSplitShardCount")
-    def max_split_shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_split_shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of shards for automatic split, which is in the range of 1 to 256. You must specify this parameter when autoSplit is true.
         """
         return pulumi.get(self, "max_split_shard_count")
 
     @max_split_shard_count.setter
-    def max_split_shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_split_shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_split_shard_count", value)
 
     @_builtins.property
     @pulumi.getter(name="meteringMode")
-    def metering_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metering_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Metering mode. The default metering mode of ChargeByFunction, ChargeByDataIngest traffic mode.
         """
         return pulumi.get(self, "metering_mode")
 
     @metering_mode.setter
-    def metering_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metering_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metering_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of storage. Default to `standard`, must be `standard` or `query`, `lite`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.215.0. New field 'logstore_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.215.0. New field 'logstore_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'project' has been deprecated since provider version 1.215.0. New field 'project_name' instead.""")
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'project' has been deprecated from provider version 1.215.0. New field 'project_name' instead.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The project name to the log store belongs. You need to specify one of the attributes: `project_name`, `project`.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionPeriod")
-    def retention_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
         """
         return pulumi.get(self, "retention_period")
 
     @retention_period.setter
-    def retention_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_period", value)
 
     @_builtins.property
     @pulumi.getter(name="shardCount")
-    def shard_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shard_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
         """
         return pulumi.get(self, "shard_count")
 
     @shard_count.setter
-    def shard_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shard_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shard_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def shards(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]]:
+    def shards(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StoreShardArgs']]]]:
         """
         The shard attribute.
         """
         return pulumi.get(self, "shards")
 
     @shards.setter
-    def shards(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StoreShardArgs']]]]):
+    def shards(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StoreShardArgs']]]]):
         pulumi.set(self, "shards", value)
 
     @_builtins.property
     @pulumi.getter(name="telemetryType")
-    def telemetry_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def telemetry_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines whether store type is metric. `Metrics` means metric store, empty means log store.
 
@@ -600,7 +600,7 @@ class _StoreState:
         return pulumi.get(self, "telemetry_type")
 
     @telemetry_type.setter
-    def telemetry_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def telemetry_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "telemetry_type", value)
 
 
@@ -610,22 +610,22 @@ class Store(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 append_meta: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_split: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_web_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
-                 hot_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 infrequent_access_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_split_shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 metering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 telemetry_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+                 hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 telemetry_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SLS Log Store resource.
@@ -877,22 +877,22 @@ class Store(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 append_meta: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_split: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_web_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
-                 hot_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 infrequent_access_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_split_shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 metering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 telemetry_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+                 hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 telemetry_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -930,24 +930,24 @@ class Store(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            append_meta: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_split: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_web_tracking: Optional[pulumi.Input[_builtins.bool]] = None,
-            encrypt_conf: Optional[pulumi.Input[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
-            hot_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            infrequent_access_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-            max_split_shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-            metering_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_period: Optional[pulumi.Input[_builtins.int]] = None,
-            shard_count: Optional[pulumi.Input[_builtins.int]] = None,
-            shards: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]]] = None,
-            telemetry_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Store':
+            append_meta: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_split: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_web_tracking: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypt_conf: pulumi.Input[Optional[Union['StoreEncryptConfArgs', 'StoreEncryptConfArgsDict']]] = None,
+            hot_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            infrequent_access_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_split_shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            metering_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_period: pulumi.Input[Optional[_builtins.int]] = None,
+            shard_count: pulumi.Input[Optional[_builtins.int]] = None,
+            shards: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StoreShardArgs', 'StoreShardArgsDict']]]]] = None,
+            telemetry_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Store':
         """
         Get an existing Store resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

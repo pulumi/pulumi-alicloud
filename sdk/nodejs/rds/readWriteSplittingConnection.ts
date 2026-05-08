@@ -192,31 +192,31 @@ export interface ReadWriteSplittingConnectionState {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Connection instance string.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
-    distributionType?: pulumi.Input<string>;
+    distributionType?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
-    maxDelayTime?: pulumi.Input<number>;
+    maxDelayTime?: pulumi.Input<number | undefined>;
     /**
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface ReadWriteSplittingConnectionArgs {
     /**
      * Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to <instance_id> + 'rw'.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Read weight distribution mode. Values are as follows: `Standard` indicates automatic weight distribution based on types, `Custom` indicates custom weight distribution.
      */
@@ -238,13 +238,13 @@ export interface ReadWriteSplittingConnectionArgs {
     /**
      * Delay threshold, in seconds. The value range is 0 to 7200. Default to 30. Read requests are not routed to the read-only instances with a delay greater than the threshold.
      */
-    maxDelayTime?: pulumi.Input<number>;
+    maxDelayTime?: pulumi.Input<number | undefined>;
     /**
      * Intranet connection port. Valid value: [3001-3999]. Default to 3306.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Read weight distribution. Read weights increase at a step of 100 up to 10,000. Enter weights in the following format: {"Instanceid":"Weight","Instanceid":"Weight"}. This parameter must be set when distributionType is set to Custom.
      */
-    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    weight?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -188,53 +188,53 @@ export interface PrimaryEndpointState {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster endpoint.
      */
-    dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Type of endpoint.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
-    sslAutoRotate?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string | undefined>;
     /**
      * The specifies SSL certificate download link.
      */
-    sslCertificateUrl?: pulumi.Input<string>;
+    sslCertificateUrl?: pulumi.Input<string | undefined>;
     /**
      * The SSL connection string.
      */
-    sslConnectionString?: pulumi.Input<string>;
+    sslConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
      */
-    sslEnabled?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string | undefined>;
     /**
      * The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    sslExpireTime?: pulumi.Input<string>;
+    sslExpireTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface PrimaryEndpointArgs {
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
@@ -252,23 +252,23 @@ export interface PrimaryEndpointArgs {
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
      * **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
      * For a PolarDB for PostgreSQL cluster or a PolarDB-O cluster, this parameter is not required, by default, SSL encryption is enabled for all endpoints.
      */
-    sslAutoRotate?: pulumi.Input<string>;
+    sslAutoRotate?: pulumi.Input<string | undefined>;
     /**
      * Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
      */
-    sslEnabled?: pulumi.Input<string>;
+    sslEnabled?: pulumi.Input<string | undefined>;
 }

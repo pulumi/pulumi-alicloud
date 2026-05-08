@@ -162,9 +162,9 @@ def get_kubernetes_version(cluster_type: Optional[_builtins.str] = None,
         kubernetes_version=pulumi.get(__ret__, 'kubernetes_version'),
         metadatas=pulumi.get(__ret__, 'metadatas'),
         profile=pulumi.get(__ret__, 'profile'))
-def get_kubernetes_version_output(cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                                  kubernetes_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  profile: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kubernetes_version_output(cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                                  kubernetes_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  profile: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesVersionResult]:
     """
     This data source provides the details of the Kubernetes version supported by ACK.

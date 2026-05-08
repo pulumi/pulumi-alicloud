@@ -24,14 +24,14 @@ class HoneypotProbeArgs:
                  control_node_id: pulumi.Input[_builtins.str],
                  display_name: pulumi.Input[_builtins.str],
                  probe_type: pulumi.Input[_builtins.str],
-                 arp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
-                 ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 probe_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
+                 ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HoneypotProbe resource.
 
@@ -105,117 +105,117 @@ class HoneypotProbeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def arp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ARP spoofing detection.**true**: Enable **false**: Disabled
         """
         return pulumi.get(self, "arp")
 
     @arp.setter
-    def arp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def arp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "arp", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotBindLists")
-    def honeypot_bind_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
+    def honeypot_bind_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
         Configure the service.See the following `Block HoneypotBindList`.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
     @honeypot_bind_lists.setter
-    def honeypot_bind_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]):
+    def honeypot_bind_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]):
         pulumi.set(self, "honeypot_bind_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ping scan detection. Value: **true**: Enable **false**: Disabled
         """
         return pulumi.get(self, "ping")
 
     @ping.setter
-    def ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ping", value)
 
     @_builtins.property
     @pulumi.getter(name="probeVersion")
-    def probe_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def probe_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the probe.
         """
         return pulumi.get(self, "probe_version")
 
     @probe_version.setter
-    def probe_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def probe_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "probe_version", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyIp")
-    def proxy_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the proxy.
         """
         return pulumi.get(self, "proxy_ip")
 
     @proxy_ip.setter
-    def proxy_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceIpLists")
-    def service_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Listen to the IP address list.
         """
         return pulumi.get(self, "service_ip_lists")
 
     @service_ip_lists.setter
-    def service_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 @pulumi.input_type
 class _HoneypotProbeState:
     def __init__(__self__, *,
-                 arp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
-                 honeypot_probe_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 probe_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 probe_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]] = None,
+                 honeypot_probe_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 probe_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HoneypotProbe resources.
 
@@ -262,158 +262,158 @@ class _HoneypotProbeState:
 
     @_builtins.property
     @pulumi.getter
-    def arp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def arp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         ARP spoofing detection.**true**: Enable **false**: Disabled
         """
         return pulumi.get(self, "arp")
 
     @arp.setter
-    def arp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def arp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "arp", value)
 
     @_builtins.property
     @pulumi.getter(name="controlNodeId")
-    def control_node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def control_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the management node.
         """
         return pulumi.get(self, "control_node_id")
 
     @control_node_id.setter
-    def control_node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def control_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "control_node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Probe display name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotBindLists")
-    def honeypot_bind_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
+    def honeypot_bind_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
         Configure the service.See the following `Block HoneypotBindList`.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
     @honeypot_bind_lists.setter
-    def honeypot_bind_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]):
+    def honeypot_bind_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]):
         pulumi.set(self, "honeypot_bind_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotProbeId")
-    def honeypot_probe_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_probe_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "honeypot_probe_id")
 
     @honeypot_probe_id.setter
-    def honeypot_probe_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_probe_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_probe_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Ping scan detection. Value: **true**: Enable **false**: Disabled
         """
         return pulumi.get(self, "ping")
 
     @ping.setter
-    def ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ping", value)
 
     @_builtins.property
     @pulumi.getter(name="probeType")
-    def probe_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def probe_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Probe type, support `host_probe` and `vpc_black_hole_probe`.
         """
         return pulumi.get(self, "probe_type")
 
     @probe_type.setter
-    def probe_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def probe_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "probe_type", value)
 
     @_builtins.property
     @pulumi.getter(name="probeVersion")
-    def probe_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def probe_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the probe.
         """
         return pulumi.get(self, "probe_version")
 
     @probe_version.setter
-    def probe_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def probe_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "probe_version", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyIp")
-    def proxy_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the proxy.
         """
         return pulumi.get(self, "proxy_ip")
 
     @proxy_ip.setter
-    def proxy_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceIpLists")
-    def service_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def service_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Listen to the IP address list.
         """
         return pulumi.get(self, "service_ip_lists")
 
     @service_ip_lists.setter
-    def service_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def service_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "service_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -423,17 +423,17 @@ class HoneypotProbe(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
-                 ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 probe_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 probe_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
+                 ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 probe_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Honeypot Probe resource.
@@ -554,17 +554,17 @@ class HoneypotProbe(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 control_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
-                 ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 probe_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 probe_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 control_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
+                 ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 probe_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -603,19 +603,19 @@ class HoneypotProbe(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arp: Optional[pulumi.Input[_builtins.bool]] = None,
-            control_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            honeypot_bind_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
-            honeypot_probe_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ping: Optional[pulumi.Input[_builtins.bool]] = None,
-            probe_type: Optional[pulumi.Input[_builtins.str]] = None,
-            probe_version: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            service_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HoneypotProbe':
+            arp: pulumi.Input[Optional[_builtins.bool]] = None,
+            control_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            honeypot_bind_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HoneypotProbeHoneypotBindListArgs', 'HoneypotProbeHoneypotBindListArgsDict']]]]] = None,
+            honeypot_probe_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ping: pulumi.Input[Optional[_builtins.bool]] = None,
+            probe_type: pulumi.Input[Optional[_builtins.str]] = None,
+            probe_version: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            service_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HoneypotProbe':
         """
         Get an existing HoneypotProbe resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

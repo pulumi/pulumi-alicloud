@@ -161,45 +161,45 @@ export interface GetVpcFlowLogsOutputArgs {
     /**
      * The Description of flow log.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The flow log name.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * A list of Flow Log IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The log store name.
      */
-    logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Flow Log name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The project name.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The resource id.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of  flow log. Valid values: `Active`, `Inactive`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The traffic type. Valid values: `All`, `Allow`, `Drop`.
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
 }

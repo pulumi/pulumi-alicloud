@@ -84,7 +84,7 @@ export interface GroupState {
     /**
      * Name of the domain group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -94,5 +94,5 @@ export interface GroupArgs {
     /**
      * Name of the domain group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

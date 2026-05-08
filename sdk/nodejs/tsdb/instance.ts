@@ -208,23 +208,23 @@ export interface InstanceState {
     /**
      * The app key.
      */
-    appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string | undefined>;
     /**
      * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string | undefined>;
     /**
      * The duration.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string | undefined>;
     /**
      * The alias of the instance.
      */
-    instanceAlias?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string | undefined>;
     /**
      * The specification of the instance. 
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -250,27 +250,27 @@ export interface InstanceState {
      * - `tsdb.48x.large` refers to ultimate edition I;
      * - `tsdb.96x.large` refers to ultimate edition II.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
      */
-    instanceStorage?: pulumi.Input<string>;
+    instanceStorage?: pulumi.Input<string | undefined>;
     /**
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -280,23 +280,23 @@ export interface InstanceArgs {
     /**
      * The app key.
      */
-    appKey?: pulumi.Input<string>;
+    appKey?: pulumi.Input<string | undefined>;
     /**
      * The disk type of instance. Valid when the engine type is `tsdbInfluxdb`. `cloudSsd` refers to SSD disk, `cloudEfficiency` refers to efficiency disk, `cloudEssd` refers to ESSD PL1 disk. Valid values: `cloudEfficiency`, `cloudEssd`, `cloudSsd`.
      */
-    diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string | undefined>;
     /**
      * The duration.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The engine type of instance Enumerative: `tsdbTsdb` refers to TSDB, `tsdbInfluxdb` refers to TSDB for InfluxDB️.
      */
-    engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string | undefined>;
     /**
      * The alias of the instance.
      */
-    instanceAlias?: pulumi.Input<string>;
+    instanceAlias?: pulumi.Input<string | undefined>;
     /**
      * The specification of the instance. 
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
@@ -338,5 +338,5 @@ export interface InstanceArgs {
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

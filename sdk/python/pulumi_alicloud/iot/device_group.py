@@ -20,9 +20,9 @@ __all__ = ['DeviceGroupArgs', 'DeviceGroup']
 class DeviceGroupArgs:
     def __init__(__self__, *,
                  group_name: pulumi.Input[_builtins.str],
-                 group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 iot_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 super_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 super_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DeviceGroup resource.
 
@@ -53,48 +53,48 @@ class DeviceGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupDesc")
-    def group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GroupDesc of the device group.
         """
         return pulumi.get(self, "group_desc")
 
     @group_desc.setter
-    def group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="iotInstanceId")
-    def iot_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iot_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the Iot Instance.
         """
         return pulumi.get(self, "iot_instance_id")
 
     @iot_instance_id.setter
-    def iot_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iot_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iot_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="superGroupId")
-    def super_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def super_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the SuperGroup.
         """
         return pulumi.get(self, "super_group_id")
 
     @super_group_id.setter
-    def super_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def super_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "super_group_id", value)
 
 
 @pulumi.input_type
 class _DeviceGroupState:
     def __init__(__self__, *,
-                 group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 iot_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 super_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 super_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DeviceGroup resources.
 
@@ -114,50 +114,50 @@ class _DeviceGroupState:
 
     @_builtins.property
     @pulumi.getter(name="groupDesc")
-    def group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GroupDesc of the device group.
         """
         return pulumi.get(self, "group_desc")
 
     @group_desc.setter
-    def group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The GroupName of the device group.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="iotInstanceId")
-    def iot_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iot_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the Iot Instance.
         """
         return pulumi.get(self, "iot_instance_id")
 
     @iot_instance_id.setter
-    def iot_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iot_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iot_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="superGroupId")
-    def super_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def super_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the SuperGroup.
         """
         return pulumi.get(self, "super_group_id")
 
     @super_group_id.setter
-    def super_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def super_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "super_group_id", value)
 
 
@@ -167,10 +167,10 @@ class DeviceGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 iot_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 super_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 super_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Iot Device Group resource.
@@ -266,10 +266,10 @@ class DeviceGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 iot_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 super_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 super_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -295,10 +295,10 @@ class DeviceGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            iot_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            super_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DeviceGroup':
+            group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            iot_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            super_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DeviceGroup':
         """
         Get an existing DeviceGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

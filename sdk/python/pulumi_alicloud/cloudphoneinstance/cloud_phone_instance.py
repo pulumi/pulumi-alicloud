@@ -19,8 +19,8 @@ __all__ = ['CloudPhoneInstanceArgs', 'CloudPhoneInstance']
 @pulumi.input_type
 class CloudPhoneInstanceArgs:
     def __init__(__self__, *,
-                 android_instance_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 android_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 android_instance_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CloudPhoneInstance resource.
 
@@ -34,34 +34,34 @@ class CloudPhoneInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="androidInstanceGroupId")
-    def android_instance_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def android_instance_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance group to which the instance belongs
         """
         return pulumi.get(self, "android_instance_group_id")
 
     @android_instance_group_id.setter
-    def android_instance_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def android_instance_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "android_instance_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="androidInstanceName")
-    def android_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def android_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name
         """
         return pulumi.get(self, "android_instance_name")
 
     @android_instance_name.setter
-    def android_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def android_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "android_instance_name", value)
 
 
 @pulumi.input_type
 class _CloudPhoneInstanceState:
     def __init__(__self__, *,
-                 android_instance_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 android_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 android_instance_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CloudPhoneInstance resources.
 
@@ -75,26 +75,26 @@ class _CloudPhoneInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="androidInstanceGroupId")
-    def android_instance_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def android_instance_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance group to which the instance belongs
         """
         return pulumi.get(self, "android_instance_group_id")
 
     @android_instance_group_id.setter
-    def android_instance_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def android_instance_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "android_instance_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="androidInstanceName")
-    def android_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def android_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name
         """
         return pulumi.get(self, "android_instance_name")
 
     @android_instance_name.setter
-    def android_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def android_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "android_instance_name", value)
 
 
@@ -104,8 +104,8 @@ class CloudPhoneInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_instance_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 android_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 android_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Phone Instance resource.
@@ -243,8 +243,8 @@ class CloudPhoneInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 android_instance_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 android_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 android_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -266,8 +266,8 @@ class CloudPhoneInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            android_instance_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            android_instance_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'CloudPhoneInstance':
+            android_instance_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            android_instance_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'CloudPhoneInstance':
         """
         Get an existing CloudPhoneInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

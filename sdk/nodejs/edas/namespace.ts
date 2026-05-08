@@ -129,21 +129,21 @@ export interface NamespaceState {
     /**
      * Specifies whether to enable remote debugging.
      */
-    debugEnable?: pulumi.Input<boolean>;
+    debugEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the namespace, The description can be up to `128` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the namespace.
      * - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.
      * - The ID of the default namespace is in the `region ID` format. An example is cn-beijing.
      */
-    namespaceLogicalId?: pulumi.Input<string>;
+    namespaceLogicalId?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace, The name can be up to `63` characters in length.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,11 +153,11 @@ export interface NamespaceArgs {
     /**
      * Specifies whether to enable remote debugging.
      */
-    debugEnable?: pulumi.Input<boolean>;
+    debugEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the namespace, The description can be up to `128` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the namespace.
      * - The ID of a custom namespace is in the `region ID:namespace identifier` format. An example is `cn-beijing:tdy218`.

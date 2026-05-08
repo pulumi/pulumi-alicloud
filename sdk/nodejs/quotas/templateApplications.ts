@@ -216,63 +216,63 @@ export interface TemplateApplicationsState {
      * The list of Alibaba Cloud accounts (primary accounts) of the resource directory members to which the quota is applied.
      * > **NOTE:**  Only 50 members can apply for quota increase in batch at a time. For more information about the members of the resource directory, see Query the list of all members in the resource directory.
      */
-    aliyunUids?: pulumi.Input<pulumi.Input<string>[]>;
+    aliyunUids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The value of the quota request.
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
-    desireValue?: pulumi.Input<number>;
+    desireValue?: pulumi.Input<number | undefined>;
     /**
      * Quota dimension. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota application result notification. Value:
      * - zh (default): Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to send notification of quota application result. Value:
      * - 0 (default): No.
      * - 3: Yes.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * Cloud service name abbreviation.
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The quota ID.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * List of quota application details.
      */
-    quotaApplicationDetails?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsQuotaApplicationDetail>[]>;
+    quotaApplicationDetails?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsQuotaApplicationDetail>[] | undefined>;
     /**
      * The quota type. Value:
      * - CommonQuota (default): Generic quota.
      * - FlowControl:API rate quota.
      * - WhiteListLabel: Equity quota.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     /**
      * Reason for quota application.
      * > **NOTE:**  The quota request is approved by the technical support of each cloud service. If you want to increase the chance of passing, please fill in a reasonable application value and detailed application reasons when applying for quota.
      */
-    reason?: pulumi.Input<string>;
+    reason?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -292,29 +292,29 @@ export interface TemplateApplicationsArgs {
     /**
      * Quota dimension. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateApplicationsDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If the current account does not select the effective time, the default is the submission time.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota application result notification. Value:
      * - zh (default): Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires. This parameter applies only to the equity quota (WhiteListLabel).
      * > **NOTE:**  If No Expiration Time is selected for the current account, the expiration time is 99 years from the effective time of the current quota.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to send notification of quota application result. Value:
      * - 0 (default): No.
      * - 3: Yes.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * Cloud service name abbreviation.
      * > **NOTE:**  For more information about cloud services that support quota centers, see Cloud services that support quota centers.

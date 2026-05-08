@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Cen
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var vlanId = new Random.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,

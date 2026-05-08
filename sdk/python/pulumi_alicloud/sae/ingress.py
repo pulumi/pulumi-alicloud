@@ -25,12 +25,12 @@ class IngressArgs:
                  namespace_id: pulumi.Input[_builtins.str],
                  rules: pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]],
                  slb_id: pulumi.Input[_builtins.str],
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_ids: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balance_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional['IngressDefaultRuleArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Ingress resource.
 
@@ -112,90 +112,90 @@ class IngressArgs:
 
     @_builtins.property
     @pulumi.getter(name="certId")
-    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
-    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certIds")
-    def cert_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
         """
         return pulumi.get(self, "cert_ids")
 
     @cert_ids.setter
-    def cert_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRule")
-    def default_rule(self) -> Optional[pulumi.Input['IngressDefaultRuleArgs']]:
+    def default_rule(self) -> pulumi.Input[Optional['IngressDefaultRuleArgs']]:
         """
         Default Rule. See `default_rule` below.
         """
         return pulumi.get(self, "default_rule")
 
     @default_rule.setter
-    def default_rule(self, value: Optional[pulumi.Input['IngressDefaultRuleArgs']]):
+    def default_rule(self, value: pulumi.Input[Optional['IngressDefaultRuleArgs']]):
         pulumi.set(self, "default_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocol")
-    def listener_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "listener_protocol")
 
     @listener_protocol.setter
-    def listener_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalanceType")
-    def load_balance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         """
         return pulumi.get(self, "load_balance_type")
 
     @load_balance_type.setter
-    def load_balance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balance_type", value)
 
 
 @pulumi.input_type
 class _IngressState:
     def __init__(__self__, *,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_ids: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input['IngressDefaultRuleArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional['IngressDefaultRuleArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['IngressRuleArgs']]]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ingress resources.
 
@@ -233,122 +233,122 @@ class _IngressState:
 
     @_builtins.property
     @pulumi.getter(name="certId")
-    def cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
         """
         return pulumi.get(self, "cert_id")
 
     @cert_id.setter
-    def cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certIds")
-    def cert_ids(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_ids(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
         """
         return pulumi.get(self, "cert_ids")
 
     @cert_ids.setter
-    def cert_ids(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_ids(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRule")
-    def default_rule(self) -> Optional[pulumi.Input['IngressDefaultRuleArgs']]:
+    def default_rule(self) -> pulumi.Input[Optional['IngressDefaultRuleArgs']]:
         """
         Default Rule. See `default_rule` below.
         """
         return pulumi.get(self, "default_rule")
 
     @default_rule.setter
-    def default_rule(self, value: Optional[pulumi.Input['IngressDefaultRuleArgs']]):
+    def default_rule(self, value: pulumi.Input[Optional['IngressDefaultRuleArgs']]):
         pulumi.set(self, "default_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         SLB listening port.
         """
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocol")
-    def listener_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
         """
         return pulumi.get(self, "listener_protocol")
 
     @listener_protocol.setter
-    def listener_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalanceType")
-    def load_balance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
         """
         return pulumi.get(self, "load_balance_type")
 
     @load_balance_type.setter
-    def load_balance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceId")
-    def namespace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
         """
         return pulumi.get(self, "namespace_id")
 
     @namespace_id.setter
-    def namespace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IngressRuleArgs']]]]:
         """
         Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IngressRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IngressRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="slbId")
-    def slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SLB ID.
         """
         return pulumi.get(self, "slb_id")
 
     @slb_id.setter
-    def slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_id", value)
 
 
@@ -358,16 +358,16 @@ class Ingress(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_ids: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Serverless App Engine (SAE) Ingress resource.
@@ -573,16 +573,16 @@ class Ingress(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_ids: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
-                 slb_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+                 slb_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -620,16 +620,16 @@ class Ingress(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_ids: Optional[pulumi.Input[_builtins.str]] = None,
-            default_rule: Optional[pulumi.Input[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
-            slb_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ingress':
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_ids: pulumi.Input[Optional[_builtins.str]] = None,
+            default_rule: pulumi.Input[Optional[Union['IngressDefaultRuleArgs', 'IngressDefaultRuleArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IngressRuleArgs', 'IngressRuleArgsDict']]]]] = None,
+            slb_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ingress':
         """
         Get an existing Ingress resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

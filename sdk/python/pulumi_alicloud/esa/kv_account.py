@@ -28,7 +28,7 @@ class KvAccountArgs:
 @pulumi.input_type
 class _KvAccountState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KvAccount resources.
 
@@ -39,14 +39,14 @@ class _KvAccountState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -167,7 +167,7 @@ class KvAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'KvAccount':
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'KvAccount':
         """
         Get an existing KvAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,30 +24,30 @@ class ClusterArgs:
                  cluster_type: pulumi.Input[_builtins.str],
                  emr_ver: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
-                 deposit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eas_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 high_availability_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
-                 is_open_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_pwd: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta_store_conf: Optional[pulumi.Input['ClusterMetaStoreConfArgs']] = None,
-                 meta_store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_cluster_service_config: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 related_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 use_local_metadb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_defined_emr_ecs_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
+                 deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
+                 is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta_store_conf: pulumi.Input[Optional['ClusterMetaStoreConfArgs']] = None,
+                 meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -169,323 +169,323 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="bootstrapActions")
-    def bootstrap_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
+    def bootstrap_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
         """
         Boot action parameters.
         """
         return pulumi.get(self, "bootstrap_actions")
 
     @bootstrap_actions.setter
-    def bootstrap_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]):
+    def bootstrap_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]):
         pulumi.set(self, "bootstrap_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
         """
         The custom configurations of emr-cluster service.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="depositType")
-    def deposit_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deposit_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         """
         return pulumi.get(self, "deposit_type")
 
     @deposit_type.setter
-    def deposit_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deposit_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deposit_type", value)
 
     @_builtins.property
     @pulumi.getter(name="easEnable")
-    def eas_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def eas_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         High security cluster (true) or not. Default value is false.
         """
         return pulumi.get(self, "eas_enable")
 
     @eas_enable.setter
-    def eas_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def eas_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "eas_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="highAvailabilityEnable")
-    def high_availability_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def high_availability_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         """
         return pulumi.get(self, "high_availability_enable")
 
     @high_availability_enable.setter
-    def high_availability_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def high_availability_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "high_availability_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
+    def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
         """
         Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         """
         return pulumi.get(self, "host_groups")
 
     @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]):
+    def host_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]):
         pulumi.set(self, "host_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="isOpenPublicIp")
-    def is_open_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_open_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the MASTER node has a public IP address enabled. Default value is false.
         """
         return pulumi.get(self, "is_open_public_ip")
 
     @is_open_public_ip.setter
-    def is_open_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_open_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_open_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ssh key pair.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="masterPwd")
-    def master_pwd(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_pwd(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Master ssh password.
         """
         return pulumi.get(self, "master_pwd")
 
     @master_pwd.setter
-    def master_pwd(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_pwd(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_pwd", value)
 
     @_builtins.property
     @pulumi.getter(name="metaStoreConf")
-    def meta_store_conf(self) -> Optional[pulumi.Input['ClusterMetaStoreConfArgs']]:
+    def meta_store_conf(self) -> pulumi.Input[Optional['ClusterMetaStoreConfArgs']]:
         """
         The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         """
         return pulumi.get(self, "meta_store_conf")
 
     @meta_store_conf.setter
-    def meta_store_conf(self, value: Optional[pulumi.Input['ClusterMetaStoreConfArgs']]):
+    def meta_store_conf(self, value: pulumi.Input[Optional['ClusterMetaStoreConfArgs']]):
         pulumi.set(self, "meta_store_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="metaStoreType")
-    def meta_store_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta_store_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         """
         return pulumi.get(self, "meta_store_type")
 
     @meta_store_type.setter
-    def meta_store_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta_store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta_store_type", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyClusterServiceConfig")
-    def modify_cluster_service_config(self) -> Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']]:
+    def modify_cluster_service_config(self) -> pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]:
         """
         The configurations of emr-cluster service modification after cluster created.
         """
         return pulumi.get(self, "modify_cluster_service_config")
 
     @modify_cluster_service_config.setter
-    def modify_cluster_service_config(self, value: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']]):
+    def modify_cluster_service_config(self, value: pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]):
         pulumi.set(self, "modify_cluster_service_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="optionSoftwareLists")
-    def option_software_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def option_software_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional software list.
         """
         return pulumi.get(self, "option_software_lists")
 
     @option_software_lists.setter
-    def option_software_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def option_software_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "option_software_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedClusterId")
-    def related_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def related_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This specify the related cluster id, if this cluster is a Gateway.
         """
         return pulumi.get(self, "related_cluster_id")
 
     @related_cluster_id.setter
-    def related_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def related_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "related_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the emr-cluster belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Group ID for Cluster, you can also specify this key for each host group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sshEnable")
-    def ssh_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssh_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this is set true, we can ssh into cluster. Default value is false.
         """
         return pulumi.get(self, "ssh_enable")
 
     @ssh_enable.setter
-    def ssh_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssh_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssh_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="useLocalMetadb")
-    def use_local_metadb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_local_metadb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use local metadb. Default is false.
         """
         return pulumi.get(self, "use_local_metadb")
 
     @use_local_metadb.setter
-    def use_local_metadb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_local_metadb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_local_metadb", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedEmrEcsRole")
-    def user_defined_emr_ecs_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_defined_emr_ecs_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         """
         return pulumi.get(self, "user_defined_emr_ecs_role")
 
     @user_defined_emr_ecs_role.setter
-    def user_defined_emr_ecs_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_defined_emr_ecs_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_defined_emr_ecs_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global vswitch id, you can also specify it in host group.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
-                 deposit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eas_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emr_ver: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_availability_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
-                 is_open_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_pwd: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta_store_conf: Optional[pulumi.Input['ClusterMetaStoreConfArgs']] = None,
-                 meta_store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_cluster_service_config: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 related_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 use_local_metadb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_defined_emr_ecs_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]] = None,
+                 deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]] = None,
+                 is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta_store_conf: pulumi.Input[Optional['ClusterMetaStoreConfArgs']] = None,
+                 meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -574,326 +574,326 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="bootstrapActions")
-    def bootstrap_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
+    def bootstrap_actions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]:
         """
         Boot action parameters.
         """
         return pulumi.get(self, "bootstrap_actions")
 
     @bootstrap_actions.setter
-    def bootstrap_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]):
+    def bootstrap_actions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterBootstrapActionArgs']]]]):
         pulumi.set(self, "bootstrap_actions", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EMR Cluster Type, e.g. HADOOP, KAFKA, DRUID, GATEWAY etc. You can find all valid EMR cluster type in emr web console. Supported 'GATEWAY' available in 1.61.0+.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]:
         """
         The custom configurations of emr-cluster service.
         """
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter(name="depositType")
-    def deposit_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deposit_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster deposit type, HALF_MANAGED or FULL_MANAGED.
         """
         return pulumi.get(self, "deposit_type")
 
     @deposit_type.setter
-    def deposit_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deposit_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deposit_type", value)
 
     @_builtins.property
     @pulumi.getter(name="easEnable")
-    def eas_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def eas_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         High security cluster (true) or not. Default value is false.
         """
         return pulumi.get(self, "eas_enable")
 
     @eas_enable.setter
-    def eas_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def eas_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "eas_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="emrVer")
-    def emr_ver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def emr_ver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EMR Version, e.g. EMR-3.22.0. You can find the all valid EMR Version in emr web console.
         """
         return pulumi.get(self, "emr_ver")
 
     @emr_ver.setter
-    def emr_ver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def emr_ver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "emr_ver", value)
 
     @_builtins.property
     @pulumi.getter(name="highAvailabilityEnable")
-    def high_availability_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def high_availability_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         High Available for HDFS and YARN. If this is set true, MASTER group must have two nodes.
         """
         return pulumi.get(self, "high_availability_enable")
 
     @high_availability_enable.setter
-    def high_availability_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def high_availability_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "high_availability_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="hostGroups")
-    def host_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
+    def host_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]:
         """
         Groups of Host, You can specify MASTER as a group, CORE as a group (just like the above example).
         """
         return pulumi.get(self, "host_groups")
 
     @host_groups.setter
-    def host_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]):
+    def host_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterHostGroupArgs']]]]):
         pulumi.set(self, "host_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="isOpenPublicIp")
-    def is_open_public_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_open_public_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the MASTER node has a public IP address enabled. Default value is false.
         """
         return pulumi.get(self, "is_open_public_ip")
 
     @is_open_public_ip.setter
-    def is_open_public_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_open_public_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_open_public_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ssh key pair.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="masterPwd")
-    def master_pwd(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_pwd(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Master ssh password.
         """
         return pulumi.get(self, "master_pwd")
 
     @master_pwd.setter
-    def master_pwd(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_pwd(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_pwd", value)
 
     @_builtins.property
     @pulumi.getter(name="metaStoreConf")
-    def meta_store_conf(self) -> Optional[pulumi.Input['ClusterMetaStoreConfArgs']]:
+    def meta_store_conf(self) -> pulumi.Input[Optional['ClusterMetaStoreConfArgs']]:
         """
         The configuration of emr-cluster service component metadata storage. If meta store type is ’user_rds’, this should be specified.
         """
         return pulumi.get(self, "meta_store_conf")
 
     @meta_store_conf.setter
-    def meta_store_conf(self, value: Optional[pulumi.Input['ClusterMetaStoreConfArgs']]):
+    def meta_store_conf(self, value: pulumi.Input[Optional['ClusterMetaStoreConfArgs']]):
         pulumi.set(self, "meta_store_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="metaStoreType")
-    def meta_store_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta_store_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of emr-cluster service component metadata storage. ’dlf’ or ’local’ or ’user_rds’ .
         """
         return pulumi.get(self, "meta_store_type")
 
     @meta_store_type.setter
-    def meta_store_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta_store_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta_store_type", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyClusterServiceConfig")
-    def modify_cluster_service_config(self) -> Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']]:
+    def modify_cluster_service_config(self) -> pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]:
         """
         The configurations of emr-cluster service modification after cluster created.
         """
         return pulumi.get(self, "modify_cluster_service_config")
 
     @modify_cluster_service_config.setter
-    def modify_cluster_service_config(self, value: Optional[pulumi.Input['ClusterModifyClusterServiceConfigArgs']]):
+    def modify_cluster_service_config(self, value: pulumi.Input[Optional['ClusterModifyClusterServiceConfigArgs']]):
         pulumi.set(self, "modify_cluster_service_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="optionSoftwareLists")
-    def option_software_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def option_software_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Optional software list.
         """
         return pulumi.get(self, "option_software_lists")
 
     @option_software_lists.setter
-    def option_software_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def option_software_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "option_software_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="relatedClusterId")
-    def related_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def related_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This specify the related cluster id, if this cluster is a Gateway.
         """
         return pulumi.get(self, "related_cluster_id")
 
     @related_cluster_id.setter
-    def related_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def related_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "related_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the emr-cluster belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Group ID for Cluster, you can also specify this key for each host group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sshEnable")
-    def ssh_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssh_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If this is set true, we can ssh into cluster. Default value is false.
         """
         return pulumi.get(self, "ssh_enable")
 
     @ssh_enable.setter
-    def ssh_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssh_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssh_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="useLocalMetadb")
-    def use_local_metadb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_local_metadb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use local metadb. Default is false.
         """
         return pulumi.get(self, "use_local_metadb")
 
     @use_local_metadb.setter
-    def use_local_metadb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_local_metadb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_local_metadb", value)
 
     @_builtins.property
     @pulumi.getter(name="userDefinedEmrEcsRole")
-    def user_defined_emr_ecs_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_defined_emr_ecs_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alicloud EMR uses roles to perform actions on your behalf when provisioning cluster resources, running applications, dynamically scaling resources. EMR uses the following roles when interacting with other Alicloud services. Default value is AliyunEmrEcsDefaultRole.
         """
         return pulumi.get(self, "user_defined_emr_ecs_role")
 
     @user_defined_emr_ecs_role.setter
-    def user_defined_emr_ecs_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_defined_emr_ecs_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_defined_emr_ecs_role", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Global vswitch id, you can also specify it in host group.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID, e.g. cn-huhehaote-a
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -903,33 +903,33 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
-                 deposit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eas_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emr_ver: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_availability_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
-                 is_open_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_pwd: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta_store_conf: Optional[pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
-                 meta_store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_cluster_service_config: Optional[pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 related_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 use_local_metadb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_defined_emr_ecs_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+                 deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+                 is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+                 meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EMR Cluster resource. With this you can create, read, and release  EMR Cluster.
@@ -944,6 +944,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -966,18 +967,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1016,10 +1017,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1027,10 +1028,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1038,10 +1039,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1067,6 +1068,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1089,18 +1091,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1139,10 +1141,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1150,10 +1152,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1161,10 +1163,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "4",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1188,6 +1190,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1210,18 +1213,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1260,10 +1263,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1271,10 +1274,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1282,10 +1285,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1303,6 +1306,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1321,18 +1325,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1370,10 +1374,10 @@ class Cluster(pulumi.CustomResource):
                 "node_count": "1",
                 "instance_type": default_get_instance_types.types[0].id,
                 "disk_type": data_disk.types[0].value,
-                "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 "disk_count": "1",
                 "sys_disk_type": system_disk.types[0].value,
-                "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
             }],
             high_availability_enable=True,
             zone_id=default_get_instance_types.types[0].zone_id,
@@ -1447,6 +1451,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1469,18 +1474,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1519,10 +1524,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1530,10 +1535,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1541,10 +1546,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1570,6 +1575,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1592,18 +1598,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1642,10 +1648,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1653,10 +1659,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1664,10 +1670,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "4",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1691,6 +1697,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1713,18 +1720,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1763,10 +1770,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "1",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "core_group",
@@ -1774,10 +1781,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "3",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
                 {
                     "host_group_name": "task_group",
@@ -1785,10 +1792,10 @@ class Cluster(pulumi.CustomResource):
                     "node_count": "2",
                     "instance_type": default_get_instance_types.types[0].id,
                     "disk_type": data_disk.types[0].value,
-                    "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                    "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                     "disk_count": "4",
                     "sys_disk_type": system_disk.types[0].value,
-                    "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                    "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 },
             ],
             high_availability_enable=True,
@@ -1806,6 +1813,7 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.emr.get_main_versions()
@@ -1824,18 +1832,18 @@ class Cluster(pulumi.CustomResource):
             instance_charge_type="PostPaid",
             instance_type=default_get_instance_types.types[0].id,
             zone_id=default_get_instance_types.types[0].zone_id)
-        vpc = []
+        vpc: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vpc_id ==  else 0)]:
             vpc.append(alicloud.vpc.Network(f"vpc-{range['value']}",
                 name=vpc_name,
                 cidr_block=vpc_cidr))
-        default_security_group = []
+        default_security_group: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if security_group_id ==  else 0)]:
             default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
                 name=security_group_name,
                 vpc_id=vpc[0].id if vpc_id == "" else vpc_id))
         # VSwitch Resource for Module
-        vswitch = []
+        vswitch: list[Any] = []
         for range in [{"value": i} for i in range(0, 1 if vswitch_id ==  else 0)]:
             vswitch.append(alicloud.vpc.Switch(f"vswitch-{range['value']}",
                 availability_zone=default_get_instance_types.types[0].zone_id if availability_zone == "" else availability_zone,
@@ -1873,10 +1881,10 @@ class Cluster(pulumi.CustomResource):
                 "node_count": "1",
                 "instance_type": default_get_instance_types.types[0].id,
                 "disk_type": data_disk.types[0].value,
-                "disk_capacity": data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
+                "disk_capacity": data_disk.types[0].min if output(data_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
                 "disk_count": "1",
                 "sys_disk_type": system_disk.types[0].value,
-                "sys_disk_capacity": system_disk.types[0].min if system_disk.types[0].min > 160 else "160",
+                "sys_disk_capacity": system_disk.types[0].min if output(system_disk.types[0].min).apply(lambda x: float(x)) > float(160) else "160",
             }],
             high_availability_enable=True,
             zone_id=default_get_instance_types.types[0].zone_id,
@@ -1916,33 +1924,33 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
-                 deposit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 eas_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 emr_ver: Optional[pulumi.Input[_builtins.str]] = None,
-                 high_availability_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
-                 is_open_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_pwd: Optional[pulumi.Input[_builtins.str]] = None,
-                 meta_store_conf: Optional[pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
-                 meta_store_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_cluster_service_config: Optional[pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 related_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 use_local_metadb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_defined_emr_ecs_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+                 deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
+                 high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+                 is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+                 meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+                 meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1995,33 +2003,33 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bootstrap_actions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
-            charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
-            deposit_type: Optional[pulumi.Input[_builtins.str]] = None,
-            eas_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            emr_ver: Optional[pulumi.Input[_builtins.str]] = None,
-            high_availability_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            host_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
-            is_open_public_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            master_pwd: Optional[pulumi.Input[_builtins.str]] = None,
-            meta_store_conf: Optional[pulumi.Input[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
-            meta_store_type: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_cluster_service_config: Optional[pulumi.Input[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            option_software_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            related_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssh_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            use_local_metadb: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_defined_emr_ecs_role: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            bootstrap_actions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterBootstrapActionArgs', 'ClusterBootstrapActionArgsDict']]]]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterConfigArgs', 'ClusterConfigArgsDict']]]]] = None,
+            deposit_type: pulumi.Input[Optional[_builtins.str]] = None,
+            eas_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            emr_ver: pulumi.Input[Optional[_builtins.str]] = None,
+            high_availability_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterHostGroupArgs', 'ClusterHostGroupArgsDict']]]]] = None,
+            is_open_public_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            master_pwd: pulumi.Input[Optional[_builtins.str]] = None,
+            meta_store_conf: pulumi.Input[Optional[Union['ClusterMetaStoreConfArgs', 'ClusterMetaStoreConfArgsDict']]] = None,
+            meta_store_type: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_cluster_service_config: pulumi.Input[Optional[Union['ClusterModifyClusterServiceConfigArgs', 'ClusterModifyClusterServiceConfigArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            option_software_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            related_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssh_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            use_local_metadb: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_defined_emr_ecs_role: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

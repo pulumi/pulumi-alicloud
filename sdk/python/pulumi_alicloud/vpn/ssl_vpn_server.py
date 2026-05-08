@@ -22,11 +22,11 @@ class SslVpnServerArgs:
                  client_ip_pool: pulumi.Input[_builtins.str],
                  local_subnet: pulumi.Input[_builtins.str],
                  vpn_gateway_id: pulumi.Input[_builtins.str],
-                 cipher: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None):
+                 cipher: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SslVpnServer resource.
 
@@ -94,7 +94,7 @@ class SslVpnServerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cipher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cipher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
         * `AES-128-CBC` - the AES-128-CBC algorithm.
@@ -104,72 +104,72 @@ class SslVpnServerArgs:
         return pulumi.get(self, "cipher")
 
     @cipher.setter
-    def cipher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cipher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cipher", value)
 
     @_builtins.property
     @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         """
         return pulumi.get(self, "compress")
 
     @compress.setter
-    def compress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compress", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SSL-VPN server.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
 
 @pulumi.input_type
 class _SslVpnServerState:
     def __init__(__self__, *,
-                 cipher: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cipher: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SslVpnServer resources.
 
@@ -213,7 +213,7 @@ class _SslVpnServerState:
 
     @_builtins.property
     @pulumi.getter
-    def cipher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cipher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
         * `AES-128-CBC` - the AES-128-CBC algorithm.
@@ -223,127 +223,127 @@ class _SslVpnServerState:
         return pulumi.get(self, "cipher")
 
     @cipher.setter
-    def cipher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cipher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cipher", value)
 
     @_builtins.property
     @pulumi.getter(name="clientIpPool")
-    def client_ip_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
         """
         return pulumi.get(self, "client_ip_pool")
 
     @client_ip_pool.setter
-    def client_ip_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip_pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compress(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
         """
         return pulumi.get(self, "compress")
 
     @compress.setter
-    def compress(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compress(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compress", value)
 
     @_builtins.property
     @pulumi.getter
-    def connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of current connections.
         """
         return pulumi.get(self, "connections")
 
     @connections.setter
-    def connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connections", value)
 
     @_builtins.property
     @pulumi.getter(name="internetIp")
-    def internet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The internet IP of the SSL-VPN server.
         """
         return pulumi.get(self, "internet_ip")
 
     @internet_ip.setter
-    def internet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="localSubnet")
-    def local_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
         """
         return pulumi.get(self, "local_subnet")
 
     @local_subnet.setter
-    def local_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConnections")
-    def max_connections(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_connections(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections.
         """
         return pulumi.get(self, "max_connections")
 
     @max_connections.setter
-    def max_connections(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_connections(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_connections", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SSL-VPN server.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPN gateway.
         """
         return pulumi.get(self, "vpn_gateway_id")
 
     @vpn_gateway_id.setter
-    def vpn_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_id", value)
 
 
@@ -353,14 +353,14 @@ class SslVpnServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cipher: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a SSL VPN server resource. [Refer to details](https://www.alibabacloud.com/help/doc-detail/64960.htm)
@@ -517,14 +517,14 @@ class SslVpnServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cipher: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress: Optional[pulumi.Input[_builtins.bool]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cipher: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress: pulumi.Input[Optional[_builtins.bool]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -561,17 +561,17 @@ class SslVpnServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cipher: Optional[pulumi.Input[_builtins.str]] = None,
-            client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            compress: Optional[pulumi.Input[_builtins.bool]] = None,
-            connections: Optional[pulumi.Input[_builtins.int]] = None,
-            internet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            max_connections: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SslVpnServer':
+            cipher: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            compress: pulumi.Input[Optional[_builtins.bool]] = None,
+            connections: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            max_connections: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SslVpnServer':
         """
         Get an existing SslVpnServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

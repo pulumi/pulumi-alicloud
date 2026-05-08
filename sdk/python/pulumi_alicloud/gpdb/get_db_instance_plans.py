@@ -191,13 +191,13 @@ def get_db_instance_plans(db_instance_id: Optional[_builtins.str] = None,
         plan_type=pulumi.get(__ret__, 'plan_type'),
         plans=pulumi.get(__ret__, 'plans'),
         status=pulumi.get(__ret__, 'status'))
-def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 plan_schedule_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 plan_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_db_instance_plans_output(db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 plan_schedule_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 plan_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDbInstancePlansResult]:
     """
     This data source provides the Gpdb Db Instance Plans of the current Alibaba Cloud user.

@@ -49,7 +49,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+//			vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 //				Description: pulumi.String(pulumi.String(name)),
 //				CidrBlock:   pulumi.String("172.16.0.0/12"),
 //				VpcName:     pulumi.String(pulumi.String(name)),
@@ -60,7 +60,7 @@ import (
 //			env_ecs, err := arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
 //				EnvironmentType:    pulumi.String("ECS"),
 //				EnvironmentName:    pulumi.Sprintf("terraform-example-%v", _default.Result),
-//				BindResourceId:     vpc.ID(),
+//				BindResourceId:     vpc2.ID(),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //			})
 //			if err != nil {

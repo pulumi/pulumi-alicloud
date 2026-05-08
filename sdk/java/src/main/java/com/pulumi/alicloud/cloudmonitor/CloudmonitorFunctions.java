@@ -41,8 +41,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -108,8 +108,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -175,8 +175,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -242,8 +242,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -376,8 +376,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cloudmonitor.ServiceHybridDoubleWriteArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceHybridDoubleWritesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -514,8 +514,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -616,8 +616,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -718,8 +718,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -820,8 +820,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -922,8 +922,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1126,8 +1126,8 @@ public final class CloudmonitorFunctions {
      * import com.pulumi.alicloud.cms.inputs.AlarmEscalationsWarnArgs;
      * import com.pulumi.alicloud.cloudmonitor.CloudmonitorFunctions;
      * import com.pulumi.alicloud.cloudmonitor.inputs.GetServiceMetricAlarmRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

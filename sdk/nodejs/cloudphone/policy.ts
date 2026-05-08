@@ -153,31 +153,31 @@ export interface PolicyState {
     /**
      * Whether to turn on local camera redirection.
      */
-    cameraRedirect?: pulumi.Input<string>;
+    cameraRedirect?: pulumi.Input<string | undefined>;
     /**
      * Clipboard permissions.
      */
-    clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string | undefined>;
     /**
      * Whether to lock the resolution.
      */
-    lockResolution?: pulumi.Input<string>;
+    lockResolution?: pulumi.Input<string | undefined>;
     /**
      * Network redirection. See `netRedirectPolicy` below.
      */
-    netRedirectPolicy?: pulumi.Input<inputs.cloudphone.PolicyNetRedirectPolicy>;
+    netRedirectPolicy?: pulumi.Input<inputs.cloudphone.PolicyNetRedirectPolicy | undefined>;
     /**
      * The policy name.
      */
-    policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string | undefined>;
     /**
      * The height of the resolution. Unit: Pixels.
      */
-    resolutionHeight?: pulumi.Input<number>;
+    resolutionHeight?: pulumi.Input<number | undefined>;
     /**
      * The width of the resolution. Unit: Pixels.
      */
-    resolutionWidth?: pulumi.Input<number>;
+    resolutionWidth?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -187,29 +187,29 @@ export interface PolicyArgs {
     /**
      * Whether to turn on local camera redirection.
      */
-    cameraRedirect?: pulumi.Input<string>;
+    cameraRedirect?: pulumi.Input<string | undefined>;
     /**
      * Clipboard permissions.
      */
-    clipboard?: pulumi.Input<string>;
+    clipboard?: pulumi.Input<string | undefined>;
     /**
      * Whether to lock the resolution.
      */
-    lockResolution?: pulumi.Input<string>;
+    lockResolution?: pulumi.Input<string | undefined>;
     /**
      * Network redirection. See `netRedirectPolicy` below.
      */
-    netRedirectPolicy?: pulumi.Input<inputs.cloudphone.PolicyNetRedirectPolicy>;
+    netRedirectPolicy?: pulumi.Input<inputs.cloudphone.PolicyNetRedirectPolicy | undefined>;
     /**
      * The policy name.
      */
-    policyGroupName?: pulumi.Input<string>;
+    policyGroupName?: pulumi.Input<string | undefined>;
     /**
      * The height of the resolution. Unit: Pixels.
      */
-    resolutionHeight?: pulumi.Input<number>;
+    resolutionHeight?: pulumi.Input<number | undefined>;
     /**
      * The width of the resolution. Unit: Pixels.
      */
-    resolutionWidth?: pulumi.Input<number>;
+    resolutionWidth?: pulumi.Input<number | undefined>;
 }

@@ -148,36 +148,36 @@ export interface MaliciousFileWhitelistConfigState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the security alert associated with the representative rule.
      */
-    eventName?: pulumi.Input<string>;
+    eventName?: pulumi.Input<string | undefined>;
     /**
      * Represents the alarm associated with the resource and the white field.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
     /**
      * Represents the whiteout target value in effect for the resource.
      */
-    fieldValue?: pulumi.Input<string>;
+    fieldValue?: pulumi.Input<string | undefined>;
     /**
      * The decision operator in effect on behalf of the resource.
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Business Source:
      * - agentless: agentless detection.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The type of target in effect on behalf of the resource.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
     /**
      * Represents the specific value of the target type in effect for the resource.
      */
-    targetValue?: pulumi.Input<string>;
+    targetValue?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,30 +187,30 @@ export interface MaliciousFileWhitelistConfigArgs {
     /**
      * The name of the security alert associated with the representative rule.
      */
-    eventName?: pulumi.Input<string>;
+    eventName?: pulumi.Input<string | undefined>;
     /**
      * Represents the alarm associated with the resource and the white field.
      */
-    field?: pulumi.Input<string>;
+    field?: pulumi.Input<string | undefined>;
     /**
      * Represents the whiteout target value in effect for the resource.
      */
-    fieldValue?: pulumi.Input<string>;
+    fieldValue?: pulumi.Input<string | undefined>;
     /**
      * The decision operator in effect on behalf of the resource.
      */
-    operator?: pulumi.Input<string>;
+    operator?: pulumi.Input<string | undefined>;
     /**
      * Business Source:
      * - agentless: agentless detection.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The type of target in effect on behalf of the resource.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
     /**
      * Represents the specific value of the target type in effect for the resource.
      */
-    targetValue?: pulumi.Input<string>;
+    targetValue?: pulumi.Input<string | undefined>;
 }

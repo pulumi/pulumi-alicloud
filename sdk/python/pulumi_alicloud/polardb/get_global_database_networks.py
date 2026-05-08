@@ -227,14 +227,14 @@ def get_global_database_networks(db_cluster_id: Optional[_builtins.str] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         status=pulumi.get(__ret__, 'status'))
-def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        gdn_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_global_database_networks_output(db_cluster_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        gdn_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalDatabaseNetworksResult]:
     """
     This data source provides the PolarDB Global Database Networks of the current Alibaba Cloud user.

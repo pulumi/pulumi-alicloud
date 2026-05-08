@@ -153,13 +153,13 @@ export interface GetUserProvisioningEventsOutputArgs {
     /**
      * A list of User Provisioning Event IDs. The value is formulated as `<directory_id>:<event_id>`.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the User Provisioning.
      */
-    userProvisioningId?: pulumi.Input<string>;
+    userProvisioningId?: pulumi.Input<string | undefined>;
 }

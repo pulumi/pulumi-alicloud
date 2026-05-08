@@ -259,59 +259,59 @@ export interface ClusterState {
     /**
      * cluster description
      */
-    clusterDescription?: pulumi.Input<string>;
+    clusterDescription?: pulumi.Input<string | undefined>;
     /**
      * ClusterName
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * cluster type
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * Component (software instance) See `components` below.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterComponent>[] | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Cluster Number
      */
-    hpnZone?: pulumi.Input<string>;
+    hpnZone?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    ignoreFailedNodeTasks?: pulumi.Input<boolean>;
+    ignoreFailedNodeTasks?: pulumi.Input<boolean | undefined>;
     /**
      * Network Information See `networks` below.
      */
-    networks?: pulumi.Input<inputs.eflo.ClusterNetworks>;
+    networks?: pulumi.Input<inputs.eflo.ClusterNetworks | undefined>;
     /**
      * Node virtual switch
      */
-    nimizVswitches?: pulumi.Input<pulumi.Input<string>[]>;
+    nimizVswitches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Node Group List See `nodeGroups` below.
      */
-    nodeGroups?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNodeGroup>[]>;
+    nodeGroups?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNodeGroup>[] | undefined>;
     /**
      * Whether the network interface supports jumbo frames
      */
-    openEniJumboFrame?: pulumi.Input<boolean>;
+    openEniJumboFrame?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -321,49 +321,49 @@ export interface ClusterArgs {
     /**
      * cluster description
      */
-    clusterDescription?: pulumi.Input<string>;
+    clusterDescription?: pulumi.Input<string | undefined>;
     /**
      * ClusterName
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * cluster type
      */
-    clusterType?: pulumi.Input<string>;
+    clusterType?: pulumi.Input<string | undefined>;
     /**
      * Component (software instance) See `components` below.
      */
-    components?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterComponent>[]>;
+    components?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterComponent>[] | undefined>;
     /**
      * Cluster Number
      */
-    hpnZone?: pulumi.Input<string>;
+    hpnZone?: pulumi.Input<string | undefined>;
     /**
      * Whether to allow skipping failed nodes. Default value: False
      */
-    ignoreFailedNodeTasks?: pulumi.Input<boolean>;
+    ignoreFailedNodeTasks?: pulumi.Input<boolean | undefined>;
     /**
      * Network Information See `networks` below.
      */
-    networks?: pulumi.Input<inputs.eflo.ClusterNetworks>;
+    networks?: pulumi.Input<inputs.eflo.ClusterNetworks | undefined>;
     /**
      * Node virtual switch
      */
-    nimizVswitches?: pulumi.Input<pulumi.Input<string>[]>;
+    nimizVswitches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Node Group List See `nodeGroups` below.
      */
-    nodeGroups?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNodeGroup>[]>;
+    nodeGroups?: pulumi.Input<pulumi.Input<inputs.eflo.ClusterNodeGroup>[] | undefined>;
     /**
      * Whether the network interface supports jumbo frames
      */
-    openEniJumboFrame?: pulumi.Input<boolean>;
+    openEniJumboFrame?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -156,7 +156,7 @@ export interface GetRegistryEnterpriseSyncRulesOutputArgs {
     /**
      * A list of ids to filter results by sync rule id.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of Container Registry Enterprise Edition local instance.
      */
@@ -164,21 +164,21 @@ export interface GetRegistryEnterpriseSyncRulesOutputArgs {
     /**
      * A regex string to filter results by sync rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Name of Container Registry Enterprise Edition local namespace.
      */
-    namespaceName?: pulumi.Input<string>;
+    namespaceName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Name of Container Registry Enterprise Edition local repo.
      */
-    repoName?: pulumi.Input<string>;
+    repoName?: pulumi.Input<string | undefined>;
     /**
      * ID of Container Registry Enterprise Edition target instance.
      */
-    targetInstanceId?: pulumi.Input<string>;
+    targetInstanceId?: pulumi.Input<string | undefined>;
 }

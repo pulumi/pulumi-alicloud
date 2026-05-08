@@ -434,23 +434,23 @@ export interface NatFirewallControlPolicyState {
     /**
      * The method (action) of access traffic passing through Cloud Firewall in the security access control policy. Valid values:
      */
-    aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string | undefined>;
     /**
      * The unique ID of the security access control policy.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * The list of application types supported by the access control policy.
      */
-    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time when the policy was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The description of the access control policy.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination port of traffic access in the access control policy. Value:
      * - When the protocol type is set to ICMP, the value of DestPort is null.
@@ -463,17 +463,17 @@ export interface NatFirewallControlPolicyState {
      *
      * - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * The address book name of the destination port of the access traffic in the access control policy.
      *
      * > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * The destination port type of the access traffic in the security access control policy.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address segment in the access control policy. Valid values:
      * - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
@@ -481,37 +481,37 @@ export interface NatFirewallControlPolicyState {
      * - When DestinationType is domain, Destination is the Destination domain name. For example: * .aliyuncs.com
      * - When DestinationType is location, Destination is the Destination region. For example: \["BJ11", "ZB"\].
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * The destination address type in the access control policy. Valid values:
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The traffic direction of the access control policy. Valid values:
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
      */
-    domainResolveType?: pulumi.Input<number>;
+    domainResolveType?: pulumi.Input<number | undefined>;
     /**
      * The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
      *
      * > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Supported IP address version. Value:
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NAT gateway instance.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
      */
-    newOrder?: pulumi.Input<string>;
+    newOrder?: pulumi.Input<string | undefined>;
     /**
      * The security protocol type for traffic access in the access control policy. Valid values:
      * - `ANY` (Indicates that all protocol types are queried)
@@ -519,30 +519,30 @@ export interface NatFirewallControlPolicyState {
      * - `UDP`
      * - `ICMP`.
      */
-    proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string | undefined>;
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * Collection of recurring dates for the policy validity period of the access control policy.
      * - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
      * - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
      * - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
      *
      * > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
      *
      * > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The type of repetition for the policy validity period of the access control policy. Value:
      * - `Permit` (default): Always
@@ -551,23 +551,23 @@ export interface NatFirewallControlPolicyState {
      * - `Weekly`: Weekly
      * - `Monthly`: Monthly.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The source address in the access control policy. Valid values:
      * - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
      * - When `SourceType` is set to `group`, Source is the name of the Source address book. For example: `dbGroup`.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * The source address type in the access control policy. Valid values:
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
      *
      * > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -598,17 +598,17 @@ export interface NatFirewallControlPolicyArgs {
      *
      * - When the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, the value of DestPort is the destination port number.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * The address book name of the destination port of the access traffic in the access control policy.
      *
      * > **NOTE:**  When DestPortType is set to group, you need to set the destination port address book name.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * The destination port type of the access traffic in the security access control policy.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address segment in the access control policy. Valid values:
      * - When DestinationType is net, Destination is the Destination CIDR. For example: 1.2.XX.XX/24
@@ -628,17 +628,17 @@ export interface NatFirewallControlPolicyArgs {
     /**
      * The domain name resolution method of the access control policy. The policy is enabled by default after it is created. Valid values:
      */
-    domainResolveType?: pulumi.Input<number>;
+    domainResolveType?: pulumi.Input<number | undefined>;
     /**
      * The end time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. Must be full or half time and at least half an hour greater than the start time.
      *
      * > **NOTE:**  When RepeatType is set to permit, EndTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, EndTime must have a value and you need to set the end time.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Supported IP address version. Value:
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NAT gateway instance.
      */
@@ -646,7 +646,7 @@ export interface NatFirewallControlPolicyArgs {
     /**
      * The priority for the access control policy to take effect. The priority number increases sequentially from 1, and the smaller the priority number, the higher the priority. If not set, default to `-1`.
      */
-    newOrder?: pulumi.Input<string>;
+    newOrder?: pulumi.Input<string | undefined>;
     /**
      * The security protocol type for traffic access in the access control policy. Valid values:
      * - `ANY` (Indicates that all protocol types are queried)
@@ -658,26 +658,26 @@ export interface NatFirewallControlPolicyArgs {
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * Collection of recurring dates for the policy validity period of the access control policy.
      * - When RepeatType is `Permanent`, `None`, `Daily`, RepeatDays is an empty collection. For example:`[]`
      * - When RepeatType is Weekly, RepeatDays cannot be empty. For example:`["0", "6"]`. When the RepeatType is set to Weekly, RepeatDays cannot be repeated.
      * - RepeatDays cannot be empty when RepeatType is 'Monthly. For example:`[1, 31]`. When RepeatType is set to Monthly, RepeatDays cannot be repeated.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The recurring end time of the policy validity period of the access control policy. For example: 23:30, it must be the whole point or half point time, and at least half an hour greater than the repeat start time.
      *
      * > **NOTE:**  When RepeatType is set to normal or None, RepeatEndTime is null. When the RepeatType is Daily, Weekly, or Monthly, the RepeatEndTime must have a value, and you need to set the repeat end time.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The recurring start time of the policy validity period of the access control policy. For example: 08:00, it must be the whole point or half point time, and at least half an hour less than the repeat end time.
      *
      * > **NOTE:**  When RepeatType is set to permit or None, RepeatStartTime is empty. When the RepeatType is Daily, Weekly, or Monthly, the RepeatStartTime must have a value and you need to set the repeat start time.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The type of repetition for the policy validity period of the access control policy. Value:
      * - `Permit` (default): Always
@@ -686,7 +686,7 @@ export interface NatFirewallControlPolicyArgs {
      * - `Weekly`: Weekly
      * - `Monthly`: Monthly.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * The source address in the access control policy. Valid values:
      * - When `SourceType` is set to `net`, Source is the Source CIDR address. For example: `10.2.4.0/24`
@@ -702,5 +702,5 @@ export interface NatFirewallControlPolicyArgs {
      *
      * > **NOTE:**  When RepeatType is set to normal, StartTime is null. When the RepeatType is None, Daily, Weekly, or Monthly, StartTime must have a value and you need to set the start time.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
 }

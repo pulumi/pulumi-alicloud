@@ -21,9 +21,9 @@ class RocketMQTopicArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  topic_name: pulumi.Input[_builtins.str],
-                 max_send_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RocketMQTopic resource.
 
@@ -68,52 +68,52 @@ class RocketMQTopicArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxSendTps")
-    def max_send_tps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_send_tps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum TPS for message sending.
         """
         return pulumi.get(self, "max_send_tps")
 
     @max_send_tps.setter
-    def max_send_tps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_send_tps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_send_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message type.
         """
         return pulumi.get(self, "message_type")
 
     @message_type.setter
-    def message_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom remarks.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
 
 @pulumi.input_type
 class _RocketMQTopicState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_send_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RocketMQTopic resources.
 
@@ -145,98 +145,98 @@ class _RocketMQTopicState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSendTps")
-    def max_send_tps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_send_tps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum TPS for message sending.
         """
         return pulumi.get(self, "max_send_tps")
 
     @max_send_tps.setter
-    def max_send_tps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_send_tps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_send_tps", value)
 
     @_builtins.property
     @pulumi.getter(name="messageType")
-    def message_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def message_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Message type.
         """
         return pulumi.get(self, "message_type")
 
     @message_type.setter
-    def message_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def message_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "message_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.247.0) The region ID to which the instance belongs.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom remarks.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Topic name and identification.
         """
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -246,11 +246,11 @@ class RocketMQTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_send_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RocketMQ Topic resource.
@@ -451,11 +451,11 @@ class RocketMQTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_send_tps: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -487,14 +487,14 @@ class RocketMQTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_send_tps: Optional[pulumi.Input[_builtins.int]] = None,
-            message_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RocketMQTopic':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_send_tps: pulumi.Input[Optional[_builtins.int]] = None,
+            message_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RocketMQTopic':
         """
         Get an existing RocketMQTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

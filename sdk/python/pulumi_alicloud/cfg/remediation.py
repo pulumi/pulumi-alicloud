@@ -24,7 +24,7 @@ class RemediationArgs:
                  params: pulumi.Input[_builtins.str],
                  remediation_template_id: pulumi.Input[_builtins.str],
                  remediation_type: pulumi.Input[_builtins.str],
-                 remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Remediation resource.
 
@@ -109,27 +109,27 @@ class RemediationArgs:
 
     @_builtins.property
     @pulumi.getter(name="remediationSourceType")
-    def remediation_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
         """
         return pulumi.get(self, "remediation_source_type")
 
     @remediation_source_type.setter
-    def remediation_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_source_type", value)
 
 
 @pulumi.input_type
 class _RemediationState:
     def __init__(__self__, *,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoke_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoke_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Remediation resources.
 
@@ -160,79 +160,79 @@ class _RemediationState:
 
     @_builtins.property
     @pulumi.getter(name="configRuleId")
-    def config_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule ID.
         """
         return pulumi.get(self, "config_rule_id")
 
     @config_rule_id.setter
-    def config_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="invokeType")
-    def invoke_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def invoke_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execution type, valid values: `Manual`, `Automatic`.
         """
         return pulumi.get(self, "invoke_type")
 
     @invoke_type.setter
-    def invoke_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def invoke_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "invoke_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation parameter.
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationId")
-    def remediation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation ID.
         """
         return pulumi.get(self, "remediation_id")
 
     @remediation_id.setter
-    def remediation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationSourceType")
-    def remediation_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
         """
         return pulumi.get(self, "remediation_source_type")
 
     @remediation_source_type.setter
-    def remediation_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationTemplateId")
-    def remediation_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation template ID.
         """
         return pulumi.get(self, "remediation_template_id")
 
     @remediation_template_id.setter
-    def remediation_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="remediationType")
-    def remediation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remediation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remediation type, valid values: `OOS`, `FC`.
 
@@ -241,7 +241,7 @@ class _RemediationState:
         return pulumi.get(self, "remediation_type")
 
     @remediation_type.setter
-    def remediation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remediation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remediation_type", value)
 
 
@@ -251,12 +251,12 @@ class Remediation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoke_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoke_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Config Remediation resource.
@@ -416,12 +416,12 @@ class Remediation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 invoke_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 params: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remediation_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 invoke_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 params: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remediation_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,13 +458,13 @@ class Remediation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            invoke_type: Optional[pulumi.Input[_builtins.str]] = None,
-            params: Optional[pulumi.Input[_builtins.str]] = None,
-            remediation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remediation_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            remediation_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remediation_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Remediation':
+            config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            invoke_type: pulumi.Input[Optional[_builtins.str]] = None,
+            params: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remediation_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Remediation':
         """
         Get an existing Remediation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

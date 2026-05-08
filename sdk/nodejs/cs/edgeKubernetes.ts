@@ -524,29 +524,29 @@ export interface EdgeKubernetesState {
     /**
      * The addon you want to install in cluster. See `addons` below.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[] | undefined>;
     /**
      * The ID of availability zone.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * (Map, Deprecated from v1.248.0) Nested attribute containing certificate authority data for your cluster. Please use the attribute certificateAuthority of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'certificate_authority' has been deprecated from provider version 1.248.0. Please use the attribute 'certificate_authority' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
+    certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -554,158 +554,158 @@ export interface EdgeKubernetesState {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
      * * ack.standard : Standard edge clusters.
      * * ack.pro.small : Professional edge clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * (Map) Map of kubernetes cluster connection information.
      */
-    connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
+    connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
-    installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean | undefined>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      *
      * *Worker params*
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * A list of one element containing information about the associated log store. See `logConfig` below.
      *
      * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
      */
-    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
+    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of nat gateway used to launch kubernetes cluster.
      */
-    natGatewayId?: pulumi.Input<string>;
+    natGatewayId?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
-    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime>;
+    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * The public ip of load balancer.
      */
-    slbInternet?: pulumi.Input<string>;
+    slbInternet?: pulumi.Input<string | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of private load balancer where the current cluster master node is located.
      */
-    slbIntranet?: pulumi.Input<string>;
+    slbIntranet?: pulumi.Input<string | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The ID of VPC where the current cluster is located.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      */
-    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
+    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[] | undefined>;
     /**
      * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
-    workerDiskCategory?: pulumi.Input<string>;
+    workerDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    workerDiskPerformanceLevel?: pulumi.Input<string>;
+    workerDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
-    workerDiskSize?: pulumi.Input<number>;
+    workerDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Worker node system disk auto snapshot policy.
      *
@@ -713,31 +713,31 @@ export interface EdgeKubernetesState {
      *
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
-    workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    workerDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
      */
-    workerInstanceChargeType?: pulumi.Input<string>;
+    workerInstanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      */
-    workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of cluster worker nodes.
      */
-    workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerNode>[]>;
+    workerNodes?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerNode>[] | undefined>;
     /**
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      */
-    workerNumber?: pulumi.Input<number>;
+    workerNumber?: pulumi.Input<number | undefined>;
     /**
      * The RamRole Name attached to worker node.
      */
-    workerRamRoleName?: pulumi.Input<string>;
+    workerRamRoleName?: pulumi.Input<string | undefined>;
     /**
      * The vswitches used by workers.
      */
-    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    workerVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -747,23 +747,23 @@ export interface EdgeKubernetesArgs {
     /**
      * The addon you want to install in cluster. See `addons` below.
      */
-    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[]>;
+    addons?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesAddon>[] | undefined>;
     /**
      * The ID of availability zone.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      *
      * @deprecated Field 'client_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-cert.pem) for replace it.
      */
-    clientCert?: pulumi.Input<string>;
+    clientCert?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.client_key attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      *
      * @deprecated Field 'client_key' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.client_key' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/client-key.pem) for replace it.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * From version 1.248.0, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kubeconfig, you can also save the certificate_authority.cluster_cert attribute content of new DataSource `alicloud.cs.getClusterCredential` to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      *
@@ -771,138 +771,138 @@ export interface EdgeKubernetesArgs {
      *
      * @deprecated Field 'cluster_ca_cert' has been deprecated from provider version 1.248.0. From version 1.248.0, new DataSource 'alicloud_cs_cluster_credential' is recommended to manage cluster's kubeconfig, you can also save the 'certificate_authority.cluster_cert' attribute content of new DataSource 'alicloud_cs_cluster_credential' to an appropriate path(like ~/.kube/cluster-ca-cert.pem) for replace it.
      */
-    clusterCaCert?: pulumi.Input<string>;
+    clusterCaCert?: pulumi.Input<string | undefined>;
     /**
      * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
      * * ack.standard : Standard edge clusters.
      * * ack.pro.small : Professional edge clusters.
      */
-    clusterSpec?: pulumi.Input<string>;
+    clusterSpec?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable cluster deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Install cloud monitor agent on ECS. default: `true`.
      */
-    installCloudMonitor?: pulumi.Input<boolean>;
+    installCloudMonitor?: pulumi.Input<boolean | undefined>;
     /**
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      */
-    isEnterpriseSecurityGroup?: pulumi.Input<boolean>;
+    isEnterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `keyName` `kmsEncryptedPassword` fields.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The path of kube config, like ~/.kube/config. Please use the attribute outputFile of new DataSource `alicloud.cs.getClusterCredential` to replace it.
      *
      * @deprecated Field 'kube_config' has been deprecated from provider version 1.187.0. Please use the attribute 'output_file' of new DataSource 'alicloud_cs_cluster_credential' to replace it.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * The cluster api server load balance instance specification. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
      * ->NOTE: If you want to use `Flannel` as CNI network plugin, You need to specific the `podCidr` field and addons with `flannel`.
      *
      * *Worker params*
      */
-    loadBalancerSpec?: pulumi.Input<string>;
+    loadBalancerSpec?: pulumi.Input<string | undefined>;
     /**
      * A list of one element containing information about the associated log store. See `logConfig` below.
      *
      * @deprecated Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it.
      */
-    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig>;
+    logConfig?: pulumi.Input<inputs.cs.EdgeKubernetesLogConfig | undefined>;
     /**
      * The kubernetes cluster's name. It is unique in one Alicloud account.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The kubernetes cluster name's prefix. It is conflict with `name`. If it is specified, terraform will using it to build the only cluster name. Default to "Terraform-Creation".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      */
-    newNatGateway?: pulumi.Input<boolean>;
+    newNatGateway?: pulumi.Input<boolean | undefined>;
     /**
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      */
-    nodeCidrMask?: pulumi.Input<number>;
+    nodeCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The password of ssh login cluster node. You have to specify one of `password`, `keyName` `kmsEncryptedPassword` fields.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      */
-    podCidr?: pulumi.Input<string>;
+    podCidr?: pulumi.Input<string | undefined>;
     /**
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      */
-    proxyMode?: pulumi.Input<string>;
+    proxyMode?: pulumi.Input<string | undefined>;
     /**
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      */
-    rdsInstances?: pulumi.Input<pulumi.Input<string>[]>;
+    rdsInstances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resources that are automatically created during cluster creation, including NAT gateways, SNAT rules, SLB instances, and RAM Role, will be deleted. Resources that are manually created after you create the cluster, such as SLB instances for Services, will also be deleted. If you need to retain resources, please configure with `retainResources`. There are several aspects to pay attention to when using `retainResources` to retain resources. After configuring `retainResources` into the terraform configuration manifest file, you first need to run `pulumi up`.Then execute `terraform destroy`.
      */
-    retainResources?: pulumi.Input<pulumi.Input<string>[]>;
+    retainResources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). See `runtime` below.
      */
-    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime>;
+    runtime?: pulumi.Input<inputs.cs.EdgeKubernetesRuntime | undefined>;
     /**
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      */
-    serviceCidr?: pulumi.Input<string>;
+    serviceCidr?: pulumi.Input<string | undefined>;
     /**
      * Configure whether to save certificate authority data for your cluster to attribute `certificateAuthority`. For cluster security, recommended configuration as `true`. Will be removed with attribute certificateAuthority removed.
      *
      * *Network params*
      */
-    skipSetCertificateAuthority?: pulumi.Input<boolean>;
+    skipSetCertificateAuthority?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to create internet load balancer for API Server. Default to true.
      */
-    slbInternetEnabled?: pulumi.Input<boolean>;
+    slbInternetEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
     /**
      * The data disk configurations of worker nodes, such as the disk type and disk size. See `workerDataDisks` below.
      */
-    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[]>;
+    workerDataDisks?: pulumi.Input<pulumi.Input<inputs.cs.EdgeKubernetesWorkerDataDisk>[] | undefined>;
     /**
      * The system disk category of worker node. Its valid value are `cloudEfficiency`, `cloudSsd` and `cloudEssd` and . Default to `cloudEfficiency`.
      */
-    workerDiskCategory?: pulumi.Input<string>;
+    workerDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * Worker node system disk performance level, when `workerDiskCategory` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      */
-    workerDiskPerformanceLevel?: pulumi.Input<string>;
+    workerDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      */
-    workerDiskSize?: pulumi.Input<number>;
+    workerDiskSize?: pulumi.Input<number | undefined>;
     /**
      * Worker node system disk auto snapshot policy.
      *
@@ -910,11 +910,11 @@ export interface EdgeKubernetesArgs {
      *
      * You can set some file paths to save kubeConfig information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster's kube_config.
      */
-    workerDiskSnapshotPolicyId?: pulumi.Input<string>;
+    workerDiskSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
      */
-    workerInstanceChargeType?: pulumi.Input<string>;
+    workerInstanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      */

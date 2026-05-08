@@ -161,29 +161,29 @@ export interface ExperimentPlanTemplateState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Used to indicate the privacy level of the content or information. It can have the following optional parameters:
      * - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
      * - public: Indicates that the content is public and can be accessed by anyone. Public content is usually viewable by all users and is suitable for sharing information or resources
      */
-    privacyLevel?: pulumi.Input<string>;
+    privacyLevel?: pulumi.Input<string | undefined>;
     /**
      * Describe the purpose of this template.
      */
-    templateDescription?: pulumi.Input<string>;
+    templateDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the template.
      */
-    templateId?: pulumi.Input<string>;
+    templateId?: pulumi.Input<string | undefined>;
     /**
      * Help users identify and select specific templates.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
     /**
      * Representative Template Pipeline. See `templatePipeline` below.
      */
-    templatePipelines?: pulumi.Input<pulumi.Input<inputs.eflo.ExperimentPlanTemplateTemplatePipeline>[]>;
+    templatePipelines?: pulumi.Input<pulumi.Input<inputs.eflo.ExperimentPlanTemplateTemplatePipeline>[] | undefined>;
 }
 
 /**
@@ -199,7 +199,7 @@ export interface ExperimentPlanTemplateArgs {
     /**
      * Describe the purpose of this template.
      */
-    templateDescription?: pulumi.Input<string>;
+    templateDescription?: pulumi.Input<string | undefined>;
     /**
      * Help users identify and select specific templates.
      */

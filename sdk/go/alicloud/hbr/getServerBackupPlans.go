@@ -29,32 +29,34 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// _default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
-// NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-server-backup-plan"),
-// Status: pulumi.StringRef("Running"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ids, err := hbr.GetServerBackupPlans(ctx, &hbr.GetServerBackupPlansArgs{
-// Filters: []hbr.GetServerBackupPlansFilter{
-// {
-// Key: pulumi.StringRef("instanceId"),
-// Values: interface{}{
-// _default.Instances[0].Id,
-// },
-// },
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("hbrServerBackupPlanId1", ids.Plans[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_default, err := ecs.GetInstances(ctx, &ecs.GetInstancesArgs{
+//				NameRegex: pulumi.StringRef("no-deleteing-hbr-ecs-server-backup-plan"),
+//				Status:    pulumi.StringRef("Running"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ids, err := hbr.GetServerBackupPlans(ctx, &hbr.GetServerBackupPlansArgs{
+//				Filters: []hbr.GetServerBackupPlansFilter{
+//					{
+//						Key: pulumi.StringRef("instanceId"),
+//						Values: pulumi.StringArray{
+//							_default.Instances[0].Id,
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("hbrServerBackupPlanId1", ids.Plans[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetServerBackupPlans(ctx *pulumi.Context, args *GetServerBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetServerBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

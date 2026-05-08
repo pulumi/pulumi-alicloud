@@ -241,65 +241,65 @@ export interface EcsSnapshotState {
     /**
      * The category of the snapshot. Valid values:
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.239.0) The time when the snapshot was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the disk.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instantAccess` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.239.0) The region ID of the snapshot.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the snapshot.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Snapshot.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -309,11 +309,11 @@ export interface EcsSnapshotArgs {
     /**
      * The category of the snapshot. Valid values:
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The description of the snapshot.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the disk.
      */
@@ -321,39 +321,39 @@ export interface EcsSnapshotArgs {
     /**
      * Specifies whether to force delete the snapshot that has been used to create disks. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instantAccess` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccess` has been deprecated from provider version 1.231.0.
      */
-    instantAccess?: pulumi.Input<boolean>;
+    instantAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      *
      * @deprecated Field `instantAccessRetentionDays` has been deprecated from provider version 1.231.0.
      */
-    instantAccessRetentionDays?: pulumi.Input<number>;
+    instantAccessRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.120.0. New field `snapshotName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **NOTE:** From version 1.239.0, `resourceGroupId` can be modified.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The retention period of the snapshot. Valid values: `1` to `65536`. **NOTE:** From version 1.231.0, `retentionDays` can be modified.
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The name of the snapshot.
      */
-    snapshotName?: pulumi.Input<string>;
+    snapshotName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

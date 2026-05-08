@@ -140,9 +140,9 @@ def get_regions(current: Optional[_builtins.bool] = None,
         name=pulumi.get(__ret__, 'name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         regions=pulumi.get(__ret__, 'regions'))
-def get_regions_output(current: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_regions_output(current: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     This data source provides Alibaba Cloud regions.

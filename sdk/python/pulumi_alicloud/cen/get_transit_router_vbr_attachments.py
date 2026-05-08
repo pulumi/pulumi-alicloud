@@ -158,11 +158,11 @@ def get_transit_router_vbr_attachments(cen_id: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-def get_transit_router_vbr_attachments_output(cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              transit_router_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_transit_router_vbr_attachments_output(cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              transit_router_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterVbrAttachmentsResult]:
     """
     This data source provides CEN Transit Router VBR Attachments available to the user.[What is Cen Transit Router VBR Attachments](https://help.aliyun.com/document_detail/261226.html)

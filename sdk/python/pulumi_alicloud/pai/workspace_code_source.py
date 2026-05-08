@@ -24,11 +24,11 @@ class WorkspaceCodeSourceArgs:
                  display_name: pulumi.Input[_builtins.str],
                  mount_path: pulumi.Input[_builtins.str],
                  workspace_id: pulumi.Input[_builtins.str],
-                 code_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceCodeSource resource.
 
@@ -125,79 +125,79 @@ class WorkspaceCodeSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="codeBranch")
-    def code_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Code repository branch.
         """
         return pulumi.get(self, "code_branch")
 
     @code_branch.setter
-    def code_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="codeCommit")
-    def code_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code CommitId.
         """
         return pulumi.get(self, "code_commit")
 
     @code_commit.setter
-    def code_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRepoAccessToken")
-    def code_repo_access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_repo_access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Token used to access the code repository.
         """
         return pulumi.get(self, "code_repo_access_token")
 
     @code_repo_access_token.setter
-    def code_repo_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_repo_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_repo_access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRepoUserName")
-    def code_repo_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_repo_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name of the code repository.
         """
         return pulumi.get(self, "code_repo_user_name")
 
     @code_repo_user_name.setter
-    def code_repo_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_repo_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_repo_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of the code configuration.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _WorkspaceCodeSourceState:
     def __init__(__self__, *,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceCodeSource resources.
 
@@ -240,7 +240,7 @@ class _WorkspaceCodeSourceState:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Visibility of the code configuration, possible values:
         - PRIVATE: In this workspace, it is only visible to you and the administrator.
@@ -249,127 +249,127 @@ class _WorkspaceCodeSourceState:
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter(name="codeBranch")
-    def code_branch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_branch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Code repository branch.
         """
         return pulumi.get(self, "code_branch")
 
     @code_branch.setter
-    def code_branch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_branch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_branch", value)
 
     @_builtins.property
     @pulumi.getter(name="codeCommit")
-    def code_commit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_commit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code CommitId.
         """
         return pulumi.get(self, "code_commit")
 
     @code_commit.setter
-    def code_commit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_commit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_commit", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRepo")
-    def code_repo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_repo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Code repository address.
         """
         return pulumi.get(self, "code_repo")
 
     @code_repo.setter
-    def code_repo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_repo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_repo", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRepoAccessToken")
-    def code_repo_access_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_repo_access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Token used to access the code repository.
         """
         return pulumi.get(self, "code_repo_access_token")
 
     @code_repo_access_token.setter
-    def code_repo_access_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_repo_access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_repo_access_token", value)
 
     @_builtins.property
     @pulumi.getter(name="codeRepoUserName")
-    def code_repo_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_repo_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name of the code repository.
         """
         return pulumi.get(self, "code_repo_user_name")
 
     @code_repo_user_name.setter
-    def code_repo_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_repo_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_repo_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A detailed description of the code configuration.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Code source configuration name.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The local Mount Directory of the code.
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the workspace.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -379,16 +379,16 @@ class WorkspaceCodeSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Code Source resource.
@@ -520,16 +520,16 @@ class WorkspaceCodeSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_branch: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_commit: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 code_repo_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -570,17 +570,17 @@ class WorkspaceCodeSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-            code_branch: Optional[pulumi.Input[_builtins.str]] = None,
-            code_commit: Optional[pulumi.Input[_builtins.str]] = None,
-            code_repo: Optional[pulumi.Input[_builtins.str]] = None,
-            code_repo_access_token: Optional[pulumi.Input[_builtins.str]] = None,
-            code_repo_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceCodeSource':
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            code_branch: pulumi.Input[Optional[_builtins.str]] = None,
+            code_commit: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo_access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            code_repo_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceCodeSource':
         """
         Get an existing WorkspaceCodeSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

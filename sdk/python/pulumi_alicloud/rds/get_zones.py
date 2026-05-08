@@ -208,14 +208,14 @@ def get_zones(category: Optional[_builtins.str] = None,
         multi_zone=pulumi.get(__ret__, 'multi_zone'),
         output_file=pulumi.get(__ret__, 'output_file'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     db_instance_storage_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     engine: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     engine_version: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     instance_charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     multi: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     multi_zone: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(category: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     db_instance_storage_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     engine: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     engine_version: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     instance_charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     multi: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     multi_zone: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     This data source provides availability zones for RDS that can be accessed by an Alibaba Cloud account within the region configured in the provider.

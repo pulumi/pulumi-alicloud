@@ -184,15 +184,15 @@ export interface AccountState {
     /**
      * The description of the account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The account name.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * AccountPassword
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * Account type. The value range is as follows:
      *
@@ -200,22 +200,22 @@ export interface AccountState {
      *
      * Super: a high-privilege account.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Database name, with the following restrictions:
      * - Can only contain letters, numbers and underscores.
      * - Must start with a letter.
      * - Length cannot exceed 63 characters.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The Adb pg instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,7 +225,7 @@ export interface AccountArgs {
     /**
      * The description of the account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The account name.
      */
@@ -241,14 +241,14 @@ export interface AccountArgs {
      *
      * Super: a high-privilege account.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * Database name, with the following restrictions:
      * - Can only contain letters, numbers and underscores.
      * - Must start with a letter.
      * - Length cannot exceed 63 characters.
      */
-    databaseName?: pulumi.Input<string>;
+    databaseName?: pulumi.Input<string | undefined>;
     /**
      * The Adb pg instance ID.
      */

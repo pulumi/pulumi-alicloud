@@ -21,11 +21,11 @@ class DatabaseArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
                  db_name: pulumi.Input[_builtins.str],
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Database resource.
 
@@ -80,31 +80,31 @@ class DatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="characterSetName")
-    def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def character_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         """
         return pulumi.get(self, "character_set_name")
 
     @character_set_name.setter
-    def character_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def character_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that defines the collation rules in the database.
         > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
@@ -112,12 +112,12 @@ class DatabaseArgs:
         return pulumi.get(self, "collate")
 
     @collate.setter
-    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collate", value)
 
     @_builtins.property
     @pulumi.getter
-    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that indicates the character type of the database.
         > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
@@ -125,12 +125,12 @@ class DatabaseArgs:
         return pulumi.get(self, "ctype")
 
     @ctype.setter
-    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ctype", value)
 
     @_builtins.property
     @pulumi.getter(name="dbDescription")
-    def db_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the database. The description must meet the following requirements:
         - It cannot start with `http://` or `https://`.
@@ -139,21 +139,21 @@ class DatabaseArgs:
         return pulumi.get(self, "db_description")
 
     @db_description.setter
-    def db_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_description", value)
 
 
 @pulumi.input_type
 class _DatabaseState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Database resources.
 
@@ -189,31 +189,31 @@ class _DatabaseState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the account that is authorized to access the database. **NOTE:** From version 1.265.0, `account_name` can be modified. However, only PolarDB for PostgreSQL (Compatible with Oracle) and PolarDB for PostgreSQL cluster can be modified.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="characterSetName")
-    def character_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def character_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The character set that is used by the cluster. For more information, see [Character set tables](https://www.alibabacloud.com/help/en/doc-detail/99716.html).
         """
         return pulumi.get(self, "character_set_name")
 
     @character_set_name.setter
-    def character_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def character_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "character_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def collate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that defines the collation rules in the database.
         > **NOTE:** The locale must be compatible with the character set set set by `character_set_name`. This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
@@ -221,12 +221,12 @@ class _DatabaseState:
         return pulumi.get(self, "collate")
 
     @collate.setter
-    def collate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collate", value)
 
     @_builtins.property
     @pulumi.getter
-    def ctype(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ctype(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language that indicates the character type of the database.
         > **NOTE:** The language must be compatible with the character set that is specified by `character_set_name`. The value that you specify must be the same as the value of `collate`. This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.This parameter is required for a PolarDB for PostgreSQL (Compatible with Oracle) or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
@@ -234,24 +234,24 @@ class _DatabaseState:
         return pulumi.get(self, "ctype")
 
     @ctype.setter
-    def ctype(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ctype(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ctype", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of cluster.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbDescription")
-    def db_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the database. The description must meet the following requirements:
         - It cannot start with `http://` or `https://`.
@@ -260,31 +260,31 @@ class _DatabaseState:
         return pulumi.get(self, "db_description")
 
     @db_description.setter
-    def db_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbName")
-    def db_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
         """
         return pulumi.get(self, "db_name")
 
     @db_name.setter
-    def db_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.265.0) The state of the database.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -294,13 +294,13 @@ class Database(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Polar Db Database resource.
@@ -441,13 +441,13 @@ class Database(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 collate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ctype: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 collate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ctype: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,14 +479,14 @@ class Database(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            character_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            collate: Optional[pulumi.Input[_builtins.str]] = None,
-            ctype: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'Database':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            character_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            collate: pulumi.Input[Optional[_builtins.str]] = None,
+            ctype: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'Database':
         """
         Get an existing Database resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

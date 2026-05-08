@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *         engine: "MySQL",
  *         engineVersion: "8.0",
  *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *         instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *         instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *         instanceChargeType: "Postpaid",
  *         instanceName: std.format({
  *             input: `${name}_%d`,
@@ -430,127 +430,127 @@ export interface MigrationJobState {
     /**
      * Start time in Unix timestamp format.
      */
-    checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string | undefined>;
     /**
      * Whether to execute DTS supports schema migration.
      */
-    dataInitialization?: pulumi.Input<boolean>;
+    dataInitialization?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to perform incremental data migration.
      */
-    dataSynchronization?: pulumi.Input<boolean>;
+    dataSynchronization?: pulumi.Input<boolean | undefined>;
     /**
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      */
-    dbList?: pulumi.Input<string>;
+    dbList?: pulumi.Input<string | undefined>;
     /**
      * The name of migrate the database.
      */
-    destinationEndpointDatabaseName?: pulumi.Input<string>;
+    destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
-    destinationEndpointEngineName?: pulumi.Input<string>;
+    destinationEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The ID of destination instance.
      */
-    destinationEndpointInstanceId?: pulumi.Input<string>;
+    destinationEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    destinationEndpointInstanceType?: pulumi.Input<string>;
+    destinationEndpointInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ip of source endpoint.
      */
-    destinationEndpointIp?: pulumi.Input<string>;
+    destinationEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle database.
      */
-    destinationEndpointOracleSid?: pulumi.Input<string>;
+    destinationEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The password of database account.
      */
-    destinationEndpointPassword?: pulumi.Input<string>;
+    destinationEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source endpoint.
      */
-    destinationEndpointPort?: pulumi.Input<string>;
+    destinationEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of destination instance.
      */
-    destinationEndpointRegion?: pulumi.Input<string>;
+    destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
-    destinationEndpointUserName?: pulumi.Input<string>;
+    destinationEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
      */
-    dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of migration job.
      */
-    dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The name of migrate the database.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
-    sourceEndpointEngineName?: pulumi.Input<string>;
+    sourceEndpointEngineName?: pulumi.Input<string | undefined>;
     /**
      * The ID of source instance.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
-    sourceEndpointInstanceType?: pulumi.Input<string>;
+    sourceEndpointInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ip of source endpoint.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle database.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs.
      */
-    sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The password of database account.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source endpoint.
      */
-    sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of source instance.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
-    sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether to perform a database table structure to migrate.
      */
-    structureInitialization?: pulumi.Input<boolean>;
+    structureInitialization?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -560,7 +560,7 @@ export interface MigrationJobArgs {
     /**
      * Start time in Unix timestamp format.
      */
-    checkpoint?: pulumi.Input<string>;
+    checkpoint?: pulumi.Input<string | undefined>;
     /**
      * Whether to execute DTS supports schema migration.
      */
@@ -576,7 +576,7 @@ export interface MigrationJobArgs {
     /**
      * The name of migrate the database.
      */
-    destinationEndpointDatabaseName?: pulumi.Input<string>;
+    destinationEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      */
@@ -584,7 +584,7 @@ export interface MigrationJobArgs {
     /**
      * The ID of destination instance.
      */
-    destinationEndpointInstanceId?: pulumi.Input<string>;
+    destinationEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
@@ -592,27 +592,27 @@ export interface MigrationJobArgs {
     /**
      * The ip of source endpoint.
      */
-    destinationEndpointIp?: pulumi.Input<string>;
+    destinationEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle database.
      */
-    destinationEndpointOracleSid?: pulumi.Input<string>;
+    destinationEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The password of database account.
      */
-    destinationEndpointPassword?: pulumi.Input<string>;
+    destinationEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source endpoint.
      */
-    destinationEndpointPort?: pulumi.Input<string>;
+    destinationEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of destination instance.
      */
-    destinationEndpointRegion?: pulumi.Input<string>;
+    destinationEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
-    destinationEndpointUserName?: pulumi.Input<string>;
+    destinationEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
      */
@@ -620,15 +620,15 @@ export interface MigrationJobArgs {
     /**
      * The name of migration job.
      */
-    dtsJobName?: pulumi.Input<string>;
+    dtsJobName?: pulumi.Input<string | undefined>;
     /**
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      */
-    instanceClass?: pulumi.Input<string>;
+    instanceClass?: pulumi.Input<string | undefined>;
     /**
      * The name of migrate the database.
      */
-    sourceEndpointDatabaseName?: pulumi.Input<string>;
+    sourceEndpointDatabaseName?: pulumi.Input<string | undefined>;
     /**
      * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      */
@@ -636,7 +636,7 @@ export interface MigrationJobArgs {
     /**
      * The ID of source instance.
      */
-    sourceEndpointInstanceId?: pulumi.Input<string>;
+    sourceEndpointInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      */
@@ -644,39 +644,39 @@ export interface MigrationJobArgs {
     /**
      * The ip of source endpoint.
      */
-    sourceEndpointIp?: pulumi.Input<string>;
+    sourceEndpointIp?: pulumi.Input<string | undefined>;
     /**
      * The SID of Oracle database.
      */
-    sourceEndpointOracleSid?: pulumi.Input<string>;
+    sourceEndpointOracleSid?: pulumi.Input<string | undefined>;
     /**
      * The Alibaba Cloud account ID to which the source instance belongs.
      */
-    sourceEndpointOwnerId?: pulumi.Input<string>;
+    sourceEndpointOwnerId?: pulumi.Input<string | undefined>;
     /**
      * The password of database account.
      */
-    sourceEndpointPassword?: pulumi.Input<string>;
+    sourceEndpointPassword?: pulumi.Input<string | undefined>;
     /**
      * The port of source endpoint.
      */
-    sourceEndpointPort?: pulumi.Input<string>;
+    sourceEndpointPort?: pulumi.Input<string | undefined>;
     /**
      * The region of source instance.
      */
-    sourceEndpointRegion?: pulumi.Input<string>;
+    sourceEndpointRegion?: pulumi.Input<string | undefined>;
     /**
      * The name of the role configured for the cloud account to which the source instance belongs.
      */
-    sourceEndpointRole?: pulumi.Input<string>;
+    sourceEndpointRole?: pulumi.Input<string | undefined>;
     /**
      * The username of database account.
      */
-    sourceEndpointUserName?: pulumi.Input<string>;
+    sourceEndpointUserName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether to perform a database table structure to migrate.
      */

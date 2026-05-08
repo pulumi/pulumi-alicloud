@@ -242,75 +242,75 @@ export interface DbClusterState {
     /**
      * The desired cache size on creating cluster. The number should be divided by 100.
      */
-    cacheSize?: pulumi.Input<number>;
+    cacheSize?: pulumi.Input<number | undefined>;
     /**
      * The cpu resource amount of DBCluster. Depends on `dbClusterClass`.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The time when DBCluster is created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster class. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      */
-    dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string | undefined>;
     /**
      * The DBCluster description.
      */
-    dbClusterDescription?: pulumi.Input<string>;
+    dbClusterDescription?: pulumi.Input<string | undefined>;
     /**
      * The id of the cluster.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * The InstanceId of DBInstance for DBCluster. Every DBCluster requires one DBInstance to rely on.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The modified parameter in DBCluster. See `desiredParams` below.
      */
-    desiredParams?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterDesiredParam>[]>;
+    desiredParams?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterDesiredParam>[] | undefined>;
     /**
      * The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * The engine of DBCluster. Always `selectdb`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The version of DBCluster.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * The memory resource amount of DBCluster. Depends on `dbClusterClass`.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * The details about parameter changelogs in DBCluster returned.
      */
-    paramChangeLogs?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterParamChangeLog>[]>;
+    paramChangeLogs?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterParamChangeLog>[] | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of region for the cluster.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The current status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC for the cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of zone for the cluster.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -336,11 +336,11 @@ export interface DbClusterArgs {
     /**
      * The modified parameter in DBCluster. See `desiredParams` below.
      */
-    desiredParams?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterDesiredParam>[]>;
+    desiredParams?: pulumi.Input<pulumi.Input<inputs.selectdb.DbClusterDesiredParam>[] | undefined>;
     /**
      * The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */

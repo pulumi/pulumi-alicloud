@@ -23,7 +23,7 @@ class VpcEndpointLinkedVpcArgs:
                  module_name: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a VpcEndpointLinkedVpc resource.
 
@@ -94,26 +94,26 @@ class VpcEndpointLinkedVpcArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableCreateDnsRecordInPvzt")
-    def enable_create_dns_record_in_pvzt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_create_dns_record_in_pvzt(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         """
         return pulumi.get(self, "enable_create_dns_record_in_pvzt")
 
     @enable_create_dns_record_in_pvzt.setter
-    def enable_create_dns_record_in_pvzt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_create_dns_record_in_pvzt(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_create_dns_record_in_pvzt", value)
 
 
 @pulumi.input_type
 class _VpcEndpointLinkedVpcState:
     def __init__(__self__, *,
-                 enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointLinkedVpc resources.
 
@@ -141,31 +141,31 @@ class _VpcEndpointLinkedVpcState:
 
     @_builtins.property
     @pulumi.getter(name="enableCreateDnsRecordInPvzt")
-    def enable_create_dns_record_in_pvzt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_create_dns_record_in_pvzt(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
         """
         return pulumi.get(self, "enable_create_dns_record_in_pvzt")
 
     @enable_create_dns_record_in_pvzt.setter
-    def enable_create_dns_record_in_pvzt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_create_dns_record_in_pvzt(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_create_dns_record_in_pvzt", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="moduleName")
-    def module_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def module_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the module that you want to access. Valid Values:
         - `Registry`: the image repository.
@@ -174,43 +174,43 @@ class _VpcEndpointLinkedVpcState:
         return pulumi.get(self, "module_name")
 
     @module_name.setter
-    def module_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def module_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "module_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Vpc Endpoint Linked Vpc.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -220,11 +220,11 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Vpc Endpoint Linked Vpc resource.
@@ -373,11 +373,11 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 module_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 module_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -411,12 +411,12 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable_create_dns_record_in_pvzt: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            module_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcEndpointLinkedVpc':
+            enable_create_dns_record_in_pvzt: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            module_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcEndpointLinkedVpc':
         """
         Get an existing VpcEndpointLinkedVpc resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -283,19 +283,19 @@ export interface ListenerAdditionalCertificateAttachmentState {
     /**
      * The ID of additional certificates.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -309,7 +309,7 @@ export interface ListenerAdditionalCertificateAttachmentArgs {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The listener ID. You must specify the ID of a listener that uses SSL over TCP.
      */

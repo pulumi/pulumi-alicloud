@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.CloudAuth
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.CloudAuth
     /// 
     ///     var example = new AliCloud.CloudAuth.FaceConfig("example", new()
     ///     {
-    ///         BizName = Std.Index.Format.Invoke(new()
+    ///         BizName = Std.Format.Invoke(new()
     ///         {
     ///             Input = "%s-biz",
     ///             Args = new[]
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.CloudAuth
     ///                 name,
     ///             },
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         BizType = Std.Index.Format.Invoke(new()
+    ///         BizType = Std.Format.Invoke(new()
     ///         {
     ///             Input = "type-%s",
     ///             Args = new[]

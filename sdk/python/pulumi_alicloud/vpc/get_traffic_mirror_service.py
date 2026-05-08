@@ -104,7 +104,7 @@ def get_traffic_mirror_service(enable: Optional[_builtins.str] = None,
         enable=pulumi.get(__ret__, 'enable'),
         id=pulumi.get(__ret__, 'id'),
         status=pulumi.get(__ret__, 'status'))
-def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_traffic_mirror_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMirrorServiceResult]:
     """
     Using this data source can open VPC Traffic Mirror service automatically. If the service has been opened, it will return opened.

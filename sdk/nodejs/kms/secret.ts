@@ -227,63 +227,63 @@ export interface SecretState {
     /**
      * The ARN of the secret.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.224.0) The time when the secret is created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the secret.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
-    enableAutomaticRotation?: pulumi.Input<boolean>;
+    enableAutomaticRotation?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS key.
      */
-    encryptionKeyId?: pulumi.Input<string>;
+    encryptionKeyId?: pulumi.Input<string | undefined>;
     /**
      * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    extendedConfig?: pulumi.Input<string>;
+    extendedConfig?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
-    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the secret is scheduled to be deleted.
      */
-    plannedDeleteTime?: pulumi.Input<string>;
+    plannedDeleteTime?: pulumi.Input<string | undefined>;
     /**
      * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
-    recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string | undefined>;
     /**
      * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
-    secretData?: pulumi.Input<string>;
+    secretData?: pulumi.Input<string | undefined>;
     /**
      * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
-    secretDataType?: pulumi.Input<string>;
+    secretDataType?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    secretName?: pulumi.Input<string>;
+    secretName?: pulumi.Input<string | undefined>;
     /**
      * The type of the secret. Valid values:
      * - `Generic`: Generic secret.
@@ -293,19 +293,19 @@ export interface SecretState {
      * - `ECS`: ECS secret.
      * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
-    secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version number of the initial version.
      */
-    versionId?: pulumi.Input<string>;
+    versionId?: pulumi.Input<string | undefined>;
     /**
      * The stage label that is used to mark the new version.
      */
-    versionStages?: pulumi.Input<pulumi.Input<string>[]>;
+    versionStages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -315,39 +315,39 @@ export interface SecretArgs {
     /**
      * The description of the secret.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS instance.
      */
-    dkmsInstanceId?: pulumi.Input<string>;
+    dkmsInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
      */
-    enableAutomaticRotation?: pulumi.Input<boolean>;
+    enableAutomaticRotation?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS key.
      */
-    encryptionKeyId?: pulumi.Input<string>;
+    encryptionKeyId?: pulumi.Input<string | undefined>;
     /**
      * The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    extendedConfig?: pulumi.Input<string>;
+    extendedConfig?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
      */
-    forceDeleteWithoutRecovery?: pulumi.Input<boolean>;
+    forceDeleteWithoutRecovery?: pulumi.Input<boolean | undefined>;
     /**
      * The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `forceDeleteWithoutRecovery` is set to `true`, `recoveryWindowInDays` will be ignored.
      */
-    recoveryWindowInDays?: pulumi.Input<number>;
+    recoveryWindowInDays?: pulumi.Input<number | undefined>;
     /**
      * The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
-    rotationInterval?: pulumi.Input<string>;
+    rotationInterval?: pulumi.Input<string | undefined>;
     /**
      * The data of the secret. **NOTE:** From version 1.204.1, `secretData` updating diff will be ignored when `secretType` is not `Generic`.
      */
@@ -355,7 +355,7 @@ export interface SecretArgs {
     /**
      * The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
      */
-    secretDataType?: pulumi.Input<string>;
+    secretDataType?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
      */
@@ -369,11 +369,11 @@ export interface SecretArgs {
      * - `ECS`: ECS secret.
      * - `PolarDB`: (Available since v1.253.0) PolarDB secret.
      */
-    secretType?: pulumi.Input<string>;
+    secretType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The version number of the initial version.
      */
@@ -381,5 +381,5 @@ export interface SecretArgs {
     /**
      * The stage label that is used to mark the new version.
      */
-    versionStages?: pulumi.Input<pulumi.Input<string>[]>;
+    versionStages?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

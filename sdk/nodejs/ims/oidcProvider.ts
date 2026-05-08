@@ -159,36 +159,36 @@ export interface OidcProviderState {
     /**
      * ARN of OIDC identity provider.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * Client ID.
      */
-    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Creation Time (UTC time).
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of OIDC identity provider.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The authentication fingerprint of the HTTPS CA certificate.
      */
-    fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
      * Unit: hours. Value range: 1~168.
      */
-    issuanceLimitTime?: pulumi.Input<number>;
+    issuanceLimitTime?: pulumi.Input<number | undefined>;
     /**
      * The issuer URL of the OIDC identity provider.
      */
-    issuerUrl?: pulumi.Input<string>;
+    issuerUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the OIDC identity provider.
      */
-    oidcProviderName?: pulumi.Input<string>;
+    oidcProviderName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,20 +198,20 @@ export interface OidcProviderArgs {
     /**
      * Client ID.
      */
-    clientIds?: pulumi.Input<pulumi.Input<string>[]>;
+    clientIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Description of OIDC identity provider.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The authentication fingerprint of the HTTPS CA certificate.
      */
-    fingerprints?: pulumi.Input<pulumi.Input<string>[]>;
+    fingerprints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
      * Unit: hours. Value range: 1~168.
      */
-    issuanceLimitTime?: pulumi.Input<number>;
+    issuanceLimitTime?: pulumi.Input<number | undefined>;
     /**
      * The issuer URL of the OIDC identity provider.
      */

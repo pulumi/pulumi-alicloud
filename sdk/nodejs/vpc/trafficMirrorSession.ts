@@ -262,59 +262,59 @@ export interface TrafficMirrorSessionState {
      * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum Transmission Unit (MTU).
      */
-    packetLength?: pulumi.Input<number>;
+    packetLength?: pulumi.Input<number | undefined>;
     /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the filter.
      */
-    trafficMirrorFilterId?: pulumi.Input<string>;
+    trafficMirrorFilterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    trafficMirrorSessionDescription?: pulumi.Input<string>;
+    trafficMirrorSessionDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    trafficMirrorSessionName?: pulumi.Input<string>;
+    trafficMirrorSessionName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
-    trafficMirrorSourceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    trafficMirrorSourceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
      */
-    trafficMirrorTargetId?: pulumi.Input<string>;
+    trafficMirrorTargetId?: pulumi.Input<string | undefined>;
     /**
      * The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance.
      */
-    trafficMirrorTargetType?: pulumi.Input<string>;
+    trafficMirrorTargetType?: pulumi.Input<string | undefined>;
     /**
      * The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
      */
-    virtualNetworkId?: pulumi.Input<number>;
+    virtualNetworkId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -326,15 +326,15 @@ export interface TrafficMirrorSessionArgs {
      * - **true**: sends a check request and does not create a mirror session. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
      * - **false** (default): Sends a normal request and directly creates a mirror session after checking.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable traffic mirror sessions. default to `false`.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum Transmission Unit (MTU).
      */
-    packetLength?: pulumi.Input<number>;
+    packetLength?: pulumi.Input<number | undefined>;
     /**
      * The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
      */
@@ -342,11 +342,11 @@ export interface TrafficMirrorSessionArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of this resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the filter.
      */
@@ -354,11 +354,11 @@ export interface TrafficMirrorSessionArgs {
     /**
      * The description of the traffic mirror session. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      */
-    trafficMirrorSessionDescription?: pulumi.Input<string>;
+    trafficMirrorSessionDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    trafficMirrorSessionName?: pulumi.Input<string>;
+    trafficMirrorSessionName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image source instance. Currently, the Eni is supported as the image source. The default value of N is 1, that is, only one mirror source can be added to a mirror session.
      */
@@ -374,5 +374,5 @@ export interface TrafficMirrorSessionArgs {
     /**
      * The VXLAN network identifier (VNI) that is used to distinguish different mirrored traffic. Valid values: `0` to `16777215`. You can specify VNIs for the traffic mirror destination to identify mirrored traffic from different sessions. If you do not specify a VNI, the system randomly allocates a VNI. If you want the system to randomly allocate a VNI, ignore this parameter.
      */
-    virtualNetworkId?: pulumi.Input<number>;
+    virtualNetworkId?: pulumi.Input<number | undefined>;
 }

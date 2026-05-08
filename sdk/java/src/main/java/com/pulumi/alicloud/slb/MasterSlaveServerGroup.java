@@ -68,8 +68,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.slb.Listener;
  * import com.pulumi.alicloud.slb.ListenerArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *         final var msServerGroupGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(msServerGroup.zones()[0].id())
  *             .cpuCoreCount(2)
- *             .memorySize(8)
+ *             .memorySize(8.0)
  *             .instanceTypeFamily("ecs.g6")
  *             .build());
  * 

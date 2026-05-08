@@ -209,12 +209,12 @@ def get_etls(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         project=pulumi.get(__ret__, 'project'),
         size=pulumi.get(__ret__, 'size'))
-def get_etls_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                    logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                    offset: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    project: Optional[pulumi.Input[_builtins.str]] = None,
-                    size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_etls_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                    logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                    offset: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    project: pulumi.Input[Optional[_builtins.str]] = None,
+                    size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEtlsResult]:
     """
     This data source provides Sls Etl available to the user.[What is Etl](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateETL)

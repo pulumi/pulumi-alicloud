@@ -221,77 +221,77 @@ export interface EdgeContainerAppState {
     /**
      * The time when the application was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The application name must start with a lowercase letter. Lowercase letters, numbers, and bars are supported. The length is limited to 6 to 128 characters.
      */
-    edgeContainerAppName?: pulumi.Input<string>;
+    edgeContainerAppName?: pulumi.Input<string | undefined>;
     /**
      * The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
      */
-    healthCheckFailTimes?: pulumi.Input<number>;
+    healthCheckFailTimes?: pulumi.Input<number | undefined>;
     /**
      * The health check type. By default, this parameter is left empty.
      *
      * Valid values:
      */
-    healthCheckHost?: pulumi.Input<string>;
+    healthCheckHost?: pulumi.Input<string | undefined>;
     /**
      * The domain name that is used for health checks. This parameter is empty by default.
      */
-    healthCheckHttpCode?: pulumi.Input<string>;
+    healthCheckHttpCode?: pulumi.Input<string | undefined>;
     /**
      * The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
      * Valid values: `1` to `100`.
      * Default value: `3`.
      */
-    healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
     /**
      * The HTTP status code returned for a successful health check. Valid values:
      *
      * - **http\_2xx** (default)
      * - **http\_3xx**
      */
-    healthCheckMethod?: pulumi.Input<string>;
+    healthCheckMethod?: pulumi.Input<string | undefined>;
     /**
      * The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
      */
-    healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number | undefined>;
     /**
      * The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
      */
-    healthCheckSuccTimes?: pulumi.Input<number>;
+    healthCheckSuccTimes?: pulumi.Input<number | undefined>;
     /**
      * The port used for health checks. Valid values: 1 to 65535. Default value: 80.
      */
-    healthCheckTimeout?: pulumi.Input<number>;
+    healthCheckTimeout?: pulumi.Input<number | undefined>;
     /**
      * The remarks. This parameter is empty by default.
      */
-    healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * The HTTP request method for health checks. Valid values:
      *
      * - `HEAD` (default): requests the headers of the resource.
      * - `GET`: requests the specified resource and returns both the headers and entity body.
      */
-    healthCheckUri?: pulumi.Input<string>;
+    healthCheckUri?: pulumi.Input<string | undefined>;
     /**
      * The backend port, which is also the service port of the application. Valid values: 1 to 65535.
      */
-    remarks?: pulumi.Input<string>;
+    remarks?: pulumi.Input<string | undefined>;
     /**
      * The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
      */
-    servicePort?: pulumi.Input<number>;
+    servicePort?: pulumi.Input<number | undefined>;
     /**
      * The status of the application.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The server port. Valid values: 1 to 65535.
      */
-    targetPort?: pulumi.Input<number>;
+    targetPort?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -305,57 +305,57 @@ export interface EdgeContainerAppArgs {
     /**
      * The number of consecutive successful health checks required for an application to be considered as healthy. Valid values: 1 to 10. Default value: 2.
      */
-    healthCheckFailTimes?: pulumi.Input<number>;
+    healthCheckFailTimes?: pulumi.Input<number | undefined>;
     /**
      * The health check type. By default, this parameter is left empty.
      *
      * Valid values:
      */
-    healthCheckHost?: pulumi.Input<string>;
+    healthCheckHost?: pulumi.Input<string | undefined>;
     /**
      * The domain name that is used for health checks. This parameter is empty by default.
      */
-    healthCheckHttpCode?: pulumi.Input<string>;
+    healthCheckHttpCode?: pulumi.Input<string | undefined>;
     /**
      * The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
      * Valid values: `1` to `100`.
      * Default value: `3`.
      */
-    healthCheckInterval?: pulumi.Input<number>;
+    healthCheckInterval?: pulumi.Input<number | undefined>;
     /**
      * The HTTP status code returned for a successful health check. Valid values:
      *
      * - **http\_2xx** (default)
      * - **http\_3xx**
      */
-    healthCheckMethod?: pulumi.Input<string>;
+    healthCheckMethod?: pulumi.Input<string | undefined>;
     /**
      * The URI used for health checks. The URI must be `1` to `80` characters in length. Default value: "/".
      */
-    healthCheckPort?: pulumi.Input<number>;
+    healthCheckPort?: pulumi.Input<number | undefined>;
     /**
      * The interval between two consecutive health checks. Unit: seconds. Valid values: `1` to `50`. Default value: `5`.
      */
-    healthCheckSuccTimes?: pulumi.Input<number>;
+    healthCheckSuccTimes?: pulumi.Input<number | undefined>;
     /**
      * The port used for health checks. Valid values: 1 to 65535. Default value: 80.
      */
-    healthCheckTimeout?: pulumi.Input<number>;
+    healthCheckTimeout?: pulumi.Input<number | undefined>;
     /**
      * The remarks. This parameter is empty by default.
      */
-    healthCheckType?: pulumi.Input<string>;
+    healthCheckType?: pulumi.Input<string | undefined>;
     /**
      * The HTTP request method for health checks. Valid values:
      *
      * - `HEAD` (default): requests the headers of the resource.
      * - `GET`: requests the specified resource and returns both the headers and entity body.
      */
-    healthCheckUri?: pulumi.Input<string>;
+    healthCheckUri?: pulumi.Input<string | undefined>;
     /**
      * The backend port, which is also the service port of the application. Valid values: 1 to 65535.
      */
-    remarks?: pulumi.Input<string>;
+    remarks?: pulumi.Input<string | undefined>;
     /**
      * The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
      */

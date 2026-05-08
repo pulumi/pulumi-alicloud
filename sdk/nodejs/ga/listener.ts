@@ -221,74 +221,74 @@ export interface ListenerState {
     /**
      * The accelerator id.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The certificates of the listener. See `certificates` below.
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[] | undefined>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
      * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
-    clientAffinity?: pulumi.Input<string>;
+    clientAffinity?: pulumi.Input<string | undefined>;
     /**
      * The description of the listener.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The XForward headers. See `forwardedForConfig` below.
      */
-    forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig>;
+    forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
-    httpVersion?: pulumi.Input<string>;
+    httpVersion?: pulumi.Input<string | undefined>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values:
      * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
      * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
      * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
      */
-    listenerType?: pulumi.Input<string>;
+    listenerType?: pulumi.Input<string | undefined>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The portRanges of the listener. See `portRanges` below.
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
      */
-    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[]>;
+    portRanges?: pulumi.Input<pulumi.Input<inputs.ga.ListenerPortRange>[] | undefined>;
     /**
      * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
-    proxyProtocol?: pulumi.Input<boolean>;
+    proxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The status of the listener.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -303,43 +303,43 @@ export interface ListenerArgs {
      * The certificates of the listener. See `certificates` below.
      * > **NOTE:** This parameter needs to be configured only for monitoring of the `HTTPS` protocol.
      */
-    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[]>;
+    certificates?: pulumi.Input<pulumi.Input<inputs.ga.ListenerCertificate>[] | undefined>;
     /**
      * The clientAffinity of the listener. Default value: `NONE`. Valid values:
      * - `NONE`: client affinity is not maintained, that is, connection requests from the same client cannot always be directed to the same terminal node.
      * - `SOURCE_IP`: maintain client affinity. When a client accesses a stateful application, all requests from the same client can be directed to the same terminal node, regardless of the source port and protocol.
      */
-    clientAffinity?: pulumi.Input<string>;
+    clientAffinity?: pulumi.Input<string | undefined>;
     /**
      * The description of the listener.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The XForward headers. See `forwardedForConfig` below.
      */
-    forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig>;
+    forwardedForConfig?: pulumi.Input<inputs.ga.ListenerForwardedForConfig | undefined>;
     /**
      * The maximum version of the HTTP protocol. Default Value: `http2`. Valid values: `http1.1`, `http2`, `http3`.
      * > **NOTE:** `httpVersion` is only valid when `protocol` is `HTTPS`.
      */
-    httpVersion?: pulumi.Input<string>;
+    httpVersion?: pulumi.Input<string | undefined>;
     /**
      * The timeout period of idle connections. Unit: seconds. Valid values:
      * - If you set `protocol` to `TCP`. Default Value: `900`. Valid values: `10` to `900`.
      * - If you set `protocol` to `UDP`. Default Value: `20`. Valid values: `10` to `20`.
      * - If you set `protocol` to `HTTP` or `HTTPS`. Default Value: `15`. Valid values: `1` to `60`.
      */
-    idleTimeout?: pulumi.Input<number>;
+    idleTimeout?: pulumi.Input<number | undefined>;
     /**
      * The routing type of the listener. Default Value: `Standard`. Valid values:
      * - `Standard`: intelligent routing.
      * - `CustomRouting`: custom routing.
      */
-    listenerType?: pulumi.Input<string>;
+    listenerType?: pulumi.Input<string | undefined>;
     /**
      * The name of the listener. The length of the name is 2-128 characters. It starts with uppercase and lowercase letters or Chinese characters. It can contain numbers and underscores and dashes.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The portRanges of the listener. See `portRanges` below.
      * > **NOTE:** For `HTTP` or `HTTPS` protocol monitoring, only one monitoring port can be configured, that is, the start monitoring port and end monitoring port should be the same.
@@ -348,18 +348,18 @@ export interface ListenerArgs {
     /**
      * Type of network transport protocol monitored. Default value: `TCP`. Valid values: `TCP`, `UDP`, `HTTP`, `HTTPS`.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The proxy protocol of the listener. Default value: `false`. Valid values:
      */
-    proxyProtocol?: pulumi.Input<boolean>;
+    proxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
      * > **NOTE:** `requestTimeout` is only valid when `protocol` is `HTTP` or `HTTPS`.
      */
-    requestTimeout?: pulumi.Input<number>;
+    requestTimeout?: pulumi.Input<number | undefined>;
     /**
      * The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
      */
-    securityPolicyId?: pulumi.Input<string>;
+    securityPolicyId?: pulumi.Input<string | undefined>;
 }

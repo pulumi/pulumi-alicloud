@@ -187,23 +187,23 @@ export interface PatchBaselineState {
     /**
      * This value follows the json format. For more details, see the description of [ApprovalRules in the Request parameters table for details](https://www.alibabacloud.com/help/zh/operation-orchestration-service/latest/api-oos-2019-06-01-createpatchbaseline).
      */
-    approvalRules?: pulumi.Input<string>;
+    approvalRules?: pulumi.Input<string | undefined>;
     /**
      * List of approved patches.
      */
-    approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedPatches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether approved patches include updates other than security updates.
      */
-    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
+    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the patch baseline.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Operating system type. Supported values:
      * - Windows
@@ -218,31 +218,31 @@ export interface PatchBaselineState {
      * - RockyLinux
      * - AlmaLinux.
      */
-    operationSystem?: pulumi.Input<string>;
+    operationSystem?: pulumi.Input<string | undefined>;
     /**
      * Patch baseline name.
      */
-    patchBaselineName?: pulumi.Input<string>;
+    patchBaselineName?: pulumi.Input<string | undefined>;
     /**
      * List of rejected patches.
      */
-    rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    rejectedPatches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
-    rejectedPatchesAction?: pulumi.Input<string>;
+    rejectedPatchesAction?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of patch source configurations.
      */
-    sources?: pulumi.Input<pulumi.Input<string>[]>;
+    sources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -256,15 +256,15 @@ export interface PatchBaselineArgs {
     /**
      * List of approved patches.
      */
-    approvedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    approvedPatches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether approved patches include updates other than security updates.
      */
-    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean>;
+    approvedPatchesEnableNonSecurity?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the patch baseline.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Operating system type. Supported values:
      * - Windows
@@ -287,21 +287,21 @@ export interface PatchBaselineArgs {
     /**
      * List of rejected patches.
      */
-    rejectedPatches?: pulumi.Input<pulumi.Input<string>[]>;
+    rejectedPatches?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Rejected patches action. Valid values: `ALLOW_AS_DEPENDENCY`, `BLOCK`.
      */
-    rejectedPatchesAction?: pulumi.Input<string>;
+    rejectedPatchesAction?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of patch source configurations.
      */
-    sources?: pulumi.Input<pulumi.Input<string>[]>;
+    sources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A key-value map of tags. The number of key-value pairs must be between 1 and 20.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

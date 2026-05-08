@@ -21,16 +21,16 @@ __all__ = ['ZoneArgs', 'Zone']
 @pulumi.input_type
 class ZoneArgs:
     def __init__(__self__, *,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Zone resource.
 
@@ -74,32 +74,32 @@ class ZoneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language. Valid values: "zh", "en", "jp".
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPattern")
-    def proxy_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
@@ -109,109 +109,109 @@ class ZoneArgs:
         return pulumi.get(self, "proxy_pattern")
 
     @proxy_pattern.setter
-    def proxy_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_pattern", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the Private Zone.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the Private Zone belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="syncStatus")
-    def sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
         """
         return pulumi.get(self, "sync_status")
 
     @sync_status.setter
-    def sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of the Private Zone.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the client.
         """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="userInfos")
-    def user_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
+    def user_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
         """
         The user information of the host synchronization task. See `user_info` below.
         """
         return pulumi.get(self, "user_infos")
 
     @user_infos.setter
-    def user_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
+    def user_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
         pulumi.set(self, "user_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneName")
-    def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
-    def zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_name", value)
 
 
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
-                 is_ptr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 is_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
 
@@ -261,44 +261,44 @@ class _ZoneState:
 
     @_builtins.property
     @pulumi.getter(name="isPtr")
-    def is_ptr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_ptr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the Private Zone is ptr.
         """
         return pulumi.get(self, "is_ptr")
 
     @is_ptr.setter
-    def is_ptr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_ptr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_ptr", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language. Valid values: "zh", "en", "jp".
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPattern")
-    def proxy_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The recursive DNS proxy. Valid values:
         - ZONE: indicates that the recursive DNS proxy is disabled.
@@ -308,103 +308,103 @@ class _ZoneState:
         return pulumi.get(self, "proxy_pattern")
 
     @proxy_pattern.setter
-    def proxy_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="recordCount")
-    def record_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def record_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of the Private Zone Record.
         """
         return pulumi.get(self, "record_count")
 
     @record_count.setter
-    def record_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def record_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "record_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the Private Zone.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of resource group which the Private Zone belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="syncStatus")
-    def sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `sync_status` to enable/disable the host synchronization task.
         """
         return pulumi.get(self, "sync_status")
 
     @sync_status.setter
-    def sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of the Private Zone.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the client.
         """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="userInfos")
-    def user_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
+    def user_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]:
         """
         The user information of the host synchronization task. See `user_info` below.
         """
         return pulumi.get(self, "user_infos")
 
     @user_infos.setter
-    def user_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
+    def user_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneUserInfoArgs']]]]):
         pulumi.set(self, "user_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneName")
-    def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone_name of the Private Zone. The `zone_name` is required when the value of the `name`  is Empty.
         """
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
-    def zone_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_name", value)
 
 
@@ -414,16 +414,16 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Zone resource.
@@ -520,16 +520,16 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
-                 zone_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
+                 zone_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -561,18 +561,18 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            is_ptr: Optional[pulumi.Input[_builtins.bool]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-            record_count: Optional[pulumi.Input[_builtins.int]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            user_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
-            zone_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Zone':
+            is_ptr: pulumi.Input[Optional[_builtins.bool]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            record_count: pulumi.Input[Optional[_builtins.int]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            user_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneUserInfoArgs', 'ZoneUserInfoArgsDict']]]]] = None,
+            zone_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

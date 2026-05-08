@@ -251,33 +251,33 @@ export interface ServerGroupState {
     /**
      * The protocol version. Valid values:
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable all-port forwarding. Valid values:
      */
-    anyPortEnabled?: pulumi.Input<boolean>;
+    anyPortEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
-    connectionDrain?: pulumi.Input<boolean>;
+    connectionDrain?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable connection draining. Valid values:
      */
-    connectionDrainEnabled?: pulumi.Input<boolean>;
+    connectionDrainEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
-    connectionDrainTimeout?: pulumi.Input<number>;
+    connectionDrainTimeout?: pulumi.Input<number | undefined>;
     /**
      * Health check configuration information. See `healthCheck` below.
      */
-    healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
+    healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck | undefined>;
     /**
      * Specifies whether to enable client IP preservation. Valid values:
      */
-    preserveClientIpEnabled?: pulumi.Input<boolean>;
+    preserveClientIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The protocol used to forward requests to the backend servers. Valid values:
      *
@@ -285,16 +285,16 @@ export interface ServerGroupState {
      * - `UDP`
      * - `TCPSSL`
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the NLB instance is deployed.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The scheduling algorithm. Valid values:
      *
@@ -304,27 +304,27 @@ export interface ServerGroupState {
      * - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      * - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
      */
-    scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string | undefined>;
     /**
      * The new name of the server group.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
      */
-    serverGroupName?: pulumi.Input<string>;
+    serverGroupName?: pulumi.Input<string | undefined>;
     /**
      * The type of server group. Valid values:
      *
      * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      */
-    serverGroupType?: pulumi.Input<string>;
+    serverGroupType?: pulumi.Input<string | undefined>;
     /**
      * Server group status. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the server group belongs.
      *
@@ -333,7 +333,7 @@ export interface ServerGroupState {
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -343,33 +343,33 @@ export interface ServerGroupArgs {
     /**
      * The protocol version. Valid values:
      */
-    addressIpVersion?: pulumi.Input<string>;
+    addressIpVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable all-port forwarding. Valid values:
      */
-    anyPortEnabled?: pulumi.Input<boolean>;
+    anyPortEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
      *
      * @deprecated Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.
      */
-    connectionDrain?: pulumi.Input<boolean>;
+    connectionDrain?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable connection draining. Valid values:
      */
-    connectionDrainEnabled?: pulumi.Input<boolean>;
+    connectionDrainEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
      */
-    connectionDrainTimeout?: pulumi.Input<number>;
+    connectionDrainTimeout?: pulumi.Input<number | undefined>;
     /**
      * Health check configuration information. See `healthCheck` below.
      */
-    healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
+    healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck | undefined>;
     /**
      * Specifies whether to enable client IP preservation. Valid values:
      */
-    preserveClientIpEnabled?: pulumi.Input<boolean>;
+    preserveClientIpEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The protocol used to forward requests to the backend servers. Valid values:
      *
@@ -377,12 +377,12 @@ export interface ServerGroupArgs {
      * - `UDP`
      * - `TCPSSL`
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the new resource group.
      * You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The scheduling algorithm. Valid values:
      *
@@ -392,7 +392,7 @@ export interface ServerGroupArgs {
      * - **Tch:** Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
      * - `Qch`: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
      */
-    scheduler?: pulumi.Input<string>;
+    scheduler?: pulumi.Input<string | undefined>;
     /**
      * The new name of the server group.
      * The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\_), and hyphens (-). The name must start with a letter.
@@ -404,11 +404,11 @@ export interface ServerGroupArgs {
      * - `Instance`: allows you to add servers of the `Ecs`, `Eni`, or `Eci` type. This is the default value.
      * - `Ip`: allows you to add servers by specifying IP addresses.
      */
-    serverGroupType?: pulumi.Input<string>;
+    serverGroupType?: pulumi.Input<string | undefined>;
     /**
      * Label.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the server group belongs.
      *

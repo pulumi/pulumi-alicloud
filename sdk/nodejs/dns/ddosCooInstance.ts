@@ -236,83 +236,83 @@ export interface DdosCooInstanceState {
     /**
      * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    bandwidthMode?: pulumi.Input<string>;
+    bandwidthMode?: pulumi.Input<string | undefined>;
     /**
      * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    baseBandwidth?: pulumi.Input<string>;
+    baseBandwidth?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.248.0) The time when the instance was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    domainCount?: pulumi.Input<string>;
+    domainCount?: pulumi.Input<string | undefined>;
     /**
      * The mitigation plan of the instance. Default value: `coop`. Valid values:
      */
-    editionSale?: pulumi.Input<string>;
+    editionSale?: pulumi.Input<string | undefined>;
     /**
      * The function plan of the instance. Valid values:
      */
-    functionVersion?: pulumi.Input<string>;
+    functionVersion?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.212.0) The IP address of the Instance.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
-    normalBandwidth?: pulumi.Input<string>;
+    normalBandwidth?: pulumi.Input<string | undefined>;
     /**
      * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
-    normalQps?: pulumi.Input<string>;
+    normalQps?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
-    portCount?: pulumi.Input<string>;
+    portCount?: pulumi.Input<string | undefined>;
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    productPlan?: pulumi.Input<string>;
+    productPlan?: pulumi.Input<string | undefined>;
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    serviceBandwidth?: pulumi.Input<string>;
+    serviceBandwidth?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.248.0) The status of the instance.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -322,19 +322,19 @@ export interface DdosCooInstanceArgs {
     /**
      * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`. **NOTE:** `addressType` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `bandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    bandwidthMode?: pulumi.Input<string>;
+    bandwidthMode?: pulumi.Input<string | undefined>;
     /**
      * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade. **NOTE:** `baseBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    baseBandwidth?: pulumi.Input<string>;
+    baseBandwidth?: pulumi.Input<string | undefined>;
     /**
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
@@ -342,31 +342,31 @@ export interface DdosCooInstanceArgs {
     /**
      * The mitigation plan of the instance. Default value: `coop`. Valid values:
      */
-    editionSale?: pulumi.Input<string>;
+    editionSale?: pulumi.Input<string | undefined>;
     /**
      * The function plan of the instance. Valid values:
      */
-    functionVersion?: pulumi.Input<string>;
+    functionVersion?: pulumi.Input<string | undefined>;
     /**
      * The type of modification. Valid values: `UPGRADE`, `DOWNGRADE`.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Name of the instance. This name can have a string of `1` to `64` characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The clean bandwidth provided by the instance. **NOTE:** `normalBandwidth` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalBandwidth` can be modified.
      */
-    normalBandwidth?: pulumi.Input<string>;
+    normalBandwidth?: pulumi.Input<string | undefined>;
     /**
      * The clean QPS provided by the instance. **NOTE:** `normalQps` is valid only when `productType` is set to `ddosDip`. From version 1.248.0, `normalQps` can be modified.
      */
-    normalQps?: pulumi.Input<string>;
+    normalQps?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DdosCoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      */
@@ -374,17 +374,17 @@ export interface DdosCooInstanceArgs {
     /**
      * The mitigation plan of the instance. Valid values:
      */
-    productPlan?: pulumi.Input<string>;
+    productPlan?: pulumi.Input<string | undefined>;
     /**
      * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `serviceBandwidth` is valid only when `productType` is set to `ddoscoo` or `ddoscooIntl`.
      */
-    serviceBandwidth?: pulumi.Input<string>;
+    serviceBandwidth?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -20,7 +20,7 @@ __all__ = ['IndustrialPidOrganizationArgs', 'IndustrialPidOrganization']
 class IndustrialPidOrganizationArgs:
     def __init__(__self__, *,
                  pid_organization_name: pulumi.Input[_builtins.str],
-                 parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 parent_pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IndustrialPidOrganization resource.
 
@@ -45,22 +45,22 @@ class IndustrialPidOrganizationArgs:
 
     @_builtins.property
     @pulumi.getter(name="parentPidOrganizationId")
-    def parent_pid_organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_pid_organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of parent pid organization.
         """
         return pulumi.get(self, "parent_pid_organization_id")
 
     @parent_pid_organization_id.setter
-    def parent_pid_organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_pid_organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_pid_organization_id", value)
 
 
 @pulumi.input_type
 class _IndustrialPidOrganizationState:
     def __init__(__self__, *,
-                 parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_organization_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 parent_pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_organization_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IndustrialPidOrganization resources.
 
@@ -74,26 +74,26 @@ class _IndustrialPidOrganizationState:
 
     @_builtins.property
     @pulumi.getter(name="parentPidOrganizationId")
-    def parent_pid_organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_pid_organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of parent pid organization.
         """
         return pulumi.get(self, "parent_pid_organization_id")
 
     @parent_pid_organization_id.setter
-    def parent_pid_organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_pid_organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_pid_organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pidOrganizationName")
-    def pid_organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pid_organization_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of pid organization.
         """
         return pulumi.get(self, "pid_organization_name")
 
     @pid_organization_name.setter
-    def pid_organization_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pid_organization_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pid_organization_name", value)
 
 
@@ -103,8 +103,8 @@ class IndustrialPidOrganization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Brain Industrial Pid Organization resource.
@@ -190,8 +190,8 @@ class IndustrialPidOrganization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 pid_organization_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 pid_organization_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,8 +215,8 @@ class IndustrialPidOrganization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            parent_pid_organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            pid_organization_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'IndustrialPidOrganization':
+            parent_pid_organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            pid_organization_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'IndustrialPidOrganization':
         """
         Get an existing IndustrialPidOrganization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

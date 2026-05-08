@@ -238,57 +238,57 @@ export interface GetSitesOutputArgs {
     /**
      * Access type. Value:-**NS**: Managed access via NS.-**CNAME**: access through CNAME.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Acceleration area
      */
-    coverage?: pulumi.Input<string>;
+    coverage?: pulumi.Input<string | undefined>;
     /**
      * A list of Site IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Only the Enterprise version, pass **true** when the table only queries the enterprise version of the site.
      */
-    onlyEnterprise?: pulumi.Input<boolean>;
+    onlyEnterprise?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Number of records per page.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Package subscription type. Value:-**basicplan**: Basic version.-**standardplan**: Standard version.-**advancedplan**: Advanced version.-**enterpriseplan**: Enterprise Edition.
      */
-    planSubscribeType?: pulumi.Input<string>;
+    planSubscribeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Site Name
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * The search match pattern for the site name. The default value is exact match. Valid values:-**prefix**: matches the prefix.-**suffix**: The suffix matches.-**exact**: exact match.-**fuzzy**: fuzzy match.
      */
-    siteSearchType?: pulumi.Input<string>;
+    siteSearchType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

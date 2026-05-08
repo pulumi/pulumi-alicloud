@@ -228,14 +228,14 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[_builtins.str
         packages=pulumi.get(__ret__, 'packages'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         dry_run: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                         include_reservation_data: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_common_bandwidth_packages_output(bandwidth_package_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         dry_run: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                         include_reservation_data: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCommonBandwidthPackagesResult]:
     """
     This data source provides a list of Common Bandwidth Packages owned by an Alibaba Cloud account.

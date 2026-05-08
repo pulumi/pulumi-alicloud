@@ -180,12 +180,12 @@ def get_basic_accelerate_ip_endpoint_relations(accelerate_ip_id: Optional[_built
         output_file=pulumi.get(__ret__, 'output_file'),
         relations=pulumi.get(__ret__, 'relations'),
         status=pulumi.get(__ret__, 'status'))
-def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                      accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                      endpoint_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_basic_accelerate_ip_endpoint_relations_output(accelerate_ip_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                      accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                      endpoint_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBasicAccelerateIpEndpointRelationsResult]:
     """
     This data source provides the Global Accelerator (GA) Basic Accelerate Ip Endpoint Relations of the current Alibaba Cloud user.

@@ -114,21 +114,21 @@ export interface GetCheckStructuresOutputArgs {
     /**
      * The page number.
      */
-    currentPage?: pulumi.Input<number>;
+    currentPage?: pulumi.Input<number | undefined>;
     /**
      * A list of Check Structure IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * List of task sources.
      */
-    taskSources?: pulumi.Input<pulumi.Input<string>[]>;
+    taskSources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

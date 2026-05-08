@@ -194,10 +194,10 @@ def get_v3_triggers(function_name: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         triggers=pulumi.get(__ret__, 'triggers'))
-def get_v3_triggers_output(function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                           ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_v3_triggers_output(function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV3TriggersResult]:
     """
     This data source provides Fcv3 Trigger available to the user.[What is Trigger](https://next.api.alibabacloud.com/document/FC/2023-03-30/CreateTrigger)

@@ -132,9 +132,9 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, _builtins.str]] = N
         id=pulumi.get(__ret__, 'id'),
         key_id=pulumi.get(__ret__, 'key_id'),
         plaintext=pulumi.get(__ret__, 'plaintext'))
-def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                          key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ciphertext_output(encryption_context: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                          key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCiphertextResult]:
     """
     Encrypt a given plaintext with KMS. The plaintext gets re-encrypted on each apply, resulting in a changed ciphertext. If a stable ciphertext is needed use the `kms.Ciphertext` resource.

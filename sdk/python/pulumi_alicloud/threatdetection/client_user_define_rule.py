@@ -23,17 +23,17 @@ class ClientUserDefineRuleArgs:
                  client_user_define_rule_name: pulumi.Input[_builtins.str],
                  platform: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.int],
-                 cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_str: Optional[pulumi.Input[_builtins.str]] = None,
-                 proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_str: pulumi.Input[Optional[_builtins.str]] = None,
+                 proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientUserDefineRule resource.
 
@@ -154,156 +154,156 @@ class ClientUserDefineRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cmdline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmdline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
         """
         return pulumi.get(self, "cmdline")
 
     @cmdline.setter
-    def cmdline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmdline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmdline", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
         """
         return pulumi.get(self, "hash")
 
     @hash.setter
-    def hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address. When the value of the Type attribute is 3, the Ip attribute is required.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="newFilePath")
-    def new_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
         """
         return pulumi.get(self, "new_file_path")
 
     @new_file_path.setter
-    def new_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="parentCmdline")
-    def parent_cmdline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_cmdline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent command line.
         """
         return pulumi.get(self, "parent_cmdline")
 
     @parent_cmdline.setter
-    def parent_cmdline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_cmdline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_cmdline", value)
 
     @_builtins.property
     @pulumi.getter(name="parentProcPath")
-    def parent_proc_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_proc_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent process path.
         """
         return pulumi.get(self, "parent_proc_path")
 
     @parent_proc_path.setter
-    def parent_proc_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_proc_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_proc_path", value)
 
     @_builtins.property
     @pulumi.getter(name="portStr")
-    def port_str(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_str(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
         """
         return pulumi.get(self, "port_str")
 
     @port_str.setter
-    def port_str(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_str(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_str", value)
 
     @_builtins.property
     @pulumi.getter(name="procPath")
-    def proc_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proc_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
         """
         return pulumi.get(self, "proc_path")
 
     @proc_path.setter
-    def proc_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proc_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proc_path", value)
 
     @_builtins.property
     @pulumi.getter(name="registryContent")
-    def registry_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
         """
         return pulumi.get(self, "registry_content")
 
     @registry_content.setter
-    def registry_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_content", value)
 
     @_builtins.property
     @pulumi.getter(name="registryKey")
-    def registry_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
         """
         return pulumi.get(self, "registry_key")
 
     @registry_key.setter
-    def registry_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_key", value)
 
 
 @pulumi.input_type
 class _ClientUserDefineRuleState:
     def __init__(__self__, *,
-                 action_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_user_define_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_str: Optional[pulumi.Input[_builtins.str]] = None,
-                 proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.int]] = None):
+                 action_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_user_define_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_str: pulumi.Input[Optional[_builtins.str]] = None,
+                 proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ClientUserDefineRule resources.
 
@@ -371,7 +371,7 @@ class _ClientUserDefineRuleState:
 
     @_builtins.property
     @pulumi.getter(name="actionType")
-    def action_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def action_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The operation type. Value:
         - **0**: plus White
@@ -380,120 +380,120 @@ class _ClientUserDefineRuleState:
         return pulumi.get(self, "action_type")
 
     @action_type.setter
-    def action_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def action_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "action_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clientUserDefineRuleName")
-    def client_user_define_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_user_define_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom rule name.
         """
         return pulumi.get(self, "client_user_define_rule_name")
 
     @client_user_define_rule_name.setter
-    def client_user_define_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_user_define_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_user_define_rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def cmdline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cmdline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Command line. When the value of the Type attribute is 2, 3, 4, 5, 6, or 7, the command line field is required.
         """
         return pulumi.get(self, "cmdline")
 
     @cmdline.setter
-    def cmdline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cmdline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cmdline", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="filePath")
-    def file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file path. When the value of the Type attribute is 4 or 6, 7, the FilePath field is required.
         """
         return pulumi.get(self, "file_path")
 
     @file_path.setter
-    def file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Process hash list. When the value of the Type attribute is 1, the Hash attribute is required.
         """
         return pulumi.get(self, "hash")
 
     @hash.setter
-    def hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hash", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP address. When the value of the Type attribute is 3, the Ip attribute is required.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter(name="newFilePath")
-    def new_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def new_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new file path to rename the file. When the value of the Type attribute is 7, the NewFilePath attribute is required.
         """
         return pulumi.get(self, "new_file_path")
 
     @new_file_path.setter
-    def new_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def new_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "new_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="parentCmdline")
-    def parent_cmdline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_cmdline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parent command line.
         """
         return pulumi.get(self, "parent_cmdline")
 
     @parent_cmdline.setter
-    def parent_cmdline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_cmdline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_cmdline", value)
 
     @_builtins.property
     @pulumi.getter(name="parentProcPath")
-    def parent_proc_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_proc_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Parent process path.
         """
         return pulumi.get(self, "parent_proc_path")
 
     @parent_proc_path.setter
-    def parent_proc_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_proc_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_proc_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system type. Value:
         - **windows**:widows
@@ -503,60 +503,60 @@ class _ClientUserDefineRuleState:
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
     @_builtins.property
     @pulumi.getter(name="portStr")
-    def port_str(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_str(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port number. When the value of the Type attribute is 3, the PortStr attribute is required. Value range: **1-65535**.
         """
         return pulumi.get(self, "port_str")
 
     @port_str.setter
-    def port_str(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_str(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_str", value)
 
     @_builtins.property
     @pulumi.getter(name="procPath")
-    def proc_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proc_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The process path. When the Type attribute is set to 2, 3, 4, 5, 6, or 7, the ProcPath attribute is required.
         """
         return pulumi.get(self, "proc_path")
 
     @proc_path.setter
-    def proc_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proc_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proc_path", value)
 
     @_builtins.property
     @pulumi.getter(name="registryContent")
-    def registry_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
         """
         return pulumi.get(self, "registry_content")
 
     @registry_content.setter
-    def registry_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_content", value)
 
     @_builtins.property
     @pulumi.getter(name="registryKey")
-    def registry_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def registry_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
         """
         return pulumi.get(self, "registry_key")
 
     @registry_key.setter
-    def registry_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def registry_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "registry_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule type. Value:
         - **1**: Process hash
@@ -570,7 +570,7 @@ class _ClientUserDefineRuleState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "type", value)
 
 
@@ -580,21 +580,21 @@ class ClientUserDefineRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_user_define_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_str: Optional[pulumi.Input[_builtins.str]] = None,
-                 proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.int]] = None,
+                 action_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_user_define_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_str: pulumi.Input[Optional[_builtins.str]] = None,
+                 proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Client User Define Rule resource. Malicious Behavior Defense Custom Rules.
@@ -733,21 +733,21 @@ class ClientUserDefineRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_user_define_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 new_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_str: Optional[pulumi.Input[_builtins.str]] = None,
-                 proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 registry_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.int]] = None,
+                 action_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_user_define_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_str: pulumi.Input[Optional[_builtins.str]] = None,
+                 proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 registry_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -791,22 +791,22 @@ class ClientUserDefineRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_type: Optional[pulumi.Input[_builtins.int]] = None,
-            client_user_define_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            hash: Optional[pulumi.Input[_builtins.str]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            new_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_cmdline: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None,
-            port_str: Optional[pulumi.Input[_builtins.str]] = None,
-            proc_path: Optional[pulumi.Input[_builtins.str]] = None,
-            registry_content: Optional[pulumi.Input[_builtins.str]] = None,
-            registry_key: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.int]] = None) -> 'ClientUserDefineRule':
+            action_type: pulumi.Input[Optional[_builtins.int]] = None,
+            client_user_define_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            hash: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            new_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_cmdline: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None,
+            port_str: pulumi.Input[Optional[_builtins.str]] = None,
+            proc_path: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_content: pulumi.Input[Optional[_builtins.str]] = None,
+            registry_key: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.int]] = None) -> 'ClientUserDefineRule':
         """
         Get an existing ClientUserDefineRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -58,8 +58,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainAssociationArgs;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMember;
  * import com.pulumi.alicloud.cen.TransitRouterMulticastDomainMemberArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -98,10 +98,10 @@ import javax.annotation.Nullable;
  *         var exampleEcsNetworkInterface = new EcsNetworkInterface("exampleEcsNetworkInterface", EcsNetworkInterfaceArgs.builder()
  *             .networkInterfaceName(name)
  *             .vswitchId(exampleSwitch.id())
- *             .primaryIpAddress(exampleSwitch.cidrBlock().applyValue(_cidrBlock -> StdFunctions.cidrhost(CidrhostArgs.builder()
- *                 .input(_cidrBlock)
+ *             .primaryIpAddress(StdFunctions.cidrhost(CidrhostArgs.builder()
+ *                 .input(exampleSwitch.cidrBlock())
  *                 .host(100)
- *                 .build())).applyValue(_invoke -> _invoke.result()))
+ *                 .build()).applyValue(_invoke -> _invoke.result()))
  *             .securityGroupIds(exampleSecurityGroup.id())
  *             .build());
  * 

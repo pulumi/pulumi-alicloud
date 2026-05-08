@@ -211,13 +211,13 @@ def get_route_services(access_region_id: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         services=pulumi.get(__ret__, 'services'),
         status=pulumi.get(__ret__, 'status'))
-def get_route_services_output(access_region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              host: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              host_region_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              host_vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_route_services_output(access_region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              host: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              host_region_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              host_vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouteServicesResult]:
     """
     This data source provides CEN Route Service available to the user.

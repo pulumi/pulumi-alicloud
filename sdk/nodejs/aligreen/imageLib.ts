@@ -139,23 +139,23 @@ export interface ImageLibState {
     /**
      * List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
      */
-    bizTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    bizTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */
-    imageLibName?: pulumi.Input<string>;
+    imageLibName?: pulumi.Input<string | undefined>;
     /**
      * The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
      */
-    scene?: pulumi.Input<string>;
+    scene?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,7 +165,7 @@ export interface ImageLibArgs {
     /**
      * List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
      */
-    bizTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    bizTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
      */
@@ -173,7 +173,7 @@ export interface ImageLibArgs {
     /**
      * Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
      */

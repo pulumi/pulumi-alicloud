@@ -141,15 +141,15 @@ export interface SecurityIpState {
     /**
      * The cluster ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The whitelist name.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The IP address list under the whitelist group.
      */
-    securityIpList?: pulumi.Input<string>;
+    securityIpList?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -475,127 +475,127 @@ export interface RouterInterfaceState {
     /**
      * Access point ID
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.263.0.
      *
      * @deprecated Field 'auto_pay' has been deprecated since provider version 1.263.0.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. Value:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth of the router interface
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The service status of the router interface.
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * Time the connection was established
      */
-    connectedTime?: pulumi.Input<string>;
+    connectedTime?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * CrossBorder
      */
-    crossBorder?: pulumi.Input<boolean>;
+    crossBorder?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to delete the health check IP address configured on the router interface. Value:
      */
-    deleteHealthCheckIp?: pulumi.Input<boolean>;
+    deleteHealthCheckIp?: pulumi.Input<boolean | undefined>;
     /**
      * The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * End Time of Prepaid
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
      */
-    fastLinkMode?: pulumi.Input<boolean>;
+    fastLinkMode?: pulumi.Input<boolean | undefined>;
     /**
      * Whether there is renewal data
      */
-    hasReservationData?: pulumi.Input<string>;
+    hasReservationData?: pulumi.Input<string | undefined>;
     /**
      * Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      */
-    hcRate?: pulumi.Input<number>;
+    hcRate?: pulumi.Input<number | undefined>;
     /**
      * Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      */
-    hcThreshold?: pulumi.Input<string>;
+    hcThreshold?: pulumi.Input<string | undefined>;
     /**
      * Health check source IP address
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * Health check destination IP address
      */
-    healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string | undefined>;
     /**
      * Peer access point ID
      */
-    oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string | undefined>;
     /**
      * opposite bandwidth
      */
-    oppositeBandwidth?: pulumi.Input<number>;
+    oppositeBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The service status of the router interface on the opposite end of the connection.
      */
-    oppositeInterfaceBusinessStatus?: pulumi.Input<string>;
+    oppositeInterfaceBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * . Field 'router_table_id' has been deprecated from provider version 1.263.0.
      *
      * @deprecated Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
      */
-    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * Account ID of the peer router interface
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Specifications of the interface of the peer router.
      */
-    oppositeInterfaceSpec?: pulumi.Input<string>;
+    oppositeInterfaceSpec?: pulumi.Input<string | undefined>;
     /**
      * The status of the router interface on the peer of the connection.
      */
-    oppositeInterfaceStatus?: pulumi.Input<string>;
+    oppositeInterfaceStatus?: pulumi.Input<string | undefined>;
     /**
      * Region of the connection peer
      */
-    oppositeRegionId?: pulumi.Input<string>;
+    oppositeRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router to which the opposite router interface belongs.
      */
-    oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string | undefined>;
     /**
      * The router type associated with the peer router interface. Valid values:
      * - VRouter: VPC router.
      * - VBR: Virtual Border Router.
      */
-    oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string | undefined>;
     /**
      * The peer VPC ID
      */
-    oppositeVpcInstanceId?: pulumi.Input<string>;
+    oppositeVpcInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The payment method of the router interface. Valid values:
      * - Subscription : PrePaid.
      * - PayAsYouGo : PostPaid.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Purchase duration, value:
      * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
@@ -606,7 +606,7 @@ export interface RouterInterfaceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The billing cycle of the prepaid fee. Valid values:
      * - `Month` (default): monthly payment.
@@ -618,51 +618,51 @@ export interface RouterInterfaceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * ReservationActiveTime
      */
-    reservationActiveTime?: pulumi.Input<string>;
+    reservationActiveTime?: pulumi.Input<string | undefined>;
     /**
      * Renew Bandwidth
      */
-    reservationBandwidth?: pulumi.Input<string>;
+    reservationBandwidth?: pulumi.Input<string | undefined>;
     /**
      * Payment Type for Renewal
      */
-    reservationInternetChargeType?: pulumi.Input<string>;
+    reservationInternetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Renewal Order Type
      */
-    reservationOrderType?: pulumi.Input<string>;
+    reservationOrderType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The role of the router interface. Valid values:
      * - InitiatingSide : the initiator of the connection.
      * - AcceptingSide : Connect to the receiving end.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The ID of the router where the route entry is located.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    routerInterfaceId?: pulumi.Input<string>;
+    routerInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      */
-    routerInterfaceName?: pulumi.Input<string>;
+    routerInterfaceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the router where the routing table resides. Valid values:
      * - VRouter:VPC router
      * - VBR: Border Router
      */
-    routerType?: pulumi.Input<string>;
+    routerType?: pulumi.Input<string | undefined>;
     /**
      * The specification of the router interface. The available specifications and corresponding bandwidth values are as follows:
      * - Mini.2: 2 Mbps
@@ -680,7 +680,7 @@ export interface RouterInterfaceState {
      *
      * When the Role is AcceptingSide (connecting to the receiving end), the Spec value is Negative, which means that the specification is not involved in creating the receiving end router interface.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields that represent the status of the resource. Value range:
      * - Idle : Initialize.
@@ -694,17 +694,17 @@ export interface RouterInterfaceState {
      * - Deleting : Deleting.
      * - Deleted : Deleted.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the local VPC in the peering connection
      */
-    vpcInstanceId?: pulumi.Input<string>;
+    vpcInstanceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -714,59 +714,59 @@ export interface RouterInterfaceArgs {
     /**
      * Access point ID
      */
-    accessPointId?: pulumi.Input<string>;
+    accessPointId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.263.0.
      *
      * @deprecated Field 'auto_pay' has been deprecated since provider version 1.263.0.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable automatic renewal. Value:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to delete the health check IP address configured on the router interface. Value:
      */
-    deleteHealthCheckIp?: pulumi.Input<boolean>;
+    deleteHealthCheckIp?: pulumi.Input<boolean | undefined>;
     /**
      * The router interface description. It must be 2 to 256 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the VBR router interface is created by using the fast connection mode. The fast connection mode can automatically complete the connection after the VBR and the router interfaces at both ends of the VPC are created. Value:
      */
-    fastLinkMode?: pulumi.Input<boolean>;
+    fastLinkMode?: pulumi.Input<boolean | undefined>;
     /**
      * Health check rate. Unit: milliseconds. The recommend value is 2000. Indicates the time interval for sending continuous detection packets during a specified health check.
      */
-    hcRate?: pulumi.Input<number>;
+    hcRate?: pulumi.Input<number | undefined>;
     /**
      * Health check threshold. Unit: One. The recommend value is 8. Indicates the number of detection packets sent during the specified health check.
      */
-    hcThreshold?: pulumi.Input<string>;
+    hcThreshold?: pulumi.Input<string | undefined>;
     /**
      * Health check source IP address
      */
-    healthCheckSourceIp?: pulumi.Input<string>;
+    healthCheckSourceIp?: pulumi.Input<string | undefined>;
     /**
      * Health check destination IP address
      */
-    healthCheckTargetIp?: pulumi.Input<string>;
+    healthCheckTargetIp?: pulumi.Input<string | undefined>;
     /**
      * Peer access point ID
      */
-    oppositeAccessPointId?: pulumi.Input<string>;
+    oppositeAccessPointId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'router_table_id' has been deprecated from provider version 1.263.0.
      *
      * @deprecated Field 'opposite_interface_id' has been deprecated since provider version 1.263.0.
      */
-    oppositeInterfaceId?: pulumi.Input<string>;
+    oppositeInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * Account ID of the peer router interface
      */
-    oppositeInterfaceOwnerId?: pulumi.Input<string>;
+    oppositeInterfaceOwnerId?: pulumi.Input<string | undefined>;
     /**
      * Region of the connection peer
      */
@@ -774,19 +774,19 @@ export interface RouterInterfaceArgs {
     /**
      * The ID of the router to which the opposite router interface belongs.
      */
-    oppositeRouterId?: pulumi.Input<string>;
+    oppositeRouterId?: pulumi.Input<string | undefined>;
     /**
      * The router type associated with the peer router interface. Valid values:
      * - VRouter: VPC router.
      * - VBR: Virtual Border Router.
      */
-    oppositeRouterType?: pulumi.Input<string>;
+    oppositeRouterType?: pulumi.Input<string | undefined>;
     /**
      * The payment method of the router interface. Valid values:
      * - Subscription : PrePaid.
      * - PayAsYouGo : PostPaid.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Purchase duration, value:
      * - When you choose to pay on a monthly basis, the value range is **1 to 9**.
@@ -797,7 +797,7 @@ export interface RouterInterfaceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The billing cycle of the prepaid fee. Valid values:
      * - `Month` (default): monthly payment.
@@ -809,11 +809,11 @@ export interface RouterInterfaceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The role of the router interface. Valid values:
      * - InitiatingSide : the initiator of the connection.
@@ -827,7 +827,7 @@ export interface RouterInterfaceArgs {
     /**
      * Resource attribute field representing the resource name. It must be 2 to 128 characters in length and must start with a letter or a Chinese character, but cannot start with http:// or https.
      */
-    routerInterfaceName?: pulumi.Input<string>;
+    routerInterfaceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the router where the routing table resides. Valid values:
      * - VRouter:VPC router
@@ -865,11 +865,11 @@ export interface RouterInterfaceArgs {
      * - Deleting : Deleting.
      * - Deleted : Deleted.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

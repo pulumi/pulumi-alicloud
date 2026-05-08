@@ -155,19 +155,19 @@ export interface PublicNetworkState {
     /**
      * Open or close the public connection. Value:
      */
-    enablePublicNetwork?: pulumi.Input<number>;
+    enablePublicNetwork?: pulumi.Input<number | undefined>;
     /**
      * Engine type, value:
      */
-    engineType?: pulumi.Input<string>;
+    engineType?: pulumi.Input<string | undefined>;
     /**
      * Instance ID
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Instance status, returns:_EXPANDING`: Capacity-based cloud storage is being expanded._version_transing`: The minor version is being upgraded._CHANGING`: The specification is being upgraded or downgraded._SWITCHING`:SSL is being changed._OPENING`: The data subscription function is being activated._TRANSFER`: migrates data to the database._CREATING`: in the production disaster recovery instance._RECOVERING`: The backup is being restored._IMPORTING`: Data is being imported._MODIFYING`: The network is being changed._SWITCHING`: The internal network and the external network are being switched._CREATING`: creates a network link._DELETING`: deletes a network link.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface PublicNetworkArgs {
     /**
      * Open or close the public connection. Value:
      */
-    enablePublicNetwork?: pulumi.Input<number>;
+    enablePublicNetwork?: pulumi.Input<number | undefined>;
     /**
      * Engine type, value:
      */

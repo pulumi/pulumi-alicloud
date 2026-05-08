@@ -91,5 +91,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the NAS service that means you have read and agreed the [NAS Terms of Service](https://www.alibabacloud.com/help/en/scu/latest/overview-of-scu). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

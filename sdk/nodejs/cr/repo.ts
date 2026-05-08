@@ -151,27 +151,27 @@ export interface RepoState {
     /**
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * (Optional) The repository domain list.
      */
-    domainList?: pulumi.Input<inputs.cr.RepoDomainList>;
+    domainList?: pulumi.Input<inputs.cr.RepoDomainList | undefined>;
     /**
      * Name of container registry repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of container registry namespace where repository is located.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * `PUBLIC` or `PRIVATE`, repo's visibility.
      */
-    repoType?: pulumi.Input<string>;
+    repoType?: pulumi.Input<string | undefined>;
     /**
      * The repository general information. It can contain 1 to 80 characters.
      */
-    summary?: pulumi.Input<string>;
+    summary?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,11 +181,11 @@ export interface RepoArgs {
     /**
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      */
-    detail?: pulumi.Input<string>;
+    detail?: pulumi.Input<string | undefined>;
     /**
      * Name of container registry repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of container registry namespace where repository is located.
      */

@@ -25,20 +25,20 @@ class ClusterArgs:
                  instance_count: pulumi.Input[_builtins.int],
                  net_type: pulumi.Input[_builtins.str],
                  pub_network_flow: pulumi.Input[_builtins.str],
-                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 mse_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_pars: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -208,199 +208,199 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclEntryLists")
-    def acl_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acl_entry_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         """
         return pulumi.get(self, "acl_entry_lists")
 
     @acl_entry_lists.setter
-    def acl_entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acl_entry_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acl_entry_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAliasName")
-    def cluster_alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of MSE Cluster.
         """
         return pulumi.get(self, "cluster_alias_name")
 
     @cluster_alias_name.setter
-    def cluster_alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Disk.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="mseVersion")
-    def mse_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mse_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         """
         return pulumi.get(self, "mse_version")
 
     @mse_version.setter
-    def mse_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mse_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mse_version", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="privateSlbSpecification")
-    def private_slb_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_slb_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of private network SLB.
         """
         return pulumi.get(self, "private_slb_specification")
 
     @private_slb_specification.setter
-    def private_slb_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_slb_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_slb_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="pubSlbSpecification")
-    def pub_slb_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pub_slb_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of public network SLB. Serverless Instance could ignore this parameter.
         """
         return pulumi.get(self, "pub_slb_specification")
 
     @pub_slb_specification.setter
-    def pub_slb_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pub_slb_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pub_slb_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPars")
-    def request_pars(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_pars(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended request parameters in the JSON format.
         """
         return pulumi.get(self, "request_pars")
 
     @request_pars.setter
-    def request_pars(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_pars(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_pars", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group of the resource.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         """
         return pulumi.get(self, "version_code")
 
     @version_code.setter
-    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 app_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mse_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_network_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_pars: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 app_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_network_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -495,55 +495,55 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="aclEntryLists")
-    def acl_entry_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acl_entry_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The whitelist. **NOTE:** This attribute is invalid when the value of `pub_network_flow` is `0` and the value of `net_type` is `privatenet`.
         """
         return pulumi.get(self, "acl_entry_lists")
 
     @acl_entry_lists.setter
-    def acl_entry_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acl_entry_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acl_entry_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="appVersion")
-    def app_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.205.0) The application version.
         """
         return pulumi.get(self, "app_version")
 
     @app_version.setter
-    def app_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_version", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAliasName")
-    def cluster_alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of MSE Cluster.
         """
         return pulumi.get(self, "cluster_alias_name")
 
     @cluster_alias_name.setter
-    def cluster_alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.162.0) The cluster id of Cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSpecification")
-    def cluster_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The engine specification of MSE Cluster. **NOTE:** From version 1.188.0, `cluster_specification` can be modified. If you were an international user, please use the specification version ending with `_200_c`.Valid values:
         - Professional Edition
@@ -568,223 +568,223 @@ class _ClusterState:
         return pulumi.get(self, "cluster_specification")
 
     @cluster_specification.setter
-    def cluster_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of MSE Cluster.
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVersion")
-    def cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of MSE Cluster. See [details](https://www.alibabacloud.com/help/en/mse/developer-reference/api-mse-2019-05-31-createcluster)
         """
         return pulumi.get(self, "cluster_version")
 
     @cluster_version.setter
-    def cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The connection type. Valid values: `slb`,`single_eni`(Available since v1.232.0). If your region is one of `ap-southeast-6、us-west-1、eu-central-1、us-east-1、ap-southeast-1`,and your cluster's mse_version is `mse_dev`,please use `single_eni`.
         """
         return pulumi.get(self, "connection_type")
 
     @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_type", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of Disk.
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceCount")
-    def instance_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The count of instance. **NOTE:** From version 1.188.0, `instance_count` can be modified.
         """
         return pulumi.get(self, "instance_count")
 
     @instance_count.setter
-    def instance_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_count", value)
 
     @_builtins.property
     @pulumi.getter(name="mseVersion")
-    def mse_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mse_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of MSE. Valid values: `mse_dev` or `mse_pro` or `mse_serverless`(Available since v1.232.0).
         """
         return pulumi.get(self, "mse_version")
 
     @mse_version.setter
-    def mse_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mse_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mse_version", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of network. Valid values: `privatenet` and `pubnet` and `both`(Available since v1.232.0).
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="privateSlbSpecification")
-    def private_slb_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_slb_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of private network SLB.
         """
         return pulumi.get(self, "private_slb_specification")
 
     @private_slb_specification.setter
-    def private_slb_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_slb_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_slb_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="pubNetworkFlow")
-    def pub_network_flow(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pub_network_flow(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public network bandwidth.
         """
         return pulumi.get(self, "pub_network_flow")
 
     @pub_network_flow.setter
-    def pub_network_flow(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pub_network_flow(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pub_network_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="pubSlbSpecification")
-    def pub_slb_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pub_slb_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of public network SLB. Serverless Instance could ignore this parameter.
         """
         return pulumi.get(self, "pub_slb_specification")
 
     @pub_slb_specification.setter
-    def pub_slb_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pub_slb_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pub_slb_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="requestPars")
-    def request_pars(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_pars(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended request parameters in the JSON format.
         """
         return pulumi.get(self, "request_pars")
 
     @request_pars.setter
-    def request_pars(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_pars(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_pars", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group of the resource.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of MSE Cluster.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="versionCode")
-    def version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
         """
         return pulumi.get(self, "version_code")
 
     @version_code.setter
-    def version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of VSwitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -794,26 +794,26 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mse_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_network_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_pars: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_network_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MSE Cluster resource. It is a one-stop microservice platform for the industry's mainstream open source microservice frameworks Spring Cloud and Dubbo, providing governance center, managed registry and managed configuration center.
@@ -983,26 +983,26 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cluster_alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 mse_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_network_flow: Optional[pulumi.Input[_builtins.str]] = None,
-                 pub_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_pars: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_network_flow: pulumi.Input[Optional[_builtins.str]] = None,
+                 pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1057,29 +1057,29 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_entry_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            app_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_type: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_count: Optional[pulumi.Input[_builtins.int]] = None,
-            mse_version: Optional[pulumi.Input[_builtins.str]] = None,
-            net_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            private_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            pub_network_flow: Optional[pulumi.Input[_builtins.str]] = None,
-            pub_slb_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            request_pars: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            version_code: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            acl_entry_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_type: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_count: pulumi.Input[Optional[_builtins.int]] = None,
+            mse_version: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            private_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            pub_network_flow: pulumi.Input[Optional[_builtins.str]] = None,
+            pub_slb_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            request_pars: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -195,13 +195,13 @@ def get_access_strategies(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         strategies=pulumi.get(__ret__, 'strategies'),
         strategy_mode=pulumi.get(__ret__, 'strategy_mode'))
-def get_access_strategies_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 strategy_mode: Optional[pulumi.Input[_builtins.str]] = None,
+def get_access_strategies_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 strategy_mode: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessStrategiesResult]:
     """
     This data source provides the Alidns Access Strategies of the current Alibaba Cloud user.

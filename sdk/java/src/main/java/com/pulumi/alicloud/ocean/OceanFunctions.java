@@ -33,8 +33,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -82,8 +82,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -131,8 +131,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -180,8 +180,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -229,8 +229,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -327,8 +327,8 @@ public final class OceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.ocean.OceanFunctions;
      * import com.pulumi.alicloud.ocean.inputs.GetBaseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

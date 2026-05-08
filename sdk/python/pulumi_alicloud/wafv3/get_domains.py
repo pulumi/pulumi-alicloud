@@ -199,14 +199,14 @@ def get_domains(backend: Optional[_builtins.str] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_domains_output(backend: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       domain: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_domains_output(backend: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       domain: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     This data source provides the Wafv3 Domains of the current Alibaba Cloud user.

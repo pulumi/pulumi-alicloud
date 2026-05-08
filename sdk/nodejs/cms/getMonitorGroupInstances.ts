@@ -51,6 +51,6 @@ export function getMonitorGroupInstancesOutput(args: GetMonitorGroupInstancesOut
  */
 export interface GetMonitorGroupInstancesOutputArgs {
     ids: pulumi.Input<string>;
-    keyword?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    keyword?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

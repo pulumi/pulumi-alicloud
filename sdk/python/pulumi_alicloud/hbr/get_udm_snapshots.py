@@ -216,14 +216,14 @@ def get_udm_snapshots(disk_id: Optional[_builtins.str] = None,
         snapshots=pulumi.get(__ret__, 'snapshots'),
         source_type=pulumi.get(__ret__, 'source_type'),
         start_time=pulumi.get(__ret__, 'start_time'))
-def get_udm_snapshots_output(disk_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             job_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                             start_time: Optional[pulumi.Input[_builtins.int]] = None,
+def get_udm_snapshots_output(disk_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             job_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                             start_time: pulumi.Input[Optional[_builtins.int]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUdmSnapshotsResult]:
     """
     This data source provides Hbr Udm Snapshot available to the user.[What is Udm Snapshot](https://next.api.alibabacloud.com/document/hbr/2017-09-08/DescribeUdmSnapshots)

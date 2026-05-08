@@ -22,10 +22,10 @@ __all__ = ['ZoneAttachmentArgs', 'ZoneAttachment']
 class ZoneAttachmentArgs:
     def __init__(__self__, *,
                  zone_id: pulumi.Input[_builtins.str],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None):
         """
         The set of arguments for constructing a ZoneAttachment resource.
 
@@ -59,61 +59,61 @@ class ZoneAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of code.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user custom IP address.
         """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         """
         return pulumi.get(self, "vpc_ids")
 
     @vpc_ids.setter
-    def vpc_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
+    def vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
         """
         See `vpcs` below.Recommend to use `vpcs`.
         """
         return pulumi.get(self, "vpcs")
 
     @vpcs.setter
-    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]):
+    def vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]):
         pulumi.set(self, "vpcs", value)
 
 
 @pulumi.input_type
 class _ZoneAttachmentState:
     def __init__(__self__, *,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneAttachment resources.
 
@@ -136,62 +136,62 @@ class _ZoneAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of code.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user custom IP address.
         """
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcIds")
-    def vpc_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpc_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
         """
         return pulumi.get(self, "vpc_ids")
 
     @vpc_ids.setter
-    def vpc_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpc_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpc_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
+    def vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]:
         """
         See `vpcs` below.Recommend to use `vpcs`.
         """
         return pulumi.get(self, "vpcs")
 
     @vpcs.setter
-    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]):
+    def vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ZoneAttachmentVpcArgs']]]]):
         pulumi.set(self, "vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Private Zone Record.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -201,11 +201,11 @@ class ZoneAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides vpcs bound to Alicloud Private Zone resource.
@@ -432,11 +432,11 @@ class ZoneAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -463,11 +463,11 @@ class ZoneAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneAttachment':
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ZoneAttachmentVpcArgs', 'ZoneAttachmentVpcArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneAttachment':
         """
         Get an existing ZoneAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

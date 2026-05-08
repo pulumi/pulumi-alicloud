@@ -150,11 +150,11 @@ def get_waf_rules(ids: Optional[Sequence[_builtins.str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         query_args=pulumi.get(__ret__, 'query_args'),
         waf_rules=pulumi.get(__ret__, 'waf_rules'))
-def get_waf_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         query_args: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_waf_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         query_args: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWafRulesResult]:
     """
     This data source provides Dcdn Waf Rule available to the user.[What is Waf Rule](https://www.alibabacloud.com/help/en/dcdn/developer-reference/api-dcdn-2018-01-15-batchcreatedcdnwafrules)

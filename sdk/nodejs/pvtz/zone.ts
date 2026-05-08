@@ -168,56 +168,56 @@ export interface ZoneState {
     /**
      * Whether the Private Zone is ptr.
      */
-    isPtr?: pulumi.Input<boolean>;
+    isPtr?: pulumi.Input<boolean | undefined>;
     /**
      * The language. Valid values: "zh", "en", "jp".
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      * Default to "ZONE".
      */
-    proxyPattern?: pulumi.Input<string>;
+    proxyPattern?: pulumi.Input<string | undefined>;
     /**
      * The count of the Private Zone Record.
      */
-    recordCount?: pulumi.Input<number>;
+    recordCount?: pulumi.Input<number | undefined>;
     /**
      * The remark of the Private Zone.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
-    syncStatus?: pulumi.Input<string>;
+    syncStatus?: pulumi.Input<string | undefined>;
     /**
      * The tags of the Private Zone.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IP address of the client.
      */
-    userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string | undefined>;
     /**
      * The user information of the host synchronization task. See `userInfo` below.
      */
-    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
+    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[] | undefined>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,46 +227,46 @@ export interface ZoneArgs {
     /**
      * The language. Valid values: "zh", "en", "jp".
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The name of the Private Zone. The `name` has been deprecated from provider version 1.107.0. Please use 'zone_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from version 1.107.0. Use 'zone_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The recursive DNS proxy. Valid values:
      * - ZONE: indicates that the recursive DNS proxy is disabled.
      * - RECORD: indicates that the recursive DNS proxy is enabled.
      * Default to "ZONE".
      */
-    proxyPattern?: pulumi.Input<string>;
+    proxyPattern?: pulumi.Input<string | undefined>;
     /**
      * The remark of the Private Zone.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the Private Zone belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
      */
-    syncStatus?: pulumi.Input<string>;
+    syncStatus?: pulumi.Input<string | undefined>;
     /**
      * The tags of the Private Zone.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The IP address of the client.
      */
-    userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string | undefined>;
     /**
      * The user information of the host synchronization task. See `userInfo` below.
      */
-    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[]>;
+    userInfos?: pulumi.Input<pulumi.Input<inputs.pvtz.ZoneUserInfo>[] | undefined>;
     /**
      * The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }

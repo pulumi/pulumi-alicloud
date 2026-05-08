@@ -19,9 +19,9 @@ __all__ = ['ResourceDirectoryArgs', 'ResourceDirectory']
 @pulumi.input_type
 class ResourceDirectoryArgs:
     def __init__(__self__, *,
-                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourceDirectory resource.
 
@@ -42,7 +42,7 @@ class ResourceDirectoryArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberAccountDisplayNameSyncStatus")
-    def member_account_display_name_sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_account_display_name_sync_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Member Display Name Synchronization feature. Valid values:
         - Enabled
@@ -51,12 +51,12 @@ class ResourceDirectoryArgs:
         return pulumi.get(self, "member_account_display_name_sync_status")
 
     @member_account_display_name_sync_status.setter
-    def member_account_display_name_sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_account_display_name_sync_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_account_display_name_sync_status", value)
 
     @_builtins.property
     @pulumi.getter(name="memberDeletionStatus")
-    def member_deletion_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_deletion_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the member deletion feature. Valid values:
         - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
@@ -65,32 +65,32 @@ class ResourceDirectoryArgs:
         return pulumi.get(self, "member_deletion_status")
 
     @member_deletion_status.setter
-    def member_deletion_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_deletion_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_deletion_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ScpStatus
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ResourceDirectoryState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourceDirectory resources.
 
@@ -123,43 +123,43 @@ class _ResourceDirectoryState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the resource directory was created
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAccountId")
-    def master_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the master account
         """
         return pulumi.get(self, "master_account_id")
 
     @master_account_id.setter
-    def master_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="masterAccountName")
-    def master_account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the master account
         """
         return pulumi.get(self, "master_account_name")
 
     @master_account_name.setter
-    def master_account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="memberAccountDisplayNameSyncStatus")
-    def member_account_display_name_sync_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_account_display_name_sync_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Member Display Name Synchronization feature. Valid values:
         - Enabled
@@ -168,12 +168,12 @@ class _ResourceDirectoryState:
         return pulumi.get(self, "member_account_display_name_sync_status")
 
     @member_account_display_name_sync_status.setter
-    def member_account_display_name_sync_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_account_display_name_sync_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_account_display_name_sync_status", value)
 
     @_builtins.property
     @pulumi.getter(name="memberDeletionStatus")
-    def member_deletion_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_deletion_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the member deletion feature. Valid values:
         - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
@@ -182,31 +182,31 @@ class _ResourceDirectoryState:
         return pulumi.get(self, "member_deletion_status")
 
     @member_deletion_status.setter
-    def member_deletion_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_deletion_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_deletion_status", value)
 
     @_builtins.property
     @pulumi.getter(name="rootFolderId")
-    def root_folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the root folder
         """
         return pulumi.get(self, "root_folder_id")
 
     @root_folder_id.setter
-    def root_folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_folder_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ScpStatus
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -216,9 +216,9 @@ class ResourceDirectory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Resource Directory resource.
@@ -233,10 +233,11 @@ class ResourceDirectory(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.get_resource_directories()
-        default_resource_directory = []
+        default_resource_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
@@ -284,10 +285,11 @@ class ResourceDirectory(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.get_resource_directories()
-        default_resource_directory = []
+        default_resource_directory: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
@@ -321,9 +323,9 @@ class ResourceDirectory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -350,13 +352,13 @@ class ResourceDirectory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            master_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            master_account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            member_account_display_name_sync_status: Optional[pulumi.Input[_builtins.str]] = None,
-            member_deletion_status: Optional[pulumi.Input[_builtins.str]] = None,
-            root_folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ResourceDirectory':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            member_account_display_name_sync_status: pulumi.Input[Optional[_builtins.str]] = None,
+            member_deletion_status: pulumi.Input[Optional[_builtins.str]] = None,
+            root_folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ResourceDirectory':
         """
         Get an existing ResourceDirectory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -124,23 +124,23 @@ export interface GetEcsInvocationsOutputArgs {
     /**
      * The execution ID of the command.
      */
-    commandId?: pulumi.Input<string>;
+    commandId?: pulumi.Input<string | undefined>;
     /**
      * The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * A list of Invocation IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      */
-    invokeStatus?: pulumi.Input<string>;
+    invokeStatus?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

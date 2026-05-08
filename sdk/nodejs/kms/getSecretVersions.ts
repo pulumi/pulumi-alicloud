@@ -130,19 +130,19 @@ export interface GetSecretVersionsOutputArgs {
     /**
      * Default to false and only output `secretName`, `versionId`, `versionStages`. Set it to true can output more details.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of KMS Secret Version ids.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to return deprecated secret versions. Default to `false`.
      */
-    includeDeprecated?: pulumi.Input<string>;
+    includeDeprecated?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of the secret.
      */
@@ -150,5 +150,5 @@ export interface GetSecretVersionsOutputArgs {
     /**
      * The stage of the secret version.
      */
-    versionStage?: pulumi.Input<string>;
+    versionStage?: pulumi.Input<string | undefined>;
 }

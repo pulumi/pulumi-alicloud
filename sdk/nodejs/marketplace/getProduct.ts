@@ -96,7 +96,7 @@ export interface GetProductOutputArgs {
     /**
      * A available region id used to filter market place Ecs images.
      */
-    availableRegion?: pulumi.Input<string>;
+    availableRegion?: pulumi.Input<string | undefined>;
     /**
      * The product code of the market product.
      */

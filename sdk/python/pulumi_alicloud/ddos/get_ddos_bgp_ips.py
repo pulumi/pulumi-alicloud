@@ -181,13 +181,13 @@ def get_ddos_bgp_ips(ids: Optional[Sequence[_builtins.str]] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         product_name=pulumi.get(__ret__, 'product_name'),
         status=pulumi.get(__ret__, 'status'))
-def get_ddos_bgp_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            product_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ddos_bgp_ips_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            product_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDdosBgpIpsResult]:
     """
     This data source provides the Ddos Bgp Ips of the current Alibaba Cloud user.

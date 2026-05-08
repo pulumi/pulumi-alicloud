@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
         /// 
         ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
         ///     {
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Ecp
         ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
         /// 
         ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
         ///     {
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
         /// 
         ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
         ///     {
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecp
         ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
         /// 
         ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
         ///     {
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
         /// 
-        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+        ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length();
         /// 
         ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
         ///     {
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Ecp
         ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
         ///     });
         /// 
-        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
+        ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length();
         /// 
         ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
         ///     {

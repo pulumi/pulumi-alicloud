@@ -20,28 +20,28 @@ __all__ = ['CertArgs', 'Cert']
 class CertArgs:
     def __init__(__self__, *,
                  parent_identifier: pulumi.Input[_builtins.str],
-                 after_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 before_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.int]] = None,
-                 immediately: Optional[pulumi.Input[_builtins.int]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 months: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upload_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None):
+                 after_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 before_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+                 immediately: pulumi.Input[Optional[_builtins.int]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 months: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Cert resource.
 
@@ -165,7 +165,7 @@ class CertArgs:
 
     @_builtins.property
     @pulumi.getter(name="afterTime")
-    def after_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def after_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
 
@@ -177,12 +177,12 @@ class CertArgs:
         return pulumi.get(self, "after_time")
 
     @after_time.setter
-    def after_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def after_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "after_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
         - `RSA_1024`: corresponds to the signature algorithm Sha256WithRSA.
@@ -200,24 +200,24 @@ class CertArgs:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name assigned to the issued certificate.
         """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="beforeTime")
-    def before_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def before_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The issuance time of the client certificate, in timestamp format. By default, it is set to the time when you call this API. Unit: seconds.
 
@@ -226,24 +226,24 @@ class CertArgs:
         return pulumi.get(self, "before_time")
 
     @before_time.setter
-    def before_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def before_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "before_time", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
         """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
         For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
@@ -251,24 +251,24 @@ class CertArgs:
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="customIdentifier")
-    def custom_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined unique identifier.
         """
         return pulumi.get(self, "custom_identifier")
 
     @custom_identifier.setter
-    def custom_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Validity period of the client certificate, in days.  
 
@@ -282,36 +282,36 @@ class CertArgs:
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrl")
-    def enable_crl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_crl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to include the CRL URL. Valid values:
         """
         return pulumi.get(self, "enable_crl")
 
     @enable_crl.setter
-    def enable_crl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_crl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_crl", value)
 
     @_builtins.property
     @pulumi.getter
-    def immediately(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def immediately(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to return the digital certificate immediately. Valid values:
         """
         return pulumi.get(self, "immediately")
 
     @immediately.setter
-    def immediately(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def immediately(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "immediately", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the city where the organization associated with the certificate is located. Chinese characters, English letters, and other characters are supported.
         By default, this value is the same as the city name of the organization associated with the issuing subordinate CA certificate.
@@ -319,12 +319,12 @@ class CertArgs:
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which the certificate is purchased, in months.
 
@@ -333,60 +333,60 @@ class CertArgs:
         return pulumi.get(self, "months")
 
     @months.setter
-    def months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "months", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the organization associated with the subordinate CA certificate that issued this certificate.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationUnit")
-    def organization_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Department name. Default: Aliyun CDN.
         """
         return pulumi.get(self, "organization_unit")
 
     @organization_unit.setter
-    def organization_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sanType")
-    def san_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def san_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
         """
         return pulumi.get(self, "san_type")
 
     @san_type.setter
-    def san_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def san_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "san_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sanValue")
-    def san_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def san_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
 
@@ -395,12 +395,12 @@ class CertArgs:
         return pulumi.get(self, "san_value")
 
     @san_value.setter
-    def san_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def san_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "san_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
         The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -408,12 +408,12 @@ class CertArgs:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
@@ -422,36 +422,36 @@ class CertArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Information about the queried instances and their associated tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadFlag")
-    def upload_flag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_flag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         """
         return pulumi.get(self, "upload_flag")
 
     @upload_flag.setter
-    def upload_flag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_flag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_flag", value)
 
     @_builtins.property
     @pulumi.getter
-    def years(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def years(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which the certificate is purchased, in years.
 
@@ -460,36 +460,36 @@ class CertArgs:
         return pulumi.get(self, "years")
 
     @years.setter
-    def years(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def years(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "years", value)
 
 
 @pulumi.input_type
 class _CertState:
     def __init__(__self__, *,
-                 after_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 before_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.int]] = None,
-                 immediately: Optional[pulumi.Input[_builtins.int]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 months: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upload_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None):
+                 after_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 before_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+                 immediately: pulumi.Input[Optional[_builtins.int]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 months: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Cert resources.
 
@@ -602,7 +602,7 @@ class _CertState:
 
     @_builtins.property
     @pulumi.getter(name="afterTime")
-    def after_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def after_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The service expiration time of the client certificate, specified as a Unix timestamp in seconds.  
 
@@ -614,12 +614,12 @@ class _CertState:
         return pulumi.get(self, "after_time")
 
     @after_time.setter
-    def after_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def after_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "after_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key algorithm of the client certificate. The key algorithm is specified in the format `_`. Valid values:
         - `RSA_1024`: corresponds to the signature algorithm Sha256WithRSA.
@@ -637,24 +637,24 @@ class _CertState:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name assigned to the issued certificate.
         """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="beforeTime")
-    def before_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def before_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The issuance time of the client certificate, in timestamp format. By default, it is set to the time when you call this API. Unit: seconds.
 
@@ -663,24 +663,24 @@ class _CertState:
         return pulumi.get(self, "before_time")
 
     @before_time.setter
-    def before_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def before_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "before_time", value)
 
     @_builtins.property
     @pulumi.getter(name="commonName")
-    def common_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def common_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the certificate subject. For a Client Authentication (ClientAuth) certificate, the subject is typically an individual, company, organization, or application. We recommend using the common name of the subject—for example, Zhang San, Alibaba, Alibaba Cloud KMS, or Tmall Genie.
         """
         return pulumi.get(self, "common_name")
 
     @common_name.setter
-    def common_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def common_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "common_name", value)
 
     @_builtins.property
     @pulumi.getter(name="countryCode")
-    def country_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def country_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Country code of the organization associated with the subordinate CA certificate that issued this certificate.  
         For the meanings of different country codes, see the **International Codes** section in [Manage Company Information](https://help.aliyun.com/document_detail/198289.html).
@@ -688,24 +688,24 @@ class _CertState:
         return pulumi.get(self, "country_code")
 
     @country_code.setter
-    def country_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def country_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "country_code", value)
 
     @_builtins.property
     @pulumi.getter(name="customIdentifier")
-    def custom_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A user-defined unique identifier.
         """
         return pulumi.get(self, "custom_identifier")
 
     @custom_identifier.setter
-    def custom_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_identifier", value)
 
     @_builtins.property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Validity period of the client certificate, in days.  
 
@@ -719,36 +719,36 @@ class _CertState:
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "days", value)
 
     @_builtins.property
     @pulumi.getter(name="enableCrl")
-    def enable_crl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_crl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to include the CRL URL. Valid values:
         """
         return pulumi.get(self, "enable_crl")
 
     @enable_crl.setter
-    def enable_crl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_crl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_crl", value)
 
     @_builtins.property
     @pulumi.getter
-    def immediately(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def immediately(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to return the digital certificate immediately. Valid values:
         """
         return pulumi.get(self, "immediately")
 
     @immediately.setter
-    def immediately(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def immediately(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "immediately", value)
 
     @_builtins.property
     @pulumi.getter
-    def locality(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def locality(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the city where the organization associated with the certificate is located. Chinese characters, English letters, and other characters are supported.
         By default, this value is the same as the city name of the organization associated with the issuing subordinate CA certificate.
@@ -756,12 +756,12 @@ class _CertState:
         return pulumi.get(self, "locality")
 
     @locality.setter
-    def locality(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def locality(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "locality", value)
 
     @_builtins.property
     @pulumi.getter
-    def months(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def months(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which the certificate is purchased, in months.
 
@@ -770,72 +770,72 @@ class _CertState:
         return pulumi.get(self, "months")
 
     @months.setter
-    def months(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def months(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "months", value)
 
     @_builtins.property
     @pulumi.getter
-    def organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the organization associated with the subordinate CA certificate that issued this certificate.
         """
         return pulumi.get(self, "organization")
 
     @organization.setter
-    def organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationUnit")
-    def organization_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Department name. Default: Aliyun CDN.
         """
         return pulumi.get(self, "organization_unit")
 
     @organization_unit.setter
-    def organization_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="parentIdentifier")
-    def parent_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the subordinate CA certificate that issued this certificate.
         """
         return pulumi.get(self, "parent_identifier")
 
     @parent_identifier.setter
-    def parent_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID. You can obtain this ID by calling the [ListResources](https://help.aliyun.com/document_detail/2716559.html) operation.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sanType")
-    def san_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def san_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Subject Alternative Name (SAN) type supported by the client certificate. Valid values:
         """
         return pulumi.get(self, "san_type")
 
     @san_type.setter
-    def san_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def san_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "san_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sanValue")
-    def san_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def san_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specific extension information for the client certificate. You can enter multiple extensions. If you need to specify multiple extensions, separate them with commas (,).  
 
@@ -844,12 +844,12 @@ class _CertState:
         return pulumi.get(self, "san_value")
 
     @san_value.setter
-    def san_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def san_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "san_value", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the province, municipality, or autonomous region where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the province, municipality, or autonomous region of the organization associated with the subordinate CA certificate that issued this certificate.
         The name of the state or province where the certificate's organization is located. Chinese and English characters are supported. By default, this value is the same as the state or province of the organization associated with the subordinate CA certificate that issued this certificate.
@@ -857,12 +857,12 @@ class _CertState:
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the certificate. Valid values:
         - `REVOKE`: indicates that the certificate has been revoked.
@@ -871,36 +871,36 @@ class _CertState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Information about the queried instances and their associated tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadFlag")
-    def upload_flag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_flag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Indicates whether the certificate has been uploaded to the SSL certificate management platform.
         """
         return pulumi.get(self, "upload_flag")
 
     @upload_flag.setter
-    def upload_flag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_flag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_flag", value)
 
     @_builtins.property
     @pulumi.getter
-    def years(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def years(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration for which the certificate is purchased, in years.
 
@@ -909,7 +909,7 @@ class _CertState:
         return pulumi.get(self, "years")
 
     @years.setter
-    def years(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def years(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "years", value)
 
 
@@ -919,29 +919,29 @@ class Cert(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 after_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 before_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.int]] = None,
-                 immediately: Optional[pulumi.Input[_builtins.int]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 months: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upload_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None,
+                 after_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 before_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+                 immediately: pulumi.Input[Optional[_builtins.int]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 months: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a SSL Certificates Pca Cert resource.
@@ -1162,29 +1162,29 @@ class Cert(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 after_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 before_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 common_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 country_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 days: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_crl: Optional[pulumi.Input[_builtins.int]] = None,
-                 immediately: Optional[pulumi.Input[_builtins.int]] = None,
-                 locality: Optional[pulumi.Input[_builtins.str]] = None,
-                 months: Optional[pulumi.Input[_builtins.int]] = None,
-                 organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 san_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 upload_flag: Optional[pulumi.Input[_builtins.int]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None,
+                 after_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 before_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 common_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 country_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 days: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+                 immediately: pulumi.Input[Optional[_builtins.int]] = None,
+                 locality: pulumi.Input[Optional[_builtins.str]] = None,
+                 months: pulumi.Input[Optional[_builtins.int]] = None,
+                 organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 san_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1229,29 +1229,29 @@ class Cert(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            after_time: Optional[pulumi.Input[_builtins.int]] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-            before_time: Optional[pulumi.Input[_builtins.int]] = None,
-            common_name: Optional[pulumi.Input[_builtins.str]] = None,
-            country_code: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            days: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_crl: Optional[pulumi.Input[_builtins.int]] = None,
-            immediately: Optional[pulumi.Input[_builtins.int]] = None,
-            locality: Optional[pulumi.Input[_builtins.str]] = None,
-            months: Optional[pulumi.Input[_builtins.int]] = None,
-            organization: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            san_type: Optional[pulumi.Input[_builtins.str]] = None,
-            san_value: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            upload_flag: Optional[pulumi.Input[_builtins.int]] = None,
-            years: Optional[pulumi.Input[_builtins.int]] = None) -> 'Cert':
+            after_time: pulumi.Input[Optional[_builtins.int]] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            before_time: pulumi.Input[Optional[_builtins.int]] = None,
+            common_name: pulumi.Input[Optional[_builtins.str]] = None,
+            country_code: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            days: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_crl: pulumi.Input[Optional[_builtins.int]] = None,
+            immediately: pulumi.Input[Optional[_builtins.int]] = None,
+            locality: pulumi.Input[Optional[_builtins.str]] = None,
+            months: pulumi.Input[Optional[_builtins.int]] = None,
+            organization: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            san_type: pulumi.Input[Optional[_builtins.str]] = None,
+            san_value: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            upload_flag: pulumi.Input[Optional[_builtins.int]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> 'Cert':
         """
         Get an existing Cert resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

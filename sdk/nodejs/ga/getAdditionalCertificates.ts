@@ -130,7 +130,7 @@ export interface GetAdditionalCertificatesOutputArgs {
     /**
      * A list of Additional Certificate IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the listener. Only HTTPS listeners support this parameter.
      */
@@ -138,5 +138,5 @@ export interface GetAdditionalCertificatesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

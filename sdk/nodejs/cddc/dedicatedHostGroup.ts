@@ -167,40 +167,40 @@ export interface DedicatedHostGroupState {
     /**
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      */
-    allocationPolicy?: pulumi.Input<string>;
+    allocationPolicy?: pulumi.Input<string | undefined>;
     /**
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      */
-    cpuAllocationRatio?: pulumi.Input<number>;
+    cpuAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    dedicatedHostGroupDesc?: pulumi.Input<string>;
+    dedicatedHostGroupDesc?: pulumi.Input<string | undefined>;
     /**
      * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
-    diskAllocationRatio?: pulumi.Input<number>;
+    diskAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      */
-    hostReplacePolicy?: pulumi.Input<string>;
+    hostReplacePolicy?: pulumi.Input<string | undefined>;
     /**
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
-    memAllocationRatio?: pulumi.Input<number>;
+    memAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
      * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
-    openPermission?: pulumi.Input<boolean>;
+    openPermission?: pulumi.Input<boolean | undefined>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,19 +210,19 @@ export interface DedicatedHostGroupArgs {
     /**
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      */
-    allocationPolicy?: pulumi.Input<string>;
+    allocationPolicy?: pulumi.Input<string | undefined>;
     /**
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      */
-    cpuAllocationRatio?: pulumi.Input<number>;
+    cpuAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    dedicatedHostGroupDesc?: pulumi.Input<string>;
+    dedicatedHostGroupDesc?: pulumi.Input<string | undefined>;
     /**
      * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      */
-    diskAllocationRatio?: pulumi.Input<number>;
+    diskAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      */
@@ -230,16 +230,16 @@ export interface DedicatedHostGroupArgs {
     /**
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      */
-    hostReplacePolicy?: pulumi.Input<string>;
+    hostReplacePolicy?: pulumi.Input<string | undefined>;
     /**
      * The Memory Allocation Ratio of the Dedicated Host Group.
      */
-    memAllocationRatio?: pulumi.Input<number>;
+    memAllocationRatio?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
      * **NOTE:** The `openPermission` should be `true` when `engine = "SQLServer"`
      */
-    openPermission?: pulumi.Input<boolean>;
+    openPermission?: pulumi.Input<boolean | undefined>;
     /**
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      */

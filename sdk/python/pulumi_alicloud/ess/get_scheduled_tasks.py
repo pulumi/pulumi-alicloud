@@ -172,11 +172,11 @@ def get_scheduled_tasks(ids: Optional[Sequence[_builtins.str]] = None,
         scheduled_action=pulumi.get(__ret__, 'scheduled_action'),
         scheduled_task_id=pulumi.get(__ret__, 'scheduled_task_id'),
         tasks=pulumi.get(__ret__, 'tasks'))
-def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               scheduled_action: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               scheduled_task_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_scheduled_tasks_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               scheduled_action: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               scheduled_task_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScheduledTasksResult]:
     """
     This data source provides available scheduled task resources.

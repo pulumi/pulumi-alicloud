@@ -21,18 +21,18 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 networks: Optional[pulumi.Input['ClusterNetworksArgs']] = None,
-                 nimiz_vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
-                 open_eni_jumbo_frame: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 networks: pulumi.Input[Optional['ClusterNetworksArgs']] = None,
+                 nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
+                 open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -76,166 +76,166 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterDescription")
-    def cluster_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         cluster description
         """
         return pulumi.get(self, "cluster_description")
 
     @cluster_description.setter
-    def cluster_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_description", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ClusterName
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         cluster type
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]]:
         """
         Component (software instance) See `components` below.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
-    def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpn_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster Number
         """
         return pulumi.get(self, "hpn_zone")
 
     @hpn_zone.setter
-    def hpn_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpn_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreFailedNodeTasks")
-    def ignore_failed_node_tasks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_failed_node_tasks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow skipping failed nodes. Default value: False
         """
         return pulumi.get(self, "ignore_failed_node_tasks")
 
     @ignore_failed_node_tasks.setter
-    def ignore_failed_node_tasks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_failed_node_tasks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_failed_node_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input['ClusterNetworksArgs']]:
+    def networks(self) -> pulumi.Input[Optional['ClusterNetworksArgs']]:
         """
         Network Information See `networks` below.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input['ClusterNetworksArgs']]):
+    def networks(self, value: pulumi.Input[Optional['ClusterNetworksArgs']]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="nimizVswitches")
-    def nimiz_vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nimiz_vswitches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node virtual switch
         """
         return pulumi.get(self, "nimiz_vswitches")
 
     @nimiz_vswitches.setter
-    def nimiz_vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nimiz_vswitches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nimiz_vswitches", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroups")
-    def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
+    def node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
         """
         Node Group List See `node_groups` below.
         """
         return pulumi.get(self, "node_groups")
 
     @node_groups.setter
-    def node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
+    def node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
         pulumi.set(self, "node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="openEniJumboFrame")
-    def open_eni_jumbo_frame(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_eni_jumbo_frame(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the network interface supports jumbo frames
         """
         return pulumi.get(self, "open_eni_jumbo_frame")
 
     @open_eni_jumbo_frame.setter
-    def open_eni_jumbo_frame(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_eni_jumbo_frame(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_eni_jumbo_frame", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         tag
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 networks: Optional[pulumi.Input['ClusterNetworksArgs']] = None,
-                 nimiz_vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
-                 open_eni_jumbo_frame: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 networks: pulumi.Input[Optional['ClusterNetworksArgs']] = None,
+                 nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]] = None,
+                 open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -285,170 +285,170 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterDescription")
-    def cluster_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         cluster description
         """
         return pulumi.get(self, "cluster_description")
 
     @cluster_description.setter
-    def cluster_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_description", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ClusterName
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterType")
-    def cluster_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         cluster type
         """
         return pulumi.get(self, "cluster_type")
 
     @cluster_type.setter
-    def cluster_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]]:
         """
         Component (software instance) See `components` below.
         """
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
-    def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpn_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster Number
         """
         return pulumi.get(self, "hpn_zone")
 
     @hpn_zone.setter
-    def hpn_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpn_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreFailedNodeTasks")
-    def ignore_failed_node_tasks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_failed_node_tasks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow skipping failed nodes. Default value: False
         """
         return pulumi.get(self, "ignore_failed_node_tasks")
 
     @ignore_failed_node_tasks.setter
-    def ignore_failed_node_tasks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_failed_node_tasks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_failed_node_tasks", value)
 
     @_builtins.property
     @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input['ClusterNetworksArgs']]:
+    def networks(self) -> pulumi.Input[Optional['ClusterNetworksArgs']]:
         """
         Network Information See `networks` below.
         """
         return pulumi.get(self, "networks")
 
     @networks.setter
-    def networks(self, value: Optional[pulumi.Input['ClusterNetworksArgs']]):
+    def networks(self, value: pulumi.Input[Optional['ClusterNetworksArgs']]):
         pulumi.set(self, "networks", value)
 
     @_builtins.property
     @pulumi.getter(name="nimizVswitches")
-    def nimiz_vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nimiz_vswitches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node virtual switch
         """
         return pulumi.get(self, "nimiz_vswitches")
 
     @nimiz_vswitches.setter
-    def nimiz_vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nimiz_vswitches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nimiz_vswitches", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroups")
-    def node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
+    def node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]:
         """
         Node Group List See `node_groups` below.
         """
         return pulumi.get(self, "node_groups")
 
     @node_groups.setter
-    def node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
+    def node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupArgs']]]]):
         pulumi.set(self, "node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="openEniJumboFrame")
-    def open_eni_jumbo_frame(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_eni_jumbo_frame(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the network interface supports jumbo frames
         """
         return pulumi.get(self, "open_eni_jumbo_frame")
 
     @open_eni_jumbo_frame.setter
-    def open_eni_jumbo_frame(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_eni_jumbo_frame(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_eni_jumbo_frame", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         tag
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -458,18 +458,18 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 networks: Optional[pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
-                 nimiz_vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-                 open_eni_jumbo_frame: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+                 nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Eflo Cluster resource.
@@ -729,18 +729,18 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 networks: Optional[pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
-                 nimiz_vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-                 open_eni_jumbo_frame: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+                 nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+                 open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -774,20 +774,20 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_description: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_type: Optional[pulumi.Input[_builtins.str]] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-            networks: Optional[pulumi.Input[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
-            nimiz_vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
-            open_eni_jumbo_frame: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Cluster':
+            cluster_description: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_type: pulumi.Input[Optional[_builtins.str]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterComponentArgs', 'ClusterComponentArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+            networks: pulumi.Input[Optional[Union['ClusterNetworksArgs', 'ClusterNetworksArgsDict']]] = None,
+            nimiz_vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterNodeGroupArgs', 'ClusterNodeGroupArgsDict']]]]] = None,
+            open_eni_jumbo_frame: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

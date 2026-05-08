@@ -43,7 +43,7 @@ class ProductArgs:
 @pulumi.input_type
 class _ProductState:
     def __init__(__self__, *,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Product resources.
 
@@ -54,14 +54,14 @@ class _ProductState:
 
     @_builtins.property
     @pulumi.getter(name="productName")
-    def product_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ProductName.
         """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
-    def product_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_name", value)
 
 
@@ -71,7 +71,7 @@ class Product(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a MHUB Product resource.
@@ -160,7 +160,7 @@ class Product(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -183,7 +183,7 @@ class Product(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            product_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Product':
+            product_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Product':
         """
         Get an existing Product resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

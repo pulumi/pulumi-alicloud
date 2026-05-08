@@ -88,5 +88,5 @@ export interface GetFileCrc64ChecksumOutputArgs {
      * The name of the file to be computed crc64 checksum.
      */
     filename: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

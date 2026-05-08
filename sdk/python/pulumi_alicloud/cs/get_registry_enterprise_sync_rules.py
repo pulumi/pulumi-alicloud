@@ -211,13 +211,13 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[_builtins.str]] = 
         repo_name=pulumi.get(__ret__, 'repo_name'),
         rules=pulumi.get(__ret__, 'rules'),
         target_instance_id=pulumi.get(__ret__, 'target_instance_id'))
-def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                              instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              namespace_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              repo_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              target_instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_registry_enterprise_sync_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                              instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              namespace_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              repo_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              target_instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryEnterpriseSyncRulesResult]:
     """
     This data source provides a list Container Registry Enterprise Edition sync rules on Alibaba Cloud.

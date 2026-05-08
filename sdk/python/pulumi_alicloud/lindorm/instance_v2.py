@@ -28,20 +28,20 @@ class InstanceV2Args:
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cloud_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None):
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None):
         """
         The set of arguments for constructing a InstanceV2 resource.
 
@@ -229,31 +229,31 @@ class InstanceV2Args:
 
     @_builtins.property
     @pulumi.getter(name="arbiterVswitchId")
-    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Coordination Zone VswitchId
         """
         return pulumi.get(self, "arbiter_vswitch_id")
 
     @arbiter_vswitch_id.setter
-    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="arbiterZoneId")
-    def arbiter_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Coordination Zone ZoneId
         """
         return pulumi.get(self, "arbiter_zone_id")
 
     @arbiter_zone_id.setter
-    def arbiter_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal duration. Unit: Month.
 
@@ -267,24 +267,24 @@ class InstanceV2Args:
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewal")
-    def auto_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance is automatically renewed. Enumerated values:
         """
         return pulumi.get(self, "auto_renewal")
 
     @auto_renewal.setter
-    def auto_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageSize")
-    def cloud_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cloud_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
@@ -293,12 +293,12 @@ class InstanceV2Args:
         return pulumi.get(self, "cloud_storage_size")
 
     @cloud_storage_size.setter
-    def cloud_storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cloud_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cloud_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageType")
-    def cloud_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
@@ -310,24 +310,24 @@ class InstanceV2Args:
         return pulumi.get(self, "cloud_storage_type")
 
     @cloud_storage_type.setter
-    def cloud_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable deletion protection
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The specified duration when the resource is purchased. Only the subscription instances are valid.
 
@@ -336,12 +336,12 @@ class InstanceV2Args:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Purchase duration unit: Month, Year
 
@@ -350,95 +350,95 @@ class InstanceV2Args:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone VswitchId
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryZoneId")
-    def primary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone ZoneID
         """
         return pulumi.get(self, "primary_zone_id")
 
     @primary_zone_id.setter
-    def primary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone VswitchId
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyZoneId")
-    def standby_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone ZoneID
         """
         return pulumi.get(self, "standby_zone_id")
 
     @standby_zone_id.setter
-    def standby_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteIpLists")
-    def white_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
+    def white_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
         """
         Instance whitelist list See `white_ip_list` below.
         """
         return pulumi.get(self, "white_ip_lists")
 
     @white_ip_lists.setter
-    def white_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
+    def white_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
         pulumi.set(self, "white_ip_lists", value)
 
 
 @pulumi.input_type
 class _InstanceV2State:
     def __init__(__self__, *,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cloud_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceV2 resources.
 
@@ -541,31 +541,31 @@ class _InstanceV2State:
 
     @_builtins.property
     @pulumi.getter(name="arbiterVswitchId")
-    def arbiter_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Coordination Zone VswitchId
         """
         return pulumi.get(self, "arbiter_vswitch_id")
 
     @arbiter_vswitch_id.setter
-    def arbiter_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="arbiterZoneId")
-    def arbiter_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arbiter_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Coordination Zone ZoneId
         """
         return pulumi.get(self, "arbiter_zone_id")
 
     @arbiter_zone_id.setter
-    def arbiter_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arbiter_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arbiter_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="archVersion")
-    def arch_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arch_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Deployment Scenario
 
@@ -579,12 +579,12 @@ class _InstanceV2State:
         return pulumi.get(self, "arch_version")
 
     @arch_version.setter
-    def arch_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arch_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arch_version", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewDuration")
-    def auto_renew_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal duration. Unit: Month.
 
@@ -598,24 +598,24 @@ class _InstanceV2State:
         return pulumi.get(self, "auto_renew_duration")
 
     @auto_renew_duration.setter
-    def auto_renew_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewal")
-    def auto_renewal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renewal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the instance is automatically renewed. Enumerated values:
         """
         return pulumi.get(self, "auto_renewal")
 
     @auto_renewal.setter
-    def auto_renewal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renewal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renewal", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageSize")
-    def cloud_storage_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cloud_storage_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
@@ -624,12 +624,12 @@ class _InstanceV2State:
         return pulumi.get(self, "cloud_storage_size")
 
     @cloud_storage_size.setter
-    def cloud_storage_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cloud_storage_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cloud_storage_size", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudStorageType")
-    def cloud_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud storage type, the sales page storage type supports cloud storage and local sites. If you select cloud storage, this parameter is required.
 
@@ -641,24 +641,24 @@ class _InstanceV2State:
         return pulumi.get(self, "cloud_storage_type")
 
     @cloud_storage_type.setter
-    def cloud_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable deletion protection
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The specified duration when the resource is purchased. Only the subscription instances are valid.
 
@@ -667,36 +667,36 @@ class _InstanceV2State:
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="engineLists")
-    def engine_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]]:
+    def engine_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]]:
         """
         Engine List See `engine_list` below.
         """
         return pulumi.get(self, "engine_lists")
 
     @engine_lists.setter
-    def engine_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]]):
+    def engine_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2EngineListArgs']]]]):
         pulumi.set(self, "engine_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAlias")
-    def instance_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name
         """
         return pulumi.get(self, "instance_alias")
 
     @instance_alias.setter
-    def instance_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields representing payment types
 
@@ -707,12 +707,12 @@ class _InstanceV2State:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Purchase duration unit: Month, Year
 
@@ -721,115 +721,115 @@ class _InstanceV2State:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryVswitchId")
-    def primary_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone VswitchId
         """
         return pulumi.get(self, "primary_vswitch_id")
 
     @primary_vswitch_id.setter
-    def primary_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryZoneId")
-    def primary_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary zone ZoneID
         """
         return pulumi.get(self, "primary_zone_id")
 
     @primary_zone_id.setter
-    def primary_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyVswitchId")
-    def standby_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone VswitchId
         """
         return pulumi.get(self, "standby_vswitch_id")
 
     @standby_vswitch_id.setter
-    def standby_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyZoneId")
-    def standby_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Standby zone ZoneID
         """
         return pulumi.get(self, "standby_zone_id")
 
     @standby_zone_id.setter
-    def standby_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VpcId
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VswitchId
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteIpLists")
-    def white_ip_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
+    def white_ip_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]:
         """
         Instance whitelist list See `white_ip_list` below.
         """
         return pulumi.get(self, "white_ip_lists")
 
     @white_ip_lists.setter
-    def white_ip_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
+    def white_ip_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceV2WhiteIpListArgs']]]]):
         pulumi.set(self, "white_ip_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID  of the resource
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -839,27 +839,27 @@ class InstanceV2(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cloud_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Lindorm Instance V2 resource.
@@ -1077,27 +1077,27 @@ class InstanceV2(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cloud_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 cloud_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
-                 instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+                 instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1153,28 +1153,28 @@ class InstanceV2(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arbiter_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            arbiter_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            arch_version: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renewal: Optional[pulumi.Input[_builtins.bool]] = None,
-            cloud_storage_size: Optional[pulumi.Input[_builtins.int]] = None,
-            cloud_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            engine_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
-            instance_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            primary_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            white_ip_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceV2':
+            arbiter_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arbiter_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            arch_version: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renewal: pulumi.Input[Optional[_builtins.bool]] = None,
+            cloud_storage_size: pulumi.Input[Optional[_builtins.int]] = None,
+            cloud_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2EngineListArgs', 'InstanceV2EngineListArgsDict']]]]] = None,
+            instance_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            primary_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            white_ip_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceV2WhiteIpListArgs', 'InstanceV2WhiteIpListArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceV2':
         """
         Get an existing InstanceV2 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -223,12 +223,12 @@ def get_users(group_name: Optional[_builtins.str] = None,
         policy_name=pulumi.get(__ret__, 'policy_name'),
         policy_type=pulumi.get(__ret__, 'policy_type'),
         users=pulumi.get(__ret__, 'users'))
-def get_users_output(group_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     policy_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     policy_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_users_output(group_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     policy_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     policy_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsersResult]:
     """
     This data source provides a list of RAM users in an Alibaba Cloud account according to the specified filters.

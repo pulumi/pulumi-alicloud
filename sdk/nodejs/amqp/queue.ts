@@ -185,43 +185,43 @@ export interface QueueState {
     /**
      * Specifies whether to automatically delete the queue. Valid values:
      */
-    autoDeleteState?: pulumi.Input<boolean>;
+    autoDeleteState?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-expiration time for the queue.
      */
-    autoExpireState?: pulumi.Input<string>;
+    autoExpireState?: pulumi.Input<string | undefined>;
     /**
      * The dead-letter exchange.
      */
-    deadLetterExchange?: pulumi.Input<string>;
+    deadLetterExchange?: pulumi.Input<string | undefined>;
     /**
      * The dead-letter routing key.
      */
-    deadLetterRoutingKey?: pulumi.Input<string>;
+    deadLetterRoutingKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of messages that can be stored in the queue.
      */
-    maxLength?: pulumi.Input<string>;
+    maxLength?: pulumi.Input<string | undefined>;
     /**
      * The priority of the queue.
      */
-    maximumPriority?: pulumi.Input<number>;
+    maximumPriority?: pulumi.Input<number | undefined>;
     /**
      * The time to live (TTL) of a message in the queue.
      */
-    messageTtl?: pulumi.Input<string>;
+    messageTtl?: pulumi.Input<string | undefined>;
     /**
      * The name of the queue to create.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
      */
-    virtualHostName?: pulumi.Input<string>;
+    virtualHostName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -231,19 +231,19 @@ export interface QueueArgs {
     /**
      * Specifies whether to automatically delete the queue. Valid values:
      */
-    autoDeleteState?: pulumi.Input<boolean>;
+    autoDeleteState?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-expiration time for the queue.
      */
-    autoExpireState?: pulumi.Input<string>;
+    autoExpireState?: pulumi.Input<string | undefined>;
     /**
      * The dead-letter exchange.
      */
-    deadLetterExchange?: pulumi.Input<string>;
+    deadLetterExchange?: pulumi.Input<string | undefined>;
     /**
      * The dead-letter routing key.
      */
-    deadLetterRoutingKey?: pulumi.Input<string>;
+    deadLetterRoutingKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ApsaraMQ for RabbitMQ instance to which the queue belongs.
      */
@@ -251,15 +251,15 @@ export interface QueueArgs {
     /**
      * The maximum number of messages that can be stored in the queue.
      */
-    maxLength?: pulumi.Input<string>;
+    maxLength?: pulumi.Input<string | undefined>;
     /**
      * The priority of the queue.
      */
-    maximumPriority?: pulumi.Input<number>;
+    maximumPriority?: pulumi.Input<number | undefined>;
     /**
      * The time to live (TTL) of a message in the queue.
      */
-    messageTtl?: pulumi.Input<string>;
+    messageTtl?: pulumi.Input<string | undefined>;
     /**
      * The name of the queue to create.
      */

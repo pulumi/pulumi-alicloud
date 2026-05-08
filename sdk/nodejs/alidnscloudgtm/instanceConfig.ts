@@ -199,56 +199,56 @@ export interface InstanceConfigState {
      * - weight: Weighted. You can assign different weights to each address pool so that DNS queries return address pools in proportion to their weights.
      * - source_nearest: Source proximity. This is the intelligent DNS resolution feature. GTM returns different address pools based on the geographic location of the DNS query source, enabling users to access the nearest available endpoint.
      */
-    addressPoolLbStrategy?: pulumi.Input<string>;
+    addressPoolLbStrategy?: pulumi.Input<string | undefined>;
     /**
      * The domain name instance configuration ID.
      */
-    configId?: pulumi.Input<string>;
+    configId?: pulumi.Input<string | undefined>;
     /**
      * The enable status of the domain instance:
      * - enable: Enabled. The GTM instance's intelligent scheduling policy is active.
      * - disable: Disabled. The GTM instance's intelligent scheduling policy is inactive.
      */
-    enableStatus?: pulumi.Input<string>;
+    enableStatus?: pulumi.Input<string | undefined>;
     /**
      * The instance ID associated with the GTM 3.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Remarks. The provided parameter value becomes the updated remark content.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The host record of the GTM access domain.
      */
-    scheduleHostName?: pulumi.Input<string>;
+    scheduleHostName?: pulumi.Input<string | undefined>;
     /**
      * Record type for the access domain name:  
      * - A: IPv4 address
      * - AAAA: IPv6 address
      * - CNAME: domain name.
      */
-    scheduleRrType?: pulumi.Input<string>;
+    scheduleRrType?: pulumi.Input<string | undefined>;
     /**
      * Access domain name assignment mode:  
      * - custom: Custom access domain name. You define the host record and associate it with a primary or subdomain under the same account as the GTM instance to generate the access domain name.
      * - sys_assign: System-assigned access domain name. This mode is no longer supported. Do not select it.
      */
-    scheduleZoneMode?: pulumi.Input<string>;
+    scheduleZoneMode?: pulumi.Input<string | undefined>;
     /**
      * Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
      */
-    scheduleZoneName?: pulumi.Input<string>;
+    scheduleZoneName?: pulumi.Input<string | undefined>;
     /**
      * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
      */
-    sequenceLbStrategyMode?: pulumi.Input<string>;
+    sequenceLbStrategyMode?: pulumi.Input<string | undefined>;
     /**
      * Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -262,7 +262,7 @@ export interface InstanceConfigArgs {
      * - weight: Weighted. You can assign different weights to each address pool so that DNS queries return address pools in proportion to their weights.
      * - source_nearest: Source proximity. This is the intelligent DNS resolution feature. GTM returns different address pools based on the geographic location of the DNS query source, enabling users to access the nearest available endpoint.
      */
-    addressPoolLbStrategy?: pulumi.Input<string>;
+    addressPoolLbStrategy?: pulumi.Input<string | undefined>;
     /**
      * The enable status of the domain instance:
      * - enable: Enabled. The GTM instance's intelligent scheduling policy is active.
@@ -272,11 +272,11 @@ export interface InstanceConfigArgs {
     /**
      * Remarks. The provided parameter value becomes the updated remark content.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The host record of the GTM access domain.
      */
-    scheduleHostName?: pulumi.Input<string>;
+    scheduleHostName?: pulumi.Input<string | undefined>;
     /**
      * Record type for the access domain name:  
      * - A: IPv4 address
@@ -293,13 +293,13 @@ export interface InstanceConfigArgs {
     /**
      * Zone name, which is the parent zone of the GTM access domain name. It is typically a hosted domain under the same account as the GTM instance in the Alibaba Cloud DNS console, and can be either a primary domain or a subdomain.
      */
-    scheduleZoneName?: pulumi.Input<string>;
+    scheduleZoneName?: pulumi.Input<string | undefined>;
     /**
      * When the load balancing policy between address pools is set to sequential mode, the service restoration mode for preceding resources after an anomaly is resolved is as follows:  
      * - preemptive: Preemptive mode. When a preceding resource recovers, the address pool with the smaller sequence number is prioritized.
      * - non_preemptive: Non-preemptive mode. When a preceding resource recovers, the current address pool continues to be used.
      */
-    sequenceLbStrategyMode?: pulumi.Input<string>;
+    sequenceLbStrategyMode?: pulumi.Input<string | undefined>;
     /**
      * Global TTL (in seconds). This value determines how long the DNS records resolving the access domain name to addresses in the address pool are cached by the ISP's LocalDNS. Custom TTL values are supported.
      */

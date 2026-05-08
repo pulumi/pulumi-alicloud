@@ -169,39 +169,39 @@ export interface ReplicationVaultState {
     /**
      * The description of the backup vault.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encryption type of the backup vault.
      */
-    encryptType?: pulumi.Input<string>;
+    encryptType?: pulumi.Input<string | undefined>;
     /**
      * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * RegionId
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the source backup vault.
      */
-    replicationSourceRegionId?: pulumi.Input<string>;
+    replicationSourceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The vault ID of the source backup vault.
      */
-    replicationSourceVaultId?: pulumi.Input<string>;
+    replicationSourceVaultId?: pulumi.Input<string | undefined>;
     /**
      * The status of the mirror backup vault.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The name of the backup vault.
      */
-    vaultName?: pulumi.Input<string>;
+    vaultName?: pulumi.Input<string | undefined>;
     /**
      * Backup Vault Storage Class
      */
-    vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -211,15 +211,15 @@ export interface ReplicationVaultArgs {
     /**
      * The description of the backup vault.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The encryption type of the backup vault.
      */
-    encryptType?: pulumi.Input<string>;
+    encryptType?: pulumi.Input<string | undefined>;
     /**
      * Alibaba Cloud KMS custom Key or Alias. This parameter is required only when EncryptType = KMS.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the source backup vault.
      */
@@ -235,5 +235,5 @@ export interface ReplicationVaultArgs {
     /**
      * Backup Vault Storage Class
      */
-    vaultStorageClass?: pulumi.Input<string>;
+    vaultStorageClass?: pulumi.Input<string | undefined>;
 }

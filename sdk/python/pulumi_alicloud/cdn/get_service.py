@@ -157,8 +157,8 @@ def get_service(enable: Optional[_builtins.str] = None,
         internet_charge_type=pulumi.get(__ret__, 'internet_charge_type'),
         opening_time=pulumi.get(__ret__, 'opening_time'),
         status=pulumi.get(__ret__, 'status'))
-def get_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       internet_charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       internet_charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Using this data source can enable CDN service automatically. If the service has been enabled, it will return `Opened`.

@@ -152,36 +152,36 @@ export interface WorkspaceWorkspaceState {
     /**
      * The UTC time when the workspace is created. The time format is ISO8601.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Workspace description, no more than 80 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Environments contained in the workspace:
      * - Simple mode only production environment (prod).
      * - Standard mode includes development environment (dev) and production environment (prod).
      */
-    envTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    envTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Workspace state, possible values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The workspace name. The format is as follows:
      * - 3 to 23 characters in length and can contain letters, underscores, or numbers.
      * - Must start with a large or small letter.
      * - Unique in the current region.
      */
-    workspaceName?: pulumi.Input<string>;
+    workspaceName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface WorkspaceWorkspaceArgs {
     /**
      * It is recommended that you name the workspace based on the business attribute to identify the purpose of the workspace. If not configured, the default value is the workspace name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Environments contained in the workspace:
      * - Simple mode only production environment (prod).
@@ -205,7 +205,7 @@ export interface WorkspaceWorkspaceArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The workspace name. The format is as follows:
      * - 3 to 23 characters in length and can contain letters, underscores, or numbers.

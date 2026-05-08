@@ -60,8 +60,8 @@ class NetworkAclAttachmentArgs:
 @pulumi.input_type
 class _NetworkAclAttachmentState:
     def __init__(__self__, *,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None):
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]] = None):
         """
         Input properties used for looking up and filtering NetworkAclAttachment resources.
 
@@ -75,26 +75,26 @@ class _NetworkAclAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="networkAclId")
-    def network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the network acl, the field can't be changed.
         """
         return pulumi.get(self, "network_acl_id")
 
     @network_acl_id.setter
-    def network_acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]:
         """
         List of the resources associated with the network acl. The details see Block Resources.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAclAttachmentResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
 
@@ -104,8 +104,8 @@ class NetworkAclAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a network acl attachment resource to associate network acls to vswitches.
@@ -223,8 +223,8 @@ class NetworkAclAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,8 +250,8 @@ class NetworkAclAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None) -> 'NetworkAclAttachment':
+            network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAclAttachmentResourceArgs', 'NetworkAclAttachmentResourceArgsDict']]]]] = None) -> 'NetworkAclAttachment':
         """
         Get an existing NetworkAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

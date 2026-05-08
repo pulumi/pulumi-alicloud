@@ -22,16 +22,16 @@ class PeerConnectionArgs:
                  accepting_region_id: pulumi.Input[_builtins.str],
                  accepting_vpc_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 accepting_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 accepting_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PeerConnection resource.
 
@@ -132,7 +132,7 @@ class PeerConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="acceptingAliUid")
-    def accepting_ali_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accepting_ali_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the accepter VPC belongs.
 
@@ -144,24 +144,24 @@ class PeerConnectionArgs:
         return pulumi.get(self, "accepting_ali_uid")
 
     @accepting_ali_uid.setter
-    def accepting_ali_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accepting_ali_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accepting_ali_uid", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPC peering connection.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -169,36 +169,36 @@ class PeerConnectionArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to forcefully delete the VPC peering connection. Valid values:
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link type of the VPC peering connection that you want to create. Valid values:
         - Platinum.
@@ -211,12 +211,12 @@ class PeerConnectionArgs:
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter(name="peerConnectionName")
-    def peer_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC peering connection.
         The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -224,12 +224,12 @@ class PeerConnectionArgs:
         return pulumi.get(self, "peer_connection_name")
 
     @peer_connection_name.setter
-    def peer_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
 
@@ -238,52 +238,52 @@ class PeerConnectionArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of VpcPeer.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PeerConnectionState:
     def __init__(__self__, *,
-                 accepting_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 accepting_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepting_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accepting_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 accepting_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepting_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PeerConnection resources.
 
@@ -354,7 +354,7 @@ class _PeerConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="acceptingAliUid")
-    def accepting_ali_uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def accepting_ali_uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Alibaba Cloud account to which the accepter VPC belongs.
 
@@ -366,12 +366,12 @@ class _PeerConnectionState:
         return pulumi.get(self, "accepting_ali_uid")
 
     @accepting_ali_uid.setter
-    def accepting_ali_uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def accepting_ali_uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "accepting_ali_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="acceptingRegionId")
-    def accepting_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accepting_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the accepter VPC of the VPC peering connection that you want to create.
 
@@ -381,48 +381,48 @@ class _PeerConnectionState:
         return pulumi.get(self, "accepting_region_id")
 
     @accepting_region_id.setter
-    def accepting_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accepting_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accepting_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="acceptingVpcId")
-    def accepting_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accepting_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the accepter VPC.
         """
         return pulumi.get(self, "accepting_vpc_id")
 
     @accepting_vpc_id.setter
-    def accepting_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accepting_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accepting_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth of the VPC peering connection. Unit: Mbit/s. The value must be an integer greater than 0. Before you specify this parameter, make sure that you create an inter-region VPC peering connection.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the VPC peer connection. Use UTC time in the format' YYYY-MM-DDThh:mm:ssZ '.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPC peering connection.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -430,36 +430,36 @@ class _PeerConnectionState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to perform only a dry run, without performing the actual request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to forcefully delete the VPC peering connection. Valid values:
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="linkType")
-    def link_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def link_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link type of the VPC peering connection that you want to create. Valid values:
         - Platinum.
@@ -472,12 +472,12 @@ class _PeerConnectionState:
         return pulumi.get(self, "link_type")
 
     @link_type.setter
-    def link_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def link_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "link_type", value)
 
     @_builtins.property
     @pulumi.getter(name="peerConnectionName")
-    def peer_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def peer_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC peering connection.
         The name must be 2 to 128 characters in length, and can contain digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -485,24 +485,24 @@ class _PeerConnectionState:
         return pulumi.get(self, "peer_connection_name")
 
     @peer_connection_name.setter
-    def peer_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def peer_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "peer_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource to which you want to create and add tags.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
 
@@ -511,43 +511,43 @@ class _PeerConnectionState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of VpcPeer.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the requester VPC or accepter VPC of the VPC peering connection that you want to query.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -557,19 +557,19 @@ class PeerConnection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accepting_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 accepting_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepting_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accepting_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 accepting_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepting_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Vpc Peer Peer Connection resource.
@@ -602,7 +602,7 @@ class PeerConnection(pulumi.CustomResource):
         default_peer_connection = alicloud.vpc.PeerConnection("default",
             peer_connection_name="terraform-example",
             vpc_id=local_vpc.id,
-            accepting_ali_uid=default.id,
+            accepting_ali_uid=output(default.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_vpc.id,
             description="terraform-example")
@@ -690,7 +690,7 @@ class PeerConnection(pulumi.CustomResource):
         default_peer_connection = alicloud.vpc.PeerConnection("default",
             peer_connection_name="terraform-example",
             vpc_id=local_vpc.id,
-            accepting_ali_uid=default.id,
+            accepting_ali_uid=output(default.id).apply(lambda x: int(x)),
             accepting_region_id=accepting_region,
             accepting_vpc_id=accepting_vpc.id,
             description="terraform-example")
@@ -722,19 +722,19 @@ class PeerConnection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accepting_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-                 accepting_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 accepting_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 link_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accepting_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+                 accepting_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 accepting_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 link_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -775,21 +775,21 @@ class PeerConnection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accepting_ali_uid: Optional[pulumi.Input[_builtins.int]] = None,
-            accepting_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            accepting_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            link_type: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PeerConnection':
+            accepting_ali_uid: pulumi.Input[Optional[_builtins.int]] = None,
+            accepting_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            accepting_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            link_type: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'PeerConnection':
         """
         Get an existing PeerConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

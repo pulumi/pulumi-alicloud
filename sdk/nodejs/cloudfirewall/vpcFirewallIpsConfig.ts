@@ -165,37 +165,37 @@ export interface VpcFirewallIpsConfigState {
     /**
      * Base rule switch. Value:
      */
-    basicRules?: pulumi.Input<number>;
+    basicRules?: pulumi.Input<number | undefined>;
     /**
      * Virtual patch switch. Value:
      */
-    enableAllPatch?: pulumi.Input<number>;
+    enableAllPatch?: pulumi.Input<number | undefined>;
     /**
      * Language
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * MemberUid
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * IPS rule Group
      */
-    ruleClass?: pulumi.Input<string>;
+    ruleClass?: pulumi.Input<string | undefined>;
     /**
      * IPS defense mode. Value:
      */
-    runMode?: pulumi.Input<number>;
+    runMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC firewall instance. Value:
      * - When VPC firewall protects the network instances (including VPC, VBR, and CCN) and the specified VPC, the instance ID uses the CEN instance ID. You can call the DescribeVpcFirewallCenList operation to query the instance ID of CEN.
      * - When the VPC firewall protects the traffic between two VPCs connected through the express connection, the instance ID uses the VPC firewall instance ID. You can call the DescribeVpcFirewallList operation to query the instance ID of the VPC firewall.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,17 +215,17 @@ export interface VpcFirewallIpsConfigArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * MemberUid
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * IPS rule Group
      */
-    ruleClass?: pulumi.Input<string>;
+    ruleClass?: pulumi.Input<string | undefined>;
     /**
      * IPS defense mode. Value:
      */

@@ -216,37 +216,37 @@ export interface GetSnapshotsOutputArgs {
     /**
      * The bucket name of OSS. While sourceType equals `OSS`, this parameter must be set.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Timestamp of Snapshot completion. Note The time format of the API adopts the ISO 8601 format, such as 2021-07-09T15:45:30CST or 2021-07-09T07:45:30Z. **Note**: While `completeTimeChecker` equals `BETWEEN`, this field should be formatted such as `"2021-08-20T14:17:15CST,2021-08-26T14:17:15CST"`, The first part of this string is the start time, the second part is the end time, and the two parts should be separated by commas.
      */
-    completeTime?: pulumi.Input<string>;
+    completeTime?: pulumi.Input<string | undefined>;
     /**
      * Complete time filter operator. Optional values: `MATCH_TERM`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`.
      */
-    completeTimeChecker?: pulumi.Input<string>;
+    completeTimeChecker?: pulumi.Input<string | undefined>;
     /**
      * File system creation timestamp of Nas. While sourceType equals `NAS`, this parameter must be set. **Note** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The File System ID of Nas. While sourceType equals `NAS`, this parameter must be set.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * A list of Snapshot IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of ECS instance. The ecs backup client must have been installed on the host. While sourceType equals `ECS_FILE`, this parameter must be set.
      */
-    instanceId?: pulumi.Input<string>;
-    limit?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    limit?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    query?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
+    query?: pulumi.Input<string | undefined>;
     /**
      * Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
      */
@@ -254,7 +254,7 @@ export interface GetSnapshotsOutputArgs {
     /**
      * The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of Vault.
      */

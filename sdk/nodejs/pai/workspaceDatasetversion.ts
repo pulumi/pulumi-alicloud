@@ -241,53 +241,53 @@ export interface WorkspaceDatasetversionState {
     /**
      * Update time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Data count.
      */
-    dataCount?: pulumi.Input<number>;
+    dataCount?: pulumi.Input<number | undefined>;
     /**
      * Data size.
      */
-    dataSize?: pulumi.Input<number>;
+    dataSize?: pulumi.Input<number | undefined>;
     /**
      * The data source type. The following values are supported:
      * - OSS: Alibaba Cloud Object Storage (OSS).
      * - NAS: Alibaba cloud file storage (NAS).
      */
-    dataSourceType?: pulumi.Input<string>;
+    dataSourceType?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    datasetId?: pulumi.Input<string>;
+    datasetId?: pulumi.Input<string | undefined>;
     /**
      * Description of dataset version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceDatasetversionLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceDatasetversionLabel>[] | undefined>;
     /**
      * The extended field, which is of the JsonString type.
      *
      * When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The properties of the dataset. The following values are supported:
      * - FILE: FILE.
      * - DIRECTORY: folder.
      */
-    property?: pulumi.Input<string>;
+    property?: pulumi.Input<string | undefined>;
     /**
      * The data source ID.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The data source type. The default value is USER.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The Uri configuration sample is as follows:
      * - The data source type is OSS:'oss:// bucket.endpoint/object'
@@ -301,11 +301,11 @@ export interface WorkspaceDatasetversionState {
      *
      * CPFS1.0 and CPFS2.0 are distinguished by the format of fsid: CPFS1.0 is cpfs-;CPFS2.0 is cpfs-.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,11 +315,11 @@ export interface WorkspaceDatasetversionArgs {
     /**
      * Data count.
      */
-    dataCount?: pulumi.Input<number>;
+    dataCount?: pulumi.Input<number | undefined>;
     /**
      * Data size.
      */
-    dataSize?: pulumi.Input<number>;
+    dataSize?: pulumi.Input<number | undefined>;
     /**
      * The data source type. The following values are supported:
      * - OSS: Alibaba Cloud Object Storage (OSS).
@@ -333,17 +333,17 @@ export interface WorkspaceDatasetversionArgs {
     /**
      * Description of dataset version.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceDatasetversionLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.pai.WorkspaceDatasetversionLabel>[] | undefined>;
     /**
      * The extended field, which is of the JsonString type.
      *
      * When DLC uses a dataset, you can specify the default Mount path for the dataset by configuring the mountPath field.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The properties of the dataset. The following values are supported:
      * - FILE: FILE.
@@ -353,11 +353,11 @@ export interface WorkspaceDatasetversionArgs {
     /**
      * The data source ID.
      */
-    sourceId?: pulumi.Input<string>;
+    sourceId?: pulumi.Input<string | undefined>;
     /**
      * The data source type. The default value is USER.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The Uri configuration sample is as follows:
      * - The data source type is OSS:'oss:// bucket.endpoint/object'

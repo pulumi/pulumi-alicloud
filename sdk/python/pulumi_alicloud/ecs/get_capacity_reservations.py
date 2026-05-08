@@ -253,16 +253,16 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[_built
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     payment_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     platform: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_capacity_reservations_output(capacity_reservation_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     payment_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     platform: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCapacityReservationsResult]:
     """
     This data source provides Ecs Capacity Reservation available to the user.

@@ -26,15 +26,15 @@ class AggregateConfigRuleArgs:
                  risk_level: pulumi.Input[_builtins.int],
                  source_identifier: pulumi.Input[_builtins.str],
                  source_owner: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maximum_execution_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AggregateConfigRule resource.
 
@@ -173,133 +173,133 @@ class AggregateConfigRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceIdsScope")
-    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
     @exclude_resource_ids_scope.setter
-    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def input_parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The settings map of the input parameters for the rule.
         """
         return pulumi.get(self, "input_parameters")
 
     @input_parameters.setter
-    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def input_parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "input_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumExecutionFrequency")
-    def maximum_execution_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_execution_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         """
         return pulumi.get(self, "maximum_execution_frequency")
 
     @maximum_execution_frequency.setter
-    def maximum_execution_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_execution_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_execution_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="regionIdsScope")
-    def region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "region_ids_scope")
 
     @region_ids_scope.setter
-    def region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdsScope")
-    def resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
     @resource_group_ids_scope.setter
-    def resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKeyScope")
-    def tag_key_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors the tag key, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_key_scope")
 
     @tag_key_scope.setter
-    def tag_key_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValueScope")
-    def tag_value_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
     @tag_value_scope.setter
-    def tag_value_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value_scope", value)
 
 
 @pulumi.input_type
 class _AggregateConfigRuleState:
     def __init__(__self__, *,
-                 aggregate_config_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_trigger_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maximum_execution_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 aggregate_config_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AggregateConfigRule resources.
 
@@ -361,43 +361,43 @@ class _AggregateConfigRuleState:
 
     @_builtins.property
     @pulumi.getter(name="aggregateConfigRuleName")
-    def aggregate_config_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregate_config_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule.
         """
         return pulumi.get(self, "aggregate_config_rule_name")
 
     @aggregate_config_rule_name.setter
-    def aggregate_config_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregate_config_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregate_config_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aggregatorId")
-    def aggregator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aggregator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Aggregator Id.
         """
         return pulumi.get(self, "aggregator_id")
 
     @aggregator_id.setter
-    def aggregator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aggregator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aggregator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleId")
-    def config_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.141.0) The rule ID of Aggregate Config Rule.
         """
         return pulumi.get(self, "config_rule_id")
 
     @config_rule_id.setter
-    def config_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleTriggerTypes")
-    def config_rule_trigger_types(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_rule_trigger_types(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trigger type of the rule. Valid values:
         - `ConfigurationItemChangeNotification`: The rule is triggered by configuration changes.
@@ -407,163 +407,163 @@ class _AggregateConfigRuleState:
         return pulumi.get(self, "config_rule_trigger_types")
 
     @config_rule_trigger_types.setter
-    def config_rule_trigger_types(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_rule_trigger_types(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_rule_trigger_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceIdsScope")
-    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
     @exclude_resource_ids_scope.setter
-    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="inputParameters")
-    def input_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def input_parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The settings map of the input parameters for the rule.
         """
         return pulumi.get(self, "input_parameters")
 
     @input_parameters.setter
-    def input_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def input_parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "input_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumExecutionFrequency")
-    def maximum_execution_frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maximum_execution_frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
         """
         return pulumi.get(self, "maximum_execution_frequency")
 
     @maximum_execution_frequency.setter
-    def maximum_execution_frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maximum_execution_frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maximum_execution_frequency", value)
 
     @_builtins.property
     @pulumi.getter(name="regionIdsScope")
-    def region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "region_ids_scope")
 
     @region_ids_scope.setter
-    def region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdsScope")
-    def resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
     @resource_group_ids_scope.setter
-    def resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTypesScopes")
-    def resource_types_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types_scopes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
         """
         return pulumi.get(self, "resource_types_scopes")
 
     @resource_types_scopes.setter
-    def resource_types_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types_scopes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types_scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def risk_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
         """
         return pulumi.get(self, "risk_level")
 
     @risk_level.setter
-    def risk_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def risk_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "risk_level", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIdentifier")
-    def source_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
         """
         return pulumi.get(self, "source_identifier")
 
     @source_identifier.setter
-    def source_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceOwner")
-    def source_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
         """
         return pulumi.get(self, "source_owner")
 
     @source_owner.setter
-    def source_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule status. The valid values: `ACTIVE`, `INACTIVE`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="tagKeyScope")
-    def tag_key_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_key_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors the tag key, only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_key_scope")
 
     @tag_key_scope.setter
-    def tag_key_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_key_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_key_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="tagValueScope")
-    def tag_value_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_value_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
         """
         return pulumi.get(self, "tag_value_scope")
 
     @tag_value_scope.setter
-    def tag_value_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_value_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_value_scope", value)
 
 
@@ -573,22 +573,22 @@ class AggregateConfigRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_config_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_trigger_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maximum_execution_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 aggregate_config_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Config Aggregate Config Rule resource.
@@ -743,22 +743,22 @@ class AggregateConfigRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 aggregate_config_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_trigger_types: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 maximum_execution_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 source_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_key_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 aggregate_config_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -809,23 +809,23 @@ class AggregateConfigRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            aggregate_config_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            aggregator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_rule_trigger_types: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            input_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            maximum_execution_frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_types_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-            source_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            source_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_key_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_value_scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'AggregateConfigRule':
+            aggregate_config_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            aggregator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_trigger_types: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            input_parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            maximum_execution_frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_types_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            source_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            source_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_key_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_value_scope: pulumi.Input[Optional[_builtins.str]] = None) -> 'AggregateConfigRule':
         """
         Get an existing AggregateConfigRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

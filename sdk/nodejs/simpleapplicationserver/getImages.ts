@@ -95,9 +95,9 @@ export function getImagesOutput(args?: GetImagesOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getImages.
  */
 export interface GetImagesOutputArgs {
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    imageType?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
-    platform?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    imageType?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    platform?: pulumi.Input<string | undefined>;
 }

@@ -102,7 +102,7 @@ def get_msc_sub_subscriptions(output_file: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         subscriptions=pulumi.get(__ret__, 'subscriptions'))
-def get_msc_sub_subscriptions_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_msc_sub_subscriptions_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMscSubSubscriptionsResult]:
     """
     This data source provides the Message Center Subscriptions of the current Alibaba Cloud user.

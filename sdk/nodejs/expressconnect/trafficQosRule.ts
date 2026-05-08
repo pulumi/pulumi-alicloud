@@ -277,13 +277,13 @@ export interface TrafficQosRuleState {
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      */
-    dstCidr?: pulumi.Input<string>;
+    dstCidr?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the Destination IPv6 network segment.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      */
-    dstIpv6Cidr?: pulumi.Input<string>;
+    dstIpv6Cidr?: pulumi.Input<string | undefined>;
     /**
      * QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
      * - `ALL`:-1/-1, not editable.
@@ -303,15 +303,15 @@ export interface TrafficQosRuleState {
      * - `PostgreSQL`:5432/5432, non-editable.
      * - `Redis`:6379/6379, non-editable.
      */
-    dstPortRange?: pulumi.Input<string>;
+    dstPortRange?: pulumi.Input<string | undefined>;
     /**
      * The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      */
-    matchDscp?: pulumi.Input<number>;
+    matchDscp?: pulumi.Input<number | undefined>;
     /**
      * QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * QoS rule protocol type, value:
      * - `ALL`
@@ -331,53 +331,53 @@ export interface TrafficQosRuleState {
      * - `PostgreSQL`
      * - `Redis`
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The QoS policy ID.
      */
-    qosId?: pulumi.Input<string>;
+    qosId?: pulumi.Input<string | undefined>;
     /**
      * The QoS queue ID.
      */
-    queueId?: pulumi.Input<string>;
+    queueId?: pulumi.Input<string | undefined>;
     /**
      * Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      */
-    remarkingDscp?: pulumi.Input<number>;
+    remarkingDscp?: pulumi.Input<number | undefined>;
     /**
      * The description of the QoS rule.
      * The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    ruleDescription?: pulumi.Input<string>;
+    ruleDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the QoS rule.
      */
-    ruleId?: pulumi.Input<string>;
+    ruleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS rule.
      * The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv4 CIDR block.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      */
-    srcCidr?: pulumi.Input<string>;
+    srcCidr?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv6 network segment.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      */
-    srcIpv6Cidr?: pulumi.Input<string>;
+    srcIpv6Cidr?: pulumi.Input<string | undefined>;
     /**
      * The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      */
-    srcPortRange?: pulumi.Input<string>;
+    srcPortRange?: pulumi.Input<string | undefined>;
     /**
      * The status of the QoS rule. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -389,13 +389,13 @@ export interface TrafficQosRuleArgs {
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      */
-    dstCidr?: pulumi.Input<string>;
+    dstCidr?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the Destination IPv6 network segment.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      */
-    dstIpv6Cidr?: pulumi.Input<string>;
+    dstIpv6Cidr?: pulumi.Input<string | undefined>;
     /**
      * QoS rule traffic matches the destination port number range. Value range: `0` to `65535`. If not, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same. The corresponding destination port number range is fixed for different protocol types. The values are as follows:
      * - `ALL`:-1/-1, not editable.
@@ -415,11 +415,11 @@ export interface TrafficQosRuleArgs {
      * - `PostgreSQL`:5432/5432, non-editable.
      * - `Redis`:6379/6379, non-editable.
      */
-    dstPortRange?: pulumi.Input<string>;
+    dstPortRange?: pulumi.Input<string | undefined>;
     /**
      * The DSCP value of the traffic matched by the QoS rule. Value range: `0` to `63`. If not, the value is - 1.
      */
-    matchDscp?: pulumi.Input<number>;
+    matchDscp?: pulumi.Input<number | undefined>;
     /**
      * QoS rule priority. Value range: `1` to `9000`. The larger the number, the higher the priority. The priority of a QoS rule cannot be repeated in the same QoS policy.
      */
@@ -455,31 +455,31 @@ export interface TrafficQosRuleArgs {
     /**
      * Modify The DSCP value in the flow. Value range: `0` to `63`. If the value is not modified, the value is - 1.
      */
-    remarkingDscp?: pulumi.Input<number>;
+    remarkingDscp?: pulumi.Input<number | undefined>;
     /**
      * The description of the QoS rule.
      * The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
      */
-    ruleDescription?: pulumi.Input<string>;
+    ruleDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS rule.
      * The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv4 CIDR block.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcIPv6Cidr` or **DstIPv6Cidr * *.
      */
-    srcCidr?: pulumi.Input<string>;
+    srcCidr?: pulumi.Input<string | undefined>;
     /**
      * The QoS rule traffic matches the source IPv6 network segment.
      *
      * > **NOTE:**  If this parameter is not supported, enter `SrcCidr` or **DstCidr * *.
      */
-    srcIpv6Cidr?: pulumi.Input<string>;
+    srcIpv6Cidr?: pulumi.Input<string | undefined>;
     /**
      * The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
      */
-    srcPortRange?: pulumi.Input<string>;
+    srcPortRange?: pulumi.Input<string | undefined>;
 }

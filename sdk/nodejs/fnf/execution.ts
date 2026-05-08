@@ -156,19 +156,19 @@ export interface ExecutionState {
     /**
      * The name of the execution.
      */
-    executionName?: pulumi.Input<string>;
+    executionName?: pulumi.Input<string | undefined>;
     /**
      * The name of the flow.
      */
-    flowName?: pulumi.Input<string>;
+    flowName?: pulumi.Input<string | undefined>;
     /**
      * The Input information for this execution.
      */
-    input?: pulumi.Input<string>;
+    input?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,9 +186,9 @@ export interface ExecutionArgs {
     /**
      * The Input information for this execution.
      */
-    input?: pulumi.Input<string>;
+    input?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

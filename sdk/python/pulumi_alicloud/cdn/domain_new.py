@@ -24,13 +24,13 @@ class DomainNewArgs:
                  cdn_type: pulumi.Input[_builtins.str],
                  domain_name: pulumi.Input[_builtins.str],
                  sources: pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]],
-                 certificate_config: Optional[pulumi.Input['DomainNewCertificateConfigArgs']] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 env: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 certificate_config: pulumi.Input[Optional['DomainNewCertificateConfigArgs']] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainNew resource.
 
@@ -101,103 +101,103 @@ class DomainNewArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateConfig")
-    def certificate_config(self) -> Optional[pulumi.Input['DomainNewCertificateConfigArgs']]:
+    def certificate_config(self) -> pulumi.Input[Optional['DomainNewCertificateConfigArgs']]:
         """
         Certificate configuration See `certificate_config` below.
         """
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
-    def certificate_config(self, value: Optional[pulumi.Input['DomainNewCertificateConfigArgs']]):
+    def certificate_config(self, value: pulumi.Input[Optional['DomainNewCertificateConfigArgs']]):
         pulumi.set(self, "certificate_config", value)
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health test URL.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def env(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
         """
         return pulumi.get(self, "env")
 
     @env.setter
-    def env(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource, valid values: `online`, `offline`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DomainNewState:
     def __init__(__self__, *,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input['DomainNewCertificateConfigArgs']] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 env: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional['DomainNewCertificateConfigArgs']] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input['DomainNewSourceArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainNew resources.
 
@@ -238,134 +238,134 @@ class _DomainNewState:
 
     @_builtins.property
     @pulumi.getter(name="cdnType")
-    def cdn_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cdn_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cdn type of the accelerated domain. Valid values are `web`, `download`, `video`.
         """
         return pulumi.get(self, "cdn_type")
 
     @cdn_type.setter
-    def cdn_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cdn_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cdn_type", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateConfig")
-    def certificate_config(self) -> Optional[pulumi.Input['DomainNewCertificateConfigArgs']]:
+    def certificate_config(self) -> pulumi.Input[Optional['DomainNewCertificateConfigArgs']]:
         """
         Certificate configuration See `certificate_config` below.
         """
         return pulumi.get(self, "certificate_config")
 
     @certificate_config.setter
-    def certificate_config(self, value: Optional[pulumi.Input['DomainNewCertificateConfigArgs']]):
+    def certificate_config(self, value: pulumi.Input[Optional['DomainNewCertificateConfigArgs']]):
         pulumi.set(self, "certificate_config", value)
 
     @_builtins.property
     @pulumi.getter(name="checkUrl")
-    def check_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def check_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Health test URL.
         """
         return pulumi.get(self, "check_url")
 
     @check_url.setter
-    def check_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def check_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "check_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME domain name corresponding to the accelerated domain name.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the accelerated domain. This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def env(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to issue a certificate in grayscale. Value: staging: issued certificate in grayscale. Not passing or passing any other value is a formal certificate.
         """
         return pulumi.get(self, "env")
 
     @env.setter
-    def env(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scope of the accelerated domain. Valid values are `domestic`, `overseas`, `global`. Default value is `domestic`. This parameter's setting is valid Only for the international users and domestic L3 and above users. Value:
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
     @_builtins.property
     @pulumi.getter
-    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]]:
+    def sources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainNewSourceArgs']]]]:
         """
         The source address list of the accelerated domain. Defaults to null. See `sources` below.
         """
         return pulumi.get(self, "sources")
 
     @sources.setter
-    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]]]):
+    def sources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainNewSourceArgs']]]]):
         pulumi.set(self, "sources", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource, valid values: `online`, `offline`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -375,16 +375,16 @@ class DomainNew(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 env: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a CDN Domain resource.
@@ -510,16 +510,16 @@ class DomainNew(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
-                 check_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 env: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+                 check_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 env: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -556,17 +556,17 @@ class DomainNew(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cdn_type: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_config: Optional[pulumi.Input[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
-            check_url: Optional[pulumi.Input[_builtins.str]] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            env: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None,
-            sources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DomainNew':
+            cdn_type: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_config: pulumi.Input[Optional[Union['DomainNewCertificateConfigArgs', 'DomainNewCertificateConfigArgsDict']]] = None,
+            check_url: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            env: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None,
+            sources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainNewSourceArgs', 'DomainNewSourceArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DomainNew':
         """
         Get an existing DomainNew resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

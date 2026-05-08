@@ -92,11 +92,11 @@ __all__ = [
 ]
 
 class ClusterComponentArgsDict(TypedDict):
-    component_config: NotRequired[pulumi.Input['ClusterComponentComponentConfigArgsDict']]
+    component_config: NotRequired[pulumi.Input[Optional['ClusterComponentComponentConfigArgs']]]
     """
     Component Configuration See `component_config` below.
     """
-    component_type: NotRequired[pulumi.Input[_builtins.str]]
+    component_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Component Type
     """
@@ -104,8 +104,8 @@ class ClusterComponentArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterComponentArgs:
     def __init__(__self__, *,
-                 component_config: Optional[pulumi.Input['ClusterComponentComponentConfigArgs']] = None,
-                 component_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 component_config: pulumi.Input[Optional['ClusterComponentComponentConfigArgs']] = None,
+                 component_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['ClusterComponentComponentConfigArgs'] component_config: Component Configuration See `component_config` below.
         :param pulumi.Input[_builtins.str] component_type: Component Type
@@ -117,35 +117,35 @@ class ClusterComponentArgs:
 
     @_builtins.property
     @pulumi.getter(name="componentConfig")
-    def component_config(self) -> Optional[pulumi.Input['ClusterComponentComponentConfigArgs']]:
+    def component_config(self) -> pulumi.Input[Optional['ClusterComponentComponentConfigArgs']]:
         """
         Component Configuration See `component_config` below.
         """
         return pulumi.get(self, "component_config")
 
     @component_config.setter
-    def component_config(self, value: Optional[pulumi.Input['ClusterComponentComponentConfigArgs']]):
+    def component_config(self, value: pulumi.Input[Optional['ClusterComponentComponentConfigArgs']]):
         pulumi.set(self, "component_config", value)
 
     @_builtins.property
     @pulumi.getter(name="componentType")
-    def component_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def component_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Component Type
         """
         return pulumi.get(self, "component_type")
 
     @component_type.setter
-    def component_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def component_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "component_type", value)
 
 
 class ClusterComponentComponentConfigArgsDict(TypedDict):
-    basic_args: NotRequired[pulumi.Input[_builtins.str]]
+    basic_args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Component Basic Parameters
     """
-    node_units: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    node_units: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
     ComponentType = "ACKEdge" is required. Other values are empty.
@@ -154,8 +154,8 @@ class ClusterComponentComponentConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterComponentComponentConfigArgs:
     def __init__(__self__, *,
-                 basic_args: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_units: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 basic_args: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_units: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] basic_args: Component Basic Parameters
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] node_units: Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
@@ -168,19 +168,19 @@ class ClusterComponentComponentConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicArgs")
-    def basic_args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Component Basic Parameters
         """
         return pulumi.get(self, "basic_args")
 
     @basic_args.setter
-    def basic_args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_args", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeUnits")
-    def node_units(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_units(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node pool configuration, and is used to establish the corresponding relationship between node groups and node pools. When
         ComponentType = "ACKEdge" is required. Other values are empty.
@@ -188,40 +188,40 @@ class ClusterComponentComponentConfigArgs:
         return pulumi.get(self, "node_units")
 
     @node_units.setter
-    def node_units(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_units(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_units", value)
 
 
 class ClusterNetworksArgsDict(TypedDict):
-    ip_allocation_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgsDict']]]]
+    ip_allocation_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]]
     """
     IP allocation policy See `ip_allocation_policy` below.
     """
-    new_vpd_info: NotRequired[pulumi.Input['ClusterNetworksNewVpdInfoArgsDict']]
+    new_vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgs']]]
     """
     Vpd configuration information See `new_vpd_info` below.
     """
-    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    security_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group ID
     """
-    tail_ip_version: NotRequired[pulumi.Input[_builtins.str]]
+    tail_ip_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP version
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC ID
     """
-    vpd_info: NotRequired[pulumi.Input['ClusterNetworksVpdInfoArgsDict']]
+    vpd_info: NotRequired[pulumi.Input[Optional['ClusterNetworksVpdInfoArgs']]]
     """
     Multiplexing VPD information See `vpd_info` below.
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Switch ID
     """
-    vswitch_zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Switch ZoneID
     """
@@ -229,14 +229,14 @@ class ClusterNetworksArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksArgs:
     def __init__(__self__, *,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]] = None,
-                 new_vpd_info: Optional[pulumi.Input['ClusterNetworksNewVpdInfoArgs']] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tail_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_info: Optional[pulumi.Input['ClusterNetworksVpdInfoArgs']] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]] = None,
+                 new_vpd_info: pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgs']] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tail_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_info: pulumi.Input[Optional['ClusterNetworksVpdInfoArgs']] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]] ip_allocation_policies: IP allocation policy See `ip_allocation_policy` below.
         :param pulumi.Input['ClusterNetworksNewVpdInfoArgs'] new_vpd_info: Vpd configuration information See `new_vpd_info` below.
@@ -266,111 +266,111 @@ class ClusterNetworksArgs:
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]:
+    def ip_allocation_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]:
         """
         IP allocation policy See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
 
     @ip_allocation_policies.setter
-    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]):
+    def ip_allocation_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="newVpdInfo")
-    def new_vpd_info(self) -> Optional[pulumi.Input['ClusterNetworksNewVpdInfoArgs']]:
+    def new_vpd_info(self) -> pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgs']]:
         """
         Vpd configuration information See `new_vpd_info` below.
         """
         return pulumi.get(self, "new_vpd_info")
 
     @new_vpd_info.setter
-    def new_vpd_info(self, value: Optional[pulumi.Input['ClusterNetworksNewVpdInfoArgs']]):
+    def new_vpd_info(self, value: pulumi.Input[Optional['ClusterNetworksNewVpdInfoArgs']]):
         pulumi.set(self, "new_vpd_info", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tailIpVersion")
-    def tail_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tail_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP version
         """
         return pulumi.get(self, "tail_ip_version")
 
     @tail_ip_version.setter
-    def tail_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tail_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tail_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdInfo")
-    def vpd_info(self) -> Optional[pulumi.Input['ClusterNetworksVpdInfoArgs']]:
+    def vpd_info(self) -> pulumi.Input[Optional['ClusterNetworksVpdInfoArgs']]:
         """
         Multiplexing VPD information See `vpd_info` below.
         """
         return pulumi.get(self, "vpd_info")
 
     @vpd_info.setter
-    def vpd_info(self, value: Optional[pulumi.Input['ClusterNetworksVpdInfoArgs']]):
+    def vpd_info(self, value: pulumi.Input[Optional['ClusterNetworksVpdInfoArgs']]):
         pulumi.set(self, "vpd_info", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchZoneId")
-    def vswitch_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ZoneID
         """
         return pulumi.get(self, "vswitch_zone_id")
 
     @vswitch_zone_id.setter
-    def vswitch_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_zone_id", value)
 
 
 class ClusterNetworksIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgsDict']]
+    bond_policy: NotRequired[pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]]
     """
     Bond policy See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgsDict']]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -378,9 +378,9 @@ class ClusterNetworksIpAllocationPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyArgs:
     def __init__(__self__, *,
-                 bond_policy: Optional[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgs']] = None,
-                 machine_type_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
-                 node_policies: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]] = None):
+                 bond_policy: pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgs']] = None,
+                 machine_type_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
+                 node_policies: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]] = None):
         """
         :param pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgs'] bond_policy: Bond policy See `bond_policy` below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]] machine_type_policies: Model Assignment Policy See `machine_type_policy` below.
@@ -395,47 +395,47 @@ class ClusterNetworksIpAllocationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondPolicy")
-    def bond_policy(self) -> Optional[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]:
+    def bond_policy(self) -> pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]:
         """
         Bond policy See `bond_policy` below.
         """
         return pulumi.get(self, "bond_policy")
 
     @bond_policy.setter
-    def bond_policy(self, value: Optional[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]):
+    def bond_policy(self, value: pulumi.Input[Optional['ClusterNetworksIpAllocationPolicyBondPolicyArgs']]):
         pulumi.set(self, "bond_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypePolicies")
-    def machine_type_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]:
+    def machine_type_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]:
         """
         Model Assignment Policy See `machine_type_policy` below.
         """
         return pulumi.get(self, "machine_type_policies")
 
     @machine_type_policies.setter
-    def machine_type_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]):
+    def machine_type_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs']]]]):
         pulumi.set(self, "machine_type_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePolicies")
-    def node_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]:
+    def node_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]:
         """
         Node allocation policy See `node_policy` below.
         """
         return pulumi.get(self, "node_policies")
 
     @node_policies.setter
-    def node_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]):
+    def node_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyArgs']]]]):
         pulumi.set(self, "node_policies", value)
 
 
 class ClusterNetworksIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    bond_default_subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -443,8 +443,8 @@ class ClusterNetworksIpAllocationPolicyBondPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyBondPolicyArgs:
     def __init__(__self__, *,
-                 bond_default_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]] = None):
+                 bond_default_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] bond_default_subnet: Default bond cluster subnet
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]] bonds: Bond information See `bonds` below.
@@ -456,35 +456,35 @@ class ClusterNetworksIpAllocationPolicyBondPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondDefaultSubnet")
-    def bond_default_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bond_default_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default bond cluster subnet
         """
         return pulumi.get(self, "bond_default_subnet")
 
     @bond_default_subnet.setter
-    def bond_default_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bond_default_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bond_default_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyBondPolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
 
 class ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -492,8 +492,8 @@ class ClusterNetworksIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyBondPolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -505,41 +505,41 @@ class ClusterNetworksIpAllocationPolicyBondPolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         """
@@ -550,32 +550,32 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -583,8 +583,8 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -596,41 +596,41 @@ class ClusterNetworksIpAllocationPolicyMachineTypePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class ClusterNetworksIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyNodePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         """
@@ -641,32 +641,32 @@ class ClusterNetworksIpAllocationPolicyNodePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksIpAllocationPolicyNodePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
 class ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -674,8 +674,8 @@ class ClusterNetworksIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksIpAllocationPolicyNodePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -687,55 +687,55 @@ class ClusterNetworksIpAllocationPolicyNodePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class ClusterNetworksNewVpdInfoArgsDict(TypedDict):
-    cen_id: NotRequired[pulumi.Input[_builtins.str]]
+    cen_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud Enterprise Network ID
     """
-    cloud_link_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_link_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud chain cidr
     """
-    cloud_link_id: NotRequired[pulumi.Input[_builtins.str]]
+    cloud_link_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cloud chain ID
     """
-    monitor_vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    monitor_vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Proprietary Network
     """
-    monitor_vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    monitor_vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Proprietary network switch
     """
-    vpd_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    vpd_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Cluster network segment
     """
-    vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgsDict']]]]
+    vpd_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]]
     """
     List of cluster subnet ID
     """
@@ -743,13 +743,13 @@ class ClusterNetworksNewVpdInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksNewVpdInfoArgs:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_link_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cloud_link_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_link_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cloud_link_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] cen_id: Cloud Enterprise Network ID
         :param pulumi.Input[_builtins.str] cloud_link_cidr: Cloud chain cidr
@@ -776,106 +776,106 @@ class ClusterNetworksNewVpdInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud Enterprise Network ID
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudLinkCidr")
-    def cloud_link_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_link_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud chain cidr
         """
         return pulumi.get(self, "cloud_link_cidr")
 
     @cloud_link_cidr.setter
-    def cloud_link_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_link_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_link_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cloudLinkId")
-    def cloud_link_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cloud_link_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud chain ID
         """
         return pulumi.get(self, "cloud_link_id")
 
     @cloud_link_id.setter
-    def cloud_link_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cloud_link_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cloud_link_id", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorVpcId")
-    def monitor_vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proprietary Network
         """
         return pulumi.get(self, "monitor_vpc_id")
 
     @monitor_vpc_id.setter
-    def monitor_vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorVswitchId")
-    def monitor_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Proprietary network switch
         """
         return pulumi.get(self, "monitor_vswitch_id")
 
     @monitor_vswitch_id.setter
-    def monitor_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdCidr")
-    def vpd_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpd_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster network segment
         """
         return pulumi.get(self, "vpd_cidr")
 
     @vpd_cidr.setter
-    def vpd_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpd_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpd_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdSubnets")
-    def vpd_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]:
+    def vpd_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]:
         """
         List of cluster subnet ID
         """
         return pulumi.get(self, "vpd_subnets")
 
     @vpd_subnets.setter
-    def vpd_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]):
+    def vpd_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNetworksNewVpdInfoVpdSubnetArgs']]]]):
         pulumi.set(self, "vpd_subnets", value)
 
 
 class ClusterNetworksNewVpdInfoVpdSubnetArgsDict(TypedDict):
-    subnet_cidr: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_cidr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subnet cidr
     """
-    subnet_type: NotRequired[pulumi.Input[_builtins.str]]
+    subnet_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Subnet Type
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterNetworksNewVpdInfoVpdSubnetArgs:
     def __init__(__self__, *,
-                 subnet_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 subnet_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] subnet_cidr: Subnet cidr
         :param pulumi.Input[_builtins.str] subnet_type: Subnet Type
@@ -889,44 +889,44 @@ class ClusterNetworksNewVpdInfoVpdSubnetArgs:
 
     @_builtins.property
     @pulumi.getter(name="subnetCidr")
-    def subnet_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subnet cidr
         """
         return pulumi.get(self, "subnet_cidr")
 
     @subnet_cidr.setter
-    def subnet_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="subnetType")
-    def subnet_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subnet Type
         """
         return pulumi.get(self, "subnet_type")
 
     @subnet_type.setter
-    def subnet_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class ClusterNetworksVpdInfoArgsDict(TypedDict):
-    vpd_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpd_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC ID
     """
-    vpd_subnets: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vpd_subnets: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of cluster subnet ID
     """
@@ -934,8 +934,8 @@ class ClusterNetworksVpdInfoArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNetworksVpdInfoArgs:
     def __init__(__self__, *,
-                 vpd_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 vpd_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] vpd_id: VPC ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpd_subnets: List of cluster subnet ID
@@ -947,55 +947,55 @@ class ClusterNetworksVpdInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="vpdId")
-    def vpd_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpd_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpd_id")
 
     @vpd_id.setter
-    def vpd_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpd_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpd_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdSubnets")
-    def vpd_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpd_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of cluster subnet ID
         """
         return pulumi.get(self, "vpd_subnets")
 
     @vpd_subnets.setter
-    def vpd_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpd_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpd_subnets", value)
 
 
 class ClusterNodeGroupArgsDict(TypedDict):
-    image_id: NotRequired[pulumi.Input[_builtins.str]]
+    image_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System Image ID
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Model
     """
-    node_group_description: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node Group Description
     """
-    node_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node Group Name
     """
-    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgsDict']]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]]
     """
     Node List See `nodes` below.
     """
-    user_data: NotRequired[pulumi.Input[_builtins.str]]
+    user_data: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
     """
-    zone_id: NotRequired[pulumi.Input[_builtins.str]]
+    zone_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Zone ID
     """
@@ -1003,13 +1003,13 @@ class ClusterNodeGroupArgsDict(TypedDict):
 @pulumi.input_type
 class ClusterNodeGroupArgs:
     def __init__(__self__, *,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image_id: System Image ID
         :param pulumi.Input[_builtins.str] machine_type: Model
@@ -1036,110 +1036,110 @@ class ClusterNodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System Image ID
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Model
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupDescription")
-    def node_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Group Description
         """
         return pulumi.get(self, "node_group_description")
 
     @node_group_description.setter
-    def node_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_description", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Group Name
         """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]:
         """
         Node List See `nodes` below.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterNodeGroupNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance custom data. It needs to be encoded in Base64 mode, and the original data is at most 16KB.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 class ClusterNodeGroupNodeArgsDict(TypedDict):
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name
     """
-    login_password: NotRequired[pulumi.Input[_builtins.str]]
+    login_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Login Password
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class ClusterNodeGroupNodeArgs:
     def __init__(__self__, *,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] login_password: Login Password
@@ -1157,53 +1157,53 @@ class ClusterNodeGroupNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -1229,7 +1229,7 @@ class ExperimentPlanTemplateTemplatePipelineArgsDict(TypedDict):
     """
     The name used to represent a specific payload.
     """
-    setting_params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    setting_params: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Represents additional parameters for the run.
     """
@@ -1242,7 +1242,7 @@ class ExperimentPlanTemplateTemplatePipelineArgs:
                  scene: pulumi.Input[_builtins.str],
                  workload_id: pulumi.Input[_builtins.int],
                  workload_name: pulumi.Input[_builtins.str],
-                 setting_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 setting_params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input['ExperimentPlanTemplateTemplatePipelineEnvParamsArgs'] env_params: Contains a series of parameters related to the environment. See `env_params` below.
         :param pulumi.Input[_builtins.int] pipeline_order: Indicates the sequence number of the pipeline node.
@@ -1323,14 +1323,14 @@ class ExperimentPlanTemplateTemplatePipelineArgs:
 
     @_builtins.property
     @pulumi.getter(name="settingParams")
-    def setting_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def setting_params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Represents additional parameters for the run.
         """
         return pulumi.get(self, "setting_params")
 
     @setting_params.setter
-    def setting_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def setting_params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "setting_params", value)
 
 
@@ -1355,19 +1355,19 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgsDict(TypedDict):
     """
     The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
     """
-    cuda_version: NotRequired[pulumi.Input[_builtins.str]]
+    cuda_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
     """
-    gpu_driver_version: NotRequired[pulumi.Input[_builtins.str]]
+    gpu_driver_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
     """
-    nccl_version: NotRequired[pulumi.Input[_builtins.str]]
+    nccl_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
     """
-    py_torch_version: NotRequired[pulumi.Input[_builtins.str]]
+    py_torch_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
     """
@@ -1380,10 +1380,10 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
                  memory_per_worker: pulumi.Input[_builtins.int],
                  share_memory: pulumi.Input[_builtins.int],
                  worker_num: pulumi.Input[_builtins.int],
-                 cuda_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_driver_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 nccl_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 py_torch_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cuda_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_driver_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 nccl_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 py_torch_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] cpu_per_worker: Number of central processing units (CPUs) allocated. This parameter affects the processing power of the computation, especially in tasks that require a large amount of parallel processing.
         :param pulumi.Input[_builtins.int] gpu_per_worker: Number of graphics processing units (GPUs). GPUs are a key component in deep learning and large-scale data processing, so this parameter is very important for tasks that require graphics-accelerated computing.
@@ -1471,78 +1471,78 @@ class ExperimentPlanTemplateTemplatePipelineEnvParamsArgs:
 
     @_builtins.property
     @pulumi.getter(name="cudaVersion")
-    def cuda_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cuda_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of CUDA(Compute Unified Device Architecture) used. CUDA is a parallel computing platform and programming model provided by NVIDIA. A specific version may affect the available GPU functions and performance optimization.
         """
         return pulumi.get(self, "cuda_version")
 
     @cuda_version.setter
-    def cuda_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cuda_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cuda_version", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuDriverVersion")
-    def gpu_driver_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_driver_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the GPU driver used. Driver version may affect GPU performance and compatibility, so it is important to ensure that the correct version is used
         """
         return pulumi.get(self, "gpu_driver_version")
 
     @gpu_driver_version.setter
-    def gpu_driver_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_driver_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_driver_version", value)
 
     @_builtins.property
     @pulumi.getter(name="ncclVersion")
-    def nccl_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nccl_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NVIDIA Collective Communications Library(NCCL) version used. NCCL is a library for multi-GPU and multi-node communication. This parameter is particularly important for optimizing data transmission in distributed computing.
         """
         return pulumi.get(self, "nccl_version")
 
     @nccl_version.setter
-    def nccl_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nccl_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nccl_version", value)
 
     @_builtins.property
     @pulumi.getter(name="pyTorchVersion")
-    def py_torch_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def py_torch_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
         """
         return pulumi.get(self, "py_torch_version")
 
     @py_torch_version.setter
-    def py_torch_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def py_torch_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "py_torch_version", value)
 
 
 class HyperNodeDataDiskArgsDict(TypedDict):
-    bursting_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    bursting_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable Burst (performance Burst).
     """
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The disk type. Value range:
     - cloud_essd:ESSD cloud disk.
     """
-    delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_with_node: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the data disk is unsubscribed and deleted with the node.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
     - PL0: maximum random read/write IOPS 10000 for a single disk.
     - PL1: maximum random read/write IOPS 50000 for a single disk.
     """
-    provisioned_iops: NotRequired[pulumi.Input[_builtins.int]]
+    provisioned_iops: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the disk. The unit is GiB.
     """
@@ -1550,12 +1550,12 @@ class HyperNodeDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class HyperNodeDataDiskArgs:
     def __init__(__self__, *,
-                 bursting_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_with_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 bursting_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_with_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] bursting_enabled: Whether to enable Burst (performance Burst).
         :param pulumi.Input[_builtins.str] category: The disk type. Value range:
@@ -1582,19 +1582,19 @@ class HyperNodeDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="burstingEnabled")
-    def bursting_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bursting_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable Burst (performance Burst).
         """
         return pulumi.get(self, "bursting_enabled")
 
     @bursting_enabled.setter
-    def bursting_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bursting_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bursting_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk type. Value range:
         - cloud_essd:ESSD cloud disk.
@@ -1602,24 +1602,24 @@ class HyperNodeDataDiskArgs:
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteWithNode")
-    def delete_with_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the data disk is unsubscribed and deleted with the node.
         """
         return pulumi.get(self, "delete_with_node")
 
     @delete_with_node.setter
-    def delete_with_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_node(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_node", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When creating an ESSD cloud disk to use as a system disk, set the performance level of the cloud disk. Value range:
         - PL0: maximum random read/write IOPS 10000 for a single disk.
@@ -1628,44 +1628,44 @@ class HyperNodeDataDiskArgs:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ESSD AutoPL cloud disk (single disk) pre-configuration performance of IOPS.
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the disk. The unit is GiB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class NodeDataDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk type
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance level
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Data disk size
     """
@@ -1673,9 +1673,9 @@ class NodeDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class NodeDataDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Data disk type
         :param pulumi.Input[_builtins.str] performance_level: Performance level
@@ -1690,55 +1690,55 @@ class NodeDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk type
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance level
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data disk size
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
-    category: NotRequired[pulumi.Input[_builtins.str]]
+    category: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Type
     """
-    delete_with_node: NotRequired[pulumi.Input[_builtins.bool]]
+    delete_with_node: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
     """
-    performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Performance level
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Data disk size
     """
@@ -1746,10 +1746,10 @@ class NodeGroupAttachmentDataDiskArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupAttachmentDataDiskArgs:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_with_node: Optional[pulumi.Input[_builtins.bool]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_with_node: pulumi.Input[Optional[_builtins.bool]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] category: Type
         :param pulumi.Input[_builtins.bool] delete_with_node: Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
@@ -1767,63 +1767,63 @@ class NodeGroupAttachmentDataDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteWithNode")
-    def delete_with_node(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_node(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
         """
         return pulumi.get(self, "delete_with_node")
 
     @delete_with_node.setter
-    def delete_with_node(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_node(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_node", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance level
         """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Data disk size
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgsDict']]
+    bond_policy: NotRequired[pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgs']]]
     """
     Specify the cluster subnet ID based on the bond name See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgsDict']]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -1831,9 +1831,9 @@ class NodeGroupIpAllocationPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyArgs:
     def __init__(__self__, *,
-                 bond_policy: Optional[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgs']] = None,
-                 machine_type_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
-                 node_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]] = None):
+                 bond_policy: pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgs']] = None,
+                 machine_type_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
+                 node_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]] = None):
         """
         :param pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgs'] bond_policy: Specify the cluster subnet ID based on the bond name See `bond_policy` below.
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]] machine_type_policies: Model Assignment Policy See `machine_type_policy` below.
@@ -1848,47 +1848,47 @@ class NodeGroupIpAllocationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondPolicy")
-    def bond_policy(self) -> Optional[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgs']]:
+    def bond_policy(self) -> pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgs']]:
         """
         Specify the cluster subnet ID based on the bond name See `bond_policy` below.
         """
         return pulumi.get(self, "bond_policy")
 
     @bond_policy.setter
-    def bond_policy(self, value: Optional[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyArgs']]):
+    def bond_policy(self, value: pulumi.Input[Optional['NodeGroupIpAllocationPolicyBondPolicyArgs']]):
         pulumi.set(self, "bond_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypePolicies")
-    def machine_type_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]:
+    def machine_type_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]:
         """
         Model Assignment Policy See `machine_type_policy` below.
         """
         return pulumi.get(self, "machine_type_policies")
 
     @machine_type_policies.setter
-    def machine_type_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]):
+    def machine_type_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyArgs']]]]):
         pulumi.set(self, "machine_type_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePolicies")
-    def node_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]:
+    def node_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]:
         """
         Node allocation policy See `node_policy` below.
         """
         return pulumi.get(self, "node_policies")
 
     @node_policies.setter
-    def node_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]):
+    def node_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyArgs']]]]):
         pulumi.set(self, "node_policies", value)
 
 
 class NodeGroupIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    bond_default_subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -1896,8 +1896,8 @@ class NodeGroupIpAllocationPolicyBondPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyBondPolicyArgs:
     def __init__(__self__, *,
-                 bond_default_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]] = None):
+                 bond_default_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] bond_default_subnet: Default bond cluster subnet
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]] bonds: Bond information See `bonds` below.
@@ -1909,35 +1909,35 @@ class NodeGroupIpAllocationPolicyBondPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondDefaultSubnet")
-    def bond_default_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bond_default_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default bond cluster subnet
         """
         return pulumi.get(self, "bond_default_subnet")
 
     @bond_default_subnet.setter
-    def bond_default_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bond_default_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bond_default_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyBondPolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
 
 class NodeGroupIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -1945,8 +1945,8 @@ class NodeGroupIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyBondPolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -1958,35 +1958,35 @@ class NodeGroupIpAllocationPolicyBondPolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Machine type
     """
@@ -1994,8 +1994,8 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyMachineTypePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         :param pulumi.Input[_builtins.str] machine_type: Machine type
@@ -2007,35 +2007,35 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine type
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -2043,8 +2043,8 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -2056,41 +2056,41 @@ class NodeGroupIpAllocationPolicyMachineTypePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class NodeGroupIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyNodePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         """
@@ -2101,32 +2101,32 @@ class NodeGroupIpAllocationPolicyNodePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyNodePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
 class NodeGroupIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The bond name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -2134,8 +2134,8 @@ class NodeGroupIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupIpAllocationPolicyNodePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The bond name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -2147,47 +2147,47 @@ class NodeGroupIpAllocationPolicyNodePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bond name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class NodeGroupNodeArgsDict(TypedDict):
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name
     """
-    login_password: NotRequired[pulumi.Input[_builtins.str]]
+    login_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Login Password
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node ID
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC ID
     """
-    vswitch_id: NotRequired[pulumi.Input[_builtins.str]]
+    vswitch_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Switch ID
     """
@@ -2195,11 +2195,11 @@ class NodeGroupNodeArgsDict(TypedDict):
 @pulumi.input_type
 class NodeGroupNodeArgs:
     def __init__(__self__, *,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] hostname: Host name
         :param pulumi.Input[_builtins.str] login_password: Login Password
@@ -2220,75 +2220,75 @@ class NodeGroupNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node ID
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 class NodeIpAllocationPolicyArgsDict(TypedDict):
-    bond_policy: NotRequired[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgsDict']]
+    bond_policy: NotRequired[pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgs']]]
     """
     Specify the cluster subnet ID based on the bond name See `bond_policy` below.
     """
-    machine_type_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgsDict']]]]
+    machine_type_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]]
     """
     Model Assignment Policy See `machine_type_policy` below.
     """
-    node_policies: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgsDict']]]]
+    node_policies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]]
     """
     Node allocation policy See `node_policy` below.
     """
@@ -2296,9 +2296,9 @@ class NodeIpAllocationPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyArgs:
     def __init__(__self__, *,
-                 bond_policy: Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']] = None,
-                 machine_type_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
-                 node_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]] = None):
+                 bond_policy: pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgs']] = None,
+                 machine_type_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]] = None,
+                 node_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]] = None):
         """
         :param pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs'] bond_policy: Specify the cluster subnet ID based on the bond name See `bond_policy` below.
         :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]] machine_type_policies: Model Assignment Policy See `machine_type_policy` below.
@@ -2313,47 +2313,47 @@ class NodeIpAllocationPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondPolicy")
-    def bond_policy(self) -> Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']]:
+    def bond_policy(self) -> pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgs']]:
         """
         Specify the cluster subnet ID based on the bond name See `bond_policy` below.
         """
         return pulumi.get(self, "bond_policy")
 
     @bond_policy.setter
-    def bond_policy(self, value: Optional[pulumi.Input['NodeIpAllocationPolicyBondPolicyArgs']]):
+    def bond_policy(self, value: pulumi.Input[Optional['NodeIpAllocationPolicyBondPolicyArgs']]):
         pulumi.set(self, "bond_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="machineTypePolicies")
-    def machine_type_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]:
+    def machine_type_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]:
         """
         Model Assignment Policy See `machine_type_policy` below.
         """
         return pulumi.get(self, "machine_type_policies")
 
     @machine_type_policies.setter
-    def machine_type_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]):
+    def machine_type_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyArgs']]]]):
         pulumi.set(self, "machine_type_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePolicies")
-    def node_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]:
+    def node_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]:
         """
         Node allocation policy See `node_policy` below.
         """
         return pulumi.get(self, "node_policies")
 
     @node_policies.setter
-    def node_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]):
+    def node_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyArgs']]]]):
         pulumi.set(self, "node_policies", value)
 
 
 class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
-    bond_default_subnet: NotRequired[pulumi.Input[_builtins.str]]
+    bond_default_subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Default bond cluster subnet
     """
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
@@ -2361,8 +2361,8 @@ class NodeIpAllocationPolicyBondPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyBondPolicyArgs:
     def __init__(__self__, *,
-                 bond_default_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]] = None):
+                 bond_default_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] bond_default_subnet: Default bond cluster subnet
         :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]] bonds: Bond information See `bonds` below.
@@ -2374,35 +2374,35 @@ class NodeIpAllocationPolicyBondPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondDefaultSubnet")
-    def bond_default_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bond_default_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default bond cluster subnet
         """
         return pulumi.get(self, "bond_default_subnet")
 
     @bond_default_subnet.setter
-    def bond_default_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bond_default_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bond_default_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyBondPolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
 
 class NodeIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Bond Name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -2410,8 +2410,8 @@ class NodeIpAllocationPolicyBondPolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyBondPolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Bond Name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -2423,35 +2423,35 @@ class NodeIpAllocationPolicyBondPolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Bond Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    machine_type: NotRequired[pulumi.Input[_builtins.str]]
+    machine_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Model
     """
@@ -2459,8 +2459,8 @@ class NodeIpAllocationPolicyMachineTypePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyMachineTypePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         :param pulumi.Input[_builtins.str] machine_type: Model
@@ -2472,35 +2472,35 @@ class NodeIpAllocationPolicyMachineTypePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyMachineTypePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Model
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
 
 class NodeIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Bond Name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -2508,8 +2508,8 @@ class NodeIpAllocationPolicyMachineTypePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Bond Name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -2521,39 +2521,39 @@ class NodeIpAllocationPolicyMachineTypePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Bond Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
 class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
-    bonds: NotRequired[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgsDict']]]]
+    bonds: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]]
     """
     Bond information See `bonds` below.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Host name
     """
-    node_id: NotRequired[pulumi.Input[_builtins.str]]
+    node_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Node ID
     """
@@ -2561,9 +2561,9 @@ class NodeIpAllocationPolicyNodePolicyArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyNodePolicyArgs:
     def __init__(__self__, *,
-                 bonds: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bonds: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]] bonds: Bond information See `bonds` below.
         :param pulumi.Input[_builtins.str] hostname: Host name
@@ -2578,47 +2578,47 @@ class NodeIpAllocationPolicyNodePolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bonds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]:
+    def bonds(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]:
         """
         Bond information See `bonds` below.
         """
         return pulumi.get(self, "bonds")
 
     @bonds.setter
-    def bonds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]):
+    def bonds(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyNodePolicyBondArgs']]]]):
         pulumi.set(self, "bonds", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node ID
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
 class NodeIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Bond Name
     """
-    subnet: NotRequired[pulumi.Input[_builtins.str]]
+    subnet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     IP source cluster subnet
     """
@@ -2626,8 +2626,8 @@ class NodeIpAllocationPolicyNodePolicyBondArgsDict(TypedDict):
 @pulumi.input_type
 class NodeIpAllocationPolicyNodePolicyBondArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 subnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 subnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Bond Name
         :param pulumi.Input[_builtins.str] subnet: IP source cluster subnet
@@ -2639,26 +2639,26 @@ class NodeIpAllocationPolicyNodePolicyBondArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Bond Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP source cluster subnet
         """
         return pulumi.get(self, "subnet")
 
     @subnet.setter
-    def subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subnet", value)
 
 
@@ -2671,35 +2671,35 @@ class ResourceMachineTypesArgsDict(TypedDict):
     """
     Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
     """
-    bond_num: NotRequired[pulumi.Input[_builtins.int]]
+    bond_num: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
     """
-    disk_info: NotRequired[pulumi.Input[_builtins.str]]
+    disk_info: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
     """
-    memory_info: NotRequired[pulumi.Input[_builtins.str]]
+    memory_info: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specification Name.
     """
-    network_info: NotRequired[pulumi.Input[_builtins.str]]
+    network_info: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
     """
-    network_mode: NotRequired[pulumi.Input[_builtins.str]]
+    network_mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
     """
-    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    node_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
     """
@@ -2709,14 +2709,14 @@ class ResourceMachineTypesArgs:
     def __init__(__self__, *,
                  cpu_info: pulumi.Input[_builtins.str],
                  gpu_info: pulumi.Input[_builtins.str],
-                 bond_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 bond_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpu_info: Provides CPU details, including the number of cores, number of threads, clock frequency, and architecture type. This information helps to evaluate the processing power and identify whether it can meet the performance requirements of a particular application.
         :param pulumi.Input[_builtins.str] gpu_info: Provides detailed information about the GPU, including the number, model, memory size, and computing capability. This information is particularly important for tasks such as deep learning, scientific computing, and graph processing, helping users understand the graph processing capabilities of nodes.
@@ -2774,98 +2774,98 @@ class ResourceMachineTypesArgs:
 
     @_builtins.property
     @pulumi.getter(name="bondNum")
-    def bond_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bond_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This property specifies the number of network bindings, which relates to the number of physical or virtual network cards connected to the network through the network interface card (NIC). Multiple network bindings can increase bandwidth and redundancy and improve network reliability.
         """
         return pulumi.get(self, "bond_num")
 
     @bond_num.setter
-    def bond_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bond_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bond_num", value)
 
     @_builtins.property
     @pulumi.getter(name="diskInfo")
-    def disk_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Displays information about the storage device, including the disk type (such as SSD or HDD), capacity, and I/O performance. Storage performance is critical in data-intensive applications such as big data processing and databases.
         """
         return pulumi.get(self, "disk_info")
 
     @disk_info.setter
-    def disk_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_info", value)
 
     @_builtins.property
     @pulumi.getter(name="memoryInfo")
-    def memory_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def memory_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This property provides memory details, including total memory, available memory, and usage. This helps users understand the memory processing capabilities of compute nodes, especially when running heavy-duty applications.
         """
         return pulumi.get(self, "memory_info")
 
     @memory_info.setter
-    def memory_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def memory_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "memory_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specification Name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInfo")
-    def network_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Contains detailed information about the network interface, such as network bandwidth, latency, protocol types supported by the network, IP addresses, and network topology. Optimizing network information is essential to ensure efficient data transmission and low latency.
         """
         return pulumi.get(self, "network_info")
 
     @network_info.setter
-    def network_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_info", value)
 
     @_builtins.property
     @pulumi.getter(name="networkMode")
-    def network_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the network mode, such as bridge mode, NAT mode, or direct connection mode. Different network modes affect the network configuration and data transmission performance of nodes, and affect the network access methods of computing instances.
         """
         return pulumi.get(self, "network_mode")
 
     @network_mode.setter
-    def network_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeCount")
-    def node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the total number of compute nodes. This property is particularly important in distributed computing and cluster environments, because the number of nodes often directly affects the computing power and the ability to parallel processing.
         """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
-    def node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "node_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Usually refers to a specific resource type (such as virtual machine, physical server, container, etc.), which is used to distinguish different computing units or resource categories.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

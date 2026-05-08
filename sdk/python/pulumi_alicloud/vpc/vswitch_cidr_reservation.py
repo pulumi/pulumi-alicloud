@@ -20,12 +20,12 @@ __all__ = ['VswitchCidrReservationArgs', 'VswitchCidrReservation']
 class VswitchCidrReservationArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[_builtins.str],
-                 cidr_reservation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VswitchCidrReservation resource.
 
@@ -65,91 +65,91 @@ class VswitchCidrReservationArgs:
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationCidr")
-    def cidr_reservation_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved network segment CIdrBlock.
         """
         return pulumi.get(self, "cidr_reservation_cidr")
 
     @cidr_reservation_cidr.setter
-    def cidr_reservation_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationDescription")
-    def cidr_reservation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the reserved CIDR block.
         """
         return pulumi.get(self, "cidr_reservation_description")
 
     @cidr_reservation_description.setter
-    def cidr_reservation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationMask")
-    def cidr_reservation_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved segment mask.
         """
         return pulumi.get(self, "cidr_reservation_mask")
 
     @cidr_reservation_mask.setter
-    def cidr_reservation_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationType")
-    def cidr_reservation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
         """
         return pulumi.get(self, "cidr_reservation_type")
 
     @cidr_reservation_type.setter
-    def cidr_reservation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchCidrReservationName")
-    def vswitch_cidr_reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_cidr_reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "vswitch_cidr_reservation_name")
 
     @vswitch_cidr_reservation_name.setter
-    def vswitch_cidr_reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_cidr_reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_cidr_reservation_name", value)
 
 
 @pulumi.input_type
 class _VswitchCidrReservationState:
     def __init__(__self__, *,
-                 cidr_reservation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr_reservation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr_reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VswitchCidrReservation resources.
 
@@ -190,134 +190,134 @@ class _VswitchCidrReservationState:
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationCidr")
-    def cidr_reservation_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved network segment CIdrBlock.
         """
         return pulumi.get(self, "cidr_reservation_cidr")
 
     @cidr_reservation_cidr.setter
-    def cidr_reservation_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationDescription")
-    def cidr_reservation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the reserved CIDR block.
         """
         return pulumi.get(self, "cidr_reservation_description")
 
     @cidr_reservation_description.setter
-    def cidr_reservation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationMask")
-    def cidr_reservation_mask(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_mask(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved segment mask.
         """
         return pulumi.get(self, "cidr_reservation_mask")
 
     @cidr_reservation_mask.setter
-    def cidr_reservation_mask(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_mask(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrReservationType")
-    def cidr_reservation_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr_reservation_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
         """
         return pulumi.get(self, "cidr_reservation_type")
 
     @cidr_reservation_type.setter
-    def cidr_reservation_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr_reservation_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr_reservation_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the vpc instance to which the reserved CIDR block belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchCidrReservationId")
-    def vswitch_cidr_reservation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_cidr_reservation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource attribute field of the resource ID.
         """
         return pulumi.get(self, "vswitch_cidr_reservation_id")
 
     @vswitch_cidr_reservation_id.setter
-    def vswitch_cidr_reservation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_cidr_reservation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_cidr_reservation_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchCidrReservationName")
-    def vswitch_cidr_reservation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_cidr_reservation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "vswitch_cidr_reservation_name")
 
     @vswitch_cidr_reservation_name.setter
-    def vswitch_cidr_reservation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_cidr_reservation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_cidr_reservation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of the switch instance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -327,13 +327,13 @@ class VswitchCidrReservation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_reservation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Vpc Vswitch Cidr Reservation resource. The reserved network segment of the vswitch. This resource type can be used only in ap-southeast region.
@@ -462,13 +462,13 @@ class VswitchCidrReservation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr_reservation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_mask: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -501,17 +501,17 @@ class VswitchCidrReservation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr_reservation_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_reservation_description: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_reservation_mask: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_reservation_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_cidr_reservation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_cidr_reservation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VswitchCidrReservation':
+            cidr_reservation_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_mask: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_reservation_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr_reservation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_cidr_reservation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VswitchCidrReservation':
         """
         Get an existing VswitchCidrReservation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

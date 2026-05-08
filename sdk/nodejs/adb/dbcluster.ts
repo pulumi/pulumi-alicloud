@@ -326,127 +326,127 @@ export interface DBClusterState {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
      */
-    computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string | undefined>;
     /**
      * The connection string of the cluster.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      */
-    dbClusterCategory?: pulumi.Input<string>;
+    dbClusterCategory?: pulumi.Input<string | undefined>;
     /**
      * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
-    dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string | undefined>;
     /**
      * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
-    dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
-    dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
      * The db node count.
      */
-    dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The db node storage.
      */
-    dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number | undefined>;
     /**
      * The description of DBCluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    diskEncryption?: pulumi.Input<boolean>;
+    diskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
-    diskPerformanceLevel?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The elastic io resource.
      */
-    elasticIoResource?: pulumi.Input<number>;
+    elasticIoResource?: pulumi.Input<number | undefined>;
     /**
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
      * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
-    elasticIoResourceSize?: pulumi.Input<string>;
+    elasticIoResourceSize?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The minor version to which you want to update.
      */
-    kernelVersion?: pulumi.Input<string>;
+    kernelVersion?: pulumi.Input<string | undefined>;
     /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    kmsId?: pulumi.Input<string>;
+    kmsId?: pulumi.Input<string | undefined>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The modify type.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the ADB cluster.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The time when to perform the update. Valid values:
      */
-    switchMode?: pulumi.Input<number>;
+    switchMode?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -454,19 +454,19 @@ export interface DBClusterState {
      *
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vpc ID of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -476,11 +476,11 @@ export interface DBClusterArgs {
     /**
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `paymentType` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
      */
-    computeResource?: pulumi.Input<string>;
+    computeResource?: pulumi.Input<string | undefined>;
     /**
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      */
@@ -490,62 +490,62 @@ export interface DBClusterArgs {
      *
      * @deprecated It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      */
-    dbClusterClass?: pulumi.Input<string>;
+    dbClusterClass?: pulumi.Input<string | undefined>;
     /**
      * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      */
-    dbClusterVersion?: pulumi.Input<string>;
+    dbClusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      */
-    dbNodeClass?: pulumi.Input<string>;
+    dbNodeClass?: pulumi.Input<string | undefined>;
     /**
      * The db node count.
      */
-    dbNodeCount?: pulumi.Input<number>;
+    dbNodeCount?: pulumi.Input<number | undefined>;
     /**
      * The db node storage.
      */
-    dbNodeStorage?: pulumi.Input<number>;
+    dbNodeStorage?: pulumi.Input<number | undefined>;
     /**
      * The description of DBCluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable disk encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    diskEncryption?: pulumi.Input<boolean>;
+    diskEncryption?: pulumi.Input<boolean | undefined>;
     /**
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      */
-    diskPerformanceLevel?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The elastic io resource.
      */
-    elasticIoResource?: pulumi.Input<number>;
+    elasticIoResource?: pulumi.Input<number | undefined>;
     /**
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * - `8Core64GB`: If you set `elasticIoResourceSize` to `8Core64GB`, the specifications of an EIU are 24 cores and 192 GB memory.
      * - `12Core96GB`: If you set `elasticIoResourceSize` to `12Core96GB`, the specifications of an EIU are 36 cores and 288 GB memory.
      * - `16Core128GB`: (Available since v1.237.0)If you set `elasticIoResourceSize` to `16Core128GB`, the specifications of an EIU are 48 cores and 384 GB memory.
      */
-    elasticIoResourceSize?: pulumi.Input<string>;
+    elasticIoResourceSize?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * The minor version to which you want to update.
      */
-    kernelVersion?: pulumi.Input<string>;
+    kernelVersion?: pulumi.Input<string | undefined>;
     /**
      * The Key Management Service (KMS) ID that is used for disk encryption. `kmsId` is valid only when `diskEncryption` is set to `true`.
      */
-    kmsId?: pulumi.Input<string>;
+    kmsId?: pulumi.Input<string | undefined>;
     /**
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      */
-    maintainTime?: pulumi.Input<string>;
+    maintainTime?: pulumi.Input<string | undefined>;
     /**
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      */
@@ -553,38 +553,38 @@ export interface DBClusterArgs {
     /**
      * The modify type.
      */
-    modifyType?: pulumi.Input<string>;
+    modifyType?: pulumi.Input<string | undefined>;
     /**
      * Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `paymentType` supports updating from v1.166.0+.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DB cluster (in month). It is valid when `paymentType` is `Subscription`. Valid values: [1~9], 12, 24, 36.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      */
-    securityIps?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The time when to perform the update. Valid values:
      */
-    switchMode?: pulumi.Input<number>;
+    switchMode?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -592,17 +592,17 @@ export interface DBClusterArgs {
      *
      * > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The vpc ID of the resource.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vswitch id.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the resource.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -107,7 +107,7 @@ export interface ServiceAgentConfigState {
      * - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
      * - false: The cloud monitoring plug-in is not automatically installed on the newly purchased ECS host.
      */
-    enableInstallAgentNewEcs?: pulumi.Input<boolean>;
+    enableInstallAgentNewEcs?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -119,5 +119,5 @@ export interface ServiceAgentConfigArgs {
      * - true (default): The cloud monitoring plug-in is automatically installed on the newly purchased ECS host.
      * - false: The cloud monitoring plug-in is not automatically installed on the newly purchased ECS host.
      */
-    enableInstallAgentNewEcs?: pulumi.Input<boolean>;
+    enableInstallAgentNewEcs?: pulumi.Input<boolean | undefined>;
 }

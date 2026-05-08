@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Arms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -53,12 +53,12 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             Input = cidrBlock,
+        ///             Input = vpc.CidrBlock,
         ///             Newbits = 8,
         ///             Netnum = 8,
-        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         }).Apply(invoke =&gt; invoke.Result),
         ///     });
         /// 
         ///     var defaultSnapshotPolicy = new AliCloud.Ecs.SnapshotPolicy("default", new()
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Arms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -226,12 +226,12 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             Input = cidrBlock,
+        ///             Input = vpc.CidrBlock,
         ///             Newbits = 8,
         ///             Netnum = 8,
-        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         }).Apply(invoke =&gt; invoke.Result),
         ///     });
         /// 
         ///     var defaultSnapshotPolicy = new AliCloud.Ecs.SnapshotPolicy("default", new()
@@ -378,7 +378,7 @@ namespace Pulumi.AliCloud.Arms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -399,12 +399,12 @@ namespace Pulumi.AliCloud.Arms
         ///         VpcId = vpc.Id,
         ///         VswitchName = $"{name}-{defaultInteger.Result}",
         ///         ZoneId = enhanced.Apply(getEnhancedNatAvailableZonesResult =&gt; getEnhancedNatAvailableZonesResult.Zones[0]?.ZoneId),
-        ///         CidrBlock = vpc.CidrBlock.Apply(cidrBlock =&gt; Std.Index.Cidrsubnet.Invoke(new()
+        ///         CidrBlock = Std.Cidrsubnet.Invoke(new()
         ///         {
-        ///             Input = cidrBlock,
+        ///             Input = vpc.CidrBlock,
         ///             Newbits = 8,
         ///             Netnum = 8,
-        ///         })).Apply(invoke =&gt; invoke.Result),
+        ///         }).Apply(invoke =&gt; invoke.Result),
         ///     });
         /// 
         ///     var defaultSnapshotPolicy = new AliCloud.Ecs.SnapshotPolicy("default", new()

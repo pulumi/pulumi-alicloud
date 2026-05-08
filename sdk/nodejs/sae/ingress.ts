@@ -228,43 +228,43 @@ export interface IngressState {
     /**
      * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      */
-    certIds?: pulumi.Input<string>;
+    certIds?: pulumi.Input<string | undefined>;
     /**
      * Default Rule. See `defaultRule` below.
      */
-    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
+    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * SLB listening port.
      */
-    listenerPort?: pulumi.Input<number>;
+    listenerPort?: pulumi.Input<number | undefined>;
     /**
      * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
      */
-    loadBalanceType?: pulumi.Input<string>;
+    loadBalanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.sae.IngressRule>[] | undefined>;
     /**
      * SLB ID.
      */
-    slbId?: pulumi.Input<string>;
+    slbId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,19 +274,19 @@ export interface IngressArgs {
     /**
      * The certificate ID of the HTTPS listener. The `certId` takes effect only when `loadBalanceType` is set to `clb`.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `certIds` takes effect only when `loadBalanceType` is set to `alb`.
      */
-    certIds?: pulumi.Input<string>;
+    certIds?: pulumi.Input<string | undefined>;
     /**
      * Default Rule. See `defaultRule` below.
      */
-    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule>;
+    defaultRule?: pulumi.Input<inputs.sae.IngressDefaultRule | undefined>;
     /**
      * Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * SLB listening port.
      */
@@ -294,11 +294,11 @@ export interface IngressArgs {
     /**
      * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
      */
-    loadBalanceType?: pulumi.Input<string>;
+    loadBalanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      */

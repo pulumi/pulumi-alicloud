@@ -140,33 +140,33 @@ export interface GetQuotaAlarmsOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Quota Alarm IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Quota Alarm name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Product Code.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The Quota Action Code.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * The name of Quota Alarm.
      */
-    quotaAlarmName?: pulumi.Input<string>;
+    quotaAlarmName?: pulumi.Input<string | undefined>;
     /**
      * The Quota Dimensions.
      */
-    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaAlarmsQuotaDimensionArgs>[]>;
+    quotaDimensions?: pulumi.Input<pulumi.Input<inputs.quotas.GetQuotaAlarmsQuotaDimensionArgs>[] | undefined>;
 }

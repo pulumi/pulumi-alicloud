@@ -144,7 +144,7 @@ export interface GetZnodesOutputArgs {
     /**
      * The language type of the returned information. Valid values: `zh` or `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cluster.
      */
@@ -152,15 +152,15 @@ export interface GetZnodesOutputArgs {
     /**
      * A list of Znode IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Znode name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Node path.
      */

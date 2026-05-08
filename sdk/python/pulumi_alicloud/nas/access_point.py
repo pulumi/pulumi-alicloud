@@ -25,11 +25,11 @@ class AccessPointArgs:
                  file_system_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_ram: Optional[pulumi.Input[_builtins.bool]] = None,
-                 posix_user: Optional[pulumi.Input['AccessPointPosixUserArgs']] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_path_permission: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']] = None):
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+                 posix_user: pulumi.Input[Optional['AccessPointPosixUserArgs']] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_path_permission: pulumi.Input[Optional['AccessPointRootPathPermissionArgs']] = None):
         """
         The set of arguments for constructing a AccessPoint resource.
 
@@ -108,81 +108,81 @@ class AccessPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessPointName")
-    def access_point_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the access point.
         """
         return pulumi.get(self, "access_point_name")
 
     @access_point_name.setter
-    def access_point_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_name", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledRam")
-    def enabled_ram(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_ram(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enabled_ram")
 
     @enabled_ram.setter
-    def enabled_ram(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_ram(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_ram", value)
 
     @_builtins.property
     @pulumi.getter(name="posixUser")
-    def posix_user(self) -> Optional[pulumi.Input['AccessPointPosixUserArgs']]:
+    def posix_user(self) -> pulumi.Input[Optional['AccessPointPosixUserArgs']]:
         """
         The Posix user. See `posix_user` below.
         """
         return pulumi.get(self, "posix_user")
 
     @posix_user.setter
-    def posix_user(self, value: Optional[pulumi.Input['AccessPointPosixUserArgs']]):
+    def posix_user(self, value: pulumi.Input[Optional['AccessPointPosixUserArgs']]):
         pulumi.set(self, "posix_user", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root directory of the access point.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPathPermission")
-    def root_path_permission(self) -> Optional[pulumi.Input['AccessPointRootPathPermissionArgs']]:
+    def root_path_permission(self) -> pulumi.Input[Optional['AccessPointRootPathPermissionArgs']]:
         """
         Root permissions. See `root_path_permission` below.
         """
         return pulumi.get(self, "root_path_permission")
 
     @root_path_permission.setter
-    def root_path_permission(self, value: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']]):
+    def root_path_permission(self, value: pulumi.Input[Optional['AccessPointRootPathPermissionArgs']]):
         pulumi.set(self, "root_path_permission", value)
 
 
 @pulumi.input_type
 class _AccessPointState:
     def __init__(__self__, *,
-                 access_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_ram: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 posix_user: Optional[pulumi.Input['AccessPointPosixUserArgs']] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_path_permission: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 posix_user: pulumi.Input[Optional['AccessPointPosixUserArgs']] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_path_permission: pulumi.Input[Optional['AccessPointRootPathPermissionArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessPoint resources.
 
@@ -229,158 +229,158 @@ class _AccessPointState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroup")
-    def access_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the permission group.
         """
         return pulumi.get(self, "access_group")
 
     @access_group.setter
-    def access_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPointId")
-    def access_point_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the access point.
         """
         return pulumi.get(self, "access_point_id")
 
     @access_point_id.setter
-    def access_point_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessPointName")
-    def access_point_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_point_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the access point.
         """
         return pulumi.get(self, "access_point_name")
 
     @access_point_name.setter
-    def access_point_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_point_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_point_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the access point was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enabledRam")
-    def enabled_ram(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled_ram(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the RAM policy. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enabled_ram")
 
     @enabled_ram.setter
-    def enabled_ram(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled_ram(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled_ram", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="posixUser")
-    def posix_user(self) -> Optional[pulumi.Input['AccessPointPosixUserArgs']]:
+    def posix_user(self) -> pulumi.Input[Optional['AccessPointPosixUserArgs']]:
         """
         The Posix user. See `posix_user` below.
         """
         return pulumi.get(self, "posix_user")
 
     @posix_user.setter
-    def posix_user(self, value: Optional[pulumi.Input['AccessPointPosixUserArgs']]):
+    def posix_user(self, value: pulumi.Input[Optional['AccessPointPosixUserArgs']]):
         pulumi.set(self, "posix_user", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.254.0) The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPath")
-    def root_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root directory of the access point.
         """
         return pulumi.get(self, "root_path")
 
     @root_path.setter
-    def root_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_path", value)
 
     @_builtins.property
     @pulumi.getter(name="rootPathPermission")
-    def root_path_permission(self) -> Optional[pulumi.Input['AccessPointRootPathPermissionArgs']]:
+    def root_path_permission(self) -> pulumi.Input[Optional['AccessPointRootPathPermissionArgs']]:
         """
         Root permissions. See `root_path_permission` below.
         """
         return pulumi.get(self, "root_path_permission")
 
     @root_path_permission.setter
-    def root_path_permission(self, value: Optional[pulumi.Input['AccessPointRootPathPermissionArgs']]):
+    def root_path_permission(self, value: pulumi.Input[Optional['AccessPointRootPathPermissionArgs']]):
         pulumi.set(self, "root_path_permission", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the access point.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -390,15 +390,15 @@ class AccessPoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_ram: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 posix_user: Optional[pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_path_permission: Optional[pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Access Point resource.
@@ -579,15 +579,15 @@ class AccessPoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled_ram: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 posix_user: Optional[pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
-                 root_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_path_permission: Optional[pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+                 root_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -628,19 +628,19 @@ class AccessPoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group: Optional[pulumi.Input[_builtins.str]] = None,
-            access_point_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_point_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled_ram: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            posix_user: Optional[pulumi.Input[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            root_path: Optional[pulumi.Input[_builtins.str]] = None,
-            root_path_permission: Optional[pulumi.Input[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessPoint':
+            access_group: pulumi.Input[Optional[_builtins.str]] = None,
+            access_point_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_point_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled_ram: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            posix_user: pulumi.Input[Optional[Union['AccessPointPosixUserArgs', 'AccessPointPosixUserArgsDict']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_path: pulumi.Input[Optional[_builtins.str]] = None,
+            root_path_permission: pulumi.Input[Optional[Union['AccessPointRootPathPermissionArgs', 'AccessPointRootPathPermissionArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessPoint':
         """
         Get an existing AccessPoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

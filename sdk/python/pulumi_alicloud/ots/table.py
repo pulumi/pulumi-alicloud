@@ -26,13 +26,13 @@ class TableArgs:
                  primary_keys: pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]],
                  table_name: pulumi.Input[_builtins.str],
                  time_to_live: pulumi.Input[_builtins.int],
-                 allow_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
-                 deviation_cell_version_in_sec: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_sse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sse_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
+                 deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Table resource.
 
@@ -131,104 +131,104 @@ class TableArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowUpdate")
-    def allow_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         """
         return pulumi.get(self, "allow_update")
 
     @allow_update.setter
-    def allow_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_update", value)
 
     @_builtins.property
     @pulumi.getter(name="definedColumns")
-    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
+    def defined_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
         """
         The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         """
         return pulumi.get(self, "defined_columns")
 
     @defined_columns.setter
-    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
+    def defined_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
         pulumi.set(self, "defined_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="deviationCellVersionInSec")
-    def deviation_cell_version_in_sec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deviation_cell_version_in_sec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         """
         return pulumi.get(self, "deviation_cell_version_in_sec")
 
     @deviation_cell_version_in_sec.setter
-    def deviation_cell_version_in_sec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deviation_cell_version_in_sec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deviation_cell_version_in_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSse")
-    def enable_sse(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable OTS server side encryption. Default value is false.
         """
         return pulumi.get(self, "enable_sse")
 
     @enable_sse.setter
-    def enable_sse(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_sse", value)
 
     @_builtins.property
     @pulumi.getter(name="sseKeyId")
-    def sse_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         """
         return pulumi.get(self, "sse_key_id")
 
     @sse_key_id.setter
-    def sse_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sseKeyType")
-    def sse_key_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         """
         return pulumi.get(self, "sse_key_type")
 
     @sse_key_type.setter
-    def sse_key_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_key_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_key_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sseRoleArn")
-    def sse_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         """
         return pulumi.get(self, "sse_role_arn")
 
     @sse_role_arn.setter
-    def sse_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_role_arn", value)
 
 
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
-                 allow_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
-                 deviation_cell_version_in_sec: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_sse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
-                 sse_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]] = None,
+                 deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]] = None,
+                 sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Table resources.
 
@@ -272,146 +272,146 @@ class _TableState:
 
     @_builtins.property
     @pulumi.getter(name="allowUpdate")
-    def allow_update(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_update(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
         """
         return pulumi.get(self, "allow_update")
 
     @allow_update.setter
-    def allow_update(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_update(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_update", value)
 
     @_builtins.property
     @pulumi.getter(name="definedColumns")
-    def defined_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
+    def defined_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]:
         """
         The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
         """
         return pulumi.get(self, "defined_columns")
 
     @defined_columns.setter
-    def defined_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
+    def defined_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TableDefinedColumnArgs']]]]):
         pulumi.set(self, "defined_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="deviationCellVersionInSec")
-    def deviation_cell_version_in_sec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deviation_cell_version_in_sec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
         """
         return pulumi.get(self, "deviation_cell_version_in_sec")
 
     @deviation_cell_version_in_sec.setter
-    def deviation_cell_version_in_sec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deviation_cell_version_in_sec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deviation_cell_version_in_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSse")
-    def enable_sse(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_sse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable OTS server side encryption. Default value is false.
         """
         return pulumi.get(self, "enable_sse")
 
     @enable_sse.setter
-    def enable_sse(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_sse(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_sse", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS instance in which table will located.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of versions stored in this table. The valid value is 1-2147483647.
         """
         return pulumi.get(self, "max_version")
 
     @max_version.setter
-    def max_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_version", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryKeys")
-    def primary_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]:
+    def primary_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]:
         """
         The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
         """
         return pulumi.get(self, "primary_keys")
 
     @primary_keys.setter
-    def primary_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]):
+    def primary_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TablePrimaryKeyArgs']]]]):
         pulumi.set(self, "primary_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="sseKeyId")
-    def sse_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . The key ID of secret. `sse_key_id` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         """
         return pulumi.get(self, "sse_key_id")
 
     @sse_key_id.setter
-    def sse_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sseKeyType")
-    def sse_key_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
         """
         return pulumi.get(self, "sse_key_type")
 
     @sse_key_type.setter
-    def sse_key_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_key_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_key_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sseRoleArn")
-    def sse_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sse_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
         """
         return pulumi.get(self, "sse_role_arn")
 
     @sse_role_arn.setter
-    def sse_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sse_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sse_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The table name of the OTS instance. If changed, a new table would be created.
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeToLive")
-    def time_to_live(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_to_live(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
         """
         return pulumi.get(self, "time_to_live")
 
     @time_to_live.setter
-    def time_to_live(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_to_live(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_to_live", value)
 
 
@@ -421,18 +421,18 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
-                 deviation_cell_version_in_sec: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_sse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
-                 sse_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None,
+                 allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+                 deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+                 sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides an OTS table resource.
@@ -626,18 +626,18 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_update: Optional[pulumi.Input[_builtins.bool]] = None,
-                 defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
-                 deviation_cell_version_in_sec: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_sse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
-                 sse_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_to_live: Optional[pulumi.Input[_builtins.int]] = None,
+                 allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+                 defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+                 deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+                 sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_to_live: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -679,18 +679,18 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_update: Optional[pulumi.Input[_builtins.bool]] = None,
-            defined_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
-            deviation_cell_version_in_sec: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_sse: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            max_version: Optional[pulumi.Input[_builtins.int]] = None,
-            primary_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
-            sse_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sse_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-            sse_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            time_to_live: Optional[pulumi.Input[_builtins.int]] = None) -> 'Table':
+            allow_update: pulumi.Input[Optional[_builtins.bool]] = None,
+            defined_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TableDefinedColumnArgs', 'TableDefinedColumnArgsDict']]]]] = None,
+            deviation_cell_version_in_sec: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_sse: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            max_version: pulumi.Input[Optional[_builtins.int]] = None,
+            primary_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TablePrimaryKeyArgs', 'TablePrimaryKeyArgsDict']]]]] = None,
+            sse_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            sse_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_to_live: pulumi.Input[Optional[_builtins.int]] = None) -> 'Table':
         """
         Get an existing Table resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -221,31 +221,31 @@ export interface AclState {
      * - If `resourceType` is set to `Topic`. Valid values: `Pub`, `Sub`.
      * - If `resourceType` is set to `Group`. Valid values: `Sub`.
      */
-    actions?: pulumi.Input<pulumi.Input<string>[]>;
+    actions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The decision result of the authorization. Valid values: `Deny`, `Allow`.
      */
-    decision?: pulumi.Input<string>;
+    decision?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelists.
      */
-    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource on which you want to grant permissions.
      */
-    resourceName?: pulumi.Input<string>;
+    resourceName?: pulumi.Input<string | undefined>;
     /**
      * The type of the resource on which you want to grant permissions. Valid values: `Group`, `Topic`.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The username of the account.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -269,7 +269,7 @@ export interface AclArgs {
     /**
      * The IP address whitelists.
      */
-    ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the resource on which you want to grant permissions.
      */

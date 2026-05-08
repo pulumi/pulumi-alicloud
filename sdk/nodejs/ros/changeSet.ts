@@ -219,79 +219,79 @@ export interface ChangeSetState {
     /**
      * The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
      */
-    changeSetName?: pulumi.Input<string>;
+    changeSetName?: pulumi.Input<string | undefined>;
     /**
      * The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
      */
-    changeSetType?: pulumi.Input<string>;
+    changeSetType?: pulumi.Input<string | undefined>;
     /**
      * The description of the change set. The description can be up to 1,024 bytes in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      */
-    disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean | undefined>;
     /**
      * The notification urls.
      */
-    notificationUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Parameters.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[] | undefined>;
     /**
      * The ram role name.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The replacement option.
      */
-    replacementOption?: pulumi.Input<string>;
+    replacementOption?: pulumi.Input<string | undefined>;
     /**
      * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      */
-    stackName?: pulumi.Input<string>;
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * The stack policy body.
      */
-    stackPolicyBody?: pulumi.Input<string>;
+    stackPolicyBody?: pulumi.Input<string | undefined>;
     /**
      * The stack policy during update body.
      */
-    stackPolicyDuringUpdateBody?: pulumi.Input<string>;
+    stackPolicyDuringUpdateBody?: pulumi.Input<string | undefined>;
     /**
      * The stack policy during update url.
      */
-    stackPolicyDuringUpdateUrl?: pulumi.Input<string>;
+    stackPolicyDuringUpdateUrl?: pulumi.Input<string | undefined>;
     /**
      * The stack policy url.
      */
-    stackPolicyUrl?: pulumi.Input<string>;
+    stackPolicyUrl?: pulumi.Input<string | undefined>;
     /**
      * The status of the change set.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
      */
-    templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string | undefined>;
     /**
      * The template url.
      */
-    templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string | undefined>;
     /**
      * Timeout In Minutes.
      */
-    timeoutInMinutes?: pulumi.Input<number>;
+    timeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * The use previous parameters.
      */
-    usePreviousParameters?: pulumi.Input<boolean>;
+    usePreviousParameters?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -305,69 +305,69 @@ export interface ChangeSetArgs {
     /**
      * The type of the change set. Valid values:  CREATE: creates a change set for a new stack. UPDATE: creates a change set for an existing stack. IMPORT: creates a change set for a new stack or an existing stack to import non-ROS-managed resources. If you create a change set for a new stack, ROS creates a stack that has a unique stack ID. The stack is in the REVIEW_IN_PROGRESS state until you execute the change set.  You cannot use the UPDATE type to create a change set for a new stack or the CREATE type to create a change set for an existing stack.
      */
-    changeSetType?: pulumi.Input<string>;
+    changeSetType?: pulumi.Input<string | undefined>;
     /**
      * The description of the change set. The description can be up to 1,024 bytes in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to disable rollback on stack creation failure. Default value: false.  Valid values:  true: disables rollback on stack creation failure. false: enables rollback on stack creation failure. Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      */
-    disableRollback?: pulumi.Input<boolean>;
+    disableRollback?: pulumi.Input<boolean | undefined>;
     /**
      * The notification urls.
      */
-    notificationUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    notificationUrls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Parameters.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.ros.ChangeSetParameter>[] | undefined>;
     /**
      * The ram role name.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The replacement option.
      */
-    replacementOption?: pulumi.Input<string>;
+    replacementOption?: pulumi.Input<string | undefined>;
     /**
      * The ID of the stack for which you want to create the change set. ROS generates the change set by comparing the stack information with the information that you submit, such as a modified template or different inputs.
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * The name of the stack for which you want to create the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.  Note This parameter takes effect only when ChangeSetType is set to CREATE or IMPORT.
      */
-    stackName?: pulumi.Input<string>;
+    stackName?: pulumi.Input<string | undefined>;
     /**
      * The stack policy body.
      */
-    stackPolicyBody?: pulumi.Input<string>;
+    stackPolicyBody?: pulumi.Input<string | undefined>;
     /**
      * The stack policy during update body.
      */
-    stackPolicyDuringUpdateBody?: pulumi.Input<string>;
+    stackPolicyDuringUpdateBody?: pulumi.Input<string | undefined>;
     /**
      * The stack policy during update url.
      */
-    stackPolicyDuringUpdateUrl?: pulumi.Input<string>;
+    stackPolicyDuringUpdateUrl?: pulumi.Input<string | undefined>;
     /**
      * The stack policy url.
      */
-    stackPolicyUrl?: pulumi.Input<string>;
+    stackPolicyUrl?: pulumi.Input<string | undefined>;
     /**
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length.  If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.  You can specify one of TemplateBody or TemplateURL parameters, but you cannot specify both of them.
      */
-    templateBody?: pulumi.Input<string>;
+    templateBody?: pulumi.Input<string | undefined>;
     /**
      * The template url.
      */
-    templateUrl?: pulumi.Input<string>;
+    templateUrl?: pulumi.Input<string | undefined>;
     /**
      * Timeout In Minutes.
      */
-    timeoutInMinutes?: pulumi.Input<number>;
+    timeoutInMinutes?: pulumi.Input<number | undefined>;
     /**
      * The use previous parameters.
      */
-    usePreviousParameters?: pulumi.Input<boolean>;
+    usePreviousParameters?: pulumi.Input<boolean | undefined>;
 }

@@ -149,11 +149,11 @@ def get_namespaces(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'))
-def get_namespaces_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          keyword: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                          page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_namespaces_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          keyword: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                          page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNamespacesResult]:
     """
     This data source provides the Cms Namespaces of the current Alibaba Cloud user.

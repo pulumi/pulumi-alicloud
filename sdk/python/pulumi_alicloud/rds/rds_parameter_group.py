@@ -25,7 +25,7 @@ class RdsParameterGroupArgs:
                  engine_version: pulumi.Input[_builtins.str],
                  param_details: pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]],
                  parameter_group_name: pulumi.Input[_builtins.str],
-                 parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RdsParameterGroup resource.
 
@@ -92,25 +92,25 @@ class RdsParameterGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupDesc")
-    def parameter_group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the parameter template.
         """
         return pulumi.get(self, "parameter_group_desc")
 
     @parameter_group_desc.setter
-    def parameter_group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_desc", value)
 
 
 @pulumi.input_type
 class _RdsParameterGroupState:
     def __init__(__self__, *,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 param_details: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
-                 parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]] = None,
+                 parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RdsParameterGroup resources.
 
@@ -133,62 +133,62 @@ class _RdsParameterGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The database engine. Valid values: `mysql`, `mariadb`, `PostgreSQL`.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the database engine. Valid values: mysql: `5.1`, `5.5`, `5.6`, `5.7`, `8.0`; mariadb: `10.3`; PostgreSQL: `10.0`, `11.0`, `12.0`, `13.0`, `14.0`, `15.0`.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="paramDetails")
-    def param_details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]]:
+    def param_details(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]]:
         """
         Parameter list. See `param_detail` below.
         """
         return pulumi.get(self, "param_details")
 
     @param_details.setter
-    def param_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]]):
+    def param_details(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RdsParameterGroupParamDetailArgs']]]]):
         pulumi.set(self, "param_details", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupDesc")
-    def parameter_group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the parameter template.
         """
         return pulumi.get(self, "parameter_group_desc")
 
     @parameter_group_desc.setter
-    def parameter_group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupName")
-    def parameter_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter template.
         """
         return pulumi.get(self, "parameter_group_name")
 
     @parameter_group_name.setter
-    def parameter_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_name", value)
 
 
@@ -198,11 +198,11 @@ class RdsParameterGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 param_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
-                 parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+                 parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RDS Parameter Group resource.
@@ -327,11 +327,11 @@ class RdsParameterGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 param_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
-                 parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+                 parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -364,11 +364,11 @@ class RdsParameterGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            param_details: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
-            parameter_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_group_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'RdsParameterGroup':
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            param_details: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RdsParameterGroupParamDetailArgs', 'RdsParameterGroupParamDetailArgsDict']]]]] = None,
+            parameter_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_group_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'RdsParameterGroup':
         """
         Get an existing RdsParameterGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

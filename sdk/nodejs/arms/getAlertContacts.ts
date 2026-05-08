@@ -128,25 +128,25 @@ export interface GetAlertContactsOutputArgs {
     /**
      * The name of the alert contact.
      */
-    alertContactName?: pulumi.Input<string>;
+    alertContactName?: pulumi.Input<string | undefined>;
     /**
      * The email address of the alert contact.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * A list of Alert Contact IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Alert Contact name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The mobile number of the alert contact.
      */
-    phoneNum?: pulumi.Input<string>;
+    phoneNum?: pulumi.Input<string | undefined>;
 }

@@ -245,7 +245,7 @@ export interface SaslAclState {
      * - `IDEMPOTENT_WRITE`: idempotent write to Cluster, only available for Serverless instances.
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      */
-    aclOperationType?: pulumi.Input<string>;
+    aclOperationType?: pulumi.Input<string | undefined>;
     /**
      * Batch authorization operation types. Multiple operations are separated by commas (,). Valid values:
      * - `Write`: write
@@ -256,26 +256,26 @@ export interface SaslAclState {
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      */
-    aclOperationTypes?: pulumi.Input<string>;
+    aclOperationTypes?: pulumi.Input<string | undefined>;
     /**
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
      * > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      */
-    aclPermissionType?: pulumi.Input<string>;
+    aclPermissionType?: pulumi.Input<string | undefined>;
     /**
      * The resource name.
      * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
      * - You can use an asterisk (*) to represent all resources of this type.
      */
-    aclResourceName?: pulumi.Input<string>;
+    aclResourceName?: pulumi.Input<string | undefined>;
     /**
      * Match the pattern. Valid values:
      * - `LITERAL`: exact match
      * - `PREFIXED`: prefix matching
      */
-    aclResourcePatternType?: pulumi.Input<string>;
+    aclResourcePatternType?: pulumi.Input<string | undefined>;
     /**
      * The resource type. Valid values:
      * - `Topic`: the message Topic.
@@ -283,20 +283,20 @@ export interface SaslAclState {
      * - `Cluster`: the instance.
      * - `TransactionalId`: transaction ID.
      */
-    aclResourceType?: pulumi.Input<string>;
+    aclResourceType?: pulumi.Input<string | undefined>;
     /**
      * The host of the acl.
      * > **NOTE:** From version 1.270.0, `host` can be set.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The user name.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -323,14 +323,14 @@ export interface SaslAclArgs {
      * - `DESCRIBE_CONFIGS`: query configuration, only available for Serverless instances.
      * > **NOTE:**  `aclOperationTypes` is only supported for Serverless instances.
      */
-    aclOperationTypes?: pulumi.Input<string>;
+    aclOperationTypes?: pulumi.Input<string | undefined>;
     /**
      * Authorization method. Value:
      * - `DENY`: deny.
      * - `ALLOW`: allow.
      * > **NOTE:**  `aclPermissionType` is only supported for Serverless instances.
      */
-    aclPermissionType?: pulumi.Input<string>;
+    aclPermissionType?: pulumi.Input<string | undefined>;
     /**
      * The resource name.
      * - The name of the resource, which can be a topic name, Group ID, cluster name, or transaction ID.
@@ -355,7 +355,7 @@ export interface SaslAclArgs {
      * The host of the acl.
      * > **NOTE:** From version 1.270.0, `host` can be set.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */

@@ -156,43 +156,43 @@ export interface DomainState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * The CNAME assigned by WAF to the domain name.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain name to query.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The domain ID.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Configure listening information. See `listen` below.
      */
-    listen?: pulumi.Input<inputs.wafv3.DomainListen>;
+    listen?: pulumi.Input<inputs.wafv3.DomainListen | undefined>;
     /**
      * Configure forwarding information. See `redirect` below.
      */
-    redirect?: pulumi.Input<inputs.wafv3.DomainRedirect>;
+    redirect?: pulumi.Input<inputs.wafv3.DomainRedirect | undefined>;
     /**
      * The ID of the Alibaba Cloud resource group.
      */
-    resourceManagerResourceGroupId?: pulumi.Input<string>;
+    resourceManagerResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain name.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * The tags. You can specify up to 20 tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -205,7 +205,7 @@ export interface DomainArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * The name of the domain name to query.
      */
@@ -225,9 +225,9 @@ export interface DomainArgs {
     /**
      * The ID of the Alibaba Cloud resource group.
      */
-    resourceManagerResourceGroupId?: pulumi.Input<string>;
+    resourceManagerResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags. You can specify up to 20 tags.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

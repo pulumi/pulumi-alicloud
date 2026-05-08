@@ -73,11 +73,11 @@ class VpdGrantRuleArgs:
 @pulumi.input_type
 class _VpdGrantRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 er_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 er_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpdGrantRule resources.
 
@@ -100,62 +100,62 @@ class _VpdGrantRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="erId")
-    def er_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def er_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ER instance under the cross-account tenant.
         """
         return pulumi.get(self, "er_id")
 
     @er_id.setter
-    def er_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def er_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "er_id", value)
 
     @_builtins.property
     @pulumi.getter(name="grantTenantId")
-    def grant_tenant_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grant_tenant_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cross-account authorized tenant ID.
         """
         return pulumi.get(self, "grant_tenant_id")
 
     @grant_tenant_id.setter
-    def grant_tenant_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grant_tenant_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grant_tenant_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID of VPD.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -165,9 +165,9 @@ class VpdGrantRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 er_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 er_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Vpd Grant Rule resource.
@@ -286,9 +286,9 @@ class VpdGrantRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 er_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 grant_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 er_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 grant_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,11 +319,11 @@ class VpdGrantRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            er_id: Optional[pulumi.Input[_builtins.str]] = None,
-            grant_tenant_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpdGrantRule':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            er_id: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpdGrantRule':
         """
         Get an existing VpdGrantRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

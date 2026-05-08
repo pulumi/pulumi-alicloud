@@ -21,7 +21,7 @@ class PublicNetworkArgs:
     def __init__(__self__, *,
                  engine_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 enable_public_network: Optional[pulumi.Input[_builtins.int]] = None):
+                 enable_public_network: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PublicNetwork resource.
 
@@ -60,24 +60,24 @@ class PublicNetworkArgs:
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Open or close the public connection. Value:
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_public_network", value)
 
 
 @pulumi.input_type
 class _PublicNetworkState:
     def __init__(__self__, *,
-                 enable_public_network: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_public_network: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicNetwork resources.
 
@@ -97,50 +97,50 @@ class _PublicNetworkState:
 
     @_builtins.property
     @pulumi.getter(name="enablePublicNetwork")
-    def enable_public_network(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_public_network(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Open or close the public connection. Value:
         """
         return pulumi.get(self, "enable_public_network")
 
     @enable_public_network.setter
-    def enable_public_network(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_public_network(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_public_network", value)
 
     @_builtins.property
     @pulumi.getter(name="engineType")
-    def engine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine type, value:
         """
         return pulumi.get(self, "engine_type")
 
     @engine_type.setter
-    def engine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status, returns:_EXPANDING`: Capacity-based cloud storage is being expanded._version_transing`: The minor version is being upgraded._CHANGING`: The specification is being upgraded or downgraded._SWITCHING`:SSL is being changed._OPENING`: The data subscription function is being activated._TRANSFER`: migrates data to the database._CREATING`: in the production disaster recovery instance._RECOVERING`: The backup is being restored._IMPORTING`: Data is being imported._MODIFYING`: The network is being changed._SWITCHING`: The internal network and the external network are being switched._CREATING`: creates a network link._DELETING`: deletes a network link.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -150,9 +150,9 @@ class PublicNetwork(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Lindorm Public Network resource.
@@ -315,9 +315,9 @@ class PublicNetwork(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_public_network: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_public_network: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -345,10 +345,10 @@ class PublicNetwork(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enable_public_network: Optional[pulumi.Input[_builtins.int]] = None,
-            engine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicNetwork':
+            enable_public_network: pulumi.Input[Optional[_builtins.int]] = None,
+            engine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'PublicNetwork':
         """
         Get an existing PublicNetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

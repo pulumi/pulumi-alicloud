@@ -196,13 +196,13 @@ def get_host_accounts(host_account_name: Optional[_builtins.str] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         protocol_name=pulumi.get(__ret__, 'protocol_name'))
-def get_host_accounts_output(host_account_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             protocol_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_host_accounts_output(host_account_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             protocol_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostAccountsResult]:
     """
     This data source provides the Bastionhost Host Accounts of the current Alibaba Cloud user.

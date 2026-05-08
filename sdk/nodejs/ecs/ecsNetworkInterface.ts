@@ -287,113 +287,113 @@ export interface EcsNetworkInterfaceState {
     /**
      * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
      */
-    deleteOnRelease?: pulumi.Input<boolean>;
+    deleteOnRelease?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
-    ipv4PrefixCount?: pulumi.Input<number>;
+    ipv4PrefixCount?: pulumi.Input<number | undefined>;
     /**
      * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
      */
-    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */
-    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6AddressCount?: pulumi.Input<number | undefined>;
     /**
      * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
      */
-    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The MAC address of the ENI.
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
-    networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string | undefined>;
     /**
      * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
      */
-    networkInterfaceTrafficMode?: pulumi.Input<string>;
+    networkInterfaceTrafficMode?: pulumi.Input<string | undefined>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
-    primaryIpAddress?: pulumi.Input<string>;
+    primaryIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      */
-    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      *
      * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      *
      * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
-    privateIpsCount?: pulumi.Input<number>;
+    privateIpsCount?: pulumi.Input<number | undefined>;
     /**
      * The queue number of the ENI.
      */
-    queueNumber?: pulumi.Input<number>;
+    queueNumber?: pulumi.Input<number | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The number of private IP addresses that can be automatically created by ECS.
      */
-    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    secondaryPrivateIpAddressCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
      */
-    sourceDestCheck?: pulumi.Input<boolean>;
+    sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the ENI.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,101 +403,101 @@ export interface EcsNetworkInterfaceArgs {
     /**
      * Specifies whether to release the ENI when the associated instance is released. Valid values: `true`, `false`.
      */
-    deleteOnRelease?: pulumi.Input<boolean>;
+    deleteOnRelease?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
-    ipv4PrefixCount?: pulumi.Input<number>;
+    ipv4PrefixCount?: pulumi.Input<number | undefined>;
     /**
      * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
      */
-    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
      */
-    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6AddressCount?: pulumi.Input<number | undefined>;
     /**
      * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
      */
-    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
-    networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceName?: pulumi.Input<string | undefined>;
     /**
      * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
      */
-    networkInterfaceTrafficMode?: pulumi.Input<string>;
+    networkInterfaceTrafficMode?: pulumi.Input<string | undefined>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
-    primaryIpAddress?: pulumi.Input<string>;
+    primaryIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
-    privateIp?: pulumi.Input<string>;
+    privateIp?: pulumi.Input<string | undefined>;
     /**
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      */
-    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIpAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `privateIps` has been deprecated from provider version 1.123.1. New field `privateIpAddresses` instead
      *
      * @deprecated Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead
      */
-    privateIps?: pulumi.Input<pulumi.Input<string>[]>;
+    privateIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `privateIpsCount` has been deprecated from provider version 1.123.1. New field `secondaryPrivateIpAddressCount` instead
      *
      * @deprecated Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
      */
-    privateIpsCount?: pulumi.Input<number>;
+    privateIpsCount?: pulumi.Input<number | undefined>;
     /**
      * The queue number of the ENI.
      */
-    queueNumber?: pulumi.Input<number>;
+    queueNumber?: pulumi.Input<number | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The number of private IP addresses that can be automatically created by ECS.
      */
-    secondaryPrivateIpAddressCount?: pulumi.Input<number>;
+    secondaryPrivateIpAddressCount?: pulumi.Input<number | undefined>;
     /**
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `securityGroups` has been deprecated from provider version 1.123.1. New field `securityGroupIds` instead. **NOTE:** Either `securityGroupIds` or `securityGroups` must be set with valid security group IDs.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
-    securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates whether the source and destination IP address check feature is enabled. To improve network security, enable this feature. Default value: `false`. Valid values: `true`, `false`.
      */
-    sourceDestCheck?: pulumi.Input<boolean>;
+    sourceDestCheck?: pulumi.Input<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      */

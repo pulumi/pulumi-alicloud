@@ -125,11 +125,11 @@ export interface BucketAclState {
     /**
      * Bucket-level Access Control List (ACL)，Valid values: `private`, `public-read`, `public-read-write`.
      */
-    acl?: pulumi.Input<string>;
+    acl?: pulumi.Input<string | undefined>;
     /**
      * The name of the bucket to which the current ACL configuration belongs.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
 }
 
 /**

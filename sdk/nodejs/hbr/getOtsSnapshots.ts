@@ -100,14 +100,14 @@ export interface GetOtsSnapshotsOutputArgs {
     /**
      * The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
      */
-    endTime?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    endTime?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
 }

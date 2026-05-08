@@ -22,8 +22,8 @@ class ImageLibArgs:
                  category: pulumi.Input[_builtins.str],
                  image_lib_name: pulumi.Input[_builtins.str],
                  scene: pulumi.Input[_builtins.str],
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None):
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ImageLib resource.
 
@@ -79,37 +79,37 @@ class ImageLibArgs:
 
     @_builtins.property
     @pulumi.getter(name="bizTypes")
-    def biz_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def biz_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
         """
         return pulumi.get(self, "biz_types")
 
     @biz_types.setter
-    def biz_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def biz_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "biz_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
 
 @pulumi.input_type
 class _ImageLibState:
     def __init__(__self__, *,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageLib resources.
 
@@ -132,62 +132,62 @@ class _ImageLibState:
 
     @_builtins.property
     @pulumi.getter(name="bizTypes")
-    def biz_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def biz_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of business scenarios. For example: ["bizTypeA", "bizTypeB", "bizTypeC"]
         """
         return pulumi.get(self, "biz_types")
 
     @biz_types.setter
-    def biz_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def biz_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "biz_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the image library. Valid values: BLACK: a blacklist, WHITE: a whitelist, REVIEW: a review list
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the image library. Valid values: true: Enable the image library. This is the default value. false: Disable the image library.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="imageLibName")
-    def image_lib_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_lib_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
         """
         return pulumi.get(self, "image_lib_name")
 
     @image_lib_name.setter
-    def image_lib_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_lib_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_lib_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The moderation scenario to which the custom image library applies. Valid values: PORN: pornography detection, AD: ad detection, ILLEGAL: terrorist content detection
         """
         return pulumi.get(self, "scene")
 
     @scene.setter
-    def scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scene", value)
 
 
@@ -197,11 +197,11 @@ class ImageLib(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Aligreen Image Lib resource.
@@ -314,11 +314,11 @@ class ImageLib(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -349,11 +349,11 @@ class ImageLib(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scene: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageLib':
+            biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scene: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageLib':
         """
         Get an existing ImageLib resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

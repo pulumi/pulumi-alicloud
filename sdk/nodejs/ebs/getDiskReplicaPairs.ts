@@ -111,17 +111,17 @@ export interface GetDiskReplicaPairsOutputArgs {
     /**
      * A list of Disk Replica Pair IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Consistent Replication Group ID, you can specify a consistent replication group ID to query the replication pairs within the group.
      */
-    replicaGroupId?: pulumi.Input<string>;
+    replicaGroupId?: pulumi.Input<string | undefined>;
     /**
      * Get data for replication pairs where this Region is the production site or the disaster recovery site.
      */
-    site?: pulumi.Input<string>;
+    site?: pulumi.Input<string | undefined>;
 }

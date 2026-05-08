@@ -135,9 +135,9 @@ def get_gtm_instances(ids: Optional[Sequence[_builtins.str]] = None,
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-def get_gtm_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gtm_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGtmInstancesResult]:
     """
     This data source provides the Alidns Gtm Instances of the current Alibaba Cloud user.

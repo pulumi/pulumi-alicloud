@@ -176,21 +176,21 @@ export interface RealTimeLogDeliveryState {
     /**
      * The accelerated domain name for which you want to disable real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the Log Service project is deployed. You can specify multiple region IDs and separate them with commas (,).
      *
      * For more information about regions, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
-    logstore?: pulumi.Input<string>;
+    logstore?: pulumi.Input<string | undefined>;
     /**
      * The name of the Logstore that collects log data from Alibaba Cloud CDN in real time. You can specify multiple Logstore names and separate them with commas (,).
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the Log Service project is deployed. For more information, see [Regions that support real-time log delivery](https://www.alibabacloud.com/help/en/doc-detail/144883.html).
      */
-    slsRegion?: pulumi.Input<string>;
+    slsRegion?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields that represent the status of the resource.
      *
@@ -198,7 +198,7 @@ export interface RealTimeLogDeliveryState {
      * - offline
      * - online
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,5 +230,5 @@ export interface RealTimeLogDeliveryArgs {
      * - offline
      * - online
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -22,34 +22,34 @@ __all__ = ['InstanceArgs', 'Instance']
 class InstanceArgs:
     def __init__(__self__, *,
                  deploy_type: pulumi.Input[_builtins.int],
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 confluent_config: Optional[pulumi.Input['InstanceConfluentConfigArgs']] = None,
-                 default_topic_partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_auto_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_max_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paid_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: Optional[pulumi.Input['InstanceServerlessConfigArgs']] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 confluent_config: pulumi.Input[Optional['InstanceConfluentConfigArgs']] = None,
+                 default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_config: pulumi.Input[Optional['InstanceServerlessConfigArgs']] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -173,19 +173,19 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="confluentConfig")
-    def confluent_config(self) -> Optional[pulumi.Input['InstanceConfluentConfigArgs']]:
+    def confluent_config(self) -> pulumi.Input[Optional['InstanceConfluentConfigArgs']]:
         """
         The configurations of Confluent. See `confluent_config` below.
         > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
@@ -193,24 +193,24 @@ class InstanceArgs:
         return pulumi.get(self, "confluent_config")
 
     @confluent_config.setter
-    def confluent_config(self, value: Optional[pulumi.Input['InstanceConfluentConfigArgs']]):
+    def confluent_config(self, value: pulumi.Input[Optional['InstanceConfluentConfigArgs']]):
         pulumi.set(self, "confluent_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTopicPartitionNum")
-    def default_topic_partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_topic_partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions in a topic that is automatically created.
         """
         return pulumi.get(self, "default_topic_partition_num")
 
     @default_topic_partition_num.setter
-    def default_topic_partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_topic_partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_topic_partition_num", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
@@ -218,84 +218,84 @@ class InstanceArgs:
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk type of the instance. Valid values:
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
 
     @eip_max.setter
-    def eip_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_max", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoGroup")
-    def enable_auto_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auto_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_auto_group")
 
     @enable_auto_group.setter
-    def enable_auto_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auto_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auto_group", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
-    def enable_auto_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_auto_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         """
         return pulumi.get(self, "enable_auto_topic")
 
     @enable_auto_topic.setter
-    def enable_auto_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_auto_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_auto_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Instance. Default value: `alikafka`. Valid values:
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ioMax")
-    def io_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def io_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         """
         return pulumi.get(self, "io_max")
 
     @io_max.setter
-    def io_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def io_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "io_max", value)
 
     @_builtins.property
     @pulumi.getter(name="ioMaxSpec")
-    def io_max_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def io_max_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic specification of the instance. We recommend that you configure this parameter.
         - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -304,108 +304,108 @@ class InstanceArgs:
         return pulumi.get(self, "io_max_spec")
 
     @io_max_spec.setter
-    def io_max_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def io_max_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "io_max_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="paidType")
-    def paid_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def paid_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         """
         return pulumi.get(self, "paid_type")
 
     @paid_type.setter
-    def paid_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def paid_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "paid_type", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions.
         """
         return pulumi.get(self, "partition_num")
 
     @partition_num.setter
-    def partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
         return pulumi.get(self, "security_group")
 
     @security_group.setter
-    def security_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedZones")
-    def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def selected_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         """
         return pulumi.get(self, "selected_zones")
 
     @selected_zones.setter
-    def selected_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def selected_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "selected_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessConfig")
-    def serverless_config(self) -> Optional[pulumi.Input['InstanceServerlessConfigArgs']]:
+    def serverless_config(self) -> pulumi.Input[Optional['InstanceServerlessConfigArgs']]:
         """
         The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
         > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
@@ -413,12 +413,12 @@ class InstanceArgs:
         return pulumi.get(self, "serverless_config")
 
     @serverless_config.setter
-    def serverless_config(self, value: Optional[pulumi.Input['InstanceServerlessConfigArgs']]):
+    def serverless_config(self, value: pulumi.Input[Optional['InstanceServerlessConfigArgs']]):
         pulumi.set(self, "serverless_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceVersion")
-    def service_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Instance. Valid values:
         - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -428,12 +428,12 @@ class InstanceArgs:
         return pulumi.get(self, "service_version")
 
     @service_version.setter
-    def service_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_version", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance edition. Default value: `normal`. Valid values:
         - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
@@ -443,25 +443,25 @@ class InstanceArgs:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="topicQuota")
     @_utilities.deprecated("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
-    def topic_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def topic_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max num of topic can be creation of the instance.
         It has been deprecated since version 1.194.0 and using `partition_num` instead.
@@ -471,36 +471,36 @@ class InstanceArgs:
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
-    def topic_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def topic_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "topic_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of attaching vswitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
         > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
@@ -508,68 +508,68 @@ class InstanceArgs:
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 confluent_config: Optional[pulumi.Input['InstanceConfluentConfigArgs']] = None,
-                 default_topic_partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 deploy_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_auto_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_left: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_used: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_max_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_partition_buy: Optional[pulumi.Input[_builtins.int]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paid_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_left: Optional[pulumi.Input[_builtins.int]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 partition_used: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sasl_domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: Optional[pulumi.Input['InstanceServerlessConfigArgs']] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_left: Optional[pulumi.Input[_builtins.int]] = None,
-                 topic_num_of_buy: Optional[pulumi.Input[_builtins.int]] = None,
-                 topic_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 topic_used: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 confluent_config: pulumi.Input[Optional['InstanceConfluentConfigArgs']] = None,
+                 default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_left: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_used: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_partition_buy: pulumi.Input[Optional[_builtins.int]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_left: pulumi.Input[Optional[_builtins.int]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 partition_used: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_config: pulumi.Input[Optional['InstanceServerlessConfigArgs']] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_left: pulumi.Input[Optional[_builtins.int]] = None,
+                 topic_num_of_buy: pulumi.Input[Optional[_builtins.int]] = None,
+                 topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 topic_used: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -724,19 +724,19 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="confluentConfig")
-    def confluent_config(self) -> Optional[pulumi.Input['InstanceConfluentConfigArgs']]:
+    def confluent_config(self) -> pulumi.Input[Optional['InstanceConfluentConfigArgs']]:
         """
         The configurations of Confluent. See `confluent_config` below.
         > **NOTE:** If `instance_type` is set to `alikafka_confluent`, `confluent_config` is required.
@@ -744,36 +744,36 @@ class _InstanceState:
         return pulumi.get(self, "confluent_config")
 
     @confluent_config.setter
-    def confluent_config(self, value: Optional[pulumi.Input['InstanceConfluentConfigArgs']]):
+    def confluent_config(self, value: pulumi.Input[Optional['InstanceConfluentConfigArgs']]):
         pulumi.set(self, "confluent_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTopicPartitionNum")
-    def default_topic_partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_topic_partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions in a topic that is automatically created.
         """
         return pulumi.get(self, "default_topic_partition_num")
 
     @default_topic_partition_num.setter
-    def default_topic_partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_topic_partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_topic_partition_num", value)
 
     @_builtins.property
     @pulumi.getter(name="deployType")
-    def deploy_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deploy_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
         """
         return pulumi.get(self, "deploy_type")
 
     @deploy_type.setter
-    def deploy_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deploy_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deploy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size of the instance. When modify this value, it only supports adjust to a greater value.
         > **NOTE:** If `instance_type` is set to `alikafka`, `disk_size` is required.
@@ -781,132 +781,132 @@ class _InstanceState:
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk type of the instance. Valid values:
         """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="domainEndpoint")
-    def domain_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The default endpoint of the instance in domain name mode.
         """
         return pulumi.get(self, "domain_endpoint")
 
     @domain_endpoint.setter
-    def domain_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="eipMax")
-    def eip_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def eip_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max bandwidth of the instance. It will be ignored when `deploy_type = 5`. When modify this value, it only supports adjust to a greater value.
         """
         return pulumi.get(self, "eip_max")
 
     @eip_max.setter
-    def eip_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def eip_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "eip_max", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoGroup")
-    def enable_auto_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auto_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_auto_group")
 
     @enable_auto_group.setter
-    def enable_auto_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auto_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auto_group", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoTopic")
-    def enable_auto_topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_auto_topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
         """
         return pulumi.get(self, "enable_auto_topic")
 
     @enable_auto_topic.setter
-    def enable_auto_topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_auto_topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_auto_topic", value)
 
     @_builtins.property
     @pulumi.getter(name="endPoint")
-    def end_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The EndPoint to access the kafka instance.
         """
         return pulumi.get(self, "end_point")
 
     @end_point.setter
-    def end_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_point", value)
 
     @_builtins.property
     @pulumi.getter(name="groupLeft")
-    def group_left(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_left(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of available groups.
         """
         return pulumi.get(self, "group_left")
 
     @group_left.setter
-    def group_left(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_left(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_left", value)
 
     @_builtins.property
     @pulumi.getter(name="groupUsed")
-    def group_used(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_used(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of used groups.
         """
         return pulumi.get(self, "group_used")
 
     @group_used.setter
-    def group_used(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_used(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_used", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Instance. Default value: `alikafka`. Valid values:
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ioMax")
-    def io_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def io_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max value of io of the instance. When modify this value, it only support adjust to a greater value.
         """
         return pulumi.get(self, "io_max")
 
     @io_max.setter
-    def io_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def io_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "io_max", value)
 
     @_builtins.property
     @pulumi.getter(name="ioMaxSpec")
-    def io_max_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def io_max_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic specification of the instance. We recommend that you configure this parameter.
         - You should specify one of the `io_max` and `io_max_spec` parameters, and `io_max_spec` is recommended.
@@ -915,156 +915,156 @@ class _InstanceState:
         return pulumi.get(self, "io_max_spec")
 
     @io_max_spec.setter
-    def io_max_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def io_max_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "io_max_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="isPartitionBuy")
-    def is_partition_buy(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def is_partition_buy(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The method that you use to purchase partitions.
         """
         return pulumi.get(self, "is_partition_buy")
 
     @is_partition_buy.setter
-    def is_partition_buy(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def is_partition_buy(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "is_partition_buy", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="paidType")
-    def paid_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def paid_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
         """
         return pulumi.get(self, "paid_type")
 
     @paid_type.setter
-    def paid_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def paid_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "paid_type", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionLeft")
-    def partition_left(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_left(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of available partitions.
         """
         return pulumi.get(self, "partition_left")
 
     @partition_left.setter
-    def partition_left(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_left(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_left", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionNum")
-    def partition_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions.
         """
         return pulumi.get(self, "partition_num")
 
     @partition_num.setter
-    def partition_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_num", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionUsed")
-    def partition_used(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_used(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of used partitions.
         """
         return pulumi.get(self, "partition_used")
 
     @partition_used.setter
-    def partition_used(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_used(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_used", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance password. **NOTE:** If `instance_type` is set to `alikafka_confluent`, `password` is required.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="saslDomainEndpoint")
-    def sasl_domain_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sasl_domain_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
         """
         return pulumi.get(self, "sasl_domain_endpoint")
 
     @sasl_domain_endpoint.setter
-    def sasl_domain_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sasl_domain_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sasl_domain_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of security group for this instance. If the security group is empty, system will create a default one.
         """
         return pulumi.get(self, "security_group")
 
     @security_group.setter
-    def security_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedZones")
-    def selected_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def selected_zones(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
         """
         return pulumi.get(self, "selected_zones")
 
     @selected_zones.setter
-    def selected_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def selected_zones(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "selected_zones", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessConfig")
-    def serverless_config(self) -> Optional[pulumi.Input['InstanceServerlessConfigArgs']]:
+    def serverless_config(self) -> pulumi.Input[Optional['InstanceServerlessConfigArgs']]:
         """
         The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverless_config` below.
         > **NOTE:** If `instance_type` is set to `alikafka_serverless`, `serverless_config` is required.
@@ -1072,12 +1072,12 @@ class _InstanceState:
         return pulumi.get(self, "serverless_config")
 
     @serverless_config.setter
-    def serverless_config(self, value: Optional[pulumi.Input['InstanceServerlessConfigArgs']]):
+    def serverless_config(self, value: pulumi.Input[Optional['InstanceServerlessConfigArgs']]):
         pulumi.set(self, "serverless_config", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceVersion")
-    def service_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the Instance. Valid values:
         - If `instance_type` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
@@ -1087,12 +1087,12 @@ class _InstanceState:
         return pulumi.get(self, "service_version")
 
     @service_version.setter
-    def service_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_version", value)
 
     @_builtins.property
     @pulumi.getter(name="specType")
-    def spec_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance edition. Default value: `normal`. Valid values:
         - If `instance_type` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
@@ -1102,85 +1102,85 @@ class _InstanceState:
         return pulumi.get(self, "spec_type")
 
     @spec_type.setter
-    def spec_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sslDomainEndpoint")
-    def ssl_domain_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_domain_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
         """
         return pulumi.get(self, "ssl_domain_endpoint")
 
     @ssl_domain_endpoint.setter
-    def ssl_domain_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_domain_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_domain_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEndpoint")
-    def ssl_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
         """
         return pulumi.get(self, "ssl_endpoint")
 
     @ssl_endpoint.setter
-    def ssl_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="topicLeft")
-    def topic_left(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def topic_left(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of available topics.
         """
         return pulumi.get(self, "topic_left")
 
     @topic_left.setter
-    def topic_left(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def topic_left(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "topic_left", value)
 
     @_builtins.property
     @pulumi.getter(name="topicNumOfBuy")
-    def topic_num_of_buy(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def topic_num_of_buy(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of purchased topics.
         """
         return pulumi.get(self, "topic_num_of_buy")
 
     @topic_num_of_buy.setter
-    def topic_num_of_buy(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def topic_num_of_buy(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "topic_num_of_buy", value)
 
     @_builtins.property
     @pulumi.getter(name="topicQuota")
     @_utilities.deprecated("""Attribute `topic_quota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partition_num` instead.""")
-    def topic_quota(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def topic_quota(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The max num of topic can be creation of the instance.
         It has been deprecated since version 1.194.0 and using `partition_num` instead.
@@ -1190,48 +1190,48 @@ class _InstanceState:
         return pulumi.get(self, "topic_quota")
 
     @topic_quota.setter
-    def topic_quota(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def topic_quota(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "topic_quota", value)
 
     @_builtins.property
     @pulumi.getter(name="topicUsed")
-    def topic_used(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def topic_used(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         (Available since v1.214.1) The number of used topics.
         """
         return pulumi.get(self, "topic_used")
 
     @topic_used.setter
-    def topic_used(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def topic_used(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "topic_used", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of attaching vswitch to instance.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of the vSwitches with which the instance is associated.
         > **NOTE:** If `instance_type` is set to `alikafka` or `alikafka_serverless`, `vswitch_ids` is required. When `instance_type` is set to `alikafka_confluent`, you must specify at least one of the `vswitch_id` and `vswitch_ids`, and if you specify both `vswitch_id` and `vswitch_ids`, only the `vswitch_ids` takes effect.
@@ -1239,19 +1239,19 @@ class _InstanceState:
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1261,35 +1261,35 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
-                 default_topic_partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 deploy_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_auto_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_max_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paid_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+                 default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an AliKafka instance resource.
@@ -1499,35 +1499,35 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
-                 default_topic_partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 deploy_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 eip_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_auto_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_topic: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_max_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 paid_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_quota: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+                 default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1592,49 +1592,49 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[_builtins.str]] = None,
-            confluent_config: Optional[pulumi.Input[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
-            default_topic_partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-            deploy_type: Optional[pulumi.Input[_builtins.int]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            disk_type: Optional[pulumi.Input[_builtins.int]] = None,
-            domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            eip_max: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_auto_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_auto_topic: Optional[pulumi.Input[_builtins.str]] = None,
-            end_point: Optional[pulumi.Input[_builtins.str]] = None,
-            group_left: Optional[pulumi.Input[_builtins.int]] = None,
-            group_used: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            io_max: Optional[pulumi.Input[_builtins.int]] = None,
-            io_max_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            is_partition_buy: Optional[pulumi.Input[_builtins.int]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            paid_type: Optional[pulumi.Input[_builtins.str]] = None,
-            partition_left: Optional[pulumi.Input[_builtins.int]] = None,
-            partition_num: Optional[pulumi.Input[_builtins.int]] = None,
-            partition_used: Optional[pulumi.Input[_builtins.int]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sasl_domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group: Optional[pulumi.Input[_builtins.str]] = None,
-            selected_zones: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            serverless_config: Optional[pulumi.Input[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
-            service_version: Optional[pulumi.Input[_builtins.str]] = None,
-            spec_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_domain_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic_left: Optional[pulumi.Input[_builtins.int]] = None,
-            topic_num_of_buy: Optional[pulumi.Input[_builtins.int]] = None,
-            topic_quota: Optional[pulumi.Input[_builtins.int]] = None,
-            topic_used: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            confluent_config: pulumi.Input[Optional[Union['InstanceConfluentConfigArgs', 'InstanceConfluentConfigArgsDict']]] = None,
+            default_topic_partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+            deploy_type: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            disk_type: pulumi.Input[Optional[_builtins.int]] = None,
+            domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_max: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_auto_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auto_topic: pulumi.Input[Optional[_builtins.str]] = None,
+            end_point: pulumi.Input[Optional[_builtins.str]] = None,
+            group_left: pulumi.Input[Optional[_builtins.int]] = None,
+            group_used: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            io_max: pulumi.Input[Optional[_builtins.int]] = None,
+            io_max_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            is_partition_buy: pulumi.Input[Optional[_builtins.int]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            paid_type: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_left: pulumi.Input[Optional[_builtins.int]] = None,
+            partition_num: pulumi.Input[Optional[_builtins.int]] = None,
+            partition_used: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sasl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group: pulumi.Input[Optional[_builtins.str]] = None,
+            selected_zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            serverless_config: pulumi.Input[Optional[Union['InstanceServerlessConfigArgs', 'InstanceServerlessConfigArgsDict']]] = None,
+            service_version: pulumi.Input[Optional[_builtins.str]] = None,
+            spec_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_domain_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic_left: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_num_of_buy: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_quota: pulumi.Input[Optional[_builtins.int]] = None,
+            topic_used: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

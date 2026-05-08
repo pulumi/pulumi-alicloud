@@ -22,22 +22,22 @@ class DesktopArgs:
                  bundle_id: pulumi.Input[_builtins.str],
                  office_site_id: pulumi.Input[_builtins.str],
                  policy_group_id: pulumi.Input[_builtins.str],
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 desktop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 stopped_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_assign_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Desktop resource.
 
@@ -135,219 +135,219 @@ class DesktopArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of the Desktop.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopName")
-    def desktop_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop name of the Desktop.
         """
         return pulumi.get(self, "desktop_name")
 
     @desktop_name.setter
-    def desktop_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_name", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopType")
-    def desktop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop type of the Desktop.
         """
         return pulumi.get(self, "desktop_type")
 
     @desktop_type.setter
-    def desktop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endUserIds")
-    def end_user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def end_user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The desktop end user id of the Desktop.
         """
         return pulumi.get(self, "end_user_ids")
 
     @end_user_ids.setter
-    def end_user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def end_user_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "end_user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname of the Desktop.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period of the Desktop.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period unit of the Desktop.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDiskSizeGib")
-    def root_disk_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def root_disk_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The root disk size gib of the Desktop.
         """
         return pulumi.get(self, "root_disk_size_gib")
 
     @root_disk_size_gib.setter
-    def root_disk_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def root_disk_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "root_disk_size_gib", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stoppedMode")
-    def stopped_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stopped_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stopped mode of the Desktop.
         """
         return pulumi.get(self, "stopped_mode")
 
     @stopped_mode.setter
-    def stopped_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stopped_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stopped_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userAssignMode")
-    def user_assign_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_assign_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         """
         return pulumi.get(self, "user_assign_mode")
 
     @user_assign_mode.setter
-    def user_assign_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_assign_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_assign_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="userDiskSizeGib")
-    def user_disk_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_disk_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user disk size gib of the Desktop.
         """
         return pulumi.get(self, "user_disk_size_gib")
 
     @user_disk_size_gib.setter
-    def user_disk_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_disk_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_disk_size_gib", value)
 
 
 @pulumi.input_type
 class _DesktopState:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 stopped_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_assign_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Desktop resources.
 
@@ -412,230 +412,230 @@ class _DesktopState:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of the Desktop.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="bundleId")
-    def bundle_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bundle id of the Desktop.
         """
         return pulumi.get(self, "bundle_id")
 
     @bundle_id.setter
-    def bundle_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_id", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopName")
-    def desktop_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop name of the Desktop.
         """
         return pulumi.get(self, "desktop_name")
 
     @desktop_name.setter
-    def desktop_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_name", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopType")
-    def desktop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop type of the Desktop.
         """
         return pulumi.get(self, "desktop_type")
 
     @desktop_type.setter
-    def desktop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endUserIds")
-    def end_user_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def end_user_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The desktop end user id of the Desktop.
         """
         return pulumi.get(self, "end_user_ids")
 
     @end_user_ids.setter
-    def end_user_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def end_user_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "end_user_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname of the Desktop.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
-    def office_site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Simple Office Site.
         """
         return pulumi.get(self, "office_site_id")
 
     @office_site_id.setter
-    def office_site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period of the Desktop.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The period unit of the Desktop.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupId")
-    def policy_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy group id of the Desktop.
         """
         return pulumi.get(self, "policy_group_id")
 
     @policy_group_id.setter
-    def policy_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDiskSizeGib")
-    def root_disk_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def root_disk_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The root disk size gib of the Desktop.
         """
         return pulumi.get(self, "root_disk_size_gib")
 
     @root_disk_size_gib.setter
-    def root_disk_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def root_disk_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "root_disk_size_gib", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stoppedMode")
-    def stopped_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stopped_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stopped mode of the Desktop.
         """
         return pulumi.get(self, "stopped_mode")
 
     @stopped_mode.setter
-    def stopped_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stopped_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stopped_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userAssignMode")
-    def user_assign_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_assign_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
         """
         return pulumi.get(self, "user_assign_mode")
 
     @user_assign_mode.setter
-    def user_assign_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_assign_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_assign_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="userDiskSizeGib")
-    def user_disk_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_disk_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The user disk size gib of the Desktop.
         """
         return pulumi.get(self, "user_disk_size_gib")
 
     @user_disk_size_gib.setter
-    def user_disk_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_disk_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_disk_size_gib", value)
 
 
@@ -645,25 +645,25 @@ class Desktop(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 stopped_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_assign_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a ECD Desktop resource.
@@ -840,25 +840,25 @@ class Desktop(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 stopped_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_assign_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -903,25 +903,25 @@ class Desktop(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amount: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            bundle_id: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_name: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            end_user_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            stopped_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_assign_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            user_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None) -> 'Desktop':
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bundle_id: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_name: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            end_user_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            stopped_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_assign_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None) -> 'Desktop':
         """
         Get an existing Desktop resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

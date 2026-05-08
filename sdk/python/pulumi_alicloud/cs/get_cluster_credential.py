@@ -149,7 +149,7 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
     # Declare the data source
     k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
         enable_details=False)
-    auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
+    auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),
         temporary_duration_minutes=60,
         output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
     ```
@@ -175,9 +175,9 @@ def get_cluster_credential(cluster_id: Optional[_builtins.str] = None,
         kube_config=pulumi.get(__ret__, 'kube_config'),
         output_file=pulumi.get(__ret__, 'output_file'),
         temporary_duration_minutes=pulumi.get(__ret__, 'temporary_duration_minutes'))
-def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  temporary_duration_minutes: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_cluster_credential_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  temporary_duration_minutes: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterCredentialResult]:
     """
     This data source provides Container Service cluster credential on Alibaba Cloud.
@@ -196,7 +196,7 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[_builtins.st
     # Declare the data source
     k8s = alicloud.cs.get_managed_kubernetes_clusters(name_regex="my-cluster",
         enable_details=False)
-    auth = {__key: alicloud.cs.get_cluster_credential(cluster_id=__key,
+    auth = {str(__key): alicloud.cs.get_cluster_credential(cluster_id=str(__key),
         temporary_duration_minutes=60,
         output_file="my-auth-json") for __key, __value in enumerate(std.toset(input=k8s.ids).result)}
     ```

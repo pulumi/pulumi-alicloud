@@ -102,11 +102,11 @@ export interface ServiceLinkedRoleState {
     /**
      * The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
     /**
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      */
-    status?: pulumi.Input<boolean>;
+    status?: pulumi.Input<boolean | undefined>;
 }
 
 /**

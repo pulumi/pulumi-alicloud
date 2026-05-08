@@ -58,8 +58,8 @@ class SuspendProcessArgs:
 @pulumi.input_type
 class _SuspendProcessState:
     def __init__(__self__, *,
-                 process: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 process: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SuspendProcess resources.
 
@@ -73,26 +73,26 @@ class _SuspendProcessState:
 
     @_builtins.property
     @pulumi.getter
-    def process(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
         """
         return pulumi.get(self, "process")
 
     @process.setter
-    def process(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the scaling group.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
 
@@ -102,8 +102,8 @@ class SuspendProcess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 process: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 process: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Suspend/Resume processes to a specified scaling group.
@@ -131,7 +131,7 @@ class SuspendProcess(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -214,7 +214,7 @@ class SuspendProcess(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -275,8 +275,8 @@ class SuspendProcess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 process: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 process: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,8 +302,8 @@ class SuspendProcess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            process: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SuspendProcess':
+            process: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SuspendProcess':
         """
         Get an existing SuspendProcess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

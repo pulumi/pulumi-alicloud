@@ -189,51 +189,51 @@ export interface DefenseTemplateState {
     /**
      * The WAF protection scenario to be created. Valid values:
      */
-    defenseScene?: pulumi.Input<string>;
+    defenseScene?: pulumi.Input<string | undefined>;
     /**
      * Template ID
      */
-    defenseTemplateId?: pulumi.Input<number>;
+    defenseTemplateId?: pulumi.Input<number | undefined>;
     /**
      * The name of the protection rule template.
      */
-    defenseTemplateName?: pulumi.Input<string>;
+    defenseTemplateName?: pulumi.Input<string | undefined>;
     /**
      * The description of the protection rule template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      */
-    resourceGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Alibaba Cloud resource group.
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    resourceManagerResourceGroupId?: pulumi.Input<string>;
+    resourceManagerResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the protection rule template. Valid values:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The origin of the protection rule template that you want to create. Set the value to `custom`. The value specifies that the protection rule template is a custom template.
      */
-    templateOrigin?: pulumi.Input<string>;
+    templateOrigin?: pulumi.Input<string | undefined>;
     /**
      * The type of the protection rule template. Valid values:
      * - **user_default:** default template.
      * - **user_custom:** custom template.
      */
-    templateType?: pulumi.Input<string>;
+    templateType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface DefenseTemplateArgs {
     /**
      * The description of the protection rule template.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Web Application Firewall (WAF) instance.
      */
@@ -259,17 +259,17 @@ export interface DefenseTemplateArgs {
     /**
      * The name of the protected object group. After a protection template resource is created, you can modify the bound protection object group.
      */
-    resourceGroups?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Alibaba Cloud resource group.
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    resourceManagerResourceGroupId?: pulumi.Input<string>;
+    resourceManagerResourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The list of protected objects to be bound. After a protection template resource is created, you can modify the bound protected objects.
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the protection rule template. Valid values:
      */

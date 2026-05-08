@@ -157,10 +157,10 @@ def get_industrial_pid_organizations(ids: Optional[Sequence[_builtins.str]] = No
         organizations=pulumi.get(__ret__, 'organizations'),
         output_file=pulumi.get(__ret__, 'output_file'),
         parent_organization_id=pulumi.get(__ret__, 'parent_organization_id'))
-def get_industrial_pid_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                            parent_organization_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_industrial_pid_organizations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                            parent_organization_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIndustrialPidOrganizationsResult]:
     """
     This data source provides the Brain Industrial Pid Organizations of the current Alibaba Cloud user.

@@ -210,40 +210,40 @@ export interface AccessKeyState {
     /**
      * (Available since v1.246.0) The create time of the AccessKey.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.47.0) The encrypted secret, base64 encoded. > NOTE: The encrypted secret may be decrypted using the command line, for example: `terraform output encryptedSecret | base64 --decode | keybase pgp decrypt`.
      */
-    encryptedSecret?: pulumi.Input<string>;
+    encryptedSecret?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.47.0) The fingerprint of the PGP key used to encrypt the secret
      */
-    keyFingerprint?: pulumi.Input<string>;
+    keyFingerprint?: pulumi.Input<string | undefined>;
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
-    pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.98.0) The secret access key. Note that this will be written to the state file. 
      * If you use this, please protect your backend state file judiciously.
      * Alternatively, you may supply a `pgpKey` instead, which will prevent the secret from being stored in plaintext,
      * at the cost of preventing the use of the secret key in automation.
      */
-    secret?: pulumi.Input<string>;
+    secret?: pulumi.Input<string | undefined>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    secretFile?: pulumi.Input<string>;
+    secretFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the AccessKey. Value:
      * - Active: Activated.
      * - Inactive: Disabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The RAM user name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -253,19 +253,19 @@ export interface AccessKeyArgs {
     /**
      * Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`
      */
-    pgpKey?: pulumi.Input<string>;
+    pgpKey?: pulumi.Input<string | undefined>;
     /**
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
      */
-    secretFile?: pulumi.Input<string>;
+    secretFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the AccessKey. Value:
      * - Active: Activated.
      * - Inactive: Disabled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The RAM user name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

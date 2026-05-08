@@ -21,35 +21,35 @@ __all__ = ['NodeArgs', 'Node']
 @pulumi.input_type
 class NodeArgs:
     def __init__(__self__, *,
-                 billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 classify: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
-                 discount_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 classify: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
+                 discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Node resource.
 
@@ -170,7 +170,7 @@ class NodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="billingCycle")
-    def billing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing cycle
 
@@ -179,12 +179,12 @@ class NodeArgs:
         return pulumi.get(self, "billing_cycle")
 
     @billing_cycle.setter
-    def billing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def classify(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def classify(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Classification
 
@@ -193,49 +193,49 @@ class NodeArgs:
         return pulumi.get(self, "classify")
 
     @classify.setter
-    def classify(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def classify(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "classify", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster id
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
     @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
-    def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Model
         """
         return pulumi.get(self, "computing_server")
 
     @computing_server.setter
-    def computing_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_server", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
         """
         The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="discountLevel")
-    def discount_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discount_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Offer Information
 
@@ -244,108 +244,108 @@ class NodeArgs:
         return pulumi.get(self, "discount_level")
 
     @discount_level.setter
-    def discount_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discount_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discount_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
-    def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpn_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster Number
         """
         return pulumi.get(self, "hpn_zone")
 
     @hpn_zone.setter
-    def hpn_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpn_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="installPai")
-    def install_pai(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def install_pai(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to buy PAI. default value `false`.
         """
         return pulumi.get(self, "install_pai")
 
     @install_pai.setter
-    def install_pai(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def install_pai(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
+    def ip_allocation_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
         """
         IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
 
     @ip_allocation_policies.setter
-    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
+    def ip_allocation_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Model
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         node group id
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         node type
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentRatio")
-    def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_ratio(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Down payment ratio
 
@@ -354,12 +354,12 @@ class NodeArgs:
         return pulumi.get(self, "payment_ratio")
 
     @payment_ratio.setter
-    def payment_ratio(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_ratio(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
         The default is Subscription.
@@ -367,12 +367,12 @@ class NodeArgs:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 
@@ -381,12 +381,12 @@ class NodeArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productForm")
-    def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_form(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Form
 
@@ -395,12 +395,12 @@ class NodeArgs:
         return pulumi.get(self, "product_form")
 
     @product_form.setter
-    def product_form(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_form(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_form", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, in months.
 
@@ -409,12 +409,12 @@ class NodeArgs:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -425,24 +425,24 @@ class NodeArgs:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverArch")
-    def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_arch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Architecture
 
@@ -451,12 +451,12 @@ class NodeArgs:
         return pulumi.get(self, "server_arch")
 
     @server_arch.setter
-    def server_arch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_arch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_arch", value)
 
     @_builtins.property
     @pulumi.getter(name="stageNum")
-    def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stage_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of stages
 
@@ -465,116 +465,116 @@ class NodeArgs:
         return pulumi.get(self, "stage_num")
 
     @stage_num.setter
-    def stage_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stage_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stage_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Availability Zone
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type
 class _NodeState:
     def __init__(__self__, *,
-                 billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 classify: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
-                 discount_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 classify: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]] = None,
+                 discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Node resources.
 
@@ -701,7 +701,7 @@ class _NodeState:
 
     @_builtins.property
     @pulumi.getter(name="billingCycle")
-    def billing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def billing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing cycle
 
@@ -710,12 +710,12 @@ class _NodeState:
         return pulumi.get(self, "billing_cycle")
 
     @billing_cycle.setter
-    def billing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def billing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "billing_cycle", value)
 
     @_builtins.property
     @pulumi.getter
-    def classify(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def classify(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Classification
 
@@ -724,61 +724,61 @@ class _NodeState:
         return pulumi.get(self, "classify")
 
     @classify.setter
-    def classify(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def classify(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "classify", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster id
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="computingServer")
     @_utilities.deprecated("""Field 'computing_server' has been deprecated from provider version 1.261.0. New field 'machine_type' instead.""")
-    def computing_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def computing_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node Model
         """
         return pulumi.get(self, "computing_server")
 
     @computing_server.setter
-    def computing_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def computing_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "computing_server", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]]:
         """
         The data disk of the cloud disk to be attached to the node. See `data_disk` below.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="discountLevel")
-    def discount_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discount_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Offer Information
 
@@ -787,108 +787,108 @@ class _NodeState:
         return pulumi.get(self, "discount_level")
 
     @discount_level.setter
-    def discount_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discount_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discount_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host name
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="hpnZone")
-    def hpn_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hpn_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster Number
         """
         return pulumi.get(self, "hpn_zone")
 
     @hpn_zone.setter
-    def hpn_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hpn_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hpn_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="installPai")
-    def install_pai(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def install_pai(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to buy PAI. default value `false`.
         """
         return pulumi.get(self, "install_pai")
 
     @install_pai.setter
-    def install_pai(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def install_pai(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "install_pai", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
+    def ip_allocation_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]:
         """
         IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
 
     @ip_allocation_policies.setter
-    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
+    def ip_allocation_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Model
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         node group id
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeType")
-    def node_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         node type
         """
         return pulumi.get(self, "node_type")
 
     @node_type.setter
-    def node_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentRatio")
-    def payment_ratio(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_ratio(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Down payment ratio
 
@@ -897,12 +897,12 @@ class _NodeState:
         return pulumi.get(self, "payment_ratio")
 
     @payment_ratio.setter
-    def payment_ratio(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_ratio(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment method of the node. Value range: Subscription: fixed fee installment; PayAsYouGo: pay by volume.
         The default is Subscription.
@@ -910,12 +910,12 @@ class _NodeState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. The unit is Month, please enter an integer multiple of 12 for the annual payment product.
 
@@ -924,12 +924,12 @@ class _NodeState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="productForm")
-    def product_form(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_form(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Form
 
@@ -938,24 +938,24 @@ class _NodeState:
         return pulumi.get(self, "product_form")
 
     @product_form.setter
-    def product_form(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_form(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_form", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, in months.
 
@@ -964,12 +964,12 @@ class _NodeState:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic renewal status, value:
         - AutoRenewal: automatic renewal.
@@ -980,24 +980,24 @@ class _NodeState:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverArch")
-    def server_arch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_arch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Architecture
 
@@ -1006,12 +1006,12 @@ class _NodeState:
         return pulumi.get(self, "server_arch")
 
     @server_arch.setter
-    def server_arch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_arch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_arch", value)
 
     @_builtins.property
     @pulumi.getter(name="stageNum")
-    def stage_num(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stage_num(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Number of stages
 
@@ -1020,79 +1020,79 @@ class _NodeState:
         return pulumi.get(self, "stage_num")
 
     @stage_num.setter
-    def stage_num(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stage_num(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stage_num", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Switch ID
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Availability Zone
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -1102,35 +1102,35 @@ class Node(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 classify: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
-                 discount_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 classify: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+                 discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Node resource.
@@ -1440,35 +1440,35 @@ class Node(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 classify: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 computing_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
-                 discount_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 product_form: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_arch: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_num: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 classify: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+                 discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 product_form: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1521,37 +1521,37 @@ class Node(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            billing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            classify: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            computing_server: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
-            discount_level: Optional[pulumi.Input[_builtins.str]] = None,
-            hostname: Optional[pulumi.Input[_builtins.str]] = None,
-            hpn_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            install_pai: Optional[pulumi.Input[_builtins.bool]] = None,
-            ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
-            login_password: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_ratio: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            product_form: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_arch: Optional[pulumi.Input[_builtins.str]] = None,
-            stage_num: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Node':
+            billing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            classify: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            computing_server: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeDataDiskArgs', 'NodeDataDiskArgsDict']]]]] = None,
+            discount_level: pulumi.Input[Optional[_builtins.str]] = None,
+            hostname: pulumi.Input[Optional[_builtins.str]] = None,
+            hpn_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            install_pai: pulumi.Input[Optional[_builtins.bool]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeIpAllocationPolicyArgs', 'NodeIpAllocationPolicyArgsDict']]]]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_ratio: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            product_form: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_arch: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_num: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Node':
         """
         Get an existing Node resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

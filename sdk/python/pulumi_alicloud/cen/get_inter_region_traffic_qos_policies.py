@@ -234,15 +234,15 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[_builtins.str]]
         traffic_qos_policy_name=pulumi.get(__ret__, 'traffic_qos_policy_name'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 traffic_qos_policy_description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 traffic_qos_policy_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 traffic_qos_policy_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_inter_region_traffic_qos_policies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 traffic_qos_policy_description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 traffic_qos_policy_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 traffic_qos_policy_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterRegionTrafficQosPoliciesResult]:
     """
     This data source provides the Cen Inter Region Traffic Qos Policies of the current Alibaba Cloud user.

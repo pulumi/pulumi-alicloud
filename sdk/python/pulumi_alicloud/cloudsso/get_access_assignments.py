@@ -183,13 +183,13 @@ def get_access_assignments(access_configuration_id: Optional[_builtins.str] = No
         principal_type=pulumi.get(__ret__, 'principal_type'),
         target_id=pulumi.get(__ret__, 'target_id'),
         target_type=pulumi.get(__ret__, 'target_type'))
-def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                  ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  principal_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  target_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  target_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_access_assignments_output(access_configuration_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                  ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  principal_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  target_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  target_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccessAssignmentsResult]:
     """
     This data source provides the Cloud Sso Access Assignments of the current Alibaba Cloud user.

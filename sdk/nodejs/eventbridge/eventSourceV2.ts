@@ -198,53 +198,53 @@ export interface EventSourceV2State {
     /**
      * The detail describe of event source
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the bus associated with the event source
      */
-    eventBusName?: pulumi.Input<string>;
+    eventBusName?: pulumi.Input<string | undefined>;
     /**
      * The code name of event source
      */
-    eventSourceName?: pulumi.Input<string>;
+    eventSourceName?: pulumi.Input<string | undefined>;
     /**
      * Whether to connect to an external data source
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    linkedExternalSource?: pulumi.Input<boolean>;
+    linkedExternalSource?: pulumi.Input<boolean | undefined>;
     /**
      * The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
      */
-    sourceHttpEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceHttpEventParameters>;
+    sourceHttpEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceHttpEventParameters | undefined>;
     /**
      * Kafka event source parameter. See `sourceKafkaParameters` below.
      */
-    sourceKafkaParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceKafkaParameters>;
+    sourceKafkaParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceKafkaParameters | undefined>;
     /**
      * Lightweight message queue (formerly MNS) event source parameter. See `sourceMnsParameters` below.
      */
-    sourceMnsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceMnsParameters>;
+    sourceMnsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceMnsParameters | undefined>;
     /**
      * OSS event source parameters See `sourceOssEventParameters` below.
      */
-    sourceOssEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceOssEventParameters>;
+    sourceOssEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceOssEventParameters | undefined>;
     /**
      * The request parameter SourceRabbitMQParameters. See `sourceRabbitMqParameters` below.
      */
-    sourceRabbitMqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRabbitMqParameters>;
+    sourceRabbitMqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRabbitMqParameters | undefined>;
     /**
      * The request parameter SourceRocketMQParameters. See `sourceRocketmqParameters` below.
      */
-    sourceRocketmqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRocketmqParameters>;
+    sourceRocketmqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRocketmqParameters | undefined>;
     /**
      * Time event source parameter. See `sourceScheduledEventParameters` below.
      */
-    sourceScheduledEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceScheduledEventParameters>;
+    sourceScheduledEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceScheduledEventParameters | undefined>;
     /**
      * The request parameter SourceSLSParameters. See `sourceSlsParameters` below.
      */
-    sourceSlsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceSlsParameters>;
+    sourceSlsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceSlsParameters | undefined>;
 }
 
 /**
@@ -254,7 +254,7 @@ export interface EventSourceV2Args {
     /**
      * The detail describe of event source
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the bus associated with the event source
      */
@@ -268,37 +268,37 @@ export interface EventSourceV2Args {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    linkedExternalSource?: pulumi.Input<boolean>;
+    linkedExternalSource?: pulumi.Input<boolean | undefined>;
     /**
      * The request parameter SourceHttpEventParameters. See `sourceHttpEventParameters` below.
      */
-    sourceHttpEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceHttpEventParameters>;
+    sourceHttpEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceHttpEventParameters | undefined>;
     /**
      * Kafka event source parameter. See `sourceKafkaParameters` below.
      */
-    sourceKafkaParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceKafkaParameters>;
+    sourceKafkaParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceKafkaParameters | undefined>;
     /**
      * Lightweight message queue (formerly MNS) event source parameter. See `sourceMnsParameters` below.
      */
-    sourceMnsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceMnsParameters>;
+    sourceMnsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceMnsParameters | undefined>;
     /**
      * OSS event source parameters See `sourceOssEventParameters` below.
      */
-    sourceOssEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceOssEventParameters>;
+    sourceOssEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceOssEventParameters | undefined>;
     /**
      * The request parameter SourceRabbitMQParameters. See `sourceRabbitMqParameters` below.
      */
-    sourceRabbitMqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRabbitMqParameters>;
+    sourceRabbitMqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRabbitMqParameters | undefined>;
     /**
      * The request parameter SourceRocketMQParameters. See `sourceRocketmqParameters` below.
      */
-    sourceRocketmqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRocketmqParameters>;
+    sourceRocketmqParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceRocketmqParameters | undefined>;
     /**
      * Time event source parameter. See `sourceScheduledEventParameters` below.
      */
-    sourceScheduledEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceScheduledEventParameters>;
+    sourceScheduledEventParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceScheduledEventParameters | undefined>;
     /**
      * The request parameter SourceSLSParameters. See `sourceSlsParameters` below.
      */
-    sourceSlsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceSlsParameters>;
+    sourceSlsParameters?: pulumi.Input<inputs.eventbridge.EventSourceV2SourceSlsParameters | undefined>;
 }

@@ -50,7 +50,7 @@ class AutoGroupingRuleRuleContentArgsDict(TypedDict):
     """
     The condition for the destination resource group.
     """
-    auto_grouping_scope_condition: NotRequired[pulumi.Input[_builtins.str]]
+    auto_grouping_scope_condition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The condition for the range of resources to be automatically transferred.
     """
@@ -59,7 +59,7 @@ class AutoGroupingRuleRuleContentArgsDict(TypedDict):
 class AutoGroupingRuleRuleContentArgs:
     def __init__(__self__, *,
                  target_resource_group_condition: pulumi.Input[_builtins.str],
-                 auto_grouping_scope_condition: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_grouping_scope_condition: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] target_resource_group_condition: The condition for the destination resource group.
         :param pulumi.Input[_builtins.str] auto_grouping_scope_condition: The condition for the range of resources to be automatically transferred.
@@ -82,19 +82,19 @@ class AutoGroupingRuleRuleContentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoGroupingScopeCondition")
-    def auto_grouping_scope_condition(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_grouping_scope_condition(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The condition for the range of resources to be automatically transferred.
         """
         return pulumi.get(self, "auto_grouping_scope_condition")
 
     @auto_grouping_scope_condition.setter
-    def auto_grouping_scope_condition(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_grouping_scope_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_grouping_scope_condition", value)
 
 
 class DeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
-    resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of effective resource types for the delivery channel.
     - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
@@ -104,7 +104,7 @@ class DeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
 @pulumi.input_type
 class DeliveryChannelDeliveryChannelFilterArgs:
     def __init__(__self__, *,
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types: An array of effective resource types for the delivery channel.
                - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
@@ -115,7 +115,7 @@ class DeliveryChannelDeliveryChannelFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of effective resource types for the delivery channel.
         - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
@@ -124,28 +124,28 @@ class DeliveryChannelDeliveryChannelFilterArgs:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types", value)
 
 
 class DeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable delivery of resource configuration change events. Valid values:
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
+    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
-    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ARN of the delivery destination.
     - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
     - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
     """
-    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the delivery destination.
 
@@ -156,10 +156,10 @@ class DeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
 @pulumi.input_type
 class DeliveryChannelResourceChangeDeliveryArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sls_properties: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']] = None,
-                 target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sls_properties: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']] = None,
+                 target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable delivery of resource configuration change events. Valid values:
                - true
@@ -184,7 +184,7 @@ class DeliveryChannelResourceChangeDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable delivery of resource configuration change events. Valid values:
         - true
@@ -193,24 +193,24 @@ class DeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProperties")
-    def sls_properties(self) -> Optional[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]:
+    def sls_properties(self) -> pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]:
         """
         The Simple Log Service configurations. See `sls_properties` below.
         """
         return pulumi.get(self, "sls_properties")
 
     @sls_properties.setter
-    def sls_properties(self, value: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]):
+    def sls_properties(self, value: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]):
         pulumi.set(self, "sls_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the delivery destination.
         - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
@@ -219,12 +219,12 @@ class DeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
-    def target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery destination.
 
@@ -234,56 +234,56 @@ class DeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
 class DeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
-    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
     def __init__(__self__, *,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None):
         if oversized_data_oss_target_arn is not None:
             pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
 class DeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
-    custom_expression: NotRequired[pulumi.Input[_builtins.str]]
+    custom_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The custom expression.
     """
-    delivery_time: NotRequired[pulumi.Input[_builtins.str]]
+    delivery_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The delivery time.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
+    sls_properties: NotRequired[pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
-    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the delivery destination.
     - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
     - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
     """
-    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the delivery destination.
 
@@ -295,12 +295,12 @@ class DeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
 @pulumi.input_type
 class DeliveryChannelResourceSnapshotDeliveryArgs:
     def __init__(__self__, *,
-                 custom_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sls_properties: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']] = None,
-                 target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sls_properties: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']] = None,
+                 target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] custom_expression: The custom expression.
         :param pulumi.Input[_builtins.str] delivery_time: The delivery time.
@@ -332,31 +332,31 @@ class DeliveryChannelResourceSnapshotDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customExpression")
-    def custom_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom expression.
         """
         return pulumi.get(self, "custom_expression")
 
     @custom_expression.setter
-    def custom_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryTime")
-    def delivery_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delivery time.
         """
         return pulumi.get(self, "delivery_time")
 
     @delivery_time.setter
-    def delivery_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
         - true
@@ -365,24 +365,24 @@ class DeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProperties")
-    def sls_properties(self) -> Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]:
+    def sls_properties(self) -> pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]:
         """
         The Simple Log Service configurations. See `sls_properties` below.
         """
         return pulumi.get(self, "sls_properties")
 
     @sls_properties.setter
-    def sls_properties(self, value: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]):
+    def sls_properties(self, value: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]):
         pulumi.set(self, "sls_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the delivery destination.
         - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
@@ -391,12 +391,12 @@ class DeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
-    def target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery destination.
 
@@ -407,27 +407,27 @@ class DeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
 class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
-    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class DeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
     def __init__(__self__, *,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None):
         if oversized_data_oss_target_arn is not None:
             pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
@@ -436,7 +436,7 @@ class MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
     """
     The account scopes of the delivery channel.
     """
-    resource_types: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    resource_types: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     An array of effective resource types for the delivery channel.
     - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
@@ -447,7 +447,7 @@ class MultiAccountDeliveryChannelDeliveryChannelFilterArgsDict(TypedDict):
 class MultiAccountDeliveryChannelDeliveryChannelFilterArgs:
     def __init__(__self__, *,
                  account_scopes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 resource_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 resource_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] account_scopes: The account scopes of the delivery channel.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resource_types: An array of effective resource types for the delivery channel.
@@ -472,7 +472,7 @@ class MultiAccountDeliveryChannelDeliveryChannelFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceTypes")
-    def resource_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         An array of effective resource types for the delivery channel.
         - Example: ["ACS::VPC::VPC", "ACS::ECS::Instance"].
@@ -481,28 +481,28 @@ class MultiAccountDeliveryChannelDeliveryChannelFilterArgs:
         return pulumi.get(self, "resource_types")
 
     @resource_types.setter
-    def resource_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_types", value)
 
 
 class MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable delivery of resource configuration change events. Valid values:
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict']]
+    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
-    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ARN of the delivery destination.
     - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
     - If you set TargetType to`SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
     """
-    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the delivery destination.
 
@@ -513,10 +513,10 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgsDict(TypedDict):
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sls_properties: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']] = None,
-                 target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sls_properties: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']] = None,
+                 target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Specifies whether to enable delivery of resource configuration change events. Valid values:
                - true
@@ -541,7 +541,7 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable delivery of resource configuration change events. Valid values:
         - true
@@ -550,24 +550,24 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProperties")
-    def sls_properties(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]:
+    def sls_properties(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]:
         """
         The Simple Log Service configurations. See `sls_properties` below.
         """
         return pulumi.get(self, "sls_properties")
 
     @sls_properties.setter
-    def sls_properties(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]):
+    def sls_properties(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs']]):
         pulumi.set(self, "sls_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the delivery destination.
         - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
@@ -576,12 +576,12 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
-    def target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery destination.
 
@@ -591,56 +591,56 @@ class MultiAccountDeliveryChannelResourceChangeDeliveryArgs:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
 class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgsDict(TypedDict):
-    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceChangeDeliverySlsPropertiesArgs:
     def __init__(__self__, *,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None):
         if oversized_data_oss_target_arn is not None:
             pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
 class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
-    custom_expression: NotRequired[pulumi.Input[_builtins.str]]
+    custom_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The custom expression.
     """
-    delivery_time: NotRequired[pulumi.Input[_builtins.str]]
+    delivery_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The delivery time.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
     - true
     - false
     """
-    sls_properties: NotRequired[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict']]
+    sls_properties: NotRequired[pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]]
     """
     The Simple Log Service configurations. See `sls_properties` below.
     """
-    target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the delivery destination.
     - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
     - If you set TargetType to `SLS`, you must set TargetArn to the ARN of a Logstore whose name is prefixed with `resourcecenter-`.
     """
-    target_type: NotRequired[pulumi.Input[_builtins.str]]
+    target_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type of the delivery destination.
 
@@ -652,12 +652,12 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgsDict(TypedDict):
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
     def __init__(__self__, *,
-                 custom_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sls_properties: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']] = None,
-                 target_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sls_properties: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']] = None,
+                 target_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] custom_expression: The custom expression.
         :param pulumi.Input[_builtins.str] delivery_time: The delivery time.
@@ -689,31 +689,31 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
 
     @_builtins.property
     @pulumi.getter(name="customExpression")
-    def custom_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The custom expression.
         """
         return pulumi.get(self, "custom_expression")
 
     @custom_expression.setter
-    def custom_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryTime")
-    def delivery_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The delivery time.
         """
         return pulumi.get(self, "delivery_time")
 
     @delivery_time.setter
-    def delivery_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable delivery of scheduled resource snapshots. Valid values:
         - true
@@ -722,24 +722,24 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="slsProperties")
-    def sls_properties(self) -> Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]:
+    def sls_properties(self) -> pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]:
         """
         The Simple Log Service configurations. See `sls_properties` below.
         """
         return pulumi.get(self, "sls_properties")
 
     @sls_properties.setter
-    def sls_properties(self, value: Optional[pulumi.Input['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]):
+    def sls_properties(self, value: pulumi.Input[Optional['MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs']]):
         pulumi.set(self, "sls_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="targetArn")
-    def target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the delivery destination.
         - If you set TargetType to`OSS`, you must set TargetArn to the ARN of a bucket whose name is prefixed with `resourcecenter-`.
@@ -748,12 +748,12 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "target_arn")
 
     @target_arn.setter
-    def target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the delivery destination.
 
@@ -764,36 +764,36 @@ class MultiAccountDeliveryChannelResourceSnapshotDeliveryArgs:
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
 class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgsDict(TypedDict):
-    oversized_data_oss_target_arn: NotRequired[pulumi.Input[_builtins.str]]
+    oversized_data_oss_target_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class MultiAccountDeliveryChannelResourceSnapshotDeliverySlsPropertiesArgs:
     def __init__(__self__, *,
-                 oversized_data_oss_target_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 oversized_data_oss_target_arn: pulumi.Input[Optional[_builtins.str]] = None):
         if oversized_data_oss_target_arn is not None:
             pulumi.set(__self__, "oversized_data_oss_target_arn", oversized_data_oss_target_arn)
 
     @_builtins.property
     @pulumi.getter(name="oversizedDataOssTargetArn")
-    def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oversized_data_oss_target_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "oversized_data_oss_target_arn")
 
     @oversized_data_oss_target_arn.setter
-    def oversized_data_oss_target_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oversized_data_oss_target_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oversized_data_oss_target_arn", value)
 
 
 class ResourceGroupRegionStatusArgsDict(TypedDict):
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status of the region.
     """
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The status of the resource group.
     """
@@ -801,8 +801,8 @@ class ResourceGroupRegionStatusArgsDict(TypedDict):
 @pulumi.input_type
 class ResourceGroupRegionStatusArgs:
     def __init__(__self__, *,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] region_id: The status of the region.
         :param pulumi.Input[_builtins.str] status: The status of the resource group.
@@ -814,31 +814,31 @@ class ResourceGroupRegionStatusArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the region.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class ResourceShareResourceArgsDict(TypedDict):
-    resource_id: NotRequired[pulumi.Input[_builtins.str]]
+    resource_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the shared resource.
 
@@ -846,7 +846,7 @@ class ResourceShareResourceArgsDict(TypedDict):
 
     > **NOTE:**  'Resources.N.ResourceId' and'resources. N.ResourceType' appear in pairs and need to be set at the same time.
     """
-    resource_type: NotRequired[pulumi.Input[_builtins.str]]
+    resource_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Shared resource type.
 
@@ -860,8 +860,8 @@ class ResourceShareResourceArgsDict(TypedDict):
 @pulumi.input_type
 class ResourceShareResourceArgs:
     def __init__(__self__, *,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] resource_id: The ID of the shared resource.
                
@@ -883,7 +883,7 @@ class ResourceShareResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the shared resource.
 
@@ -894,12 +894,12 @@ class ResourceShareResourceArgs:
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Shared resource type.
 
@@ -912,16 +912,16 @@ class ResourceShareResourceArgs:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
 class ResourceShareResourcePropertyArgsDict(TypedDict):
-    property: NotRequired[pulumi.Input[_builtins.str]]
+    property: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource property.
     """
-    resource_arn: NotRequired[pulumi.Input[_builtins.str]]
+    resource_arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ARN of the resource.
     """
@@ -929,8 +929,8 @@ class ResourceShareResourcePropertyArgsDict(TypedDict):
 @pulumi.input_type
 class ResourceShareResourcePropertyArgs:
     def __init__(__self__, *,
-                 property: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_arn: Optional[pulumi.Input[_builtins.str]] = None):
+                 property: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_arn: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] property: The resource property.
         :param pulumi.Input[_builtins.str] resource_arn: The ARN of the resource.
@@ -942,26 +942,26 @@ class ResourceShareResourcePropertyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def property(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def property(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource property.
         """
         return pulumi.get(self, "property")
 
     @property.setter
-    def property(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def property(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "property", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceArn")
-    def resource_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the resource.
         """
         return pulumi.get(self, "resource_arn")
 
     @resource_arn.setter
-    def resource_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_arn", value)
 
 

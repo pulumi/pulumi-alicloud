@@ -168,11 +168,11 @@ def get_address_pools(enable_details: Optional[_builtins.bool] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         pools=pulumi.get(__ret__, 'pools'))
-def get_address_pools_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                             ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_address_pools_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                             ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressPoolsResult]:
     """
     This data source provides the Alidns Address Pools of the current Alibaba Cloud user.

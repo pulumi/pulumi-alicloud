@@ -148,16 +148,16 @@ export interface ImagePipelineExecutionState {
     /**
      * The time when the image build task was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image template.
      */
-    imagePipelineId?: pulumi.Input<string>;
+    imagePipelineId?: pulumi.Input<string | undefined>;
     /**
      * The status of the image build task. Valid values:
      * - CANCELLED: canceled. The build process has been canceled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,5 +172,5 @@ export interface ImagePipelineExecutionArgs {
      * The status of the image build task. Valid values:
      * - CANCELLED: canceled. The build process has been canceled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

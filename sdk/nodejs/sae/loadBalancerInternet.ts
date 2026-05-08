@@ -181,19 +181,19 @@ export interface LoadBalancerInternetState {
     /**
      * The target application ID that needs to be bound to the SLB.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * Use designated public network SLBs that have been purchased to support non-shared instances.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * The internet SLB ID.
      */
-    internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string | undefined>;
     /**
      * The bound private network SLB. See `internet` below.
      */
-    internets?: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerInternetInternet>[]>;
+    internets?: pulumi.Input<pulumi.Input<inputs.sae.LoadBalancerInternetInternet>[] | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface LoadBalancerInternetArgs {
     /**
      * The internet SLB ID.
      */
-    internetSlbId?: pulumi.Input<string>;
+    internetSlbId?: pulumi.Input<string | undefined>;
     /**
      * The bound private network SLB. See `internet` below.
      */

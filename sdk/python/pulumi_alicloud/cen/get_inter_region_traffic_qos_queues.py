@@ -160,10 +160,10 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[_builtins.str]] =
         output_file=pulumi.get(__ret__, 'output_file'),
         queues=pulumi.get(__ret__, 'queues'),
         traffic_qos_policy_id=pulumi.get(__ret__, 'traffic_qos_policy_id'))
-def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                               name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                               traffic_qos_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_inter_region_traffic_qos_queues_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                               name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                               traffic_qos_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInterRegionTrafficQosQueuesResult]:
     """
     This data source provides Cen Inter Region Traffic Qos Queue available to the user.

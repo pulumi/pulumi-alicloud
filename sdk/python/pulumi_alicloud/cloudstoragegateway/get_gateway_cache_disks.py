@@ -149,10 +149,10 @@ def get_gateway_cache_disks(gateway_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_gateway_cache_disks_output(gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                   status: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_gateway_cache_disks_output(gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                   status: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewayCacheDisksResult]:
     """
     This data source provides the Cloud Storage Gateway Gateway Cache Disks of the current Alibaba Cloud user.

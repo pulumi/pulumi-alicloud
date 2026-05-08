@@ -211,59 +211,59 @@ export interface VbrPconnAssociationState {
     /**
      * (Optional, ForceNew, Computed) The circuit code provided by the operator for the physical connection.
      */
-    circuitCode?: pulumi.Input<string>;
+    circuitCode?: pulumi.Input<string | undefined>;
     /**
      * Whether IPv6 is enabled. Value:
      */
-    enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The Alibaba cloud IP address of the VBR instance.
      */
-    localGatewayIp?: pulumi.Input<string>;
+    localGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
-    localIpv6GatewayIp?: pulumi.Input<string>;
+    localIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The client IP address of the VBR instance.
      * - This attribute only allows the VBR owner to specify or modify.
      * - Required when creating a VBR instance for the physical connection owner.
      */
-    peerGatewayIp?: pulumi.Input<string>;
+    peerGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 address of the client side of the VBR instance.
      * - This attribute only allows the VBR owner to specify or modify.
      * - Required when creating a VBR instance for the physical connection owner.
      */
-    peerIpv6GatewayIp?: pulumi.Input<string>;
+    peerIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
      * Two IPv6 addresses must be in the same subnet.
      */
-    peeringIpv6SubnetMask?: pulumi.Input<string>;
+    peeringIpv6SubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
      * The two IP addresses must be in the same subnet.
      */
-    peeringSubnetMask?: pulumi.Input<string>;
+    peeringSubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The ID of the leased line instance.
      */
-    physicalConnectionId?: pulumi.Input<string>;
+    physicalConnectionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VBR instance.
      */
-    vbrId?: pulumi.Input<string>;
+    vbrId?: pulumi.Input<string | undefined>;
     /**
      * VLAN ID of the VBR. Valid values: **0 to 2999**.
      *
      * > **NOTE:**  only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      */
-    vlanId?: pulumi.Input<number>;
+    vlanId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -273,37 +273,37 @@ export interface VbrPconnAssociationArgs {
     /**
      * Whether IPv6 is enabled. Value:
      */
-    enableIpv6?: pulumi.Input<boolean>;
+    enableIpv6?: pulumi.Input<boolean | undefined>;
     /**
      * The Alibaba cloud IP address of the VBR instance.
      */
-    localGatewayIp?: pulumi.Input<string>;
+    localGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      */
-    localIpv6GatewayIp?: pulumi.Input<string>;
+    localIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The client IP address of the VBR instance.
      * - This attribute only allows the VBR owner to specify or modify.
      * - Required when creating a VBR instance for the physical connection owner.
      */
-    peerGatewayIp?: pulumi.Input<string>;
+    peerGatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 address of the client side of the VBR instance.
      * - This attribute only allows the VBR owner to specify or modify.
      * - Required when creating a VBR instance for the physical connection owner.
      */
-    peerIpv6GatewayIp?: pulumi.Input<string>;
+    peerIpv6GatewayIp?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
      * Two IPv6 addresses must be in the same subnet.
      */
-    peeringIpv6SubnetMask?: pulumi.Input<string>;
+    peeringIpv6SubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.
      * The two IP addresses must be in the same subnet.
      */
-    peeringSubnetMask?: pulumi.Input<string>;
+    peeringSubnetMask?: pulumi.Input<string | undefined>;
     /**
      * The ID of the leased line instance.
      */

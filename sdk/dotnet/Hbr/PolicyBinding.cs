@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.Index.Integer("default", new()
+    ///     var @default = new Random.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,

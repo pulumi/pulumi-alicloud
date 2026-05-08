@@ -111,8 +111,8 @@ def get_file_crc64_checksum(filename: Optional[_builtins.str] = None,
         filename=pulumi.get(__ret__, 'filename'),
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_file_crc64_checksum_output(filename: Optional[pulumi.Input[_builtins.str]] = None,
-                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_file_crc64_checksum_output(filename: pulumi.Input[Optional[_builtins.str]] = None,
+                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileCrc64ChecksumResult]:
     """
     This data source compute file crc64 checksum.

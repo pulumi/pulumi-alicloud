@@ -308,14 +308,14 @@ def get_transit_router_vpn_attachments(cen_id: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         transit_router_attachment_id=pulumi.get(__ret__, 'transit_router_attachment_id'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'))
-def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                              name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                              transit_router_attachment_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                              transit_router_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_transit_router_vpn_attachments_output(cen_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                              name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                              transit_router_attachment_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                              transit_router_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterVpnAttachmentsResult]:
     """
     This data source provides Cen Transit Router Vpn Attachment available to the user.[What is Transit Router Vpn Attachment](https://next.api.alibabacloud.com/document/Cbn/2017-09-12/CreateTransitRouterVpnAttachment)

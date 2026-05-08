@@ -88,10 +88,10 @@ class PluginAttachmentArgs:
 @pulumi.input_type
 class _PluginAttachmentState:
     def __init__(__self__, *,
-                 api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PluginAttachment resources.
 
@@ -111,50 +111,50 @@ class _PluginAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="apiId")
-    def api_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The api_id that plugin attaches to.
         """
         return pulumi.get(self, "api_id")
 
     @api_id.setter
-    def api_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The group that the api belongs to.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginId")
-    def plugin_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plugin that attaches to the api.
         """
         return pulumi.get(self, "plugin_id")
 
     @plugin_id.setter
-    def plugin_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stageName")
-    def stage_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stage_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Stage that the plugin attaches to.
         """
         return pulumi.get(self, "stage_name")
 
     @stage_name.setter
-    def stage_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stage_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stage_name", value)
 
 
@@ -164,10 +164,10 @@ class PluginAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a plugin attachment resource.It is used for attaching a specific plugin to an api.
@@ -355,10 +355,10 @@ class PluginAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stage_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stage_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -390,10 +390,10 @@ class PluginAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stage_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'PluginAttachment':
+            api_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stage_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'PluginAttachment':
         """
         Get an existing PluginAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

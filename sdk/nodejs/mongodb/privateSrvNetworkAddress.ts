@@ -130,11 +130,11 @@ export interface PrivateSrvNetworkAddressState {
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Private network SRV highly available connection address
      */
-    privateSrvConnectionStringUri?: pulumi.Input<string>;
+    privateSrvConnectionStringUri?: pulumi.Input<string | undefined>;
 }
 
 /**

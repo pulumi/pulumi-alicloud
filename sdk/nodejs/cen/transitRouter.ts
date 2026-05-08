@@ -169,49 +169,49 @@ export interface TransitRouterState {
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.247.0) The time when the transit router was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.247.0) The ID of the region where the transit router is deployed.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the transit router.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      */
-    supportMulticast?: pulumi.Input<boolean>;
+    supportMulticast?: pulumi.Input<boolean | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The description of the Enterprise Edition transit router instance.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterDescription?: pulumi.Input<string>;
+    transitRouterDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the Enterprise Edition transit router.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterName?: pulumi.Input<string>;
+    transitRouterName?: pulumi.Input<string | undefined>;
     /**
      * The edition of the transit router.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,23 +225,23 @@ export interface TransitRouterArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values:
      */
-    supportMulticast?: pulumi.Input<boolean>;
+    supportMulticast?: pulumi.Input<boolean | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The description of the Enterprise Edition transit router instance.
      * The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterDescription?: pulumi.Input<string>;
+    transitRouterDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the Enterprise Edition transit router.
      * The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
      */
-    transitRouterName?: pulumi.Input<string>;
+    transitRouterName?: pulumi.Input<string | undefined>;
 }

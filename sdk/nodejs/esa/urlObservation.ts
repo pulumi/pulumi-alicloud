@@ -139,19 +139,19 @@ export interface UrlObservationState {
     /**
      * Config Id
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * SDK integration mode. Value:
      */
-    sdkType?: pulumi.Input<string>;
+    sdkType?: pulumi.Input<string | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The URL of the page to monitor.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 /**

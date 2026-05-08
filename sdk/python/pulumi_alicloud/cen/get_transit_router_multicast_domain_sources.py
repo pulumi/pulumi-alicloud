@@ -129,9 +129,9 @@ def get_transit_router_multicast_domain_sources(ids: Optional[Sequence[_builtins
         output_file=pulumi.get(__ret__, 'output_file'),
         sources=pulumi.get(__ret__, 'sources'),
         transit_router_multicast_domain_id=pulumi.get(__ret__, 'transit_router_multicast_domain_id'))
-def get_transit_router_multicast_domain_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_multicast_domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_multicast_domain_sources_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_multicast_domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterMulticastDomainSourcesResult]:
     """
     This data source provides Cen Transit Router Multicast Domain Source available to the user.[What is Transit Router Multicast Domain Source](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-registertransitroutermulticastgroupsources)

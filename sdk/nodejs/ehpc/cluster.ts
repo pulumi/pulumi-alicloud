@@ -543,144 +543,144 @@ export interface ClusterState {
     /**
      * The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The additional volumes. See `additionalVolumes` below.
      */
-    additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[]>;
+    additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[] | undefined>;
     /**
      * The application. See `application` below.
      */
-    applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[]>;
+    applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[] | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The version of the E-HPC client. By default, the parameter is set to the latest version number.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster. The name must be `2` to `64` characters in length.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The version of the cluster. Default value: `1.0`.
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of the compute nodes. Valid values: `1` to `99`.
      */
-    computeCount?: pulumi.Input<number>;
+    computeCount?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether the compute nodes support hyper-threading. Default value: `true`.
      */
-    computeEnableHt?: pulumi.Input<boolean>;
+    computeEnableHt?: pulumi.Input<boolean | undefined>;
     /**
      * The instance type of the compute nodes.
      */
-    computeInstanceType?: pulumi.Input<string>;
+    computeInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
      */
-    computeSpotPriceLimit?: pulumi.Input<string>;
+    computeSpotPriceLimit?: pulumi.Input<string | undefined>;
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
      * - `NoSpot`: The compute nodes are pay-as-you-go instances.
      * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
      * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      */
-    computeSpotStrategy?: pulumi.Input<string>;
+    computeSpotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
      * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
      * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
      * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      */
-    deployMode?: pulumi.Input<string>;
+    deployMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the nodes.
      */
-    ecsChargeType?: pulumi.Input<string>;
+    ecsChargeType?: pulumi.Input<string | undefined>;
     /**
      * The version of E-HPC. By default, the parameter is set to the latest version number.
      */
-    ehpcVersion?: pulumi.Input<string>;
+    ehpcVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
      */
-    haEnable?: pulumi.Input<boolean>;
+    haEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
      */
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
      */
-    inputFileUrl?: pulumi.Input<string>;
+    inputFileUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto scaling. Default value: `false`.
      */
-    isComputeEss?: pulumi.Input<boolean>;
+    isComputeEss?: pulumi.Input<boolean | undefined>;
     /**
      * The queue to which the compute nodes are added.
      */
-    jobQueue?: pulumi.Input<string>;
+    jobQueue?: pulumi.Input<string | undefined>;
     /**
      * The name of the AccessKey pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The number of the logon nodes. Valid values: `1`.
      */
-    loginCount?: pulumi.Input<number>;
+    loginCount?: pulumi.Input<number | undefined>;
     /**
      * The instance type of the logon nodes.
      */
-    loginInstanceType?: pulumi.Input<string>;
+    loginInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The number of the management nodes. Valid values: 1 and 2.
      */
-    managerCount?: pulumi.Input<number>;
+    managerCount?: pulumi.Input<number | undefined>;
     /**
      * The instance type of the management nodes.
      */
-    managerInstanceType?: pulumi.Input<string>;
+    managerInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The image tag of the operating system.
      */
-    osTag?: pulumi.Input<string>;
+    osTag?: pulumi.Input<string | undefined>;
     /**
      * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
      * - pluginMod: the mode of the plug-in. The following modes are supported:
@@ -689,55 +689,55 @@ export interface ClusterState {
      * - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
      * - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
      */
-    plugin?: pulumi.Input<string>;
+    plugin?: pulumi.Input<string | undefined>;
     /**
      * The post install script. See `postInstallScript` below.
      */
-    postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[]>;
+    postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[] | undefined>;
     /**
      * The node of the RAM role.
      */
-    ramNodeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    ramNodeTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the Resource Access Management (RAM) role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The release instance. Valid values: `true`.
      */
-    releaseInstance?: pulumi.Input<boolean>;
+    releaseInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The remote directory to which the file system is mounted.
      */
-    remoteDirectory?: pulumi.Input<string>;
+    remoteDirectory?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
      */
-    remoteVisEnable?: pulumi.Input<boolean>;
+    remoteVisEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
      */
-    sccClusterId?: pulumi.Input<string>;
+    sccClusterId?: pulumi.Input<string | undefined>;
     /**
      * The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
      */
-    schedulerType?: pulumi.Input<string>;
+    schedulerType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group to which the cluster belongs.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
      * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -745,57 +745,57 @@ export interface ClusterState {
      * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      */
-    systemDiskLevel?: pulumi.Input<string>;
+    systemDiskLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      */
-    systemDiskType?: pulumi.Input<string>;
+    systemDiskType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
     /**
      * The mount options of the file system.
      */
-    volumeMountOption?: pulumi.Input<string>;
+    volumeMountOption?: pulumi.Input<string | undefined>;
     /**
      * The mount target of the file system. Take note of the following information:
      * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
      * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      */
-    volumeMountpoint?: pulumi.Input<string>;
+    volumeMountpoint?: pulumi.Input<string | undefined>;
     /**
      * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      */
-    volumeProtocol?: pulumi.Input<string>;
+    volumeProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the cluster belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch. E-HPC supports only VPC networks.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether not to install the agent. Default value: `false`.
      */
-    withoutAgent?: pulumi.Input<boolean>;
+    withoutAgent?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
      */
-    withoutElasticIp?: pulumi.Input<boolean>;
+    withoutElasticIp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -805,27 +805,27 @@ export interface ClusterArgs {
     /**
      * The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The additional volumes. See `additionalVolumes` below.
      */
-    additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[]>;
+    additionalVolumes?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterAdditionalVolume>[] | undefined>;
     /**
      * The application. See `application` below.
      */
-    applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[]>;
+    applications?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterApplication>[] | undefined>;
     /**
      * Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The version of the E-HPC client. By default, the parameter is set to the latest version number.
      */
-    clientVersion?: pulumi.Input<string>;
+    clientVersion?: pulumi.Input<string | undefined>;
     /**
      * The name of the cluster. The name must be `2` to `64` characters in length.
      */
@@ -833,7 +833,7 @@ export interface ClusterArgs {
     /**
      * The version of the cluster. Default value: `1.0`.
      */
-    clusterVersion?: pulumi.Input<string>;
+    clusterVersion?: pulumi.Input<string | undefined>;
     /**
      * The number of the compute nodes. Valid values: `1` to `99`.
      */
@@ -841,7 +841,7 @@ export interface ClusterArgs {
     /**
      * Specifies whether the compute nodes support hyper-threading. Default value: `true`.
      */
-    computeEnableHt?: pulumi.Input<boolean>;
+    computeEnableHt?: pulumi.Input<boolean | undefined>;
     /**
      * The instance type of the compute nodes.
      */
@@ -849,65 +849,65 @@ export interface ClusterArgs {
     /**
      * The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
      */
-    computeSpotPriceLimit?: pulumi.Input<string>;
+    computeSpotPriceLimit?: pulumi.Input<string | undefined>;
     /**
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
      * - `NoSpot`: The compute nodes are pay-as-you-go instances.
      * - `SpotWithPriceLimit`: The compute nodes are preemptible instances that have a user-defined maximum hourly price.
      * - `SpotAsPriceGo`: The compute nodes are preemptible instances for which the market price at the time of purchase is used as the bid price.
      */
-    computeSpotStrategy?: pulumi.Input<string>;
+    computeSpotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
      * - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
      * - `Simple`: A management node, a logon node, and multiple compute nodes are deployed. The management node consists of an account node and a scheduling node. The logon node and compute nodes are separately deployed.
      * - `Tiny`: A management node and multiple compute nodes are deployed. The management node consists of an account node, a scheduling node, and a logon node. The compute nodes are separately deployed.
      */
-    deployMode?: pulumi.Input<string>;
+    deployMode?: pulumi.Input<string | undefined>;
     /**
      * The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the nodes.
      */
-    ecsChargeType?: pulumi.Input<string>;
+    ecsChargeType?: pulumi.Input<string | undefined>;
     /**
      * The version of E-HPC. By default, the parameter is set to the latest version number.
      */
-    ehpcVersion?: pulumi.Input<string>;
+    ehpcVersion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
      */
-    haEnable?: pulumi.Input<boolean>;
+    haEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
      */
-    imageOwnerAlias?: pulumi.Input<string>;
+    imageOwnerAlias?: pulumi.Input<string | undefined>;
     /**
      * The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
      */
-    inputFileUrl?: pulumi.Input<string>;
+    inputFileUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto scaling. Default value: `false`.
      */
-    isComputeEss?: pulumi.Input<boolean>;
+    isComputeEss?: pulumi.Input<boolean | undefined>;
     /**
      * The queue to which the compute nodes are added.
      */
-    jobQueue?: pulumi.Input<string>;
+    jobQueue?: pulumi.Input<string | undefined>;
     /**
      * The name of the AccessKey pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The number of the logon nodes. Valid values: `1`.
      */
@@ -919,7 +919,7 @@ export interface ClusterArgs {
     /**
      * The number of the management nodes. Valid values: 1 and 2.
      */
-    managerCount?: pulumi.Input<number>;
+    managerCount?: pulumi.Input<number | undefined>;
     /**
      * The instance type of the management nodes.
      */
@@ -931,18 +931,18 @@ export interface ClusterArgs {
     /**
      * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `keyPairName`. If both are specified, the Password parameter prevails.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The duration of the subscription. The unit of the duration is specified by the `periodUnit` parameter. Default value: `1`.
      * * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
      * * If you set PriceUnit to Month, the valid values of the Period parameter are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
      * - pluginMod: the mode of the plug-in. The following modes are supported:
@@ -951,51 +951,51 @@ export interface ClusterArgs {
      * - pluginLocalPath: the local path where the plug-in is stored. We recommend that you select a shared directory in oss mode and a non-shared directory in image mode.
      * - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
      */
-    plugin?: pulumi.Input<string>;
+    plugin?: pulumi.Input<string | undefined>;
     /**
      * The post install script. See `postInstallScript` below.
      */
-    postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[]>;
+    postInstallScripts?: pulumi.Input<pulumi.Input<inputs.ehpc.ClusterPostInstallScript>[] | undefined>;
     /**
      * The node of the RAM role.
      */
-    ramNodeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    ramNodeTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the Resource Access Management (RAM) role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * The release instance. Valid values: `true`.
      */
-    releaseInstance?: pulumi.Input<boolean>;
+    releaseInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The remote directory to which the file system is mounted.
      */
-    remoteDirectory?: pulumi.Input<string>;
+    remoteDirectory?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
      */
-    remoteVisEnable?: pulumi.Input<boolean>;
+    remoteVisEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
      */
-    sccClusterId?: pulumi.Input<string>;
+    sccClusterId?: pulumi.Input<string | undefined>;
     /**
      * The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
      */
-    schedulerType?: pulumi.Input<string>;
+    schedulerType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group to which the cluster belongs.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
      */
-    securityGroupName?: pulumi.Input<string>;
+    securityGroupName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
      * * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -1003,55 +1003,55 @@ export interface ClusterArgs {
      * * `PL2`: A single ESSD can deliver up to 100,000 random read/write IOPS.
      * * `PL3`: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
      */
-    systemDiskLevel?: pulumi.Input<string>;
+    systemDiskLevel?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * The type of the system disk. Valid values: `cloudEfficiency`, `cloudSsd`, `cloudEssd` or `cloud`. Default value: `cloudSsd`.
      */
-    systemDiskType?: pulumi.Input<string>;
+    systemDiskType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
     /**
      * The mount options of the file system.
      */
-    volumeMountOption?: pulumi.Input<string>;
+    volumeMountOption?: pulumi.Input<string | undefined>;
     /**
      * The mount target of the file system. Take note of the following information:
      * - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
      * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      */
-    volumeMountpoint?: pulumi.Input<string>;
+    volumeMountpoint?: pulumi.Input<string | undefined>;
     /**
      * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      */
-    volumeProtocol?: pulumi.Input<string>;
+    volumeProtocol?: pulumi.Input<string | undefined>;
     /**
      * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the cluster belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch. E-HPC supports only VPC networks.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether not to install the agent. Default value: `false`.
      */
-    withoutAgent?: pulumi.Input<boolean>;
+    withoutAgent?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
      */
-    withoutElasticIp?: pulumi.Input<boolean>;
+    withoutElasticIp?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

@@ -22,19 +22,19 @@ __all__ = ['StackGroupArgs', 'StackGroup']
 class StackGroupArgs:
     def __init__(__self__, *,
                  stack_group_name: pulumi.Input[_builtins.str],
-                 administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_deployment: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_deployment: pulumi.Input[Optional['StackGroupAutoDeploymentArgs']] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
+                 permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackGroup resource.
 
@@ -98,19 +98,19 @@ class StackGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="administrationRoleName")
-    def administration_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administration_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "administration_role_name")
 
     @administration_role_name.setter
-    def administration_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administration_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administration_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDeployment")
-    def auto_deployment(self) -> Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]:
+    def auto_deployment(self) -> pulumi.Input[Optional['StackGroupAutoDeploymentArgs']]:
         """
         Automatic deployment setting information. Description
         This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
@@ -118,120 +118,120 @@ class StackGroupArgs:
         return pulumi.get(self, "auto_deployment")
 
     @auto_deployment.setter
-    def auto_deployment(self, value: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]):
+    def auto_deployment(self, value: pulumi.Input[Optional['StackGroupAutoDeploymentArgs']]):
         pulumi.set(self, "auto_deployment", value)
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource stack group options. The maximum length is 1.
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executionRoleName")
-    def execution_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "execution_role_name")
 
     @execution_role_name.setter
-    def execution_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_role_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
         """
         Parameters See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionModel")
-    def permission_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permission model.
         """
         return pulumi.get(self, "permission_model")
 
     @permission_model.setter
-    def permission_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission_model", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The label of the resource stack group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateBody")
-    def template_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The template body.
         """
         return pulumi.get(self, "template_body")
 
     @template_body.setter
-    def template_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_body", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the template.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="templateUrl")
-    def template_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
 
@@ -240,41 +240,41 @@ class StackGroupArgs:
         return pulumi.get(self, "template_url")
 
     @template_url.setter
-    def template_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_url", value)
 
     @_builtins.property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the template.
         """
         return pulumi.get(self, "template_version")
 
     @template_version.setter
-    def template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_version", value)
 
 
 @pulumi.input_type
 class _StackGroupState:
     def __init__(__self__, *,
-                 administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_deployment: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
-                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_deployment: pulumi.Input[Optional['StackGroupAutoDeploymentArgs']] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]] = None,
+                 permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackGroup resources.
 
@@ -333,19 +333,19 @@ class _StackGroupState:
 
     @_builtins.property
     @pulumi.getter(name="administrationRoleName")
-    def administration_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def administration_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that you specify for the administrator account in ROS when you create the self-managed stack group. If you do not specify this parameter, the default value AliyunROSStackGroupAdministrationRole is used. You can use the administrator role in ROS to assume the execution role AliyunROSStackGroupExecutionRole to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "administration_role_name")
 
     @administration_role_name.setter
-    def administration_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def administration_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "administration_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="autoDeployment")
-    def auto_deployment(self) -> Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]:
+    def auto_deployment(self) -> pulumi.Input[Optional['StackGroupAutoDeploymentArgs']]:
         """
         Automatic deployment setting information. Description
         This parameter is required only if the PermissionModel is SERVICE_MANAGED. See `auto_deployment` below.
@@ -353,156 +353,156 @@ class _StackGroupState:
         return pulumi.get(self, "auto_deployment")
 
     @auto_deployment.setter
-    def auto_deployment(self, value: Optional[pulumi.Input['StackGroupAutoDeploymentArgs']]):
+    def auto_deployment(self, value: pulumi.Input[Optional['StackGroupAutoDeploymentArgs']]):
         pulumi.set(self, "auto_deployment", value)
 
     @_builtins.property
     @pulumi.getter
-    def capabilities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def capabilities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of resource stack group options. The maximum length is 1.
         """
         return pulumi.get(self, "capabilities")
 
     @capabilities.setter
-    def capabilities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def capabilities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "capabilities", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the stack group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executionRoleName")
-    def execution_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the RAM role that you specify for the execution account when you create the self-managed stack group. You can use the administrator role AliyunROSStackGroupAdministrationRole to assume the execution role. If you do not specify this parameter, the default value AliyunROSStackGroupExecutionRole is used. You can use this role in ROS to perform operations on the stacks that correspond to stack instances in the stack group.
         """
         return pulumi.get(self, "execution_role_name")
 
     @execution_role_name.setter
-    def execution_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_role_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]]:
         """
         Parameters See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackGroupParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackGroupParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionModel")
-    def permission_model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def permission_model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The permission model.
         """
         return pulumi.get(self, "permission_model")
 
     @permission_model.setter
-    def permission_model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def permission_model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "permission_model", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackGroupId")
-    def stack_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of stack group.
         """
         return pulumi.get(self, "stack_group_id")
 
     @stack_group_id.setter
-    def stack_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackGroupName")
-    def stack_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         StackGroupName
         """
         return pulumi.get(self, "stack_group_name")
 
     @stack_group_name.setter
-    def stack_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the stack group.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The label of the resource stack group.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateBody")
-    def template_body(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_body(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The template body.
         """
         return pulumi.get(self, "template_body")
 
     @template_body.setter
-    def template_body(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_body(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_body", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the template.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="templateUrl")
-    def template_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the file that contains the template body. The URL must point to the template (1 to 524,288 bytes) located in the HTTP Web server (HTTP or HTTPS) or Alibaba Cloud OSS bucket. The URL of the OSS bucket, such as oss:// ros/template/demo or oss:// ros/template/demo? RegionId = cn-hangzhou. If the OSS region is not specified, the RegionId of the interface is the same by default.
 
@@ -511,19 +511,19 @@ class _StackGroupState:
         return pulumi.get(self, "template_url")
 
     @template_url.setter
-    def template_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_url", value)
 
     @_builtins.property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the template.
         """
         return pulumi.get(self, "template_version")
 
     @template_version.setter
-    def template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_version", value)
 
 
@@ -533,20 +533,20 @@ class StackGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+                 permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ROS Stack Group resource.
@@ -661,20 +661,20 @@ class StackGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
-                 capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-                 permission_model: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_body: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+                 capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+                 permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_body: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -712,22 +712,22 @@ class StackGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            administration_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_deployment: Optional[pulumi.Input[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
-            capabilities: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
-            permission_model: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            template_body: Optional[pulumi.Input[_builtins.str]] = None,
-            template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            template_url: Optional[pulumi.Input[_builtins.str]] = None,
-            template_version: Optional[pulumi.Input[_builtins.str]] = None) -> 'StackGroup':
+            administration_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_deployment: pulumi.Input[Optional[Union['StackGroupAutoDeploymentArgs', 'StackGroupAutoDeploymentArgsDict']]] = None,
+            capabilities: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackGroupParameterArgs', 'StackGroupParameterArgsDict']]]]] = None,
+            permission_model: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_body: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_url: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None) -> 'StackGroup':
         """
         Get an existing StackGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

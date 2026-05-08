@@ -144,25 +144,25 @@ export interface BgpIpState {
     /**
      * The ID of the Anti-DDoS Origin instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address that you want to add.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The member to which the asset belongs.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      *
      * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the IP address.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,11 +180,11 @@ export interface BgpIpArgs {
     /**
      * The member to which the asset belongs.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      *
      * @deprecated Field `resourceGroupId` has been deprecated from provider version 1.259.0.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
 }

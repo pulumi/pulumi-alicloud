@@ -22,14 +22,14 @@ __all__ = ['ResourceShareArgs', 'ResourceShare']
 class ResourceShareArgs:
     def __init__(__self__, *,
                  resource_share_name: pulumi.Input[_builtins.str],
-                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ResourceShare resource.
 
@@ -85,7 +85,7 @@ class ResourceShareArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowExternalTargets")
-    def allow_external_targets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_external_targets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow sharing to accounts outside the resource directory. Value:
         - false (default): Only sharing within the resource directory is allowed.
@@ -94,12 +94,12 @@ class ResourceShareArgs:
         return pulumi.get(self, "allow_external_targets")
 
     @allow_external_targets.setter
-    def allow_external_targets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_external_targets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_external_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionNames")
-    def permission_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def permission_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
 
@@ -108,12 +108,12 @@ class ResourceShareArgs:
         return pulumi.get(self, "permission_names")
 
     @permission_names.setter
-    def permission_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def permission_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "permission_names", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceArns")
-    def resource_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_arns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ResourceArns
 
@@ -122,36 +122,36 @@ class ResourceShareArgs:
         return pulumi.get(self, "resource_arns")
 
     @resource_arns.setter
-    def resource_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_arns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_arns", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceProperties")
-    def resource_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
+    def resource_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
         """
         A list of resource properties. See `resource_properties` below.
         """
         return pulumi.get(self, "resource_properties")
 
     @resource_properties.setter
-    def resource_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
+    def resource_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
         pulumi.set(self, "resource_properties", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
         """
         List of shared resources. See `resources` below.
 
@@ -160,24 +160,24 @@ class ResourceShareArgs:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource user.
 
@@ -186,25 +186,25 @@ class ResourceShareArgs:
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "targets", value)
 
 
 @pulumi.input_type
 class _ResourceShareState:
     def __init__(__self__, *,
-                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
-                 resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]] = None,
+                 resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_share_owner: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ResourceShare resources.
 
@@ -258,7 +258,7 @@ class _ResourceShareState:
 
     @_builtins.property
     @pulumi.getter(name="allowExternalTargets")
-    def allow_external_targets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_external_targets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow sharing to accounts outside the resource directory. Value:
         - false (default): Only sharing within the resource directory is allowed.
@@ -267,24 +267,24 @@ class _ResourceShareState:
         return pulumi.get(self, "allow_external_targets")
 
     @allow_external_targets.setter
-    def allow_external_targets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_external_targets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_external_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The create time of resource share.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="permissionNames")
-    def permission_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def permission_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
 
@@ -293,12 +293,12 @@ class _ResourceShareState:
         return pulumi.get(self, "permission_names")
 
     @permission_names.setter
-    def permission_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def permission_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "permission_names", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceArns")
-    def resource_arns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resource_arns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ResourceArns
 
@@ -307,60 +307,60 @@ class _ResourceShareState:
         return pulumi.get(self, "resource_arns")
 
     @resource_arns.setter
-    def resource_arns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resource_arns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resource_arns", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceProperties")
-    def resource_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
+    def resource_properties(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]:
         """
         A list of resource properties. See `resource_properties` below.
         """
         return pulumi.get(self, "resource_properties")
 
     @resource_properties.setter
-    def resource_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
+    def resource_properties(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourcePropertyArgs']]]]):
         pulumi.set(self, "resource_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareName")
-    def resource_share_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_share_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of resource share.
         """
         return pulumi.get(self, "resource_share_name")
 
     @resource_share_name.setter
-    def resource_share_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_share_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_share_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceShareOwner")
-    def resource_share_owner(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_share_owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The owner of resource share,  `Self` and `OtherAccounts`.
         """
         return pulumi.get(self, "resource_share_owner")
 
     @resource_share_owner.setter
-    def resource_share_owner(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_share_owner(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_share_owner", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]:
         """
         List of shared resources. See `resources` below.
 
@@ -369,36 +369,36 @@ class _ResourceShareState:
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ResourceShareResourceArgs']]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of resource share.  `Active`,`Deleted` and `Deleting`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource user.
 
@@ -407,7 +407,7 @@ class _ResourceShareState:
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "targets", value)
 
 
@@ -417,15 +417,15 @@ class ResourceShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
-                 resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+                 resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Resource Share resource.
@@ -540,15 +540,15 @@ class ResourceShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
-                 resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+                 resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -582,18 +582,18 @@ class ResourceShare(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_external_targets: Optional[pulumi.Input[_builtins.bool]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            permission_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_arns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_properties: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
-            resource_share_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_share_owner: Optional[pulumi.Input[_builtins.str]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceShare':
+            allow_external_targets: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            permission_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_arns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_properties: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourcePropertyArgs', 'ResourceShareResourcePropertyArgsDict']]]]] = None,
+            resource_share_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_share_owner: pulumi.Input[Optional[_builtins.str]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ResourceShareResourceArgs', 'ResourceShareResourceArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ResourceShare':
         """
         Get an existing ResourceShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

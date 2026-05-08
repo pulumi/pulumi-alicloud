@@ -123,15 +123,15 @@ export interface RecycleBinState {
     /**
      * The ID of the file system for which you want to enable the recycle bin feature.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
      */
-    reservedDays?: pulumi.Input<number>;
+    reservedDays?: pulumi.Input<number | undefined>;
     /**
      * The status of the recycle bin.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,5 +145,5 @@ export interface RecycleBinArgs {
     /**
      * The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
      */
-    reservedDays?: pulumi.Input<number>;
+    reservedDays?: pulumi.Input<number | undefined>;
 }

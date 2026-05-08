@@ -22,13 +22,13 @@ __all__ = ['ImageImportArgs', 'ImageImport']
 class ImageImportArgs:
     def __init__(__self__, *,
                  disk_device_mappings: pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]],
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageImport resource.
 
@@ -72,79 +72,79 @@ class ImageImportArgs:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         """
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         """
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
         > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
@@ -152,21 +152,21 @@ class ImageImportArgs:
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
 
 @pulumi.input_type
 class _ImageImportState:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageImport resources.
 
@@ -199,91 +199,91 @@ class _ImageImportState:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The architecture of the image. Default value: `x86_64`. Valid values: `x86_64`, `i386`.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter(name="bootMode")
-    def boot_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def boot_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The boot mode of the image. Valid values: `BIOS`, `UEFI`.
         """
         return pulumi.get(self, "boot_mode")
 
     @boot_mode.setter
-    def boot_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def boot_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "boot_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the image. The `description` must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskDeviceMappings")
-    def disk_device_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]:
+    def disk_device_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]:
         """
         The information about the custom image. See `disk_device_mapping` below.
         """
         return pulumi.get(self, "disk_device_mappings")
 
     @disk_device_mappings.setter
-    def disk_device_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]):
+    def disk_device_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageImportDiskDeviceMappingArgs']]]]):
         pulumi.set(self, "disk_device_mappings", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image. The `image_name` must be `2` to `128` characters in length. The `image_name` must start with a letter and cannot start with acs: or aliyun. The `image_name` cannot contain http:// or https://. The `image_name` can contain letters, digits, periods (.), colons (:), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="licenseType")
-    def license_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def license_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`, `Aliyun`, `BYOL`.
         """
         return pulumi.get(self, "license_type")
 
     @license_type.setter
-    def license_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def license_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "license_type", value)
 
     @_builtins.property
     @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the operating system. Default value: `linux`. Valid values: `windows`, `linux`.
         """
         return pulumi.get(self, "os_type")
 
     @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def platform(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def platform(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operating system platform. More valid values refer to [ImportImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/importimage).
         > **NOTE:** Before provider version 1.197.0, the default value of `platform` is `Ubuntu`.
@@ -291,7 +291,7 @@ class _ImageImportState:
         return pulumi.get(self, "platform")
 
     @platform.setter
-    def platform(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def platform(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "platform", value)
 
 
@@ -301,14 +301,14 @@ class ImageImport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Image Import resource.
@@ -465,14 +465,14 @@ class ImageImport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 license_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 platform: Optional[pulumi.Input[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 license_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 platform: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -502,14 +502,14 @@ class ImageImport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            architecture: Optional[pulumi.Input[_builtins.str]] = None,
-            boot_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_device_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            license_type: Optional[pulumi.Input[_builtins.str]] = None,
-            os_type: Optional[pulumi.Input[_builtins.str]] = None,
-            platform: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageImport':
+            architecture: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_device_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageImportDiskDeviceMappingArgs', 'ImageImportDiskDeviceMappingArgsDict']]]]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            license_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_type: pulumi.Input[Optional[_builtins.str]] = None,
+            platform: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageImport':
         """
         Get an existing ImageImport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

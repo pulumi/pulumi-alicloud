@@ -191,13 +191,13 @@ def get_gateways(enable_details: Optional[_builtins.bool] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'),
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
-def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                        gateway_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        vpc_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_gateways_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                        gateway_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGatewaysResult]:
     """
     This data source provides the Mse Gateways of the current Alibaba Cloud user.

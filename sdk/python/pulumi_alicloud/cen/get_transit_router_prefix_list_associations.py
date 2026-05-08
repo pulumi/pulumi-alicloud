@@ -202,15 +202,15 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[_builtins
         status=pulumi.get(__ret__, 'status'),
         transit_router_id=pulumi.get(__ret__, 'transit_router_id'),
         transit_router_table_id=pulumi.get(__ret__, 'transit_router_table_id'))
-def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       owner_uid: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                       page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                       page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                                       prefix_list_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                       transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                       transit_router_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_transit_router_prefix_list_associations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       owner_uid: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                       page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                       page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                                       prefix_list_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                       transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                       transit_router_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransitRouterPrefixListAssociationsResult]:
     """
     This data source provides the Cen Transit Router Prefix List Associations of the current Alibaba Cloud user.

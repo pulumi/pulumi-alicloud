@@ -23,16 +23,16 @@ class EventRuleArgs:
     def __init__(__self__, *,
                  event_pattern: pulumi.Input['EventRuleEventPatternArgs'],
                  rule_name: pulumi.Input[_builtins.str],
-                 contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
-                 open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
+                 contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
+                 open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
         """
         The set of arguments for constructing a EventRule resource.
 
@@ -98,140 +98,140 @@ class EventRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactParameters")
-    def contact_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]:
+    def contact_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]:
         """
         The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
         """
         return pulumi.get(self, "contact_parameters")
 
     @contact_parameters.setter
-    def contact_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]):
+    def contact_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]):
         pulumi.set(self, "contact_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event-triggered alert rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fcParameters")
-    def fc_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]:
+    def fc_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]:
         """
         The information about the recipients in Function Compute. See `fc_parameters` below.
         """
         return pulumi.get(self, "fc_parameters")
 
     @fc_parameters.setter
-    def fc_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]):
+    def fc_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]):
         pulumi.set(self, "fc_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group to which the event-triggered alert rule belongs.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsParameters")
-    def mns_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]:
+    def mns_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]:
         """
         The information about the recipients in Message Service (MNS). See `mns_parameters` below.
         """
         return pulumi.get(self, "mns_parameters")
 
     @mns_parameters.setter
-    def mns_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]):
+    def mns_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]):
         pulumi.set(self, "mns_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiParameters")
-    def open_api_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]:
+    def open_api_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]:
         """
         The parameters of API callback notification. See `open_api_parameters` below.
         """
         return pulumi.get(self, "open_api_parameters")
 
     @open_api_parameters.setter
-    def open_api_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]):
+    def open_api_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]):
         pulumi.set(self, "open_api_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The silence time.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter(name="slsParameters")
-    def sls_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]:
+    def sls_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]:
         """
         The information about the recipients in Simple Log Service. See `sls_parameters` below.
         """
         return pulumi.get(self, "sls_parameters")
 
     @sls_parameters.setter
-    def sls_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]):
+    def sls_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]):
         pulumi.set(self, "sls_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookParameters")
-    def webhook_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]:
+    def webhook_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]:
         """
         The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
         """
         return pulumi.get(self, "webhook_parameters")
 
     @webhook_parameters.setter
-    def webhook_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]):
+    def webhook_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]):
         pulumi.set(self, "webhook_parameters", value)
 
 
 @pulumi.input_type
 class _EventRuleState:
     def __init__(__self__, *,
-                 contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_pattern: Optional[pulumi.Input['EventRuleEventPatternArgs']] = None,
-                 fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
-                 open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
+                 contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_pattern: pulumi.Input[Optional['EventRuleEventPatternArgs']] = None,
+                 fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]] = None,
+                 open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]] = None):
         """
         Input properties used for looking up and filtering EventRule resources.
 
@@ -275,146 +275,146 @@ class _EventRuleState:
 
     @_builtins.property
     @pulumi.getter(name="contactParameters")
-    def contact_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]:
+    def contact_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]:
         """
         The information about the alert contact groups that receive alert notifications. See `contact_parameters` below.
         """
         return pulumi.get(self, "contact_parameters")
 
     @contact_parameters.setter
-    def contact_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]):
+    def contact_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleContactParameterArgs']]]]):
         pulumi.set(self, "contact_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the event-triggered alert rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="eventPattern")
-    def event_pattern(self) -> Optional[pulumi.Input['EventRuleEventPatternArgs']]:
+    def event_pattern(self) -> pulumi.Input[Optional['EventRuleEventPatternArgs']]:
         """
         Event mode, used to describe the trigger conditions for this event. See `event_pattern` below.
         """
         return pulumi.get(self, "event_pattern")
 
     @event_pattern.setter
-    def event_pattern(self, value: Optional[pulumi.Input['EventRuleEventPatternArgs']]):
+    def event_pattern(self, value: pulumi.Input[Optional['EventRuleEventPatternArgs']]):
         pulumi.set(self, "event_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="fcParameters")
-    def fc_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]:
+    def fc_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]:
         """
         The information about the recipients in Function Compute. See `fc_parameters` below.
         """
         return pulumi.get(self, "fc_parameters")
 
     @fc_parameters.setter
-    def fc_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]):
+    def fc_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleFcParameterArgs']]]]):
         pulumi.set(self, "fc_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group to which the event-triggered alert rule belongs.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsParameters")
-    def mns_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]:
+    def mns_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]:
         """
         The information about the recipients in Message Service (MNS). See `mns_parameters` below.
         """
         return pulumi.get(self, "mns_parameters")
 
     @mns_parameters.setter
-    def mns_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]):
+    def mns_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleMnsParameterArgs']]]]):
         pulumi.set(self, "mns_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiParameters")
-    def open_api_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]:
+    def open_api_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]:
         """
         The parameters of API callback notification. See `open_api_parameters` below.
         """
         return pulumi.get(self, "open_api_parameters")
 
     @open_api_parameters.setter
-    def open_api_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]):
+    def open_api_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleOpenApiParameterArgs']]]]):
         pulumi.set(self, "open_api_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the event-triggered alert rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The silence time.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter(name="slsParameters")
-    def sls_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]:
+    def sls_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]:
         """
         The information about the recipients in Simple Log Service. See `sls_parameters` below.
         """
         return pulumi.get(self, "sls_parameters")
 
     @sls_parameters.setter
-    def sls_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]):
+    def sls_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleSlsParameterArgs']]]]):
         pulumi.set(self, "sls_parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `ENABLED`, `DISABLED`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookParameters")
-    def webhook_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]:
+    def webhook_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]:
         """
         The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
         """
         return pulumi.get(self, "webhook_parameters")
 
     @webhook_parameters.setter
-    def webhook_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]):
+    def webhook_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EventRuleWebhookParameterArgs']]]]):
         pulumi.set(self, "webhook_parameters", value)
 
 
@@ -424,18 +424,18 @@ class EventRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_pattern: Optional[pulumi.Input[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
-                 fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
-                 open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None,
+                 contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_pattern: pulumi.Input[Optional[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
+                 fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
+                 open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Event Rule resource.
@@ -565,18 +565,18 @@ class EventRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_pattern: Optional[pulumi.Input[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
-                 fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
-                 open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None,
+                 contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_pattern: pulumi.Input[Optional[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
+                 fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
+                 open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -612,18 +612,18 @@ class EventRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            contact_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            event_pattern: Optional[pulumi.Input[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
-            fc_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mns_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
-            open_api_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-            sls_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None) -> 'EventRule':
+            contact_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleContactParameterArgs', 'EventRuleContactParameterArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            event_pattern: pulumi.Input[Optional[Union['EventRuleEventPatternArgs', 'EventRuleEventPatternArgsDict']]] = None,
+            fc_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleFcParameterArgs', 'EventRuleFcParameterArgsDict']]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mns_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleMnsParameterArgs', 'EventRuleMnsParameterArgsDict']]]]] = None,
+            open_api_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleOpenApiParameterArgs', 'EventRuleOpenApiParameterArgsDict']]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            sls_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleSlsParameterArgs', 'EventRuleSlsParameterArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EventRuleWebhookParameterArgs', 'EventRuleWebhookParameterArgsDict']]]]] = None) -> 'EventRule':
         """
         Get an existing EventRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

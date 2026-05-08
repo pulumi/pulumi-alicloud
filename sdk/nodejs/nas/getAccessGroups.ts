@@ -164,35 +164,35 @@ export interface GetAccessGroupsOutputArgs {
     /**
      * The name of access group.
      */
-    accessGroupName?: pulumi.Input<string>;
+    accessGroupName?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific AccessGroupType.
      */
-    accessGroupType?: pulumi.Input<string>;
+    accessGroupType?: pulumi.Input<string | undefined>;
     /**
      * Filter results by a specific Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of file system. Valid values: `standard` and `extreme`. Default to `standard`.
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter AccessGroups by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Field `type` has been deprecated from version 1.95.0. Use `accessGroupType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.95.0. New field 'access_group_type' replaces it.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the time to return is in UTC. Valid values: true and false.
      */
-    useutcDateTime?: pulumi.Input<boolean>;
+    useutcDateTime?: pulumi.Input<boolean | undefined>;
 }

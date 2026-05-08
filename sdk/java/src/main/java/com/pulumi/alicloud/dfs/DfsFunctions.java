@@ -45,8 +45,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -95,8 +95,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -145,8 +145,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -195,8 +195,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -245,8 +245,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -295,8 +295,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -345,8 +345,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -395,8 +395,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -491,8 +491,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -539,8 +539,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -587,8 +587,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -635,8 +635,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -685,8 +685,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -735,8 +735,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -785,8 +785,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -835,8 +835,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -885,8 +885,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -935,8 +935,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -985,8 +985,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1033,8 +1033,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1081,8 +1081,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1129,8 +1129,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1177,8 +1177,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetMountPointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1225,8 +1225,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1268,8 +1268,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1311,8 +1311,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1354,8 +1354,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1397,8 +1397,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1440,8 +1440,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1483,8 +1483,8 @@ public final class DfsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.dfs.DfsFunctions;
      * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

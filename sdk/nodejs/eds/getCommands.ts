@@ -195,25 +195,25 @@ export interface GetCommandsOutputArgs {
     /**
      * The Script Type. Valid values: `RunBatScript`, `RunPowerShellScript`.
      */
-    commandType?: pulumi.Input<string>;
+    commandType?: pulumi.Input<string | undefined>;
     /**
      * That Returns the Data Encoding Method. Valid values: `Base64`, `PlainText`.
      */
-    contentEncoding?: pulumi.Input<string>;
+    contentEncoding?: pulumi.Input<string | undefined>;
     /**
      * The desktop id of the Desktop.
      */
-    desktopId?: pulumi.Input<string>;
+    desktopId?: pulumi.Input<string | undefined>;
     /**
      * A list of Command IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

@@ -510,167 +510,167 @@ export interface ScalingConfigurationState {
     /**
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
-    creditSpecification?: pulumi.Input<string>;
+    creditSpecification?: pulumi.Input<string | undefined>;
     /**
      * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
      */
-    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[]>;
+    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[] | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[] | undefined>;
     /**
      * The ID of the dedicated host cluster.
      */
-    dedicatedHostClusterId?: pulumi.Input<string>;
+    dedicatedHostClusterId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Hostname of an ECS instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
      */
-    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean>;
+    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
      */
-    instanceDescription?: pulumi.Input<string>;
+    instanceDescription?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
      */
-    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[]>;
+    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[] | undefined>;
     /**
      * Resource type of an ECS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * specify the weight of instance type.  See `instanceTypeOverride` below for details.
      */
-    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[]>;
+    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[] | undefined>;
     /**
      * Resource types of an ECS instance.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
-    isOutdated?: pulumi.Input<boolean>;
+    isOutdated?: pulumi.Input<boolean | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[] | undefined>;
     /**
      * Indicates whether to overwrite the existing data. Default to false.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * ID of resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
      */
-    scalingConfigurationName?: pulumi.Input<string>;
+    scalingConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
      */
-    spotDuration?: pulumi.Input<number>;
+    spotDuration?: pulumi.Input<number | undefined>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -688,65 +688,65 @@ export interface ScalingConfigurationState {
      *
      * > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
      */
-    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[]>;
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[] | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */
-    substitute?: pulumi.Input<string>;
+    substitute?: pulumi.Input<string | undefined>;
     /**
      * The id of auto snapshot policy for system disk.
      */
-    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
      */
-    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    systemDiskEncryptAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Whether to encrypt the system disk.
      */
-    systemDiskEncrypted?: pulumi.Input<boolean>;
+    systemDiskEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS key that you want to use to encrypt the system disk.
      */
-    systemDiskKmsKeyId?: pulumi.Input<string>;
+    systemDiskKmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD used as the system disk.
      */
-    systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * IOPS measures the number of read and write operations that an EBS device can process per second.
      */
-    systemDiskProvisionedIops?: pulumi.Input<number>;
+    systemDiskProvisionedIops?: pulumi.Input<number | undefined>;
     /**
      * Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -756,147 +756,147 @@ export interface ScalingConfigurationArgs {
     /**
      * Whether active current scaling configuration in the specified scaling group. Default to `false`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
      */
-    creditSpecification?: pulumi.Input<string>;
+    creditSpecification?: pulumi.Input<string | undefined>;
     /**
      * You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `customPriorities` below for details.
      */
-    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[]>;
+    customPriorities?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationCustomPriority>[] | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `dataDisk` below for details.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationDataDisk>[] | undefined>;
     /**
      * The ID of the dedicated host cluster.
      */
-    dedicatedHostClusterId?: pulumi.Input<string>;
+    dedicatedHostClusterId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * Hostname of an ECS instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
      */
-    httpEndpoint?: pulumi.Input<string>;
+    httpEndpoint?: pulumi.Input<string | undefined>;
     /**
      * ID of an image file, indicating the image resource selected when an instance is enabled.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Name of an image file, indicating the image resource selected when an instance is enabled.
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
      */
-    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean>;
+    imageOptionsLoginAsNonRoot?: pulumi.Input<boolean | undefined>;
     /**
      * The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
      */
-    instanceDescription?: pulumi.Input<string>;
+    instanceDescription?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instancePatternInfo` below for details.
      */
-    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[]>;
+    instancePatternInfos?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstancePatternInfo>[] | undefined>;
     /**
      * Resource type of an ECS instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * specify the weight of instance type.  See `instanceTypeOverride` below for details.
      */
-    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[]>;
+    instanceTypeOverrides?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationInstanceTypeOverride>[] | undefined>;
     /**
      * Resource types of an ECS instance.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
      */
-    internetMaxBandwidthIn?: pulumi.Input<number>;
+    internetMaxBandwidthIn?: pulumi.Input<number | undefined>;
     /**
      * Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute ioOptimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
-    ioOptimized?: pulumi.Input<string>;
+    ioOptimized?: pulumi.Input<string | undefined>;
     /**
      * Whether to use outdated instance type. Default to false.
      */
-    isOutdated?: pulumi.Input<boolean>;
+    isOutdated?: pulumi.Input<boolean | undefined>;
     /**
      * The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `networkInterfaces` below for details.
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationNetworkInterface>[] | undefined>;
     /**
      * Indicates whether to overwrite the existing data. Default to false.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kmsEncryptedPassword` will be ignored. You must ensure that the selected image has a password configured.
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * ID of resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Instance RAM role name. The name is provided and maintained by RAM. You can use `alicloud.ram.Role` to create a new one.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
      */
-    scalingConfigurationName?: pulumi.Input<string>;
+    scalingConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * ID of the scaling group of a scaling configuration.
      */
@@ -904,19 +904,19 @@ export interface ScalingConfigurationArgs {
     /**
      * Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
      */
-    securityEnhancementStrategy?: pulumi.Input<string>;
+    securityEnhancementStrategy?: pulumi.Input<string | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict with `securityGroupIds`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List IDs of the security group used to create new instances. It is conflict with `securityGroupId`.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
      */
-    spotDuration?: pulumi.Input<number>;
+    spotDuration?: pulumi.Input<number | undefined>;
     /**
      * Sets the maximum price hourly for instance types. See `spotPriceLimit` below for details.
      *
@@ -934,63 +934,63 @@ export interface ScalingConfigurationArgs {
      *
      * > **NOTE:** The last scaling configuration can't be set to inactive and deleted alone.
      */
-    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[]>;
+    spotPriceLimits?: pulumi.Input<pulumi.Input<inputs.ess.ScalingConfigurationSpotPriceLimit>[] | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
      */
-    substitute?: pulumi.Input<string>;
+    substitute?: pulumi.Input<string | undefined>;
     /**
      * The id of auto snapshot policy for system disk.
      */
-    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string>;
+    systemDiskAutoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * Category of the system disk. The parameter value options are `ephemeralSsd`, `cloudEfficiency`, `cloudSsd`, `cloudEssd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloudEfficiency`.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
     /**
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
-    systemDiskDescription?: pulumi.Input<string>;
+    systemDiskDescription?: pulumi.Input<string | undefined>;
     /**
      * The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
      */
-    systemDiskEncryptAlgorithm?: pulumi.Input<string>;
+    systemDiskEncryptAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * Whether to encrypt the system disk.
      */
-    systemDiskEncrypted?: pulumi.Input<boolean>;
+    systemDiskEncrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the KMS key that you want to use to encrypt the system disk.
      */
-    systemDiskKmsKeyId?: pulumi.Input<string>;
+    systemDiskKmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
      */
-    systemDiskName?: pulumi.Input<string>;
+    systemDiskName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the ESSD used as the system disk.
      */
-    systemDiskPerformanceLevel?: pulumi.Input<string>;
+    systemDiskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * IOPS measures the number of read and write operations that an EBS device can process per second.
      */
-    systemDiskProvisionedIops?: pulumi.Input<number>;
+    systemDiskProvisionedIops?: pulumi.Input<number | undefined>;
     /**
      * Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }

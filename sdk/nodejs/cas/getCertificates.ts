@@ -103,22 +103,22 @@ export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: p
  * A collection of arguments for invoking getCertificates.
  */
 export interface GetCertificatesOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of cert IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    keyword?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    keyword?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field `lang` has been deprecated from provider version 1.232.0.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by the certificate name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

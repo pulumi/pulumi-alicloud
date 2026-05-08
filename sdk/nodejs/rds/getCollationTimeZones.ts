@@ -97,9 +97,9 @@ export interface GetCollationTimeZonesOutputArgs {
      * An array that consists of the character set collations and time zones that are available for
      * use in ApsaraDB RDS.
      */
-    collationTimeZones?: pulumi.Input<pulumi.Input<inputs.rds.GetCollationTimeZonesCollationTimeZoneArgs>[]>;
+    collationTimeZones?: pulumi.Input<pulumi.Input<inputs.rds.GetCollationTimeZonesCollationTimeZoneArgs>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi up`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

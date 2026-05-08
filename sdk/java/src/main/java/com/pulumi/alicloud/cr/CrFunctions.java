@@ -59,8 +59,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -115,8 +115,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -171,8 +171,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -227,8 +227,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -283,8 +283,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -382,8 +382,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -430,8 +430,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -478,8 +478,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -526,8 +526,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -574,8 +574,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetChartRepositoriesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -622,8 +622,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -671,8 +671,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -720,8 +720,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -769,8 +769,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -818,8 +818,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -869,8 +869,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -918,8 +918,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -967,8 +967,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1016,8 +1016,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1065,8 +1065,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetEndpointAclServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1112,8 +1112,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1159,8 +1159,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1206,8 +1206,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1253,8 +1253,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1300,8 +1300,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1347,8 +1347,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1394,8 +1394,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1441,8 +1441,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1488,8 +1488,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1535,8 +1535,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1582,8 +1582,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1629,8 +1629,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1676,8 +1676,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1723,8 +1723,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1770,8 +1770,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1815,8 +1815,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1860,8 +1860,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1905,8 +1905,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1950,8 +1950,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1995,8 +1995,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2042,8 +2042,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2089,8 +2089,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2136,8 +2136,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2183,8 +2183,8 @@ public final class CrFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cr.CrFunctions;
      * import com.pulumi.alicloud.cr.inputs.GetVpcEndpointLinkedVpcsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

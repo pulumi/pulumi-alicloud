@@ -20,14 +20,14 @@ __all__ = ['ExecutionArgs', 'Execution']
 class ExecutionArgs:
     def __init__(__self__, *,
                  template_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loop_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 safety_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Execution resource.
 
@@ -73,125 +73,125 @@ class ExecutionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of OOS Execution.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="loopMode")
-    def loop_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loop_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The loop mode of OOS Execution.
         """
         return pulumi.get(self, "loop_mode")
 
     @loop_mode.setter
-    def loop_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loop_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loop_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters required by the template. Default to `{}`.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="parentExecutionId")
-    def parent_execution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_execution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of parent execution.
         """
         return pulumi.get(self, "parent_execution_id")
 
     @parent_execution_id.setter
-    def parent_execution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_execution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_execution_id", value)
 
     @_builtins.property
     @pulumi.getter(name="safetyCheck")
-    def safety_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def safety_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of safety check.
         """
         return pulumi.get(self, "safety_check")
 
     @safety_check.setter
-    def safety_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def safety_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "safety_check", value)
 
     @_builtins.property
     @pulumi.getter(name="templateContent")
-    def template_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         """
         return pulumi.get(self, "template_content")
 
     @template_content.setter
-    def template_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_content", value)
 
     @_builtins.property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of execution template.
         """
         return pulumi.get(self, "template_version")
 
     @template_version.setter
-    def template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_version", value)
 
 
 @pulumi.input_type
 class _ExecutionState:
     def __init__(__self__, *,
-                 counters: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 executed_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_parent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 loop_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 outputs: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ram_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 safety_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_message: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_date: Optional[pulumi.Input[_builtins.str]] = None):
+                 counters: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 executed_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 outputs: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ram_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_message: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_date: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Execution resources.
 
@@ -262,254 +262,254 @@ class _ExecutionState:
 
     @_builtins.property
     @pulumi.getter
-    def counters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def counters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The counters of OOS Execution.
         """
         return pulumi.get(self, "counters")
 
     @counters.setter
-    def counters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def counters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "counters", value)
 
     @_builtins.property
     @pulumi.getter(name="createDate")
-    def create_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the execution was created.
         """
         return pulumi.get(self, "create_date")
 
     @create_date.setter
-    def create_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of OOS Execution.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the execution was ended.
         """
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="executedBy")
-    def executed_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def executed_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who execute the template.
         """
         return pulumi.get(self, "executed_by")
 
     @executed_by.setter
-    def executed_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def executed_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "executed_by", value)
 
     @_builtins.property
     @pulumi.getter(name="isParent")
-    def is_parent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_parent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to include subtasks.
         """
         return pulumi.get(self, "is_parent")
 
     @is_parent.setter
-    def is_parent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_parent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_parent", value)
 
     @_builtins.property
     @pulumi.getter(name="loopMode")
-    def loop_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loop_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The loop mode of OOS Execution.
         """
         return pulumi.get(self, "loop_mode")
 
     @loop_mode.setter
-    def loop_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loop_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loop_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of OOS Execution. Valid: `Automatic`, `Debug`. Default to `Automatic`.
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def outputs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def outputs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The outputs of OOS Execution.
         """
         return pulumi.get(self, "outputs")
 
     @outputs.setter
-    def outputs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def outputs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "outputs", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters required by the template. Default to `{}`.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="parentExecutionId")
-    def parent_execution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parent_execution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of parent execution.
         """
         return pulumi.get(self, "parent_execution_id")
 
     @parent_execution_id.setter
-    def parent_execution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parent_execution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parent_execution_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRole")
-    def ram_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role that executes the current template.
         """
         return pulumi.get(self, "ram_role")
 
     @ram_role.setter
-    def ram_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role", value)
 
     @_builtins.property
     @pulumi.getter(name="safetyCheck")
-    def safety_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def safety_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of safety check.
         """
         return pulumi.get(self, "safety_check")
 
     @safety_check.setter
-    def safety_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def safety_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "safety_check", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the execution was started.
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of OOS Execution.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusMessage")
-    def status_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The message of status.
         """
         return pulumi.get(self, "status_message")
 
     @status_message.setter
-    def status_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_message(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_message", value)
 
     @_builtins.property
     @pulumi.getter(name="templateContent")
-    def template_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
         """
         return pulumi.get(self, "template_content")
 
     @template_content.setter
-    def template_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_content", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of template.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of execution template.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templateVersion")
-    def template_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of execution template.
         """
         return pulumi.get(self, "template_version")
 
     @template_version.setter
-    def template_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_version", value)
 
     @_builtins.property
     @pulumi.getter(name="updateDate")
-    def update_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the execution was updated.
         """
         return pulumi.get(self, "update_date")
 
     @update_date.setter
-    def update_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_date", value)
 
 
@@ -519,15 +519,15 @@ class Execution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loop_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 safety_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a OOS Execution resource. For information about Alicloud OOS Execution and how to use it, see [What is Resource Alicloud OOS Execution](https://www.alibabacloud.com/help/doc-detail/120771.htm).
@@ -686,15 +686,15 @@ class Execution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 loop_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 safety_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -737,27 +737,27 @@ class Execution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            counters: Optional[pulumi.Input[_builtins.str]] = None,
-            create_date: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            end_date: Optional[pulumi.Input[_builtins.str]] = None,
-            executed_by: Optional[pulumi.Input[_builtins.str]] = None,
-            is_parent: Optional[pulumi.Input[_builtins.bool]] = None,
-            loop_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            outputs: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_execution_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ram_role: Optional[pulumi.Input[_builtins.str]] = None,
-            safety_check: Optional[pulumi.Input[_builtins.str]] = None,
-            start_date: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_message: Optional[pulumi.Input[_builtins.str]] = None,
-            template_content: Optional[pulumi.Input[_builtins.str]] = None,
-            template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template_version: Optional[pulumi.Input[_builtins.str]] = None,
-            update_date: Optional[pulumi.Input[_builtins.str]] = None) -> 'Execution':
+            counters: pulumi.Input[Optional[_builtins.str]] = None,
+            create_date: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            executed_by: pulumi.Input[Optional[_builtins.str]] = None,
+            is_parent: pulumi.Input[Optional[_builtins.bool]] = None,
+            loop_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            outputs: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_execution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ram_role: pulumi.Input[Optional[_builtins.str]] = None,
+            safety_check: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_message: pulumi.Input[Optional[_builtins.str]] = None,
+            template_content: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_version: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> 'Execution':
         """
         Get an existing Execution resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

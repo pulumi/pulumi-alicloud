@@ -206,58 +206,58 @@ export interface GetDomainsOutputArgs {
     /**
      * Specifies whether the domain is from Alibaba Cloud or not.
      */
-    aliDomain?: pulumi.Input<boolean>;
+    aliDomain?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by the domain name.
      */
-    domainNameRegex?: pulumi.Input<string>;
-    enableDetails?: pulumi.Input<boolean>;
+    domainNameRegex?: pulumi.Input<string | undefined>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * Domain group ID, if not filled, the default is all groups.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by the group name.
      */
-    groupNameRegex?: pulumi.Input<string>;
+    groupNameRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of domain IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Cloud analysis product ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The keywords are searched according to the `%KeyWord%` mode, which is not case sensitive.
      */
-    keyWord?: pulumi.Input<string>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * User language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the dns belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Search mode, `LIKE` fuzzy search, `EXACT` exact search.
      */
-    searchMode?: pulumi.Input<string>;
+    searchMode?: pulumi.Input<string | undefined>;
     /**
      * Whether to query the domain name star.
      */
-    starmark?: pulumi.Input<boolean>;
+    starmark?: pulumi.Input<boolean | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Cloud analysis version code.
      */
-    versionCode?: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string | undefined>;
 }

@@ -20,8 +20,8 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  namespace_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
@@ -49,35 +49,35 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceUid")
-    def namespace_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         namespace uid
         """
         return pulumi.get(self, "namespace_uid")
 
     @namespace_uid.setter
-    def namespace_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_uid", value)
 
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
@@ -94,38 +94,38 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace name.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceUid")
-    def namespace_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         namespace uid
         """
         return pulumi.get(self, "namespace_uid")
 
     @namespace_uid.setter
-    def namespace_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_uid", value)
 
 
@@ -135,9 +135,9 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Schedulerx Namespace resource.
@@ -236,9 +236,9 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,9 +263,9 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'Namespace':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

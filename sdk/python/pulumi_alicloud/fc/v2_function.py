@@ -25,26 +25,26 @@ class V2FunctionArgs:
                  handler: pulumi.Input[_builtins.str],
                  runtime: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 ca_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 code: Optional[pulumi.Input['V2FunctionCodeArgs']] = None,
-                 code_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']] = None,
-                 custom_dns: Optional[pulumi.Input['V2FunctionCustomDnsArgs']] = None,
-                 custom_health_check_config: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']] = None,
-                 custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 initialization_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 initializer: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 code: pulumi.Input[Optional['V2FunctionCodeArgs']] = None,
+                 code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']] = None,
+                 custom_dns: pulumi.Input[Optional['V2FunctionCustomDnsArgs']] = None,
+                 custom_health_check_config: pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']] = None,
+                 custom_runtime_config: pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 initializer: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a V2Function resource.
 
@@ -174,199 +174,199 @@ class V2FunctionArgs:
 
     @_builtins.property
     @pulumi.getter(name="caPort")
-    def ca_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ca_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
         """
         return pulumi.get(self, "ca_port")
 
     @ca_port.setter
-    def ca_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ca_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ca_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V2FunctionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V2FunctionCodeArgs']]:
         """
         Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V2FunctionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V2FunctionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter(name="codeChecksum")
-    def code_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         crc64 of function code.
         """
         return pulumi.get(self, "code_checksum")
 
     @code_checksum.setter
-    def code_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="customContainerConfig")
-    def custom_container_config(self) -> Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]:
+    def custom_container_config(self) -> pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']]:
         """
         Custom-container runtime related function configuration. See `custom_container_config` below.
         """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
-    def custom_container_config(self, value: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]):
+    def custom_container_config(self, value: pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']]):
         pulumi.set(self, "custom_container_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDns")
-    def custom_dns(self) -> Optional[pulumi.Input['V2FunctionCustomDnsArgs']]:
+    def custom_dns(self) -> pulumi.Input[Optional['V2FunctionCustomDnsArgs']]:
         """
         Function custom DNS configuration. See `custom_dns` below.
         """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
-    def custom_dns(self, value: Optional[pulumi.Input['V2FunctionCustomDnsArgs']]):
+    def custom_dns(self, value: pulumi.Input[Optional['V2FunctionCustomDnsArgs']]):
         pulumi.set(self, "custom_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="customHealthCheckConfig")
-    def custom_health_check_config(self) -> Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]:
+    def custom_health_check_config(self) -> pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']]:
         """
         Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
         """
         return pulumi.get(self, "custom_health_check_config")
 
     @custom_health_check_config.setter
-    def custom_health_check_config(self, value: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]):
+    def custom_health_check_config(self, value: pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']]):
         pulumi.set(self, "custom_health_check_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customRuntimeConfig")
-    def custom_runtime_config(self) -> Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]:
+    def custom_runtime_config(self) -> pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']]:
         """
         Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
         """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
-    def custom_runtime_config(self, value: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]):
+    def custom_runtime_config(self, value: pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']]):
         pulumi.set(self, "custom_runtime_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         description of function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuMemorySize")
-    def gpu_memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The GPU memory specification of the function, in MB, is a multiple of 1024MB.
         """
         return pulumi.get(self, "gpu_memory_size")
 
     @gpu_memory_size.setter
-    def gpu_memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_memory_size", value)
 
     @_builtins.property
     @pulumi.getter(name="initializationTimeout")
-    def initialization_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initialization_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of initializer.
         """
         return pulumi.get(self, "initialization_timeout")
 
     @initialization_timeout.setter
-    def initialization_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initialization_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initialization_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def initializer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initializer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         initializer entry point of function.
         """
         return pulumi.get(self, "initializer")
 
     @initializer.setter
-    def initializer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initializer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initializer", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
-    def instance_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum concurrency allowed for a single function instance.
         """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
-    def instance_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecycleConfig")
-    def instance_lifecycle_config(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]:
+    def instance_lifecycle_config(self) -> pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']]:
         """
         Instance lifecycle configuration. See `instance_lifecycle_config` below.
         """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
-    def instance_lifecycle_config(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]):
+    def instance_lifecycle_config(self, value: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']]):
         pulumi.set(self, "instance_lifecycle_config", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the function. Valid values:
         - **e1**: Elastic instance.
@@ -378,12 +378,12 @@ class V2FunctionArgs:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of layers.
         > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
@@ -391,63 +391,63 @@ class V2FunctionArgs:
         return pulumi.get(self, "layers")
 
     @layers.setter
-    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def layers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "layers", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         memory size needed by function.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of function.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
 class _V2FunctionState:
     def __init__(__self__, *,
-                 ca_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 code: Optional[pulumi.Input['V2FunctionCodeArgs']] = None,
-                 code_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_container_config: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']] = None,
-                 custom_dns: Optional[pulumi.Input['V2FunctionCustomDnsArgs']] = None,
-                 custom_health_check_config: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']] = None,
-                 custom_runtime_config: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialization_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 initializer: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 code: pulumi.Input[Optional['V2FunctionCodeArgs']] = None,
+                 code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_container_config: pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']] = None,
+                 custom_dns: pulumi.Input[Optional['V2FunctionCustomDnsArgs']] = None,
+                 custom_health_check_config: pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']] = None,
+                 custom_runtime_config: pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 initializer: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V2Function resources.
 
@@ -539,247 +539,247 @@ class _V2FunctionState:
 
     @_builtins.property
     @pulumi.getter(name="caPort")
-    def ca_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ca_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port of the HTTP Server when the Custom Runtime or Custom Container is running.
         """
         return pulumi.get(self, "ca_port")
 
     @ca_port.setter
-    def ca_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ca_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ca_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def code(self) -> Optional[pulumi.Input['V2FunctionCodeArgs']]:
+    def code(self) -> pulumi.Input[Optional['V2FunctionCodeArgs']]:
         """
         Function Code ZIP package. code and customContainerConfig choose one. See `code` below.
         """
         return pulumi.get(self, "code")
 
     @code.setter
-    def code(self, value: Optional[pulumi.Input['V2FunctionCodeArgs']]):
+    def code(self, value: pulumi.Input[Optional['V2FunctionCodeArgs']]):
         pulumi.set(self, "code", value)
 
     @_builtins.property
     @pulumi.getter(name="codeChecksum")
-    def code_checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def code_checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         crc64 of function code.
         """
         return pulumi.get(self, "code_checksum")
 
     @code_checksum.setter
-    def code_checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def code_checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "code_checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def cpu(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The CPU specification of the function. The unit is vCPU, which is a multiple of the 0.05 vCPU.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def cpu(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         create time of function.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customContainerConfig")
-    def custom_container_config(self) -> Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]:
+    def custom_container_config(self) -> pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']]:
         """
         Custom-container runtime related function configuration. See `custom_container_config` below.
         """
         return pulumi.get(self, "custom_container_config")
 
     @custom_container_config.setter
-    def custom_container_config(self, value: Optional[pulumi.Input['V2FunctionCustomContainerConfigArgs']]):
+    def custom_container_config(self, value: pulumi.Input[Optional['V2FunctionCustomContainerConfigArgs']]):
         pulumi.set(self, "custom_container_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customDns")
-    def custom_dns(self) -> Optional[pulumi.Input['V2FunctionCustomDnsArgs']]:
+    def custom_dns(self) -> pulumi.Input[Optional['V2FunctionCustomDnsArgs']]:
         """
         Function custom DNS configuration. See `custom_dns` below.
         """
         return pulumi.get(self, "custom_dns")
 
     @custom_dns.setter
-    def custom_dns(self, value: Optional[pulumi.Input['V2FunctionCustomDnsArgs']]):
+    def custom_dns(self, value: pulumi.Input[Optional['V2FunctionCustomDnsArgs']]):
         pulumi.set(self, "custom_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="customHealthCheckConfig")
-    def custom_health_check_config(self) -> Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]:
+    def custom_health_check_config(self) -> pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']]:
         """
         Custom runtime/container Custom health check configuration. See `custom_health_check_config` below.
         """
         return pulumi.get(self, "custom_health_check_config")
 
     @custom_health_check_config.setter
-    def custom_health_check_config(self, value: Optional[pulumi.Input['V2FunctionCustomHealthCheckConfigArgs']]):
+    def custom_health_check_config(self, value: pulumi.Input[Optional['V2FunctionCustomHealthCheckConfigArgs']]):
         pulumi.set(self, "custom_health_check_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customRuntimeConfig")
-    def custom_runtime_config(self) -> Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]:
+    def custom_runtime_config(self) -> pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']]:
         """
         Detailed configuration of Custom Runtime function. See `custom_runtime_config` below.
         """
         return pulumi.get(self, "custom_runtime_config")
 
     @custom_runtime_config.setter
-    def custom_runtime_config(self, value: Optional[pulumi.Input['V2FunctionCustomRuntimeConfigArgs']]):
+    def custom_runtime_config(self, value: pulumi.Input[Optional['V2FunctionCustomRuntimeConfigArgs']]):
         pulumi.set(self, "custom_runtime_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         description of function.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="diskSize")
-    def disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk specification of the function. The unit is MB. The optional value is 512 MB or 10240MB.
         """
         return pulumi.get(self, "disk_size")
 
     @disk_size.setter
-    def disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The environment variable set for the function can get the value of the environment variable in the function. For more information, see Environment Variables.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Function Compute service function arn. It formats as `acs:fc:<region>:<uid>:services/<serviceName>.LATEST/functions/<functionName>`.
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         function name.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuMemorySize")
-    def gpu_memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The GPU memory specification of the function, in MB, is a multiple of 1024MB.
         """
         return pulumi.get(self, "gpu_memory_size")
 
     @gpu_memory_size.setter
-    def gpu_memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_memory_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         entry point of function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter(name="initializationTimeout")
-    def initialization_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initialization_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of initializer.
         """
         return pulumi.get(self, "initialization_timeout")
 
     @initialization_timeout.setter
-    def initialization_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initialization_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initialization_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def initializer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def initializer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         initializer entry point of function.
         """
         return pulumi.get(self, "initializer")
 
     @initializer.setter
-    def initializer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def initializer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "initializer", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceConcurrency")
-    def instance_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum concurrency allowed for a single function instance.
         """
         return pulumi.get(self, "instance_concurrency")
 
     @instance_concurrency.setter
-    def instance_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceLifecycleConfig")
-    def instance_lifecycle_config(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]:
+    def instance_lifecycle_config(self) -> pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']]:
         """
         Instance lifecycle configuration. See `instance_lifecycle_config` below.
         """
         return pulumi.get(self, "instance_lifecycle_config")
 
     @instance_lifecycle_config.setter
-    def instance_lifecycle_config(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigArgs']]):
+    def instance_lifecycle_config(self, value: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigArgs']]):
         pulumi.set(self, "instance_lifecycle_config", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the function. Valid values:
         - **e1**: Elastic instance.
@@ -791,12 +791,12 @@ class _V2FunctionState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def layers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def layers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of layers.
         > **NOTE:**  Multiple layers will be merged in the order of array subscripts from large to small, and the contents of layers with small subscripts will overwrite the files with the same name of layers with large subscripts.
@@ -804,55 +804,55 @@ class _V2FunctionState:
         return pulumi.get(self, "layers")
 
     @layers.setter
-    def layers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def layers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "layers", value)
 
     @_builtins.property
     @pulumi.getter(name="memorySize")
-    def memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         memory size needed by function.
         """
         return pulumi.get(self, "memory_size")
 
     @memory_size.setter
-    def memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def runtime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def runtime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         runtime of function code.
         """
         return pulumi.get(self, "runtime")
 
     @runtime.setter
-    def runtime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def runtime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runtime", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function Service.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of function.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -862,30 +862,30 @@ class V2Function(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 code: Optional[pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
-                 code_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: Optional[pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-                 custom_health_check_config: Optional[pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-                 custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialization_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 initializer: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+                 code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
+                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 initializer: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a FCV2 Function resource. Function is the unit of system scheduling and operation. Functions must be subordinate to services. All functions under the same service share some identical settings, such as service authorization and log configuration.
@@ -977,30 +977,30 @@ class V2Function(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 code: Optional[pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
-                 code_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu: Optional[pulumi.Input[_builtins.float]] = None,
-                 custom_container_config: Optional[pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-                 custom_dns: Optional[pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-                 custom_health_check_config: Optional[pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-                 custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 initialization_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 initializer: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_lifecycle_config: Optional[pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 runtime: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+                 code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu: pulumi.Input[Optional[_builtins.float]] = None,
+                 custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
+                 custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
+                 custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
+                 custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 initializer: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 runtime: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1054,32 +1054,32 @@ class V2Function(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ca_port: Optional[pulumi.Input[_builtins.int]] = None,
-            code: Optional[pulumi.Input[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
-            code_checksum: Optional[pulumi.Input[_builtins.str]] = None,
-            cpu: Optional[pulumi.Input[_builtins.float]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_container_config: Optional[pulumi.Input[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
-            custom_dns: Optional[pulumi.Input[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
-            custom_health_check_config: Optional[pulumi.Input[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
-            custom_runtime_config: Optional[pulumi.Input[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-            handler: Optional[pulumi.Input[_builtins.str]] = None,
-            initialization_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            initializer: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_lifecycle_config: Optional[pulumi.Input[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            layers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-            runtime: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'V2Function':
+            ca_port: pulumi.Input[Optional[_builtins.int]] = None,
+            code: pulumi.Input[Optional[Union['V2FunctionCodeArgs', 'V2FunctionCodeArgsDict']]] = None,
+            code_checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu: pulumi.Input[Optional[_builtins.float]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_container_config: pulumi.Input[Optional[Union['V2FunctionCustomContainerConfigArgs', 'V2FunctionCustomContainerConfigArgsDict']]] = None,
+            custom_dns: pulumi.Input[Optional[Union['V2FunctionCustomDnsArgs', 'V2FunctionCustomDnsArgsDict']]] = None,
+            custom_health_check_config: pulumi.Input[Optional[Union['V2FunctionCustomHealthCheckConfigArgs', 'V2FunctionCustomHealthCheckConfigArgsDict']]] = None,
+            custom_runtime_config: pulumi.Input[Optional[Union['V2FunctionCustomRuntimeConfigArgs', 'V2FunctionCustomRuntimeConfigArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            handler: pulumi.Input[Optional[_builtins.str]] = None,
+            initialization_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            initializer: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_lifecycle_config: pulumi.Input[Optional[Union['V2FunctionInstanceLifecycleConfigArgs', 'V2FunctionInstanceLifecycleConfigArgsDict']]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            layers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+            runtime: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'V2Function':
         """
         Get an existing V2Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

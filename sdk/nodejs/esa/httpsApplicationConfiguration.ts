@@ -239,85 +239,85 @@ export interface HttpsApplicationConfigurationState {
     /**
      * Function switch, default off. Value range:
      */
-    altSvc?: pulumi.Input<string>;
+    altSvc?: pulumi.Input<string | undefined>;
     /**
      * Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
      */
-    altSvcClear?: pulumi.Input<string>;
+    altSvcClear?: pulumi.Input<string | undefined>;
     /**
      * The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
      */
-    altSvcMa?: pulumi.Input<string>;
+    altSvcMa?: pulumi.Input<string | undefined>;
     /**
      * Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
      */
-    altSvcPersist?: pulumi.Input<string>;
+    altSvcPersist?: pulumi.Input<string | undefined>;
     /**
      * Config Id
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable HSTS. It is disabled by default. Value range:
      */
-    hsts?: pulumi.Input<string>;
+    hsts?: pulumi.Input<string | undefined>;
     /**
      * Whether to include subdomains in HSTS is disabled by default. Value range:
      */
-    hstsIncludeSubdomains?: pulumi.Input<string>;
+    hstsIncludeSubdomains?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of HSTS, in seconds.
      */
-    hstsMaxAge?: pulumi.Input<string>;
+    hstsMaxAge?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HSTS preloading. It is disabled by default. Value range:
      */
-    hstsPreload?: pulumi.Input<string>;
+    hstsPreload?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable forced HTTPS. It is disabled by default. Value range:
      */
-    httpsForce?: pulumi.Input<string>;
+    httpsForce?: pulumi.Input<string | undefined>;
     /**
      * Forced HTTPS jump status code, value range:
      */
-    httpsForceCode?: pulumi.Input<string>;
+    httpsForceCode?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
      */
-    httpsNoSniDeny?: pulumi.Input<string>;
+    httpsNoSniDeny?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable SNI verification. It is disabled by default. Value range:
      */
-    httpsSniVerify?: pulumi.Input<string>;
+    httpsSniVerify?: pulumi.Input<string | undefined>;
     /**
      * Specifies the list of allowed SNI whitelists, separated by spaces.
      */
-    httpsSniWhitelist?: pulumi.Input<string>;
+    httpsSniWhitelist?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -327,73 +327,73 @@ export interface HttpsApplicationConfigurationArgs {
     /**
      * Function switch, default off. Value range:
      */
-    altSvc?: pulumi.Input<string>;
+    altSvc?: pulumi.Input<string | undefined>;
     /**
      * Alt-Svc whether The header contains the clear parameter. This parameter is disabled by default. Value range:
      */
-    altSvcClear?: pulumi.Input<string>;
+    altSvcClear?: pulumi.Input<string | undefined>;
     /**
      * The effective time of the Alt-Svc, in seconds. The default value is 86400 seconds.
      */
-    altSvcMa?: pulumi.Input<string>;
+    altSvcMa?: pulumi.Input<string | undefined>;
     /**
      * Alt-Svc whether The header contains the persist parameter. This parameter is disabled by default. Value range:
      */
-    altSvcPersist?: pulumi.Input<string>;
+    altSvcPersist?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HSTS. It is disabled by default. Value range:
      */
-    hsts?: pulumi.Input<string>;
+    hsts?: pulumi.Input<string | undefined>;
     /**
      * Whether to include subdomains in HSTS is disabled by default. Value range:
      */
-    hstsIncludeSubdomains?: pulumi.Input<string>;
+    hstsIncludeSubdomains?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of HSTS, in seconds.
      */
-    hstsMaxAge?: pulumi.Input<string>;
+    hstsMaxAge?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable HSTS preloading. It is disabled by default. Value range:
      */
-    hstsPreload?: pulumi.Input<string>;
+    hstsPreload?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable forced HTTPS. It is disabled by default. Value range:
      */
-    httpsForce?: pulumi.Input<string>;
+    httpsForce?: pulumi.Input<string | undefined>;
     /**
      * Forced HTTPS jump status code, value range:
      */
-    httpsForceCode?: pulumi.Input<string>;
+    httpsForceCode?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable to reject TLS handshake requests without SNI. This parameter is disabled by default. Value range:
      */
-    httpsNoSniDeny?: pulumi.Input<string>;
+    httpsNoSniDeny?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable SNI verification. It is disabled by default. Value range:
      */
-    httpsSniVerify?: pulumi.Input<string>;
+    httpsSniVerify?: pulumi.Input<string | undefined>;
     /**
      * Specifies the list of allowed SNI whitelists, separated by spaces.
      */
-    httpsSniWhitelist?: pulumi.Input<string>;
+    httpsSniWhitelist?: pulumi.Input<string | undefined>;
     /**
      * Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
      * - Match all incoming requests: value set to true
      * - Match specified request: Set the value to a custom expression, for example: (http.host eq \"video.example.com\")
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
@@ -401,5 +401,5 @@ export interface HttpsApplicationConfigurationArgs {
     /**
      * The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
 }

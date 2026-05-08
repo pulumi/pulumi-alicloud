@@ -129,24 +129,24 @@ export interface TrafficQosState {
      * The description of the QoS policy.
      * The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
      */
-    qosDescription?: pulumi.Input<string>;
+    qosDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS policy.
      * The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
      */
-    qosName?: pulumi.Input<string>;
+    qosName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the QoS policy.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -157,18 +157,18 @@ export interface TrafficQosArgs {
      * The description of the QoS policy.
      * The length is `0` to `256` characters and cannot start with 'http:// 'or 'https.
      */
-    qosDescription?: pulumi.Input<string>;
+    qosDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the QoS policy.
      * The length is `0` to `128` characters and cannot start with 'http:// 'or 'https.
      */
-    qosName?: pulumi.Input<string>;
+    qosName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

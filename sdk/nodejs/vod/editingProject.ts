@@ -151,27 +151,27 @@ export interface EditingProjectState {
     /**
      * The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
      */
-    coverUrl?: pulumi.Input<string>;
+    coverUrl?: pulumi.Input<string | undefined>;
     /**
      * The region where you want to create the online editing project.
      */
-    division?: pulumi.Input<string>;
+    division?: pulumi.Input<string | undefined>;
     /**
      * The description of the online editing project.
      */
-    editingProjectName?: pulumi.Input<string>;
+    editingProjectName?: pulumi.Input<string | undefined>;
     /**
      * The Status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
      */
-    timeline?: pulumi.Input<string>;
+    timeline?: pulumi.Input<string | undefined>;
     /**
      * The title of the online editing project.
      */
-    title?: pulumi.Input<string>;
+    title?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,19 +181,19 @@ export interface EditingProjectArgs {
     /**
      * The thumbnail URL of the online editing project. If you do not specify this parameter and the video track in the timeline has mezzanine files, the thumbnail of the first mezzanine file in the timeline is used.
      */
-    coverUrl?: pulumi.Input<string>;
+    coverUrl?: pulumi.Input<string | undefined>;
     /**
      * The region where you want to create the online editing project.
      */
-    division?: pulumi.Input<string>;
+    division?: pulumi.Input<string | undefined>;
     /**
      * The description of the online editing project.
      */
-    editingProjectName?: pulumi.Input<string>;
+    editingProjectName?: pulumi.Input<string | undefined>;
     /**
      * The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
      */
-    timeline?: pulumi.Input<string>;
+    timeline?: pulumi.Input<string | undefined>;
     /**
      * The title of the online editing project.
      */

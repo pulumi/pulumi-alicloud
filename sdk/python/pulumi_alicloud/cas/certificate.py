@@ -19,17 +19,17 @@ __all__ = ['CertificateArgs', 'Certificate']
 @pulumi.input_type
 class CertificateArgs:
     def __init__(__self__, *,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Certificate resource.
 
@@ -68,129 +68,129 @@ class CertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cert of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_name")
 
     @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptCert")
-    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypt_cert")
 
     @encrypt_cert.setter
-    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptPrivateKey")
-    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypt_private_key")
 
     @encrypt_private_key.setter
-    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="signCert")
-    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sign_cert")
 
     @sign_cert.setter
-    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="signPrivateKey")
-    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sign_private_key")
 
     @sign_private_key.setter
-    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _CertificateState:
     def __init__(__self__, *,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
 
@@ -229,112 +229,112 @@ class _CertificateState:
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cert of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "certificate_name")
 
     @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptCert")
-    def encrypt_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypt_cert")
 
     @encrypt_cert.setter
-    def encrypt_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptPrivateKey")
-    def encrypt_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "encrypt_private_key")
 
     @encrypt_private_key.setter
-    def encrypt_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Key of the Certificate in which the Certificate will add.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.""")
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="signCert")
-    def sign_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sign_cert")
 
     @sign_cert.setter
-    def sign_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="signPrivateKey")
-    def sign_private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sign_private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sign_private_key")
 
     @sign_private_key.setter
-    def sign_private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sign_private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sign_private_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -349,17 +349,17 @@ class Certificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a CAS Certificate resource.
@@ -558,17 +558,17 @@ class Certificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         pulumi.log.warn("""Certificate is deprecated: This resource has been deprecated in favour of ServiceCertificate""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -602,17 +602,17 @@ class Certificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cert: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypt_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypt_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sign_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            sign_private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Certificate':
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypt_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Certificate':
         """
         Get an existing Certificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

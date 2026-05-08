@@ -119,11 +119,11 @@ export interface BucketArchiveDirectReadState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**

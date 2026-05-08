@@ -21,26 +21,26 @@ class CasterArgs:
     def __init__(__self__, *,
                  norm_type: pulumi.Input[_builtins.int],
                  payment_type: pulumi.Input[_builtins.str],
-                 auto_switch_urgent_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_switch_urgent_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 caster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.float]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_effect: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_groups_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transcode_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_live_stream_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.float]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Caster resource.
 
@@ -154,19 +154,19 @@ class CasterArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoSwitchUrgentConfig")
-    def auto_switch_urgent_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_switch_urgent_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic standby broadcast configuration. eofThres: indicates that the broadcast is automatically cut and prepared after the flow interruption time, in seconds.
         """
         return pulumi.get(self, "auto_switch_urgent_config")
 
     @auto_switch_urgent_config.setter
-    def auto_switch_urgent_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_switch_urgent_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_switch_urgent_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSwitchUrgentOn")
-    def auto_switch_urgent_on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_switch_urgent_on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Turn on the cut-off automatic switch for broadcast preparation.
 
@@ -177,60 +177,60 @@ class CasterArgs:
         return pulumi.get(self, "auto_switch_urgent_on")
 
     @auto_switch_urgent_on.setter
-    def auto_switch_urgent_on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_switch_urgent_on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_switch_urgent_on", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackUrl")
-    def callback_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback address of the user. To receive Callback Notifications, enter an available address and accept the HTTP protocol. If this parameter is set to null, the callback notification from the director Station is canceled by default.
         """
         return pulumi.get(self, "callback_url")
 
     @callback_url.setter
-    def callback_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback_url", value)
 
     @_builtins.property
     @pulumi.getter(name="casterName")
-    def caster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def caster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Guide station name.
         """
         return pulumi.get(self, "caster_name")
 
     @caster_name.setter
-    def caster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def caster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "caster_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Delayed playback. Time unit: seconds.
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Master play domain name.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="programEffect")
-    def program_effect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def program_effect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Carousel effective flag.
 
@@ -241,84 +241,84 @@ class CasterArgs:
         return pulumi.get(self, "program_effect")
 
     @program_effect.setter
-    def program_effect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def program_effect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "program_effect", value)
 
     @_builtins.property
     @pulumi.getter(name="programName")
-    def program_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The carousel station name, which can be configured when using the carousel function.
         """
         return pulumi.get(self, "program_name")
 
     @program_name.setter
-    def program_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordConfig")
-    def record_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record configuration information. The format is JSON. The configuration element information is as follows:
         """
         return pulumi.get(self, "record_config")
 
     @record_config.setter
-    def record_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group id
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         resource type
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sideOutputUrl")
-    def side_output_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def side_output_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined stream ingest address corresponding to the bypass output address of the guide station. If this parameter is left blank, the streaming address corresponding to the output address automatically generated by Alibaba Cloud is used by default.
         """
         return pulumi.get(self, "side_output_url")
 
     @side_output_url.setter
-    def side_output_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def side_output_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "side_output_url", value)
 
     @_builtins.property
     @pulumi.getter(name="sideOutputUrlList")
-    def side_output_url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def side_output_url_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of multiple forwarding stream addresses, which can be the CDN forwarding stream addresses of Alibaba Cloud or a third-party vendor. A guide can add up to 20 RTMP forwarding addresses.
         """
         return pulumi.get(self, "side_output_url_list")
 
     @side_output_url_list.setter
-    def side_output_url_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def side_output_url_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "side_output_url_list", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupsConfig")
-    def sync_groups_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_groups_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-View synchronization configuration to synchronize multiple video sources. Multi-View synchronization is divided into two modes:
         - `mode 0`: (In the anchor mode, multiple video sources are synchronized according to the specified mode.)
@@ -329,24 +329,24 @@ class CasterArgs:
         return pulumi.get(self, "sync_groups_config")
 
     @sync_groups_config.setter
-    def sync_groups_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_groups_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_groups_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transcodeConfig")
-    def transcode_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transcode_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transcoding configuration.
 
@@ -355,84 +355,84 @@ class CasterArgs:
         return pulumi.get(self, "transcode_config")
 
     @transcode_config.setter
-    def transcode_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transcode_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transcode_config", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentImageId")
-    def urgent_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the picture material of the media library.
         """
         return pulumi.get(self, "urgent_image_id")
 
     @urgent_image_id.setter
-    def urgent_image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentImageUrl")
-    def urgent_image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepare the URL of the picture material.
         """
         return pulumi.get(self, "urgent_image_url")
 
     @urgent_image_url.setter
-    def urgent_image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentLiveStreamUrl")
-    def urgent_live_stream_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_live_stream_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prepared live stream URL.
         """
         return pulumi.get(self, "urgent_live_stream_url")
 
     @urgent_live_stream_url.setter
-    def urgent_live_stream_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_live_stream_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_live_stream_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentMaterialId")
-    def urgent_material_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_material_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepared video, media library material ID. If this parameter is set to null, the standby configuration is cleared by default.
         """
         return pulumi.get(self, "urgent_material_id")
 
     @urgent_material_id.setter
-    def urgent_material_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_material_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_material_id", value)
 
 
 @pulumi.input_type
 class _CasterState:
     def __init__(__self__, *,
-                 auto_switch_urgent_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_switch_urgent_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 caster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.float]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 norm_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_effect: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_groups_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transcode_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_live_stream_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.float]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 norm_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Caster resources.
 
@@ -525,19 +525,19 @@ class _CasterState:
 
     @_builtins.property
     @pulumi.getter(name="autoSwitchUrgentConfig")
-    def auto_switch_urgent_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_switch_urgent_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic standby broadcast configuration. eofThres: indicates that the broadcast is automatically cut and prepared after the flow interruption time, in seconds.
         """
         return pulumi.get(self, "auto_switch_urgent_config")
 
     @auto_switch_urgent_config.setter
-    def auto_switch_urgent_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_switch_urgent_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_switch_urgent_config", value)
 
     @_builtins.property
     @pulumi.getter(name="autoSwitchUrgentOn")
-    def auto_switch_urgent_on(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_switch_urgent_on(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Turn on the cut-off automatic switch for broadcast preparation.
 
@@ -548,72 +548,72 @@ class _CasterState:
         return pulumi.get(self, "auto_switch_urgent_on")
 
     @auto_switch_urgent_on.setter
-    def auto_switch_urgent_on(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_switch_urgent_on(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_switch_urgent_on", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackUrl")
-    def callback_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def callback_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback address of the user. To receive Callback Notifications, enter an available address and accept the HTTP protocol. If this parameter is set to null, the callback notification from the director Station is canceled by default.
         """
         return pulumi.get(self, "callback_url")
 
     @callback_url.setter
-    def callback_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def callback_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "callback_url", value)
 
     @_builtins.property
     @pulumi.getter(name="casterName")
-    def caster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def caster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Guide station name.
         """
         return pulumi.get(self, "caster_name")
 
     @caster_name.setter
-    def caster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def caster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "caster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def delay(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def delay(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Delayed playback. Time unit: seconds.
         """
         return pulumi.get(self, "delay")
 
     @delay.setter
-    def delay(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def delay(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "delay", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Master play domain name.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="normType")
-    def norm_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def norm_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Guide station specification type. Value:
         - 0: Broadcast single type.
@@ -622,24 +622,24 @@ class _CasterState:
         return pulumi.get(self, "norm_type")
 
     @norm_type.setter
-    def norm_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def norm_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "norm_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The paymen type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="programEffect")
-    def program_effect(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def program_effect(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Carousel effective flag.
 
@@ -650,84 +650,84 @@ class _CasterState:
         return pulumi.get(self, "program_effect")
 
     @program_effect.setter
-    def program_effect(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def program_effect(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "program_effect", value)
 
     @_builtins.property
     @pulumi.getter(name="programName")
-    def program_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def program_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The carousel station name, which can be configured when using the carousel function.
         """
         return pulumi.get(self, "program_name")
 
     @program_name.setter
-    def program_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def program_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "program_name", value)
 
     @_builtins.property
     @pulumi.getter(name="recordConfig")
-    def record_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Record configuration information. The format is JSON. The configuration element information is as follows:
         """
         return pulumi.get(self, "record_config")
 
     @record_config.setter
-    def record_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_config", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group id
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         resource type
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sideOutputUrl")
-    def side_output_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def side_output_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user-defined stream ingest address corresponding to the bypass output address of the guide station. If this parameter is left blank, the streaming address corresponding to the output address automatically generated by Alibaba Cloud is used by default.
         """
         return pulumi.get(self, "side_output_url")
 
     @side_output_url.setter
-    def side_output_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def side_output_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "side_output_url", value)
 
     @_builtins.property
     @pulumi.getter(name="sideOutputUrlList")
-    def side_output_url_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def side_output_url_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The list of multiple forwarding stream addresses, which can be the CDN forwarding stream addresses of Alibaba Cloud or a third-party vendor. A guide can add up to 20 RTMP forwarding addresses.
         """
         return pulumi.get(self, "side_output_url_list")
 
     @side_output_url_list.setter
-    def side_output_url_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def side_output_url_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "side_output_url_list", value)
 
     @_builtins.property
     @pulumi.getter(name="syncGroupsConfig")
-    def sync_groups_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_groups_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Multi-View synchronization configuration to synchronize multiple video sources. Multi-View synchronization is divided into two modes:
         - `mode 0`: (In the anchor mode, multiple video sources are synchronized according to the specified mode.)
@@ -738,24 +738,24 @@ class _CasterState:
         return pulumi.get(self, "sync_groups_config")
 
     @sync_groups_config.setter
-    def sync_groups_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_groups_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_groups_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transcodeConfig")
-    def transcode_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transcode_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Transcoding configuration.
 
@@ -764,55 +764,55 @@ class _CasterState:
         return pulumi.get(self, "transcode_config")
 
     @transcode_config.setter
-    def transcode_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transcode_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transcode_config", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentImageId")
-    def urgent_image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the picture material of the media library.
         """
         return pulumi.get(self, "urgent_image_id")
 
     @urgent_image_id.setter
-    def urgent_image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentImageUrl")
-    def urgent_image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepare the URL of the picture material.
         """
         return pulumi.get(self, "urgent_image_url")
 
     @urgent_image_url.setter
-    def urgent_image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentLiveStreamUrl")
-    def urgent_live_stream_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_live_stream_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The prepared live stream URL.
         """
         return pulumi.get(self, "urgent_live_stream_url")
 
     @urgent_live_stream_url.setter
-    def urgent_live_stream_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_live_stream_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_live_stream_url", value)
 
     @_builtins.property
     @pulumi.getter(name="urgentMaterialId")
-    def urgent_material_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def urgent_material_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prepared video, media library material ID. If this parameter is set to null, the standby configuration is cleared by default.
         """
         return pulumi.get(self, "urgent_material_id")
 
     @urgent_material_id.setter
-    def urgent_material_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def urgent_material_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "urgent_material_id", value)
 
 
@@ -822,28 +822,28 @@ class Caster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_switch_urgent_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_switch_urgent_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 caster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.float]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 norm_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_effect: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_groups_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transcode_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_live_stream_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.float]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 norm_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Live Caster resource.
@@ -983,28 +983,28 @@ class Caster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_switch_urgent_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_switch_urgent_on: Optional[pulumi.Input[_builtins.bool]] = None,
-                 callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 caster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 delay: Optional[pulumi.Input[_builtins.float]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 norm_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 program_effect: Optional[pulumi.Input[_builtins.int]] = None,
-                 program_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 side_output_url_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_groups_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transcode_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_live_stream_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+                 callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 delay: pulumi.Input[Optional[_builtins.float]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 norm_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+                 program_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1051,29 +1051,29 @@ class Caster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_switch_urgent_config: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_switch_urgent_on: Optional[pulumi.Input[_builtins.bool]] = None,
-            callback_url: Optional[pulumi.Input[_builtins.str]] = None,
-            caster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delay: Optional[pulumi.Input[_builtins.float]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            norm_type: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            program_effect: Optional[pulumi.Input[_builtins.int]] = None,
-            program_name: Optional[pulumi.Input[_builtins.str]] = None,
-            record_config: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            side_output_url: Optional[pulumi.Input[_builtins.str]] = None,
-            side_output_url_list: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_groups_config: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transcode_config: Optional[pulumi.Input[_builtins.str]] = None,
-            urgent_image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            urgent_image_url: Optional[pulumi.Input[_builtins.str]] = None,
-            urgent_live_stream_url: Optional[pulumi.Input[_builtins.str]] = None,
-            urgent_material_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Caster':
+            auto_switch_urgent_config: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_switch_urgent_on: pulumi.Input[Optional[_builtins.bool]] = None,
+            callback_url: pulumi.Input[Optional[_builtins.str]] = None,
+            caster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delay: pulumi.Input[Optional[_builtins.float]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            norm_type: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            program_effect: pulumi.Input[Optional[_builtins.int]] = None,
+            program_name: pulumi.Input[Optional[_builtins.str]] = None,
+            record_config: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            side_output_url: pulumi.Input[Optional[_builtins.str]] = None,
+            side_output_url_list: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_groups_config: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transcode_config: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_live_stream_url: pulumi.Input[Optional[_builtins.str]] = None,
+            urgent_material_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Caster':
         """
         Get an existing Caster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

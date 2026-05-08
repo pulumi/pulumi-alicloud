@@ -42,8 +42,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -140,8 +140,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -189,8 +189,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -238,8 +238,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -287,8 +287,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -336,8 +336,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventBusesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -385,8 +385,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -431,8 +431,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -477,8 +477,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -523,8 +523,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -569,8 +569,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -615,8 +615,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -661,8 +661,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetEventSourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -707,8 +707,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -754,8 +754,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -801,8 +801,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -848,8 +848,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -895,8 +895,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -942,8 +942,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -986,8 +986,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1030,8 +1030,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1074,8 +1074,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1118,8 +1118,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1162,8 +1162,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1206,8 +1206,8 @@ public final class EventbridgeFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eventbridge.EventbridgeFunctions;
      * import com.pulumi.alicloud.eventbridge.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

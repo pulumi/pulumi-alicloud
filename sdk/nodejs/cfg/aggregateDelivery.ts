@@ -240,19 +240,19 @@ export interface AggregateDeliveryState {
     /**
      * Aggregator ID.
      */
-    aggregatorId?: pulumi.Input<string>;
+    aggregatorId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:  
      * - true: The specified destination receives resource change logs.
      * - false: The specified destination does not receive resource change logs.
      */
-    configurationItemChangeNotification?: pulumi.Input<boolean>;
+    configurationItemChangeNotification?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
      * - true: The specified destination receives scheduled resource snapshots.
      * - false: The specified destination does not receive scheduled resource snapshots.
      */
-    configurationSnapshot?: pulumi.Input<boolean>;
+    configurationSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The rule that is attached to the delivery channel.   
      *
@@ -266,49 +266,49 @@ export interface AggregateDeliveryState {
      *
      * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
-    deliveryChannelCondition?: pulumi.Input<string>;
+    deliveryChannelCondition?: pulumi.Input<string | undefined>;
     /**
      * The ID of the delivery method. This parameter is required when you modify a delivery method.
      */
-    deliveryChannelId?: pulumi.Input<string>;
+    deliveryChannelId?: pulumi.Input<string | undefined>;
     /**
      * The name of the delivery channel.
      */
-    deliveryChannelName?: pulumi.Input<string>;
+    deliveryChannelName?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the delivery destination.  
      * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
      * - If the value of the DeliveryChannelType parameter is MNS, the value of this parameter is the ARN of the destination MNS topic.
      * - If the value of the DeliveryChannelType parameter is SLS, the value of this parameter is the ARN of the destination Log Service Logstore.
      */
-    deliveryChannelTargetArn?: pulumi.Input<string>;
+    deliveryChannelTargetArn?: pulumi.Input<string | undefined>;
     /**
      * The type of the delivery channel. Valid values:
      * - OSS: Object Storage Service (OSS)
      * - MNS: Message Service (MNS)
      * - SLS: Log Service
      */
-    deliveryChannelType?: pulumi.Input<string>;
+    deliveryChannelType?: pulumi.Input<string | undefined>;
     /**
      * The description of the delivery method.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
      * - true: The specified destination receives resource non-compliance events.
      * - false: The specified destination does not receive resource non-compliance events.
      */
-    nonCompliantNotification?: pulumi.Input<boolean>;
+    nonCompliantNotification?: pulumi.Input<boolean | undefined>;
     /**
      * The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
      */
-    oversizedDataOssTargetArn?: pulumi.Input<string>;
+    oversizedDataOssTargetArn?: pulumi.Input<string | undefined>;
     /**
      * The status of the delivery method. Valid values:   
      * - 0: The delivery method is disabled.
      * - 1: The delivery destination is enabled. This is the default value.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -324,13 +324,13 @@ export interface AggregateDeliveryArgs {
      * - true: The specified destination receives resource change logs.
      * - false: The specified destination does not receive resource change logs.
      */
-    configurationItemChangeNotification?: pulumi.Input<boolean>;
+    configurationItemChangeNotification?: pulumi.Input<boolean | undefined>;
     /**
      * Indicates whether the specified destination receives scheduled resource snapshots. Cloud Config delivers scheduled resource snapshots at 04:00Z and 16:00Z to OSS, MNS, or Log Service every day. The time is displayed in UTC. Valid values:  
      * - true: The specified destination receives scheduled resource snapshots.
      * - false: The specified destination does not receive scheduled resource snapshots.
      */
-    configurationSnapshot?: pulumi.Input<boolean>;
+    configurationSnapshot?: pulumi.Input<boolean | undefined>;
     /**
      * The rule that is attached to the delivery channel.   
      *
@@ -344,11 +344,11 @@ export interface AggregateDeliveryArgs {
      *
      * Examples:[{"filterType":"ResourceType","values":["ACS::ActionTrail::Trail","ACS::CBWP::CommonBandwidthPackage","ACS::CDN::Domain","ACS::CEN::CenBandwidthPackage","ACS::CEN::CenInstance","ACS::CEN::Flowlog","ACS::DdosCoo::Instance"],"multiple":true}].
      */
-    deliveryChannelCondition?: pulumi.Input<string>;
+    deliveryChannelCondition?: pulumi.Input<string | undefined>;
     /**
      * The name of the delivery channel.
      */
-    deliveryChannelName?: pulumi.Input<string>;
+    deliveryChannelName?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the delivery destination.  
      * - If the value of the DeliveryChannelType parameter is OSS, the value of this parameter is the ARN of the destination OSS bucket.
@@ -366,21 +366,21 @@ export interface AggregateDeliveryArgs {
     /**
      * The description of the delivery method.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:  
      * - true: The specified destination receives resource non-compliance events.
      * - false: The specified destination does not receive resource non-compliance events.
      */
-    nonCompliantNotification?: pulumi.Input<boolean>;
+    nonCompliantNotification?: pulumi.Input<boolean | undefined>;
     /**
      * The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
      */
-    oversizedDataOssTargetArn?: pulumi.Input<string>;
+    oversizedDataOssTargetArn?: pulumi.Input<string | undefined>;
     /**
      * The status of the delivery method. Valid values:   
      * - 0: The delivery method is disabled.
      * - 1: The delivery destination is enabled. This is the default value.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }

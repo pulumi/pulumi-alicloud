@@ -23,18 +23,18 @@ class ServerGroupArgs:
     def __init__(__self__, *,
                  server_group_name: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 any_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
-                 preserve_client_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional['ServerGroupHealthCheckArgs']] = None,
+                 preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServerGroup resource.
 
@@ -135,92 +135,92 @@ class ServerGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol version. Valid values:
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="anyPortEnabled")
-    def any_port_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def any_port_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable all-port forwarding. Valid values:
         """
         return pulumi.get(self, "any_port_enabled")
 
     @any_port_enabled.setter
-    def any_port_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def any_port_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "any_port_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrain")
     @_utilities.deprecated("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
-    def connection_drain(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connection_drain(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         """
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
-    def connection_drain(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connection_drain(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connection_drain", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainEnabled")
-    def connection_drain_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connection_drain_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable connection draining. Valid values:
         """
         return pulumi.get(self, "connection_drain_enabled")
 
     @connection_drain_enabled.setter
-    def connection_drain_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connection_drain_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connection_drain_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainTimeout")
-    def connection_drain_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_drain_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
     @connection_drain_timeout.setter
-    def connection_drain_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_drain_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_drain_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['ServerGroupHealthCheckArgs']]:
+    def health_check(self) -> pulumi.Input[Optional['ServerGroupHealthCheckArgs']]:
         """
         Health check configuration information. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['ServerGroupHealthCheckArgs']]):
+    def health_check(self, value: pulumi.Input[Optional['ServerGroupHealthCheckArgs']]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")
-    def preserve_client_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preserve_client_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable client IP preservation. Valid values:
         """
         return pulumi.get(self, "preserve_client_ip_enabled")
 
     @preserve_client_ip_enabled.setter
-    def preserve_client_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preserve_client_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preserve_client_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol used to forward requests to the backend servers. Valid values:
 
@@ -231,12 +231,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
         You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -244,12 +244,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling algorithm. Valid values:
 
@@ -262,12 +262,12 @@ class ServerGroupArgs:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupType")
-    def server_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of server group. Valid values:
 
@@ -277,41 +277,41 @@ class ServerGroupArgs:
         return pulumi.get(self, "server_group_type")
 
     @server_group_type.setter
-    def server_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ServerGroupState:
     def __init__(__self__, *,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 any_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input['ServerGroupHealthCheckArgs']] = None,
-                 preserve_client_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional['ServerGroupHealthCheckArgs']] = None,
+                 preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerGroup resources.
 
@@ -390,92 +390,92 @@ class _ServerGroupState:
 
     @_builtins.property
     @pulumi.getter(name="addressIpVersion")
-    def address_ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol version. Valid values:
         """
         return pulumi.get(self, "address_ip_version")
 
     @address_ip_version.setter
-    def address_ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="anyPortEnabled")
-    def any_port_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def any_port_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable all-port forwarding. Valid values:
         """
         return pulumi.get(self, "any_port_enabled")
 
     @any_port_enabled.setter
-    def any_port_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def any_port_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "any_port_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrain")
     @_utilities.deprecated("""Field 'connection_drain' has been deprecated since provider version 1.214.0. New field 'connection_drain_enabled' instead.""")
-    def connection_drain(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connection_drain(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field 'connection_drain' has been deprecated from provider version 1.231.0. New field 'connection_drain_enabled' instead.
         """
         return pulumi.get(self, "connection_drain")
 
     @connection_drain.setter
-    def connection_drain(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connection_drain(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connection_drain", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainEnabled")
-    def connection_drain_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def connection_drain_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable connection draining. Valid values:
         """
         return pulumi.get(self, "connection_drain_enabled")
 
     @connection_drain_enabled.setter
-    def connection_drain_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def connection_drain_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "connection_drain_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionDrainTimeout")
-    def connection_drain_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_drain_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of connection draining. Unit: seconds. Valid values: `10` to `900`.
         """
         return pulumi.get(self, "connection_drain_timeout")
 
     @connection_drain_timeout.setter
-    def connection_drain_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_drain_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_drain_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input['ServerGroupHealthCheckArgs']]:
+    def health_check(self) -> pulumi.Input[Optional['ServerGroupHealthCheckArgs']]:
         """
         Health check configuration information. See `health_check` below.
         """
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input['ServerGroupHealthCheckArgs']]):
+    def health_check(self, value: pulumi.Input[Optional['ServerGroupHealthCheckArgs']]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="preserveClientIpEnabled")
-    def preserve_client_ip_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def preserve_client_ip_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable client IP preservation. Valid values:
         """
         return pulumi.get(self, "preserve_client_ip_enabled")
 
     @preserve_client_ip_enabled.setter
-    def preserve_client_ip_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def preserve_client_ip_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "preserve_client_ip_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol used to forward requests to the backend servers. Valid values:
 
@@ -486,24 +486,24 @@ class _ServerGroupState:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the NLB instance is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the new resource group.
         You can log on to the [Resource Management console](https://resourcemanager.console.aliyun.com/resource-groups) to view resource group IDs.
@@ -511,12 +511,12 @@ class _ServerGroupState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduling algorithm. Valid values:
 
@@ -529,12 +529,12 @@ class _ServerGroupState:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupName")
-    def server_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the server group.
         The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (\\_), and hyphens (-). The name must start with a letter.
@@ -542,12 +542,12 @@ class _ServerGroupState:
         return pulumi.get(self, "server_group_name")
 
     @server_group_name.setter
-    def server_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupType")
-    def server_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of server group. Valid values:
 
@@ -557,36 +557,36 @@ class _ServerGroupState:
         return pulumi.get(self, "server_group_type")
 
     @server_group_type.setter
-    def server_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server group status. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) to which the server group belongs.
 
@@ -598,7 +598,7 @@ class _ServerGroupState:
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -608,20 +608,20 @@ class ServerGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 any_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
-                 preserve_client_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+                 preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Network Load Balancer (NLB) Server Group resource.
@@ -811,20 +811,20 @@ class ServerGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 any_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 connection_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
-                 preserve_client_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+                 preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -864,22 +864,22 @@ class ServerGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            any_port_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_drain: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_drain_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            connection_drain_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check: Optional[pulumi.Input[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
-            preserve_client_ip_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerGroup':
+            address_ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            any_port_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            connection_drain_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check: pulumi.Input[Optional[Union['ServerGroupHealthCheckArgs', 'ServerGroupHealthCheckArgsDict']]] = None,
+            preserve_client_ip_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerGroup':
         """
         Get an existing ServerGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

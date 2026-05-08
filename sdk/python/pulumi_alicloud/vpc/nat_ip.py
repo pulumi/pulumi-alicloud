@@ -21,10 +21,10 @@ class NatIpArgs:
     def __init__(__self__, *,
                  nat_gateway_id: pulumi.Input[_builtins.str],
                  nat_ip_cidr: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatIp resource.
 
@@ -72,64 +72,64 @@ class NatIpArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck the request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="natIp")
-    def nat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NAT IP address to be created.
         """
         return pulumi.get(self, "nat_ip")
 
     @nat_ip.setter
-    def nat_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpDescription")
-    def nat_ip_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_description")
 
     @nat_ip_description.setter
-    def nat_ip_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_description", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpName")
-    def nat_ip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_name")
 
     @nat_ip_name.setter
-    def nat_ip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_name", value)
 
 
 @pulumi.input_type
 class _NatIpState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatIp resources.
 
@@ -161,98 +161,98 @@ class _NatIpState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to only precheck the request. Valid values:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         """
         return pulumi.get(self, "nat_gateway_id")
 
     @nat_gateway_id.setter
-    def nat_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natIp")
-    def nat_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NAT IP address to be created.
         """
         return pulumi.get(self, "nat_ip")
 
     @nat_ip.setter
-    def nat_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpCidr")
-    def nat_ip_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR block to which the NAT IP address belongs.
         """
         return pulumi.get(self, "nat_ip_cidr")
 
     @nat_ip_cidr.setter
-    def nat_ip_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpDescription")
-    def nat_ip_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the NAT IP address. The description must be `2` to `256` characters in length and start with a letter. The description cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_description")
 
     @nat_ip_description.setter
-    def nat_ip_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_description", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpId")
-    def nat_ip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ihe ID of the Nat Ip.
         """
         return pulumi.get(self, "nat_ip_id")
 
     @nat_ip_id.setter
-    def nat_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="natIpName")
-    def nat_ip_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_ip_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the NAT IP address. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. The name must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "nat_ip_name")
 
     @nat_ip_name.setter
-    def nat_ip_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_ip_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_ip_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the NAT IP address.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -262,12 +262,12 @@ class NatIp(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Nat Gateway Nat Ip resource.
@@ -415,12 +415,12 @@ class NatIp(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -452,14 +452,14 @@ class NatIp(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_description: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_ip_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatIp':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_description: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_ip_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatIp':
         """
         Get an existing NatIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

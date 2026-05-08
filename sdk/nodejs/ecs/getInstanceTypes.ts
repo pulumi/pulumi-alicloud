@@ -326,79 +326,79 @@ export interface GetInstanceTypesOutputArgs {
     /**
      * The zone where instance types are supported.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * Filter the results to a specific number of cpu cores.
      */
-    cpuCoreCount?: pulumi.Input<number>;
+    cpuCoreCount?: pulumi.Input<number | undefined>;
     /**
      * Filter the result whose network interface number is no more than `eniAmount`.
      */
-    eniAmount?: pulumi.Input<number>;
+    eniAmount?: pulumi.Input<number | undefined>;
     /**
      * The GPU amount of an instance type.
      */
-    gpuAmount?: pulumi.Input<number>;
+    gpuAmount?: pulumi.Input<number | undefined>;
     /**
      * The GPU spec of an instance type.
      */
-    gpuSpec?: pulumi.Input<string>;
+    gpuSpec?: pulumi.Input<string | undefined>;
     /**
      * The ID of the image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Filter the results based on their family name. For example: 'ecs.n4'.
      */
-    instanceTypeFamily?: pulumi.Input<string>;
+    instanceTypeFamily?: pulumi.Input<string | undefined>;
     /**
      * If true, outdated instance types are included in the results. Default to false.
      */
-    isOutdated?: pulumi.Input<boolean>;
+    isOutdated?: pulumi.Input<boolean | undefined>;
     /**
      * Filter the result which is used to create a kubernetes cluster
      * and managed kubernetes cluster. Optional Values: `Master` and `Worker`.
      */
-    kubernetesNodeRole?: pulumi.Input<string>;
+    kubernetesNodeRole?: pulumi.Input<string | undefined>;
     /**
      * Filter the results to a specific memory size in GB.
      */
-    memorySize?: pulumi.Input<number>;
+    memorySize?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
      */
-    minimumEniIpv6AddressQuantity?: pulumi.Input<number>;
+    minimumEniIpv6AddressQuantity?: pulumi.Input<number | undefined>;
     /**
      * The minimum expected IPv4 address upper limit of a single ENI when querying instance specifications. **Note:** If an instance type supports fewer IPv4 addresses per ENI than the specified value, information about the instance type is not queried.
      */
-    minimumEniPrivateIpAddressQuantity?: pulumi.Input<number>;
+    minimumEniPrivateIpAddressQuantity?: pulumi.Input<number | undefined>;
     /**
      * Filter the results by network type. Valid values: `Classic` and `Vpc`.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Sort mode, valid values: `CPU`, `Memory`, `Price`.
      */
-    sortedBy?: pulumi.Input<string>;
+    sortedBy?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`, `cloudAuto`. 
      * **NOTE**: Its default value `cloudEfficiency` has been removed from the version v1.150.0.
      */
-    systemDiskCategory?: pulumi.Input<string>;
+    systemDiskCategory?: pulumi.Input<string | undefined>;
 }

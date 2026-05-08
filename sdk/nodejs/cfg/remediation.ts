@@ -187,33 +187,33 @@ export interface RemediationState {
     /**
      * Rule ID.
      */
-    configRuleId?: pulumi.Input<string>;
+    configRuleId?: pulumi.Input<string | undefined>;
     /**
      * Execution type, valid values: `Manual`, `Automatic`.
      */
-    invokeType?: pulumi.Input<string>;
+    invokeType?: pulumi.Input<string | undefined>;
     /**
      * Remediation parameter.
      */
-    params?: pulumi.Input<string>;
+    params?: pulumi.Input<string | undefined>;
     /**
      * Remediation ID.
      */
-    remediationId?: pulumi.Input<string>;
+    remediationId?: pulumi.Input<string | undefined>;
     /**
      * Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
      */
-    remediationSourceType?: pulumi.Input<string>;
+    remediationSourceType?: pulumi.Input<string | undefined>;
     /**
      * Remediation template ID.
      */
-    remediationTemplateId?: pulumi.Input<string>;
+    remediationTemplateId?: pulumi.Input<string | undefined>;
     /**
      * Remediation type, valid values: `OOS`, `FC`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    remediationType?: pulumi.Input<string>;
+    remediationType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,7 +235,7 @@ export interface RemediationArgs {
     /**
      * Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
      */
-    remediationSourceType?: pulumi.Input<string>;
+    remediationSourceType?: pulumi.Input<string | undefined>;
     /**
      * Remediation template ID.
      */

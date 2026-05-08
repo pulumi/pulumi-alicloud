@@ -168,26 +168,26 @@ export interface InstanceState {
      *
      * Default to "Any".
      */
-    accessedBy?: pulumi.Input<string>;
+    accessedBy?: pulumi.Input<string | undefined>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
      * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
      *
      * Default to ["TRUST_PROXY"].
      */
-    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of network types that are allowed access. Valid optional values:
      * * `CLASSIC` - Classic network.
@@ -196,16 +196,16 @@ export interface InstanceState {
      *
      * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
-    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource group the instance belongs to.
      * Default to Alibaba Cloud default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -220,26 +220,26 @@ export interface InstanceArgs {
      *
      * Default to "Any".
      */
-    accessedBy?: pulumi.Input<string>;
+    accessedBy?: pulumi.Input<string | undefined>;
     /**
      * The description of the instance. Currently, it does not support modifying.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The set of request sources that are allowed access. Valid optional values:
      * * `TRUST_PROXY` - Trusted proxy, usually the Alibaba Cloud console.
      *
      * Default to ["TRUST_PROXY"].
      */
-    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    networkSourceAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The set of network types that are allowed access. Valid optional values:
      * * `CLASSIC` - Classic network.
@@ -248,14 +248,14 @@ export interface InstanceArgs {
      *
      * Default to ["VPC", "CLASSIC", "INTERNET"].
      */
-    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    networkTypeAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The resource group the instance belongs to.
      * Default to Alibaba Cloud default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the instance.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -176,15 +176,15 @@ export interface GetDataBackupsOutputArgs {
     /**
      * Backup mode.Full Backup Value Description:-**Automated**: The system is automatically backed up.-**Manual**: Manual backup.Recovery point value description:-**Automated**: The recovery point after a full backup.-**Manual**: The recovery point triggered manually by the user.-**Period**: The recovery point triggered periodically because of the backup policy.
      */
-    backupMode?: pulumi.Input<string>;
+    backupMode?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    dataBackupId?: pulumi.Input<string>;
+    dataBackupId?: pulumi.Input<string | undefined>;
     /**
      * The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
      */
-    dataType?: pulumi.Input<string>;
+    dataType?: pulumi.Input<string | undefined>;
     /**
      * The instance ID.
      */
@@ -192,29 +192,29 @@ export interface GetDataBackupsOutputArgs {
     /**
      * The query end time, which must be greater than the query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * A list of Databackup IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Number of records per page.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

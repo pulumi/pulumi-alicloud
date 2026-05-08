@@ -219,53 +219,53 @@ export interface PolicyBindingState {
     /**
      * Backup Advanced Options See `advancedOptions` below.
      */
-    advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions>;
+    advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * Cross-account type, supported
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
      * - false: not paused
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
      */
-    exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
      */
-    include?: pulumi.Input<string>;
+    include?: pulumi.Input<string | undefined>;
     /**
      * Resource Description
      */
-    policyBindingDescription?: pulumi.Input<string>;
+    policyBindingDescription?: pulumi.Input<string | undefined>;
     /**
      * The policy ID.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Data source type, value range:
      * - `UDM_ECS`: indicates the ECS instance backup.
@@ -275,11 +275,11 @@ export interface PolicyBindingState {
      * - `File`: indicates a local File backup.
      * - `OTS`: indicates the Tablestore backup.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
      */
-    speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -289,49 +289,49 @@ export interface PolicyBindingArgs {
     /**
      * Backup Advanced Options See `advancedOptions` below.
      */
-    advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions>;
+    advancedOptions?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptions | undefined>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the name of the cross-account authorization role of the data source, and the management account uses this role to access the data source.
      */
-    crossAccountRoleName?: pulumi.Input<string>;
+    crossAccountRoleName?: pulumi.Input<string | undefined>;
     /**
      * Cross-account type, supported
      */
-    crossAccountType?: pulumi.Input<string>;
+    crossAccountType?: pulumi.Input<string | undefined>;
     /**
      * Valid only when CrossAccountType = CROSS_ACCOUNT, indicating the ID of the actual account to which the data source belongs.
      */
-    crossAccountUserId?: pulumi.Input<number>;
+    crossAccountUserId?: pulumi.Input<number | undefined>;
     /**
      * The data source ID.
      */
-    dataSourceId?: pulumi.Input<string>;
+    dataSourceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the policy is effective for the data source.
      * - true: Pause
      * - false: not paused
      */
-    disabled?: pulumi.Input<boolean>;
+    disabled?: pulumi.Input<boolean | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates a file type that does not need to be backed up. All files of this type are not backed up. A maximum of 255 characters is supported.
      */
-    exclude?: pulumi.Input<string>;
+    exclude?: pulumi.Input<string | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates the file types to be backed up, and all files of these types are backed up. A maximum of 255 characters is supported.
      */
-    include?: pulumi.Input<string>;
+    include?: pulumi.Input<string | undefined>;
     /**
      * Resource Description
      */
-    policyBindingDescription?: pulumi.Input<string>;
+    policyBindingDescription?: pulumi.Input<string | undefined>;
     /**
      * The policy ID.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * When SourceType is OSS, a prefix is specified to be backed up. If it is not specified, the entire root directory of the Bucket is backed up.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Data source type, value range:
      * - `UDM_ECS`: indicates the ECS instance backup.
@@ -341,9 +341,9 @@ export interface PolicyBindingArgs {
      * - `File`: indicates a local File backup.
      * - `OTS`: indicates the Tablestore backup.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * This parameter is required only when the value of SourceType is ECS_FILE or File. Indicates backup flow control. The format is {start}{end}{bandwidth}. Multiple flow control configurations use partitioning, and no overlap in configuration time is allowed. start: start hour. end: end of hour. bandwidth: limit rate, in KB/s.
      */
-    speedLimit?: pulumi.Input<string>;
+    speedLimit?: pulumi.Input<string | undefined>;
 }

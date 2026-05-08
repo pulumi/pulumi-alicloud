@@ -200,14 +200,14 @@ def get_backup_plans(backup_plan_name: Optional[_builtins.str] = None,
         page_size=pulumi.get(__ret__, 'page_size'),
         plans=pulumi.get(__ret__, 'plans'),
         status=pulumi.get(__ret__, 'status'))
-def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_backup_plans_output(backup_plan_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlansResult]:
     """
     This data source provides the Dbs Backup Plans of the current Alibaba Cloud user.

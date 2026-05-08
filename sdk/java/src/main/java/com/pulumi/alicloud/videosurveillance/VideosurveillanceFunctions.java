@@ -38,8 +38,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -84,8 +84,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -130,8 +130,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -176,8 +176,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -222,8 +222,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -268,8 +268,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -314,8 +314,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -360,8 +360,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -415,8 +415,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -470,8 +470,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -525,8 +525,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -580,8 +580,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -635,8 +635,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -690,8 +690,8 @@ public final class VideosurveillanceFunctions {
      * import com.pulumi.alicloud.videosurveillance.SystemGroupArgs;
      * import com.pulumi.alicloud.videosurveillance.VideosurveillanceFunctions;
      * import com.pulumi.alicloud.videosurveillance.inputs.GetSystemGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

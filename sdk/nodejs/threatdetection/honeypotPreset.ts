@@ -152,23 +152,23 @@ export interface HoneypotPresetState {
     /**
      * Honeypot mirror name
      */
-    honeypotImageName?: pulumi.Input<string>;
+    honeypotImageName?: pulumi.Input<string | undefined>;
     /**
      * Unique ID of honeypot Template
      */
-    honeypotPresetId?: pulumi.Input<string>;
+    honeypotPresetId?: pulumi.Input<string | undefined>;
     /**
      * Honeypot template custom parameters. See `meta` below.
      */
-    meta?: pulumi.Input<inputs.threatdetection.HoneypotPresetMeta>;
+    meta?: pulumi.Input<inputs.threatdetection.HoneypotPresetMeta | undefined>;
     /**
      * Unique id of management node
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * Honeypot template custom name
      */
-    presetName?: pulumi.Input<string>;
+    presetName?: pulumi.Input<string | undefined>;
 }
 
 /**

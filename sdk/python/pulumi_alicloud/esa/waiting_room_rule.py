@@ -107,12 +107,12 @@ class WaitingRoomRuleArgs:
 @pulumi.input_type
 class _WaitingRoomRuleState:
     def __init__(__self__, *,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_rule_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_rule_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering WaitingRoomRule resources.
 
@@ -140,43 +140,43 @@ class _WaitingRoomRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the rule, the implemented policy or conditional expression.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name, optional, used to query by waiting room bypass rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The site ID, which can be obtained by calling the ListSites API.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         - on: open.
@@ -185,31 +185,31 @@ class _WaitingRoomRuleState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomId")
-    def waiting_room_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waiting_room_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
         """
         return pulumi.get(self, "waiting_room_id")
 
     @waiting_room_id.setter
-    def waiting_room_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waiting_room_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waiting_room_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitingRoomRuleId")
-    def waiting_room_rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def waiting_room_rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule ID, which can be used to query a specific rule.
         """
         return pulumi.get(self, "waiting_room_rule_id")
 
     @waiting_room_rule_id.setter
-    def waiting_room_rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def waiting_room_rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "waiting_room_rule_id", value)
 
 
@@ -219,11 +219,11 @@ class WaitingRoomRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Waiting Room Rule resource.
@@ -380,11 +380,11 @@ class WaitingRoomRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,12 +420,12 @@ class WaitingRoomRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_id: Optional[pulumi.Input[_builtins.str]] = None,
-            waiting_room_rule_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'WaitingRoomRule':
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_id: pulumi.Input[Optional[_builtins.str]] = None,
+            waiting_room_rule_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'WaitingRoomRule':
         """
         Get an existing WaitingRoomRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

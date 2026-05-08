@@ -164,11 +164,11 @@ def get_vbr_health_checks(cen_id: Optional[_builtins.str] = None,
         vbr_instance_id=pulumi.get(__ret__, 'vbr_instance_id'),
         vbr_instance_owner_id=pulumi.get(__ret__, 'vbr_instance_owner_id'),
         vbr_instance_region_id=pulumi.get(__ret__, 'vbr_instance_region_id'))
-def get_vbr_health_checks_output(cen_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 vbr_instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 vbr_instance_owner_id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                 vbr_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_vbr_health_checks_output(cen_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 vbr_instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 vbr_instance_owner_id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                 vbr_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVbrHealthChecksResult]:
     """
     This data source provides CEN VBR Health Checks available to the user.

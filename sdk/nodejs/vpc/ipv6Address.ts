@@ -174,39 +174,39 @@ export interface Ipv6AddressState {
      * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
      * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * IPv6 address
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    ipv6AddressDescription?: pulumi.Input<string>;
+    ipv6AddressDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    ipv6AddressName?: pulumi.Input<string>;
+    ipv6AddressName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.  Available, Pending and Deleting.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VSwitchId of the IPv6 address.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,27 +218,27 @@ export interface Ipv6AddressArgs {
      * - `IPv6Address` (default): indicates that the current instance is a single IPv6 address.
      * - `IPv6Prefix`: indicates that the current instance is a contiguous block of IPv6 addresses.
      */
-    addressType?: pulumi.Input<string>;
+    addressType?: pulumi.Input<string | undefined>;
     /**
      * IPv6 address
      */
-    ipv6Address?: pulumi.Input<string>;
+    ipv6Address?: pulumi.Input<string | undefined>;
     /**
      * The description of the IPv6 Address. The description must be 2 to 256 characters in length. It cannot start with http:// or https://.
      */
-    ipv6AddressDescription?: pulumi.Input<string>;
+    ipv6AddressDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the IPv6 Address. The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with http:// or https://.
      */
-    ipv6AddressName?: pulumi.Input<string>;
+    ipv6AddressName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags for the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VSwitchId of the IPv6 address.
      */

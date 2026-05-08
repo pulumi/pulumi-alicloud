@@ -190,23 +190,23 @@ export interface OriginPoolState {
     /**
      * Whether the source address pool is enabled:
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * OriginPool Id
      */
-    originPoolId?: pulumi.Input<number>;
+    originPoolId?: pulumi.Input<number | undefined>;
     /**
      * The source address pool name.
      */
-    originPoolName?: pulumi.Input<string>;
+    originPoolName?: pulumi.Input<string | undefined>;
     /**
      * The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
      */
-    origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[]>;
+    origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[] | undefined>;
     /**
      * The site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface OriginPoolArgs {
     /**
      * Whether the source address pool is enabled:
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The source address pool name.
      */
@@ -224,7 +224,7 @@ export interface OriginPoolArgs {
     /**
      * The Source station information added to the source address pool. Multiple Source stations use arrays to transfer values. See `origins` below.
      */
-    origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[]>;
+    origins?: pulumi.Input<pulumi.Input<inputs.esa.OriginPoolOrigin>[] | undefined>;
     /**
      * The site ID.
      */

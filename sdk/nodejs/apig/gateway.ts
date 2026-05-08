@@ -220,61 +220,61 @@ export interface GatewayState {
     /**
      * The creation timestamp. Unit: milliseconds.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * Describes the gateway type, which is categorized into the following two types:
      * - API: indicates an API gateway
      * - AI: Indicates an AI gateway
      */
-    gatewayType?: pulumi.Input<string>;
+    gatewayType?: pulumi.Input<string | undefined>;
     /**
      * Log Configuration See `logConfig` below.
      */
-    logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig>;
+    logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig | undefined>;
     /**
      * Network Access Configuration See `networkAccessConfig` below.
      */
-    networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig>;
+    networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
      * The payment type of the resource
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Gateway instance specifications
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC associated with the Gateway. See `vpc` below.
      */
-    vpc?: pulumi.Input<inputs.apig.GatewayVpc>;
+    vpc?: pulumi.Input<inputs.apig.GatewayVpc | undefined>;
     /**
      * The virtual switch associated with the Gateway. See `vswitch` below.
      */
-    vswitch?: pulumi.Input<inputs.apig.GatewayVswitch>;
+    vswitch?: pulumi.Input<inputs.apig.GatewayVswitch | undefined>;
     /**
      * Availability Zone Configuration See `zoneConfig` below.
      */
-    zoneConfig?: pulumi.Input<inputs.apig.GatewayZoneConfig>;
+    zoneConfig?: pulumi.Input<inputs.apig.GatewayZoneConfig | undefined>;
     /**
      * The List of zones associated with the Gateway. See `zones` below.
      */
-    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[]>;
+    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[] | undefined>;
 }
 
 /**
@@ -284,21 +284,21 @@ export interface GatewayArgs {
     /**
      * The name of the resource
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * Describes the gateway type, which is categorized into the following two types:
      * - API: indicates an API gateway
      * - AI: Indicates an AI gateway
      */
-    gatewayType?: pulumi.Input<string>;
+    gatewayType?: pulumi.Input<string | undefined>;
     /**
      * Log Configuration See `logConfig` below.
      */
-    logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig>;
+    logConfig?: pulumi.Input<inputs.apig.GatewayLogConfig | undefined>;
     /**
      * Network Access Configuration See `networkAccessConfig` below.
      */
-    networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig>;
+    networkAccessConfig?: pulumi.Input<inputs.apig.GatewayNetworkAccessConfig | undefined>;
     /**
      * The payment type of the resource
      */
@@ -306,23 +306,23 @@ export interface GatewayArgs {
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Gateway instance specifications
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC associated with the Gateway. See `vpc` below.
      */
-    vpc?: pulumi.Input<inputs.apig.GatewayVpc>;
+    vpc?: pulumi.Input<inputs.apig.GatewayVpc | undefined>;
     /**
      * The virtual switch associated with the Gateway. See `vswitch` below.
      */
-    vswitch?: pulumi.Input<inputs.apig.GatewayVswitch>;
+    vswitch?: pulumi.Input<inputs.apig.GatewayVswitch | undefined>;
     /**
      * Availability Zone Configuration See `zoneConfig` below.
      */
@@ -330,5 +330,5 @@ export interface GatewayArgs {
     /**
      * The List of zones associated with the Gateway. See `zones` below.
      */
-    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[]>;
+    zones?: pulumi.Input<pulumi.Input<inputs.apig.GatewayZone>[] | undefined>;
 }

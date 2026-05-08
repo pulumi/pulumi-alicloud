@@ -153,7 +153,7 @@ export interface GetRouteServicesOutputArgs {
     /**
      * The region of the network instances that access the cloud services.
      */
-    accessRegionId?: pulumi.Input<string>;
+    accessRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
@@ -161,21 +161,21 @@ export interface GetRouteServicesOutputArgs {
     /**
      * The domain name or IP address of the cloud service.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The region of the cloud service.
      */
-    hostRegionId?: pulumi.Input<string>;
+    hostRegionId?: pulumi.Input<string | undefined>;
     /**
      * The VPC associated with the cloud service.
      */
-    hostVpcId?: pulumi.Input<string>;
+    hostVpcId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the cloud service. Valid values: `Active`, `Creating` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

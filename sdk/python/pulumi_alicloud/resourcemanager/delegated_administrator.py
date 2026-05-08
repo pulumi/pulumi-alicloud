@@ -58,8 +58,8 @@ class DelegatedAdministratorArgs:
 @pulumi.input_type
 class _DelegatedAdministratorState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DelegatedAdministrator resources.
 
@@ -73,26 +73,26 @@ class _DelegatedAdministratorState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud account ID of the member in the resource directory.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="servicePrincipal")
-    def service_principal(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the trusted service.
         """
         return pulumi.get(self, "service_principal")
 
     @service_principal.setter
-    def service_principal(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_principal", value)
 
 
@@ -102,8 +102,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Delegated Administrator resource.
@@ -195,8 +195,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_principal: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -222,8 +222,8 @@ class DelegatedAdministrator(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_principal: Optional[pulumi.Input[_builtins.str]] = None) -> 'DelegatedAdministrator':
+            account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal: pulumi.Input[Optional[_builtins.str]] = None) -> 'DelegatedAdministrator':
         """
         Get an existing DelegatedAdministrator resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     ensRegionId: "tr-Istanbul-1",
  *     vpcId: _default.id,
  *     vswitchId: defaultVswitch.id,
- *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
+ *     dbClusterNodesConfigs: Object.entries(dbClusterNodesConfigs).sort().reduce((__obj, [node, config]) => ({ ...__obj, [node]: JSON.stringify(Object.entries(config).sort().filter(([k, v]) => v != null).reduce((__obj, [k, v]) => ({ ...__obj, [k]: v }), {})) }), {}),
  * });
  * const defaultZonalEndpoint = new alicloud.polardb.ZonalEndpoint("default", {
  *     dbClusterId: defaultZonalDbCluster.id,
@@ -228,63 +228,63 @@ export interface ZonalEndpointState {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
      */
-    autoAddNewNodes?: pulumi.Input<string>;
+    autoAddNewNodes?: pulumi.Input<string | undefined>;
     /**
      * Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
      */
-    connectionPrefix?: pulumi.Input<string>;
+    connectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * referenced from the dbClusterNodesIds attribute of alicloud_polardb_zonal_db_cluster..
      */
-    dbClusterNodesIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    dbClusterNodesIds?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cluster endpoint.
      */
-    dbEndpointId?: pulumi.Input<string>;
+    dbEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the endpoint. Valid values are `Custom`, `Cluster`, `Primary`, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * Node id list for endpoint configuration.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of backend nodes for the endpoint, with the attribute values derived from the map key of db_cluster_nodes_ids.
      */
-    nodesKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    nodesKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Port of the specified endpoint. Valid values: 3000 to 5999.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
-    readWriteMode?: pulumi.Input<string>;
+    readWriteMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of ENS VPC where to use the DB.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of ENS virtual switch where to use the DB.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -294,7 +294,7 @@ export interface ZonalEndpointArgs {
     /**
      * Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Enable`.
      */
-    autoAddNewNodes?: pulumi.Input<string>;
+    autoAddNewNodes?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.
      */
@@ -306,33 +306,33 @@ export interface ZonalEndpointArgs {
     /**
      * The name of the endpoint.
      */
-    dbEndpointDescription?: pulumi.Input<string>;
+    dbEndpointDescription?: pulumi.Input<string | undefined>;
     /**
      * The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
      */
-    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    endpointConfig?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Type of the endpoint. Valid values are `Custom`, `Cluster`, `Primary`, default to `Custom`. However when creating a new endpoint, it also only can be `Custom`.
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
     /**
      * The network type of the endpoint address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * The list of backend nodes for the endpoint, with the attribute values derived from the map key of db_cluster_nodes_ids.
      */
-    nodesKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    nodesKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
      */
-    readWriteMode?: pulumi.Input<string>;
+    readWriteMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of ENS VPC where to use the DB.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of ENS virtual switch where to use the DB.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

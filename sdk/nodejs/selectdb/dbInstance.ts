@@ -343,143 +343,143 @@ export interface DbInstanceState {
     /**
      * The password for DBInstance using admin account.
      */
-    adminPass?: pulumi.Input<string>;
+    adminPass?: pulumi.Input<string | undefined>;
     /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
-    cacheSize?: pulumi.Input<number>;
+    cacheSize?: pulumi.Input<number | undefined>;
     /**
      * The sum of cache size for every `PayAsYouGo` clusters in DBInstance.
      */
-    cacheSizePostpaid?: pulumi.Input<number>;
+    cacheSizePostpaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of cache size for every `Subscription` clusters in DBInstance.
      */
-    cacheSizePrepaid?: pulumi.Input<number>;
+    cacheSizePrepaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of cluster counts for `PayAsYouGo` clusters in DBInstance.
      */
-    clusterCountPostpaid?: pulumi.Input<number>;
+    clusterCountPostpaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of cluster counts for `Subscription` clusters in DBInstance.
      */
-    clusterCountPrepaid?: pulumi.Input<number>;
+    clusterCountPrepaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of cpu resource amount for every `PayAsYouGo` clusters in DBInstance.
      */
-    cpuPostpaid?: pulumi.Input<number>;
+    cpuPostpaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of cpu resource amount for every `Subscription` clusters in DBInstance.
      */
-    cpuPrepaid?: pulumi.Input<number>;
+    cpuPrepaid?: pulumi.Input<number | undefined>;
     /**
      * The class for default cluster in DBInstance. dbClusterClass has a range of class from `selectdb.xlarge` to `selectdb.256xlarge`.
      */
-    dbInstanceClass?: pulumi.Input<string>;
+    dbInstanceClass?: pulumi.Input<string | undefined>;
     /**
      * The DBInstance description.
      */
-    dbInstanceDescription?: pulumi.Input<string>;
+    dbInstanceDescription?: pulumi.Input<string | undefined>;
     /**
      * The modified IP address whitelists. See `desiredSecurityIpLists` below.
      */
-    desiredSecurityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceDesiredSecurityIpList>[]>;
+    desiredSecurityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceDesiredSecurityIpList>[] | undefined>;
     /**
      * If DBInstance need to open public network, set it to `true`.
      */
-    enablePublicNetwork?: pulumi.Input<boolean>;
+    enablePublicNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The engine of DBInstance. Always `selectdb`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      */
-    engineMinorVersion?: pulumi.Input<string>;
+    engineMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The time when DBInstance is created.
      */
-    gmtCreated?: pulumi.Input<string>;
+    gmtCreated?: pulumi.Input<string | undefined>;
     /**
      * The time when DBInstance will be expired. Available on `Subscription` DBInstance.
      */
-    gmtExpired?: pulumi.Input<string>;
+    gmtExpired?: pulumi.Input<string | undefined>;
     /**
      * The time when DBInstance is modified.
      */
-    gmtModified?: pulumi.Input<string>;
+    gmtModified?: pulumi.Input<string | undefined>;
     /**
      * The net infos for instances.
      */
-    instanceNetInfos?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceInstanceNetInfo>[]>;
+    instanceNetInfos?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceInstanceNetInfo>[] | undefined>;
     /**
      * The lock mode of the instance. Set the value to lock, which specifies that the instance is locked when it automatically expires or has an overdue payment.
      */
-    lockMode?: pulumi.Input<string>;
+    lockMode?: pulumi.Input<string | undefined>;
     /**
      * The reason why the instance is locked.
      */
-    lockReason?: pulumi.Input<string>;
+    lockReason?: pulumi.Input<string | undefined>;
     /**
      * The sum of memory resource amount offor every `PayAsYouGo` clusters in DBInstance.
      */
-    memoryPostpaid?: pulumi.Input<number>;
+    memoryPostpaid?: pulumi.Input<number | undefined>;
     /**
      * The sum of memory resource amount offor every `Subscription` clusters in DBInstance.
      */
-    memoryPrepaid?: pulumi.Input<number>;
+    memoryPrepaid?: pulumi.Input<number | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      */
-    periodTime?: pulumi.Input<number>;
+    periodTime?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the instance.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The details about each IP address whitelist returned.
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceSecurityIpList>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceSecurityIpList>[] | undefined>;
     /**
      * The status of the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The sub domain of DBInstance.
      */
-    subDomain?: pulumi.Input<string>;
+    subDomain?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      *
      * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
-    upgradedEngineMinorVersion?: pulumi.Input<string>;
+    upgradedEngineMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC for DBInstance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of vswitch for DBInstance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The ID of zone for DBInstance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -489,7 +489,7 @@ export interface DbInstanceArgs {
     /**
      * The password for DBInstance using admin account.
      */
-    adminPass?: pulumi.Input<string>;
+    adminPass?: pulumi.Input<string | undefined>;
     /**
      * The cache size in DBInstance on creating default cluster. The number should be divided by 100.
      */
@@ -505,15 +505,15 @@ export interface DbInstanceArgs {
     /**
      * The modified IP address whitelists. See `desiredSecurityIpLists` below.
      */
-    desiredSecurityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceDesiredSecurityIpList>[]>;
+    desiredSecurityIpLists?: pulumi.Input<pulumi.Input<inputs.selectdb.DbInstanceDesiredSecurityIpList>[] | undefined>;
     /**
      * If DBInstance need to open public network, set it to `true`.
      */
-    enablePublicNetwork?: pulumi.Input<boolean>;
+    enablePublicNetwork?: pulumi.Input<boolean | undefined>;
     /**
      * The DBInstance minor version. Valid values: `3.0.12`,`4.0.4`.
      */
-    engineMinorVersion?: pulumi.Input<string>;
+    engineMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
      */
@@ -521,23 +521,23 @@ export interface DbInstanceArgs {
     /**
      * It is valid when paymentType is `Subscription`. Valid values are `Year`, `Month`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy DBInstance. It is valid when paymentType is `Subscription`. Valid values: [1~9], 12, 24, 36.
      */
-    periodTime?: pulumi.Input<number>;
+    periodTime?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      *
      * @deprecated Field `upgradedEngineMinorVersion` has been deprecated from provider version 1.248.0. New field `engineMinorVersion` instead.
      */
-    upgradedEngineMinorVersion?: pulumi.Input<string>;
+    upgradedEngineMinorVersion?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC for DBInstance.
      */

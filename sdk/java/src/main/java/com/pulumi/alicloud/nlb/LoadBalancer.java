@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.nlb.LoadBalancer;
  * import com.pulumi.alicloud.nlb.LoadBalancerArgs;
  * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -137,8 +137,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.nlb.inputs.LoadBalancerZoneMappingArgs;
  * import com.pulumi.codegen.internal.KeyedValue;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -152,7 +152,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get("name").orElse("tf-example");
- *         final var zone = config.get("zone").orElse(List.of(        
+ *         final var zone = config.get("zone").orElse(Arrays.asList(        
  *             "cn-beijing-i",
  *             "cn-beijing-k",
  *             "cn-beijing-l"));

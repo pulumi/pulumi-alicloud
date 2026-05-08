@@ -25,17 +25,17 @@ class EcsBackupPlanArgs:
                  retention: pulumi.Input[_builtins.str],
                  schedule: pulumi.Input[_builtins.str],
                  vault_id: pulumi.Input[_builtins.str],
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_paths: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_paths: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsBackupPlan resource.
 
@@ -165,158 +165,158 @@ class EcsBackupPlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detail of the backup plan.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Exclude path. String of Json list, up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
-    def exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude", value)
 
     @_builtins.property
     @pulumi.getter
-    def include(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Include path. String of Json list, up to 255 characters. e.g. `"[\\"/var\\"]"`
         """
         return pulumi.get(self, "include")
 
     @include.setter
-    def include(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Windows operating system with application consistency using VSS, e.g: `{\\"UseVSS\\":false}`.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "paths", value)
 
     @_builtins.property
     @pulumi.getter(name="speedLimit")
-    def speed_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def speed_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
     @speed_limit.setter
-    def speed_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def speed_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "speed_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePaths")
     @_utilities.deprecated("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
-    def update_paths(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_paths(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
-    def update_paths(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_paths(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_paths", value)
 
 
 @pulumi.input_type
 class _EcsBackupPlanState:
     def __init__(__self__, *,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_paths: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_paths: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsBackupPlan resources.
 
@@ -379,163 +379,163 @@ class _EcsBackupPlanState:
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The detail of the backup plan.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable the backup task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsBackupPlanName")
-    def ecs_backup_plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_backup_plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
         """
         return pulumi.get(self, "ecs_backup_plan_name")
 
     @ecs_backup_plan_name.setter
-    def ecs_backup_plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_backup_plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_backup_plan_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Exclude path. String of Json list, up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
-    def exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude", value)
 
     @_builtins.property
     @pulumi.getter
-    def include(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Include path. String of Json list, up to 255 characters. e.g. `"[\\"/var\\"]"`
         """
         return pulumi.get(self, "include")
 
     @include.setter
-    def include(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ECS instance. The ecs backup client must have been installed on the host.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Windows operating system with application consistency using VSS, e.g: `{\\"UseVSS\\":false}`.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of backup path. e.g. `["/home", "/var"]`. **Note** If `path` is empty, it means that all directories will be backed up.
         """
         return pulumi.get(self, "paths")
 
     @paths.setter
-    def paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         * `startTime` Backup start time, UNIX time seconds.
@@ -543,44 +543,44 @@ class _EcsBackupPlanState:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="speedLimit")
-    def speed_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def speed_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
         """
         return pulumi.get(self, "speed_limit")
 
     @speed_limit.setter
-    def speed_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def speed_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "speed_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="updatePaths")
     @_utilities.deprecated("""Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore.""")
-    def update_paths(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def update_paths(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
         """
         return pulumi.get(self, "update_paths")
 
     @update_paths.setter
-    def update_paths(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def update_paths(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "update_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
@@ -590,23 +590,23 @@ class EcsBackupPlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_paths: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_paths: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a HBR Ecs Backup Plan resource.
@@ -631,7 +631,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -752,7 +752,7 @@ class EcsBackupPlan(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -838,23 +838,23 @@ class EcsBackupPlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_paths: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_paths: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -903,23 +903,23 @@ class EcsBackupPlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-            detail: Optional[pulumi.Input[_builtins.str]] = None,
-            disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ecs_backup_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude: Optional[pulumi.Input[_builtins.str]] = None,
-            include: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            retention: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            speed_limit: Optional[pulumi.Input[_builtins.str]] = None,
-            update_paths: Optional[pulumi.Input[_builtins.bool]] = None,
-            vault_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsBackupPlan':
+            backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            detail: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecs_backup_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude: pulumi.Input[Optional[_builtins.str]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            speed_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            update_paths: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsBackupPlan':
         """
         Get an existing EcsBackupPlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

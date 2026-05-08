@@ -99,5 +99,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the Maxcompute service that means you have read and agreed the [Maxcompute Terms of Service](https://help.aliyun.com/document_detail/98605.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

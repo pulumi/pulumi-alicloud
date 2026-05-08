@@ -209,69 +209,69 @@ export interface RoleState {
     /**
      * The Alibaba Cloud Resource Name (ARN) of the RAM role.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
      */
-    assumeRolePolicyDocument?: pulumi.Input<string>;
+    assumeRolePolicyDocument?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.252.0) The time when the RAM role was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the RAM role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Role. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
      */
-    maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the RAM role.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM role.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of tags for the role.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -281,55 +281,55 @@ export interface RoleArgs {
     /**
      * The trust policy that specifies one or more trusted entities to assume the RAM role. The trusted entities can be Alibaba Cloud accounts, Alibaba Cloud services, or identity providers (IdPs).
      */
-    assumeRolePolicyDocument?: pulumi.Input<string>;
+    assumeRolePolicyDocument?: pulumi.Input<string | undefined>;
     /**
      * The description of the RAM role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Field `document` has been deprecated from provider version 1.252.0. New field `assumeRolePolicyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.252.0. New field 'assume_role_policy_document' instead.
      */
-    document?: pulumi.Input<string>;
+    document?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to force delete the Role. Default value: `false`. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum session time of the RAM role. Default value: `3600`. Valid values: `3600` to `43200`.
      */
-    maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.252.0. New field `roleName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.252.0. New field 'role_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Field `ramUsers` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'ram_users' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    ramUsers?: pulumi.Input<pulumi.Input<string>[]>;
+    ramUsers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the RAM role.
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'services' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    services?: pulumi.Input<pulumi.Input<string>[]>;
+    services?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of tags for the role.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
      *
      * @deprecated Field 'version' has been deprecated from provider version 1.49.0. New field 'document' instead.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

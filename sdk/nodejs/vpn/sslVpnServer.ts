@@ -211,47 +211,47 @@ export interface SslVpnServerState {
      * * `AES-192-CBC` - the AES-192-CBC algorithm.
      * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
-    cipher?: pulumi.Input<string>;
+    cipher?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
      */
-    clientIpPool?: pulumi.Input<string>;
+    clientIpPool?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
-    compress?: pulumi.Input<boolean>;
+    compress?: pulumi.Input<boolean | undefined>;
     /**
      * The number of current connections.
      */
-    connections?: pulumi.Input<number>;
+    connections?: pulumi.Input<number | undefined>;
     /**
      * The internet IP of the SSL-VPN server.
      */
-    internetIp?: pulumi.Input<string>;
+    internetIp?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
-    localSubnet?: pulumi.Input<string>;
+    localSubnet?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of connections.
      */
-    maxConnections?: pulumi.Input<number>;
+    maxConnections?: pulumi.Input<number | undefined>;
     /**
      * The name of the SSL-VPN server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPN gateway.
      */
-    vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,7 +264,7 @@ export interface SslVpnServerArgs {
      * * `AES-192-CBC` - the AES-192-CBC algorithm.
      * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
-    cipher?: pulumi.Input<string>;
+    cipher?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
      */
@@ -272,7 +272,7 @@ export interface SslVpnServerArgs {
     /**
      * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      */
-    compress?: pulumi.Input<boolean>;
+    compress?: pulumi.Input<boolean | undefined>;
     /**
      * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      */
@@ -280,15 +280,15 @@ export interface SslVpnServerArgs {
     /**
      * The name of the SSL-VPN server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPN gateway.
      */

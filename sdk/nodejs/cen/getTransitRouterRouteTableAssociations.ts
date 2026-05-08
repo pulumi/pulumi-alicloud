@@ -145,23 +145,23 @@ export interface GetTransitRouterRouteTableAssociationsOutputArgs {
     /**
      * A list of CEN Transit Router Route Table Association IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the route table, including `Active`, `Associating`, `Dissociating`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network instance connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the next hop.
      */
-    transitRouterAttachmentResourceId?: pulumi.Input<string>;
+    transitRouterAttachmentResourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of next hop. Valid values:
      * * `VPC`: virtual private cloud (VPC)
@@ -169,9 +169,9 @@ export interface GetTransitRouterRouteTableAssociationsOutputArgs {
      * * `TR`: transit router
      * * `VPN`: VPN attachment
      */
-    transitRouterAttachmentResourceType?: pulumi.Input<string>;
+    transitRouterAttachmentResourceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route table of the Enterprise Edition transit router.
      */
-    transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string | undefined>;
 }

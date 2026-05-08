@@ -26,10 +26,10 @@ class DbInstancePlanArgs:
                  plan_configs: pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]],
                  plan_schedule_type: pulumi.Input[_builtins.str],
                  plan_type: pulumi.Input[_builtins.str],
-                 plan_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DbInstancePlan resource.
 
@@ -119,66 +119,66 @@ class DbInstancePlanArgs:
 
     @_builtins.property
     @pulumi.getter(name="planDesc")
-    def plan_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Plan.
         """
         return pulumi.get(self, "plan_desc")
 
     @plan_desc.setter
-    def plan_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="planEndDate")
-    def plan_end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the Plan.
         """
         return pulumi.get(self, "plan_end_date")
 
     @plan_end_date.setter
-    def plan_end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="planStartDate")
-    def plan_start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the Plan.
         """
         return pulumi.get(self, "plan_start_date")
 
     @plan_start_date.setter
-    def plan_start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_start_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the Plan. Valid values: `active`, `cancel`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _DbInstancePlanState:
     def __init__(__self__, *,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]] = None,
-                 plan_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]] = None,
+                 plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DbInstancePlan resources.
 
@@ -216,122 +216,122 @@ class _DbInstancePlanState:
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the GPDB instance.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstancePlanName")
-    def db_instance_plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Plan.
         """
         return pulumi.get(self, "db_instance_plan_name")
 
     @db_instance_plan_name.setter
-    def db_instance_plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="planConfigs")
-    def plan_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]]:
+    def plan_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]]:
         """
         The execution information of the plan. See `plan_config` below.
         """
         return pulumi.get(self, "plan_configs")
 
     @plan_configs.setter
-    def plan_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]]):
+    def plan_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DbInstancePlanPlanConfigArgs']]]]):
         pulumi.set(self, "plan_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="planDesc")
-    def plan_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Plan.
         """
         return pulumi.get(self, "plan_desc")
 
     @plan_desc.setter
-    def plan_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="planEndDate")
-    def plan_end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the Plan.
         """
         return pulumi.get(self, "plan_end_date")
 
     @plan_end_date.setter
-    def plan_end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="planId")
-    def plan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the plan.
         """
         return pulumi.get(self, "plan_id")
 
     @plan_id.setter
-    def plan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="planScheduleType")
-    def plan_schedule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution mode of the plan. Valid values: `Postpone`, `Regular`.
         """
         return pulumi.get(self, "plan_schedule_type")
 
     @plan_schedule_type.setter
-    def plan_schedule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_schedule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="planStartDate")
-    def plan_start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the Plan.
         """
         return pulumi.get(self, "plan_start_date")
 
     @plan_start_date.setter
-    def plan_start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_start_date", value)
 
     @_builtins.property
     @pulumi.getter(name="planType")
-    def plan_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Plan. Valid values: `PauseResume`, `Resize`.
         """
         return pulumi.get(self, "plan_type")
 
     @plan_type.setter
-    def plan_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Status of the Plan. Valid values: `active`, `cancel`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -341,15 +341,15 @@ class DbInstancePlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
-                 plan_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+                 plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AnalyticDB for PostgreSQL (GPDB) DB Instance Plan resource.
@@ -416,15 +416,15 @@ class DbInstancePlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
-                 plan_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+                 plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -464,16 +464,16 @@ class DbInstancePlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
-            plan_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_end_date: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_start_date: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'DbInstancePlan':
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DbInstancePlanPlanConfigArgs', 'DbInstancePlanPlanConfigArgsDict']]]]] = None,
+            plan_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DbInstancePlan':
         """
         Get an existing DbInstancePlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

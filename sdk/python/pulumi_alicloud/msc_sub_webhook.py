@@ -58,8 +58,8 @@ class MscSubWebhookArgs:
 @pulumi.input_type
 class _MscSubWebhookState:
     def __init__(__self__, *,
-                 server_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 server_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MscSubWebhook resources.
 
@@ -73,26 +73,26 @@ class _MscSubWebhookState:
 
     @_builtins.property
     @pulumi.getter(name="serverUrl")
-    def server_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
         """
         return pulumi.get(self, "server_url")
 
     @server_url.setter
-    def server_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_url", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookName")
-    def webhook_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
         """
         return pulumi.get(self, "webhook_name")
 
     @webhook_name.setter
-    def webhook_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_name", value)
 
 
@@ -102,8 +102,8 @@ class MscSubWebhook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 server_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Msc Sub Webhook resource.
@@ -207,8 +207,8 @@ class MscSubWebhook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 server_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 server_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -234,8 +234,8 @@ class MscSubWebhook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            server_url: Optional[pulumi.Input[_builtins.str]] = None,
-            webhook_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'MscSubWebhook':
+            server_url: pulumi.Input[Optional[_builtins.str]] = None,
+            webhook_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'MscSubWebhook':
         """
         Get an existing MscSubWebhook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

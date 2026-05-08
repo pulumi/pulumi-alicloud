@@ -25,12 +25,12 @@ class GatewayArgs:
                  spec: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 backup_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_slb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_spec: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
 
@@ -112,92 +112,92 @@ class GatewayArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupVswitchId")
-    def backup_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup vswitch id.
         """
         return pulumi.get(self, "backup_vswitch_id")
 
     @backup_vswitch_id.setter
-    def backup_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSlb")
-    def delete_slb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_slb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the SLB purchased on behalf of the gateway at the same time.
         """
         return pulumi.get(self, "delete_slb")
 
     @delete_slb.setter
-    def delete_slb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_slb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_slb", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseSecurityGroup")
-    def enterprise_security_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the enterprise security group type.
         """
         return pulumi.get(self, "enterprise_security_group")
 
     @enterprise_security_group.setter
-    def enterprise_security_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayName")
-    def gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Gateway .
         """
         return pulumi.get(self, "gateway_name")
 
     @gateway_name.setter
-    def gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_name", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbSpec")
-    def internet_slb_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public network SLB specifications.
         """
         return pulumi.get(self, "internet_slb_spec")
 
     @internet_slb_spec.setter
-    def internet_slb_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="slbSpec")
-    def slb_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private network SLB specifications.
         """
         return pulumi.get(self, "slb_spec")
 
     @slb_spec.setter
-    def slb_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_spec", value)
 
 
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
-                 backup_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_slb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_lists: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaySlbListArgs']]]] = None,
-                 slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySlbListArgs']]]] = None,
+                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
 
@@ -241,146 +241,146 @@ class _GatewayState:
 
     @_builtins.property
     @pulumi.getter(name="backupVswitchId")
-    def backup_vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup vswitch id.
         """
         return pulumi.get(self, "backup_vswitch_id")
 
     @backup_vswitch_id.setter
-    def backup_vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSlb")
-    def delete_slb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_slb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the SLB purchased on behalf of the gateway at the same time.
         """
         return pulumi.get(self, "delete_slb")
 
     @delete_slb.setter
-    def delete_slb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_slb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_slb", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseSecurityGroup")
-    def enterprise_security_group(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enterprise_security_group(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the enterprise security group type.
         """
         return pulumi.get(self, "enterprise_security_group")
 
     @enterprise_security_group.setter
-    def enterprise_security_group(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enterprise_security_group(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enterprise_security_group", value)
 
     @_builtins.property
     @pulumi.getter(name="gatewayName")
-    def gateway_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Gateway .
         """
         return pulumi.get(self, "gateway_name")
 
     @gateway_name.setter
-    def gateway_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_name", value)
 
     @_builtins.property
     @pulumi.getter(name="internetSlbSpec")
-    def internet_slb_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_slb_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Public network SLB specifications.
         """
         return pulumi.get(self, "internet_slb_spec")
 
     @internet_slb_spec.setter
-    def internet_slb_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_slb_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_slb_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def replica(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replica(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Gateway Nodes.
         """
         return pulumi.get(self, "replica")
 
     @replica.setter
-    def replica(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replica(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replica", value)
 
     @_builtins.property
     @pulumi.getter(name="slbLists")
-    def slb_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GatewaySlbListArgs']]]]:
+    def slb_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySlbListArgs']]]]:
         """
         A list of gateway Slb.
         """
         return pulumi.get(self, "slb_lists")
 
     @slb_lists.setter
-    def slb_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GatewaySlbListArgs']]]]):
+    def slb_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GatewaySlbListArgs']]]]):
         pulumi.set(self, "slb_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="slbSpec")
-    def slb_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def slb_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private network SLB specifications.
         """
         return pulumi.get(self, "slb_spec")
 
     @slb_spec.setter
-    def slb_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def slb_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "slb_spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
         """
         return pulumi.get(self, "spec")
 
     @spec.setter
-    def spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spec", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the gateway.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vpc.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vswitch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -390,16 +390,16 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_slb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Microservice Engine (MSE) Gateway resource.
@@ -414,6 +414,7 @@ class Gateway(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -421,7 +422,7 @@ class Gateway(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch = []
+        example_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
                 vpc_id=example_network.id,
@@ -482,6 +483,7 @@ class Gateway(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -489,7 +491,7 @@ class Gateway(pulumi.CustomResource):
         example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/16")
-        example_switch = []
+        example_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_switch.append(alicloud.vpc.Switch(f"example-{range['value']}",
                 vpc_id=example_network.id,
@@ -533,16 +535,16 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_slb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 replica: Optional[pulumi.Input[_builtins.int]] = None,
-                 slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 replica: pulumi.Input[Optional[_builtins.int]] = None,
+                 slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -582,18 +584,18 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_slb: Optional[pulumi.Input[_builtins.bool]] = None,
-            enterprise_security_group: Optional[pulumi.Input[_builtins.bool]] = None,
-            gateway_name: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            replica: Optional[pulumi.Input[_builtins.int]] = None,
-            slb_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict']]]]] = None,
-            slb_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            spec: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Gateway':
+            backup_vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_slb: pulumi.Input[Optional[_builtins.bool]] = None,
+            enterprise_security_group: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_name: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            replica: pulumi.Input[Optional[_builtins.int]] = None,
+            slb_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GatewaySlbListArgs', 'GatewaySlbListArgsDict']]]]] = None,
+            slb_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            spec: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Gateway':
         """
         Get an existing Gateway resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

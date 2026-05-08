@@ -190,29 +190,29 @@ export interface ShardingNetworkPrivateAddressState {
      * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the sharded cluster instance.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The connection string of the instance.
      */
-    networkAddresses?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress>[]>;
+    networkAddresses?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingNetworkPrivateAddressNetworkAddress>[] | undefined>;
     /**
      * The ID of the Shard node or ConfigServer node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,13 +225,13 @@ export interface ShardingNetworkPrivateAddressArgs {
      * - You need to set the account name and password only when you apply for an endpoint for a shard or ConfigServer node for the first time. In this case, the account name and password are used for all shard and ConfigServer nodes.
      * - The permissions of this account are fixed to read-only.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The password for the account.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the sharded cluster instance.
      */

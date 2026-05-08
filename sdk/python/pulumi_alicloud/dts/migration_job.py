@@ -28,28 +28,28 @@ class MigrationJobArgs:
                  source_endpoint_engine_name: pulumi.Input[_builtins.str],
                  source_endpoint_instance_type: pulumi.Input[_builtins.str],
                  structure_initialization: pulumi.Input[_builtins.bool],
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
 
@@ -249,303 +249,303 @@ class MigrationJobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def checkpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checkpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in Unix timestamp format.
         """
         return pulumi.get(self, "checkpoint")
 
     @checkpoint.setter
-    def checkpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checkpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointDatabaseName")
-    def destination_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migrate the database.
         """
         return pulumi.get(self, "destination_endpoint_database_name")
 
     @destination_endpoint_database_name.setter
-    def destination_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointInstanceId")
-    def destination_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_instance_id")
 
     @destination_endpoint_instance_id.setter
-    def destination_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointIp")
-    def destination_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of source endpoint.
         """
         return pulumi.get(self, "destination_endpoint_ip")
 
     @destination_endpoint_ip.setter
-    def destination_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointOracleSid")
-    def destination_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle database.
         """
         return pulumi.get(self, "destination_endpoint_oracle_sid")
 
     @destination_endpoint_oracle_sid.setter
-    def destination_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointPassword")
-    def destination_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of database account.
         """
         return pulumi.get(self, "destination_endpoint_password")
 
     @destination_endpoint_password.setter
-    def destination_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointPort")
-    def destination_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source endpoint.
         """
         return pulumi.get(self, "destination_endpoint_port")
 
     @destination_endpoint_port.setter
-    def destination_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointRegion")
-    def destination_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_region")
 
     @destination_endpoint_region.setter
-    def destination_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
-    def destination_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of database account.
         """
         return pulumi.get(self, "destination_endpoint_user_name")
 
     @destination_endpoint_user_name.setter
-    def destination_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsJobName")
-    def dts_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migration job.
         """
         return pulumi.get(self, "dts_job_name")
 
     @dts_job_name.setter
-    def dts_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migrate the database.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of source instance.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle database.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOwnerId")
-    def source_endpoint_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud account ID to which the source instance belongs.
         """
         return pulumi.get(self, "source_endpoint_owner_id")
 
     @source_endpoint_owner_id.setter
-    def source_endpoint_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of database account.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of source instance.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRole")
-    def source_endpoint_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role configured for the cloud account to which the source instance belongs.
         """
         return pulumi.get(self, "source_endpoint_role")
 
     @source_endpoint_role.setter
-    def source_endpoint_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of database account.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _MigrationJobState:
     def __init__(__self__, *,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_synchronization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 structure_initialization: Optional[pulumi.Input[_builtins.bool]] = None):
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering MigrationJob resources.
 
@@ -646,374 +646,374 @@ class _MigrationJobState:
 
     @_builtins.property
     @pulumi.getter
-    def checkpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checkpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Start time in Unix timestamp format.
         """
         return pulumi.get(self, "checkpoint")
 
     @checkpoint.setter
-    def checkpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checkpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checkpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="dataInitialization")
-    def data_initialization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_initialization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to execute DTS supports schema migration.
         """
         return pulumi.get(self, "data_initialization")
 
     @data_initialization.setter
-    def data_initialization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_initialization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_initialization", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSynchronization")
-    def data_synchronization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def data_synchronization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform incremental data migration.
         """
         return pulumi.get(self, "data_synchronization")
 
     @data_synchronization.setter
-    def data_synchronization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def data_synchronization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "data_synchronization", value)
 
     @_builtins.property
     @pulumi.getter(name="dbList")
-    def db_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
         """
         return pulumi.get(self, "db_list")
 
     @db_list.setter
-    def db_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_list", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointDatabaseName")
-    def destination_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migrate the database.
         """
         return pulumi.get(self, "destination_endpoint_database_name")
 
     @destination_endpoint_database_name.setter
-    def destination_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointEngineName")
-    def destination_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
     @destination_endpoint_engine_name.setter
-    def destination_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointInstanceId")
-    def destination_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_instance_id")
 
     @destination_endpoint_instance_id.setter
-    def destination_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointInstanceType")
-    def destination_endpoint_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         """
         return pulumi.get(self, "destination_endpoint_instance_type")
 
     @destination_endpoint_instance_type.setter
-    def destination_endpoint_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointIp")
-    def destination_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of source endpoint.
         """
         return pulumi.get(self, "destination_endpoint_ip")
 
     @destination_endpoint_ip.setter
-    def destination_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointOracleSid")
-    def destination_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle database.
         """
         return pulumi.get(self, "destination_endpoint_oracle_sid")
 
     @destination_endpoint_oracle_sid.setter
-    def destination_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointPassword")
-    def destination_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of database account.
         """
         return pulumi.get(self, "destination_endpoint_password")
 
     @destination_endpoint_password.setter
-    def destination_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointPort")
-    def destination_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source endpoint.
         """
         return pulumi.get(self, "destination_endpoint_port")
 
     @destination_endpoint_port.setter
-    def destination_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointRegion")
-    def destination_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of destination instance.
         """
         return pulumi.get(self, "destination_endpoint_region")
 
     @destination_endpoint_region.setter
-    def destination_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEndpointUserName")
-    def destination_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of database account.
         """
         return pulumi.get(self, "destination_endpoint_user_name")
 
     @destination_endpoint_user_name.setter
-    def destination_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsInstanceId")
-    def dts_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Migration instance ID. The ID of `dts.MigrationInstance`.
         """
         return pulumi.get(self, "dts_instance_id")
 
     @dts_instance_id.setter
-    def dts_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dtsJobName")
-    def dts_job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dts_job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migration job.
         """
         return pulumi.get(self, "dts_job_name")
 
     @dts_job_name.setter
-    def dts_job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dts_job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dts_job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceClass")
-    def instance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
         """
         return pulumi.get(self, "instance_class")
 
     @instance_class.setter
-    def instance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointDatabaseName")
-    def source_endpoint_database_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_database_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of migrate the database.
         """
         return pulumi.get(self, "source_endpoint_database_name")
 
     @source_endpoint_database_name.setter
-    def source_endpoint_database_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_database_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_database_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointEngineName")
-    def source_endpoint_engine_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_engine_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
     @source_endpoint_engine_name.setter
-    def source_endpoint_engine_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_engine_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_engine_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceId")
-    def source_endpoint_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of source instance.
         """
         return pulumi.get(self, "source_endpoint_instance_id")
 
     @source_endpoint_instance_id.setter
-    def source_endpoint_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointInstanceType")
-    def source_endpoint_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
         """
         return pulumi.get(self, "source_endpoint_instance_type")
 
     @source_endpoint_instance_type.setter
-    def source_endpoint_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointIp")
-    def source_endpoint_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_ip")
 
     @source_endpoint_ip.setter
-    def source_endpoint_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOracleSid")
-    def source_endpoint_oracle_sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_oracle_sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SID of Oracle database.
         """
         return pulumi.get(self, "source_endpoint_oracle_sid")
 
     @source_endpoint_oracle_sid.setter
-    def source_endpoint_oracle_sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_oracle_sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_oracle_sid", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointOwnerId")
-    def source_endpoint_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud account ID to which the source instance belongs.
         """
         return pulumi.get(self, "source_endpoint_owner_id")
 
     @source_endpoint_owner_id.setter
-    def source_endpoint_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPassword")
-    def source_endpoint_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of database account.
         """
         return pulumi.get(self, "source_endpoint_password")
 
     @source_endpoint_password.setter
-    def source_endpoint_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_password", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointPort")
-    def source_endpoint_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The port of source endpoint.
         """
         return pulumi.get(self, "source_endpoint_port")
 
     @source_endpoint_port.setter
-    def source_endpoint_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_port", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRegion")
-    def source_endpoint_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of source instance.
         """
         return pulumi.get(self, "source_endpoint_region")
 
     @source_endpoint_region.setter
-    def source_endpoint_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_region", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointRole")
-    def source_endpoint_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role configured for the cloud account to which the source instance belongs.
         """
         return pulumi.get(self, "source_endpoint_role")
 
     @source_endpoint_role.setter
-    def source_endpoint_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_role", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceEndpointUserName")
-    def source_endpoint_user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_endpoint_user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of database account.
         """
         return pulumi.get(self, "source_endpoint_user_name")
 
     @source_endpoint_user_name.setter
-    def source_endpoint_user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_endpoint_user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_endpoint_user_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="structureInitialization")
-    def structure_initialization(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def structure_initialization(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform a database table structure to migrate.
         """
         return pulumi.get(self, "structure_initialization")
 
     @structure_initialization.setter
-    def structure_initialization(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def structure_initialization(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "structure_initialization", value)
 
 
@@ -1023,37 +1023,37 @@ class MigrationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_synchronization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 structure_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a DTS Migration Job resource.
@@ -1068,6 +1068,7 @@ class MigrationJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -1099,13 +1100,13 @@ class MigrationJob(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance = []
+        example_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result,
@@ -1113,7 +1114,7 @@ class MigrationJob(pulumi.CustomResource):
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account = []
+        example_rds_account: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
                 db_instance_id=example_instance[range["value"]].id,
@@ -1121,13 +1122,13 @@ class MigrationJob(pulumi.CustomResource):
                     args=[range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
                     args=[range["value"] + 1]).result))
-        example_database = []
+        example_database: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_database.append(alicloud.rds.Database(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
                 name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result))
-        example_account_privilege = []
+        example_account_privilege: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
@@ -1245,6 +1246,7 @@ class MigrationJob(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import json
         import pulumi_alicloud as alicloud
         import pulumi_std as std
@@ -1276,13 +1278,13 @@ class MigrationJob(pulumi.CustomResource):
         example_security_group = alicloud.ecs.SecurityGroup("example",
             name=name,
             vpc_id=example_network.id)
-        example_instance = []
+        example_instance: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_instance.append(alicloud.rds.Instance(f"example-{range['value']}",
                 engine="MySQL",
                 engine_version="8.0",
                 instance_type=example_get_instance_classes.instance_classes[0].instance_class,
-                instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
+                instance_storage=output(example_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
                 instance_charge_type="Postpaid",
                 instance_name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result,
@@ -1290,7 +1292,7 @@ class MigrationJob(pulumi.CustomResource):
                 monitoring_period=60,
                 db_instance_storage_type="cloud_essd",
                 security_group_ids=[example_security_group.id]))
-        example_rds_account = []
+        example_rds_account: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_rds_account.append(alicloud.rds.RdsAccount(f"example-{range['value']}",
                 db_instance_id=example_instance[range["value"]].id,
@@ -1298,13 +1300,13 @@ class MigrationJob(pulumi.CustomResource):
                     args=[range["value"] + 1]).result,
                 account_password=std.format(input="example_password_%d",
                     args=[range["value"] + 1]).result))
-        example_database = []
+        example_database: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_database.append(alicloud.rds.Database(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
                 name=std.format(input=f"{name}_%d",
                     args=[range["value"] + 1]).result))
-        example_account_privilege = []
+        example_account_privilege: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             example_account_privilege.append(alicloud.rds.AccountPrivilege(f"example-{range['value']}",
                 instance_id=example_instance[range["value"]].id,
@@ -1384,37 +1386,37 @@ class MigrationJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 data_synchronization: Optional[pulumi.Input[_builtins.bool]] = None,
-                 db_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 structure_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
+                 checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
+                 db_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1483,37 +1485,37 @@ class MigrationJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checkpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            data_initialization: Optional[pulumi.Input[_builtins.bool]] = None,
-            data_synchronization: Optional[pulumi.Input[_builtins.bool]] = None,
-            db_list: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dts_job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_database_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_engine_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_oracle_sid: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_password: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_port: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_region: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_role: Optional[pulumi.Input[_builtins.str]] = None,
-            source_endpoint_user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            structure_initialization: Optional[pulumi.Input[_builtins.bool]] = None) -> 'MigrationJob':
+            checkpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            data_initialization: pulumi.Input[Optional[_builtins.bool]] = None,
+            data_synchronization: pulumi.Input[Optional[_builtins.bool]] = None,
+            db_list: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dts_job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_database_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_engine_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_oracle_sid: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_password: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_port: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_region: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_role: pulumi.Input[Optional[_builtins.str]] = None,
+            source_endpoint_user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            structure_initialization: pulumi.Input[Optional[_builtins.bool]] = None) -> 'MigrationJob':
         """
         Get an existing MigrationJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

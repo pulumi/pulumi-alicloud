@@ -24,20 +24,20 @@ class InstanceArgs:
                  category: pulumi.Input[_builtins.str],
                  size: pulumi.Input[_builtins.int],
                  zone_id: pulumi.Input[_builtins.str],
-                 advanced_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
-                 enable_raid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fs_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_scene: Optional[pulumi.Input[_builtins.str]] = None):
+                 advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
+                 enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_scene: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -147,93 +147,93 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
-    def advanced_features(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of CPU cores and the upper limit of memory used by the database file storage instance.
         """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
-    def advanced_features(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advanced_features(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advanced_features", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSnapshot")
-    def delete_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the original snapshot after creating DBFS using the snapshot.
         """
         return pulumi.get(self, "delete_snapshot")
 
     @delete_snapshot.setter
-    def delete_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsLists")
     @_utilities.deprecated("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
-    def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
+    def ecs_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
         The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
-    def ecs_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]):
+    def ecs_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]]):
         pulumi.set(self, "ecs_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRaid")
-    def enable_raid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_raid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "enable_raid")
 
     @enable_raid.setter
-    def enable_raid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_raid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_raid", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="fsName")
-    def fs_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fs_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database file system name.
         """
         return pulumi.get(self, "fs_name")
 
     @fs_name.setter
-    def fs_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fs_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fs_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
     @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Value range:
         - dbfs.small
@@ -243,24 +243,24 @@ class InstanceArgs:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key used by DBFS.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
         - PL0: single disk maximum random read-write IOPS 10000
@@ -271,36 +271,36 @@ class InstanceArgs:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="raidStripeUnitNumber")
-    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def raid_stripe_unit_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         """
         return pulumi.get(self, "raid_stripe_unit_number")
 
     @raid_stripe_unit_number.setter
-    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def raid_stripe_unit_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raid_stripe_unit_number", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot used to create the DBFS instance.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
 
@@ -309,12 +309,12 @@ class InstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usedScene")
-    def used_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def used_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage scenario of DBFS. Value range:
         - MySQL 5.7
@@ -324,32 +324,32 @@ class InstanceArgs:
         return pulumi.get(self, "used_scene")
 
     @used_scene.setter
-    def used_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def used_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "used_scene", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 advanced_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
-                 enable_raid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fs_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]] = None,
+                 enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -432,117 +432,117 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="advancedFeatures")
-    def advanced_features(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advanced_features(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of CPU cores and the upper limit of memory used by the database file storage instance.
         """
         return pulumi.get(self, "advanced_features")
 
     @advanced_features.setter
-    def advanced_features(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advanced_features(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advanced_features", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Category of database file system.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteSnapshot")
-    def delete_snapshot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_snapshot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the original snapshot after creating DBFS using the snapshot.
         """
         return pulumi.get(self, "delete_snapshot")
 
     @delete_snapshot.setter
-    def delete_snapshot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_snapshot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_snapshot", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsLists")
     @_utilities.deprecated("""Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.""")
-    def ecs_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
+    def ecs_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]]:
         """
         The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecs_list` below.
         """
         return pulumi.get(self, "ecs_lists")
 
     @ecs_lists.setter
-    def ecs_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceEcsListArgs']]]]):
+    def ecs_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['InstanceEcsListArgs']]]]):
         pulumi.set(self, "ecs_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRaid")
-    def enable_raid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_raid(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "enable_raid")
 
     @enable_raid.setter
-    def enable_raid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_raid(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_raid", value)
 
     @_builtins.property
     @pulumi.getter
-    def encryption(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encryption(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         """
         return pulumi.get(self, "encryption")
 
     @encryption.setter
-    def encryption(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encryption(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encryption", value)
 
     @_builtins.property
     @pulumi.getter(name="fsName")
-    def fs_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fs_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database file system name.
         """
         return pulumi.get(self, "fs_name")
 
     @fs_name.setter
-    def fs_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fs_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fs_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
     @_utilities.deprecated("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Value range:
         - dbfs.small
@@ -552,24 +552,24 @@ class _InstanceState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key used by DBFS.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceLevel")
-    def performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
         - PL0: single disk maximum random read-write IOPS 10000
@@ -580,60 +580,60 @@ class _InstanceState:
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
-    def performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="raidStripeUnitNumber")
-    def raid_stripe_unit_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def raid_stripe_unit_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
         """
         return pulumi.get(self, "raid_stripe_unit_number")
 
     @raid_stripe_unit_number.setter
-    def raid_stripe_unit_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def raid_stripe_unit_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "raid_stripe_unit_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of database file system, unit GiB.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the snapshot used to create the DBFS instance.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
 
@@ -642,12 +642,12 @@ class _InstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usedScene")
-    def used_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def used_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The usage scenario of DBFS. Value range:
         - MySQL 5.7
@@ -657,19 +657,19 @@ class _InstanceState:
         return pulumi.get(self, "used_scene")
 
     @used_scene.setter
-    def used_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def used_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "used_scene", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone to which the database file system belongs.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -679,23 +679,23 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
-                 enable_raid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fs_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+                 enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
@@ -830,23 +830,23 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advanced_features: Optional[pulumi.Input[_builtins.str]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
-                 enable_raid: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fs_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 raid_stripe_unit_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+                 enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -891,25 +891,25 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advanced_features: Optional[pulumi.Input[_builtins.str]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_snapshot: Optional[pulumi.Input[_builtins.bool]] = None,
-            ecs_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
-            enable_raid: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption: Optional[pulumi.Input[_builtins.bool]] = None,
-            fs_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            raid_stripe_unit_number: Optional[pulumi.Input[_builtins.int]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            used_scene: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            advanced_features: pulumi.Input[Optional[_builtins.str]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_snapshot: pulumi.Input[Optional[_builtins.bool]] = None,
+            ecs_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['InstanceEcsListArgs', 'InstanceEcsListArgsDict']]]]] = None,
+            enable_raid: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption: pulumi.Input[Optional[_builtins.bool]] = None,
+            fs_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            raid_stripe_unit_number: pulumi.Input[Optional[_builtins.int]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

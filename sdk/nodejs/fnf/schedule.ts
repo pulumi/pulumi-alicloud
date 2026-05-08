@@ -164,35 +164,35 @@ export interface ScheduleState {
     /**
      * The CRON expression of the time-based schedule to be created.
      */
-    cronExpression?: pulumi.Input<string>;
+    cronExpression?: pulumi.Input<string | undefined>;
     /**
      * The description of the time-based schedule to be created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
-    flowName?: pulumi.Input<string>;
+    flowName?: pulumi.Input<string | undefined>;
     /**
      * The time when the time-based schedule was last updated.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      */
-    payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string | undefined>;
     /**
      * The ID of the time-based schedule.
      */
-    scheduleId?: pulumi.Input<string>;
+    scheduleId?: pulumi.Input<string | undefined>;
     /**
      * The name of the time-based schedule to be created.
      */
-    scheduleName?: pulumi.Input<string>;
+    scheduleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,11 +206,11 @@ export interface ScheduleArgs {
     /**
      * The description of the time-based schedule to be created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the flow bound to the time-based schedule you want to create.
      */
@@ -218,7 +218,7 @@ export interface ScheduleArgs {
     /**
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      */
-    payload?: pulumi.Input<string>;
+    payload?: pulumi.Input<string | undefined>;
     /**
      * The name of the time-based schedule to be created.
      */

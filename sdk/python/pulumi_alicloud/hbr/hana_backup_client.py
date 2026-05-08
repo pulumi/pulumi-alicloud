@@ -20,9 +20,9 @@ __all__ = ['HanaBackupClientArgs', 'HanaBackupClient']
 class HanaBackupClientArgs:
     def __init__(__self__, *,
                  vault_id: pulumi.Input[_builtins.str],
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HanaBackupClient resource.
 
@@ -53,52 +53,52 @@ class HanaBackupClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertSetting")
-    def alert_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert settings. Valid value: `INHERITED`.
         """
         return pulumi.get(self, "alert_setting")
 
     @alert_setting.setter
-    def alert_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="clientInfo")
-    def client_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The installation information of the HBR clients.
         """
         return pulumi.get(self, "client_info")
 
     @client_info.setter
-    def client_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_info", value)
 
     @_builtins.property
     @pulumi.getter(name="useHttps")
-    def use_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
     @use_https.setter
-    def use_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_https", value)
 
 
 @pulumi.input_type
 class _HanaBackupClientState:
     def __init__(__self__, *,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HanaBackupClient resources.
 
@@ -130,98 +130,98 @@ class _HanaBackupClientState:
 
     @_builtins.property
     @pulumi.getter(name="alertSetting")
-    def alert_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert settings. Valid value: `INHERITED`.
         """
         return pulumi.get(self, "alert_setting")
 
     @alert_setting.setter
-    def alert_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup client.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientInfo")
-    def client_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The installation information of the HBR clients.
         """
         return pulumi.get(self, "client_info")
 
     @client_info.setter
-    def client_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_info", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SAP HANA instance.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Hana Backup Client.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="useHttps")
-    def use_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
     @use_https.setter
-    def use_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_https", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
@@ -231,10 +231,10 @@ class HanaBackupClient(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Backup Client resource.
@@ -254,7 +254,7 @@ class HanaBackupClient(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -343,7 +343,7 @@ class HanaBackupClient(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -416,10 +416,10 @@ class HanaBackupClient(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,14 +449,14 @@ class HanaBackupClient(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_info: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            use_https: Optional[pulumi.Input[_builtins.bool]] = None,
-            vault_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HanaBackupClient':
+            alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_info: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HanaBackupClient':
         """
         Get an existing HanaBackupClient resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

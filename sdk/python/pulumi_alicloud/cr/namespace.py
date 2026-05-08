@@ -21,7 +21,7 @@ class NamespaceArgs:
     def __init__(__self__, *,
                  auto_create: pulumi.Input[_builtins.bool],
                  default_visibility: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Namespace resource.
 
@@ -60,23 +60,23 @@ class NamespaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Container Registry namespace.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _NamespaceState:
     def __init__(__self__, *,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Namespace resources.
 
@@ -93,38 +93,38 @@ class _NamespaceState:
 
     @_builtins.property
     @pulumi.getter(name="autoCreate")
-    def auto_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
         """
         return pulumi.get(self, "auto_create")
 
     @auto_create.setter
-    def auto_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultVisibility")
-    def default_visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
         """
         return pulumi.get(self, "default_visibility")
 
     @default_visibility.setter
-    def default_visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_visibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of Container Registry namespace.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -134,9 +134,9 @@ class Namespace(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATION NOTICE:** This resource is deprecated and will be removed in a future release.
@@ -249,9 +249,9 @@ class Namespace(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,9 +278,9 @@ class Namespace(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            default_visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Namespace':
+            auto_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            default_visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Namespace':
         """
         Get an existing Namespace resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

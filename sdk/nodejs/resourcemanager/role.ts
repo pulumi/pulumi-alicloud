@@ -154,31 +154,31 @@ export interface RoleState {
     /**
      * The resource descriptor of the role.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * The content of the permissions strategy that plays a role.
      */
-    assumeRolePolicyDocument?: pulumi.Input<string>;
+    assumeRolePolicyDocument?: pulumi.Input<string | undefined>;
     /**
      * The description of the Resource Manager role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
-    maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * This ID of Resource Manager role. The value is set to `roleName`.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
      */
-    roleName?: pulumi.Input<string>;
+    roleName?: pulumi.Input<string | undefined>;
     /**
      * Role update time.
      */
-    updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,11 +192,11 @@ export interface RoleArgs {
     /**
      * The description of the Resource Manager role.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
      */
-    maxSessionDuration?: pulumi.Input<number>;
+    maxSessionDuration?: pulumi.Input<number | undefined>;
     /**
      * Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
      */

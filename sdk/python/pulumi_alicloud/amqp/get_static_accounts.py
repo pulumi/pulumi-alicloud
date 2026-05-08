@@ -129,9 +129,9 @@ def get_static_accounts(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_static_accounts_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               instance_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_static_accounts_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               instance_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStaticAccountsResult]:
     """
     This data source provides Amqp Static Account available to the user.[What is Static Account](https://help.aliyun.com/document_detail/184399.html)

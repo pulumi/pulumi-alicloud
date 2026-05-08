@@ -193,43 +193,43 @@ export interface IpsecServerState {
     /**
      * The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
      */
-    clientIpPool?: pulumi.Input<string>;
+    clientIpPool?: pulumi.Input<string | undefined>;
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether you want the configuration to immediately take effect.
      */
-    effectImmediately?: pulumi.Input<boolean>;
+    effectImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
-    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[]>;
+    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[] | undefined>;
     /**
      * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
-    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[]>;
+    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[] | undefined>;
     /**
      * The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
      */
-    ipsecServerName?: pulumi.Input<string>;
+    ipsecServerName?: pulumi.Input<string | undefined>;
     /**
      * The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
      */
-    localSubnet?: pulumi.Input<string>;
+    localSubnet?: pulumi.Input<string | undefined>;
     /**
      * The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
      */
-    psk?: pulumi.Input<string>;
+    psk?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
      */
-    pskEnabled?: pulumi.Input<boolean>;
+    pskEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPN gateway.
      */
-    vpnGatewayId?: pulumi.Input<string>;
+    vpnGatewayId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,23 +243,23 @@ export interface IpsecServerArgs {
     /**
      * The dry run.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether you want the configuration to immediately take effect.
      */
-    effectImmediately?: pulumi.Input<boolean>;
+    effectImmediately?: pulumi.Input<boolean | undefined>;
     /**
      * The configuration of Phase 1 negotiations. See `ikeConfig` below.
      */
-    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[]>;
+    ikeConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIkeConfig>[] | undefined>;
     /**
      * The configuration of Phase 2 negotiations. See `ipsecConfig` below.
      */
-    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[]>;
+    ipsecConfigs?: pulumi.Input<pulumi.Input<inputs.vpn.IpsecServerIpsecConfig>[] | undefined>;
     /**
      * The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
      */
-    ipsecServerName?: pulumi.Input<string>;
+    ipsecServerName?: pulumi.Input<string | undefined>;
     /**
      * The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
      */
@@ -267,11 +267,11 @@ export interface IpsecServerArgs {
     /**
      * The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
      */
-    psk?: pulumi.Input<string>;
+    psk?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
      */
-    pskEnabled?: pulumi.Input<boolean>;
+    pskEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPN gateway.
      */

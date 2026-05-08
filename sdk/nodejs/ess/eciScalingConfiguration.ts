@@ -421,24 +421,24 @@ export interface EciScalingConfigurationState {
     /**
      * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
-    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[] | undefined>;
     /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
      */
-    activeDeadlineSeconds?: pulumi.Input<number>;
+    activeDeadlineSeconds?: pulumi.Input<number | undefined>;
     /**
      * Whether create eip automatically.
      */
-    autoCreateEip?: pulumi.Input<boolean>;
+    autoCreateEip?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to automatically match the image cache.
      */
-    autoMatchImageCache?: pulumi.Input<boolean>;
+    autoMatchImageCache?: pulumi.Input<boolean | undefined>;
     /**
      * The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
      * name_prefix: the prefix of the hostname.
@@ -447,153 +447,153 @@ export interface EciScalingConfigurationState {
      * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      */
-    containerGroupName?: pulumi.Input<string>;
+    containerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The list of containers. See `containers` below for details.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[] | undefined>;
     /**
      * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
      */
-    costOptimization?: pulumi.Input<boolean>;
+    costOptimization?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The number of physical CPU cores. You can specify this parameter for only specific instance types.
      */
-    cpuOptionsCore?: pulumi.Input<number>;
+    cpuOptionsCore?: pulumi.Input<number | undefined>;
     /**
      * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
      */
-    cpuOptionsThreadsPerCore?: pulumi.Input<number>;
+    cpuOptionsThreadsPerCore?: pulumi.Input<number | undefined>;
     /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      */
-    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[]>;
+    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[] | undefined>;
     /**
      * dns policy of contain group.
      */
-    dnsPolicy?: pulumi.Input<string>;
+    dnsPolicy?: pulumi.Input<string | undefined>;
     /**
      * egress bandwidth.
      */
-    egressBandwidth?: pulumi.Input<number>;
+    egressBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Eip bandwidth.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Enable sls log service.
      */
-    enableSls?: pulumi.Input<boolean>;
+    enableSls?: pulumi.Input<boolean | undefined>;
     /**
      * The size of ephemeral storage.
      */
-    ephemeralStorage?: pulumi.Input<number>;
+    ephemeralStorage?: pulumi.Input<number | undefined>;
     /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[] | undefined>;
     /**
      * Hostname of an ECI instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[] | undefined>;
     /**
      * The ID of image cache.
      */
-    imageSnapshotId?: pulumi.Input<string>;
+    imageSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * Ingress bandwidth.
      */
-    ingressBandwidth?: pulumi.Input<number>;
+    ingressBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The list of initContainers. See `initContainers` below for details.
      */
-    initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[] | undefined>;
     /**
      * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
      */
-    instanceFamilyLevel?: pulumi.Input<string>;
+    instanceFamilyLevel?: pulumi.Input<string | undefined>;
     /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of IPv6 addresses.
      */
-    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6AddressCount?: pulumi.Input<number | undefined>;
     /**
      * The weight of an ECI instance attached to the Server Group.
      */
-    loadBalancerWeight?: pulumi.Input<number>;
+    loadBalancerWeight?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to overwrite the data. Valid values: true, false.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * ID of resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The restart policy of the container group. Default to `Always`.
      */
-    restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (
      * English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
      * underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
      * EciScalingConfigurationId.
      */
-    scalingConfigurationName?: pulumi.Input<string>;
+    scalingConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * ID of the scaling group of a eci scaling configuration.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      */
-    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[]>;
+    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[] | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum price hourly for spot instance.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
      * , `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
@@ -601,15 +601,15 @@ export interface EciScalingConfigurationState {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
      * a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The program's buffering time before closing.
      */
-    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The list of volumes. See `volumes` below for details.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[] | undefined>;
 }
 
 /**
@@ -619,24 +619,24 @@ export interface EciScalingConfigurationArgs {
     /**
      * Information about the Container Registry Enterprise Edition instance. See `acrRegistryInfos` below for details.
      */
-    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[]>;
+    acrRegistryInfos?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationAcrRegistryInfo>[] | undefined>;
     /**
      * Whether active current eci scaling configuration in the specified scaling group. Note that only
      * one configuration can be active. Default to `false`.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The duration in seconds relative to the startTime that the job may be active before the system tries to terminate it.
      */
-    activeDeadlineSeconds?: pulumi.Input<number>;
+    activeDeadlineSeconds?: pulumi.Input<number | undefined>;
     /**
      * Whether create eip automatically.
      */
-    autoCreateEip?: pulumi.Input<boolean>;
+    autoCreateEip?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to automatically match the image cache.
      */
-    autoMatchImageCache?: pulumi.Input<boolean>;
+    autoMatchImageCache?: pulumi.Input<boolean | undefined>;
     /**
      * The name series of the elastic container instances created from the scaling configuration. If you want to use an ordered instance name, specify the value for this parameter in the following format: name_prefix(AUTO_INCREMENT)[begin_number,bits]name_suffix.
      * name_prefix: the prefix of the hostname.
@@ -645,130 +645,130 @@ export interface EciScalingConfigurationArgs {
      * bits: the number of digits in sequential values. Valid values: 1 to 6. If the number of digits in the specified beginNumber value is greater than the value of the bits field, the bits field is automatically set to 6.
      * name_suffix: the suffix of the hostname. This field is optional.
      */
-    containerGroupName?: pulumi.Input<string>;
+    containerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The list of containers. See `containers` below for details.
      */
-    containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[]>;
+    containers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationContainer>[] | undefined>;
     /**
      * Indicates whether the Cost Optimization feature is enabled. Valid values: true,false.
      */
-    costOptimization?: pulumi.Input<boolean>;
+    costOptimization?: pulumi.Input<boolean | undefined>;
     /**
      * The amount of CPU resources allocated to the container group.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The number of physical CPU cores. You can specify this parameter for only specific instance types.
      */
-    cpuOptionsCore?: pulumi.Input<number>;
+    cpuOptionsCore?: pulumi.Input<number | undefined>;
     /**
      * The number of threads per core. You can specify this parameter for only specific instance types. If you set this parameter to 1, Hyper-Threading is disabled.
      */
-    cpuOptionsThreadsPerCore?: pulumi.Input<number>;
+    cpuOptionsThreadsPerCore?: pulumi.Input<number | undefined>;
     /**
      * The description of data disk N. Valid values of N: 1 to 16. The description must be 2 to
      * 256 characters in length and cannot start with http:// or https://.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The options. Each option is a name-value pair. The value in the name-value pair is optional.   See `dnsConfigOptions` below for
      * details.
      */
-    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[]>;
+    dnsConfigOptions?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationDnsConfigOption>[] | undefined>;
     /**
      * dns policy of contain group.
      */
-    dnsPolicy?: pulumi.Input<string>;
+    dnsPolicy?: pulumi.Input<string | undefined>;
     /**
      * egress bandwidth.
      */
-    egressBandwidth?: pulumi.Input<number>;
+    egressBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Eip bandwidth.
      */
-    eipBandwidth?: pulumi.Input<number>;
+    eipBandwidth?: pulumi.Input<number | undefined>;
     /**
      * Enable sls log service.
      */
-    enableSls?: pulumi.Input<boolean>;
+    enableSls?: pulumi.Input<boolean | undefined>;
     /**
      * The size of ephemeral storage.
      */
-    ephemeralStorage?: pulumi.Input<number>;
+    ephemeralStorage?: pulumi.Input<number | undefined>;
     /**
      * The eci scaling configuration will be deleted forcibly with deleting its scaling group.
      * Default to false.
      */
-    forceDelete?: pulumi.Input<boolean>;
+    forceDelete?: pulumi.Input<boolean | undefined>;
     /**
      * HostAliases. See `hostAliases` below.
      */
-    hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[]>;
+    hostAliases?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationHostAlias>[] | undefined>;
     /**
      * Hostname of an ECI instance.
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The image registry credential.   See `imageRegistryCredentials` below for
      * details.
      */
-    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[]>;
+    imageRegistryCredentials?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationImageRegistryCredential>[] | undefined>;
     /**
      * The ID of image cache.
      */
-    imageSnapshotId?: pulumi.Input<string>;
+    imageSnapshotId?: pulumi.Input<string | undefined>;
     /**
      * Ingress bandwidth.
      */
-    ingressBandwidth?: pulumi.Input<number>;
+    ingressBandwidth?: pulumi.Input<number | undefined>;
     /**
      * The list of initContainers. See `initContainers` below for details.
      */
-    initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[] | undefined>;
     /**
      * The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set CostOptimization to true. Valid values: EntryLevel, EnterpriseLevel, CreditEntryLevel.
      */
-    instanceFamilyLevel?: pulumi.Input<string>;
+    instanceFamilyLevel?: pulumi.Input<string | undefined>;
     /**
      * The specified ECS instance types. You can specify up to five ECS instance types.
      */
-    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of IPv6 addresses.
      */
-    ipv6AddressCount?: pulumi.Input<number>;
+    ipv6AddressCount?: pulumi.Input<number | undefined>;
     /**
      * The weight of an ECI instance attached to the Server Group.
      */
-    loadBalancerWeight?: pulumi.Input<number>;
+    loadBalancerWeight?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory resources allocated to the container group.
      */
-    memory?: pulumi.Input<number>;
+    memory?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to overwrite the data. Valid values: true, false.
      */
-    override?: pulumi.Input<boolean>;
+    override?: pulumi.Input<boolean | undefined>;
     /**
      * The RAM role that the container group assumes. ECI and ECS share the same RAM role.
      */
-    ramRoleName?: pulumi.Input<string>;
+    ramRoleName?: pulumi.Input<string | undefined>;
     /**
      * ID of resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The restart policy of the container group. Default to `Always`.
      */
-    restartPolicy?: pulumi.Input<string>;
+    restartPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name shown for the scheduled task. which must contain 2-64 characters (
      * English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number,
      * underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is
      * EciScalingConfigurationId.
      */
-    scalingConfigurationName?: pulumi.Input<string>;
+    scalingConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * ID of the scaling group of a eci scaling configuration.
      */
@@ -777,21 +777,21 @@ export interface EciScalingConfigurationArgs {
      * The system information about the security context in which the elastic container instance is run.   See `securityContextSysctls` below for
      * details.
      */
-    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[]>;
+    securityContextSysctls?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationSecurityContextSysctl>[] | undefined>;
     /**
      * ID of the security group used to create new instance. It is conflict
      * with `securityGroupIds`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The maximum price hourly for spot instance.
      */
-    spotPriceLimit?: pulumi.Input<number>;
+    spotPriceLimit?: pulumi.Input<number | undefined>;
     /**
      * The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`
      * , `SpotWithPriceLimit`.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
@@ -799,13 +799,13 @@ export interface EciScalingConfigurationArgs {
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
      * a null string.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The program's buffering time before closing.
      */
-    terminationGracePeriodSeconds?: pulumi.Input<number>;
+    terminationGracePeriodSeconds?: pulumi.Input<number | undefined>;
     /**
      * The list of volumes. See `volumes` below for details.
      */
-    volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[]>;
+    volumes?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationVolume>[] | undefined>;
 }

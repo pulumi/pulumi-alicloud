@@ -24,26 +24,26 @@ __all__ = [
 ]
 
 class DomainCertInfoArgsDict(TypedDict):
-    cert_name: NotRequired[pulumi.Input[_builtins.str]]
+    cert_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If You Enable HTTPS Here Certificate Name.
     """
-    cert_type: NotRequired[pulumi.Input[_builtins.str]]
+    cert_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Certificate Type. Value Range: 
     * upload: Certificate
     * cas: Certificate Authority Certificate.
     * free: Free Certificate.
     """
-    ssl_pri: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_pri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
     """
-    ssl_protocol: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
     """
-    ssl_pub: NotRequired[pulumi.Input[_builtins.str]]
+    ssl_pub: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If You Enable HTTPS Here Key.
     """
@@ -51,11 +51,11 @@ class DomainCertInfoArgsDict(TypedDict):
 @pulumi.input_type
 class DomainCertInfoArgs:
     def __init__(__self__, *,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_pri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_pub: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_pub: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_name: If You Enable HTTPS Here Certificate Name.
         :param pulumi.Input[_builtins.str] cert_type: Certificate Type. Value Range: 
@@ -79,19 +79,19 @@ class DomainCertInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If You Enable HTTPS Here Certificate Name.
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certType")
-    def cert_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate Type. Value Range: 
         * upload: Certificate
@@ -101,43 +101,43 @@ class DomainCertInfoArgs:
         return pulumi.get(self, "cert_type")
 
     @cert_type.setter
-    def cert_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPri")
-    def ssl_pri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_pri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
         """
         return pulumi.get(self, "ssl_pri")
 
     @ssl_pri.setter
-    def ssl_pri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_pri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_pri", value)
 
     @_builtins.property
     @pulumi.getter(name="sslProtocol")
-    def ssl_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "ssl_protocol")
 
     @ssl_protocol.setter
-    def ssl_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sslPub")
-    def ssl_pub(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_pub(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If You Enable HTTPS Here Key.
         """
         return pulumi.get(self, "ssl_pub")
 
     @ssl_pub.setter
-    def ssl_pub(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_pub(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_pub", value)
 
 
@@ -208,7 +208,7 @@ class DomainSourceArgsDict(TypedDict):
     * domain: the Domain Name
     * oss: OSS Bucket as a Source Station.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.str]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The source status. Valid values: online, offline.
     """
@@ -220,7 +220,7 @@ class DomainSourceArgs:
                  port: pulumi.Input[_builtins.int],
                  priority: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The Back-to-Source Address.
         :param pulumi.Input[_builtins.int] port: Port.
@@ -291,14 +291,14 @@ class DomainSourceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source status. Valid values: online, offline.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enabled", value)
 
 

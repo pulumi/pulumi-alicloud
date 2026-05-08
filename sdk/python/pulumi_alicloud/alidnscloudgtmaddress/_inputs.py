@@ -20,11 +20,11 @@ __all__ = [
 ]
 
 class AlidnsCloudGtmAddressHealthTaskArgsDict(TypedDict):
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port to probe. If omitted, the default port of the template's protocol is used (for example, 80 for HTTP, 443 for HTTPS).
     """
-    template_id: NotRequired[pulumi.Input[_builtins.str]]
+    template_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Cloud GTM monitor template to probe this address with. Usually referenced as `alicloud_alidns_cloud_gtm_monitor_template.<name>.id`.
     """
@@ -32,8 +32,8 @@ class AlidnsCloudGtmAddressHealthTaskArgsDict(TypedDict):
 @pulumi.input_type
 class AlidnsCloudGtmAddressHealthTaskArgs:
     def __init__(__self__, *,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] port: The port to probe. If omitted, the default port of the template's protocol is used (for example, 80 for HTTP, 443 for HTTPS).
         :param pulumi.Input[_builtins.str] template_id: The ID of the Cloud GTM monitor template to probe this address with. Usually referenced as `alicloud_alidns_cloud_gtm_monitor_template.<name>.id`.
@@ -45,26 +45,26 @@ class AlidnsCloudGtmAddressHealthTaskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port to probe. If omitted, the default port of the template's protocol is used (for example, 80 for HTTP, 443 for HTTPS).
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud GTM monitor template to probe this address with. Usually referenced as `alicloud_alidns_cloud_gtm_monitor_template.<name>.id`.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
 

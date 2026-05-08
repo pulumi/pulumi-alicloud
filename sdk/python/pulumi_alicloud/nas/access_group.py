@@ -19,12 +19,12 @@ __all__ = ['AccessGroupArgs', 'AccessGroup']
 @pulumi.input_type
 class AccessGroupArgs:
     def __init__(__self__, *,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessGroup resource.
 
@@ -63,43 +63,43 @@ class AccessGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
-    def access_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accessGroupType")
-    def access_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission group types, including Vpc.
         """
         return pulumi.get(self, "access_group_type")
 
     @access_group_type.setter
-    def access_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission group description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File system type.
 
@@ -113,47 +113,47 @@ class AccessGroupArgs:
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _AccessGroupState:
     def __init__(__self__, *,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessGroup resources.
 
@@ -198,55 +198,55 @@ class _AccessGroupState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupName")
-    def access_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the permission group.
         """
         return pulumi.get(self, "access_group_name")
 
     @access_group_name.setter
-    def access_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accessGroupType")
-    def access_group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission group types, including Vpc.
         """
         return pulumi.get(self, "access_group_type")
 
     @access_group_type.setter
-    def access_group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.218.0) Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission group description information.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File system type.
 
@@ -260,45 +260,45 @@ class _AccessGroupState:
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.218.0. New field 'access_group_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'name' has been deprecated from provider version 1.218.0. New field 'access_group_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.256.0) The region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'type' has been deprecated since provider version 1.218.0. New field 'access_group_type' instead.""")
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'type' has been deprecated from provider version 1.218.0. New field 'access_group_type' instead.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -308,12 +308,12 @@ class AccessGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Access Group resource.
@@ -430,12 +430,12 @@ class AccessGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -463,14 +463,14 @@ class AccessGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            access_group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessGroup':
+            access_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            access_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessGroup':
         """
         Get an existing AccessGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

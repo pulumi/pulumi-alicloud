@@ -287,6 +287,7 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
 
     config = pulumi.Config()
@@ -315,7 +316,7 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
         network_interface_name=name,
         vswitch_id=default_switch.id,
         security_group_ids=[default_security_group.id])
-    default_instance = []
+    default_instance: list[Any] = []
     for range in [{"value": i} for i in range(0, 14)]:
         default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
             image_id=default_get_images.images[0].id,
@@ -399,25 +400,25 @@ def get_instance_types(availability_zone: Optional[_builtins.str] = None,
         sorted_by=pulumi.get(__ret__, 'sorted_by'),
         spot_strategy=pulumi.get(__ret__, 'spot_strategy'),
         system_disk_category=pulumi.get(__ret__, 'system_disk_category'))
-def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              cpu_core_count: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              eni_amount: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              gpu_amount: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              gpu_spec: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              image_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              instance_charge_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              instance_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              instance_type_family: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              is_outdated: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                              kubernetes_node_role: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              memory_size: Optional[pulumi.Input[Optional[_builtins.float]]] = None,
-                              minimum_eni_ipv6_address_quantity: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              minimum_eni_private_ip_address_quantity: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                              network_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              sorted_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              spot_strategy: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              system_disk_category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instance_types_output(availability_zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              cpu_core_count: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              eni_amount: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              gpu_amount: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              gpu_spec: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              image_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              instance_charge_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              instance_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              instance_type_family: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              is_outdated: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                              kubernetes_node_role: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              memory_size: pulumi.Input[Optional[Optional[_builtins.float]]] = None,
+                              minimum_eni_ipv6_address_quantity: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              minimum_eni_private_ip_address_quantity: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                              network_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              sorted_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              spot_strategy: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              system_disk_category: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTypesResult]:
     """
     This data source provides the ECS instance types of Alibaba Cloud.
@@ -432,6 +433,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_alicloud as alicloud
 
     config = pulumi.Config()
@@ -460,7 +462,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
         network_interface_name=name,
         vswitch_id=default_switch.id,
         security_group_ids=[default_security_group.id])
-    default_instance = []
+    default_instance: list[Any] = []
     for range in [{"value": i} for i in range(0, 14)]:
         default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
             image_id=default_get_images.images[0].id,

@@ -130,21 +130,21 @@ export interface GetAcceleratorsOutputArgs {
      * - `BandwidthPackage`: billed based on bandwidth plans.
      * - `CDT`: billed based on data transfer.
      */
-    bandwidthBillingType?: pulumi.Input<string>;
+    bandwidthBillingType?: pulumi.Input<string | undefined>;
     /**
      * A list of Accelerator IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Accelerator name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

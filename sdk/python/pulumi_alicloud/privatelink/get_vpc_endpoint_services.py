@@ -228,14 +228,14 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[_builtins.bool] =
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         vpc_endpoint_service_name=pulumi.get(__ret__, 'vpc_endpoint_service_name'))
-def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                     ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     service_business_status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                                     vpc_endpoint_service_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vpc_endpoint_services_output(auto_accept_connection: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                     ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     service_business_status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                                     vpc_endpoint_service_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcEndpointServicesResult]:
     """
     This data source provides the Private Link Vpc Endpoint Services of the current Alibaba Cloud user.

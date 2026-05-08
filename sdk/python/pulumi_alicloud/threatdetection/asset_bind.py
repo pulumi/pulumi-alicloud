@@ -19,8 +19,8 @@ __all__ = ['AssetBindArgs', 'AssetBind']
 @pulumi.input_type
 class AssetBindArgs:
     def __init__(__self__, *,
-                 auth_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AssetBind resource.
 
@@ -34,34 +34,34 @@ class AssetBindArgs:
 
     @_builtins.property
     @pulumi.getter(name="authVersion")
-    def auth_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auth_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Bind version.
         """
         return pulumi.get(self, "auth_version")
 
     @auth_version.setter
-    def auth_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auth_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auth_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
 @pulumi.input_type
 class _AssetBindState:
     def __init__(__self__, *,
-                 auth_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AssetBind resources.
 
@@ -75,26 +75,26 @@ class _AssetBindState:
 
     @_builtins.property
     @pulumi.getter(name="authVersion")
-    def auth_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auth_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Bind version.
         """
         return pulumi.get(self, "auth_version")
 
     @auth_version.setter
-    def auth_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auth_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auth_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -104,8 +104,8 @@ class AssetBind(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Asset Bind resource.
@@ -217,8 +217,8 @@ class AssetBind(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auth_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -240,8 +240,8 @@ class AssetBind(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auth_version: Optional[pulumi.Input[_builtins.int]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'AssetBind':
+            auth_version: pulumi.Input[Optional[_builtins.int]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'AssetBind':
         """
         Get an existing AssetBind resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

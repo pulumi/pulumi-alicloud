@@ -23,7 +23,7 @@ class BgpPolicyArgs:
     def __init__(__self__, *,
                  policy_name: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 content: Optional[pulumi.Input['BgpPolicyContentArgs']] = None):
+                 content: pulumi.Input[Optional['BgpPolicyContentArgs']] = None):
         """
         The set of arguments for constructing a BgpPolicy resource.
 
@@ -62,23 +62,23 @@ class BgpPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input['BgpPolicyContentArgs']]:
+    def content(self) -> pulumi.Input[Optional['BgpPolicyContentArgs']]:
         """
         Configuration Content See `content` below.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input['BgpPolicyContentArgs']]):
+    def content(self, value: pulumi.Input[Optional['BgpPolicyContentArgs']]):
         pulumi.set(self, "content", value)
 
 
 @pulumi.input_type
 class _BgpPolicyState:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input['BgpPolicyContentArgs']] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional['BgpPolicyContentArgs']] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BgpPolicy resources.
 
@@ -95,38 +95,38 @@ class _BgpPolicyState:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input['BgpPolicyContentArgs']]:
+    def content(self) -> pulumi.Input[Optional['BgpPolicyContentArgs']]:
         """
         Configuration Content See `content` below.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input['BgpPolicyContentArgs']]):
+    def content(self, value: pulumi.Input[Optional['BgpPolicyContentArgs']]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -136,9 +136,9 @@ class BgpPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Ddos Bgp Policy resource.
@@ -279,9 +279,9 @@ class BgpPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -308,9 +308,9 @@ class BgpPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content: Optional[pulumi.Input[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'BgpPolicy':
+            content: pulumi.Input[Optional[Union['BgpPolicyContentArgs', 'BgpPolicyContentArgsDict']]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'BgpPolicy':
         """
         Get an existing BgpPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

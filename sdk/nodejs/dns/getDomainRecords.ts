@@ -82,12 +82,12 @@ export function getDomainRecordsOutput(args: GetDomainRecordsOutputArgs, opts?: 
  */
 export interface GetDomainRecordsOutputArgs {
     domainName: pulumi.Input<string>;
-    hostRecordRegex?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    isLocked?: pulumi.Input<boolean>;
-    line?: pulumi.Input<string>;
-    outputFile?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
-    type?: pulumi.Input<string>;
-    valueRegex?: pulumi.Input<string>;
+    hostRecordRegex?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    isLocked?: pulumi.Input<boolean | undefined>;
+    line?: pulumi.Input<string | undefined>;
+    outputFile?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
+    type?: pulumi.Input<string | undefined>;
+    valueRegex?: pulumi.Input<string | undefined>;
 }

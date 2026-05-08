@@ -178,39 +178,39 @@ export interface GetZoneRecordsOutputArgs {
     /**
      * A list of Private Zone Record IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The keyword for record rr and value.
      */
-    keyword?: pulumi.Input<string>;
+    keyword?: pulumi.Input<string | undefined>;
     /**
      * The language of the response. Default value: `en`. Valid values: `en`, `zh`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The search mode. Default value: `EXACT`. Valid values:
      * - `LIKE`: Fuzzy search.
      * - `EXACT`: Exact search.
      */
-    searchMode?: pulumi.Input<string>;
+    searchMode?: pulumi.Input<string | undefined>;
     /**
      * The status of the Resolve record. Valid values:
      * - `ENABLE`: Enable resolution.
      * - `DISABLE`: Pause parsing.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag used to search for DNS records.
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the client.
      */
-    userClientIp?: pulumi.Input<string>;
+    userClientIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the private zone.
      */

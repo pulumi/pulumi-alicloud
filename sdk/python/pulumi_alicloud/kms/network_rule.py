@@ -20,8 +20,8 @@ __all__ = ['NetworkRuleArgs', 'NetworkRule']
 class NetworkRuleArgs:
     def __init__(__self__, *,
                  source_private_ips: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_rule_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rule_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkRule resource.
 
@@ -49,35 +49,35 @@ class NetworkRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkRuleName")
-    def network_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Rule Name.
         """
         return pulumi.get(self, "network_rule_name")
 
     @network_rule_name.setter
-    def network_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_rule_name", value)
 
 
 @pulumi.input_type
 class _NetworkRuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering NetworkRule resources.
 
@@ -94,38 +94,38 @@ class _NetworkRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkRuleName")
-    def network_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network Rule Name.
         """
         return pulumi.get(self, "network_rule_name")
 
     @network_rule_name.setter
-    def network_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="sourcePrivateIps")
-    def source_private_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def source_private_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowed private network addresses.
         """
         return pulumi.get(self, "source_private_ips")
 
     @source_private_ips.setter
-    def source_private_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def source_private_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "source_private_ips", value)
 
 
@@ -135,9 +135,9 @@ class NetworkRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a KMS Network Rule resource. Network rules that can be bound by Application Access Point's policies.
@@ -246,9 +246,9 @@ class NetworkRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,9 +273,9 @@ class NetworkRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            network_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            source_private_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'NetworkRule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            network_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            source_private_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'NetworkRule':
         """
         Get an existing NetworkRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

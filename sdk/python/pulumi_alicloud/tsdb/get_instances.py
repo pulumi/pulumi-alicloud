@@ -190,14 +190,14 @@ def get_instances(app_key: Optional[_builtins.str] = None,
         query_str=pulumi.get(__ret__, 'query_str'),
         status=pulumi.get(__ret__, 'status'),
         status_list=pulumi.get(__ret__, 'status_list'))
-def get_instances_output(app_key: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         engine_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         query_str: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         status_list: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instances_output(app_key: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         engine_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         query_str: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         status_list: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Time Series Database (TSDB) Instances of the current Alibaba Cloud user.

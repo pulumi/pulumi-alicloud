@@ -23,10 +23,10 @@ class BasicEndpointArgs:
                  endpoint_address: pulumi.Input[_builtins.str],
                  endpoint_group_id: pulumi.Input[_builtins.str],
                  endpoint_type: pulumi.Input[_builtins.str],
-                 basic_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BasicEndpoint resource.
 
@@ -102,66 +102,66 @@ class BasicEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicEndpointName")
-    def basic_endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Basic Endpoint.
         """
         return pulumi.get(self, "basic_endpoint_name")
 
     @basic_endpoint_name.setter
-    def basic_endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddress")
-    def endpoint_sub_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
     @endpoint_sub_address.setter
-    def endpoint_sub_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddressType")
-    def endpoint_sub_address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
         """
         return pulumi.get(self, "endpoint_sub_address_type")
 
     @endpoint_sub_address_type.setter
-    def endpoint_sub_address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointZoneId")
-    def endpoint_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_zone_id")
 
     @endpoint_zone_id.setter
-    def endpoint_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_zone_id", value)
 
 
 @pulumi.input_type
 class _BasicEndpointState:
     def __init__(__self__, *,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BasicEndpoint resources.
 
@@ -199,122 +199,122 @@ class _BasicEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="acceleratorId")
-    def accelerator_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accelerator_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic GA instance.
         """
         return pulumi.get(self, "accelerator_id")
 
     @accelerator_id.setter
-    def accelerator_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accelerator_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accelerator_id", value)
 
     @_builtins.property
     @pulumi.getter(name="basicEndpointName")
-    def basic_endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def basic_endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Basic Endpoint.
         """
         return pulumi.get(self, "basic_endpoint_name")
 
     @basic_endpoint_name.setter
-    def basic_endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def basic_endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "basic_endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointAddress")
-    def endpoint_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_address")
 
     @endpoint_address.setter
-    def endpoint_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointGroupId")
-    def endpoint_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic Endpoint Group.
         """
         return pulumi.get(self, "endpoint_group_id")
 
     @endpoint_group_id.setter
-    def endpoint_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointId")
-    def endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_id")
 
     @endpoint_id.setter
-    def endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddress")
-    def endpoint_sub_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_sub_address")
 
     @endpoint_sub_address.setter
-    def endpoint_sub_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointSubAddressType")
-    def endpoint_sub_address_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_sub_address_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub address type of the Basic Endpoint. Valid values: `primary`, `secondary`.
         """
         return pulumi.get(self, "endpoint_sub_address_type")
 
     @endpoint_sub_address_type.setter
-    def endpoint_sub_address_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_sub_address_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_sub_address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointZoneId")
-    def endpoint_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id of the Basic Endpoint.
         """
         return pulumi.get(self, "endpoint_zone_id")
 
     @endpoint_zone_id.setter
-    def endpoint_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_zone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Basic Endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -324,14 +324,14 @@ class BasicEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Global Accelerator (GA) Basic Endpoint resource.
@@ -505,14 +505,14 @@ class BasicEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 basic_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_sub_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,16 +550,16 @@ class BasicEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accelerator_id: Optional[pulumi.Input[_builtins.str]] = None,
-            basic_endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_address: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_sub_address: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_sub_address_type: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BasicEndpoint':
+            accelerator_id: pulumi.Input[Optional[_builtins.str]] = None,
+            basic_endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_sub_address: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_sub_address_type: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BasicEndpoint':
         """
         Get an existing BasicEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

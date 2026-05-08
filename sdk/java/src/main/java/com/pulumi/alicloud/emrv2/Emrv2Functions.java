@@ -56,8 +56,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -256,8 +256,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -456,8 +456,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -656,8 +656,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -856,8 +856,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1056,8 +1056,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1256,8 +1256,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClusterInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1456,8 +1456,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1656,8 +1656,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1856,8 +1856,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2056,8 +2056,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2256,8 +2256,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2456,8 +2456,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2656,8 +2656,8 @@ public final class Emrv2Functions {
      * import com.pulumi.alicloud.emrv2.inputs.ClusterNodeGroupSystemDiskArgs;
      * import com.pulumi.alicloud.emrv2.Emrv2Functions;
      * import com.pulumi.alicloud.emrv2.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

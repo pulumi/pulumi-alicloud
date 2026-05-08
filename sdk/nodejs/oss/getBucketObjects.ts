@@ -108,13 +108,13 @@ export interface GetBucketObjectsOutputArgs {
     /**
      * Filter results by the given key prefix (such as "path/to/folder/logs-").
      */
-    keyPrefix?: pulumi.Input<string>;
+    keyPrefix?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by key.
      */
-    keyRegex?: pulumi.Input<string>;
+    keyRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

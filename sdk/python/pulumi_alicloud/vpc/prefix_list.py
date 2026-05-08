@@ -21,13 +21,13 @@ __all__ = ['PrefixListArgs', 'PrefixList']
 @pulumi.input_type
 class PrefixListArgs:
     def __init__(__self__, *,
-                 entrys: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PrefixList resource.
 
@@ -56,104 +56,104 @@ class PrefixListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
+    def entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
         """
         The CIDR address block list of the prefix list.See the following `Block Entrys`.
         """
         return pulumi.get(self, "entrys")
 
     @entrys.setter
-    def entrys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]]):
+    def entrys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]):
         pulumi.set(self, "entrys", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxEntries")
-    def max_entries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_entries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of entries for CIDR address blocks in the prefix list.
         """
         return pulumi.get(self, "max_entries")
 
     @max_entries.setter
-    def max_entries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_entries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListDescription")
-    def prefix_list_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "prefix_list_description")
 
     @prefix_list_description.setter
-    def prefix_list_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_description", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListName")
-    def prefix_list_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "prefix_list_name")
 
     @prefix_list_name.setter
-    def prefix_list_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the PrefixList belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _PrefixListState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 entrys: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_associations: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]] = None,
-                 prefix_list_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_associations: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]] = None,
+                 prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PrefixList resources.
 
@@ -197,146 +197,146 @@ class _PrefixListState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the prefix list was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def entrys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
+    def entrys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]:
         """
         The CIDR address block list of the prefix list.See the following `Block Entrys`.
         """
         return pulumi.get(self, "entrys")
 
     @entrys.setter
-    def entrys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListEntryArgs']]]]):
+    def entrys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListEntryArgs']]]]):
         pulumi.set(self, "entrys", value)
 
     @_builtins.property
     @pulumi.getter(name="ipVersion")
-    def ip_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
         """
         return pulumi.get(self, "ip_version")
 
     @ip_version.setter
-    def ip_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_version", value)
 
     @_builtins.property
     @pulumi.getter(name="maxEntries")
-    def max_entries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_entries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of entries for CIDR address blocks in the prefix list.
         """
         return pulumi.get(self, "max_entries")
 
     @max_entries.setter
-    def max_entries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_entries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_entries", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListAssociations")
-    def prefix_list_associations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]]:
+    def prefix_list_associations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]]:
         """
         The association list information of the prefix list.
         """
         return pulumi.get(self, "prefix_list_associations")
 
     @prefix_list_associations.setter
-    def prefix_list_associations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]]):
+    def prefix_list_associations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PrefixListPrefixListAssociationArgs']]]]):
         pulumi.set(self, "prefix_list_associations", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListDescription")
-    def prefix_list_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "prefix_list_description")
 
     @prefix_list_description.setter
-    def prefix_list_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_description", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListId")
-    def prefix_list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the query Prefix List.
         """
         return pulumi.get(self, "prefix_list_id")
 
     @prefix_list_id.setter
-    def prefix_list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_id", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixListName")
-    def prefix_list_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix_list_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "prefix_list_name")
 
     @prefix_list_name.setter
-    def prefix_list_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix_list_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix_list_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the PrefixList belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareType")
-    def share_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
         """
         return pulumi.get(self, "share_type")
 
     @share_type.setter
-    def share_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource attribute fields that represent the status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tags of PrefixList.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -346,13 +346,13 @@ class PrefixList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Vpc Prefix List resource. This resource is used to create a prefix list.
@@ -481,13 +481,13 @@ class PrefixList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
-                 ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefix_list_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+                 ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -519,18 +519,18 @@ class PrefixList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            entrys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
-            ip_version: Optional[pulumi.Input[_builtins.str]] = None,
-            max_entries: Optional[pulumi.Input[_builtins.int]] = None,
-            prefix_list_associations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict']]]]] = None,
-            prefix_list_description: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'PrefixList':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            entrys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListEntryArgs', 'PrefixListEntryArgsDict']]]]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            max_entries: pulumi.Input[Optional[_builtins.int]] = None,
+            prefix_list_associations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PrefixListPrefixListAssociationArgs', 'PrefixListPrefixListAssociationArgsDict']]]]] = None,
+            prefix_list_description: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'PrefixList':
         """
         Get an existing PrefixList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

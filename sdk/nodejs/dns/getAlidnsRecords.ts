@@ -218,7 +218,7 @@ export interface GetAlidnsRecordsOutputArgs {
     /**
      * Sorting direction. Valid values: `DESC`,`ASC`. Default to `AESC`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The domain name associated to the records.
      */
@@ -226,61 +226,61 @@ export interface GetAlidnsRecordsOutputArgs {
     /**
      * Domain name group ID.
      */
-    groupId?: pulumi.Input<number>;
+    groupId?: pulumi.Input<number | undefined>;
     /**
      * A list of record IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Keywords.
      */
-    keyWord?: pulumi.Input<string>;
+    keyWord?: pulumi.Input<string | undefined>;
     /**
      * User language.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * ISP line. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/dns/resolve-line-enumeration)
      */
-    line?: pulumi.Input<string>;
+    line?: pulumi.Input<string | undefined>;
     /**
      * Sort by. Sort from newest to oldest according to the time added by resolution.
      */
-    orderBy?: pulumi.Input<string>;
+    orderBy?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The keywords recorded by the host are searched according to the `%RRKeyWord%` mode, and are not case sensitive.
      */
-    rrKeyWord?: pulumi.Input<string>;
+    rrKeyWord?: pulumi.Input<string | undefined>;
     /**
      * Host record regex.
      */
-    rrRegex?: pulumi.Input<string>;
+    rrRegex?: pulumi.Input<string | undefined>;
     /**
      * Search mode, Valid values: `LIKE`, `EXACT`, `ADVANCED`, `LIKE` (fuzzy), `EXACT` (accurate) search supports KeyWord field, `ADVANCED` (advanced) mode supports other fields.
      */
-    searchMode?: pulumi.Input<string>;
+    searchMode?: pulumi.Input<string | undefined>;
     /**
      * Record status. Valid values: `ENABLE` and `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Analyze type keywords, search by full match, not case sensitive.
      */
-    typeKeyWord?: pulumi.Input<string>;
+    typeKeyWord?: pulumi.Input<string | undefined>;
     /**
      * The keywords of the recorded value are searched according to the `%ValueKeyWord%` mode, and are not case sensitive.
      */
-    valueKeyWord?: pulumi.Input<string>;
+    valueKeyWord?: pulumi.Input<string | undefined>;
     /**
      * Host record value regex.
      */
-    valueRegex?: pulumi.Input<string>;
+    valueRegex?: pulumi.Input<string | undefined>;
 }

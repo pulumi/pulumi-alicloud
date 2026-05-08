@@ -22,7 +22,7 @@ class PrometheusMonitoringArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  config_yaml: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PrometheusMonitoring resource.
 
@@ -75,25 +75,25 @@ class PrometheusMonitoringArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: `stop`, `run`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _PrometheusMonitoringState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PrometheusMonitoring resources.
 
@@ -116,62 +116,62 @@ class _PrometheusMonitoringState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the prometheus instance.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configYaml")
-    def config_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Yaml configuration for monitoring.
         """
         return pulumi.get(self, "config_yaml")
 
     @config_yaml.setter
-    def config_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config_yaml", value)
 
     @_builtins.property
     @pulumi.getter(name="monitoringName")
-    def monitoring_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitoring_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "monitoring_name")
 
     @monitoring_name.setter
-    def monitoring_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitoring_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitoring_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: `stop`, `run`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -181,10 +181,10 @@ class PrometheusMonitoring(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ARMS Prometheus Monitoring resource. Including serviceMonitor, podMonitor, customJob, probe and other four types of monitoring.
@@ -214,9 +214,9 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_name=name)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result),
+                netnum=8).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
@@ -232,11 +232,11 @@ class PrometheusMonitoring(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default_get_instance_types = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=name,
             cluster_spec="ack.pro.small",
@@ -340,9 +340,9 @@ class PrometheusMonitoring(pulumi.CustomResource):
             vpc_name=name)
         vswitch = alicloud.vpc.Switch("vswitch",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result),
+                netnum=8).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id,
             vswitch_name=name)
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
@@ -358,11 +358,11 @@ class PrometheusMonitoring(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default_get_instance_types = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default_get_instance_types = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=name,
             cluster_spec="ack.pro.small",
@@ -440,10 +440,10 @@ class PrometheusMonitoring(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -474,11 +474,11 @@ class PrometheusMonitoring(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_yaml: Optional[pulumi.Input[_builtins.str]] = None,
-            monitoring_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'PrometheusMonitoring':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_yaml: pulumi.Input[Optional[_builtins.str]] = None,
+            monitoring_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'PrometheusMonitoring':
         """
         Get an existing PrometheusMonitoring resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

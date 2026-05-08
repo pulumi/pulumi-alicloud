@@ -160,31 +160,31 @@ export interface FcTriggerState {
     /**
      * The name of the Event.
      */
-    eventMetaName?: pulumi.Input<string>;
+    eventMetaName?: pulumi.Input<string | undefined>;
     /**
      * The version of the Event.
      */
-    eventMetaVersion?: pulumi.Input<string>;
+    eventMetaVersion?: pulumi.Input<string | undefined>;
     /**
      * The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * The Note information.
      */
-    notes?: pulumi.Input<string>;
+    notes?: pulumi.Input<string | undefined>;
     /**
      * The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
      */
-    roleArn?: pulumi.Input<string>;
+    roleArn?: pulumi.Input<string | undefined>;
     /**
      * Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
      */
-    sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string | undefined>;
     /**
      * The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
      */
-    triggerArn?: pulumi.Input<string>;
+    triggerArn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface FcTriggerArgs {
     /**
      * The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
      */
-    functionArn?: pulumi.Input<string>;
+    functionArn?: pulumi.Input<string | undefined>;
     /**
      * The Note information.
      */

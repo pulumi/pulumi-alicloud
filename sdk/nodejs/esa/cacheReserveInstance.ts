@@ -151,37 +151,37 @@ export interface CacheReserveInstanceState {
     /**
      * Automatic payment.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to auto-renew:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Cache holding area
      * - `HK`: Hong Kong, China
      * - `CN`: Mainland China
      */
-    crRegion?: pulumi.Input<string>;
+    crRegion?: pulumi.Input<string | undefined>;
     /**
      * Instance purchase time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto payment.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Purchase period (unit: month).
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Cache retention specification (unit: GB).
      */
-    quotaGb?: pulumi.Input<number>;
+    quotaGb?: pulumi.Input<number | undefined>;
     /**
      * The status of the cache reserve instance. , it is unavailable.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,17 +191,17 @@ export interface CacheReserveInstanceArgs {
     /**
      * Automatic payment.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to auto-renew:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Cache holding area
      * - `HK`: Hong Kong, China
      * - `CN`: Mainland China
      */
-    crRegion?: pulumi.Input<string>;
+    crRegion?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable auto payment.
      */
@@ -209,9 +209,9 @@ export interface CacheReserveInstanceArgs {
     /**
      * Purchase period (unit: month).
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Cache retention specification (unit: GB).
      */
-    quotaGb?: pulumi.Input<number>;
+    quotaGb?: pulumi.Input<number | undefined>;
 }

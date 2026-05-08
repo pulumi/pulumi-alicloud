@@ -23,7 +23,7 @@ class AccessRuleArgs:
                  network_segment: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
                  rw_access_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccessRule resource.
 
@@ -90,27 +90,27 @@ class AccessRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission rule description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _AccessRuleState:
     def __init__(__self__, *,
-                 access_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_segment: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_segment: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AccessRule resources.
 
@@ -139,86 +139,86 @@ class _AccessRuleState:
 
     @_builtins.property
     @pulumi.getter(name="accessGroupId")
-    def access_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission group resource ID. You must specify the permission group ID when creating a permission rule.
         """
         return pulumi.get(self, "access_group_id")
 
     @access_group_id.setter
-    def access_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessRuleId")
-    def access_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identity of the permission rule, which is used to retrieve the permission rule for a specific day in the permission group.
         """
         return pulumi.get(self, "access_rule_id")
 
     @access_rule_id.setter
-    def access_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission rule resource creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Permission rule description.  No more than 32 characters in length.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="networkSegment")
-    def network_segment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_segment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or network segment of the authorized object.
         """
         return pulumi.get(self, "network_segment")
 
     @network_segment.setter
-    def network_segment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_segment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_segment", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="rwAccessType")
-    def rw_access_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rw_access_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
         """
         return pulumi.get(self, "rw_access_type")
 
     @rw_access_type.setter
-    def rw_access_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rw_access_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rw_access_type", value)
 
 
@@ -228,11 +228,11 @@ class AccessRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_segment: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_segment: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DFS Access Rule resource.
@@ -347,11 +347,11 @@ class AccessRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_segment: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 rw_access_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_segment: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 rw_access_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,13 +386,13 @@ class AccessRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            network_segment: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            rw_access_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AccessRule':
+            access_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            network_segment: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            rw_access_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AccessRule':
         """
         Get an existing AccessRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

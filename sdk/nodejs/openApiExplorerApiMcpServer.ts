@@ -405,75 +405,75 @@ export interface OpenApiExplorerApiMcpServerState {
      * - Whether to return a CLI execution command instead of directly executing the API
      * - Configuration of constant values for API parameters; parameters set as constants will not have their definitions returned in the tool list   See `additionalApiDescriptions` below.
      */
-    additionalApiDescriptions?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerAdditionalApiDescription>[]>;
+    additionalApiDescriptions?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerAdditionalApiDescription>[] | undefined>;
     /**
      * The list of APIs to be included in the API MCP Server. See `apis` below.
      */
-    apis?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerApi>[]>;
+    apis?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerApi>[] | undefined>;
     /**
      * When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
      */
-    assumeRoleExtraPolicy?: pulumi.Input<string>;
+    assumeRoleExtraPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
      */
-    assumeRoleName?: pulumi.Input<string>;
+    assumeRoleName?: pulumi.Input<string | undefined>;
     /**
      * MCP Server creation time in China Standard Time (CST), for example, 2025-12-04 19:46:52.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the API MCP service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the xAssumeAccountId parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
      */
-    enableAssumeRole?: pulumi.Input<boolean>;
+    enableAssumeRole?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
      */
-    enableCustomVpcWhitelist?: pulumi.Input<boolean>;
+    enableCustomVpcWhitelist?: pulumi.Input<boolean | undefined>;
     /**
      * MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The custom OAuth Client ID when selecting a custom OAuth configuration.
      * `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
      */
-    oauthClientId?: pulumi.Input<string>;
+    oauthClientId?: pulumi.Input<string | undefined>;
     /**
      * List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
      */
-    prompts?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerPrompt>[]>;
+    prompts?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerPrompt>[] | undefined>;
     /**
      * Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
      * - on: enables public network access;
      * - off: disables public network access;
      * - follow: inherits the account-level configuration.
      */
-    publicAccess?: pulumi.Input<string>;
+    publicAccess?: pulumi.Input<string | undefined>;
     /**
      * Enabled system services.
      */
-    systemTools?: pulumi.Input<pulumi.Input<string>[]>;
+    systemTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
      */
-    terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[]>;
+    terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[] | undefined>;
     /**
      * When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
      */
-    vpcWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -488,7 +488,7 @@ export interface OpenApiExplorerApiMcpServerArgs {
      * - Whether to return a CLI execution command instead of directly executing the API
      * - Configuration of constant values for API parameters; parameters set as constants will not have their definitions returned in the tool list   See `additionalApiDescriptions` below.
      */
-    additionalApiDescriptions?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerAdditionalApiDescription>[]>;
+    additionalApiDescriptions?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerAdditionalApiDescription>[] | undefined>;
     /**
      * The list of APIs to be included in the API MCP Server. See `apis` below.
      */
@@ -496,61 +496,61 @@ export interface OpenApiExplorerApiMcpServerArgs {
     /**
      * When multi-account access is enabled, this field defines an additional policy for role assumption. If specified, this policy overrides the original permissions defined for the role, and the assumed role’s permissions are determined solely by this policy.
      */
-    assumeRoleExtraPolicy?: pulumi.Input<string>;
+    assumeRoleExtraPolicy?: pulumi.Input<string | undefined>;
     /**
      * The name of the RAM role in the target account to assume when enabling multi-account access for cross-account operations.
      */
-    assumeRoleName?: pulumi.Input<string>;
+    assumeRoleName?: pulumi.Input<string | undefined>;
     /**
      * Description of the API MCP service.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable multi-account access. When enabled, the MCP Server exposes the xAssumeAccountId parameter by default. When this parameter is provided, the MCP Server switches to the specified account to perform operations.
      */
-    enableAssumeRole?: pulumi.Input<boolean>;
+    enableAssumeRole?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable a custom VPC whitelist. If disabled, the configuration follows the account-level setting.
      */
-    enableCustomVpcWhitelist?: pulumi.Input<boolean>;
+    enableCustomVpcWhitelist?: pulumi.Input<boolean | undefined>;
     /**
      * MCP instructions that guide the large language model on how to use this MCP. The client must support the Instructions field defined in the MCP standard protocol.
      */
-    instructions?: pulumi.Input<string>;
+    instructions?: pulumi.Input<string | undefined>;
     /**
      * Documentation language for the API MCP service. You can select either Chinese or English API documentation. The choice of language may affect the AI's response quality due to differences in prompt wording. Supported values are EN_US and ZH_CN.
      */
-    language?: pulumi.Input<string>;
+    language?: pulumi.Input<string | undefined>;
     /**
      * Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The custom OAuth Client ID when selecting a custom OAuth configuration.
      * `Supported only for Web/Native applications, and the OAuth scope must include /acs/mcp-server.`
      */
-    oauthClientId?: pulumi.Input<string>;
+    oauthClientId?: pulumi.Input<string | undefined>;
     /**
      * List of prompts supported by the MCP Server. For the MCP protocol, clients retrieve this list through the prompts/list RPC call. See `prompts` below.
      */
-    prompts?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerPrompt>[]>;
+    prompts?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerPrompt>[] | undefined>;
     /**
      * Whether to enable public network access. This setting takes precedence over the account-level configuration and supports the following options:
      * - on: enables public network access;
      * - off: disables public network access;
      * - follow: inherits the account-level configuration.
      */
-    publicAccess?: pulumi.Input<string>;
+    publicAccess?: pulumi.Input<string | undefined>;
     /**
      * Enabled system services.
      */
-    systemTools?: pulumi.Input<pulumi.Input<string>[]>;
+    systemTools?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Terraform Tools. The MCP Server allows using Terraform HCL code as a complete tool to improve the determinism of orchestration. See `terraformTools` below.
      */
-    terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[]>;
+    terraformTools?: pulumi.Input<pulumi.Input<inputs.OpenApiExplorerApiMcpServerTerraformTool>[] | undefined>;
     /**
      * When public network access is disabled, this field specifies the VPC whitelist that restricts source VPCs. If not set or left empty, no restriction is applied to the source.
      */
-    vpcWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcWhitelists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

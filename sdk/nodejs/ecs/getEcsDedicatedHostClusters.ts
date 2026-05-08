@@ -163,29 +163,29 @@ export interface GetEcsDedicatedHostClustersOutputArgs {
     /**
      * The IDs of dedicated host clusters.
      */
-    dedicatedHostClusterIds?: pulumi.Input<pulumi.Input<string>[]>;
+    dedicatedHostClusterIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the dedicated host cluster.
      */
-    dedicatedHostClusterName?: pulumi.Input<string>;
+    dedicatedHostClusterName?: pulumi.Input<string | undefined>;
     /**
      * A list of Dedicated Host Cluster IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Dedicated Host Cluster name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone ID of the dedicated host cluster.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

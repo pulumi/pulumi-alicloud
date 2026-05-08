@@ -106,13 +106,13 @@ export interface GetRegionsOutputArgs {
     /**
      * Set to true to match only the region configured in the provider. Default value: `true`.
      */
-    current?: pulumi.Input<boolean>;
+    current?: pulumi.Input<boolean | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * You can use specified regionId to find the region and available zones information that supports ClickHouse.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }

@@ -58,9 +58,9 @@ class RemoteWriteArgs:
 @pulumi.input_type
 class _RemoteWriteState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_write_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_write_yaml: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_write_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_write_yaml: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RemoteWrite resources.
 
@@ -77,38 +77,38 @@ class _RemoteWriteState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Prometheus instance.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteWriteName")
-    def remote_write_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_write_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Remote Write configuration item.
         """
         return pulumi.get(self, "remote_write_name")
 
     @remote_write_name.setter
-    def remote_write_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_write_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_write_name", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteWriteYaml")
-    def remote_write_yaml(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_write_yaml(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The details of the Remote Write configuration item. Specify the value in the YAML format.
         """
         return pulumi.get(self, "remote_write_yaml")
 
     @remote_write_yaml.setter
-    def remote_write_yaml(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_write_yaml(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_write_yaml", value)
 
 
@@ -118,8 +118,8 @@ class RemoteWrite(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_write_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_write_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Remote Write resource.
@@ -150,7 +150,7 @@ class RemoteWrite(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -233,7 +233,7 @@ class RemoteWrite(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -291,8 +291,8 @@ class RemoteWrite(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_write_yaml: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_write_yaml: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -319,9 +319,9 @@ class RemoteWrite(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_write_name: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_write_yaml: Optional[pulumi.Input[_builtins.str]] = None) -> 'RemoteWrite':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_write_name: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_write_yaml: pulumi.Input[Optional[_builtins.str]] = None) -> 'RemoteWrite':
         """
         Get an existing RemoteWrite resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

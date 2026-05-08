@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *             separator: "-",
  *             input: [
  *                 name,
- *                 range.value,
+ *                 String(range.value),
  *             ],
  *         }).then(invoke => invoke.result),
  *         cert: `-----BEGIN CERTIFICATE-----
@@ -242,19 +242,19 @@ export interface AdditionalCertificateState {
     /**
      * The ID of the GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The Certificate ID. **NOTE:** From version 1.209.1, `certificateId` can be modified.
      */
-    certificateId?: pulumi.Input<string>;
+    certificateId?: pulumi.Input<string | undefined>;
     /**
      * The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -172,10 +172,10 @@ def get_repos(enable_details: Optional[_builtins.bool] = None,
         namespace=pulumi.get(__ret__, 'namespace'),
         output_file=pulumi.get(__ret__, 'output_file'),
         repos=pulumi.get(__ret__, 'repos'))
-def get_repos_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                     name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     namespace: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_repos_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                     name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     namespace: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReposResult]:
     """
     > **DEPRECATION NOTICE:** This data source is deprecated and will be removed in a future release.

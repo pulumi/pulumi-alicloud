@@ -90,9 +90,9 @@ export interface GetZonesOutputArgs {
     /**
      * The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

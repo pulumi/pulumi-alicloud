@@ -161,43 +161,43 @@ export interface EnterpriseLogicDatabaseState {
     /**
      * Logical Library alias.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Sub-Database ID
      */
-    databaseIds?: pulumi.Input<pulumi.Input<string>[]>;
+    databaseIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Database type.
      */
-    dbType?: pulumi.Input<string>;
+    dbType?: pulumi.Input<string | undefined>;
     /**
      * Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
      */
-    envType?: pulumi.Input<string>;
+    envType?: pulumi.Input<string | undefined>;
     /**
      * Whether it is a logical Library, the return value is true.
      */
-    logic?: pulumi.Input<boolean>;
+    logic?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the logical Library.
      */
-    logicDatabaseId?: pulumi.Input<string>;
+    logicDatabaseId?: pulumi.Input<string | undefined>;
     /**
      * The user ID list of the logical library Owner.
      */
-    ownerIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The nickname list of the logical library Owner.
      */
-    ownerNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ownerNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Logical Library name.
      */
-    schemaName?: pulumi.Input<string>;
+    schemaName?: pulumi.Input<string | undefined>;
     /**
      * Logical library search name.
      */
-    searchName?: pulumi.Input<string>;
+    searchName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,5 +215,5 @@ export interface EnterpriseLogicDatabaseArgs {
     /**
      * The ID of the logical Library.
      */
-    logicDatabaseId?: pulumi.Input<string>;
+    logicDatabaseId?: pulumi.Input<string | undefined>;
 }

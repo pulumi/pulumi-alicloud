@@ -30,22 +30,22 @@ class OssExportArgs:
                  path_format: pulumi.Input[_builtins.str],
                  project_name: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_columns: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
-                 csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 csv_config_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_escape: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 csv_config_linefeed: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_null: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_quote: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 json_enable_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_read_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None):
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_columns: pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
+                 csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssExport resource.
 
@@ -229,225 +229,225 @@ class OssExportArgs:
 
     @_builtins.property
     @pulumi.getter(name="compressType")
-    def compress_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
         """
         return pulumi.get(self, "compress_type")
 
     @compress_type.setter
-    def compress_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_type", value)
 
     @_builtins.property
     @pulumi.getter(name="configColumns")
-    def config_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
+    def config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
         """
         Configure columns when `content_type` is `parquet` or `orc`.
         """
         return pulumi.get(self, "config_columns")
 
     @config_columns.setter
-    def config_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]):
+    def config_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]):
         pulumi.set(self, "config_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigColumns")
-    def csv_config_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def csv_config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field configuration in csv content_type.
         """
         return pulumi.get(self, "csv_config_columns")
 
     @csv_config_columns.setter
-    def csv_config_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def csv_config_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "csv_config_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigDelimiter")
-    def csv_config_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Separator configuration in csv content_type.
         """
         return pulumi.get(self, "csv_config_delimiter")
 
     @csv_config_delimiter.setter
-    def csv_config_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigEscape")
-    def csv_config_escape(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_escape(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         escape in csv content_type.
         """
         return pulumi.get(self, "csv_config_escape")
 
     @csv_config_escape.setter
-    def csv_config_escape(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_escape(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_escape", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigHeader")
-    def csv_config_header(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def csv_config_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to write the field name to the CSV file, the default value is `false`.
         """
         return pulumi.get(self, "csv_config_header")
 
     @csv_config_header.setter
-    def csv_config_header(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def csv_config_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "csv_config_header", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigLinefeed")
-    def csv_config_linefeed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_linefeed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         lineFeed in csv content_type.
         """
         return pulumi.get(self, "csv_config_linefeed")
 
     @csv_config_linefeed.setter
-    def csv_config_linefeed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_linefeed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_linefeed", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigNull")
-    def csv_config_null(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_null(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Invalid field content in csv content_type.
         """
         return pulumi.get(self, "csv_config_null")
 
     @csv_config_null.setter
-    def csv_config_null(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_null(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_null", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigQuote")
-    def csv_config_quote(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_quote(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Escape character in csv content_type.
         """
         return pulumi.get(self, "csv_config_quote")
 
     @csv_config_quote.setter
-    def csv_config_quote(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_quote(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_quote", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for oss export.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The log from when to export to oss.
         """
         return pulumi.get(self, "from_time")
 
     @from_time.setter
-    def from_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_time", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonEnableTag")
-    def json_enable_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def json_enable_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to deliver the label when `content_type` = `json`.
         """
         return pulumi.get(self, "json_enable_tag")
 
     @json_enable_tag.setter
-    def json_enable_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def json_enable_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "json_enable_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="logReadRoleArn")
-    def log_read_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_read_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
         """
         return pulumi.get(self, "log_read_role_arn")
 
     @log_read_role_arn.setter
-    def log_read_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_read_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_read_role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The suffix for the objects in which the shipped data is stored.
         """
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
 
 @pulumi.input_type
 class _OssExportState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 buffer_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_columns: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 csv_config_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_escape: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 csv_config_linefeed: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_null: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_quote: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 json_enable_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_read_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_columns: pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssExport resources.
 
@@ -531,67 +531,67 @@ class _OssExportState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the oss bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="bufferInterval")
-    def buffer_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def buffer_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How often is it delivered every interval.
         """
         return pulumi.get(self, "buffer_interval")
 
     @buffer_interval.setter
-    def buffer_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def buffer_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "buffer_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="bufferSize")
-    def buffer_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def buffer_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
         """
         return pulumi.get(self, "buffer_size")
 
     @buffer_size.setter
-    def buffer_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def buffer_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "buffer_size", value)
 
     @_builtins.property
     @pulumi.getter(name="compressType")
-    def compress_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
         """
         return pulumi.get(self, "compress_type")
 
     @compress_type.setter
-    def compress_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_type", value)
 
     @_builtins.property
     @pulumi.getter(name="configColumns")
-    def config_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
+    def config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]:
         """
         Configure columns when `content_type` is `parquet` or `orc`.
         """
         return pulumi.get(self, "config_columns")
 
     @config_columns.setter
-    def config_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]):
+    def config_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['OssExportConfigColumnArgs']]]]):
         pulumi.set(self, "config_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage format, only supports three types: `json`, `parquet`, `orc`, `csv`.
         **According to the different format, please select the following parameters**
@@ -599,235 +599,235 @@ class _OssExportState:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigColumns")
-    def csv_config_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def csv_config_columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field configuration in csv content_type.
         """
         return pulumi.get(self, "csv_config_columns")
 
     @csv_config_columns.setter
-    def csv_config_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def csv_config_columns(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "csv_config_columns", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigDelimiter")
-    def csv_config_delimiter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_delimiter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Separator configuration in csv content_type.
         """
         return pulumi.get(self, "csv_config_delimiter")
 
     @csv_config_delimiter.setter
-    def csv_config_delimiter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_delimiter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_delimiter", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigEscape")
-    def csv_config_escape(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_escape(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         escape in csv content_type.
         """
         return pulumi.get(self, "csv_config_escape")
 
     @csv_config_escape.setter
-    def csv_config_escape(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_escape(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_escape", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigHeader")
-    def csv_config_header(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def csv_config_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to write the field name to the CSV file, the default value is `false`.
         """
         return pulumi.get(self, "csv_config_header")
 
     @csv_config_header.setter
-    def csv_config_header(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def csv_config_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "csv_config_header", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigLinefeed")
-    def csv_config_linefeed(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_linefeed(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         lineFeed in csv content_type.
         """
         return pulumi.get(self, "csv_config_linefeed")
 
     @csv_config_linefeed.setter
-    def csv_config_linefeed(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_linefeed(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_linefeed", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigNull")
-    def csv_config_null(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_null(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Invalid field content in csv content_type.
         """
         return pulumi.get(self, "csv_config_null")
 
     @csv_config_null.setter
-    def csv_config_null(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_null(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_null", value)
 
     @_builtins.property
     @pulumi.getter(name="csvConfigQuote")
-    def csv_config_quote(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csv_config_quote(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Escape character in csv content_type.
         """
         return pulumi.get(self, "csv_config_quote")
 
     @csv_config_quote.setter
-    def csv_config_quote(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csv_config_quote(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csv_config_quote", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The display name for oss export.
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="exportName")
-    def export_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
         """
         return pulumi.get(self, "export_name")
 
     @export_name.setter
-    def export_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTime")
-    def from_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def from_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The log from when to export to oss.
         """
         return pulumi.get(self, "from_time")
 
     @from_time.setter
-    def from_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def from_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "from_time", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonEnableTag")
-    def json_enable_tag(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def json_enable_tag(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to deliver the label when `content_type` = `json`.
         """
         return pulumi.get(self, "json_enable_tag")
 
     @json_enable_tag.setter
-    def json_enable_tag(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def json_enable_tag(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "json_enable_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="logReadRoleArn")
-    def log_read_role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_read_role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
         """
         return pulumi.get(self, "log_read_role_arn")
 
     @log_read_role_arn.setter
-    def log_read_role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_read_role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_read_role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="logstoreName")
-    def logstore_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log logstore.
         """
         return pulumi.get(self, "logstore_name")
 
     @logstore_name.setter
-    def logstore_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pathFormat")
-    def path_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
         """
         return pulumi.get(self, "path_format")
 
     @path_format.setter
-    def path_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="projectName")
-    def project_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log project. It is the only in one Alicloud account.
         """
         return pulumi.get(self, "project_name")
 
     @project_name.setter
-    def project_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_name", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The suffix for the objects in which the shipped data is stored.
         """
         return pulumi.get(self, "suffix")
 
     @suffix.setter
-    def suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This time zone that is used to format the time, `+0800` e.g.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
@@ -837,31 +837,31 @@ class OssExport(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 buffer_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 csv_config_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_escape: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 csv_config_linefeed: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_null: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_quote: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 json_enable_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_read_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Log service data delivery management, this service provides the function of delivering data in logstore to oss product storage. [Refer to details](https://www.alibabacloud.com/help/en/log-service/latest/ship-logs-to-oss-new-version).
@@ -1043,31 +1043,31 @@ class OssExport(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 buffer_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 csv_config_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_escape: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_header: Optional[pulumi.Input[_builtins.bool]] = None,
-                 csv_config_linefeed: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_null: Optional[pulumi.Input[_builtins.str]] = None,
-                 csv_config_quote: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 export_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 json_enable_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_read_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 path_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+                 csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 export_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 path_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1130,31 +1130,31 @@ class OssExport(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            buffer_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            buffer_size: Optional[pulumi.Input[_builtins.int]] = None,
-            compress_type: Optional[pulumi.Input[_builtins.str]] = None,
-            config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            csv_config_columns: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            csv_config_delimiter: Optional[pulumi.Input[_builtins.str]] = None,
-            csv_config_escape: Optional[pulumi.Input[_builtins.str]] = None,
-            csv_config_header: Optional[pulumi.Input[_builtins.bool]] = None,
-            csv_config_linefeed: Optional[pulumi.Input[_builtins.str]] = None,
-            csv_config_null: Optional[pulumi.Input[_builtins.str]] = None,
-            csv_config_quote: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            export_name: Optional[pulumi.Input[_builtins.str]] = None,
-            from_time: Optional[pulumi.Input[_builtins.int]] = None,
-            json_enable_tag: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_read_role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            logstore_name: Optional[pulumi.Input[_builtins.str]] = None,
-            path_format: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            project_name: Optional[pulumi.Input[_builtins.str]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            suffix: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'OssExport':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            buffer_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            buffer_size: pulumi.Input[Optional[_builtins.int]] = None,
+            compress_type: pulumi.Input[Optional[_builtins.str]] = None,
+            config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[Union['OssExportConfigColumnArgs', 'OssExportConfigColumnArgsDict']]]]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_columns: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            csv_config_delimiter: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_escape: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_header: pulumi.Input[Optional[_builtins.bool]] = None,
+            csv_config_linefeed: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_null: pulumi.Input[Optional[_builtins.str]] = None,
+            csv_config_quote: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            export_name: pulumi.Input[Optional[_builtins.str]] = None,
+            from_time: pulumi.Input[Optional[_builtins.int]] = None,
+            json_enable_tag: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_read_role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            logstore_name: pulumi.Input[Optional[_builtins.str]] = None,
+            path_format: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            project_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'OssExport':
         """
         Get an existing OssExport resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

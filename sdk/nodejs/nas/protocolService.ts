@@ -215,7 +215,7 @@ export interface ProtocolServiceState {
     /**
      * The time when the protocol server service was created. The UTC time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the agreement service.
      *
@@ -224,7 +224,7 @@ export interface ProtocolServiceState {
      * - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck the creation request.
      *
@@ -236,44 +236,44 @@ export interface ProtocolServiceState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
-    fileSystemId?: pulumi.Input<string>;
+    fileSystemId?: pulumi.Input<string | undefined>;
     /**
      * Protocol Service ID
      */
-    protocolServiceId?: pulumi.Input<string>;
+    protocolServiceId?: pulumi.Input<string | undefined>;
     /**
      * The specification of the protocol machine cluster.
      * - Value range: General、CL1、CL2
      * - Default value: General
      */
-    protocolSpec?: pulumi.Input<string>;
+    protocolSpec?: pulumi.Input<string | undefined>;
     /**
      * The throughput of the protocol service. Unit: MB/s.
      */
-    protocolThroughput?: pulumi.Input<number>;
+    protocolThroughput?: pulumi.Input<number | undefined>;
     /**
      * The protocol type supported by the protocol service.
      *
      * Value range:
      * - NFS: Protocol Service supports NFS protocol access.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * Agreement service status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The VpcId of the protocol service, which must be consistent with the VPC of the file system.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitchId of the protocol service.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface ProtocolServiceArgs {
      * - It must start with an uppercase or lowercase letter or Chinese, and cannot start with `http://` and `https://`.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck the creation request.
      *
@@ -300,7 +300,7 @@ export interface ProtocolServiceArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update or deletion. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the file system.
      */
@@ -314,7 +314,7 @@ export interface ProtocolServiceArgs {
     /**
      * The throughput of the protocol service. Unit: MB/s.
      */
-    protocolThroughput?: pulumi.Input<number>;
+    protocolThroughput?: pulumi.Input<number | undefined>;
     /**
      * The protocol type supported by the protocol service.
      *
@@ -325,9 +325,9 @@ export interface ProtocolServiceArgs {
     /**
      * The VpcId of the protocol service, which must be consistent with the VPC of the file system.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitchId of the protocol service.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

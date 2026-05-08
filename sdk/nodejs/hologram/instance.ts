@@ -290,12 +290,12 @@ export interface InstanceState {
      * - false: only generate orders, not pay
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
-    coldStorageSize?: pulumi.Input<number>;
+    coldStorageSize?: pulumi.Input<number | undefined>;
     /**
      * Instance specifications. Value:
      * - 8 cores 32 GB (number of compute nodes: 1)
@@ -306,35 +306,35 @@ export interface InstanceState {
      * - 128 core 512 GB (number of compute nodes: 8)
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * List of domain names. See `endpoints` below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.hologram.InstanceEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.hologram.InstanceEndpoint>[] | undefined>;
     /**
      * Number of gateway nodes.
      */
-    gatewayCount?: pulumi.Input<number>;
+    gatewayCount?: pulumi.Input<number | undefined>;
     /**
      * Initialize the database and split multiple database names ",".
      */
-    initialDatabases?: pulumi.Input<string>;
+    initialDatabases?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The instance type. Value:
      * - Standard: Universal.
@@ -343,54 +343,54 @@ export interface InstanceState {
      * - Shared: Shared.
      * - Serverless: (Available since v1.259.0) Serverless.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the primary instance.
      */
-    leaderInstanceId?: pulumi.Input<string>;
+    leaderInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Billing cycle. Value:
      * - Month: monthly billing
      * - Hour: hourly billing
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.259.0) The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
-    scaleType?: pulumi.Input<string>;
+    scaleType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The standard storage space of the instance. Unit: GB.
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * Instance tag.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -403,12 +403,12 @@ export interface InstanceArgs {
      * - false: only generate orders, not pay
      * > **NOTE:**  The default value is true. If the balance of your payment method is insufficient, you can set the parameter AutoPay to false, and an unpaid order will be generated. You can log in to the user Center to pay by yourself.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Instance low-frequency storage space. Unit: GB.
      * > **NOTE:**  PayAsYouGo (PostPaid) instances ignore this parameter.
      */
-    coldStorageSize?: pulumi.Input<number>;
+    coldStorageSize?: pulumi.Input<number | undefined>;
     /**
      * Instance specifications. Value:
      * - 8 cores 32 GB (number of compute nodes: 1)
@@ -419,27 +419,27 @@ export interface InstanceArgs {
      * - 128 core 512 GB (number of compute nodes: 8)
      * > **NOTE:** Just fill in the audit number. Please submit a work order application for purchasing 1024 or above specifications. Shared instance types do not need to specify specifications. The specification of - 8 core 32GB (number of computing nodes: 1) is only for experience use and cannot be used for production.
      */
-    cpu?: pulumi.Input<number>;
+    cpu?: pulumi.Input<number | undefined>;
     /**
      * The buying cycle. Buy for 2 months. If the Payment type is PayAsYouGo (PostPaid), you do not need to specify it.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable SSL encryption. Default Value: `false`. Valid values: `true`, `false`.
      */
-    enableSsl?: pulumi.Input<boolean>;
+    enableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * List of domain names. See `endpoints` below.
      */
-    endpoints?: pulumi.Input<pulumi.Input<inputs.hologram.InstanceEndpoint>[]>;
+    endpoints?: pulumi.Input<pulumi.Input<inputs.hologram.InstanceEndpoint>[] | undefined>;
     /**
      * Number of gateway nodes.
      */
-    gatewayCount?: pulumi.Input<number>;
+    gatewayCount?: pulumi.Input<number | undefined>;
     /**
      * Initialize the database and split multiple database names ",".
      */
-    initialDatabases?: pulumi.Input<string>;
+    initialDatabases?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
@@ -456,7 +456,7 @@ export interface InstanceArgs {
     /**
      * The ID of the primary instance.
      */
-    leaderInstanceId?: pulumi.Input<string>;
+    leaderInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource.
      */
@@ -467,31 +467,31 @@ export interface InstanceArgs {
      * - Hour: hourly billing
      * > **NOTE:**  Subscription instances (PrePaid) only supports Month. PayAsYouGo instances (PostPaid) only supports Hour. The Shared type is automatically set to Hour without specifying it.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Change matching type. Value:
      * - UPGRADE: UPGRADE
      * - DOWNGRADE: Downgrading
      * > **NOTE:** The upgrade specification cannot be less than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is larger than the original specification. The downgrading specification cannot be greater than the original specification. A blank field indicates that the original specification remains unchanged. On this basis, at least one specification is smaller than the original specification.
      */
-    scaleType?: pulumi.Input<string>;
+    scaleType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The standard storage space of the instance. Unit: GB.
      * > **NOTE:**  PayAsYouGo instances (PostPaid) ignore this parameter.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * Instance tag.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The zone Id. Refer to "Instructions for Use".
      */

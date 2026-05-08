@@ -122,13 +122,13 @@ export interface GetMainVersionsOutputArgs {
      * The supported clusterType of this emr version.
      * Possible values may be any one or combination of these: ["HADOOP", "DRUID", "KAFKA", "ZOOKEEPER", "FLINK", "CLICKHOUSE"]
      */
-    clusterTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
      */
-    emrVersion?: pulumi.Input<string>;
+    emrVersion?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

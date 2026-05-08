@@ -22,11 +22,11 @@ class ProtocolServiceArgs:
                  file_system_id: pulumi.Input[_builtins.str],
                  protocol_spec: pulumi.Input[_builtins.str],
                  protocol_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ProtocolService resource.
 
@@ -114,7 +114,7 @@ class ProtocolServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the agreement service.
 
@@ -126,12 +126,12 @@ class ProtocolServiceArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck the creation request.
 
@@ -146,60 +146,60 @@ class ProtocolServiceArgs:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolThroughput")
-    def protocol_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protocol_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The throughput of the protocol service. Unit: MB/s.
         """
         return pulumi.get(self, "protocol_throughput")
 
     @protocol_throughput.setter
-    def protocol_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protocol_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protocol_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VpcId of the protocol service, which must be consistent with the VPC of the file system.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSwitchId of the protocol service.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _ProtocolServiceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ProtocolService resources.
 
@@ -258,19 +258,19 @@ class _ProtocolServiceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the protocol server service was created. The UTC time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the agreement service.
 
@@ -282,12 +282,12 @@ class _ProtocolServiceState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck the creation request.
 
@@ -302,36 +302,36 @@ class _ProtocolServiceState:
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemId")
-    def file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system.
         """
         return pulumi.get(self, "file_system_id")
 
     @file_system_id.setter
-    def file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolServiceId")
-    def protocol_service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol Service ID
         """
         return pulumi.get(self, "protocol_service_id")
 
     @protocol_service_id.setter
-    def protocol_service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolSpec")
-    def protocol_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specification of the protocol machine cluster.
         - Value range: General、CL1、CL2
@@ -340,24 +340,24 @@ class _ProtocolServiceState:
         return pulumi.get(self, "protocol_spec")
 
     @protocol_spec.setter
-    def protocol_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolThroughput")
-    def protocol_throughput(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def protocol_throughput(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The throughput of the protocol service. Unit: MB/s.
         """
         return pulumi.get(self, "protocol_throughput")
 
     @protocol_throughput.setter
-    def protocol_throughput(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def protocol_throughput(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "protocol_throughput", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type supported by the protocol service.
 
@@ -367,43 +367,43 @@ class _ProtocolServiceState:
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Agreement service status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VpcId of the protocol service, which must be consistent with the VPC of the file system.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VSwitchId of the protocol service.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -413,14 +413,14 @@ class ProtocolService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a File Storage (NAS) Protocol Service resource.
@@ -592,14 +592,14 @@ class ProtocolService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -636,17 +636,17 @@ class ProtocolService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol_throughput: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ProtocolService':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol_throughput: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ProtocolService':
         """
         Get an existing ProtocolService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

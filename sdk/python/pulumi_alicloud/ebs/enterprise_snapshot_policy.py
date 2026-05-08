@@ -25,13 +25,13 @@ class EnterpriseSnapshotPolicyArgs:
                  retain_rule: pulumi.Input['EnterpriseSnapshotPolicyRetainRuleArgs'],
                  schedule: pulumi.Input['EnterpriseSnapshotPolicyScheduleArgs'],
                  target_type: pulumi.Input[_builtins.str],
-                 cross_region_copy_info: Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 special_retain_rules: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_rule: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 cross_region_copy_info: pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 special_retain_rules: pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_rule: pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a EnterpriseSnapshotPolicy resource.
 
@@ -116,104 +116,104 @@ class EnterpriseSnapshotPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossRegionCopyInfo")
-    def cross_region_copy_info(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]:
+    def cross_region_copy_info(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]:
         """
         Snapshot replication information. See `cross_region_copy_info` below.
         """
         return pulumi.get(self, "cross_region_copy_info")
 
     @cross_region_copy_info.setter
-    def cross_region_copy_info(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]):
+    def cross_region_copy_info(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]):
         pulumi.set(self, "cross_region_copy_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description information representing the resource.
         """
         return pulumi.get(self, "desc")
 
     @desc.setter
-    def desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desc", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="specialRetainRules")
-    def special_retain_rules(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]:
+    def special_retain_rules(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]:
         """
         Snapshot special retention rules. See `special_retain_rules` below.
         """
         return pulumi.get(self, "special_retain_rules")
 
     @special_retain_rules.setter
-    def special_retain_rules(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]):
+    def special_retain_rules(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]):
         pulumi.set(self, "special_retain_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRule")
-    def storage_rule(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']]:
+    def storage_rule(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']]:
         """
         Snapshot storage policy. See `storage_rule` below.
         """
         return pulumi.get(self, "storage_rule")
 
     @storage_rule.setter
-    def storage_rule(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']]):
+    def storage_rule(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']]):
         pulumi.set(self, "storage_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _EnterpriseSnapshotPolicyState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_region_copy_info: Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 enterprise_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_rule: Optional[pulumi.Input['EnterpriseSnapshotPolicyRetainRuleArgs']] = None,
-                 schedule: Optional[pulumi.Input['EnterpriseSnapshotPolicyScheduleArgs']] = None,
-                 special_retain_rules: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_rule: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_region_copy_info: pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_rule: pulumi.Input[Optional['EnterpriseSnapshotPolicyRetainRuleArgs']] = None,
+                 schedule: pulumi.Input[Optional['EnterpriseSnapshotPolicyScheduleArgs']] = None,
+                 special_retain_rules: pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_rule: pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseSnapshotPolicy resources.
 
@@ -257,146 +257,146 @@ class _EnterpriseSnapshotPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossRegionCopyInfo")
-    def cross_region_copy_info(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]:
+    def cross_region_copy_info(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]:
         """
         Snapshot replication information. See `cross_region_copy_info` below.
         """
         return pulumi.get(self, "cross_region_copy_info")
 
     @cross_region_copy_info.setter
-    def cross_region_copy_info(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]):
+    def cross_region_copy_info(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs']]):
         pulumi.set(self, "cross_region_copy_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description information representing the resource.
         """
         return pulumi.get(self, "desc")
 
     @desc.setter
-    def desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desc", value)
 
     @_builtins.property
     @pulumi.getter(name="enterpriseSnapshotPolicyName")
-    def enterprise_snapshot_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enterprise_snapshot_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "enterprise_snapshot_policy_name")
 
     @enterprise_snapshot_policy_name.setter
-    def enterprise_snapshot_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enterprise_snapshot_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enterprise_snapshot_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retainRule")
-    def retain_rule(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyRetainRuleArgs']]:
+    def retain_rule(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyRetainRuleArgs']]:
         """
         Snapshot retention policy representing resources. See `retain_rule` below.
         """
         return pulumi.get(self, "retain_rule")
 
     @retain_rule.setter
-    def retain_rule(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyRetainRuleArgs']]):
+    def retain_rule(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyRetainRuleArgs']]):
         pulumi.set(self, "retain_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyScheduleArgs']]:
+    def schedule(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyScheduleArgs']]:
         """
         The scheduling plan that represents the resource. See `schedule` below.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyScheduleArgs']]):
+    def schedule(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyScheduleArgs']]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="specialRetainRules")
-    def special_retain_rules(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]:
+    def special_retain_rules(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]:
         """
         Snapshot special retention rules. See `special_retain_rules` below.
         """
         return pulumi.get(self, "special_retain_rules")
 
     @special_retain_rules.setter
-    def special_retain_rules(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]):
+    def special_retain_rules(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicySpecialRetainRulesArgs']]):
         pulumi.set(self, "special_retain_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storageRule")
-    def storage_rule(self) -> Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']]:
+    def storage_rule(self) -> pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']]:
         """
         Snapshot storage policy. See `storage_rule` below.
         """
         return pulumi.get(self, "storage_rule")
 
     @storage_rule.setter
-    def storage_rule(self, value: Optional[pulumi.Input['EnterpriseSnapshotPolicyStorageRuleArgs']]):
+    def storage_rule(self, value: pulumi.Input[Optional['EnterpriseSnapshotPolicyStorageRuleArgs']]):
         pulumi.set(self, "storage_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Represents the target type of resource binding.
         """
         return pulumi.get(self, "target_type")
 
     @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_type", value)
 
 
@@ -406,17 +406,17 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_region_copy_info: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 enterprise_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-                 special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
+                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EBS Enterprise Snapshot Policy resource. enterprise snapshot policy.
@@ -555,17 +555,17 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_region_copy_info: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
-                 desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 enterprise_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-                 schedule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-                 special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+                 desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
+                 schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
+                 special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -605,18 +605,18 @@ class EnterpriseSnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_region_copy_info: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
-            desc: Optional[pulumi.Input[_builtins.str]] = None,
-            enterprise_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retain_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
-            schedule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
-            special_retain_rules: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_rule: Optional[pulumi.Input[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseSnapshotPolicy':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_region_copy_info: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs', 'EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict']]] = None,
+            desc: pulumi.Input[Optional[_builtins.str]] = None,
+            enterprise_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retain_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyRetainRuleArgs', 'EnterpriseSnapshotPolicyRetainRuleArgsDict']]] = None,
+            schedule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyScheduleArgs', 'EnterpriseSnapshotPolicyScheduleArgsDict']]] = None,
+            special_retain_rules: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicySpecialRetainRulesArgs', 'EnterpriseSnapshotPolicySpecialRetainRulesArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_rule: pulumi.Input[Optional[Union['EnterpriseSnapshotPolicyStorageRuleArgs', 'EnterpriseSnapshotPolicyStorageRuleArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseSnapshotPolicy':
         """
         Get an existing EnterpriseSnapshotPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

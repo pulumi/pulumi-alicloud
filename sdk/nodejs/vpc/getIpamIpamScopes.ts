@@ -200,37 +200,37 @@ export interface GetIpamIpamScopesOutputArgs {
     /**
      * A list of Ipam Scope IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The id of the Ipam instance.
      */
-    ipamId?: pulumi.Input<string>;
+    ipamId?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    ipamScopeId?: pulumi.Input<string>;
+    ipamScopeId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    ipamScopeName?: pulumi.Input<string>;
+    ipamScopeName?: pulumi.Input<string | undefined>;
     /**
      * IPAM scope of action type:**private**.> Currently, only the role scope of the private network is supported.
      */
-    ipamScopeType?: pulumi.Input<string>;
+    ipamScopeType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Group Metric Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

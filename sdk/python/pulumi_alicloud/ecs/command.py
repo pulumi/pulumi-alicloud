@@ -21,11 +21,11 @@ class CommandArgs:
     def __init__(__self__, *,
                  command_content: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Command resource.
 
@@ -76,75 +76,75 @@ class CommandArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of command.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableParameter")
-    def enable_parameter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_parameter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use custom parameters in the command to be created. Default to: false.
         """
         return pulumi.get(self, "enable_parameter")
 
     @enable_parameter.setter
-    def enable_parameter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_parameter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the command, which supports all character sets. It can be up to 128 characters in length.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution path of the command in the ECS instance.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 @pulumi.input_type
 class _CommandState:
     def __init__(__self__, *,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Command resources.
 
@@ -173,86 +173,86 @@ class _CommandState:
 
     @_builtins.property
     @pulumi.getter(name="commandContent")
-    def command_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Base64-encoded content of the command.
         """
         return pulumi.get(self, "command_content")
 
     @command_content.setter
-    def command_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_content", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of command.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableParameter")
-    def enable_parameter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_parameter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use custom parameters in the command to be created. Default to: false.
         """
         return pulumi.get(self, "enable_parameter")
 
     @enable_parameter.setter
-    def enable_parameter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_parameter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the command, which supports all character sets. It can be up to 128 characters in length.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution path of the command in the ECS instance.
         """
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
@@ -262,13 +262,13 @@ class Command(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Command resource.
@@ -369,13 +369,13 @@ class Command(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,13 +406,13 @@ class Command(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            command_content: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            working_dir: Optional[pulumi.Input[_builtins.str]] = None) -> 'Command':
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            working_dir: pulumi.Input[Optional[_builtins.str]] = None) -> 'Command':
         """
         Get an existing Command resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

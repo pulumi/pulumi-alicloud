@@ -25,7 +25,7 @@ class DnatEntryArgs:
                  ip_protocol: pulumi.Input[_builtins.str],
                  sag_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnatEntry resource.
 
@@ -120,27 +120,27 @@ class DnatEntryArgs:
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external public IP address.when "type" is "Internet",automatically identify the external ip.
         """
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
 
 @pulumi.input_type
 class _DnatEntryState:
     def __init__(__self__, *,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnatEntry resources.
 
@@ -169,86 +169,86 @@ class _DnatEntryState:
 
     @_builtins.property
     @pulumi.getter(name="externalIp")
-    def external_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The external public IP address.when "type" is "Internet",automatically identify the external ip.
         """
         return pulumi.get(self, "external_ip")
 
     @external_ip.setter
-    def external_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="externalPort")
-    def external_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def external_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public port.Value range: 1 to 65535 or "any".
         """
         return pulumi.get(self, "external_port")
 
     @external_port.setter
-    def external_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def external_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "external_port", value)
 
     @_builtins.property
     @pulumi.getter(name="internalIp")
-    def internal_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination private IP address.
         """
         return pulumi.get(self, "internal_ip")
 
     @internal_ip.setter
-    def internal_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="internalPort")
-    def internal_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internal_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination private port.Value range: 1 to 65535 or "any".
         """
         return pulumi.get(self, "internal_port")
 
     @internal_port.setter
-    def internal_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internal_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internal_port", value)
 
     @_builtins.property
     @pulumi.getter(name="ipProtocol")
-    def ip_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
         """
         return pulumi.get(self, "ip_protocol")
 
     @ip_protocol.setter
-    def ip_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the SAG instance.
         """
         return pulumi.get(self, "sag_id")
 
     @sag_id.setter
-    def sag_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sag_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sag_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -263,13 +263,13 @@ class DnatEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Sag DnatEntry resource. This topic describes how to add a DNAT entry to a Smart Access Gateway (SAG) instance to enable the DNAT function. By using the DNAT function, you can forward requests received by public IP addresses to Alibaba Cloud instances according to custom mapping rules.
@@ -386,13 +386,13 @@ class DnatEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 external_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 external_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""DnatEntry is deprecated: alicloud.rocketmq/dnatentry.DnatEntry has been deprecated in favor of alicloud.sag/dnatentry.DnatEntry""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -432,13 +432,13 @@ class DnatEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            external_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            external_port: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            internal_port: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            sag_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnatEntry':
+            external_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            external_port: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            internal_port: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnatEntry':
         """
         Get an existing DnatEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -145,15 +145,15 @@ export interface BaselineState {
      *
      * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
      */
-    baselineItems?: pulumi.Input<pulumi.Input<inputs.governance.BaselineBaselineItem>[]>;
+    baselineItems?: pulumi.Input<pulumi.Input<inputs.governance.BaselineBaselineItem>[] | undefined>;
     /**
      * Baseline Name.
      */
-    baselineName?: pulumi.Input<string>;
+    baselineName?: pulumi.Input<string | undefined>;
     /**
      * Baseline Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -165,13 +165,13 @@ export interface BaselineArgs {
      *
      * You can invoke [ListAccountFactoryBaselineItems](https://next.api.aliyun.com/document/governance/2021-01-20/ListAccountFactoryBaselineItems) to get a list of account factory baseline items supported by the Cloud Governance Center. See `baselineItems` below.
      */
-    baselineItems?: pulumi.Input<pulumi.Input<inputs.governance.BaselineBaselineItem>[]>;
+    baselineItems?: pulumi.Input<pulumi.Input<inputs.governance.BaselineBaselineItem>[] | undefined>;
     /**
      * Baseline Name.
      */
-    baselineName?: pulumi.Input<string>;
+    baselineName?: pulumi.Input<string | undefined>;
     /**
      * Baseline Description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
 }

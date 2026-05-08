@@ -118,19 +118,19 @@ export interface DeviceGroupState {
     /**
      * The GroupDesc of the device group.
      */
-    groupDesc?: pulumi.Input<string>;
+    groupDesc?: pulumi.Input<string | undefined>;
     /**
      * The GroupName of the device group.
      */
-    groupName?: pulumi.Input<string>;
+    groupName?: pulumi.Input<string | undefined>;
     /**
      * The id of the Iot Instance.
      */
-    iotInstanceId?: pulumi.Input<string>;
+    iotInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The id of the SuperGroup.
      */
-    superGroupId?: pulumi.Input<string>;
+    superGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -140,7 +140,7 @@ export interface DeviceGroupArgs {
     /**
      * The GroupDesc of the device group.
      */
-    groupDesc?: pulumi.Input<string>;
+    groupDesc?: pulumi.Input<string | undefined>;
     /**
      * The GroupName of the device group.
      */
@@ -148,9 +148,9 @@ export interface DeviceGroupArgs {
     /**
      * The id of the Iot Instance.
      */
-    iotInstanceId?: pulumi.Input<string>;
+    iotInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The id of the SuperGroup.
      */
-    superGroupId?: pulumi.Input<string>;
+    superGroupId?: pulumi.Input<string | undefined>;
 }

@@ -24,14 +24,14 @@ class DedicatedHostArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 allocation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DedicatedHost resource.
 
@@ -136,91 +136,91 @@ class DedicatedHostArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationStatus")
-    def allocation_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         """
         return pulumi.get(self, "allocation_status")
 
     @allocation_status.setter
-    def allocation_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_status", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the auto-renewal feature.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCategory")
-    def image_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
         """
         return pulumi.get(self, "image_category")
 
     @image_category.setter
-    def image_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_category", value)
 
     @_builtins.property
     @pulumi.getter(name="osPassword")
-    def os_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         """
         return pulumi.get(self, "os_password")
 
     @os_password.setter
-    def os_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usedTime")
-    def used_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration of the host. Valid values: 
         * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
@@ -230,28 +230,28 @@ class DedicatedHostArgs:
         return pulumi.get(self, "used_time")
 
     @used_time.setter
-    def used_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_time", value)
 
 
 @pulumi.input_type
 class _DedicatedHostState:
     def __init__(__self__, *,
-                 allocation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHost resources.
 
@@ -307,151 +307,151 @@ class _DedicatedHostState:
 
     @_builtins.property
     @pulumi.getter(name="allocationStatus")
-    def allocation_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         """
         return pulumi.get(self, "allocation_status")
 
     @allocation_status.setter
-    def allocation_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_status", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the auto-renewal feature.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupId")
-    def dedicated_host_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dedicated cluster.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
     @dedicated_host_group_id.setter
-    def dedicated_host_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostId")
-    def dedicated_host_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the host.
         """
         return pulumi.get(self, "dedicated_host_id")
 
     @dedicated_host_id.setter
-    def dedicated_host_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hostClass")
-    def host_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
         """
         return pulumi.get(self, "host_class")
 
     @host_class.setter
-    def host_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_class", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCategory")
-    def image_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
         """
         return pulumi.get(self, "image_category")
 
     @image_category.setter
-    def image_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_category", value)
 
     @_builtins.property
     @pulumi.getter(name="osPassword")
-    def os_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         """
         return pulumi.get(self, "os_password")
 
     @os_password.setter
-    def os_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_password", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource. Valid values: `Subscription`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usedTime")
-    def used_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The subscription duration of the host. Valid values: 
         * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
@@ -461,31 +461,31 @@ class _DedicatedHostState:
         return pulumi.get(self, "used_time")
 
     @used_time.setter
-    def used_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch to which the host is connected.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -495,19 +495,19 @@ class DedicatedHost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ApsaraDB for MyBase Dedicated Host resource.
@@ -693,19 +693,19 @@ class DedicatedHost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -752,21 +752,21 @@ class DedicatedHost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_status: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_host_id: Optional[pulumi.Input[_builtins.str]] = None,
-            host_class: Optional[pulumi.Input[_builtins.str]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            image_category: Optional[pulumi.Input[_builtins.str]] = None,
-            os_password: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            used_time: Optional[pulumi.Input[_builtins.int]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedHost':
+            allocation_status: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host_class: pulumi.Input[Optional[_builtins.str]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_category: pulumi.Input[Optional[_builtins.str]] = None,
+            os_password: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_time: pulumi.Input[Optional[_builtins.int]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedHost':
         """
         Get an existing DedicatedHost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,9 +23,9 @@ class ServiceEventRuleArgs:
     def __init__(__self__, *,
                  event_types: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  rule_name: pulumi.Input[_builtins.str],
-                 delivery_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input['ServiceEventRuleEndpointArgs']] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]] = None):
+                 delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional['ServiceEventRuleEndpointArgs']] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]] = None):
         """
         The set of arguments for constructing a ServiceEventRule resource.
 
@@ -71,7 +71,7 @@ class ServiceEventRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="deliveryMode")
-    def delivery_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
         - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
@@ -79,42 +79,42 @@ class ServiceEventRuleArgs:
         return pulumi.get(self, "delivery_mode")
 
     @delivery_mode.setter
-    def delivery_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input['ServiceEventRuleEndpointArgs']]:
+    def endpoint(self) -> pulumi.Input[Optional['ServiceEventRuleEndpointArgs']]:
         """
         Message Receiving Terminal Endpoint Object. See `endpoint` below.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input['ServiceEventRuleEndpointArgs']]):
+    def endpoint(self, value: pulumi.Input[Optional['ServiceEventRuleEndpointArgs']]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="matchRules")
-    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]:
+    def match_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]:
         """
         Matching rules, or relationships between multiple rules. See `match_rules` below.
         """
         return pulumi.get(self, "match_rules")
 
     @match_rules.setter
-    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]):
+    def match_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]):
         pulumi.set(self, "match_rules", value)
 
 
 @pulumi.input_type
 class _ServiceEventRuleState:
     def __init__(__self__, *,
-                 delivery_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input['ServiceEventRuleEndpointArgs']] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional['ServiceEventRuleEndpointArgs']] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEventRule resources.
 
@@ -138,7 +138,7 @@ class _ServiceEventRuleState:
 
     @_builtins.property
     @pulumi.getter(name="deliveryMode")
-    def delivery_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
         - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
@@ -146,55 +146,55 @@ class _ServiceEventRuleState:
         return pulumi.get(self, "delivery_mode")
 
     @delivery_mode.setter
-    def delivery_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input['ServiceEventRuleEndpointArgs']]:
+    def endpoint(self) -> pulumi.Input[Optional['ServiceEventRuleEndpointArgs']]:
         """
         Message Receiving Terminal Endpoint Object. See `endpoint` below.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input['ServiceEventRuleEndpointArgs']]):
+    def endpoint(self, value: pulumi.Input[Optional['ServiceEventRuleEndpointArgs']]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="eventTypes")
-    def event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Event Type List
         """
         return pulumi.get(self, "event_types")
 
     @event_types.setter
-    def event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_types", value)
 
     @_builtins.property
     @pulumi.getter(name="matchRules")
-    def match_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]:
+    def match_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]:
         """
         Matching rules, or relationships between multiple rules. See `match_rules` below.
         """
         return pulumi.get(self, "match_rules")
 
     @match_rules.setter
-    def match_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]):
+    def match_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input['ServiceEventRuleMatchRuleArgs']]]]]]):
         pulumi.set(self, "match_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The event notification rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
 
@@ -204,11 +204,11 @@ class ServiceEventRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Event Rule resource.
@@ -392,11 +392,11 @@ class ServiceEventRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
-                 event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+                 event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -425,11 +425,11 @@ class ServiceEventRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
-            event_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            match_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceEventRule':
+            delivery_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[Union['ServiceEventRuleEndpointArgs', 'ServiceEventRuleEndpointArgsDict']]] = None,
+            event_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            match_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[Union['ServiceEventRuleMatchRuleArgs', 'ServiceEventRuleMatchRuleArgsDict']]]]]]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceEventRule':
         """
         Get an existing ServiceEventRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

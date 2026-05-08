@@ -334,142 +334,142 @@ export interface SiteState {
      * - `NS`
      * - `CNAME`
      */
-    accessType?: pulumi.Input<string>;
+    accessType?: pulumi.Input<string | undefined>;
     /**
      * Add visitor geolocation header. Value range:
      */
-    addClientGeolocationHeader?: pulumi.Input<string>;
+    addClientGeolocationHeader?: pulumi.Input<string | undefined>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
      */
-    addRealClientIpHeader?: pulumi.Input<string>;
+    addRealClientIpHeader?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Intelligent Protection Mode. Valid values:
      */
-    aiMode?: pulumi.Input<string>;
+    aiMode?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Intelligent Protection Level. Values:
      */
-    aiTemplate?: pulumi.Input<string>;
+    aiTemplate?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Disposal action.Valid values:
      */
-    automaticFrequencyControlActionType?: pulumi.Input<string>;
+    automaticFrequencyControlActionType?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Switch.Valid values:
      */
-    automaticFrequencyControlEnable?: pulumi.Input<string>;
+    automaticFrequencyControlEnable?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Protection Level.Valid values:
      */
-    automaticFrequencyControlLevel?: pulumi.Input<string>;
+    automaticFrequencyControlLevel?: pulumi.Input<string | undefined>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
-    cacheArchitectureMode?: pulumi.Input<string>;
+    cacheArchitectureMode?: pulumi.Input<string | undefined>;
     /**
      * Site cache hold switch. Value:
      */
-    cacheReserveEnable?: pulumi.Input<string>;
+    cacheReserveEnable?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cache instance.
      */
-    cacheReserveInstanceId?: pulumi.Input<string>;
+    cacheReserveInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the custom CacheTag name ignores case. Value range:
      */
-    caseInsensitive?: pulumi.Input<string>;
+    caseInsensitive?: pulumi.Input<string | undefined>;
     /**
      * The service location. Valid values:
      */
-    coverage?: pulumi.Input<string>;
+    coverage?: pulumi.Input<string | undefined>;
     /**
      * The time when the website was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable mainland China network access optimization, the default is off. Value range:
      */
-    crossBorderOptimization?: pulumi.Input<string>;
+    crossBorderOptimization?: pulumi.Input<string | undefined>;
     /**
      * Development mode configuration function switch. Value range:
      */
-    developmentMode?: pulumi.Input<string>;
+    developmentMode?: pulumi.Input<string | undefined>;
     /**
      * CNAME flattening mode. Possible values:
      */
-    flattenMode?: pulumi.Input<string>;
+    flattenMode?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Attack Protection Policy Modes. Valid values:
      * - `very weak`: indicates a very permissive setting.
      */
-    globalMode?: pulumi.Input<string>;
+    globalMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated package instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable IPv6. Valid values:
      */
-    ipv6Enable?: pulumi.Input<string>;
+    ipv6Enable?: pulumi.Input<string | undefined>;
     /**
      * The region in which Ipv6 is enabled. The default value is x.x:
      * - 'x.x': Global.
      * - 'Cn.cn ': Mainland China.
      */
-    ipv6Region?: pulumi.Input<string>;
+    ipv6Region?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the quality data collection switch.Valid values:
      */
-    performanceDataCollectionEnable?: pulumi.Input<string>;
+    performanceDataCollectionEnable?: pulumi.Input<string | undefined>;
     /**
      * Real client IP header name.
      */
-    realClientIpHeaderName?: pulumi.Input<string>;
+    realClientIpHeaderName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Release the search engine crawler configuration. Value:
      */
-    seoBypass?: pulumi.Input<string>;
+    seoBypass?: pulumi.Input<string | undefined>;
     /**
      * The website name.
      */
-    siteName?: pulumi.Input<string>;
+    siteName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
      */
-    siteNameExclusive?: pulumi.Input<string>;
+    siteNameExclusive?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Site WAF Configuration Details. See `siteWafSettings` below.
      */
-    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings>;
+    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Custom CacheTag name.
      */
-    tagName?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Version management enabled. When true, version management is turned on for the table site.
      */
-    versionManagement?: pulumi.Input<boolean>;
+    versionManagement?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -485,68 +485,68 @@ export interface SiteArgs {
     /**
      * Add visitor geolocation header. Value range:
      */
-    addClientGeolocationHeader?: pulumi.Input<string>;
+    addClientGeolocationHeader?: pulumi.Input<string | undefined>;
     /**
      * Add the "ali-real-client-ip" header containing the real client IP. Value range:
      */
-    addRealClientIpHeader?: pulumi.Input<string>;
+    addRealClientIpHeader?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Intelligent Protection Mode. Valid values:
      */
-    aiMode?: pulumi.Input<string>;
+    aiMode?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Intelligent Protection Level. Values:
      */
-    aiTemplate?: pulumi.Input<string>;
+    aiTemplate?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Disposal action.Valid values:
      */
-    automaticFrequencyControlActionType?: pulumi.Input<string>;
+    automaticFrequencyControlActionType?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Switch.Valid values:
      */
-    automaticFrequencyControlEnable?: pulumi.Input<string>;
+    automaticFrequencyControlEnable?: pulumi.Input<string | undefined>;
     /**
      * AutomaticFrequencyControl Protection Level.Valid values:
      */
-    automaticFrequencyControlLevel?: pulumi.Input<string>;
+    automaticFrequencyControlLevel?: pulumi.Input<string | undefined>;
     /**
      * Multi-level cache architecture mode. Possible values:
      */
-    cacheArchitectureMode?: pulumi.Input<string>;
+    cacheArchitectureMode?: pulumi.Input<string | undefined>;
     /**
      * Site cache hold switch. Value:
      */
-    cacheReserveEnable?: pulumi.Input<string>;
+    cacheReserveEnable?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cache instance.
      */
-    cacheReserveInstanceId?: pulumi.Input<string>;
+    cacheReserveInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the custom CacheTag name ignores case. Value range:
      */
-    caseInsensitive?: pulumi.Input<string>;
+    caseInsensitive?: pulumi.Input<string | undefined>;
     /**
      * The service location. Valid values:
      */
-    coverage?: pulumi.Input<string>;
+    coverage?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable mainland China network access optimization, the default is off. Value range:
      */
-    crossBorderOptimization?: pulumi.Input<string>;
+    crossBorderOptimization?: pulumi.Input<string | undefined>;
     /**
      * Development mode configuration function switch. Value range:
      */
-    developmentMode?: pulumi.Input<string>;
+    developmentMode?: pulumi.Input<string | undefined>;
     /**
      * CNAME flattening mode. Possible values:
      */
-    flattenMode?: pulumi.Input<string>;
+    flattenMode?: pulumi.Input<string | undefined>;
     /**
      * HTTP DDoS Attack Protection Policy Modes. Valid values:
      * - `very weak`: indicates a very permissive setting.
      */
-    globalMode?: pulumi.Input<string>;
+    globalMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated package instance.
      */
@@ -554,33 +554,33 @@ export interface SiteArgs {
     /**
      * Specifies whether to enable IPv6. Valid values:
      */
-    ipv6Enable?: pulumi.Input<string>;
+    ipv6Enable?: pulumi.Input<string | undefined>;
     /**
      * The region in which Ipv6 is enabled. The default value is x.x:
      * - 'x.x': Global.
      * - 'Cn.cn ': Mainland China.
      */
-    ipv6Region?: pulumi.Input<string>;
+    ipv6Region?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to temporarily pause ESA on the website. If you set this parameter to true, all requests to the domains in your DNS records go directly to your origin server. Valid values:
      */
-    paused?: pulumi.Input<boolean>;
+    paused?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the quality data collection switch.Valid values:
      */
-    performanceDataCollectionEnable?: pulumi.Input<string>;
+    performanceDataCollectionEnable?: pulumi.Input<string | undefined>;
     /**
      * Real client IP header name.
      */
-    realClientIpHeaderName?: pulumi.Input<string>;
+    realClientIpHeaderName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Release the search engine crawler configuration. Value:
      */
-    seoBypass?: pulumi.Input<string>;
+    seoBypass?: pulumi.Input<string | undefined>;
     /**
      * The website name.
      */
@@ -588,25 +588,25 @@ export interface SiteArgs {
     /**
      * Specifies whether to enable site hold.After you enable site hold, other accounts cannot add your website domain or its subdomains to ESA. Valid values:
      */
-    siteNameExclusive?: pulumi.Input<string>;
+    siteNameExclusive?: pulumi.Input<string | undefined>;
     /**
      * The version number of the site. For sites with version management enabled, you can use this parameter to specify the site version for which the configuration will take effect, defaulting to version 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * Site WAF Configuration Details. See `siteWafSettings` below.
      */
-    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings>;
+    siteWafSettings?: pulumi.Input<inputs.esa.SiteSiteWafSettings | undefined>;
     /**
      * Custom CacheTag name.
      */
-    tagName?: pulumi.Input<string>;
+    tagName?: pulumi.Input<string | undefined>;
     /**
      * Resource tags
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Version management enabled. When true, version management is turned on for the table site.
      */
-    versionManagement?: pulumi.Input<boolean>;
+    versionManagement?: pulumi.Input<boolean | undefined>;
 }

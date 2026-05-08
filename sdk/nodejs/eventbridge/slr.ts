@@ -64,7 +64,7 @@ export class Slr extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Slr resources.
  */
 export interface SlrState {
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
 }
 
 /**

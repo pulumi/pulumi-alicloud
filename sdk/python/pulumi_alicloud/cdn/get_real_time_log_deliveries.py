@@ -124,9 +124,9 @@ def get_real_time_log_deliveries(domain: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         output_file=pulumi.get(__ret__, 'output_file'),
         status=pulumi.get(__ret__, 'status'))
-def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[_builtins.str]] = None,
-                                        output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                        status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_real_time_log_deliveries_output(domain: pulumi.Input[Optional[_builtins.str]] = None,
+                                        output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                        status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRealTimeLogDeliveriesResult]:
     """
     This data source provides the Cdn Real Time Log Deliveries of the current Alibaba Cloud user.

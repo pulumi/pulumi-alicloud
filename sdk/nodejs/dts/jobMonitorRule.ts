@@ -60,7 +60,7 @@ import * as utilities from "../utilities";
  *         engine: "MySQL",
  *         engineVersion: "8.0",
  *         instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *         instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *         instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *         instanceChargeType: "Postpaid",
  *         instanceName: std.format({
  *             input: `${name}_%d`,
@@ -249,23 +249,23 @@ export interface JobMonitorRuleState {
     /**
      * Trigger delay alarm threshold, which is measured in seconds.
      */
-    delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string | undefined>;
     /**
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      */
-    dtsJobId?: pulumi.Input<string>;
+    dtsJobId?: pulumi.Input<string | undefined>;
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -275,7 +275,7 @@ export interface JobMonitorRuleArgs {
     /**
      * Trigger delay alarm threshold, which is measured in seconds.
      */
-    delayRuleTime?: pulumi.Input<string>;
+    delayRuleTime?: pulumi.Input<string | undefined>;
     /**
      * Migration, synchronization or subscription task ID can be by calling the [DescribeDtsJobs] get.
      */
@@ -283,11 +283,11 @@ export interface JobMonitorRuleArgs {
     /**
      * The alarm is triggered after notification of the contact phone number, A plurality of phone numbers between them with a comma (,) to separate.
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable monitoring rules, valid values: `Y`, `N`.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Monitoring rules of type, valid values: `delay`, `error`. **delay**: delay alarm. **error**: abnormal alarm.
      */

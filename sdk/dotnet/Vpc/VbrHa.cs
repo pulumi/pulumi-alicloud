@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
+    ///     var vlanId = new Random.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,
@@ -60,7 +60,7 @@ namespace Pulumi.AliCloud.Vpc
     ///             PeerGatewayIp = "10.0.0.2",
     ///             PeeringSubnetMask = "255.255.255.252",
     ///             PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections)[range.Value].Id,
-    ///             VirtualBorderRouterName = Std.Index.Format.Invoke(new()
+    ///             VirtualBorderRouterName = Std.Format.Invoke(new()
     ///             {
     ///                 Input = $"{name}-%d",
     ///                 Args = new[]

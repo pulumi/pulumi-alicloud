@@ -197,51 +197,51 @@ export interface PrometheusAlertRuleState {
     /**
      * The annotations of the alert rule. See `annotations` below.
      */
-    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[] | undefined>;
     /**
      * The ID of the cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      */
-    dispatchRuleId?: pulumi.Input<string>;
+    dispatchRuleId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the alert.
      */
-    duration?: pulumi.Input<string>;
+    duration?: pulumi.Input<string | undefined>;
     /**
      * The alert rule expression that follows the PromQL syntax.
      */
-    expression?: pulumi.Input<string>;
+    expression?: pulumi.Input<string | undefined>;
     /**
      * The labels of the resource. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[] | undefined>;
     /**
      * The message of the alert notification.
      */
-    message?: pulumi.Input<string>;
+    message?: pulumi.Input<string | undefined>;
     /**
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
-    notifyType?: pulumi.Input<string>;
+    notifyType?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource.
      */
-    prometheusAlertRuleId?: pulumi.Input<number>;
+    prometheusAlertRuleId?: pulumi.Input<number | undefined>;
     /**
      * The name of the resource.
      */
-    prometheusAlertRuleName?: pulumi.Input<string>;
+    prometheusAlertRuleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource. Valid values: `0`, `1`.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * The type of the alert rule.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -251,7 +251,7 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The annotations of the alert rule. See `annotations` below.
      */
-    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[]>;
+    annotations?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleAnnotation>[] | undefined>;
     /**
      * The ID of the cluster.
      */
@@ -259,7 +259,7 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The ID of the notification policy. This parameter is required when the `notifyType` parameter is set to `DISPATCH_RULE`.
      */
-    dispatchRuleId?: pulumi.Input<string>;
+    dispatchRuleId?: pulumi.Input<string | undefined>;
     /**
      * The duration of the alert.
      */
@@ -271,7 +271,7 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The labels of the resource. See `labels` below.
      */
-    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[]>;
+    labels?: pulumi.Input<pulumi.Input<inputs.arms.PrometheusAlertRuleLabel>[] | undefined>;
     /**
      * The message of the alert notification.
      */
@@ -279,7 +279,7 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      */
-    notifyType?: pulumi.Input<string>;
+    notifyType?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
@@ -287,5 +287,5 @@ export interface PrometheusAlertRuleArgs {
     /**
      * The type of the alert rule.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

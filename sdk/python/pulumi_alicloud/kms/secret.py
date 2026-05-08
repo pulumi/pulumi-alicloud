@@ -22,19 +22,19 @@ class SecretArgs:
                  secret_data: pulumi.Input[_builtins.str],
                  secret_name: pulumi.Input[_builtins.str],
                  version_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_automatic_rotation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 extended_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Secret resource.
 
@@ -129,127 +129,127 @@ class SecretArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the secret.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dkmsInstanceId")
-    def dkms_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS instance.
         """
         return pulumi.get(self, "dkms_instance_id")
 
     @dkms_instance_id.setter
-    def dkms_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkms_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkms_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticRotation")
-    def enable_automatic_rotation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_automatic_rotation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_automatic_rotation")
 
     @enable_automatic_rotation.setter
-    def enable_automatic_rotation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_automatic_rotation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyId")
-    def encryption_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key.
         """
         return pulumi.get(self, "encryption_key_id")
 
     @encryption_key_id.setter
-    def encryption_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedConfig")
-    def extended_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extended_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "extended_config")
 
     @extended_config.setter
-    def extended_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extended_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extended_config", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
-    def force_delete_without_recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete_without_recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "force_delete_without_recovery")
 
     @force_delete_without_recovery.setter
-    def force_delete_without_recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete_without_recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete_without_recovery", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recovery_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
     @recovery_window_in_days.setter
-    def recovery_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recovery_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recovery_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
-    def rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
-    def rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="secretDataType")
-    def secret_data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         """
         return pulumi.get(self, "secret_data_type")
 
     @secret_data_type.setter
-    def secret_data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the secret. Valid values:
         - `Generic`: Generic secret.
@@ -262,56 +262,56 @@ class SecretArgs:
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="versionStages")
-    def version_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def version_stages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The stage label that is used to mark the new version.
         """
         return pulumi.get(self, "version_stages")
 
     @version_stages.setter
-    def version_stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def version_stages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "version_stages", value)
 
 
 @pulumi.input_type
 class _SecretState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_automatic_rotation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 extended_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 planned_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 planned_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Secret resources.
 
@@ -382,187 +382,187 @@ class _SecretState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ARN of the secret.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.224.0) The time when the secret is created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the secret.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dkmsInstanceId")
-    def dkms_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dkms_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS instance.
         """
         return pulumi.get(self, "dkms_instance_id")
 
     @dkms_instance_id.setter
-    def dkms_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dkms_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dkms_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutomaticRotation")
-    def enable_automatic_rotation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_automatic_rotation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable automatic rotation. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_automatic_rotation")
 
     @enable_automatic_rotation.setter
-    def enable_automatic_rotation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_automatic_rotation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_automatic_rotation", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyId")
-    def encryption_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key.
         """
         return pulumi.get(self, "encryption_key_id")
 
     @encryption_key_id.setter
-    def encryption_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedConfig")
-    def extended_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extended_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended configuration of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "extended_config")
 
     @extended_config.setter
-    def extended_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extended_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extended_config", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDeleteWithoutRecovery")
-    def force_delete_without_recovery(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete_without_recovery(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to immediately delete a secret. Default value: `false`. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "force_delete_without_recovery")
 
     @force_delete_without_recovery.setter
-    def force_delete_without_recovery(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete_without_recovery(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete_without_recovery", value)
 
     @_builtins.property
     @pulumi.getter(name="plannedDeleteTime")
-    def planned_delete_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planned_delete_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the secret is scheduled to be deleted.
         """
         return pulumi.get(self, "planned_delete_time")
 
     @planned_delete_time.setter
-    def planned_delete_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planned_delete_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planned_delete_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the secret policy. The value is in the JSON format. The value can be up to 32,768 bytes in length. For more information, see [How to use it](https://www.alibabacloud.com/help/en/kms/developer-reference/api-setsecretpolicy).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
     @_builtins.property
     @pulumi.getter(name="recoveryWindowInDays")
-    def recovery_window_in_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def recovery_window_in_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the recovery period of the secret if you do not forcibly delete it. Unit: Days. Default value: `30`. Valid values: `7` to `30`. **NOTE:**  If `force_delete_without_recovery` is set to `true`, `recovery_window_in_days` will be ignored.
         """
         return pulumi.get(self, "recovery_window_in_days")
 
     @recovery_window_in_days.setter
-    def recovery_window_in_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def recovery_window_in_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "recovery_window_in_days", value)
 
     @_builtins.property
     @pulumi.getter(name="rotationInterval")
-    def rotation_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rotation_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval for automatic rotation. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "rotation_interval")
 
     @rotation_interval.setter
-    def rotation_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rotation_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rotation_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data of the secret. **NOTE:** From version 1.204.1, `secret_data` updating diff will be ignored when `secret_type` is not `Generic`.
         """
         return pulumi.get(self, "secret_data")
 
     @secret_data.setter
-    def secret_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_data", value)
 
     @_builtins.property
     @pulumi.getter(name="secretDataType")
-    def secret_data_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_data_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the secret value. Default value: `text`. Valid values: `text`, `binary`.
         """
         return pulumi.get(self, "secret_data_type")
 
     @secret_data_type.setter
-    def secret_data_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_data_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_data_type", value)
 
     @_builtins.property
     @pulumi.getter(name="secretName")
-    def secret_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the secret. For more information, see [How to use it](https://www.alibabacloud.com/help/en/key-management-service/latest/kms-createsecret).
         """
         return pulumi.get(self, "secret_name")
 
     @secret_name.setter
-    def secret_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_name", value)
 
     @_builtins.property
     @pulumi.getter(name="secretType")
-    def secret_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the secret. Valid values:
         - `Generic`: Generic secret.
@@ -575,43 +575,43 @@ class _SecretState:
         return pulumi.get(self, "secret_type")
 
     @secret_type.setter
-    def secret_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="versionId")
-    def version_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version number of the initial version.
         """
         return pulumi.get(self, "version_id")
 
     @version_id.setter
-    def version_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version_id", value)
 
     @_builtins.property
     @pulumi.getter(name="versionStages")
-    def version_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def version_stages(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The stage label that is used to mark the new version.
         """
         return pulumi.get(self, "version_stages")
 
     @version_stages.setter
-    def version_stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def version_stages(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "version_stages", value)
 
 
@@ -621,22 +621,22 @@ class Secret(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_automatic_rotation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 extended_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a KMS Secret resource.
@@ -758,22 +758,22 @@ class Secret(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_automatic_rotation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 extended_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -820,25 +820,25 @@ class Secret(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dkms_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_automatic_rotation: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            extended_config: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete_without_recovery: Optional[pulumi.Input[_builtins.bool]] = None,
-            planned_delete_time: Optional[pulumi.Input[_builtins.str]] = None,
-            policy: Optional[pulumi.Input[_builtins.str]] = None,
-            recovery_window_in_days: Optional[pulumi.Input[_builtins.int]] = None,
-            rotation_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_data: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_data_type: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_name: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            version_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version_stages: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Secret':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dkms_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_automatic_rotation: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            extended_config: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete_without_recovery: pulumi.Input[Optional[_builtins.bool]] = None,
+            planned_delete_time: pulumi.Input[Optional[_builtins.str]] = None,
+            policy: pulumi.Input[Optional[_builtins.str]] = None,
+            recovery_window_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            rotation_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_data_type: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_name: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version_stages: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Secret':
         """
         Get an existing Secret resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

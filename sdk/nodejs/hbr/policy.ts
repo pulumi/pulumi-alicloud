@@ -143,23 +143,23 @@ export interface PolicyState {
     /**
      * Policy creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The policy description.
      */
-    policyDescription?: pulumi.Input<string>;
+    policyDescription?: pulumi.Input<string | undefined>;
     /**
      * Policy Name
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * A list of policy rules See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[] | undefined>;
 }
 
 /**
@@ -169,17 +169,17 @@ export interface PolicyArgs {
     /**
      * The policy description.
      */
-    policyDescription?: pulumi.Input<string>;
+    policyDescription?: pulumi.Input<string | undefined>;
     /**
      * Policy Name
      */
-    policyName?: pulumi.Input<string>;
+    policyName?: pulumi.Input<string | undefined>;
     /**
      * The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
      */
-    policyType?: pulumi.Input<string>;
+    policyType?: pulumi.Input<string | undefined>;
     /**
      * A list of policy rules See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRule>[] | undefined>;
 }

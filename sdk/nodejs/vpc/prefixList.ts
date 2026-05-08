@@ -183,51 +183,51 @@ export interface PrefixListState {
     /**
      * The time when the prefix list was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
-    entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
+    entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[] | undefined>;
     /**
      * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of entries for CIDR address blocks in the prefix list.
      */
-    maxEntries?: pulumi.Input<number>;
+    maxEntries?: pulumi.Input<number | undefined>;
     /**
      * The association list information of the prefix list.
      */
-    prefixListAssociations?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListPrefixListAssociation>[]>;
+    prefixListAssociations?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListPrefixListAssociation>[] | undefined>;
     /**
      * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    prefixListDescription?: pulumi.Input<string>;
+    prefixListDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the query Prefix List.
      */
-    prefixListId?: pulumi.Input<string>;
+    prefixListId?: pulumi.Input<string | undefined>;
     /**
      * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    prefixListName?: pulumi.Input<string>;
+    prefixListName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the PrefixList belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
      */
-    shareType?: pulumi.Input<string>;
+    shareType?: pulumi.Input<string | undefined>;
     /**
      * Resource attribute fields that represent the status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -237,29 +237,29 @@ export interface PrefixListArgs {
     /**
      * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      */
-    entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[]>;
+    entrys?: pulumi.Input<pulumi.Input<inputs.vpc.PrefixListEntry>[] | undefined>;
     /**
      * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of entries for CIDR address blocks in the prefix list.
      */
-    maxEntries?: pulumi.Input<number>;
+    maxEntries?: pulumi.Input<number | undefined>;
     /**
      * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      */
-    prefixListDescription?: pulumi.Input<string>;
+    prefixListDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      */
-    prefixListName?: pulumi.Input<string>;
+    prefixListName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the PrefixList belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The tags of PrefixList.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

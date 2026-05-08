@@ -25,11 +25,11 @@ class DefenseRuleArgs:
                  defense_scene: pulumi.Input[_builtins.str],
                  defense_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 defense_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DefenseRule resource.
 
@@ -120,19 +120,19 @@ class DefenseRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="defenseOrigin")
-    def defense_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sources of protection. Value:
         """
         return pulumi.get(self, "defense_origin")
 
     @defense_origin.setter
-    def defense_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection object corresponding to the rule to be queried.
 
@@ -141,59 +141,59 @@ class DefenseRuleArgs:
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleStatus")
-    def rule_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Protection rule status.
         """
         return pulumi.get(self, "rule_status")
 
     @rule_status.setter
-    def rule_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_status", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The protection template ID of the protection rule to be created.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "template_id", value)
 
 
 @pulumi.input_type
 class _DefenseRuleState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['DefenseRuleConfigArgs']] = None,
-                 defense_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 config: pulumi.Input[Optional['DefenseRuleConfigArgs']] = None,
+                 defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DefenseRule resources.
 
@@ -238,7 +238,7 @@ class _DefenseRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['DefenseRuleConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['DefenseRuleConfigArgs']]:
         """
         Rule configuration content, in JSON format, constructed with a series of parameters.
 
@@ -248,24 +248,24 @@ class _DefenseRuleState:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['DefenseRuleConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['DefenseRuleConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseOrigin")
-    def defense_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sources of protection. Value:
         """
         return pulumi.get(self, "defense_origin")
 
     @defense_origin.setter
-    def defense_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_origin", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseScene")
-    def defense_scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The WAF protection scenario to be created.
 
@@ -274,36 +274,36 @@ class _DefenseRuleState:
         return pulumi.get(self, "defense_scene")
 
     @defense_scene.setter
-    def defense_scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_scene", value)
 
     @_builtins.property
     @pulumi.getter(name="defenseType")
-    def defense_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def defense_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection rule type. Value:
         """
         return pulumi.get(self, "defense_type")
 
     @defense_type.setter
-    def defense_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def defense_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "defense_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Web Application Firewall (WAF) instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The protection object corresponding to the rule to be queried.
 
@@ -312,55 +312,55 @@ class _DefenseRuleState:
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The protection rule ID.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleStatus")
-    def rule_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Protection rule status.
         """
         return pulumi.get(self, "rule_status")
 
     @rule_status.setter
-    def rule_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_status", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The protection template ID of the protection rule to be created.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "template_id", value)
 
 
@@ -370,15 +370,15 @@ class DefenseRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
-                 defense_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+                 defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a WAFV3 Defense Rule resource.
@@ -558,15 +558,15 @@ class DefenseRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
-                 defense_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 defense_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_status: Optional[pulumi.Input[_builtins.int]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+                 defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -604,16 +604,16 @@ class DefenseRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
-            defense_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            defense_scene: Optional[pulumi.Input[_builtins.str]] = None,
-            defense_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_status: Optional[pulumi.Input[_builtins.int]] = None,
-            template_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'DefenseRule':
+            config: pulumi.Input[Optional[Union['DefenseRuleConfigArgs', 'DefenseRuleConfigArgsDict']]] = None,
+            defense_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_scene: pulumi.Input[Optional[_builtins.str]] = None,
+            defense_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_status: pulumi.Input[Optional[_builtins.int]] = None,
+            template_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'DefenseRule':
         """
         Get an existing DefenseRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

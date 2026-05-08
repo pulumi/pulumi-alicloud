@@ -145,27 +145,27 @@ export interface BackupPolicyState {
     /**
      * Protection of the Name of the Policy.
      */
-    backupPolicyName?: pulumi.Input<string>;
+    backupPolicyName?: pulumi.Input<string | undefined>;
     /**
      * The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
      */
-    policyRegionId?: pulumi.Input<string>;
+    policyRegionId?: pulumi.Input<string | undefined>;
     /**
      * Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
      */
-    policyVersion?: pulumi.Input<string>;
+    policyVersion?: pulumi.Input<string | undefined>;
     /**
      * The status of the Backup Policy instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Specify the Protection of Server UUID List.
      */
-    uuidLists?: pulumi.Input<pulumi.Input<string>[]>;
+    uuidLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -183,7 +183,7 @@ export interface BackupPolicyArgs {
     /**
      * The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
      */
-    policyRegionId?: pulumi.Input<string>;
+    policyRegionId?: pulumi.Input<string | undefined>;
     /**
      * Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
      */

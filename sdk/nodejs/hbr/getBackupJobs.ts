@@ -205,19 +205,19 @@ export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getBackupJobs.
  */
 export interface GetBackupJobsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.hbr.GetBackupJobsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.hbr.GetBackupJobsFilterArgs>[] | undefined>;
     /**
      * A list of Backup Job IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
      */
-    sortDirection?: pulumi.Input<string>;
+    sortDirection?: pulumi.Input<string | undefined>;
     /**
      * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      */
@@ -225,5 +225,5 @@ export interface GetBackupJobsOutputArgs {
     /**
      * The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

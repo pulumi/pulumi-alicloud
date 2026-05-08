@@ -21,7 +21,7 @@ class ServiceMonitoringAgentProcessArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  process_name: pulumi.Input[_builtins.str],
-                 process_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 process_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceMonitoringAgentProcess resource.
 
@@ -60,24 +60,24 @@ class ServiceMonitoringAgentProcessArgs:
 
     @_builtins.property
     @pulumi.getter(name="processUser")
-    def process_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who launches the process.
         """
         return pulumi.get(self, "process_user")
 
     @process_user.setter
-    def process_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process_user", value)
 
 
 @pulumi.input_type
 class _ServiceMonitoringAgentProcessState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_user: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_user: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceMonitoringAgentProcess resources.
 
@@ -97,50 +97,50 @@ class _ServiceMonitoringAgentProcessState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="processId")
-    def process_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the process.
         """
         return pulumi.get(self, "process_id")
 
     @process_id.setter
-    def process_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process_id", value)
 
     @_builtins.property
     @pulumi.getter(name="processName")
-    def process_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the process.
         """
         return pulumi.get(self, "process_name")
 
     @process_name.setter
-    def process_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process_name", value)
 
     @_builtins.property
     @pulumi.getter(name="processUser")
-    def process_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user who launches the process.
         """
         return pulumi.get(self, "process_user")
 
     @process_user.setter
-    def process_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process_user", value)
 
 
@@ -150,9 +150,9 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Monitoring Agent Process resource.
@@ -311,9 +311,9 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 process_user: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 process_user: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,10 +341,10 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            process_id: Optional[pulumi.Input[_builtins.str]] = None,
-            process_name: Optional[pulumi.Input[_builtins.str]] = None,
-            process_user: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceMonitoringAgentProcess':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            process_id: pulumi.Input[Optional[_builtins.str]] = None,
+            process_name: pulumi.Input[Optional[_builtins.str]] = None,
+            process_user: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceMonitoringAgentProcess':
         """
         Get an existing ServiceMonitoringAgentProcess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

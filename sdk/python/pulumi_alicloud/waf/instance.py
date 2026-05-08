@@ -29,12 +29,12 @@ class InstanceArgs:
                  prefessional_service: pulumi.Input[_builtins.str],
                  subscription_type: pulumi.Input[_builtins.str],
                  waf_log: pulumi.Input[_builtins.str],
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Instance resource.
 
@@ -210,55 +210,55 @@ class InstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of configuration change. Valid value: Upgrade.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Service time of Web Application Firewall.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance region ID.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Renewal period of WAF service. Unit: month
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Renewal status of WAF service. Valid values: 
         * AutoRenewal: The service time of WAF is renewed automatically.
@@ -267,42 +267,42 @@ class InstanceArgs:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
 
 @pulumi.input_type
 class _InstanceState:
     def __init__(__self__, *,
-                 big_screen: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_ip_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_domain_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefessional_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_log: Optional[pulumi.Input[_builtins.str]] = None):
+                 big_screen: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_ip_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_domain_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefessional_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_log: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
 
@@ -367,91 +367,91 @@ class _InstanceState:
 
     @_builtins.property
     @pulumi.getter(name="bigScreen")
-    def big_screen(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def big_screen(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether big screen is supported. Valid values: ["0", "1"]. "0" for false and "1" for true.
         """
         return pulumi.get(self, "big_screen")
 
     @big_screen.setter
-    def big_screen(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def big_screen(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "big_screen", value)
 
     @_builtins.property
     @pulumi.getter(name="exclusiveIpPackage")
-    def exclusive_ip_package(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclusive_ip_package(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the number of exclusive WAF IP addresses.
         """
         return pulumi.get(self, "exclusive_ip_package")
 
     @exclusive_ip_package.setter
-    def exclusive_ip_package(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclusive_ip_package(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclusive_ip_package", value)
 
     @_builtins.property
     @pulumi.getter(name="extBandwidth")
-    def ext_bandwidth(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ext_bandwidth(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extra bandwidth. Unit: Mbit/s.
         """
         return pulumi.get(self, "ext_bandwidth")
 
     @ext_bandwidth.setter
-    def ext_bandwidth(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ext_bandwidth(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ext_bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="extDomainPackage")
-    def ext_domain_package(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ext_domain_package(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of extra domains.
         """
         return pulumi.get(self, "ext_domain_package")
 
     @ext_domain_package.setter
-    def ext_domain_package(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ext_domain_package(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ext_domain_package", value)
 
     @_builtins.property
     @pulumi.getter(name="logStorage")
-    def log_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log storage size. Unit: T. Valid values: [3, 5, 10, 20, 50].
         """
         return pulumi.get(self, "log_storage")
 
     @log_storage.setter
-    def log_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="logTime")
-    def log_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log storage period. Unit: day. Valid values: [180, 360].
         """
         return pulumi.get(self, "log_time")
 
     @log_time.setter
-    def log_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of configuration change. Valid value: Upgrade.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="packageCode")
-    def package_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription plan:
         * China site customers can purchase the following versions of China Mainland region, valid values: ["version_3", "version_4", "version_5"].
@@ -462,60 +462,60 @@ class _InstanceState:
         return pulumi.get(self, "package_code")
 
     @package_code.setter
-    def package_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Service time of Web Application Firewall.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="prefessionalService")
-    def prefessional_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefessional_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether professional service is supported. Valid values: ["true", "false"]
         """
         return pulumi.get(self, "prefessional_service")
 
     @prefessional_service.setter
-    def prefessional_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefessional_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefessional_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance region ID.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Renewal period of WAF service. Unit: month
         """
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Renewal status of WAF service. Valid values: 
         * AutoRenewal: The service time of WAF is renewed automatically.
@@ -524,55 +524,55 @@ class _InstanceState:
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionType")
-    def subscription_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
         """
         return pulumi.get(self, "subscription_type")
 
     @subscription_type.setter
-    def subscription_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_type", value)
 
     @_builtins.property
     @pulumi.getter(name="wafLog")
-    def waf_log(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def waf_log(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify whether Log service is supported. Valid values: ["true", "false"]
         """
         return pulumi.get(self, "waf_log")
 
     @waf_log.setter
-    def waf_log(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def waf_log(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "waf_log", value)
 
 
@@ -582,22 +582,22 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_screen: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_ip_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_domain_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefessional_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_log: Optional[pulumi.Input[_builtins.str]] = None,
+                 big_screen: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_ip_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_domain_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefessional_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_log: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATED:**  This resource has been deprecated and using wafv3.Instance instead.
@@ -612,10 +612,11 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.get_instances()
-        default_instance = []
+        default_instance: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
@@ -696,10 +697,11 @@ class Instance(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         default = alicloud.waf.get_instances()
-        default_instance = []
+        default_instance: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
@@ -751,22 +753,22 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 big_screen: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclusive_ip_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-                 ext_domain_package: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 prefessional_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 waf_log: Optional[pulumi.Input[_builtins.str]] = None,
+                 big_screen: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclusive_ip_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+                 ext_domain_package: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 prefessional_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 waf_log: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -823,23 +825,23 @@ class Instance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            big_screen: Optional[pulumi.Input[_builtins.str]] = None,
-            exclusive_ip_package: Optional[pulumi.Input[_builtins.str]] = None,
-            ext_bandwidth: Optional[pulumi.Input[_builtins.str]] = None,
-            ext_domain_package: Optional[pulumi.Input[_builtins.str]] = None,
-            log_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            log_time: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            package_code: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            prefessional_service: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            subscription_type: Optional[pulumi.Input[_builtins.str]] = None,
-            waf_log: Optional[pulumi.Input[_builtins.str]] = None) -> 'Instance':
+            big_screen: pulumi.Input[Optional[_builtins.str]] = None,
+            exclusive_ip_package: pulumi.Input[Optional[_builtins.str]] = None,
+            ext_bandwidth: pulumi.Input[Optional[_builtins.str]] = None,
+            ext_domain_package: pulumi.Input[Optional[_builtins.str]] = None,
+            log_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            log_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            package_code: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            prefessional_service: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            subscription_type: pulumi.Input[Optional[_builtins.str]] = None,
+            waf_log: pulumi.Input[Optional[_builtins.str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

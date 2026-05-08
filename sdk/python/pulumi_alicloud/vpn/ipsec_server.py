@@ -24,13 +24,13 @@ class IpsecServerArgs:
                  client_ip_pool: pulumi.Input[_builtins.str],
                  local_subnet: pulumi.Input[_builtins.str],
                  vpn_gateway_id: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
-                 ipsec_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
+                 ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
+                 ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a IpsecServer resource.
 
@@ -101,102 +101,102 @@ class IpsecServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="effectImmediately")
-    def effect_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def effect_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether you want the configuration to immediately take effect.
         """
         return pulumi.get(self, "effect_immediately")
 
     @effect_immediately.setter
-    def effect_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def effect_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "effect_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
+    def ike_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
         """
         The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_configs")
 
     @ike_configs.setter
-    def ike_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]):
+    def ike_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]):
         pulumi.set(self, "ike_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
+    def ipsec_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
         """
         The configuration of Phase 2 negotiations. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_configs")
 
     @ipsec_configs.setter
-    def ipsec_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]):
+    def ipsec_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]):
         pulumi.set(self, "ipsec_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecServerName")
-    def ipsec_server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipsec_server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "ipsec_server_name")
 
     @ipsec_server_name.setter
-    def ipsec_server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipsec_server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipsec_server_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def psk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
         """
         return pulumi.get(self, "psk")
 
     @psk.setter
-    def psk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psk", value)
 
     @_builtins.property
     @pulumi.getter(name="pskEnabled")
-    def psk_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def psk_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
         """
         return pulumi.get(self, "psk_enabled")
 
     @psk_enabled.setter
-    def psk_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def psk_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psk_enabled", value)
 
 
 @pulumi.input_type
 class _IpsecServerState:
     def __init__(__self__, *,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
-                 ipsec_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]] = None,
+                 ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]] = None,
+                 ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpsecServer resources.
 
@@ -234,122 +234,122 @@ class _IpsecServerState:
 
     @_builtins.property
     @pulumi.getter(name="clientIpPool")
-    def client_ip_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
         """
         return pulumi.get(self, "client_ip_pool")
 
     @client_ip_pool.setter
-    def client_ip_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The dry run.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="effectImmediately")
-    def effect_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def effect_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether you want the configuration to immediately take effect.
         """
         return pulumi.get(self, "effect_immediately")
 
     @effect_immediately.setter
-    def effect_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def effect_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "effect_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeConfigs")
-    def ike_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
+    def ike_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]:
         """
         The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_configs")
 
     @ike_configs.setter
-    def ike_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]):
+    def ike_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIkeConfigArgs']]]]):
         pulumi.set(self, "ike_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecConfigs")
-    def ipsec_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
+    def ipsec_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]:
         """
         The configuration of Phase 2 negotiations. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_configs")
 
     @ipsec_configs.setter
-    def ipsec_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]):
+    def ipsec_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsecServerIpsecConfigArgs']]]]):
         pulumi.set(self, "ipsec_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecServerName")
-    def ipsec_server_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipsec_server_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
         """
         return pulumi.get(self, "ipsec_server_name")
 
     @ipsec_server_name.setter
-    def ipsec_server_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipsec_server_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipsec_server_name", value)
 
     @_builtins.property
     @pulumi.getter(name="localSubnet")
-    def local_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
         """
         return pulumi.get(self, "local_subnet")
 
     @local_subnet.setter
-    def local_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def psk(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def psk(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
         """
         return pulumi.get(self, "psk")
 
     @psk.setter
-    def psk(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def psk(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "psk", value)
 
     @_builtins.property
     @pulumi.getter(name="pskEnabled")
-    def psk_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def psk_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
         """
         return pulumi.get(self, "psk_enabled")
 
     @psk_enabled.setter
-    def psk_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def psk_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "psk_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPN gateway.
         """
         return pulumi.get(self, "vpn_gateway_id")
 
     @vpn_gateway_id.setter
-    def vpn_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_id", value)
 
 
@@ -359,16 +359,16 @@ class IpsecServer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
-                 ipsec_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+                 ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
+                 ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPN Ipsec Server resource.
@@ -512,16 +512,16 @@ class IpsecServer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
-                 ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
-                 ipsec_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk: Optional[pulumi.Input[_builtins.str]] = None,
-                 psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+                 ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
+                 ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk: pulumi.Input[Optional[_builtins.str]] = None,
+                 psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -557,16 +557,16 @@ class IpsecServer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_ip_pool: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-            ike_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
-            ipsec_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
-            ipsec_server_name: Optional[pulumi.Input[_builtins.str]] = None,
-            local_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            psk: Optional[pulumi.Input[_builtins.str]] = None,
-            psk_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'IpsecServer':
+            client_ip_pool: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            ike_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIkeConfigArgs', 'IpsecServerIkeConfigArgsDict']]]]] = None,
+            ipsec_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsecServerIpsecConfigArgs', 'IpsecServerIpsecConfigArgsDict']]]]] = None,
+            ipsec_server_name: pulumi.Input[Optional[_builtins.str]] = None,
+            local_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            psk: pulumi.Input[Optional[_builtins.str]] = None,
+            psk_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'IpsecServer':
         """
         Get an existing IpsecServer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

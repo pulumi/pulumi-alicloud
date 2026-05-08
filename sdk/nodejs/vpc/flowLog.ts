@@ -259,79 +259,79 @@ export interface FlowLogState {
     /**
      * The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      */
-    aggregationInterval?: pulumi.Input<string>;
+    aggregationInterval?: pulumi.Input<string | undefined>;
     /**
      * Business status
      */
-    businessStatus?: pulumi.Input<string>;
+    businessStatus?: pulumi.Input<string | undefined>;
     /**
      * Creation time
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The Description of the VPC Flow Log.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The flow log ID.
      */
-    flowLogId?: pulumi.Input<string>;
+    flowLogId?: pulumi.Input<string | undefined>;
     /**
      * The Name of the VPC Flow Log.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The IP address type of the collected traffic.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The Logstore that stores the captured traffic data.
      */
-    logStoreName?: pulumi.Input<string>;
+    logStoreName?: pulumi.Input<string | undefined>;
     /**
      * The project that manages the captured traffic data.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The resource type of the traffic captured by the flow log:
      * - `NetworkInterface`: ENI.
      * - `VSwitch`: All ENIs in the VSwitch.
      * - `VPC`: All ENIs in the VPC.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the current instance resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The collected flow path. Value:
      * - *all**: indicates full acquisition.
      * - *internetGateway**: indicates public network traffic collection.
      */
-    trafficPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    trafficPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of traffic collected. Valid values:
      * - *All**: All traffic.
      * - *Allow**: Access control allowedtraffic.
      * - *Drop**: Access control denied traffic.
      */
-    trafficType?: pulumi.Input<string>;
+    trafficType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -341,19 +341,19 @@ export interface FlowLogArgs {
     /**
      * The sampling interval of the flow log. Unit: seconds. Valid values: 1, 5, and 10 (default).
      */
-    aggregationInterval?: pulumi.Input<string>;
+    aggregationInterval?: pulumi.Input<string | undefined>;
     /**
      * The Description of the VPC Flow Log.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Name of the VPC Flow Log.
      */
-    flowLogName?: pulumi.Input<string>;
+    flowLogName?: pulumi.Input<string | undefined>;
     /**
      * The IP address type of the collected traffic.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The Logstore that stores the captured traffic data.
      */
@@ -365,7 +365,7 @@ export interface FlowLogArgs {
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource.
      */
@@ -380,17 +380,17 @@ export interface FlowLogArgs {
     /**
      * The status of the VPC Flow Log. Valid values: `Active` and `Inactive`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the current instance resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The collected flow path. Value:
      * - *all**: indicates full acquisition.
      * - *internetGateway**: indicates public network traffic collection.
      */
-    trafficPaths?: pulumi.Input<pulumi.Input<string>[]>;
+    trafficPaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of traffic collected. Valid values:
      * - *All**: All traffic.

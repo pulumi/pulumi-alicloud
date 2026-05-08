@@ -22,14 +22,14 @@ class ZoneRecordArgs:
                  type: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.str],
                  zone_id: pulumi.Input[_builtins.str],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_record: Optional[pulumi.Input[_builtins.str]] = None,
-                 rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+                 rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
 
@@ -107,68 +107,68 @@ class ZoneRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the Private Zone Record.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceRecord")
     @_utilities.deprecated("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
-    def resource_record(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_record(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource record of the Private Zone Record.
         """
         return pulumi.get(self, "resource_record")
 
     @resource_record.setter
-    def resource_record(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_record(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_record", value)
 
     @_builtins.property
     @pulumi.getter
-    def rr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rr of the Private Zone Record.
         """
         return pulumi.get(self, "rr")
 
     @rr.setter
-    def rr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rr", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resolve record status. Value:
         - ENABLE: enable resolution.
@@ -177,46 +177,46 @@ class ZoneRecordArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ttl of the Private Zone Record. Default to `60`.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
 
 @pulumi.input_type
 class _ZoneRecordState:
     def __init__(__self__, *,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 record_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_record: Optional[pulumi.Input[_builtins.str]] = None,
-                 rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 record_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+                 rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
 
@@ -264,80 +264,80 @@ class _ZoneRecordState:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the Private Zone Record. At present, only can "MX" record support it. Valid values: [1-99]. Default to 1.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="recordId")
-    def record_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def record_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Private Zone Record ID.
         """
         return pulumi.get(self, "record_id")
 
     @record_id.setter
-    def record_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def record_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "record_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remark of the Private Zone Record.
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceRecord")
     @_utilities.deprecated("""Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead.""")
-    def resource_record(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_record(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource record of the Private Zone Record.
         """
         return pulumi.get(self, "resource_record")
 
     @resource_record.setter
-    def resource_record(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_record(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_record", value)
 
     @_builtins.property
     @pulumi.getter
-    def rr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rr of the Private Zone Record.
         """
         return pulumi.get(self, "rr")
 
     @rr.setter
-    def rr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rr", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resolve record status. Value:
         - ENABLE: enable resolution.
@@ -346,64 +346,64 @@ class _ZoneRecordState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ttl of the Private Zone Record. Default to `60`.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="userClientIp")
-    def user_client_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_client_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "user_client_ip")
 
     @user_client_ip.setter
-    def user_client_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_client_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_client_ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the Private Zone Record.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Private Zone Record.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -413,17 +413,17 @@ class ZoneRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_record: Optional[pulumi.Input[_builtins.str]] = None,
-                 rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+                 rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Zone Record resource.
@@ -527,17 +527,17 @@ class ZoneRecord(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_record: Optional[pulumi.Input[_builtins.str]] = None,
-                 rr: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+                 rr: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -575,18 +575,18 @@ class ZoneRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            record_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_record: Optional[pulumi.Input[_builtins.str]] = None,
-            rr: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            user_client_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            value: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZoneRecord':
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            record_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_record: pulumi.Input[Optional[_builtins.str]] = None,
+            rr: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_client_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZoneRecord':
         """
         Get an existing ZoneRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

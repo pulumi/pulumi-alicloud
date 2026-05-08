@@ -114,15 +114,15 @@ export interface GetVbrPconnAssociationsOutputArgs {
     /**
      * A list of Vbr Pconn Association IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VBR instance.
      */
-    vbrId?: pulumi.Input<string>;
+    vbrId?: pulumi.Input<string | undefined>;
 }

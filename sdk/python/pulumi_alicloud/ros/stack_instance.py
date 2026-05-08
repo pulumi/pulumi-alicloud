@@ -24,11 +24,11 @@ class StackInstanceArgs:
                  stack_group_name: pulumi.Input[_builtins.str],
                  stack_instance_account_id: pulumi.Input[_builtins.str],
                  stack_instance_region_id: pulumi.Input[_builtins.str],
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
-                 retain_stacks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None):
+                 operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
+                 retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StackInstance resource.
 
@@ -97,19 +97,19 @@ class StackInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="operationDescription")
-    def operation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation description.
         """
         return pulumi.get(self, "operation_description")
 
     @operation_description.setter
-    def operation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="operationPreferences")
-    def operation_preferences(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_preferences(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation preferences. The operation settings. The following fields are supported:
         * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -120,58 +120,58 @@ class StackInstanceArgs:
         return pulumi.get(self, "operation_preferences")
 
     @operation_preferences.setter
-    def operation_preferences(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_preferences(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterOverrides")
-    def parameter_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
+    def parameter_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
         """
         ParameterOverrides. See the following `Block parameter_overrides`.
         """
         return pulumi.get(self, "parameter_overrides")
 
     @parameter_overrides.setter
-    def parameter_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]):
+    def parameter_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]):
         pulumi.set(self, "parameter_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="retainStacks")
-    def retain_stacks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_stacks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         """
         return pulumi.get(self, "retain_stacks")
 
     @retain_stacks.setter
-    def retain_stacks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_stacks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_stacks", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutInMinutes")
-    def timeout_in_minutes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout_in_minutes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         return pulumi.get(self, "timeout_in_minutes")
 
     @timeout_in_minutes.setter
-    def timeout_in_minutes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout_in_minutes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout_in_minutes", value)
 
 
 @pulumi.input_type
 class _StackInstanceState:
     def __init__(__self__, *,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
-                 retain_stacks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None):
+                 operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]] = None,
+                 retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StackInstance resources.
 
@@ -215,19 +215,19 @@ class _StackInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="operationDescription")
-    def operation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation description.
         """
         return pulumi.get(self, "operation_description")
 
     @operation_description.setter
-    def operation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="operationPreferences")
-    def operation_preferences(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_preferences(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation preferences. The operation settings. The following fields are supported:
         * `FailureToleranceCount` The maximum number of stack group operation failures that can occur. In a stack group operation, if the total number of failures does not exceed the FailureToleranceCount value, the operation succeeds. Otherwise, the operation fails. If the FailureToleranceCount parameter is not specified, the default value 0 is used. You cannot specify both FailureToleranceCount and FailureTolerancePercentage. Valid values: `0` to `20`.
@@ -238,72 +238,72 @@ class _StackInstanceState:
         return pulumi.get(self, "operation_preferences")
 
     @operation_preferences.setter
-    def operation_preferences(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_preferences(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_preferences", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterOverrides")
-    def parameter_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
+    def parameter_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]:
         """
         ParameterOverrides. See the following `Block parameter_overrides`.
         """
         return pulumi.get(self, "parameter_overrides")
 
     @parameter_overrides.setter
-    def parameter_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]):
+    def parameter_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StackInstanceParameterOverrideArgs']]]]):
         pulumi.set(self, "parameter_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="retainStacks")
-    def retain_stacks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def retain_stacks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
         """
         return pulumi.get(self, "retain_stacks")
 
     @retain_stacks.setter
-    def retain_stacks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def retain_stacks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "retain_stacks", value)
 
     @_builtins.property
     @pulumi.getter(name="stackGroupName")
-    def stack_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the stack group.
         """
         return pulumi.get(self, "stack_group_name")
 
     @stack_group_name.setter
-    def stack_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="stackInstanceAccountId")
-    def stack_instance_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_instance_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account to which the stack instance belongs.
         """
         return pulumi.get(self, "stack_instance_account_id")
 
     @stack_instance_account_id.setter
-    def stack_instance_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_instance_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_instance_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stackInstanceRegionId")
-    def stack_instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def stack_instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the stack instance.
         """
         return pulumi.get(self, "stack_instance_region_id")
 
     @stack_instance_region_id.setter
-    def stack_instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def stack_instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "stack_instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`. 
         * `CURRENT`: The stack corresponding to the stack instance is up to date with the stack group.
@@ -315,19 +315,19 @@ class _StackInstanceState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutInMinutes")
-    def timeout_in_minutes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout_in_minutes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
         """
         return pulumi.get(self, "timeout_in_minutes")
 
     @timeout_in_minutes.setter
-    def timeout_in_minutes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout_in_minutes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout_in_minutes", value)
 
 
@@ -337,14 +337,14 @@ class StackInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
-                 retain_stacks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+                 retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ROS Stack Instance resource.
@@ -502,14 +502,14 @@ class StackInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
-                 retain_stacks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 stack_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None,
+                 operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+                 retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 stack_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -546,15 +546,15 @@ class StackInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            operation_description: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_preferences: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
-            retain_stacks: Optional[pulumi.Input[_builtins.bool]] = None,
-            stack_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_instance_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            stack_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout_in_minutes: Optional[pulumi.Input[_builtins.str]] = None) -> 'StackInstance':
+            operation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_preferences: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StackInstanceParameterOverrideArgs', 'StackInstanceParameterOverrideArgsDict']]]]] = None,
+            retain_stacks: pulumi.Input[Optional[_builtins.bool]] = None,
+            stack_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_instance_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            stack_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_in_minutes: pulumi.Input[Optional[_builtins.str]] = None) -> 'StackInstance':
         """
         Get an existing StackInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

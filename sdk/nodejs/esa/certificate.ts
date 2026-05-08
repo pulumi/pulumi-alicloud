@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  * const defaultCertificate = new alicloud.esa.Certificate("default", {
  *     createdType: "free",
  *     domains: "101.gositecdn.cn",
- *     siteId: _default.then(_default => _default.sites?.[0]?.id),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.id)).apply(x =>String(x)),
  *     type: "lets_encrypt",
  * });
  * ```
@@ -185,23 +185,23 @@ export interface CertificateState {
     /**
      * Cloud certificate ID.
      */
-    casId?: pulumi.Input<string>;
+    casId?: pulumi.Input<string | undefined>;
     /**
      * The certificate Id.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * Certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
      * - cas (Certificate Center Certificate)
@@ -210,35 +210,35 @@ export interface CertificateState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    createdType?: pulumi.Input<string>;
+    createdType?: pulumi.Input<string | undefined>;
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
-    domains?: pulumi.Input<string>;
+    domains?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Region. This parameter is required if the type is CAS.
      * For accounts on the Chinese site, this parameter value is: cn-hangzhou
      * For accounts on the international site, this parameter value is: ap-southeast-1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,19 +248,19 @@ export interface CertificateArgs {
     /**
      * Cloud certificate ID.
      */
-    casId?: pulumi.Input<string>;
+    casId?: pulumi.Input<string | undefined>;
     /**
      * The certificate Id.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * The certificate name.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * Certificate content.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The certificate type.
      * - cas (Certificate Center Certificate)
@@ -273,19 +273,19 @@ export interface CertificateArgs {
     /**
      * A list of domain names. Multiple domain names are separated by commas.
      */
-    domains?: pulumi.Input<string>;
+    domains?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Region. This parameter is required if the type is CAS.
      * For accounts on the Chinese site, this parameter value is: cn-hangzhou
      * For accounts on the international site, this parameter value is: ap-southeast-1
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites interface.
      */
@@ -293,5 +293,5 @@ export interface CertificateArgs {
     /**
      * Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

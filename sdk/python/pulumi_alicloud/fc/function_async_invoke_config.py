@@ -23,11 +23,11 @@ class FunctionAsyncInvokeConfigArgs:
     def __init__(__self__, *,
                  function_name: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
-                 maximum_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 destination_config: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
+                 maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 stateful_invocation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a FunctionAsyncInvokeConfig resource.
 
@@ -78,77 +78,77 @@ class FunctionAsyncInvokeConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
+    def destination_config(self) -> pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
         """
         Configuration block with destination configuration. See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
     @destination_config.setter
-    def destination_config(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]):
+    def destination_config(self, value: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']]):
         pulumi.set(self, "destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumEventAgeInSeconds")
-    def maximum_event_age_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_event_age_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         """
         return pulumi.get(self, "maximum_event_age_in_seconds")
 
     @maximum_event_age_in_seconds.setter
-    def maximum_event_age_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_event_age_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_event_age_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumRetryAttempts")
-    def maximum_retry_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_retry_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         """
         return pulumi.get(self, "maximum_retry_attempts")
 
     @maximum_retry_attempts.setter
-    def maximum_retry_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_retry_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_retry_attempts", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulInvocation")
-    def stateful_invocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stateful_invocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         return pulumi.get(self, "stateful_invocation")
 
     @stateful_invocation.setter
-    def stateful_invocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stateful_invocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stateful_invocation", value)
 
 
 @pulumi.input_type
 class _FunctionAsyncInvokeConfigState:
     def __init__(__self__, *,
-                 created_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_config: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None):
+                 created_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_config: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stateful_invocation: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering FunctionAsyncInvokeConfig resources.
 
@@ -183,110 +183,110 @@ class _FunctionAsyncInvokeConfigState:
 
     @_builtins.property
     @pulumi.getter(name="createdTime")
-    def created_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was created.
         """
         return pulumi.get(self, "created_time")
 
     @created_time.setter
-    def created_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_time", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationConfig")
-    def destination_config(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
+    def destination_config(self) -> pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']]:
         """
         Configuration block with destination configuration. See `destination_config` below.
         """
         return pulumi.get(self, "destination_config")
 
     @destination_config.setter
-    def destination_config(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigArgs']]):
+    def destination_config(self, value: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigArgs']]):
         pulumi.set(self, "destination_config", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Function Compute Function.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date this resource was last modified.
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumEventAgeInSeconds")
-    def maximum_event_age_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_event_age_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
         """
         return pulumi.get(self, "maximum_event_age_in_seconds")
 
     @maximum_event_age_in_seconds.setter
-    def maximum_event_age_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_event_age_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_event_age_in_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maximumRetryAttempts")
-    def maximum_retry_attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maximum_retry_attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
         """
         return pulumi.get(self, "maximum_retry_attempts")
 
     @maximum_retry_attempts.setter
-    def maximum_retry_attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maximum_retry_attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maximum_retry_attempts", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Function Compute Function, omitting any version or alias qualifier.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
     @_builtins.property
     @pulumi.getter(name="statefulInvocation")
-    def stateful_invocation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stateful_invocation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
         """
         return pulumi.get(self, "stateful_invocation")
 
     @stateful_invocation.setter
-    def stateful_invocation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stateful_invocation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stateful_invocation", value)
 
 
@@ -296,13 +296,13 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stateful_invocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an asynchronous invocation configuration for a FC Function or Alias.\\
@@ -563,13 +563,13 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 maximum_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maximum_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None,
+                 destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 stateful_invocation: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -602,15 +602,15 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_time: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_config: Optional[pulumi.Input[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-            maximum_event_age_in_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            maximum_retry_attempts: Optional[pulumi.Input[_builtins.int]] = None,
-            qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-            service_name: Optional[pulumi.Input[_builtins.str]] = None,
-            stateful_invocation: Optional[pulumi.Input[_builtins.bool]] = None) -> 'FunctionAsyncInvokeConfig':
+            created_time: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_config: pulumi.Input[Optional[Union['FunctionAsyncInvokeConfigDestinationConfigArgs', 'FunctionAsyncInvokeConfigDestinationConfigArgsDict']]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+            maximum_event_age_in_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            maximum_retry_attempts: pulumi.Input[Optional[_builtins.int]] = None,
+            qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+            service_name: pulumi.Input[Optional[_builtins.str]] = None,
+            stateful_invocation: pulumi.Input[Optional[_builtins.bool]] = None) -> 'FunctionAsyncInvokeConfig':
         """
         Get an existing FunctionAsyncInvokeConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

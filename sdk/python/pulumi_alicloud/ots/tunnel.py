@@ -90,16 +90,16 @@ class TunnelArgs:
 @pulumi.input_type
 class _TunnelState:
     def __init__(__self__, *,
-                 channels: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 expired: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_rpo: Optional[pulumi.Input[_builtins.int]] = None,
-                 tunnel_stage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 channels: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelChannelArgs']]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 expired: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_rpo: pulumi.Input[Optional[_builtins.int]] = None,
+                 tunnel_stage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Tunnel resources.
 
@@ -137,122 +137,122 @@ class _TunnelState:
 
     @_builtins.property
     @pulumi.getter
-    def channels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]]]:
+    def channels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TunnelChannelArgs']]]]:
         """
         The channels of OTS tunnel. Each element contains the following attributes:
         """
         return pulumi.get(self, "channels")
 
     @channels.setter
-    def channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TunnelChannelArgs']]]]):
+    def channels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TunnelChannelArgs']]]]):
         pulumi.set(self, "channels", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The creation time of the Tunnel.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def expired(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expired(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the tunnel has expired.
         """
         return pulumi.get(self, "expired")
 
     @expired.setter
-    def expired(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expired(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expired", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS instance in which table will located.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tableName")
-    def table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS table. If changed, a new table would be created.
         """
         return pulumi.get(self, "table_name")
 
     @table_name.setter
-    def table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelId")
-    def tunnel_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tunnel id of the OTS which could not be changed.
         """
         return pulumi.get(self, "tunnel_id")
 
     @tunnel_id.setter
-    def tunnel_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_id", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelName")
-    def tunnel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OTS tunnel. If changed, a new tunnel would be created.
         """
         return pulumi.get(self, "tunnel_name")
 
     @tunnel_name.setter
-    def tunnel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_name", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelRpo")
-    def tunnel_rpo(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tunnel_rpo(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The latest consumption time of the tunnel, unix time in nanosecond.
         """
         return pulumi.get(self, "tunnel_rpo")
 
     @tunnel_rpo.setter
-    def tunnel_rpo(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tunnel_rpo(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tunnel_rpo", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelStage")
-    def tunnel_stage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_stage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
         """
         return pulumi.get(self, "tunnel_stage")
 
     @tunnel_stage.setter
-    def tunnel_stage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_stage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_stage", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelType")
-    def tunnel_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tunnel_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
         """
         return pulumi.get(self, "tunnel_type")
 
     @tunnel_type.setter
-    def tunnel_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tunnel_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tunnel_type", value)
 
 
@@ -262,10 +262,10 @@ class Tunnel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an OTS tunnel resource.
@@ -431,10 +431,10 @@ class Tunnel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tunnel_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tunnel_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,16 +472,16 @@ class Tunnel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            channels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            expired: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_name: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_rpo: Optional[pulumi.Input[_builtins.int]] = None,
-            tunnel_stage: Optional[pulumi.Input[_builtins.str]] = None,
-            tunnel_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Tunnel':
+            channels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TunnelChannelArgs', 'TunnelChannelArgsDict']]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            expired: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_rpo: pulumi.Input[Optional[_builtins.int]] = None,
+            tunnel_stage: pulumi.Input[Optional[_builtins.str]] = None,
+            tunnel_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Tunnel':
         """
         Get an existing Tunnel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -25,13 +25,13 @@ class MetricRuleBlackListArgs:
                  instances: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  metric_rule_black_list_name: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
-                 scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
+                 scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MetricRuleBlackList resource.
 
@@ -116,106 +116,106 @@ class MetricRuleBlackListArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective time range of the alert blacklist policy.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndTime")
-    def enable_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start timestamp of the alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "enable_end_time")
 
     @enable_end_time.setter
-    def enable_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStartTime")
-    def enable_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end timestamp of the alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "enable_start_time")
 
     @enable_start_time.setter
-    def enable_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnable")
-    def is_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         """
         return pulumi.get(self, "is_enable")
 
     @is_enable.setter
-    def is_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
         """
         Monitoring metrics in the instance. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeType")
-    def scope_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         """
         return pulumi.get(self, "scope_type")
 
     @scope_type.setter
-    def scope_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeValues")
-    def scope_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scope_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         """
         return pulumi.get(self, "scope_values")
 
     @scope_values.setter
-    def scope_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scope_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scope_values", value)
 
 
 @pulumi.input_type
 class _MetricRuleBlackListState:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_rule_black_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_rule_black_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_rule_black_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MetricRuleBlackList resources.
 
@@ -265,170 +265,170 @@ class _MetricRuleBlackListState:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp for creating an alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective time range of the alert blacklist policy.
         """
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableEndTime")
-    def enable_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start timestamp of the alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "enable_end_time")
 
     @enable_end_time.setter
-    def enable_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStartTime")
-    def enable_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end timestamp of the alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "enable_start_time")
 
     @enable_start_time.setter
-    def enable_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instances(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of instances of cloud services specified in the alert blacklist policy.
         """
         return pulumi.get(self, "instances")
 
     @instances.setter
-    def instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instances(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instances", value)
 
     @_builtins.property
     @pulumi.getter(name="isEnable")
-    def is_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
         """
         return pulumi.get(self, "is_enable")
 
     @is_enable.setter
-    def is_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="metricRuleBlackListId")
-    def metric_rule_black_list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_rule_black_list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the blacklist policy.
         """
         return pulumi.get(self, "metric_rule_black_list_id")
 
     @metric_rule_black_list_id.setter
-    def metric_rule_black_list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_rule_black_list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_rule_black_list_id", value)
 
     @_builtins.property
     @pulumi.getter(name="metricRuleBlackListName")
-    def metric_rule_black_list_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_rule_black_list_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert blacklist policy.
         """
         return pulumi.get(self, "metric_rule_black_list_name")
 
     @metric_rule_black_list_name.setter
-    def metric_rule_black_list_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_rule_black_list_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_rule_black_list_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
+    def metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]:
         """
         Monitoring metrics in the instance. See `metrics` below.
         """
         return pulumi.get(self, "metrics")
 
     @metrics.setter
-    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]):
+    def metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MetricRuleBlackListMetricArgs']]]]):
         pulumi.set(self, "metrics", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data namespace of the cloud service.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeType")
-    def scope_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
         """
         return pulumi.get(self, "scope_type")
 
     @scope_type.setter
-    def scope_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scopeValues")
-    def scope_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def scope_values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
         """
         return pulumi.get(self, "scope_values")
 
     @scope_values.setter
-    def scope_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def scope_values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "scope_values", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_time", value)
 
 
@@ -438,17 +438,17 @@ class MetricRuleBlackList(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_rule_black_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Metric Rule Black List resource.
@@ -472,7 +472,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
@@ -558,7 +558,7 @@ class MetricRuleBlackList(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="Instance")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         default_network = alicloud.vpc.Network("default",
@@ -617,17 +617,17 @@ class MetricRuleBlackList(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 is_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 metric_rule_black_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -669,20 +669,20 @@ class MetricRuleBlackList(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instances: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            is_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            metric_rule_black_list_id: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_rule_black_list_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            scope_type: Optional[pulumi.Input[_builtins.str]] = None,
-            scope_values: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            update_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'MetricRuleBlackList':
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instances: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            is_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            metric_rule_black_list_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_rule_black_list_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MetricRuleBlackListMetricArgs', 'MetricRuleBlackListMetricArgsDict']]]]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_type: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'MetricRuleBlackList':
         """
         Get an existing MetricRuleBlackList resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

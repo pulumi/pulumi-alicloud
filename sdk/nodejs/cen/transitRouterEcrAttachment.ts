@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const asn = config.get("asn") || "4200000667";
  * const defaultO8Hcfx = new alicloud.expressconnect.RouterExpressConnectRouter("defaultO8Hcfx", {
- *     alibabaSideAsn: asn,
+ *     alibabaSideAsn: Number(asn),
  *     ecrName: name,
  * });
  * const defaultQKBiay = new alicloud.cen.Instance("defaultQKBiay", {cenInstanceName: name});
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     ecrId: defaultO8Hcfx.id,
  *     cenId: defaultQKBiay.id,
  *     transitRouterId: defaultQa94Y1.transitRouterId,
- *     transitRouterOwnerId: current.then(current => current.id),
+ *     transitRouterOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * const _default = new alicloud.cen.TransitRouterEcrAttachment("default", {
  *     ecrId: defaultO8Hcfx.id,
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *     transitRouterEcrAttachmentName: name,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterId: defaultQa94Y1.transitRouterId,
- *     ecrOwnerId: current.then(current => current.id),
+ *     ecrOwnerId: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * ```
  *
@@ -173,39 +173,39 @@ export interface TransitRouterEcrAttachmentState {
     /**
      * CenId
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * EcrId
      */
-    ecrId?: pulumi.Input<string>;
+    ecrId?: pulumi.Input<string | undefined>;
     /**
      * EcrOwnerId
      */
-    ecrOwnerId?: pulumi.Input<number>;
+    ecrOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentName
      */
-    transitRouterEcrAttachmentName?: pulumi.Input<string>;
+    transitRouterEcrAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterId
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,7 +215,7 @@ export interface TransitRouterEcrAttachmentArgs {
     /**
      * CenId
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * EcrId
      */
@@ -223,21 +223,21 @@ export interface TransitRouterEcrAttachmentArgs {
     /**
      * EcrOwnerId
      */
-    ecrOwnerId?: pulumi.Input<number>;
+    ecrOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * TransitRouterAttachmentDescription
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentName
      */
-    transitRouterEcrAttachmentName?: pulumi.Input<string>;
+    transitRouterEcrAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterId
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
 }

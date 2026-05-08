@@ -212,55 +212,55 @@ export interface DwResourceGroupState {
     /**
      * Whether to automatically renew. The default value is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Resource group creation time
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The VPC ID of the default network resource.
      */
-    defaultVpcId?: pulumi.Input<string>;
+    defaultVpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vswitch bound to the network resource by default.
      */
-    defaultVswitchId?: pulumi.Input<string>;
+    defaultVswitchId?: pulumi.Input<string | undefined>;
     /**
      * When the payment method is Prepaid, the unit is PaymentDurationUnit.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Resource Group Comments
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resource group name
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Package year and package month resource group specifications, unit CU
      */
-    specification?: pulumi.Input<number>;
+    specification?: pulumi.Input<number | undefined>;
     /**
      * Resource group status:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -270,7 +270,7 @@ export interface DwResourceGroupArgs {
     /**
      * Whether to automatically renew. The default value is false.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The VPC ID of the default network resource.
      */
@@ -282,15 +282,15 @@ export interface DwResourceGroupArgs {
     /**
      * When the payment method is Prepaid, the unit is PaymentDurationUnit.
      */
-    paymentDuration?: pulumi.Input<number>;
+    paymentDuration?: pulumi.Input<number | undefined>;
     /**
      * When the payment method is Prepaid, the payment duration unit, Month is Month, Year is Year, and there is no other optional value.
      */
-    paymentDurationUnit?: pulumi.Input<string>;
+    paymentDurationUnit?: pulumi.Input<string | undefined>;
     /**
      * The billing type of the resource group. PrePaid is Subscription, and PostPaid is Pay-As-You-Go.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Resource Group Comments
      */
@@ -298,17 +298,17 @@ export interface DwResourceGroupArgs {
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Resource group name
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Package year and package month resource group specifications, unit CU
      */
-    specification?: pulumi.Input<number>;
+    specification?: pulumi.Input<number | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

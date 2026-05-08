@@ -136,29 +136,29 @@ export interface GetTransitRouterMulticastDomainPeerMembersOutputArgs {
     /**
      * A list of Cen Transit Router Multicast Domain Peer Member IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the inter-region multicast domains.
      */
-    peerTransitRouterMulticastDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    peerTransitRouterMulticastDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource associated with the multicast resource.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the multicast resource. Valid values:
      * * VPC: queries multicast resources by VPC.
      * * TR: queries multicast resources that are also deployed in a different region.
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the network instance connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the multicast domain to which the multicast member belongs.
      */

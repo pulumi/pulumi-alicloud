@@ -20,16 +20,16 @@ __all__ = ['NetworkOptimizationArgs', 'NetworkOptimization']
 class NetworkOptimizationArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
-                 grpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
-                 websocket: Optional[pulumi.Input[_builtins.str]] = None):
+                 grpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+                 websocket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkOptimization resource.
 
@@ -83,31 +83,31 @@ class NetworkOptimizationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable GRPC, default is disabled. Value range:
         """
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Origin")
-    def http2_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http2_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTP2 origin, default is disabled. Value range:
         """
         return pulumi.get(self, "http2_origin")
 
     @http2_origin.setter
-    def http2_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http2_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http2_origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true
@@ -116,109 +116,109 @@ class NetworkOptimizationArgs:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter(name="smartRouting")
-    def smart_routing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smart_routing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable smart routing service, default is disabled. Value range:
         """
         return pulumi.get(self, "smart_routing")
 
     @smart_routing.setter
-    def smart_routing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smart_routing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smart_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadMaxFilesize")
-    def upload_max_filesize(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_max_filesize(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum upload file size, in MB, value range: 100～500.
         """
         return pulumi.get(self, "upload_max_filesize")
 
     @upload_max_filesize.setter
-    def upload_max_filesize(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_max_filesize(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_max_filesize", value)
 
     @_builtins.property
     @pulumi.getter
-    def websocket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def websocket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable Websocket, default is enabled. Value range:
         """
         return pulumi.get(self, "websocket")
 
     @websocket.setter
-    def websocket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def websocket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "websocket", value)
 
 
 @pulumi.input_type
 class _NetworkOptimizationState:
     def __init__(__self__, *,
-                 config_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 grpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
-                 websocket: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 grpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+                 websocket: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkOptimization resources.
 
@@ -264,43 +264,43 @@ class _NetworkOptimizationState:
 
     @_builtins.property
     @pulumi.getter(name="configId")
-    def config_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def config_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ConfigId of the configuration, which can be obtained by calling the ListNetworkOptimizations.
         """
         return pulumi.get(self, "config_id")
 
     @config_id.setter
-    def config_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def config_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "config_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def grpc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grpc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable GRPC, default is disabled. Value range:
         """
         return pulumi.get(self, "grpc")
 
     @grpc.setter
-    def grpc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grpc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grpc", value)
 
     @_builtins.property
     @pulumi.getter(name="http2Origin")
-    def http2_origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http2_origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable HTTP2 origin, default is disabled. Value range:
         """
         return pulumi.get(self, "http2_origin")
 
     @http2_origin.setter
-    def http2_origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http2_origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http2_origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule content, using conditional expressions to match user requests. When adding global configuration, this parameter does not need to be set. There are two usage scenarios:
         - Match all incoming requests: value set to true
@@ -309,103 +309,103 @@ class _NetworkOptimizationState:
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleEnable")
-    def rule_enable(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_enable(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
         """
         return pulumi.get(self, "rule_enable")
 
     @rule_enable.setter
-    def rule_enable(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_enable(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule name.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def sequence(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sequence(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
         """
         return pulumi.get(self, "sequence")
 
     @sequence.setter
-    def sequence(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sequence(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sequence", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site ID.
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter(name="siteVersion")
-    def site_version(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def site_version(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
         """
         return pulumi.get(self, "site_version")
 
     @site_version.setter
-    def site_version(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def site_version(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "site_version", value)
 
     @_builtins.property
     @pulumi.getter(name="smartRouting")
-    def smart_routing(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smart_routing(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable smart routing service, default is disabled. Value range:
         """
         return pulumi.get(self, "smart_routing")
 
     @smart_routing.setter
-    def smart_routing(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smart_routing(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smart_routing", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadMaxFilesize")
-    def upload_max_filesize(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upload_max_filesize(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maximum upload file size, in MB, value range: 100～500.
         """
         return pulumi.get(self, "upload_max_filesize")
 
     @upload_max_filesize.setter
-    def upload_max_filesize(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upload_max_filesize(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upload_max_filesize", value)
 
     @_builtins.property
     @pulumi.getter
-    def websocket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def websocket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable Websocket, default is enabled. Value range:
         """
         return pulumi.get(self, "websocket")
 
     @websocket.setter
-    def websocket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def websocket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "websocket", value)
 
 
@@ -415,17 +415,17 @@ class NetworkOptimization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
-                 websocket: Optional[pulumi.Input[_builtins.str]] = None,
+                 grpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+                 websocket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Network Optimization resource.
@@ -562,17 +562,17 @@ class NetworkOptimization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 grpc: Optional[pulumi.Input[_builtins.str]] = None,
-                 http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 sequence: Optional[pulumi.Input[_builtins.int]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_version: Optional[pulumi.Input[_builtins.int]] = None,
-                 smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
-                 websocket: Optional[pulumi.Input[_builtins.str]] = None,
+                 grpc: pulumi.Input[Optional[_builtins.str]] = None,
+                 http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 sequence: pulumi.Input[Optional[_builtins.int]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+                 websocket: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -606,18 +606,18 @@ class NetworkOptimization(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config_id: Optional[pulumi.Input[_builtins.int]] = None,
-            grpc: Optional[pulumi.Input[_builtins.str]] = None,
-            http2_origin: Optional[pulumi.Input[_builtins.str]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_enable: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            sequence: Optional[pulumi.Input[_builtins.int]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            site_version: Optional[pulumi.Input[_builtins.int]] = None,
-            smart_routing: Optional[pulumi.Input[_builtins.str]] = None,
-            upload_max_filesize: Optional[pulumi.Input[_builtins.str]] = None,
-            websocket: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkOptimization':
+            config_id: pulumi.Input[Optional[_builtins.int]] = None,
+            grpc: pulumi.Input[Optional[_builtins.str]] = None,
+            http2_origin: pulumi.Input[Optional[_builtins.str]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_enable: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            sequence: pulumi.Input[Optional[_builtins.int]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            site_version: pulumi.Input[Optional[_builtins.int]] = None,
+            smart_routing: pulumi.Input[Optional[_builtins.str]] = None,
+            upload_max_filesize: pulumi.Input[Optional[_builtins.str]] = None,
+            websocket: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkOptimization':
         """
         Get an existing NetworkOptimization resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

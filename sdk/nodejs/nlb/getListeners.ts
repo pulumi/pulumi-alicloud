@@ -115,17 +115,17 @@ export interface GetListenersOutputArgs {
     /**
      * A list of Listener IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NLB instance. You can specify at most 20 IDs.
      */
-    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

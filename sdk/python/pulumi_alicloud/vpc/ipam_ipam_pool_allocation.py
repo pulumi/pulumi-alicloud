@@ -20,10 +20,10 @@ __all__ = ['IpamIpamPoolAllocationArgs', 'IpamIpamPoolAllocation']
 class IpamIpamPoolAllocationArgs:
     def __init__(__self__, *,
                  ipam_pool_id: pulumi.Input[_builtins.str],
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipam_pool_allocation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a IpamIpamPoolAllocation resource.
 
@@ -61,19 +61,19 @@ class IpamIpamPoolAllocationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocated address segment.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMask")
-    def cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Create a custom reserved network segment from The IPAM address pool by entering a mask.
 
@@ -82,12 +82,12 @@ class IpamIpamPoolAllocationArgs:
         return pulumi.get(self, "cidr_mask")
 
     @cidr_mask.setter
-    def cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolAllocationDescription")
-    def ipam_pool_allocation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_allocation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ipam pool alloctaion.
         It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -95,12 +95,12 @@ class IpamIpamPoolAllocationArgs:
         return pulumi.get(self, "ipam_pool_allocation_description")
 
     @ipam_pool_allocation_description.setter
-    def ipam_pool_allocation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_allocation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_allocation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolAllocationName")
-    def ipam_pool_allocation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_allocation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ipam pool allocation.
         It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
@@ -108,21 +108,21 @@ class IpamIpamPoolAllocationArgs:
         return pulumi.get(self, "ipam_pool_allocation_name")
 
     @ipam_pool_allocation_name.setter
-    def ipam_pool_allocation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_allocation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_allocation_name", value)
 
 
 @pulumi.input_type
 class _IpamIpamPoolAllocationState:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_allocation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IpamIpamPoolAllocation resources.
 
@@ -159,19 +159,19 @@ class _IpamIpamPoolAllocationState:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The allocated address segment.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="cidrMask")
-    def cidr_mask(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cidr_mask(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Create a custom reserved network segment from The IPAM address pool by entering a mask.
 
@@ -180,24 +180,24 @@ class _IpamIpamPoolAllocationState:
         return pulumi.get(self, "cidr_mask")
 
     @cidr_mask.setter
-    def cidr_mask(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cidr_mask(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cidr_mask", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolAllocationDescription")
-    def ipam_pool_allocation_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_allocation_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the ipam pool alloctaion.
         It must be 1 to 256 characters in length and must start with an English letter or Chinese character, but cannot start with 'http:// 'or 'https. If it is not filled in, it is empty. The default value is empty.
@@ -205,12 +205,12 @@ class _IpamIpamPoolAllocationState:
         return pulumi.get(self, "ipam_pool_allocation_description")
 
     @ipam_pool_allocation_description.setter
-    def ipam_pool_allocation_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_allocation_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_allocation_description", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolAllocationName")
-    def ipam_pool_allocation_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_allocation_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ipam pool allocation.
         It must be 1 to 128 characters in length and cannot start with 'http:// 'or 'https.
@@ -218,24 +218,24 @@ class _IpamIpamPoolAllocationState:
         return pulumi.get(self, "ipam_pool_allocation_name")
 
     @ipam_pool_allocation_name.setter
-    def ipam_pool_allocation_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_allocation_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_allocation_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipamPoolId")
-    def ipam_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the IPAM Pool.
         """
         return pulumi.get(self, "ipam_pool_id")
 
     @ipam_pool_id.setter
-    def ipam_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When the IPAM Pool to which CIDR is allocated has the region attribute, this attribute is the IPAM Pool region.
         When the IPAM Pool to which CIDR is allocated does not have the region attribute, this attribute is the IPAM region.
@@ -243,19 +243,19 @@ class _IpamIpamPoolAllocationState:
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance. Value:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -265,11 +265,11 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipam_pool_allocation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Vpc Ipam Ipam Pool Allocation resource.
@@ -396,11 +396,11 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-                 ipam_pool_allocation_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -430,14 +430,14 @@ class IpamIpamPoolAllocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            cidr_mask: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_pool_allocation_description: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_pool_allocation_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'IpamIpamPoolAllocation':
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            cidr_mask: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_allocation_description: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_allocation_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'IpamIpamPoolAllocation':
         """
         Get an existing IpamIpamPoolAllocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

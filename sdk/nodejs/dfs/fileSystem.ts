@@ -198,61 +198,61 @@ export interface FileSystemState {
     /**
      * The creation time of the file system instance.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Redundancy mode of the file system. Value:
      * - LRS (default): Local redundancy.
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
-    dataRedundancyType?: pulumi.Input<string>;
+    dataRedundancyType?: pulumi.Input<string | undefined>;
     /**
      * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
      */
-    dedicatedClusterId?: pulumi.Input<string>;
+    dedicatedClusterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
-    fileSystemName?: pulumi.Input<string>;
+    fileSystemName?: pulumi.Input<string | undefined>;
     /**
      * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
      */
-    partitionNumber?: pulumi.Input<number>;
+    partitionNumber?: pulumi.Input<number | undefined>;
     /**
      * The protocol type. Value: `HDFS`, `PANGU`.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
-    provisionedThroughputInMiBps?: pulumi.Input<number>;
+    provisionedThroughputInMiBps?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.242.0) The region ID of the File System.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
-    spaceCapacity?: pulumi.Input<number>;
+    spaceCapacity?: pulumi.Input<number | undefined>;
     /**
      * Save set identity, used to select a user-specified save set.
      */
-    storageSetName?: pulumi.Input<string>;
+    storageSetName?: pulumi.Input<string | undefined>;
     /**
      * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
-    throughputMode?: pulumi.Input<string>;
+    throughputMode?: pulumi.Input<string | undefined>;
     /**
      * Zone Id, which is used to create file system resources to the specified zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -264,15 +264,15 @@ export interface FileSystemArgs {
      * - LRS (default): Local redundancy.
      * - ZRS: Same-City redundancy. When ZRS is selected, zoneId is a string consisting of multiple zones that are expected to be redundant in the same city, for example,  'zoneId1,zoneId2 '.
      */
-    dataRedundancyType?: pulumi.Input<string>;
+    dataRedundancyType?: pulumi.Input<string | undefined>;
     /**
      * Dedicated cluster id, which is used to support scenarios such as group cloud migration.
      */
-    dedicatedClusterId?: pulumi.Input<string>;
+    dedicatedClusterId?: pulumi.Input<string | undefined>;
     /**
      * The description of the file system resource. No more than 32 characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The file system name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
      */
@@ -280,7 +280,7 @@ export interface FileSystemArgs {
     /**
      * Save set sequence number, the user selects the content of the specified sequence number in the Save set.
      */
-    partitionNumber?: pulumi.Input<number>;
+    partitionNumber?: pulumi.Input<number | undefined>;
     /**
      * The protocol type. Value: `HDFS`, `PANGU`.
      */
@@ -288,7 +288,7 @@ export interface FileSystemArgs {
     /**
      * Provisioned throughput. This parameter is required when ThroughputMode is set to Provisioned. Unit: MB/s Value range: 1~5120.
      */
-    provisionedThroughputInMiBps?: pulumi.Input<number>;
+    provisionedThroughputInMiBps?: pulumi.Input<number | undefined>;
     /**
      * File system capacity.  When the actual amount of data stored reaches the capacity of the file system, data cannot be written.  Unit: GiB.
      */
@@ -296,7 +296,7 @@ export interface FileSystemArgs {
     /**
      * Save set identity, used to select a user-specified save set.
      */
-    storageSetName?: pulumi.Input<string>;
+    storageSetName?: pulumi.Input<string | undefined>;
     /**
      * The storage media type. Value: STANDARD (default): STANDARD PERFORMANCE: PERFORMANCE type.
      */
@@ -304,9 +304,9 @@ export interface FileSystemArgs {
     /**
      * The throughput mode. Value: Standard (default): Standard throughput Provisioned: preset throughput.
      */
-    throughputMode?: pulumi.Input<string>;
+    throughputMode?: pulumi.Input<string | undefined>;
     /**
      * Zone Id, which is used to create file system resources to the specified zone.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

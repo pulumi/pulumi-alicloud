@@ -32,27 +32,27 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var @default = AliCloud.Index.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultUuid = new Random.Index.Uuid("default");
+    ///     var defaultUuid = new Random.Uuid("default");
     /// 
     ///     var defaultStorageBundle = new AliCloud.CloudStorageGateway.StorageBundle("default", new()
     ///     {
-    ///         StorageBundleName = Std.Index.Replace.Invoke(new()
+    ///         StorageBundleName = Std.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,
@@ -62,12 +62,12 @@ namespace Pulumi.AliCloud.CloudStorageGateway
     /// 
     ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = Std.Index.Replace.Invoke(new()
+    ///         BucketName = Std.Replace.Invoke(new()
     ///         {
     ///             Text = defaultUuid.Result,
     ///             Search = "-",
     ///             Replace = "",
-    ///         }).Apply(invoke =&gt; Std.Index.Substr.Invoke(new()
+    ///         }).Apply(invoke =&gt; Std.Substr.Invoke(new()
     ///         {
     ///             Input = $"tf-example-{invoke.Result}",
     ///             Offset = 0,

@@ -145,7 +145,7 @@ def get_scaling_configurations(ids: Optional[Sequence[_builtins.str]] = None,
         available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=2,
-        memory_size=4)
+        memory_size=float(4))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")
@@ -214,10 +214,10 @@ def get_scaling_configurations(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'))
-def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      scaling_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_scaling_configurations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      scaling_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScalingConfigurationsResult]:
     """
     This data source provides available scaling configuration resources.
@@ -243,7 +243,7 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
         available_resource_creation="VSwitch")
     default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
         cpu_core_count=2,
-        memory_size=4)
+        memory_size=float(4))
     default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
         most_recent=True,
         owners="system")

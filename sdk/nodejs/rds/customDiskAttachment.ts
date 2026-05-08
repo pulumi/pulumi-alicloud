@@ -175,23 +175,23 @@ export interface CustomDiskAttachmentState {
      * If the target disk to be attached is an elastic temporary disk, you must set the DeleteWithInstance parameter to true.
      * This parameter is not supported for cloud disks with the multi-Mount feature enabled.
      */
-    deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the cloud disk to be mounted. The cloud disk ('DiskId') and the instance ('InstanceId') must be in the same zone.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target RDS Custom instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the resource.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The status of the disk.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -207,7 +207,7 @@ export interface CustomDiskAttachmentArgs {
      * If the target disk to be attached is an elastic temporary disk, you must set the DeleteWithInstance parameter to true.
      * This parameter is not supported for cloud disks with the multi-Mount feature enabled.
      */
-    deleteWithInstance?: pulumi.Input<boolean>;
+    deleteWithInstance?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the cloud disk to be mounted. The cloud disk ('DiskId') and the instance ('InstanceId') must be in the same zone.
      */

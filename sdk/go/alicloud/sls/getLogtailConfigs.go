@@ -115,15 +115,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_default := defaultLogtailConfig.LogtailConfigName.ApplyT(func(logtailConfigName string) (sls.GetLogtailConfigsResult, error) {
-//				return sls.GetLogtailConfigsResult(interface{}(sls.GetLogtailConfigs(ctx, &sls.GetLogtailConfigsArgs{
-//					LogtailConfigName: pulumi.StringRef(pulumi.StringRef(logtailConfigName)),
-//					LogstoreName:      "example",
-//					ProjectName:       projectName,
-//					Offset:            0,
-//					Size:              100,
-//				}, nil))), nil
-//			}).(sls.GetLogtailConfigsResultOutput)
+//			_default := sls.GetLogtailConfigsOutput(ctx, sls.GetLogtailConfigsOutputArgs{
+//				LogtailConfigName: defaultLogtailConfig.LogtailConfigName,
+//				LogstoreName:      pulumi.String("example"),
+//				ProjectName:       pulumi.String(pulumi.String(projectName)),
+//				Offset:            pulumi.Int(0),
+//				Size:              pulumi.Int(100),
+//			}, nil)
 //			ctx.Export("alicloudSlsLogtailConfigExampleId", _default.ApplyT(func(_default sls.GetLogtailConfigsResult) (*string, error) {
 //				return &_default.Configs[0].Id, nil
 //			}).(pulumi.StringPtrOutput))

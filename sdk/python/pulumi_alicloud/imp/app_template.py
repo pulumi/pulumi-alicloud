@@ -23,9 +23,9 @@ class AppTemplateArgs:
     def __init__(__self__, *,
                  app_template_name: pulumi.Input[_builtins.str],
                  component_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
-                 integration_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None):
+                 config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
+                 integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AppTemplate resource.
 
@@ -72,19 +72,19 @@ class AppTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="configLists")
-    def config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]:
+    def config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]:
         """
         Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
         """
         return pulumi.get(self, "config_lists")
 
     @config_lists.setter
-    def config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]):
+    def config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]):
         pulumi.set(self, "config_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationMode")
-    def integration_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Integration mode. Valid values:
         * paasSDK: Integrated SDK.
@@ -93,31 +93,31 @@ class AppTemplateArgs:
         return pulumi.get(self, "integration_mode")
 
     @integration_mode.setter
-    def integration_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Template scenario. Valid values: ["business", "classroom"].
         """
         return pulumi.get(self, "scene")
 
     @scene.setter
-    def scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scene", value)
 
 
 @pulumi.input_type
 class _AppTemplateState:
     def __init__(__self__, *,
-                 app_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
-                 integration_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 component_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]] = None,
+                 integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppTemplate resources.
 
@@ -145,43 +145,43 @@ class _AppTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="appTemplateName")
-    def app_template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "app_template_name")
 
     @app_template_name.setter
-    def app_template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="componentLists")
-    def component_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def component_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of components. Its element valid values: ["component.live","component.liveRecord","component.liveBeauty","component.rtc","component.rtcRecord","component.im","component.whiteboard","component.liveSecurity","component.chatSecurity"].
         """
         return pulumi.get(self, "component_lists")
 
     @component_lists.setter
-    def component_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def component_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "component_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="configLists")
-    def config_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]:
+    def config_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]:
         """
         Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
         """
         return pulumi.get(self, "config_lists")
 
     @config_lists.setter
-    def config_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]):
+    def config_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppTemplateConfigListArgs']]]]):
         pulumi.set(self, "config_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationMode")
-    def integration_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Integration mode. Valid values:
         * paasSDK: Integrated SDK.
@@ -190,31 +190,31 @@ class _AppTemplateState:
         return pulumi.get(self, "integration_mode")
 
     @integration_mode.setter
-    def integration_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def scene(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scene(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Template scenario. Valid values: ["business", "classroom"].
         """
         return pulumi.get(self, "scene")
 
     @scene.setter
-    def scene(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scene(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scene", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application template usage status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -224,11 +224,11 @@ class AppTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
-                 integration_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 component_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
+                 integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Apsara Agile Live (IMP) App Template resource.
@@ -333,11 +333,11 @@ class AppTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
-                 integration_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 scene: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 component_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
+                 integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 scene: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -367,12 +367,12 @@ class AppTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            component_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            config_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
-            integration_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            scene: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppTemplate':
+            app_template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            component_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            config_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTemplateConfigListArgs', 'AppTemplateConfigListArgsDict']]]]] = None,
+            integration_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            scene: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppTemplate':
         """
         Get an existing AppTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

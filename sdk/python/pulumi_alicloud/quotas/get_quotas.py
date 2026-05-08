@@ -238,16 +238,16 @@ def get_quotas(dimensions: Optional[Sequence[Union['GetQuotasDimensionArgs', 'Ge
         quotas=pulumi.get(__ret__, 'quotas'),
         sort_field=pulumi.get(__ret__, 'sort_field'),
         sort_order=pulumi.get(__ret__, 'sort_order'))
-def get_quotas_output(dimensions: Optional[pulumi.Input[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]]]] = None,
-                      group_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      key_word: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      product_code: Optional[pulumi.Input[_builtins.str]] = None,
-                      quota_action_code: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      quota_category: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      sort_field: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      sort_order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_quotas_output(dimensions: pulumi.Input[Optional[Optional[Sequence[Union['GetQuotasDimensionArgs', 'GetQuotasDimensionArgsDict']]]]] = None,
+                      group_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      key_word: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      product_code: pulumi.Input[Optional[_builtins.str]] = None,
+                      quota_action_code: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      quota_category: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      sort_field: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      sort_order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQuotasResult]:
     """
     This data source provides the Quotas Quotas of the current Alibaba Cloud user.

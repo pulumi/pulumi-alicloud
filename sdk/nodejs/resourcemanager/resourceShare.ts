@@ -182,59 +182,59 @@ export interface ResourceShareState {
      * - false (default): Only sharing within the resource directory is allowed.
      * - true: Allow sharing to any account.
      */
-    allowExternalTargets?: pulumi.Input<boolean>;
+    allowExternalTargets?: pulumi.Input<boolean | undefined>;
     /**
      * The create time of resource share.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    permissionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ResourceArns
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resourceArns?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A list of resource properties. See `resourceProperties` below.
      */
-    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[]>;
+    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[] | undefined>;
     /**
      * The name of resource share.
      */
-    resourceShareName?: pulumi.Input<string>;
+    resourceShareName?: pulumi.Input<string | undefined>;
     /**
      * The owner of resource share,  `Self` and `OtherAccounts`.
      */
-    resourceShareOwner?: pulumi.Input<string>;
+    resourceShareOwner?: pulumi.Input<string | undefined>;
     /**
      * List of shared resources. See `resources` below.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[] | undefined>;
     /**
      * The status of resource share.  `Active`,`Deleted` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource user.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    targets?: pulumi.Input<pulumi.Input<string>[]>;
+    targets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -246,27 +246,27 @@ export interface ResourceShareArgs {
      * - false (default): Only sharing within the resource directory is allowed.
      * - true: Allow sharing to any account.
      */
-    allowExternalTargets?: pulumi.Input<boolean>;
+    allowExternalTargets?: pulumi.Input<boolean | undefined>;
     /**
      * Share permission name. When it is empty, the system automatically binds the default permissions associated with the resource type. For more information, see [Permission Library](https://www.alibabacloud.com/help/en/resource-management/resource-sharing/user-guide/permissions-for-resource-sharing).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    permissionNames?: pulumi.Input<pulumi.Input<string>[]>;
+    permissionNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ResourceArns
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resourceArns?: pulumi.Input<pulumi.Input<string>[]>;
+    resourceArns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * A list of resource properties. See `resourceProperties` below.
      */
-    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[]>;
+    resourceProperties?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResourceProperty>[] | undefined>;
     /**
      * The name of resource share.
      */
@@ -276,15 +276,15 @@ export interface ResourceShareArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[]>;
+    resources?: pulumi.Input<pulumi.Input<inputs.resourcemanager.ResourceShareResource>[] | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Resource user.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    targets?: pulumi.Input<pulumi.Input<string>[]>;
+    targets?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

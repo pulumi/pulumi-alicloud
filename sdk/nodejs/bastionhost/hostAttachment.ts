@@ -155,15 +155,15 @@ export interface HostAttachmentState {
     /**
      * Specifies the added to the host group ID.
      */
-    hostGroupId?: pulumi.Input<string>;
+    hostGroupId?: pulumi.Input<string | undefined>;
     /**
      * Specified to be part of a host group of host ID.
      */
-    hostId?: pulumi.Input<string>;
+    hostId?: pulumi.Input<string | undefined>;
     /**
      * The bastion host instance id.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

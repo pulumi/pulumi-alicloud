@@ -235,15 +235,15 @@ def get_provisioned_products(access_level_filter: Optional[_builtins.str] = None
         provisioned_products=pulumi.get(__ret__, 'provisioned_products'),
         sort_by=pulumi.get(__ret__, 'sort_by'),
         sort_order=pulumi.get(__ret__, 'sort_order'))
-def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                                    ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                    page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                    sort_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    sort_order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_provisioned_products_output(access_level_filter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                                    ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                    page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                    sort_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    sort_order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProvisionedProductsResult]:
     """
     This data source provides Service Catalog Provisioned Product available to the user. [What is Provisioned Product](https://www.alibabacloud.com/help/en/service-catalog/developer-reference/api-servicecatalog-2021-09-01-launchproduct)

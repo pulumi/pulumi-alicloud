@@ -188,10 +188,10 @@ def get_sasl_users(ids: Optional[Sequence[_builtins.str]] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         users=pulumi.get(__ret__, 'users'))
-def get_sasl_users_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                          name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sasl_users_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                          instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                          name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSaslUsersResult]:
     """
     This data source provides the Alikafka Sasl Users of the current Alibaba Cloud user.

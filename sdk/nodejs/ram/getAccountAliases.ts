@@ -42,5 +42,5 @@ export function getAccountAliasesOutput(args?: GetAccountAliasesOutputArgs, opts
  * A collection of arguments for invoking getAccountAliases.
  */
 export interface GetAccountAliasesOutputArgs {
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

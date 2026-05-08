@@ -29,19 +29,19 @@ class StarRocksInstanceArgs:
                  run_mode: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frontend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 observer_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]] = None,
-                 oss_accessing_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]] = None,
+                 oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]] = None):
         """
         The set of arguments for constructing a StarRocksInstance resource.
 
@@ -217,103 +217,103 @@ class StarRocksInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="backendNodeGroups")
-    def backend_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]:
+    def backend_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]:
         """
         BackendNodeGroups See `backend_node_groups` below.
         """
         return pulumi.get(self, "backend_node_groups")
 
     @backend_node_groups.setter
-    def backend_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]):
+    def backend_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]):
         pulumi.set(self, "backend_node_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. It is only meaningful when payType is set to PrePaid.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether encrypted
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendNodeGroups")
-    def frontend_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]:
+    def frontend_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]:
         """
         FrontendNodeGroups See `frontend_node_groups` below.
         """
         return pulumi.get(self, "frontend_node_groups")
 
     @frontend_node_groups.setter
-    def frontend_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]):
+    def frontend_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]):
         pulumi.set(self, "frontend_node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KmsKeyId
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="observerNodeGroups")
-    def observer_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]:
+    def observer_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]:
         """
         ObserverNodeGroups See `observer_node_groups` below.
         """
         return pulumi.get(self, "observer_node_groups")
 
     @observer_node_groups.setter
-    def observer_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]):
+    def observer_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]):
         pulumi.set(self, "observer_node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAccessingRoleName")
-    def oss_accessing_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_accessing_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role name used for password-free access to OSS.
         """
         return pulumi.get(self, "oss_accessing_role_name")
 
     @oss_accessing_role_name.setter
-    def oss_accessing_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_accessing_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_accessing_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration unit for purchasing:
         - Month
@@ -323,85 +323,85 @@ class StarRocksInstanceArgs:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Promotion
         """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ResourceGroupId
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tag list of the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]:
+    def vswitches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]:
         """
         The VSwitches info of the instance. See `vswitches` below.
         """
         return pulumi.get(self, "vswitches")
 
     @vswitches.setter
-    def vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]):
+    def vswitches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]):
         pulumi.set(self, "vswitches", value)
 
 
 @pulumi.input_type
 class _StarRocksInstanceState:
     def __init__(__self__, *,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]] = None,
-                 cluster_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frontend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 observer_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]] = None,
-                 oss_accessing_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]] = None):
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]] = None,
+                 cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]] = None,
+                 oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]] = None):
         """
         Input properties used for looking up and filtering StarRocksInstance resources.
 
@@ -491,151 +491,151 @@ class _StarRocksInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="adminPassword")
-    def admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password of admin user.
         """
         return pulumi.get(self, "admin_password")
 
     @admin_password.setter
-    def admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "admin_password", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. This is only meaningful when payType is set to PrePaid. Disabled by default.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="backendNodeGroups")
-    def backend_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]:
+    def backend_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]:
         """
         BackendNodeGroups See `backend_node_groups` below.
         """
         return pulumi.get(self, "backend_node_groups")
 
     @backend_node_groups.setter
-    def backend_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]):
+    def backend_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceBackendNodeGroupArgs']]]]):
         pulumi.set(self, "backend_node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterZoneId")
-    def cluster_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ZoneId of instance.
         """
         return pulumi.get(self, "cluster_zone_id")
 
     @cluster_zone_id.setter
-    def cluster_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the instance.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. It is only meaningful when payType is set to PrePaid.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether encrypted
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendNodeGroups")
-    def frontend_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]:
+    def frontend_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]:
         """
         FrontendNodeGroups See `frontend_node_groups` below.
         """
         return pulumi.get(self, "frontend_node_groups")
 
     @frontend_node_groups.setter
-    def frontend_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]):
+    def frontend_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceFrontendNodeGroupArgs']]]]):
         pulumi.set(self, "frontend_node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the instance.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         KmsKeyId
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="observerNodeGroups")
-    def observer_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]:
+    def observer_node_groups(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]:
         """
         ObserverNodeGroups See `observer_node_groups` below.
         """
         return pulumi.get(self, "observer_node_groups")
 
     @observer_node_groups.setter
-    def observer_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]):
+    def observer_node_groups(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceObserverNodeGroupArgs']]]]):
         pulumi.set(self, "observer_node_groups", value)
 
     @_builtins.property
     @pulumi.getter(name="ossAccessingRoleName")
-    def oss_accessing_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_accessing_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role name used for password-free access to OSS.
         """
         return pulumi.get(self, "oss_accessing_role_name")
 
     @oss_accessing_role_name.setter
-    def oss_accessing_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_accessing_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_accessing_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="packageType")
-    def package_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def package_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The package type of the instance:
         - trial
@@ -644,12 +644,12 @@ class _StarRocksInstanceState:
         return pulumi.get(self, "package_type")
 
     @package_type.setter
-    def package_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def package_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "package_type", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pay type of the instance:
         - prePaid
@@ -658,12 +658,12 @@ class _StarRocksInstanceState:
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The duration unit for purchasing:
         - Month
@@ -673,48 +673,48 @@ class _StarRocksInstanceState:
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
     @_builtins.property
     @pulumi.getter(name="promotionOptionNo")
-    def promotion_option_no(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def promotion_option_no(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Promotion
         """
         return pulumi.get(self, "promotion_option_no")
 
     @promotion_option_no.setter
-    def promotion_option_no(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def promotion_option_no(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "promotion_option_no", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the instance.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ResourceGroupId
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="runMode")
-    def run_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def run_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The run mode of the instance:
         - shared_nothing
@@ -724,67 +724,67 @@ class _StarRocksInstanceState:
         return pulumi.get(self, "run_mode")
 
     @run_mode.setter
-    def run_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def run_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "run_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tag list of the instance.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the instance.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID of the instance.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def vswitches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]:
+    def vswitches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]:
         """
         The VSwitches info of the instance. See `vswitches` below.
         """
         return pulumi.get(self, "vswitches")
 
     @vswitches.setter
-    def vswitches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]):
+    def vswitches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['StarRocksInstanceVswitchArgs']]]]):
         pulumi.set(self, "vswitches", value)
 
 
@@ -799,27 +799,27 @@ class StarRocksInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
-                 cluster_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frontend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 observer_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
-                 oss_accessing_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+                 cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+                 oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Star Rocks Instance resource.
@@ -1058,27 +1058,27 @@ class StarRocksInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
-                 cluster_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frontend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 observer_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
-                 oss_accessing_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 package_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-                 promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
+                 admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+                 cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+                 oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 package_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+                 promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None,
                  __props__=None):
         pulumi.log.warn("""StarRocksInstance is deprecated: alicloud.index/starrocksinstance.StarRocksInstance has been deprecated in favor of alicloud.starrocks/instance.Instance""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1139,30 +1139,30 @@ class StarRocksInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            backend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
-            cluster_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            duration: Optional[pulumi.Input[_builtins.int]] = None,
-            encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            frontend_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            observer_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
-            oss_accessing_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            package_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None,
-            promotion_option_no: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            run_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitches: Optional[pulumi.Input[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None) -> 'StarRocksInstance':
+            admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            backend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceBackendNodeGroupArgs', 'StarRocksInstanceBackendNodeGroupArgsDict']]]]] = None,
+            cluster_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.int]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            frontend_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceFrontendNodeGroupArgs', 'StarRocksInstanceFrontendNodeGroupArgsDict']]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            observer_node_groups: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceObserverNodeGroupArgs', 'StarRocksInstanceObserverNodeGroupArgsDict']]]]] = None,
+            oss_accessing_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            package_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None,
+            promotion_option_no: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitches: pulumi.Input[Optional[Sequence[pulumi.Input[Union['StarRocksInstanceVswitchArgs', 'StarRocksInstanceVswitchArgsDict']]]]] = None) -> 'StarRocksInstance':
         """
         Get an existing StarRocksInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

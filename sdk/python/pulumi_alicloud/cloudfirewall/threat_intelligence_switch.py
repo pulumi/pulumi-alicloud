@@ -19,9 +19,9 @@ __all__ = ['ThreatIntelligenceSwitchArgs', 'ThreatIntelligenceSwitch']
 @pulumi.input_type
 class ThreatIntelligenceSwitchArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 category_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.int]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 category_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ThreatIntelligenceSwitch resource.
 
@@ -38,47 +38,47 @@ class ThreatIntelligenceSwitchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule action. Value:
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threat intelligence classification ID.
         """
         return pulumi.get(self, "category_id")
 
     @category_id.setter
-    def category_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStatus")
-    def enable_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Switch status. Value:
         """
         return pulumi.get(self, "enable_status")
 
     @enable_status.setter
-    def enable_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_status", value)
 
 
 @pulumi.input_type
 class _ThreatIntelligenceSwitchState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 category_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.int]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 category_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ThreatIntelligenceSwitch resources.
 
@@ -95,38 +95,38 @@ class _ThreatIntelligenceSwitchState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule action. Value:
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="categoryId")
-    def category_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threat intelligence classification ID.
         """
         return pulumi.get(self, "category_id")
 
     @category_id.setter
-    def category_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category_id", value)
 
     @_builtins.property
     @pulumi.getter(name="enableStatus")
-    def enable_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Switch status. Value:
         """
         return pulumi.get(self, "enable_status")
 
     @enable_status.setter
-    def enable_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_status", value)
 
 
@@ -136,9 +136,9 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 category_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 category_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Threat Intelligence Switch resource.
@@ -251,9 +251,9 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 category_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 category_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -276,9 +276,9 @@ class ThreatIntelligenceSwitch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            category_id: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_status: Optional[pulumi.Input[_builtins.int]] = None) -> 'ThreatIntelligenceSwitch':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            category_id: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_status: pulumi.Input[Optional[_builtins.int]] = None) -> 'ThreatIntelligenceSwitch':
         """
         Get an existing ThreatIntelligenceSwitch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

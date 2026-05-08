@@ -23,9 +23,9 @@ class DeliveryChannelArgs:
     def __init__(__self__, *,
                  delivery_channel_filter: pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs'],
                  delivery_channel_name: pulumi.Input[_builtins.str],
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         The set of arguments for constructing a DeliveryChannel resource.
 
@@ -70,49 +70,49 @@ class DeliveryChannelArgs:
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelDescription")
-    def delivery_channel_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_description")
 
     @delivery_channel_description.setter
-    def delivery_channel_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_description", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceChangeDelivery")
-    def resource_change_delivery(self) -> Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']]:
+    def resource_change_delivery(self) -> pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']]:
         """
         The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
         """
         return pulumi.get(self, "resource_change_delivery")
 
     @resource_change_delivery.setter
-    def resource_change_delivery(self, value: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']]):
+    def resource_change_delivery(self, value: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']]):
         pulumi.set(self, "resource_change_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSnapshotDelivery")
-    def resource_snapshot_delivery(self) -> Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']]:
+    def resource_snapshot_delivery(self) -> pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']]:
         """
         The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
         """
         return pulumi.get(self, "resource_snapshot_delivery")
 
     @resource_snapshot_delivery.setter
-    def resource_snapshot_delivery(self, value: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']]):
+    def resource_snapshot_delivery(self, value: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']]):
         pulumi.set(self, "resource_snapshot_delivery", value)
 
 
 @pulumi.input_type
 class _DeliveryChannelState:
     def __init__(__self__, *,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs']] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional['DeliveryChannelDeliveryChannelFilterArgs']] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']] = None):
         """
         Input properties used for looking up and filtering DeliveryChannel resources.
 
@@ -135,62 +135,62 @@ class _DeliveryChannelState:
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelDescription")
-    def delivery_channel_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_description")
 
     @delivery_channel_description.setter
-    def delivery_channel_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_description", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelFilter")
-    def delivery_channel_filter(self) -> Optional[pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs']]:
+    def delivery_channel_filter(self) -> pulumi.Input[Optional['DeliveryChannelDeliveryChannelFilterArgs']]:
         """
         The effective scope of the delivery channel. See `delivery_channel_filter` below.
         """
         return pulumi.get(self, "delivery_channel_filter")
 
     @delivery_channel_filter.setter
-    def delivery_channel_filter(self, value: Optional[pulumi.Input['DeliveryChannelDeliveryChannelFilterArgs']]):
+    def delivery_channel_filter(self, value: pulumi.Input[Optional['DeliveryChannelDeliveryChannelFilterArgs']]):
         pulumi.set(self, "delivery_channel_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="deliveryChannelName")
-    def delivery_channel_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delivery_channel_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the delivery channel.
         """
         return pulumi.get(self, "delivery_channel_name")
 
     @delivery_channel_name.setter
-    def delivery_channel_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delivery_channel_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delivery_channel_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceChangeDelivery")
-    def resource_change_delivery(self) -> Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']]:
+    def resource_change_delivery(self) -> pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']]:
         """
         The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
         """
         return pulumi.get(self, "resource_change_delivery")
 
     @resource_change_delivery.setter
-    def resource_change_delivery(self, value: Optional[pulumi.Input['DeliveryChannelResourceChangeDeliveryArgs']]):
+    def resource_change_delivery(self, value: pulumi.Input[Optional['DeliveryChannelResourceChangeDeliveryArgs']]):
         pulumi.set(self, "resource_change_delivery", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceSnapshotDelivery")
-    def resource_snapshot_delivery(self) -> Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']]:
+    def resource_snapshot_delivery(self) -> pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']]:
         """
         The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
         """
         return pulumi.get(self, "resource_snapshot_delivery")
 
     @resource_snapshot_delivery.setter
-    def resource_snapshot_delivery(self, value: Optional[pulumi.Input['DeliveryChannelResourceSnapshotDeliveryArgs']]):
+    def resource_snapshot_delivery(self, value: pulumi.Input[Optional['DeliveryChannelResourceSnapshotDeliveryArgs']]):
         pulumi.set(self, "resource_snapshot_delivery", value)
 
 
@@ -200,11 +200,11 @@ class DeliveryChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Delivery Channel resource.
@@ -353,11 +353,11 @@ class DeliveryChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 delivery_channel_filter: Optional[pulumi.Input[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-                 delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_change_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-                 resource_snapshot_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
+                 delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 delivery_channel_filter: pulumi.Input[Optional[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+                 delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_change_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+                 resource_snapshot_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -386,11 +386,11 @@ class DeliveryChannel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            delivery_channel_description: Optional[pulumi.Input[_builtins.str]] = None,
-            delivery_channel_filter: Optional[pulumi.Input[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
-            delivery_channel_name: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_change_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
-            resource_snapshot_delivery: Optional[pulumi.Input[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None) -> 'DeliveryChannel':
+            delivery_channel_description: pulumi.Input[Optional[_builtins.str]] = None,
+            delivery_channel_filter: pulumi.Input[Optional[Union['DeliveryChannelDeliveryChannelFilterArgs', 'DeliveryChannelDeliveryChannelFilterArgsDict']]] = None,
+            delivery_channel_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_change_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceChangeDeliveryArgs', 'DeliveryChannelResourceChangeDeliveryArgsDict']]] = None,
+            resource_snapshot_delivery: pulumi.Input[Optional[Union['DeliveryChannelResourceSnapshotDeliveryArgs', 'DeliveryChannelResourceSnapshotDeliveryArgsDict']]] = None) -> 'DeliveryChannel':
         """
         Get an existing DeliveryChannel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

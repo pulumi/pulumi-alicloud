@@ -23,7 +23,7 @@ class TransitRouterGrantAttachmentArgs:
                  cen_owner_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  instance_type: pulumi.Input[_builtins.str],
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterGrantAttachment resource.
 
@@ -98,25 +98,25 @@ class TransitRouterGrantAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
 
 @pulumi.input_type
 class _TransitRouterGrantAttachmentState:
     def __init__(__self__, *,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterGrantAttachment resources.
 
@@ -143,43 +143,43 @@ class _TransitRouterGrantAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CEN instance ID
         """
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the account of the CEN instance.
         """
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the network instance.
         - `VPC`: VPC instance.
@@ -190,19 +190,19 @@ class _TransitRouterGrantAttachmentState:
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cross-account authorization Payment type, you can select an instance account or a CEN account to pay.
         """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
 
@@ -212,11 +212,11 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Grant Attachment resource.
@@ -333,11 +333,11 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -370,11 +370,11 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterGrantAttachment':
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cen_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterGrantAttachment':
         """
         Get an existing TransitRouterGrantAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

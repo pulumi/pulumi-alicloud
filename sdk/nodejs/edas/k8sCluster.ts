@@ -193,31 +193,31 @@ export interface K8sClusterState {
      * `3`: importing.
      * `4`: deleted.
      */
-    clusterImportStatus?: pulumi.Input<number>;
+    clusterImportStatus?: pulumi.Input<number | undefined>;
     /**
      * The name of the cluster that you want to create.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      */
-    clusterType?: pulumi.Input<number>;
+    clusterType?: pulumi.Input<number | undefined>;
     /**
      * The ID of the alicloud container service kubernetes cluster that you want to import.
      */
-    csClusterId?: pulumi.Input<string>;
+    csClusterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      */
-    networkMode?: pulumi.Input<number>;
+    networkMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -231,5 +231,5 @@ export interface K8sClusterArgs {
     /**
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
 }

@@ -45,8 +45,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -89,8 +89,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -133,8 +133,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -177,8 +177,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,8 +221,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -265,8 +265,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -309,8 +309,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostAccountsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -353,8 +353,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -488,8 +488,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -533,8 +533,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -578,8 +578,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -668,8 +668,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -752,8 +752,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -836,8 +836,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -920,8 +920,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1004,8 +1004,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetDedicatedHostsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1133,8 +1133,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1177,8 +1177,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1221,8 +1221,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1265,8 +1265,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1309,8 +1309,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1353,8 +1353,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1397,8 +1397,8 @@ public final class CddcFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cddc.CddcFunctions;
      * import com.pulumi.alicloud.cddc.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

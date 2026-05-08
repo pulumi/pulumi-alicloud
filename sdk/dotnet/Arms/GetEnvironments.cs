@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.Arms
         ///         NameRegex = "^default-NODELETING$",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Arms
         ///         NameRegex = "^default-NODELETING$",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Arms
         ///         NameRegex = "^default-NODELETING$",
         ///     });
         /// 
-        ///     var defaultInteger = new Random.Index.Integer("default", new()
+        ///     var defaultInteger = new Random.Integer("default", new()
         ///     {
         ///         Min = 10000,
         ///         Max = 99999,

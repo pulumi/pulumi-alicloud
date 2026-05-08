@@ -127,21 +127,21 @@ export interface GetTlsInspectCaCertificatesOutputArgs {
     /**
      * CA certificate ID
      */
-    caCertId?: pulumi.Input<string>;
+    caCertId?: pulumi.Input<string | undefined>;
     /**
      * A list of Tls Inspect Ca Certificate IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Current page number.
      */
-    pageNumber?: pulumi.Input<number>;
+    pageNumber?: pulumi.Input<number | undefined>;
     /**
      * Number of records per page.
      */
-    pageSize?: pulumi.Input<number>;
+    pageSize?: pulumi.Input<number | undefined>;
 }

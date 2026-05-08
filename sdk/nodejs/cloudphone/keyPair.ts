@@ -130,11 +130,11 @@ export interface KeyPairState {
     /**
      * ADB key pair name.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The public key of the key pair.
      */
-    publicKeyBody?: pulumi.Input<string>;
+    publicKeyBody?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -148,5 +148,5 @@ export interface KeyPairArgs {
     /**
      * The public key of the key pair.
      */
-    publicKeyBody?: pulumi.Input<string>;
+    publicKeyBody?: pulumi.Input<string | undefined>;
 }

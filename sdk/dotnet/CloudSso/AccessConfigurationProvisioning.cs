@@ -37,7 +37,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///     var defaultGetResourceDirectories = AliCloud.ResourceManager.GetResourceDirectories.Invoke();
     /// 
     ///     var defaultDirectory = new List&lt;AliCloud.CloudSso.Directory&gt;();
-    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length.Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length().Apply(length =&gt; length &gt; 0 ? 0 : 1); rangeIndex++)
     ///     {
     ///         var range = new { Value = rangeIndex };
     ///         defaultDirectory.Add(new AliCloud.CloudSso.Directory($"default-{range.Value}", new()
@@ -45,7 +45,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///             DirectoryName = name,
     ///         }));
     ///     }
-    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length, @default, Std.Index.Concat.Invoke(new()
+    ///     var directoryId = Output.Tuple(@default.Apply(@default =&gt; @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids)).Length(), @default, Std.Concat.Invoke(new()
     ///     {
     ///         Input = new[]
     ///         {
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.CloudSso
     ///         return length &gt; 0 ? @default.Apply(getDirectoriesResult =&gt; getDirectoriesResult.Ids[0]) : invoke.Result[0];
     ///     });
     /// 
-    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     var defaultInteger = new Random.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,

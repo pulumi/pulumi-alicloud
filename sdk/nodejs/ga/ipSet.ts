@@ -161,32 +161,32 @@ export interface IpSetState {
     /**
      * The ID of an acceleration region.
      */
-    accelerateRegionId?: pulumi.Input<string>;
+    accelerateRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Global Accelerator (GA) instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth allocated to the acceleration region.
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The list of accelerated IP addresses in the acceleration region.
      */
-    ipAddressLists?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAddressLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
      */
-    ispType?: pulumi.Input<string>;
+    ispType?: pulumi.Input<string | undefined>;
     /**
      * The status of the acceleration region.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -205,13 +205,13 @@ export interface IpSetArgs {
      * The bandwidth allocated to the acceleration region.
      * > **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The IP protocol used by the GA instance. Default value: `IPv4`. Valid values: `IPv4`, `IPv6`, `DUAL_STACK`. **NOTE:** From version 1.220.0, `ipVersion` can be set to `DUAL_STACK`.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
      */
-    ispType?: pulumi.Input<string>;
+    ispType?: pulumi.Input<string | undefined>;
 }

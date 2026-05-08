@@ -203,13 +203,13 @@ def get_image_caches(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         snapshot_id=pulumi.get(__ret__, 'snapshot_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            image: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            image_cache_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            snapshot_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_image_caches_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            image: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            image_cache_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            snapshot_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageCachesResult]:
     """
     Provides a collection of ECI Image Cache to the specified filters.

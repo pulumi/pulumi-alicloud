@@ -141,23 +141,23 @@ export interface BasicIpSetState {
     /**
      * The ID of the acceleration region.
      */
-    accelerateRegionId?: pulumi.Input<string>;
+    accelerateRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the basic GA instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The bandwidth of the acceleration region. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
      */
-    ispType?: pulumi.Input<string>;
+    ispType?: pulumi.Input<string | undefined>;
     /**
      * The status of the Basic Ip Set instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,9 +175,9 @@ export interface BasicIpSetArgs {
     /**
      * The bandwidth of the acceleration region. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
      */
-    ispType?: pulumi.Input<string>;
+    ispType?: pulumi.Input<string | undefined>;
 }

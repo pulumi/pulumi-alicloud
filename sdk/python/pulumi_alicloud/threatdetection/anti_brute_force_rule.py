@@ -26,8 +26,8 @@ class AntiBruteForceRuleArgs:
                  forbidden_time: pulumi.Input[_builtins.int],
                  span: pulumi.Input[_builtins.int],
                  uuid_lists: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 default_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 protocol_type: Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']] = None):
+                 default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 protocol_type: pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']] = None):
         """
         The set of arguments for constructing a AntiBruteForceRule resource.
 
@@ -111,39 +111,39 @@ class AntiBruteForceRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultRule")
-    def default_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_rule(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the defense rule as the default rule. Valid values:
         """
         return pulumi.get(self, "default_rule")
 
     @default_rule.setter
-    def default_rule(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_rule(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']]:
+    def protocol_type(self) -> pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']]:
         """
         The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']]):
+    def protocol_type(self, value: pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']]):
         pulumi.set(self, "protocol_type", value)
 
 
 @pulumi.input_type
 class _AntiBruteForceRuleState:
     def __init__(__self__, *,
-                 anti_brute_force_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fail_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 forbidden_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']] = None,
-                 span: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 anti_brute_force_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fail_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']] = None,
+                 span: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AntiBruteForceRule resources.
 
@@ -172,86 +172,86 @@ class _AntiBruteForceRuleState:
 
     @_builtins.property
     @pulumi.getter(name="antiBruteForceRuleName")
-    def anti_brute_force_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anti_brute_force_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the defense rule.
         """
         return pulumi.get(self, "anti_brute_force_rule_name")
 
     @anti_brute_force_rule_name.setter
-    def anti_brute_force_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anti_brute_force_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anti_brute_force_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRule")
-    def default_rule(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default_rule(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to set the defense rule as the default rule. Valid values:
         """
         return pulumi.get(self, "default_rule")
 
     @default_rule.setter
-    def default_rule(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default_rule(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="failCount")
-    def fail_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fail_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         FailCount
         """
         return pulumi.get(self, "fail_count")
 
     @fail_count.setter
-    def fail_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fail_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fail_count", value)
 
     @_builtins.property
     @pulumi.getter(name="forbiddenTime")
-    def forbidden_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forbidden_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The period of time during which logons from an account are not allowed. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "forbidden_time")
 
     @forbidden_time.setter
-    def forbidden_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forbidden_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forbidden_time", value)
 
     @_builtins.property
     @pulumi.getter(name="protocolType")
-    def protocol_type(self) -> Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']]:
+    def protocol_type(self) -> pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']]:
         """
         The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
         """
         return pulumi.get(self, "protocol_type")
 
     @protocol_type.setter
-    def protocol_type(self, value: Optional[pulumi.Input['AntiBruteForceRuleProtocolTypeArgs']]):
+    def protocol_type(self, value: pulumi.Input[Optional['AntiBruteForceRuleProtocolTypeArgs']]):
         pulumi.set(self, "protocol_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def span(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def span(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
         """
         return pulumi.get(self, "span")
 
     @span.setter
-    def span(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def span(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "span", value)
 
     @_builtins.property
     @pulumi.getter(name="uuidLists")
-    def uuid_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def uuid_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The UUIDs of the servers to which you want to apply the defense rule.
         """
         return pulumi.get(self, "uuid_lists")
 
     @uuid_lists.setter
-    def uuid_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def uuid_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "uuid_lists", value)
 
 
@@ -261,13 +261,13 @@ class AntiBruteForceRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anti_brute_force_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fail_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 forbidden_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
-                 span: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anti_brute_force_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fail_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+                 span: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Anti Brute Force Rule resource.
@@ -372,13 +372,13 @@ class AntiBruteForceRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 anti_brute_force_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-                 fail_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 forbidden_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol_type: Optional[pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
-                 span: Optional[pulumi.Input[_builtins.int]] = None,
-                 uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 anti_brute_force_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+                 fail_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+                 span: pulumi.Input[Optional[_builtins.int]] = None,
+                 uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -415,13 +415,13 @@ class AntiBruteForceRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            anti_brute_force_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            default_rule: Optional[pulumi.Input[_builtins.bool]] = None,
-            fail_count: Optional[pulumi.Input[_builtins.int]] = None,
-            forbidden_time: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol_type: Optional[pulumi.Input[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
-            span: Optional[pulumi.Input[_builtins.int]] = None,
-            uuid_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AntiBruteForceRule':
+            anti_brute_force_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            default_rule: pulumi.Input[Optional[_builtins.bool]] = None,
+            fail_count: pulumi.Input[Optional[_builtins.int]] = None,
+            forbidden_time: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol_type: pulumi.Input[Optional[Union['AntiBruteForceRuleProtocolTypeArgs', 'AntiBruteForceRuleProtocolTypeArgsDict']]] = None,
+            span: pulumi.Input[Optional[_builtins.int]] = None,
+            uuid_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AntiBruteForceRule':
         """
         Get an existing AntiBruteForceRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

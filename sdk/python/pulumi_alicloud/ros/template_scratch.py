@@ -22,13 +22,13 @@ __all__ = ['TemplateScratchArgs', 'TemplateScratch']
 class TemplateScratchArgs:
     def __init__(__self__, *,
                  template_scratch_type: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_id_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
-                 source_resource_group: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
-                 source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
+                 source_resource_group: pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']] = None,
+                 source_resources: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
+                 source_tag: pulumi.Input[Optional['TemplateScratchSourceTagArgs']] = None):
         """
         The set of arguments for constructing a TemplateScratch resource.
 
@@ -71,101 +71,101 @@ class TemplateScratchArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the Template Scratch.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executionMode")
-    def execution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution mode. Valid Values: `Async` or `Sync`.
         """
         return pulumi.get(self, "execution_mode")
 
     @execution_mode.setter
-    def execution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalIdStrategy")
-    def logical_id_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_id_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
         """
         return pulumi.get(self, "logical_id_strategy")
 
     @logical_id_strategy.setter
-    def logical_id_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_id_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_id_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="preferenceParameters")
-    def preference_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]:
+    def preference_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]:
         """
         Priority parameter. See the following `Block preference_parameters`.
         """
         return pulumi.get(self, "preference_parameters")
 
     @preference_parameters.setter
-    def preference_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]):
+    def preference_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]):
         pulumi.set(self, "preference_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResourceGroup")
-    def source_resource_group(self) -> Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']]:
+    def source_resource_group(self) -> pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']]:
         """
         Source resource grouping. See the following `Block source_resource_group`.
         """
         return pulumi.get(self, "source_resource_group")
 
     @source_resource_group.setter
-    def source_resource_group(self, value: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']]):
+    def source_resource_group(self, value: pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']]):
         pulumi.set(self, "source_resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResources")
-    def source_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]:
+    def source_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]:
         """
         Source resource. See the following `Block source_resources`.
         """
         return pulumi.get(self, "source_resources")
 
     @source_resources.setter
-    def source_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]):
+    def source_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]):
         pulumi.set(self, "source_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceTag")
-    def source_tag(self) -> Optional[pulumi.Input['TemplateScratchSourceTagArgs']]:
+    def source_tag(self) -> pulumi.Input[Optional['TemplateScratchSourceTagArgs']]:
         """
         Source tag. See the following `Block source_tag`.
         """
         return pulumi.get(self, "source_tag")
 
     @source_tag.setter
-    def source_tag(self, value: Optional[pulumi.Input['TemplateScratchSourceTagArgs']]):
+    def source_tag(self, value: pulumi.Input[Optional['TemplateScratchSourceTagArgs']]):
         pulumi.set(self, "source_tag", value)
 
 
 @pulumi.input_type
 class _TemplateScratchState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_id_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
-                 source_resource_group: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
-                 source_tag: Optional[pulumi.Input['TemplateScratchSourceTagArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_scratch_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]] = None,
+                 source_resource_group: pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']] = None,
+                 source_resources: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]] = None,
+                 source_tag: pulumi.Input[Optional['TemplateScratchSourceTagArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_scratch_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TemplateScratch resources.
 
@@ -200,110 +200,110 @@ class _TemplateScratchState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of the Template Scratch.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executionMode")
-    def execution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution mode. Valid Values: `Async` or `Sync`.
         """
         return pulumi.get(self, "execution_mode")
 
     @execution_mode.setter
-    def execution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="logicalIdStrategy")
-    def logical_id_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logical_id_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
         """
         return pulumi.get(self, "logical_id_strategy")
 
     @logical_id_strategy.setter
-    def logical_id_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logical_id_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logical_id_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="preferenceParameters")
-    def preference_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]:
+    def preference_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]:
         """
         Priority parameter. See the following `Block preference_parameters`.
         """
         return pulumi.get(self, "preference_parameters")
 
     @preference_parameters.setter
-    def preference_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]):
+    def preference_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchPreferenceParameterArgs']]]]):
         pulumi.set(self, "preference_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResourceGroup")
-    def source_resource_group(self) -> Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']]:
+    def source_resource_group(self) -> pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']]:
         """
         Source resource grouping. See the following `Block source_resource_group`.
         """
         return pulumi.get(self, "source_resource_group")
 
     @source_resource_group.setter
-    def source_resource_group(self, value: Optional[pulumi.Input['TemplateScratchSourceResourceGroupArgs']]):
+    def source_resource_group(self, value: pulumi.Input[Optional['TemplateScratchSourceResourceGroupArgs']]):
         pulumi.set(self, "source_resource_group", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResources")
-    def source_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]:
+    def source_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]:
         """
         Source resource. See the following `Block source_resources`.
         """
         return pulumi.get(self, "source_resources")
 
     @source_resources.setter
-    def source_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]):
+    def source_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TemplateScratchSourceResourceArgs']]]]):
         pulumi.set(self, "source_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceTag")
-    def source_tag(self) -> Optional[pulumi.Input['TemplateScratchSourceTagArgs']]:
+    def source_tag(self) -> pulumi.Input[Optional['TemplateScratchSourceTagArgs']]:
         """
         Source tag. See the following `Block source_tag`.
         """
         return pulumi.get(self, "source_tag")
 
     @source_tag.setter
-    def source_tag(self, value: Optional[pulumi.Input['TemplateScratchSourceTagArgs']]):
+    def source_tag(self, value: pulumi.Input[Optional['TemplateScratchSourceTagArgs']]):
         pulumi.set(self, "source_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="templateScratchType")
-    def template_scratch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_scratch_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
         """
         return pulumi.get(self, "template_scratch_type")
 
     @template_scratch_type.setter
-    def template_scratch_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_scratch_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_scratch_type", value)
 
 
@@ -313,14 +313,14 @@ class TemplateScratch(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_id_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
-                 source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
-                 source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
-                 template_scratch_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+                 source_resource_group: pulumi.Input[Optional[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+                 source_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+                 source_tag: pulumi.Input[Optional[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
+                 template_scratch_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ROS Template Scratch resource.
@@ -434,14 +434,14 @@ class TemplateScratch(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 logical_id_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
-                 source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
-                 source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
-                 source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
-                 template_scratch_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+                 source_resource_group: pulumi.Input[Optional[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+                 source_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+                 source_tag: pulumi.Input[Optional[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
+                 template_scratch_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -472,15 +472,15 @@ class TemplateScratch(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            logical_id_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            preference_parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
-            source_resource_group: Optional[pulumi.Input[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
-            source_resources: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
-            source_tag: Optional[pulumi.Input[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            template_scratch_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'TemplateScratch':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            logical_id_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            preference_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchPreferenceParameterArgs', 'TemplateScratchPreferenceParameterArgsDict']]]]] = None,
+            source_resource_group: pulumi.Input[Optional[Union['TemplateScratchSourceResourceGroupArgs', 'TemplateScratchSourceResourceGroupArgsDict']]] = None,
+            source_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TemplateScratchSourceResourceArgs', 'TemplateScratchSourceResourceArgsDict']]]]] = None,
+            source_tag: pulumi.Input[Optional[Union['TemplateScratchSourceTagArgs', 'TemplateScratchSourceTagArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            template_scratch_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'TemplateScratch':
         """
         Get an existing TemplateScratch resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

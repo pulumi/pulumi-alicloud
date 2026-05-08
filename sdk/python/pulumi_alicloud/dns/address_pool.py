@@ -105,11 +105,11 @@ class AddressPoolArgs:
 @pulumi.input_type
 class _AddressPoolState:
     def __init__(__self__, *,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lba_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input['AddressPoolAddressArgs']]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressPool resources.
 
@@ -132,62 +132,62 @@ class _AddressPoolState:
 
     @_builtins.property
     @pulumi.getter(name="addressPoolName")
-    def address_pool_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address_pool_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the address pool.
         """
         return pulumi.get(self, "address_pool_name")
 
     @address_pool_name.setter
-    def address_pool_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address_pool_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address_pool_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]:
         """
         The address lists of the Address Pool. See `address` below for details.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressPoolAddressArgs']]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="lbaStrategy")
-    def lba_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lba_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The load balancing policy of the address pool. Valid values:`ALL_RR` or `RATIO`. `ALL_RR`: returns all addresses. `RATIO`: returns addresses by weight.
         """
         return pulumi.get(self, "lba_strategy")
 
     @lba_strategy.setter
-    def lba_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lba_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lba_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -197,11 +197,11 @@ class AddressPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lba_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Alidns Address Pool resource.
@@ -378,11 +378,11 @@ class AddressPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 lba_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -417,11 +417,11 @@ class AddressPool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_pool_name: Optional[pulumi.Input[_builtins.str]] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            lba_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AddressPool':
+            address_pool_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressPoolAddressArgs', 'AddressPoolAddressArgsDict']]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            lba_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressPool':
         """
         Get an existing AddressPool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

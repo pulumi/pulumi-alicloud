@@ -193,12 +193,12 @@ def get_prometheus_monitorings(cluster_id: Optional[_builtins.str] = None,
         prometheus_monitorings=pulumi.get(__ret__, 'prometheus_monitorings'),
         status=pulumi.get(__ret__, 'status'),
         type=pulumi.get(__ret__, 'type'))
-def get_prometheus_monitorings_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_prometheus_monitorings_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrometheusMonitoringsResult]:
     """
     This data source provides the Arms Prometheus Monitorings of the current Alibaba Cloud user.

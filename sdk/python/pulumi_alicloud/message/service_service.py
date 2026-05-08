@@ -28,7 +28,7 @@ class ServiceServiceArgs:
 @pulumi.input_type
 class _ServiceServiceState:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceService resources.
 
@@ -39,14 +39,14 @@ class _ServiceServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Service.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -163,7 +163,7 @@ class ServiceService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceService':
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceService':
         """
         Get an existing ServiceService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

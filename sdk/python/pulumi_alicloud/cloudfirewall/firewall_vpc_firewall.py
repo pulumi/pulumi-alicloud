@@ -25,8 +25,8 @@ class FirewallVpcFirewallArgs:
                  peer_vpc: pulumi.Input['FirewallVpcFirewallPeerVpcArgs'],
                  status: pulumi.Input[_builtins.str],
                  vpc_firewall_name: pulumi.Input[_builtins.str],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallVpcFirewall resource.
 
@@ -96,42 +96,42 @@ class FirewallVpcFirewallArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the Alibaba Cloud member account.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
 
 @pulumi.input_type
 class _FirewallVpcFirewallState:
     def __init__(__self__, *,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 connect_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_vpc: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']] = None,
-                 region_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 connect_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_vpc: pulumi.Input[Optional['FirewallVpcFirewallLocalVpcArgs']] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional['FirewallVpcFirewallPeerVpcArgs']] = None,
+                 region_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallVpcFirewall resources.
 
@@ -169,122 +169,122 @@ class _FirewallVpcFirewallState:
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Bandwidth specifications for high-speed channels. Unit: Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="connectType")
-    def connect_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connect_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The communication type of the VPC firewall.
         """
         return pulumi.get(self, "connect_type")
 
     @connect_type.setter
-    def connect_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connect_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connect_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language type of the requested and received messages. Valid values:
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="localVpc")
-    def local_vpc(self) -> Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']]:
+    def local_vpc(self) -> pulumi.Input[Optional['FirewallVpcFirewallLocalVpcArgs']]:
         """
         The details of the local VPC. See `local_vpc` below.
         """
         return pulumi.get(self, "local_vpc")
 
     @local_vpc.setter
-    def local_vpc(self, value: Optional[pulumi.Input['FirewallVpcFirewallLocalVpcArgs']]):
+    def local_vpc(self, value: pulumi.Input[Optional['FirewallVpcFirewallLocalVpcArgs']]):
         pulumi.set(self, "local_vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the Alibaba Cloud member account.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="peerVpc")
-    def peer_vpc(self) -> Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']]:
+    def peer_vpc(self) -> pulumi.Input[Optional['FirewallVpcFirewallPeerVpcArgs']]:
         """
         The details of the peer VPC. See `peer_vpc` below.
         """
         return pulumi.get(self, "peer_vpc")
 
     @peer_vpc.setter
-    def peer_vpc(self, value: Optional[pulumi.Input['FirewallVpcFirewallPeerVpcArgs']]):
+    def peer_vpc(self, value: pulumi.Input[Optional['FirewallVpcFirewallPeerVpcArgs']]):
         pulumi.set(self, "peer_vpc", value)
 
     @_builtins.property
     @pulumi.getter(name="regionStatus")
-    def region_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region is open.
         """
         return pulumi.get(self, "region_status")
 
     @region_status.setter
-    def region_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallId")
-    def vpc_firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_id")
 
     @vpc_firewall_id.setter
-    def vpc_firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_firewall_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallName")
-    def vpc_firewall_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_firewall_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_name")
 
     @vpc_firewall_name.setter
-    def vpc_firewall_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_firewall_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_firewall_name", value)
 
 
@@ -294,12 +294,12 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Firewall resource.
@@ -441,12 +441,12 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_firewall_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -484,16 +484,16 @@ class FirewallVpcFirewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            connect_type: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            local_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
-            member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            peer_vpc: Optional[pulumi.Input[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
-            region_status: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_firewall_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallVpcFirewall':
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            connect_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            local_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallLocalVpcArgs', 'FirewallVpcFirewallLocalVpcArgsDict']]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            peer_vpc: pulumi.Input[Optional[Union['FirewallVpcFirewallPeerVpcArgs', 'FirewallVpcFirewallPeerVpcArgsDict']]] = None,
+            region_status: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_firewall_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallVpcFirewall':
         """
         Get an existing FirewallVpcFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -118,17 +118,17 @@ export interface GetSslVpnClientCertsOutputArgs {
     /**
      * IDs of the SSL-VPN client certificates.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string of SSL-VPN client certificate name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * Save the result to the file.
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Use the SSL-VPN server ID as the search key.
      */
-    sslVpnServerId?: pulumi.Input<string>;
+    sslVpnServerId?: pulumi.Input<string | undefined>;
 }

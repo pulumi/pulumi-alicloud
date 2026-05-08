@@ -356,148 +356,148 @@ export interface FirewallVpcFirewallControlPolicyState {
     /**
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      */
-    aclAction?: pulumi.Input<string>;
+    aclAction?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls strategy unique identifier.
      */
-    aclUuid?: pulumi.Input<string>;
+    aclUuid?: pulumi.Input<string | undefined>;
     /**
      * Policy specifies the application ID.
      */
-    applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string | undefined>;
     /**
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The list of application types that the access control policy supports.
      *
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
-    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * (Available since v1.267.0) The time when the policy was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The destination port in the access control policy.
      *
      * ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * Access control policy in the access traffic of the destination port address book name.
      *
      * ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * Port Address Book port list.
      */
-    destPortGroupPorts?: pulumi.Input<pulumi.Input<string>[]>;
+    destPortGroupPorts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
      * - If `destinationType` is set to `group`, the value of `destination` must be an address book.
      * - If `destinationType` is set to `domain`, the value of `destination` must be a domain name.
      */
-    destination?: pulumi.Input<string>;
+    destination?: pulumi.Input<string | undefined>;
     /**
      * Destination address book defined in the address list.
      */
-    destinationGroupCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    destinationGroupCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The destination address book type in the access control policy.
      */
-    destinationGroupType?: pulumi.Input<string>;
+    destinationGroupType?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination address in the access control policy. Valid values: `net`, `group`, `domain`.
      */
-    destinationType?: pulumi.Input<string>;
+    destinationType?: pulumi.Input<string | undefined>;
     /**
      * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
      */
-    domainResolveType?: pulumi.Input<string>;
+    domainResolveType?: pulumi.Input<string | undefined>;
     /**
      * The end time of the policy validity period.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * Control strategy of hits per second.
      */
-    hitTimes?: pulumi.Input<number>;
+    hitTimes?: pulumi.Input<number | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The UID of the member account of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
      */
-    proto?: pulumi.Input<string>;
+    proto?: pulumi.Input<string | undefined>;
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * The days of the week or month on which the policy is recurrently active. Valid values:
      * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
      * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The recurring end time of the policy validity period.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The recurring start time of the policy validity period.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * SOURCE address of the address list.
      */
-    sourceGroupCidrs?: pulumi.Input<pulumi.Input<string>[]>;
+    sourceGroupCidrs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source address type in the access control policy.
      */
-    sourceGroupType?: pulumi.Input<string>;
+    sourceGroupType?: pulumi.Input<string | undefined>;
     /**
      * The type of the source address in the access control policy. Valid values: `net`, `group`.
      */
-    sourceType?: pulumi.Input<string>;
+    sourceType?: pulumi.Input<string | undefined>;
     /**
      * The start time of the policy validity period.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
      * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -511,13 +511,13 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The type of the applications that the access control policy supports. Valid values: `FTP`, `HTTP`, `HTTPS`, `MySQL`, `SMTP`, `SMTPS`, `RDP`, `VNC`, `SSH`, `Redis`, `MQTT`, `MongoDB`, `Memcache`, `SSL`, `ANY`.
      */
-    applicationName?: pulumi.Input<string>;
+    applicationName?: pulumi.Input<string | undefined>;
     /**
      * The list of application types that the access control policy supports.
      *
      * > **NOTE:** If `proto` is set to `TCP`, you can set `applicationNameList` to any valid value. If `proto` is set to `UDP`, `ICMP`, or `ANY`, you can only set `applicationNameList` to `["ANY"]`. From version 1.267.0, You must specify at least one of the `applicationNameList` and `applicationName`. If you specify both `applicationNameList` and `applicationName`, only the `applicationNameList` takes effect.
      */
-    applicationNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    applicationNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Access control over VPC firewalls description of the strategy information.
      */
@@ -527,17 +527,17 @@ export interface FirewallVpcFirewallControlPolicyArgs {
      *
      * ->**Note:** If `destPortType` is set to `port`, `destPort` is mandatory.
      */
-    destPort?: pulumi.Input<string>;
+    destPort?: pulumi.Input<string | undefined>;
     /**
      * Access control policy in the access traffic of the destination port address book name.
      *
      * ->**Note:** If `destPortType` is set to `group`, `destPortGroup` is mandatory.
      */
-    destPortGroup?: pulumi.Input<string>;
+    destPortGroup?: pulumi.Input<string | undefined>;
     /**
      * The type of the destination port in the access control policy. Valid values: `port`, `group`.
      */
-    destPortType?: pulumi.Input<string>;
+    destPortType?: pulumi.Input<string | undefined>;
     /**
      * The destination address in the access control policy. Valid values:
      * - If `destinationType` is set to `net`, the value of `destination` must be a CIDR block.
@@ -552,23 +552,23 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The domain name resolution method for the access control policy. Valid values: `FQDN`, `DNS`, `FQDN_AND_DNS`.
      */
-    domainResolveType?: pulumi.Input<string>;
+    domainResolveType?: pulumi.Input<string | undefined>;
     /**
      * The end time of the policy validity period.
      */
-    endTime?: pulumi.Input<number>;
+    endTime?: pulumi.Input<number | undefined>;
     /**
      * The language of the content within the request and response. Valid values: `zh`, `en`.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The UID of the member account of the current Alibaba cloud account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The priority of the access control policy. The priority value starts from 1. A smaller priority value indicates a higher priority.
      */
-    order?: pulumi.Input<number>;
+    order?: pulumi.Input<number | undefined>;
     /**
      * The type of the protocol in the access control policy. Valid values: `ANY`, `TCP`, `UDP`, `ICMP`.
      */
@@ -576,25 +576,25 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created.. Valid values:
      */
-    release?: pulumi.Input<string>;
+    release?: pulumi.Input<string | undefined>;
     /**
      * The days of the week or month on which the policy is recurrently active. Valid values:
      * - If `repeatType` is set to `Weekly`. Valid values: `0` to `6`.
      * - If `repeatType` is set to `Monthly`. Valid values: `1` to `31`.
      */
-    repeatDays?: pulumi.Input<pulumi.Input<number>[]>;
+    repeatDays?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The recurring end time of the policy validity period.
      */
-    repeatEndTime?: pulumi.Input<string>;
+    repeatEndTime?: pulumi.Input<string | undefined>;
     /**
      * The recurring start time of the policy validity period.
      */
-    repeatStartTime?: pulumi.Input<string>;
+    repeatStartTime?: pulumi.Input<string | undefined>;
     /**
      * The recurrence type for the policy validity period. Default value: `Permanent`. Valid values: `Permanent`, `None`, `Daily`, `Weekly`, `Monthly`.
      */
-    repeatType?: pulumi.Input<string>;
+    repeatType?: pulumi.Input<string | undefined>;
     /**
      * Access control over VPC firewalls strategy in the source address.
      */
@@ -606,7 +606,7 @@ export interface FirewallVpcFirewallControlPolicyArgs {
     /**
      * The start time of the policy validity period.
      */
-    startTime?: pulumi.Input<number>;
+    startTime?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC firewall instance. Valid values:
      * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.

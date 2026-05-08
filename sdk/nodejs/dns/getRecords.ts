@@ -172,33 +172,33 @@ export interface GetRecordsOutputArgs {
     /**
      * Host record regex.
      */
-    hostRecordRegex?: pulumi.Input<string>;
+    hostRecordRegex?: pulumi.Input<string | undefined>;
     /**
      * A list of record IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the record is locked or not.
      */
-    isLocked?: pulumi.Input<boolean>;
+    isLocked?: pulumi.Input<boolean | undefined>;
     /**
      * ISP line. Valid items are `default`, `telecom`, `unicom`, `mobile`, `oversea`, `edu`, `drpeng`, `btvn`, .etc. For checking all resolution lines enumeration please visit [Alibaba Cloud DNS doc](https://www.alibabacloud.com/help/en/doc-detail/29807.htm)
      */
-    line?: pulumi.Input<string>;
+    line?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Record status. Valid items are `ENABLE` and `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Host record value regex.
      */
-    valueRegex?: pulumi.Input<string>;
+    valueRegex?: pulumi.Input<string | undefined>;
 }

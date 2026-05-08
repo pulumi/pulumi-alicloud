@@ -28,29 +28,31 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// cfg := config.New(ctx, "")
-// name := "terraform-example";
-// if param := cfg.Get("name"); param != ""{
-// name = param
-// }
-// defaultCloudFirewallTlsInspectCaCertificate, err := alicloud.NewCloudFirewallTlsInspectCaCertificate(ctx, "default", nil)
-// if err != nil {
-// return err
-// }
-// _default, err := cloudfirewall.GetTlsInspectCaCertificates(ctx, &cloudfirewall.GetTlsInspectCaCertificatesArgs{
-// Ids: interface{}{
-// defaultCloudFirewallTlsInspectCaCertificate.Id,
-// },
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", _default.Certificates[0].Id)
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "terraform-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			defaultCloudFirewallTlsInspectCaCertificate, err := alicloud.NewCloudFirewallTlsInspectCaCertificate(ctx, "default", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_default, err := cloudfirewall.GetTlsInspectCaCertificates(ctx, &cloudfirewall.GetTlsInspectCaCertificatesArgs{
+//				Ids: pulumi.StringArray{
+//					defaultCloudFirewallTlsInspectCaCertificate.Id,
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("alicloudCloudFirewallTlsInspectCaCertificateExampleId", _default.Certificates[0].Id)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetTlsInspectCaCertificates(ctx *pulumi.Context, args *GetTlsInspectCaCertificatesArgs, opts ...pulumi.InvokeOption) (*GetTlsInspectCaCertificatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

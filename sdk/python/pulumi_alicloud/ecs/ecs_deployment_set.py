@@ -19,12 +19,12 @@ __all__ = ['EcsDeploymentSetArgs', 'EcsDeploymentSet']
 @pulumi.input_type
 class EcsDeploymentSetArgs:
     def __init__(__self__, *,
-                 deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EcsDeploymentSet resource.
 
@@ -58,57 +58,57 @@ class EcsDeploymentSetArgs:
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetName")
-    def deployment_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "deployment_set_name")
 
     @deployment_set_name.setter
-    def deployment_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `domain` has been deprecated from provider version 1.243.0.""")
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `domain` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `granularity` has been deprecated from provider version 1.243.0.""")
-    def granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `granularity` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "granularity")
 
     @granularity.setter
-    def granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "granularity", value)
 
     @_builtins.property
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
-    def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_unable_to_redeploy_failed_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
         - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
@@ -117,31 +117,31 @@ class EcsDeploymentSetArgs:
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
     @on_unable_to_redeploy_failed_instance.setter
-    def on_unable_to_redeploy_failed_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_unable_to_redeploy_failed_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_unable_to_redeploy_failed_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
 @pulumi.input_type
 class _EcsDeploymentSetState:
     def __init__(__self__, *,
-                 deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None):
+                 deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EcsDeploymentSet resources.
 
@@ -175,57 +175,57 @@ class _EcsDeploymentSetState:
 
     @_builtins.property
     @pulumi.getter(name="deploymentSetName")
-    def deployment_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the deployment set. The name must be `2` to `128` characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "deployment_set_name")
 
     @deployment_set_name.setter
-    def deployment_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_set_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the deployment set. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `domain` has been deprecated from provider version 1.243.0.""")
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `domain` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field `granularity` has been deprecated from provider version 1.243.0.""")
-    def granularity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def granularity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `granularity` has been deprecated from provider version 1.243.0.
         """
         return pulumi.get(self, "granularity")
 
     @granularity.setter
-    def granularity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def granularity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "granularity", value)
 
     @_builtins.property
     @pulumi.getter(name="onUnableToRedeployFailedInstance")
-    def on_unable_to_redeploy_failed_instance(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def on_unable_to_redeploy_failed_instance(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
         - `CancelMembershipAndStart` - Removes the instances from the deployment set and starts the instances immediately after they are failed over.
@@ -234,19 +234,19 @@ class _EcsDeploymentSetState:
         return pulumi.get(self, "on_unable_to_redeploy_failed_instance")
 
     @on_unable_to_redeploy_failed_instance.setter
-    def on_unable_to_redeploy_failed_instance(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def on_unable_to_redeploy_failed_instance(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "on_unable_to_redeploy_failed_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
         """
         return pulumi.get(self, "strategy")
 
     @strategy.setter
-    def strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strategy", value)
 
 
@@ -256,12 +256,12 @@ class EcsDeploymentSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Deployment Set resource.
@@ -367,12 +367,12 @@ class EcsDeploymentSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 granularity: Optional[pulumi.Input[_builtins.str]] = None,
-                 on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-                 strategy: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 granularity: pulumi.Input[Optional[_builtins.str]] = None,
+                 on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+                 strategy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,12 +398,12 @@ class EcsDeploymentSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            deployment_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            granularity: Optional[pulumi.Input[_builtins.str]] = None,
-            on_unable_to_redeploy_failed_instance: Optional[pulumi.Input[_builtins.str]] = None,
-            strategy: Optional[pulumi.Input[_builtins.str]] = None) -> 'EcsDeploymentSet':
+            deployment_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            granularity: pulumi.Input[Optional[_builtins.str]] = None,
+            on_unable_to_redeploy_failed_instance: pulumi.Input[Optional[_builtins.str]] = None,
+            strategy: pulumi.Input[Optional[_builtins.str]] = None) -> 'EcsDeploymentSet':
         """
         Get an existing EcsDeploymentSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

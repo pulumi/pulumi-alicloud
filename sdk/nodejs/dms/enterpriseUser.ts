@@ -158,41 +158,41 @@ export interface EnterpriseUserState {
     /**
      * Maximum number of inquiries on the day.
      */
-    maxExecuteCount?: pulumi.Input<number>;
+    maxExecuteCount?: pulumi.Input<number | undefined>;
     /**
      * Query the maximum number of rows on the day.
      */
-    maxResultCount?: pulumi.Input<number>;
+    maxResultCount?: pulumi.Input<number | undefined>;
     /**
      * The DingTalk number or mobile number of the user.
      */
-    mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.100.0 and use `userName` instead.
      *
      * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
-    nickName?: pulumi.Input<string>;
+    nickName?: pulumi.Input<string | undefined>;
     /**
      * The roles that the user plays.
      */
-    roleNames?: pulumi.Input<pulumi.Input<string>[]>;
+    roleNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tenant ID.
      */
-    tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number | undefined>;
     /**
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
-    uid?: pulumi.Input<string>;
+    uid?: pulumi.Input<string | undefined>;
     /**
      * The nickname of the user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,33 +202,33 @@ export interface EnterpriseUserArgs {
     /**
      * Maximum number of inquiries on the day.
      */
-    maxExecuteCount?: pulumi.Input<number>;
+    maxExecuteCount?: pulumi.Input<number | undefined>;
     /**
      * Query the maximum number of rows on the day.
      */
-    maxResultCount?: pulumi.Input<number>;
+    maxResultCount?: pulumi.Input<number | undefined>;
     /**
      * The DingTalk number or mobile number of the user.
      */
-    mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.100.0 and use `userName` instead.
      *
      * @deprecated Field 'nick_name' has been deprecated from version 1.100.0. Use 'user_name' instead.
      */
-    nickName?: pulumi.Input<string>;
+    nickName?: pulumi.Input<string | undefined>;
     /**
      * The roles that the user plays.
      */
-    roleNames?: pulumi.Input<pulumi.Input<string>[]>;
+    roleNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The state of DMS Enterprise User. Valid values: `NORMAL`, `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tenant ID.
      */
-    tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number | undefined>;
     /**
      * The Alibaba Cloud unique ID (UID) of the user to add.
      */
@@ -236,5 +236,5 @@ export interface EnterpriseUserArgs {
     /**
      * The nickname of the user.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }

@@ -27,23 +27,23 @@ class JobArgs:
                  job_type: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  time_config: pulumi.Input['JobTimeConfigArgs'],
-                 attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 class_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_monitor_info: Optional[pulumi.Input['JobJobMonitorInfoArgs']] = None,
-                 map_task_xattrs: Optional[pulumi.Input['JobMapTaskXattrsArgs']] = None,
-                 max_attempt: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_notice_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 task_dispatch_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_attrs: Optional[pulumi.Input[_builtins.str]] = None):
+                 attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_monitor_info: pulumi.Input[Optional['JobJobMonitorInfoArgs']] = None,
+                 map_task_xattrs: pulumi.Input[Optional['JobMapTaskXattrsArgs']] = None,
+                 max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_attrs: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -188,19 +188,19 @@ class JobArgs:
 
     @_builtins.property
     @pulumi.getter(name="attemptInterval")
-    def attempt_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def attempt_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Error retry interval, unit s, default value 30.
         """
         return pulumi.get(self, "attempt_interval")
 
     @attempt_interval.setter
-    def attempt_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def attempt_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "attempt_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="className")
-    def class_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def class_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the task interface class.
 
@@ -209,217 +209,217 @@ class JobArgs:
         return pulumi.get(self, "class_name")
 
     @class_name.setter
-    def class_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def class_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "class_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script code of the python, shell, and go task types.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="failTimes")
-    def fail_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fail_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive failed alarms
         """
         return pulumi.get(self, "fail_times")
 
     @fail_times.setter
-    def fail_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fail_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fail_times", value)
 
     @_builtins.property
     @pulumi.getter(name="jobMonitorInfo")
-    def job_monitor_info(self) -> Optional[pulumi.Input['JobJobMonitorInfoArgs']]:
+    def job_monitor_info(self) -> pulumi.Input[Optional['JobJobMonitorInfoArgs']]:
         """
         Task monitoring information See `job_monitor_info` below.
         """
         return pulumi.get(self, "job_monitor_info")
 
     @job_monitor_info.setter
-    def job_monitor_info(self, value: Optional[pulumi.Input['JobJobMonitorInfoArgs']]):
+    def job_monitor_info(self, value: pulumi.Input[Optional['JobJobMonitorInfoArgs']]):
         pulumi.set(self, "job_monitor_info", value)
 
     @_builtins.property
     @pulumi.getter(name="mapTaskXattrs")
-    def map_task_xattrs(self) -> Optional[pulumi.Input['JobMapTaskXattrsArgs']]:
+    def map_task_xattrs(self) -> pulumi.Input[Optional['JobMapTaskXattrsArgs']]:
         """
         Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
         """
         return pulumi.get(self, "map_task_xattrs")
 
     @map_task_xattrs.setter
-    def map_task_xattrs(self, value: Optional[pulumi.Input['JobMapTaskXattrsArgs']]):
+    def map_task_xattrs(self, value: pulumi.Input[Optional['JobMapTaskXattrsArgs']]):
         pulumi.set(self, "map_task_xattrs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAttempt")
-    def max_attempt(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attempt(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of error retries, which is set based on business requirements. The default value is 0.
         """
         return pulumi.get(self, "max_attempt")
 
     @max_attempt.setter
-    def max_attempt(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attempt(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attempt", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_concurrency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         """
         return pulumi.get(self, "max_concurrency")
 
     @max_concurrency.setter
-    def max_concurrency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_concurrency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceSource")
-    def namespace_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Special third parties are required.
         """
         return pulumi.get(self, "namespace_source")
 
     @namespace_source.setter
-    def namespace_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined parameters, which can be obtained at runtime.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task status. The values are as follows:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="successNoticeEnable")
-    def success_notice_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def success_notice_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Success Notification Switch
         """
         return pulumi.get(self, "success_notice_enable")
 
     @success_notice_enable.setter
-    def success_notice_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def success_notice_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "success_notice_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="taskDispatchMode")
-    def task_dispatch_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_dispatch_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Advanced configuration of parallel grid tasks, push model or pull model
         """
         return pulumi.get(self, "task_dispatch_mode")
 
     @task_dispatch_mode.setter
-    def task_dispatch_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_dispatch_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_dispatch_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s task type custom task template
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time Zone
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="xAttrs")
-    def x_attrs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x_attrs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task Extension Field
         """
         return pulumi.get(self, "x_attrs")
 
     @x_attrs.setter
-    def x_attrs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x_attrs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x_attrs", value)
 
 
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
-                 attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 class_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 job_monitor_info: Optional[pulumi.Input['JobJobMonitorInfoArgs']] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_task_xattrs: Optional[pulumi.Input['JobMapTaskXattrsArgs']] = None,
-                 max_attempt: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_notice_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 task_dispatch_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_config: Optional[pulumi.Input['JobTimeConfigArgs']] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_attrs: Optional[pulumi.Input[_builtins.str]] = None):
+                 attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 job_monitor_info: pulumi.Input[Optional['JobJobMonitorInfoArgs']] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_task_xattrs: pulumi.Input[Optional['JobMapTaskXattrsArgs']] = None,
+                 max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_config: pulumi.Input[Optional['JobTimeConfigArgs']] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_attrs: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Job resources.
 
@@ -501,19 +501,19 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter(name="attemptInterval")
-    def attempt_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def attempt_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Error retry interval, unit s, default value 30.
         """
         return pulumi.get(self, "attempt_interval")
 
     @attempt_interval.setter
-    def attempt_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def attempt_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "attempt_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="className")
-    def class_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def class_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full path of the task interface class.
 
@@ -522,271 +522,271 @@ class _JobState:
         return pulumi.get(self, "class_name")
 
     @class_name.setter
-    def class_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def class_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "class_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The script code of the python, shell, and go task types.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="executeMode")
-    def execute_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execute_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task execution mode, the possible results are as follows:
         """
         return pulumi.get(self, "execute_mode")
 
     @execute_mode.setter
-    def execute_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execute_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execute_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="failTimes")
-    def fail_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def fail_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of consecutive failed alarms
         """
         return pulumi.get(self, "fail_times")
 
     @fail_times.setter
-    def fail_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def fail_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "fail_times", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application ID, which is obtained from the **application management** page of the console.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobId")
-    def job_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def job_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         JobId
         """
         return pulumi.get(self, "job_id")
 
     @job_id.setter
-    def job_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def job_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="jobMonitorInfo")
-    def job_monitor_info(self) -> Optional[pulumi.Input['JobJobMonitorInfoArgs']]:
+    def job_monitor_info(self) -> pulumi.Input[Optional['JobJobMonitorInfoArgs']]:
         """
         Task monitoring information See `job_monitor_info` below.
         """
         return pulumi.get(self, "job_monitor_info")
 
     @job_monitor_info.setter
-    def job_monitor_info(self, value: Optional[pulumi.Input['JobJobMonitorInfoArgs']]):
+    def job_monitor_info(self, value: pulumi.Input[Optional['JobJobMonitorInfoArgs']]):
         pulumi.set(self, "job_monitor_info", value)
 
     @_builtins.property
     @pulumi.getter(name="jobName")
-    def job_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         JobName
         """
         return pulumi.get(self, "job_name")
 
     @job_name.setter
-    def job_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_name", value)
 
     @_builtins.property
     @pulumi.getter(name="jobType")
-    def job_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Job Type
         """
         return pulumi.get(self, "job_type")
 
     @job_type.setter
-    def job_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_type", value)
 
     @_builtins.property
     @pulumi.getter(name="mapTaskXattrs")
-    def map_task_xattrs(self) -> Optional[pulumi.Input['JobMapTaskXattrsArgs']]:
+    def map_task_xattrs(self) -> pulumi.Input[Optional['JobMapTaskXattrsArgs']]:
         """
         Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `map_task_xattrs` below.
         """
         return pulumi.get(self, "map_task_xattrs")
 
     @map_task_xattrs.setter
-    def map_task_xattrs(self, value: Optional[pulumi.Input['JobMapTaskXattrsArgs']]):
+    def map_task_xattrs(self, value: pulumi.Input[Optional['JobMapTaskXattrsArgs']]):
         pulumi.set(self, "map_task_xattrs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAttempt")
-    def max_attempt(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_attempt(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of error retries, which is set based on business requirements. The default value is 0.
         """
         return pulumi.get(self, "max_attempt")
 
     @max_attempt.setter
-    def max_attempt(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_attempt(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_attempt", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_concurrency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         """
         return pulumi.get(self, "max_concurrency")
 
     @max_concurrency.setter
-    def max_concurrency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_concurrency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_concurrency", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace, which is obtained on the `Namespace` page of the console.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceSource")
-    def namespace_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Special third parties are required.
         """
         return pulumi.get(self, "namespace_source")
 
     @namespace_source.setter
-    def namespace_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined parameters, which can be obtained at runtime.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task status. The values are as follows:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="successNoticeEnable")
-    def success_notice_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def success_notice_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Success Notification Switch
         """
         return pulumi.get(self, "success_notice_enable")
 
     @success_notice_enable.setter
-    def success_notice_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def success_notice_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "success_notice_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="taskDispatchMode")
-    def task_dispatch_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task_dispatch_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Advanced configuration of parallel grid tasks, push model or pull model
         """
         return pulumi.get(self, "task_dispatch_mode")
 
     @task_dispatch_mode.setter
-    def task_dispatch_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task_dispatch_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task_dispatch_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         K8s task type custom task template
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="timeConfig")
-    def time_config(self) -> Optional[pulumi.Input['JobTimeConfigArgs']]:
+    def time_config(self) -> pulumi.Input[Optional['JobTimeConfigArgs']]:
         """
         Time configuration information See `time_config` below.
         """
         return pulumi.get(self, "time_config")
 
     @time_config.setter
-    def time_config(self, value: Optional[pulumi.Input['JobTimeConfigArgs']]):
+    def time_config(self, value: pulumi.Input[Optional['JobTimeConfigArgs']]):
         pulumi.set(self, "time_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def timezone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timezone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time Zone
         """
         return pulumi.get(self, "timezone")
 
     @timezone.setter
-    def timezone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timezone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timezone", value)
 
     @_builtins.property
     @pulumi.getter(name="xAttrs")
-    def x_attrs(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def x_attrs(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Task Extension Field
         """
         return pulumi.get(self, "x_attrs")
 
     @x_attrs.setter
-    def x_attrs(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def x_attrs(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "x_attrs", value)
 
 
@@ -796,29 +796,29 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 class_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_monitor_info: Optional[pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_task_xattrs: Optional[pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
-                 max_attempt: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_notice_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 task_dispatch_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_config: Optional[pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_attrs: Optional[pulumi.Input[_builtins.str]] = None,
+                 attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+                 max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_attrs: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Schedulerx Job resource.
@@ -1101,29 +1101,29 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 class_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 execute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_monitor_info: Optional[pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
-                 job_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 job_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_task_xattrs: Optional[pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
-                 max_attempt: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 success_notice_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 task_dispatch_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 template: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_config: Optional[pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
-                 timezone: Optional[pulumi.Input[_builtins.str]] = None,
-                 x_attrs: Optional[pulumi.Input[_builtins.str]] = None,
+                 attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 class_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+                 job_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 job_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+                 max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 template: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+                 timezone: pulumi.Input[Optional[_builtins.str]] = None,
+                 x_attrs: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1179,30 +1179,30 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            attempt_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            class_name: Optional[pulumi.Input[_builtins.str]] = None,
-            content: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            execute_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            fail_times: Optional[pulumi.Input[_builtins.int]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            job_id: Optional[pulumi.Input[_builtins.int]] = None,
-            job_monitor_info: Optional[pulumi.Input[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
-            job_name: Optional[pulumi.Input[_builtins.str]] = None,
-            job_type: Optional[pulumi.Input[_builtins.str]] = None,
-            map_task_xattrs: Optional[pulumi.Input[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
-            max_attempt: Optional[pulumi.Input[_builtins.int]] = None,
-            max_concurrency: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            success_notice_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            task_dispatch_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            template: Optional[pulumi.Input[_builtins.str]] = None,
-            time_config: Optional[pulumi.Input[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
-            timezone: Optional[pulumi.Input[_builtins.str]] = None,
-            x_attrs: Optional[pulumi.Input[_builtins.str]] = None) -> 'Job':
+            attempt_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            class_name: pulumi.Input[Optional[_builtins.str]] = None,
+            content: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            execute_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            fail_times: pulumi.Input[Optional[_builtins.int]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            job_id: pulumi.Input[Optional[_builtins.int]] = None,
+            job_monitor_info: pulumi.Input[Optional[Union['JobJobMonitorInfoArgs', 'JobJobMonitorInfoArgsDict']]] = None,
+            job_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_type: pulumi.Input[Optional[_builtins.str]] = None,
+            map_task_xattrs: pulumi.Input[Optional[Union['JobMapTaskXattrsArgs', 'JobMapTaskXattrsArgsDict']]] = None,
+            max_attempt: pulumi.Input[Optional[_builtins.int]] = None,
+            max_concurrency: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            success_notice_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            task_dispatch_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            template: pulumi.Input[Optional[_builtins.str]] = None,
+            time_config: pulumi.Input[Optional[Union['JobTimeConfigArgs', 'JobTimeConfigArgsDict']]] = None,
+            timezone: pulumi.Input[Optional[_builtins.str]] = None,
+            x_attrs: pulumi.Input[Optional[_builtins.str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -43,11 +43,11 @@ import * as utilities from "../utilities";
  * for (const range = {value: 0}; range.value < 2; range.value++) {
  *     defaultSwitch.push(new alicloud.vpc.Switch(`default-${range.value}`, {
  *         vpcId: defaultNetwork.id,
- *         cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *             input: cidrBlock,
+ *         cidrBlock: std.cidrsubnetOutput({
+ *             input: defaultNetwork.cidrBlock,
  *             newbits: 8,
  *             netnum: range.value,
- *         })).apply(invoke => invoke.result),
+ *         }).apply(invoke => invoke.result),
  *         zoneId: _default.then(_default => _default.zones[range.value].zoneId),
  *     }));
  * }
@@ -194,23 +194,23 @@ export interface RuleState {
     /**
      * The ID of the Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * Forwarding target. See `forwardIps` below.
      */
-    forwardIps?: pulumi.Input<pulumi.Input<inputs.pvtz.RuleForwardIp>[]>;
+    forwardIps?: pulumi.Input<pulumi.Input<inputs.pvtz.RuleForwardIp>[] | undefined>;
     /**
      * The name of the resource.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The type of the rule. Valid values: `OUTBOUND`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The name of the forwarding zone.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -232,7 +232,7 @@ export interface RuleArgs {
     /**
      * The type of the rule. Valid values: `OUTBOUND`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The name of the forwarding zone.
      */

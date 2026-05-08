@@ -156,34 +156,34 @@ export interface GetVirtualNodesOutputArgs {
     /**
      * A list of Virtual Node IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Virtual Node name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The resource group ID. If when you create a GPU does not specify a resource group instance will automatically add the account's default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * VNode itself and by VNode created (ECI) the security group used by.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the virtual node.
      */
-    virtualNodeName?: pulumi.Input<string>;
-    vswitchId?: pulumi.Input<string>;
+    virtualNodeName?: pulumi.Input<string | undefined>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

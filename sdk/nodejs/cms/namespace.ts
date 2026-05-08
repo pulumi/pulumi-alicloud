@@ -119,11 +119,11 @@ export interface NamespaceState {
     /**
      * The description of the namespace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The data retention period. Default value: `cms.s1.3xlarge`. Valid values:
      * - `cms.s1.large`: Data storage duration is 15 days.
@@ -133,7 +133,7 @@ export interface NamespaceState {
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -143,7 +143,7 @@ export interface NamespaceArgs {
     /**
      * The description of the namespace.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the namespace. The name can contain lowercase letters, digits, and hyphens (-).
      */
@@ -157,5 +157,5 @@ export interface NamespaceArgs {
      * - `cms.s1.6xlarge`: Data storage duration 185 days.
      * - `cms.s1.12xlarge`: Data storage duration 376 days.
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
 }

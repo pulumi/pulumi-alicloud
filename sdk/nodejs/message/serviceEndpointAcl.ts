@@ -128,17 +128,17 @@ export interface ServiceEndpointAclState {
      * The ACL policy. Valid value:
      * - allow: indicates that the current endpoint allows access from the corresponding CIDR block. (Only allow is supported)
      */
-    aclStrategy?: pulumi.Input<string>;
+    aclStrategy?: pulumi.Input<string | undefined>;
     /**
      * The CIDR block.
      * > **NOTE:** To ensure business stability, the system is configured by default with a CIDR (0.0.0.0/0) that allows access from all source addresses. If you need to remove this default configuration, you can do so by importing and deleting the CIDR using Terraform, or by manually deleting it in the console.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Access point type. Value:
      * - public: indicates a public access point. (Currently only public is supported)
      */
-    endpointType?: pulumi.Input<string>;
+    endpointType?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -113,11 +113,11 @@ export interface AlertContactGroupState {
     /**
      * The name of the resource.
      */
-    alertContactGroupName?: pulumi.Input<string>;
+    alertContactGroupName?: pulumi.Input<string | undefined>;
     /**
      * The list id of alert contact.
      */
-    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -131,5 +131,5 @@ export interface AlertContactGroupArgs {
     /**
      * The list id of alert contact.
      */
-    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

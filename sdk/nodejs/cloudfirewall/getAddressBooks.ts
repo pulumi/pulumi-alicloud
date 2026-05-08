@@ -145,17 +145,17 @@ export interface GetAddressBooksOutputArgs {
      * The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
      * **NOTE:** From version 1.213.1, `groupType` can be set to `ipv6`, `domain`, `port`.
      */
-    groupType?: pulumi.Input<string>;
+    groupType?: pulumi.Input<string | undefined>;
     /**
      * A list of Address Book IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results Address Book name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

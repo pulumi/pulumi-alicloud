@@ -180,29 +180,29 @@ export interface WaitingRoomRuleState {
     /**
      * The content of the rule, the implemented policy or conditional expression.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule name, optional, used to query by waiting room bypass rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The site ID, which can be obtained by calling the ListSites API.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * - on: open.
      * - off: close.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
      */
-    waitingRoomId?: pulumi.Input<string>;
+    waitingRoomId?: pulumi.Input<string | undefined>;
     /**
      * The rule ID, which can be used to query a specific rule.
      */
-    waitingRoomRuleId?: pulumi.Input<number>;
+    waitingRoomRuleId?: pulumi.Input<number | undefined>;
 }
 
 /**

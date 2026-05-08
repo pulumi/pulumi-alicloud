@@ -142,19 +142,19 @@ export interface BucketHttpsConfigState {
     /**
      * The name of the bucket
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * TLS encryption algorithm suite configuration See `cipherSuit` below.
      */
-    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit>;
+    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit | undefined>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */
-    enable?: pulumi.Input<boolean>;
+    enable?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies the TLS versions allowed to access this buckets.
      */
-    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -168,7 +168,7 @@ export interface BucketHttpsConfigArgs {
     /**
      * TLS encryption algorithm suite configuration See `cipherSuit` below.
      */
-    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit>;
+    cipherSuit?: pulumi.Input<inputs.oss.BucketHttpsConfigCipherSuit | undefined>;
     /**
      * Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
      */
@@ -176,5 +176,5 @@ export interface BucketHttpsConfigArgs {
     /**
      * Specifies the TLS versions allowed to access this buckets.
      */
-    tlsVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

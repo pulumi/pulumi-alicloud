@@ -21,7 +21,7 @@ class CrossAccountArgs:
     def __init__(__self__, *,
                  cross_account_role_name: pulumi.Input[_builtins.str],
                  cross_account_user_id: pulumi.Input[_builtins.int],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CrossAccount resource.
 
@@ -60,24 +60,24 @@ class CrossAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup account alias
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
 
 @pulumi.input_type
 class _CrossAccountState:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering CrossAccount resources.
 
@@ -97,50 +97,50 @@ class _CrossAccountState:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup account alias
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timestamp of the creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of RAM role that the backup account authorizes the management account to manage its resources
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The uid of the backup account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
 
@@ -150,9 +150,9 @@ class CrossAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Cross Account resource.
@@ -257,9 +257,9 @@ class CrossAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -287,10 +287,10 @@ class CrossAccount(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'CrossAccount':
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'CrossAccount':
         """
         Get an existing CrossAccount resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

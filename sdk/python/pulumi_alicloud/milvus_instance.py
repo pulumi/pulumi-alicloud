@@ -25,20 +25,20 @@ class MilvusInstanceArgs:
                  instance_name: pulumi.Input[_builtins.str],
                  payment_type: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 auto_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MilvusInstance resource.
 
@@ -162,19 +162,19 @@ class MilvusInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoBackup")
-    def auto_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic backup
         """
         return pulumi.get(self, "auto_backup")
 
     @auto_backup.setter
-    def auto_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_backup", value)
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]:
         """
         Instance component information. Includes Starter Edition/Standard Edition.
         - Starter version: Array including standalone
@@ -185,24 +185,24 @@ class MilvusInstanceArgs:
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined configuration
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="dbAdminPassword")
-    def db_admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB administrator password, which can be used to log in to attu.
 
@@ -211,48 +211,48 @@ class MilvusInstanceArgs:
         return pulumi.get(self, "db_admin_password")
 
     @db_admin_password.setter
-    def db_admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_admin_password", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multiple copies of data
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kms Key encryption id, need to be encrypted set to true.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="multiZoneMode")
-    def multi_zone_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Availability Zone mode. The default Single.
         - Single: Single zone.
@@ -261,12 +261,12 @@ class MilvusInstanceArgs:
         return pulumi.get(self, "multi_zone_mode")
 
     @multi_zone_mode.setter
-    def multi_zone_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_zone_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_zone_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance Payment Duration
 
@@ -275,12 +275,12 @@ class MilvusInstanceArgs:
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Paid unit , Enumeration value:
         - Month: Month
@@ -291,82 +291,82 @@ class MilvusInstanceArgs:
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User Defined Label
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]:
         """
         Switch list, configure the switch and zone. See `vswitch_ids` below.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id. When multi-zone is enabled, it represents the primary zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _MilvusInstanceState:
     def __init__(__self__, *,
-                 auto_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MilvusInstance resources.
 
@@ -453,19 +453,19 @@ class _MilvusInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="autoBackup")
-    def auto_backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic backup
         """
         return pulumi.get(self, "auto_backup")
 
     @auto_backup.setter
-    def auto_backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_backup", value)
 
     @_builtins.property
     @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]:
+    def components(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]:
         """
         Instance component information. Includes Starter Edition/Standard Edition.
         - Starter version: Array including standalone
@@ -476,36 +476,36 @@ class _MilvusInstanceState:
         return pulumi.get(self, "components")
 
     @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]):
+    def components(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceComponentArgs']]]]):
         pulumi.set(self, "components", value)
 
     @_builtins.property
     @pulumi.getter
-    def configuration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined configuration
         """
         return pulumi.get(self, "configuration")
 
     @configuration.setter
-    def configuration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dbAdminPassword")
-    def db_admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB administrator password, which can be used to log in to attu.
 
@@ -514,72 +514,72 @@ class _MilvusInstanceState:
         return pulumi.get(self, "db_admin_password")
 
     @db_admin_password.setter
-    def db_admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_admin_password", value)
 
     @_builtins.property
     @pulumi.getter(name="dbVersion")
-    def db_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Milvus kernel version. Supported versions: 2.4, 2.5, 2.6.
         """
         return pulumi.get(self, "db_version")
 
     @db_version.setter
-    def db_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use kms encryption. After enabling, you need to configure KmsKeyId. The default is false.
         """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
-    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "encrypted", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable multiple copies of data
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name. The length is limited to 1-64 characters and can only contain Chinese, letters, numbers,-,_
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsKeyId")
-    def kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Kms Key encryption id, need to be encrypted set to true.
         """
         return pulumi.get(self, "kms_key_id")
 
     @kms_key_id.setter
-    def kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="multiZoneMode")
-    def multi_zone_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def multi_zone_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Availability Zone mode. The default Single.
         - Single: Single zone.
@@ -588,12 +588,12 @@ class _MilvusInstanceState:
         return pulumi.get(self, "multi_zone_mode")
 
     @multi_zone_mode.setter
-    def multi_zone_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def multi_zone_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "multi_zone_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDuration")
-    def payment_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def payment_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Instance Payment Duration
 
@@ -602,12 +602,12 @@ class _MilvusInstanceState:
         return pulumi.get(self, "payment_duration")
 
     @payment_duration.setter
-    def payment_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def payment_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "payment_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentDurationUnit")
-    def payment_duration_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_duration_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Paid unit , Enumeration value:
         - Month: Month
@@ -618,12 +618,12 @@ class _MilvusInstanceState:
         return pulumi.get(self, "payment_duration_unit")
 
     @payment_duration_unit.setter
-    def payment_duration_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_duration_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_duration_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Payment Type ,Enumeration value:
         - PayAsYouGo: Pay by volume
@@ -632,91 +632,91 @@ class _MilvusInstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         regionId. For example: cn-hangzhou
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance status. Value range:
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         User Defined Label
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC network ID. vpc-xxx.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]:
         """
         Switch list, configure the switch and zone. See `vswitch_ids` below.
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['MilvusInstanceVswitchIdArgs']]]]):
         pulumi.set(self, "vswitch_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id. When multi-zone is enabled, it represents the primary zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -726,24 +726,24 @@ class MilvusInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Milvus Instance resource.
@@ -945,24 +945,24 @@ class MilvusInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
-                 configuration: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 multi_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+                 configuration: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1013,27 +1013,27 @@ class MilvusInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_backup: Optional[pulumi.Input[_builtins.bool]] = None,
-            components: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
-            configuration: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            db_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-            db_version: Optional[pulumi.Input[_builtins.str]] = None,
-            encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            multi_zone_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            payment_duration_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'MilvusInstance':
+            auto_backup: pulumi.Input[Optional[_builtins.bool]] = None,
+            components: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceComponentArgs', 'MilvusInstanceComponentArgsDict']]]]] = None,
+            configuration: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            db_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            multi_zone_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            payment_duration_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['MilvusInstanceVswitchIdArgs', 'MilvusInstanceVswitchIdArgsDict']]]]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'MilvusInstance':
         """
         Get an existing MilvusInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

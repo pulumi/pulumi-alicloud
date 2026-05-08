@@ -203,35 +203,35 @@ export interface RocketMQTopicState {
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The maximum TPS for message sending.
      */
-    maxSendTps?: pulumi.Input<number>;
+    maxSendTps?: pulumi.Input<number | undefined>;
     /**
      * Message type.
      */
-    messageType?: pulumi.Input<string>;
+    messageType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.247.0) The region ID to which the instance belongs.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Custom remarks.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Topic name and identification.
      */
-    topicName?: pulumi.Input<string>;
+    topicName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -245,15 +245,15 @@ export interface RocketMQTopicArgs {
     /**
      * The maximum TPS for message sending.
      */
-    maxSendTps?: pulumi.Input<number>;
+    maxSendTps?: pulumi.Input<number | undefined>;
     /**
      * Message type.
      */
-    messageType?: pulumi.Input<string>;
+    messageType?: pulumi.Input<string | undefined>;
     /**
      * Custom remarks.
      */
-    remark?: pulumi.Input<string>;
+    remark?: pulumi.Input<string | undefined>;
     /**
      * Topic name and identification.
      */

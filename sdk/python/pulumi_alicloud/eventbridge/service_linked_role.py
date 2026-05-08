@@ -43,7 +43,7 @@ class ServiceLinkedRoleArgs:
 @pulumi.input_type
 class _ServiceLinkedRoleState:
     def __init__(__self__, *,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceLinkedRole resources.
 
@@ -54,14 +54,14 @@ class _ServiceLinkedRoleState:
 
     @_builtins.property
     @pulumi.getter(name="productName")
-    def product_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud service or the name of the service-linked role with which the cloud service is associated. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/developer-reference/api-eventbridge-2020-04-01-createservicelinkedroleforproduct).
         """
         return pulumi.get(self, "product_name")
 
     @product_name.setter
-    def product_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product_name", value)
 
 
@@ -71,7 +71,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Event Bridge Service Linked Role resource.
@@ -160,7 +160,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 product_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 product_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -183,7 +183,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            product_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceLinkedRole':
+            product_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceLinkedRole':
         """
         Get an existing ServiceLinkedRole resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

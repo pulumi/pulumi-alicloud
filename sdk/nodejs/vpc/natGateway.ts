@@ -299,104 +299,104 @@ export interface NatGatewayState {
     /**
      * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      */
-    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode>;
+    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode | undefined>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
      * - `MULTI_BINDED`: Multi EIP network card visible mode.
      * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
-    eipBindMode?: pulumi.Input<string>;
+    eipBindMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcefully delete the NAT gateway.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The nat gateway will auto create a forward item.
      */
-    forwardTableIds?: pulumi.Input<string>;
+    forwardTableIds?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
      */
-    icmpReplyEnabled?: pulumi.Input<boolean>;
+    icmpReplyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      *
      * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      */
-    natGatewayName?: pulumi.Input<string>;
+    natGatewayName?: pulumi.Input<string | undefined>;
     /**
      * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
-    natType?: pulumi.Input<string>;
+    natType?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
      */
-    privateLinkEnabled?: pulumi.Input<boolean>;
+    privateLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The nat gateway will auto create a snat item.
      */
-    snatTableIds?: pulumi.Input<string>;
+    snatTableIds?: pulumi.Input<string | undefined>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.121.0) The status of NAT gateway.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of NAT gateway.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The id of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -406,84 +406,84 @@ export interface NatGatewayArgs {
     /**
      * The access mode for reverse access to the VPC NAT gateway. See `accessMode` below.
      */
-    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode>;
+    accessMode?: pulumi.Input<inputs.vpc.NatGatewayAccessMode | undefined>;
     /**
      * Whether enable the deletion protection or not. Default value: `false`.
      * - true: Enable deletion protection.
      * - false: Disable deletion protection.
      */
-    deletionProtection?: pulumi.Input<boolean>;
+    deletionProtection?: pulumi.Input<boolean | undefined>;
     /**
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to only precheck this request. Default value: `false`.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
      * - `MULTI_BINDED`: Multi EIP network card visible mode.
      * - `NAT`: EIP normal mode, compatible with IPv4 gateway.
      */
-    eipBindMode?: pulumi.Input<string>;
+    eipBindMode?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcefully delete the NAT gateway.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether to enable ICMP retrieval. Default value: `true`. Valid values:
      */
-    icmpReplyEnabled?: pulumi.Input<boolean>;
+    icmpReplyEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      *
      * @deprecated Field `instanceChargeType` has been deprecated from provider version 1.121.0. New field `paymentType` instead.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The internet charge type. Valid values `PayByLcu`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From version 1.137.0, `internetChargeType` cannot be set to `PayBySpec`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.121.0. New field `natGatewayName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      */
-    natGatewayName?: pulumi.Input<string>;
+    natGatewayName?: pulumi.Input<string | undefined>;
     /**
      * The type of NAT gateway. Valid values: `Enhanced`. **NOTE:** From version 1.137.0, `natType` cannot be set to `Normal`.
      */
-    natType?: pulumi.Input<string>;
+    natType?: pulumi.Input<string | undefined>;
     /**
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      */
-    networkType?: pulumi.Input<string>;
+    networkType?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo`. Default to `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration that you will buy the resource, in month. It is valid when `paymentType` is `Subscription`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console. **NOTE:** International station only supports `Subscription`.
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether to enable PrivateLink. Default value: `false`. Valid values:
      */
-    privateLinkEnabled?: pulumi.Input<boolean>;
+    privateLinkEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internetChargeType` is `PayBySpec` and `networkType` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * The tags of NAT gateway.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The VPC ID.
      */
@@ -491,5 +491,5 @@ export interface NatGatewayArgs {
     /**
      * The id of VSwitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

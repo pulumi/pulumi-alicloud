@@ -23,22 +23,22 @@ class TransitRouterVpcAttachmentArgs:
     def __init__(__self__, *,
                  vpc_id: pulumi.Input[_builtins.str],
                  zone_mappings: pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]],
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterVpcAttachment resource.
 
@@ -142,7 +142,7 @@ class TransitRouterVpcAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
 
@@ -151,12 +151,12 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
 
@@ -165,36 +165,36 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the VPC connection. The value is:
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entity that pays the fees of the network instance. Valid values:
 
@@ -204,24 +204,24 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
 
@@ -230,50 +230,50 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableAssociationEnabled")
     @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
-    def route_table_association_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_association_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
-    def route_table_association_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_association_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_association_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTablePropagationEnabled")
     @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
-    def route_table_propagation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_propagation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
-    def route_table_propagation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_propagation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_propagation_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPC connection.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -281,37 +281,37 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpcAttachmentName")
-    def transit_router_vpc_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_vpc_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC connection.
         The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -319,59 +319,59 @@ class TransitRouterVpcAttachmentArgs:
         return pulumi.get(self, "transit_router_vpc_attachment_name")
 
     @transit_router_vpc_attachment_name.setter
-    def transit_router_vpc_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_vpc_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_vpc_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpcAttachmentOptions")
-    def transit_router_vpc_attachment_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def transit_router_vpc_attachment_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         TransitRouterVpcAttachmentOptions
         """
         return pulumi.get(self, "transit_router_vpc_attachment_options")
 
     @transit_router_vpc_attachment_options.setter
-    def transit_router_vpc_attachment_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def transit_router_vpc_attachment_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transit_router_vpc_attachment_options", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
 
 @pulumi.input_type
 class _TransitRouterVpcAttachmentState:
     def __init__(__self__, *,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None):
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]] = None):
         """
         Input properties used for looking up and filtering TransitRouterVpcAttachment resources.
 
@@ -465,7 +465,7 @@ class _TransitRouterVpcAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="autoPublishRouteEnabled")
-    def auto_publish_route_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_publish_route_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Enterprise Edition transit router to automatically advertise routes to VPCs. Valid values:
 
@@ -474,12 +474,12 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "auto_publish_route_enabled")
 
     @auto_publish_route_enabled.setter
-    def auto_publish_route_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_publish_route_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_publish_route_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="cenId")
-    def cen_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Cloud Enterprise Network (CEN) instance.
 
@@ -488,48 +488,48 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "cen_id")
 
     @cen_id.setter
-    def cen_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to forcibly delete the VPC connection. The value is:
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entity that pays the fees of the network instance. Valid values:
 
@@ -539,36 +539,36 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. The default value is `PayAsYouGo`, which specifies the pay-as-you-go billing method.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the VPC is deployed.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
 
@@ -577,62 +577,62 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableAssociationEnabled")
     @_utilities.deprecated("""Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead.""")
-    def route_table_association_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_association_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enabled route table association. **NOTE:** "Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association."
         """
         return pulumi.get(self, "route_table_association_enabled")
 
     @route_table_association_enabled.setter
-    def route_table_association_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_association_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_association_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTablePropagationEnabled")
     @_utilities.deprecated("""Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead.""")
-    def route_table_propagation_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def route_table_propagation_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enabled route table propagation. **NOTE:** "Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation."
         """
         return pulumi.get(self, "route_table_propagation_enabled")
 
     @route_table_propagation_enabled.setter
-    def route_table_propagation_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def route_table_propagation_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "route_table_propagation_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentDescription")
-    def transit_router_attachment_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VPC connection.
         The description must be 2 to 256 characters in length. The description must start with a letter but cannot start with `http://` or `https://`.
@@ -640,49 +640,49 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "transit_router_attachment_description")
 
     @transit_router_attachment_description.setter
-    def transit_router_attachment_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_description", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentId")
-    def transit_router_attachment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC connection.
         """
         return pulumi.get(self, "transit_router_attachment_id")
 
     @transit_router_attachment_id.setter
-    def transit_router_attachment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterAttachmentName")
     @_utilities.deprecated("""Field 'transit_router_attachment_name' has been deprecated since provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.""")
-    def transit_router_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field 'transit_router_attachment_name' has been deprecated from provider version 1.230.1. New field 'transit_router_vpc_attachment_name' instead.
         """
         return pulumi.get(self, "transit_router_attachment_name")
 
     @transit_router_attachment_name.setter
-    def transit_router_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Enterprise Edition transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpcAttachmentName")
-    def transit_router_vpc_attachment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_vpc_attachment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VPC connection.
         The name must be 2 to 128 characters in length, and can contain letters, digits, underscores (\\_), and hyphens (-). It must start with a letter.
@@ -690,55 +690,55 @@ class _TransitRouterVpcAttachmentState:
         return pulumi.get(self, "transit_router_vpc_attachment_name")
 
     @transit_router_vpc_attachment_name.setter
-    def transit_router_vpc_attachment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_vpc_attachment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_vpc_attachment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterVpcAttachmentOptions")
-    def transit_router_vpc_attachment_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def transit_router_vpc_attachment_options(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         TransitRouterVpcAttachmentOptions
         """
         return pulumi.get(self, "transit_router_vpc_attachment_options")
 
     @transit_router_vpc_attachment_options.setter
-    def transit_router_vpc_attachment_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def transit_router_vpc_attachment_options(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "transit_router_vpc_attachment_options", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcOwnerId")
-    def vpc_owner_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_owner_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VpcOwnerId
         """
         return pulumi.get(self, "vpc_owner_id")
 
     @vpc_owner_id.setter
-    def vpc_owner_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_owner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneMappings")
-    def zone_mappings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
+    def zone_mappings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]:
         """
         ZoneMappingss See `zone_mappings` below.
         """
         return pulumi.get(self, "zone_mappings")
 
     @zone_mappings.setter
-    def zone_mappings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]):
+    def zone_mappings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['TransitRouterVpcAttachmentZoneMappingArgs']]]]):
         pulumi.set(self, "zone_mappings", value)
 
 
@@ -748,24 +748,24 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Vpc Attachment resource.
@@ -960,24 +960,24 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
+                 auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1023,28 +1023,28 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_publish_route_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            cen_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_association_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            route_table_propagation_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            transit_router_attachment_description: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_vpc_attachment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_vpc_attachment_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_owner_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_mappings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None) -> 'TransitRouterVpcAttachment':
+            auto_publish_route_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            cen_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_association_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            route_table_propagation_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            transit_router_attachment_description: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_vpc_attachment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_vpc_attachment_options: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_owner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_mappings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['TransitRouterVpcAttachmentZoneMappingArgs', 'TransitRouterVpcAttachmentZoneMappingArgsDict']]]]] = None) -> 'TransitRouterVpcAttachment':
         """
         Get an existing TransitRouterVpcAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

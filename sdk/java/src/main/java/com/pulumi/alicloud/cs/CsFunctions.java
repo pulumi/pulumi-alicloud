@@ -78,8 +78,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -123,8 +123,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -168,8 +168,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -213,8 +213,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -258,8 +258,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetAckServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -374,8 +374,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -466,8 +466,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -558,8 +558,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -650,8 +650,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -742,8 +742,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -834,8 +834,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -926,8 +926,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.ManagedKubernetesArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1012,8 +1012,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1059,8 +1059,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1106,8 +1106,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1153,8 +1153,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1200,8 +1200,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1247,8 +1247,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1294,8 +1294,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetEdgeKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1349,8 +1349,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1442,8 +1442,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1535,8 +1535,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1628,8 +1628,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1721,8 +1721,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1815,8 +1815,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1905,8 +1905,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1995,8 +1995,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2085,8 +2085,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2175,8 +2175,8 @@ public final class CsFunctions {
      * import com.pulumi.std.inputs.CidrsubnetArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2258,8 +2258,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2308,8 +2308,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2358,8 +2358,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2408,8 +2408,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2458,8 +2458,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2508,8 +2508,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2558,8 +2558,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2622,8 +2622,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2643,7 +2643,7 @@ public final class CsFunctions {
      *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(enhanced.zones()[0].zoneId())
      *             .cpuCoreCount(4)
-     *             .memorySize(8)
+     *             .memorySize(8.0)
      *             .kubernetesNodeRole("Worker")
      *             .systemDiskCategory("cloud_efficiency")
      *             .build());
@@ -2752,8 +2752,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2773,7 +2773,7 @@ public final class CsFunctions {
      *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(enhanced.zones()[0].zoneId())
      *             .cpuCoreCount(4)
-     *             .memorySize(8)
+     *             .memorySize(8.0)
      *             .kubernetesNodeRole("Worker")
      *             .systemDiskCategory("cloud_efficiency")
      *             .build());
@@ -2882,8 +2882,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2903,7 +2903,7 @@ public final class CsFunctions {
      *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(enhanced.zones()[0].zoneId())
      *             .cpuCoreCount(4)
-     *             .memorySize(8)
+     *             .memorySize(8.0)
      *             .kubernetesNodeRole("Worker")
      *             .systemDiskCategory("cloud_efficiency")
      *             .build());
@@ -3012,8 +3012,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3033,7 +3033,7 @@ public final class CsFunctions {
      *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(enhanced.zones()[0].zoneId())
      *             .cpuCoreCount(4)
-     *             .memorySize(8)
+     *             .memorySize(8.0)
      *             .kubernetesNodeRole("Worker")
      *             .systemDiskCategory("cloud_efficiency")
      *             .build());
@@ -3142,8 +3142,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.inputs.NodePoolSpotPriceLimitArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesNodePoolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3163,7 +3163,7 @@ public final class CsFunctions {
      *         final var cloudEfficiency = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .availabilityZone(enhanced.zones()[0].zoneId())
      *             .cpuCoreCount(4)
-     *             .memorySize(8)
+     *             .memorySize(8.0)
      *             .kubernetesNodeRole("Worker")
      *             .systemDiskCategory("cloud_efficiency")
      *             .build());
@@ -3256,8 +3256,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3306,8 +3306,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3356,8 +3356,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3406,8 +3406,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3456,8 +3456,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.ram.inputs.GetUsersArgs;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesPermissionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3504,8 +3504,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3539,8 +3539,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3574,8 +3574,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3609,8 +3609,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3655,8 +3655,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3690,8 +3690,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3725,8 +3725,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3760,8 +3760,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3806,8 +3806,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3841,8 +3841,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3876,8 +3876,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3911,8 +3911,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3957,8 +3957,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3992,8 +3992,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4027,8 +4027,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4062,8 +4062,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4108,8 +4108,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4143,8 +4143,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4178,8 +4178,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4213,8 +4213,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetKubernetesVersionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4263,8 +4263,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4313,8 +4313,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4363,8 +4363,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4413,8 +4413,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4463,8 +4463,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4513,8 +4513,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4563,8 +4563,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetManagedKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4609,8 +4609,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4654,8 +4654,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4699,8 +4699,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4744,8 +4744,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4789,8 +4789,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4834,8 +4834,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4879,8 +4879,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseInstancesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4924,8 +4924,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4970,8 +4970,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5016,8 +5016,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5062,8 +5062,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5108,8 +5108,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseNamespacesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5161,8 +5161,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5233,8 +5233,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5305,8 +5305,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5377,8 +5377,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5449,8 +5449,8 @@ public final class CsFunctions {
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepo;
      * import com.pulumi.alicloud.cs.RegistryEnterpriseRepoArgs;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseReposArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5514,8 +5514,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5562,8 +5562,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5610,8 +5610,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5658,8 +5658,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5706,8 +5706,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetRegistryEnterpriseSyncRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5758,8 +5758,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5808,8 +5808,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5858,8 +5858,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5908,8 +5908,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5958,8 +5958,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6008,8 +6008,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6058,8 +6058,8 @@ public final class CsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.cs.CsFunctions;
      * import com.pulumi.alicloud.cs.inputs.GetServerlessKubernetesClustersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -21,10 +21,10 @@ class OidcProviderArgs:
     def __init__(__self__, *,
                  issuer_url: pulumi.Input[_builtins.str],
                  oidc_provider_name: pulumi.Input[_builtins.str],
-                 client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a OidcProvider resource.
 
@@ -73,43 +73,43 @@ class OidcProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientIds")
-    def client_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def client_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_ids")
 
     @client_ids.setter
-    def client_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def client_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "client_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of OIDC identity provider.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The authentication fingerprint of the HTTPS CA certificate.
         """
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fingerprints", value)
 
     @_builtins.property
     @pulumi.getter(name="issuanceLimitTime")
-    def issuance_limit_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issuance_limit_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
         Unit: hours. Value range: 1~168.
@@ -117,21 +117,21 @@ class OidcProviderArgs:
         return pulumi.get(self, "issuance_limit_time")
 
     @issuance_limit_time.setter
-    def issuance_limit_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issuance_limit_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issuance_limit_time", value)
 
 
 @pulumi.input_type
 class _OidcProviderState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_provider_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_provider_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OidcProvider resources.
 
@@ -164,67 +164,67 @@ class _OidcProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ARN of OIDC identity provider.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="clientIds")
-    def client_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def client_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Client ID.
         """
         return pulumi.get(self, "client_ids")
 
     @client_ids.setter
-    def client_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def client_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "client_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation Time (UTC time).
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of OIDC identity provider.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def fingerprints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The authentication fingerprint of the HTTPS CA certificate.
         """
         return pulumi.get(self, "fingerprints")
 
     @fingerprints.setter
-    def fingerprints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def fingerprints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "fingerprints", value)
 
     @_builtins.property
     @pulumi.getter(name="issuanceLimitTime")
-    def issuance_limit_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def issuance_limit_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
         Unit: hours. Value range: 1~168.
@@ -232,31 +232,31 @@ class _OidcProviderState:
         return pulumi.get(self, "issuance_limit_time")
 
     @issuance_limit_time.setter
-    def issuance_limit_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def issuance_limit_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "issuance_limit_time", value)
 
     @_builtins.property
     @pulumi.getter(name="issuerUrl")
-    def issuer_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The issuer URL of the OIDC identity provider.
         """
         return pulumi.get(self, "issuer_url")
 
     @issuer_url.setter
-    def issuer_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_url", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcProviderName")
-    def oidc_provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OIDC identity provider.
         """
         return pulumi.get(self, "oidc_provider_name")
 
     @oidc_provider_name.setter
-    def oidc_provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_provider_name", value)
 
 
@@ -266,12 +266,12 @@ class OidcProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a IMS Oidc Provider resource.
@@ -398,12 +398,12 @@ class OidcProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -435,14 +435,14 @@ class OidcProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            client_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            issuance_limit_time: Optional[pulumi.Input[_builtins.int]] = None,
-            issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-            oidc_provider_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'OidcProvider':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            issuance_limit_time: pulumi.Input[Optional[_builtins.int]] = None,
+            issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            oidc_provider_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'OidcProvider':
         """
         Get an existing OidcProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -156,19 +156,19 @@ export interface AuditPolicyState {
     /**
      * Audit state, Valid values: `enable`, `disabled`.
      */
-    auditStatus?: pulumi.Input<string>;
+    auditStatus?: pulumi.Input<string | undefined>;
     /**
      * Database Instance Id
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
-    storagePeriod?: pulumi.Input<number>;
+    storagePeriod?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -186,9 +186,9 @@ export interface AuditPolicyArgs {
     /**
      * The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
      */
-    storagePeriod?: pulumi.Input<number>;
+    storagePeriod?: pulumi.Input<number | undefined>;
 }

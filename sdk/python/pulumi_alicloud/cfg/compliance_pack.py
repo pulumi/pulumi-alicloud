@@ -24,9 +24,9 @@ class CompliancePackArgs:
                  compliance_pack_name: pulumi.Input[_builtins.str],
                  description: pulumi.Input[_builtins.str],
                  risk_level: pulumi.Input[_builtins.int],
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None):
         """
         The set of arguments for constructing a CompliancePack resource.
 
@@ -88,52 +88,52 @@ class CompliancePackArgs:
 
     @_builtins.property
     @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_pack_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compliance Package Template Id.
         """
         return pulumi.get(self, "compliance_pack_template_id")
 
     @compliance_pack_template_id.setter
-    def compliance_pack_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_pack_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_pack_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleIds")
-    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
+    def config_rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
         """
         A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
     @config_rule_ids.setter
-    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
+    def config_rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
         pulumi.set(self, "config_rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="configRules")
     @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-    def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
+    def config_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
-    def config_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]):
+    def config_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]):
         pulumi.set(self, "config_rules", value)
 
 
 @pulumi.input_type
 class _CompliancePackState:
     def __init__(__self__, *,
-                 compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CompliancePack resources.
 
@@ -165,87 +165,87 @@ class _CompliancePackState:
 
     @_builtins.property
     @pulumi.getter(name="compliancePackName")
-    def compliance_pack_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_pack_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
         """
         return pulumi.get(self, "compliance_pack_name")
 
     @compliance_pack_name.setter
-    def compliance_pack_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_pack_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_pack_name", value)
 
     @_builtins.property
     @pulumi.getter(name="compliancePackTemplateId")
-    def compliance_pack_template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compliance_pack_template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Compliance Package Template Id.
         """
         return pulumi.get(self, "compliance_pack_template_id")
 
     @compliance_pack_template_id.setter
-    def compliance_pack_template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compliance_pack_template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compliance_pack_template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="configRuleIds")
-    def config_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
+    def config_rule_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]:
         """
         A list of Config Rule IDs. See `config_rule_ids` below.
         """
         return pulumi.get(self, "config_rule_ids")
 
     @config_rule_ids.setter
-    def config_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
+    def config_rule_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleIdArgs']]]]):
         pulumi.set(self, "config_rule_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="configRules")
     @_utilities.deprecated("""Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.""")
-    def config_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
+    def config_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]:
         """
         A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
         """
         return pulumi.get(self, "config_rules")
 
     @config_rules.setter
-    def config_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]):
+    def config_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CompliancePackConfigRuleArgs']]]]):
         pulumi.set(self, "config_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Description of compliance pack.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="riskLevel")
-    def risk_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def risk_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Risk Level. Valid values:
         """
         return pulumi.get(self, "risk_level")
 
     @risk_level.setter
-    def risk_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def risk_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "risk_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Compliance Pack.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -255,12 +255,12 @@ class CompliancePack(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Config Compliance Pack resource.
@@ -432,12 +432,12 @@ class CompliancePack(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-                 config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 risk_level: Optional[pulumi.Input[_builtins.int]] = None,
+                 compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
+                 config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 risk_level: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -470,13 +470,13 @@ class CompliancePack(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            compliance_pack_name: Optional[pulumi.Input[_builtins.str]] = None,
-            compliance_pack_template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            config_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
-            config_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            risk_level: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CompliancePack':
+            compliance_pack_name: pulumi.Input[Optional[_builtins.str]] = None,
+            compliance_pack_template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            config_rule_ids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleIdArgs', 'CompliancePackConfigRuleIdArgsDict']]]]] = None,
+            config_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CompliancePackConfigRuleArgs', 'CompliancePackConfigRuleArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            risk_level: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CompliancePack':
         """
         Get an existing CompliancePack resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

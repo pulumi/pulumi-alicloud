@@ -163,43 +163,43 @@ export interface ServiceQueueState {
     /**
      * (Available since v1.223.2) The time when the queue was created.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
-    delaySeconds?: pulumi.Input<number>;
+    delaySeconds?: pulumi.Input<number | undefined>;
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy>;
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy | undefined>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
-    maximumMessageSize?: pulumi.Input<number>;
+    maximumMessageSize?: pulumi.Input<number | undefined>;
     /**
      * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
-    messageRetentionPeriod?: pulumi.Input<number>;
+    messageRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
-    pollingWaitSeconds?: pulumi.Input<number>;
+    pollingWaitSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the queue.
      */
-    queueName?: pulumi.Input<string>;
+    queueName?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
-    visibilityTimeout?: pulumi.Input<number>;
+    visibilityTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -209,27 +209,27 @@ export interface ServiceQueueArgs {
     /**
      * The period after which all messages sent to the queue are consumed. Default value: `0`. Valid values: `0` to `604800`. Unit: seconds.
      */
-    delaySeconds?: pulumi.Input<number>;
+    delaySeconds?: pulumi.Input<number | undefined>;
     /**
      * The dead-letter queue policy. See `dlqPolicy` below.
      */
-    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy>;
+    dlqPolicy?: pulumi.Input<inputs.message.ServiceQueueDlqPolicy | undefined>;
     /**
      * Specifies whether to enable the logging feature. Default value: `false`. Valid values:
      */
-    loggingEnabled?: pulumi.Input<boolean>;
+    loggingEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum length of the message that is sent to the queue. Valid values: `1024` to `65536`. Unit: bytes. Default value: `65536`.
      */
-    maximumMessageSize?: pulumi.Input<number>;
+    maximumMessageSize?: pulumi.Input<number | undefined>;
     /**
      * The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: `60` to `604800`. Unit: seconds. Default value: `345600`.
      */
-    messageRetentionPeriod?: pulumi.Input<number>;
+    messageRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: `0` to `30`. Unit: seconds. Default value: `0`.
      */
-    pollingWaitSeconds?: pulumi.Input<number>;
+    pollingWaitSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the queue.
      */
@@ -237,9 +237,9 @@ export interface ServiceQueueArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: `1` to `43200`. Unit: seconds. Default value: `30`.
      */
-    visibilityTimeout?: pulumi.Input<number>;
+    visibilityTimeout?: pulumi.Input<number | undefined>;
 }

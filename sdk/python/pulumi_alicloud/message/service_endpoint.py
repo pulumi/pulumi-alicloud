@@ -60,8 +60,8 @@ class ServiceEndpointArgs:
 @pulumi.input_type
 class _ServiceEndpointState:
     def __init__(__self__, *,
-                 endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceEndpoint resources.
 
@@ -76,19 +76,19 @@ class _ServiceEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="endpointEnabled")
-    def endpoint_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def endpoint_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the endpoint is enabled. Valid values:
         """
         return pulumi.get(self, "endpoint_enabled")
 
     @endpoint_enabled.setter
-    def endpoint_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def endpoint_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "endpoint_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access point type. Value:
         - public: indicates a public access point. (Currently only public is supported)
@@ -96,7 +96,7 @@ class _ServiceEndpointState:
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
 
@@ -106,8 +106,8 @@ class ServiceEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Endpoint resource.
@@ -206,8 +206,8 @@ class ServiceEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -233,8 +233,8 @@ class ServiceEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceEndpoint':
+            endpoint_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceEndpoint':
         """
         Get an existing ServiceEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

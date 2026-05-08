@@ -21,15 +21,15 @@ __all__ = ['CheckConfigArgs', 'CheckConfig']
 @pulumi.input_type
 class CheckConfigArgs:
     def __init__(__self__, *,
-                 configure: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 enable_add_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 selected_checks: Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 configure: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CheckConfig resource.
 
@@ -74,31 +74,31 @@ class CheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configure(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configure(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration of the check item. Valid value:
         """
         return pulumi.get(self, "configure")
 
     @configure.setter
-    def configure(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configure(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configure", value)
 
     @_builtins.property
     @pulumi.getter(name="cycleDays")
-    def cycle_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def cycle_days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Cycle detection time.
         """
         return pulumi.get(self, "cycle_days")
 
     @cycle_days.setter
-    def cycle_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def cycle_days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "cycle_days", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAddCheck")
-    def enable_add_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_add_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to check by default when there are new check items in the selected regulation. Values available:
         - **true:** On
@@ -107,12 +107,12 @@ class CheckConfigArgs:
         return pulumi.get(self, "enable_add_check")
 
     @enable_add_check.setter
-    def enable_add_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_add_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_add_check", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoCheck")
-    def enable_auto_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auto_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether automatic cycle detection is enabled. Values available:
         - **true:** On
@@ -121,12 +121,12 @@ class CheckConfigArgs:
         return pulumi.get(self, "enable_auto_check")
 
     @enable_auto_check.setter
-    def enable_auto_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auto_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auto_check", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the end time of the time period, which indicates the time of day. The start time and end time of the query can only be selected in the following time range.
         - **0~6** When the start time is 0, the end time must be set to 6 o'clock on the current day.
@@ -137,48 +137,48 @@ class CheckConfigArgs:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedChecks")
-    def selected_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]:
+    def selected_checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]:
         """
         The check items selected in the policy. See `selected_checks` below.
         """
         return pulumi.get(self, "selected_checks")
 
     @selected_checks.setter
-    def selected_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]):
+    def selected_checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]):
         pulumi.set(self, "selected_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the check. The value specifies a point in time in a day.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="systemConfig")
-    def system_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the configuration automatically generated by the system. Valid values:
         """
         return pulumi.get(self, "system_config")
 
     @system_config.setter
-    def system_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def vendors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vendors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The cloud service providers.
 
@@ -187,22 +187,22 @@ class CheckConfigArgs:
         return pulumi.get(self, "vendors")
 
     @vendors.setter
-    def vendors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vendors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vendors", value)
 
 
 @pulumi.input_type
 class _CheckConfigState:
     def __init__(__self__, *,
-                 configure: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 enable_add_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 selected_checks: Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 configure: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CheckConfig resources.
 
@@ -247,31 +247,31 @@ class _CheckConfigState:
 
     @_builtins.property
     @pulumi.getter
-    def configure(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configure(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The configuration of the check item. Valid value:
         """
         return pulumi.get(self, "configure")
 
     @configure.setter
-    def configure(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configure(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configure", value)
 
     @_builtins.property
     @pulumi.getter(name="cycleDays")
-    def cycle_days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def cycle_days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         Cycle detection time.
         """
         return pulumi.get(self, "cycle_days")
 
     @cycle_days.setter
-    def cycle_days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def cycle_days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "cycle_days", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAddCheck")
-    def enable_add_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_add_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to check by default when there are new check items in the selected regulation. Values available:
         - **true:** On
@@ -280,12 +280,12 @@ class _CheckConfigState:
         return pulumi.get(self, "enable_add_check")
 
     @enable_add_check.setter
-    def enable_add_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_add_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_add_check", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAutoCheck")
-    def enable_auto_check(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_auto_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether automatic cycle detection is enabled. Values available:
         - **true:** On
@@ -294,12 +294,12 @@ class _CheckConfigState:
         return pulumi.get(self, "enable_auto_check")
 
     @enable_auto_check.setter
-    def enable_auto_check(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_auto_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_auto_check", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Check the end time of the time period, which indicates the time of day. The start time and end time of the query can only be selected in the following time range.
         - **0~6** When the start time is 0, the end time must be set to 6 o'clock on the current day.
@@ -310,48 +310,48 @@ class _CheckConfigState:
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="selectedChecks")
-    def selected_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]:
+    def selected_checks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]:
         """
         The check items selected in the policy. See `selected_checks` below.
         """
         return pulumi.get(self, "selected_checks")
 
     @selected_checks.setter
-    def selected_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]):
+    def selected_checks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CheckConfigSelectedCheckArgs']]]]):
         pulumi.set(self, "selected_checks", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the check. The value specifies a point in time in a day.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="systemConfig")
-    def system_config(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_config(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the configuration automatically generated by the system. Valid values:
         """
         return pulumi.get(self, "system_config")
 
     @system_config.setter
-    def system_config(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_config(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def vendors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vendors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The cloud service providers.
 
@@ -360,7 +360,7 @@ class _CheckConfigState:
         return pulumi.get(self, "vendors")
 
     @vendors.setter
-    def vendors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vendors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vendors", value)
 
 
@@ -370,15 +370,15 @@ class CheckConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configure: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 enable_add_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 selected_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configure: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Check Config resource.
@@ -521,15 +521,15 @@ class CheckConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configure: Optional[pulumi.Input[_builtins.str]] = None,
-                 cycle_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 enable_add_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_auto_check: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 selected_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_config: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 configure: pulumi.Input[Optional[_builtins.str]] = None,
+                 cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -558,15 +558,15 @@ class CheckConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            configure: Optional[pulumi.Input[_builtins.str]] = None,
-            cycle_days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            enable_add_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_auto_check: Optional[pulumi.Input[_builtins.bool]] = None,
-            end_time: Optional[pulumi.Input[_builtins.int]] = None,
-            selected_checks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
-            start_time: Optional[pulumi.Input[_builtins.int]] = None,
-            system_config: Optional[pulumi.Input[_builtins.bool]] = None,
-            vendors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CheckConfig':
+            configure: pulumi.Input[Optional[_builtins.str]] = None,
+            cycle_days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            enable_add_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_auto_check: pulumi.Input[Optional[_builtins.bool]] = None,
+            end_time: pulumi.Input[Optional[_builtins.int]] = None,
+            selected_checks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CheckConfigSelectedCheckArgs', 'CheckConfigSelectedCheckArgsDict']]]]] = None,
+            start_time: pulumi.Input[Optional[_builtins.int]] = None,
+            system_config: pulumi.Input[Optional[_builtins.bool]] = None,
+            vendors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CheckConfig':
         """
         Get an existing CheckConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,28 +22,28 @@ __all__ = ['ScalingRuleArgs', 'ScalingRule']
 class ScalingRuleArgs:
     def __init__(__self__, *,
                  scaling_group_id: pulumi.Input[_builtins.str],
-                 adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 alarm_dimension: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 estimated_instance_warmup: Optional[pulumi.Input[_builtins.int]] = None,
-                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
-                 hybrid_monitor_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_adjustment_magnitude: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_task_buffer_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_value_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_value_buffer: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_in_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_out_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.float]] = None):
+                 adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 alarm_dimension: pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
+                 hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.float]] = None):
         """
         The set of arguments for constructing a ScalingRule resource.
 
@@ -137,7 +137,7 @@ class ScalingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="adjustmentType")
-    def adjustment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Adjustment mode of a scaling rule. Optional values:
         - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
@@ -147,12 +147,12 @@ class ScalingRuleArgs:
         return pulumi.get(self, "adjustment_type")
 
     @adjustment_type.setter
-    def adjustment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="adjustmentValue")
-    def adjustment_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def adjustment_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         - QuantityChangeInCapacity：(0, 500] U (-500, 0]
@@ -162,277 +162,277 @@ class ScalingRuleArgs:
         return pulumi.get(self, "adjustment_value")
 
     @adjustment_value.setter
-    def adjustment_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def adjustment_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "adjustment_value", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmDimension")
-    def alarm_dimension(self) -> Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]:
+    def alarm_dimension(self) -> pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']]:
         """
         AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         """
         return pulumi.get(self, "alarm_dimension")
 
     @alarm_dimension.setter
-    def alarm_dimension(self, value: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]):
+    def alarm_dimension(self, value: pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']]):
         pulumi.set(self, "alarm_dimension", value)
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="disableScaleIn")
-    def disable_scale_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether scale in by the target tracking policy is disabled. Default to false.
         """
         return pulumi.get(self, "disable_scale_in")
 
     @disable_scale_in.setter
-    def disable_scale_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_scale_in", value)
 
     @_builtins.property
     @pulumi.getter(name="estimatedInstanceWarmup")
-    def estimated_instance_warmup(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def estimated_instance_warmup(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         """
         return pulumi.get(self, "estimated_instance_warmup")
 
     @estimated_instance_warmup.setter
-    def estimated_instance_warmup(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def estimated_instance_warmup(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridMetrics")
-    def hybrid_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
+    def hybrid_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
         """
         The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
         """
         return pulumi.get(self, "hybrid_metrics")
 
     @hybrid_metrics.setter
-    def hybrid_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
+    def hybrid_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
         pulumi.set(self, "hybrid_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridMonitorNamespace")
-    def hybrid_monitor_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_monitor_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Hybrid Cloud Monitoring metric repository.
         """
         return pulumi.get(self, "hybrid_monitor_namespace")
 
     @hybrid_monitor_namespace.setter
-    def hybrid_monitor_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_monitor_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_monitor_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="initialMaxSize")
-    def initial_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         """
         return pulumi.get(self, "initial_max_size")
 
     @initial_max_size.setter
-    def initial_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A CloudMonitor metric name.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the metric. Valid values: system, custom, hybrid.
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter(name="minAdjustmentMagnitude")
-    def min_adjustment_magnitude(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_adjustment_magnitude(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         """
         return pulumi.get(self, "min_adjustment_magnitude")
 
     @min_adjustment_magnitude.setter
-    def min_adjustment_magnitude(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_adjustment_magnitude(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_adjustment_magnitude", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveScalingMode")
-    def predictive_scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predictive_scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         """
         return pulumi.get(self, "predictive_scaling_mode")
 
     @predictive_scaling_mode.setter
-    def predictive_scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predictive_scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predictive_scaling_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveTaskBufferTime")
-    def predictive_task_buffer_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def predictive_task_buffer_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
         """
         return pulumi.get(self, "predictive_task_buffer_time")
 
     @predictive_task_buffer_time.setter
-    def predictive_task_buffer_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def predictive_task_buffer_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "predictive_task_buffer_time", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveValueBehavior")
-    def predictive_value_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predictive_value_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
         """
         return pulumi.get(self, "predictive_value_behavior")
 
     @predictive_value_behavior.setter
-    def predictive_value_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predictive_value_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predictive_value_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveValueBuffer")
-    def predictive_value_buffer(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def predictive_value_buffer(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         """
         return pulumi.get(self, "predictive_value_buffer")
 
     @predictive_value_buffer.setter
-    def predictive_value_buffer(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def predictive_value_buffer(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "predictive_value_buffer", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleInEvaluationCount")
-    def scale_in_evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_in_evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         """
         return pulumi.get(self, "scale_in_evaluation_count")
 
     @scale_in_evaluation_count.setter
-    def scale_in_evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_in_evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_in_evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleOutEvaluationCount")
-    def scale_out_evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_out_evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         """
         return pulumi.get(self, "scale_out_evaluation_count")
 
     @scale_out_evaluation_count.setter
-    def scale_out_evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_out_evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_out_evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleName")
-    def scaling_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         """
         return pulumi.get(self, "scaling_rule_name")
 
     @scaling_rule_name.setter
-    def scaling_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleType")
-    def scaling_rule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         """
         return pulumi.get(self, "scaling_rule_type")
 
     @scaling_rule_type.setter
-    def scaling_rule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
+    def step_adjustments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
         """
         Steps for StepScalingRule. See `step_adjustment` below.
         """
         return pulumi.get(self, "step_adjustments")
 
     @step_adjustments.setter
-    def step_adjustments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]):
+    def step_adjustments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]):
         pulumi.set(self, "step_adjustments", value)
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The target value for the metric.
         """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
-    def target_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_value", value)
 
 
 @pulumi.input_type
 class _ScalingRuleState:
     def __init__(__self__, *,
-                 adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 alarm_dimension: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']] = None,
-                 ari: Optional[pulumi.Input[_builtins.str]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 estimated_instance_warmup: Optional[pulumi.Input[_builtins.int]] = None,
-                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
-                 hybrid_monitor_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_adjustment_magnitude: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_task_buffer_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_value_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_value_buffer: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_in_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_out_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.float]] = None):
+                 adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 alarm_dimension: pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']] = None,
+                 ari: pulumi.Input[Optional[_builtins.str]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]] = None,
+                 hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering ScalingRule resources.
 
@@ -518,7 +518,7 @@ class _ScalingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="adjustmentType")
-    def adjustment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def adjustment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Adjustment mode of a scaling rule. Optional values:
         - QuantityChangeInCapacity: It is used to increase or decrease a specified number of ECS instances.
@@ -528,12 +528,12 @@ class _ScalingRuleState:
         return pulumi.get(self, "adjustment_type")
 
     @adjustment_type.setter
-    def adjustment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def adjustment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "adjustment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="adjustmentValue")
-    def adjustment_value(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def adjustment_value(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of ECS instances to be adjusted in the scaling rule. This parameter is required and applicable only to simple scaling rules. The number of ECS instances to be adjusted in a single scaling activity cannot exceed 500. Value range:
         - QuantityChangeInCapacity：(0, 500] U (-500, 0]
@@ -543,271 +543,271 @@ class _ScalingRuleState:
         return pulumi.get(self, "adjustment_value")
 
     @adjustment_value.setter
-    def adjustment_value(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def adjustment_value(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "adjustment_value", value)
 
     @_builtins.property
     @pulumi.getter(name="alarmDimension")
-    def alarm_dimension(self) -> Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]:
+    def alarm_dimension(self) -> pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']]:
         """
         AlarmDimension for StepScalingRule. See `alarm_dimension` below.
         """
         return pulumi.get(self, "alarm_dimension")
 
     @alarm_dimension.setter
-    def alarm_dimension(self, value: Optional[pulumi.Input['ScalingRuleAlarmDimensionArgs']]):
+    def alarm_dimension(self, value: pulumi.Input[Optional['ScalingRuleAlarmDimensionArgs']]):
         pulumi.set(self, "alarm_dimension", value)
 
     @_builtins.property
     @pulumi.getter
-    def ari(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ari(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the scaling rule.
         """
         return pulumi.get(self, "ari")
 
     @ari.setter
-    def ari(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ari(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ari", value)
 
     @_builtins.property
     @pulumi.getter
-    def cooldown(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cooldown(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         """
         return pulumi.get(self, "cooldown")
 
     @cooldown.setter
-    def cooldown(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cooldown(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cooldown", value)
 
     @_builtins.property
     @pulumi.getter(name="disableScaleIn")
-    def disable_scale_in(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_scale_in(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether scale in by the target tracking policy is disabled. Default to false.
         """
         return pulumi.get(self, "disable_scale_in")
 
     @disable_scale_in.setter
-    def disable_scale_in(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_scale_in(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_scale_in", value)
 
     @_builtins.property
     @pulumi.getter(name="estimatedInstanceWarmup")
-    def estimated_instance_warmup(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def estimated_instance_warmup(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
         """
         return pulumi.get(self, "estimated_instance_warmup")
 
     @estimated_instance_warmup.setter
-    def estimated_instance_warmup(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def estimated_instance_warmup(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridMetrics")
-    def hybrid_metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
+    def hybrid_metrics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]:
         """
         The Hybrid Cloud Monitoring metrics. See `hybrid_metrics` below.
         """
         return pulumi.get(self, "hybrid_metrics")
 
     @hybrid_metrics.setter
-    def hybrid_metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
+    def hybrid_metrics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleHybridMetricArgs']]]]):
         pulumi.set(self, "hybrid_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="hybridMonitorNamespace")
-    def hybrid_monitor_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hybrid_monitor_namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Hybrid Cloud Monitoring metric repository.
         """
         return pulumi.get(self, "hybrid_monitor_namespace")
 
     @hybrid_monitor_namespace.setter
-    def hybrid_monitor_namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hybrid_monitor_namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hybrid_monitor_namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="initialMaxSize")
-    def initial_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         """
         return pulumi.get(self, "initial_max_size")
 
     @initial_max_size.setter
-    def initial_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A CloudMonitor metric name.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the metric. Valid values: system, custom, hybrid.
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter(name="minAdjustmentMagnitude")
-    def min_adjustment_magnitude(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_adjustment_magnitude(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         """
         return pulumi.get(self, "min_adjustment_magnitude")
 
     @min_adjustment_magnitude.setter
-    def min_adjustment_magnitude(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_adjustment_magnitude(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_adjustment_magnitude", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveScalingMode")
-    def predictive_scaling_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predictive_scaling_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
         """
         return pulumi.get(self, "predictive_scaling_mode")
 
     @predictive_scaling_mode.setter
-    def predictive_scaling_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predictive_scaling_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predictive_scaling_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveTaskBufferTime")
-    def predictive_task_buffer_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def predictive_task_buffer_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
         """
         return pulumi.get(self, "predictive_task_buffer_time")
 
     @predictive_task_buffer_time.setter
-    def predictive_task_buffer_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def predictive_task_buffer_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "predictive_task_buffer_time", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveValueBehavior")
-    def predictive_value_behavior(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def predictive_value_behavior(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
         """
         return pulumi.get(self, "predictive_value_behavior")
 
     @predictive_value_behavior.setter
-    def predictive_value_behavior(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def predictive_value_behavior(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "predictive_value_behavior", value)
 
     @_builtins.property
     @pulumi.getter(name="predictiveValueBuffer")
-    def predictive_value_buffer(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def predictive_value_buffer(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         """
         return pulumi.get(self, "predictive_value_buffer")
 
     @predictive_value_buffer.setter
-    def predictive_value_buffer(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def predictive_value_buffer(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "predictive_value_buffer", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleInEvaluationCount")
-    def scale_in_evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_in_evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         """
         return pulumi.get(self, "scale_in_evaluation_count")
 
     @scale_in_evaluation_count.setter
-    def scale_in_evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_in_evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_in_evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleOutEvaluationCount")
-    def scale_out_evaluation_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_out_evaluation_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         """
         return pulumi.get(self, "scale_out_evaluation_count")
 
     @scale_out_evaluation_count.setter
-    def scale_out_evaluation_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_out_evaluation_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_out_evaluation_count", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the scaling group of a scaling rule.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleName")
-    def scaling_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
         """
         return pulumi.get(self, "scaling_rule_name")
 
     @scaling_rule_name.setter
-    def scaling_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingRuleType")
-    def scaling_rule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         """
         return pulumi.get(self, "scaling_rule_type")
 
     @scaling_rule_type.setter
-    def scaling_rule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_rule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_rule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="stepAdjustments")
-    def step_adjustments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
+    def step_adjustments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]:
         """
         Steps for StepScalingRule. See `step_adjustment` below.
         """
         return pulumi.get(self, "step_adjustments")
 
     @step_adjustments.setter
-    def step_adjustments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]):
+    def step_adjustments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]]]):
         pulumi.set(self, "step_adjustments", value)
 
     @_builtins.property
     @pulumi.getter(name="targetValue")
-    def target_value(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def target_value(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The target value for the metric.
         """
         return pulumi.get(self, "target_value")
 
     @target_value.setter
-    def target_value(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def target_value(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "target_value", value)
 
 
@@ -817,29 +817,29 @@ class ScalingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 alarm_dimension: Optional[pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 estimated_instance_warmup: Optional[pulumi.Input[_builtins.int]] = None,
-                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
-                 hybrid_monitor_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_adjustment_magnitude: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_task_buffer_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_value_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_value_buffer: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_in_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_out_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.float]] = None,
+                 adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         """
         Provides a ESS scaling rule resource.
@@ -867,7 +867,7 @@ class ScalingRule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -992,7 +992,7 @@ class ScalingRule(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -1068,29 +1068,29 @@ class ScalingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-                 alarm_dimension: Optional[pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
-                 cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-                 estimated_instance_warmup: Optional[pulumi.Input[_builtins.int]] = None,
-                 hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
-                 hybrid_monitor_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_adjustment_magnitude: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_task_buffer_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 predictive_value_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-                 predictive_value_buffer: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_in_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_out_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
-                 target_value: Optional[pulumi.Input[_builtins.float]] = None,
+                 adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+                 alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+                 cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+                 estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+                 hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+                 hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+                 predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+                 target_value: pulumi.Input[Optional[_builtins.float]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1136,30 +1136,30 @@ class ScalingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            adjustment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            adjustment_value: Optional[pulumi.Input[_builtins.int]] = None,
-            alarm_dimension: Optional[pulumi.Input[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
-            ari: Optional[pulumi.Input[_builtins.str]] = None,
-            cooldown: Optional[pulumi.Input[_builtins.int]] = None,
-            disable_scale_in: Optional[pulumi.Input[_builtins.bool]] = None,
-            estimated_instance_warmup: Optional[pulumi.Input[_builtins.int]] = None,
-            hybrid_metrics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
-            hybrid_monitor_namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            initial_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-            min_adjustment_magnitude: Optional[pulumi.Input[_builtins.int]] = None,
-            predictive_scaling_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            predictive_task_buffer_time: Optional[pulumi.Input[_builtins.int]] = None,
-            predictive_value_behavior: Optional[pulumi.Input[_builtins.str]] = None,
-            predictive_value_buffer: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_in_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_out_evaluation_count: Optional[pulumi.Input[_builtins.int]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_rule_type: Optional[pulumi.Input[_builtins.str]] = None,
-            step_adjustments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
-            target_value: Optional[pulumi.Input[_builtins.float]] = None) -> 'ScalingRule':
+            adjustment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            adjustment_value: pulumi.Input[Optional[_builtins.int]] = None,
+            alarm_dimension: pulumi.Input[Optional[Union['ScalingRuleAlarmDimensionArgs', 'ScalingRuleAlarmDimensionArgsDict']]] = None,
+            ari: pulumi.Input[Optional[_builtins.str]] = None,
+            cooldown: pulumi.Input[Optional[_builtins.int]] = None,
+            disable_scale_in: pulumi.Input[Optional[_builtins.bool]] = None,
+            estimated_instance_warmup: pulumi.Input[Optional[_builtins.int]] = None,
+            hybrid_metrics: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleHybridMetricArgs', 'ScalingRuleHybridMetricArgsDict']]]]] = None,
+            hybrid_monitor_namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            initial_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+            min_adjustment_magnitude: pulumi.Input[Optional[_builtins.int]] = None,
+            predictive_scaling_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            predictive_task_buffer_time: pulumi.Input[Optional[_builtins.int]] = None,
+            predictive_value_behavior: pulumi.Input[Optional[_builtins.str]] = None,
+            predictive_value_buffer: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_in_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_out_evaluation_count: pulumi.Input[Optional[_builtins.int]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_rule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            step_adjustments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingRuleStepAdjustmentArgs', 'ScalingRuleStepAdjustmentArgsDict']]]]] = None,
+            target_value: pulumi.Input[Optional[_builtins.float]] = None) -> 'ScalingRule':
         """
         Get an existing ScalingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

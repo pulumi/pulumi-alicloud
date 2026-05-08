@@ -21,7 +21,7 @@ class CiphertextArgs:
     def __init__(__self__, *,
                  key_id: pulumi.Input[_builtins.str],
                  plaintext: pulumi.Input[_builtins.str],
-                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Ciphertext resource.
 
@@ -60,24 +60,24 @@ class CiphertextArgs:
 
     @_builtins.property
     @pulumi.getter(name="encryptionContext")
-    def encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         return pulumi.get(self, "encryption_context")
 
     @encryption_context.setter
-    def encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "encryption_context", value)
 
 
 @pulumi.input_type
 class _CiphertextState:
     def __init__(__self__, *,
-                 ciphertext_blob: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None):
+                 ciphertext_blob: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ciphertext resources.
 
@@ -97,50 +97,50 @@ class _CiphertextState:
 
     @_builtins.property
     @pulumi.getter(name="ciphertextBlob")
-    def ciphertext_blob(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ciphertext_blob(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ciphertext of the data key encrypted with the primary CMK version.
         """
         return pulumi.get(self, "ciphertext_blob")
 
     @ciphertext_blob.setter
-    def ciphertext_blob(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ciphertext_blob(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ciphertext_blob", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionContext")
-    def encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         """
         return pulumi.get(self, "encryption_context")
 
     @encryption_context.setter
-    def encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique ID of the CMK.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def plaintext(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plaintext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The plaintext to be encrypted which must be encoded in Base64.
         """
         return pulumi.get(self, "plaintext")
 
     @plaintext.setter
-    def plaintext(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plaintext(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plaintext", value)
 
 
@@ -150,9 +150,9 @@ class Ciphertext(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Encrypt a given plaintext with KMS. The produced ciphertext stays stable across applies. If the plaintext should be re-encrypted on each apply use the `kms.Ciphertext` data source.
@@ -231,9 +231,9 @@ class Ciphertext(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plaintext: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plaintext: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,10 +263,10 @@ class Ciphertext(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ciphertext_blob: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plaintext: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ciphertext':
+            ciphertext_blob: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plaintext: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ciphertext':
         """
         Get an existing Ciphertext resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -24,46 +24,46 @@ class ListenerArgs:
                  frontend_port: pulumi.Input[_builtins.int],
                  load_balancer_id: pulumi.Input[_builtins.str],
                  protocol: pulumi.Input[_builtins.str],
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 acl_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 established_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 forward_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 gzip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_slave_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 proxy_protocol_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 acl_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 gzip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_slave_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 proxy_protocol_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 x_forwarded_for: pulumi.Input[Optional['ListenerXForwardedForArgs']] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -189,415 +189,415 @@ class ListenerArgs:
     @_builtins.property
     @pulumi.getter(name="aclId")
     @_utilities.deprecated("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
-    def acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
-    def acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aclIds")
-    def acl_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acl_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "acl_ids")
 
     @acl_ids.setter
-    def acl_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acl_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acl_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="aclStatus")
-    def acl_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_status")
 
     @acl_status.setter
-    def acl_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_status", value)
 
     @_builtins.property
     @pulumi.getter(name="aclType")
-    def acl_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_type")
 
     @acl_type.setter
-    def acl_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
-    def backend_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backend_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateId")
-    def ca_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ca_certificate_id")
 
     @ca_certificate_id.setter
-    def ca_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cookie")
 
     @cookie.setter
-    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieTimeout")
-    def cookie_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cookie_timeout")
 
     @cookie_timeout.setter
-    def cookie_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHttp2")
-    def enable_http2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_http2(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "enable_http2")
 
     @enable_http2.setter
-    def enable_http2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_http2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_http2", value)
 
     @_builtins.property
     @pulumi.getter(name="establishedTimeout")
-    def established_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def established_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "established_timeout")
 
     @established_timeout.setter
-    def established_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def established_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "established_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardPort")
-    def forward_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forward_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "forward_port")
 
     @forward_port.setter
-    def forward_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forward_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forward_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def gzip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gzip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "gzip")
 
     @gzip.setter
-    def gzip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gzip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gzip", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_connect_port")
 
     @health_check_connect_port.setter
-    def health_check_connect_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDomain")
-    def health_check_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_domain")
 
     @health_check_domain.setter
-    def health_check_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckMethod")
-    def health_check_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_method")
 
     @health_check_method.setter
-    def health_check_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_method", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerForward")
-    def listener_forward(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_forward(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "listener_forward")
 
     @listener_forward.setter
-    def listener_forward(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_forward(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="masterSlaveServerGroupId")
-    def master_slave_server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_slave_server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "master_slave_server_group_id")
 
     @master_slave_server_group_id.setter
-    def master_slave_server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_slave_server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_slave_server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceTimeout")
-    def persistence_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def persistence_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "persistence_timeout")
 
     @persistence_timeout.setter
-    def persistence_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def persistence_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "persistence_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolV2Enabled")
-    def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_v2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "proxy_protocol_v2_enabled")
 
     @proxy_protocol_v2_enabled.setter
-    def proxy_protocol_v2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_v2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_v2_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificateId")
-    def server_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
-    def server_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificateId")
     @_utilities.deprecated("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
-    def ssl_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssl_certificate_id")
 
     @ssl_certificate_id.setter
-    def ssl_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySession")
-    def sticky_session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sticky_session")
 
     @sticky_session.setter
-    def sticky_session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionType")
-    def sticky_session_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sticky_session_type")
 
     @sticky_session_type.setter
-    def sticky_session_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicy")
-    def tls_cipher_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_cipher_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tls_cipher_policy")
 
     @tls_cipher_policy.setter
-    def tls_cipher_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_cipher_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_cipher_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="xForwardedFor")
-    def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
+    def x_forwarded_for(self) -> pulumi.Input[Optional['ListenerXForwardedForArgs']]:
         """
         Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         return pulumi.get(self, "x_forwarded_for")
 
     @x_forwarded_for.setter
-    def x_forwarded_for(self, value: Optional[pulumi.Input['ListenerXForwardedForArgs']]):
+    def x_forwarded_for(self, value: pulumi.Input[Optional['ListenerXForwardedForArgs']]):
         pulumi.set(self, "x_forwarded_for", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 acl_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 established_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 forward_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 gzip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_slave_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 x_forwarded_for: Optional[pulumi.Input['ListenerXForwardedForArgs']] = None):
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 acl_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 gzip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_slave_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 x_forwarded_for: pulumi.Input[Optional['ListenerXForwardedForArgs']] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -699,393 +699,393 @@ class _ListenerState:
     @_builtins.property
     @pulumi.getter(name="aclId")
     @_utilities.deprecated("""Field `acl_id` has been deprecated from provider version 1.249.0. New field `acl_ids` instead.""")
-    def acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_id")
 
     @acl_id.setter
-    def acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_id", value)
 
     @_builtins.property
     @pulumi.getter(name="aclIds")
-    def acl_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acl_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "acl_ids")
 
     @acl_ids.setter
-    def acl_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acl_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acl_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="aclStatus")
-    def acl_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_status")
 
     @acl_status.setter
-    def acl_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_status", value)
 
     @_builtins.property
     @pulumi.getter(name="aclType")
-    def acl_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "acl_type")
 
     @acl_type.setter
-    def acl_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_type", value)
 
     @_builtins.property
     @pulumi.getter(name="backendPort")
-    def backend_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "backend_port")
 
     @backend_port.setter
-    def backend_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backend_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateId")
-    def ca_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ca_certificate_id")
 
     @ca_certificate_id.setter
-    def ca_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cookie")
 
     @cookie.setter
-    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="cookieTimeout")
-    def cookie_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cookie_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "cookie_timeout")
 
     @cookie_timeout.setter
-    def cookie_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cookie_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cookie_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteProtectionValidation")
-    def delete_protection_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_protection_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "delete_protection_validation")
 
     @delete_protection_validation.setter
-    def delete_protection_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_protection_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_protection_validation", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableHttp2")
-    def enable_http2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def enable_http2(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "enable_http2")
 
     @enable_http2.setter
-    def enable_http2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def enable_http2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "enable_http2", value)
 
     @_builtins.property
     @pulumi.getter(name="establishedTimeout")
-    def established_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def established_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "established_timeout")
 
     @established_timeout.setter
-    def established_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def established_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "established_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardPort")
-    def forward_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def forward_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "forward_port")
 
     @forward_port.setter
-    def forward_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def forward_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "forward_port", value)
 
     @_builtins.property
     @pulumi.getter(name="frontendPort")
-    def frontend_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def frontend_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "frontend_port")
 
     @frontend_port.setter
-    def frontend_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def frontend_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "frontend_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def gzip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gzip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "gzip")
 
     @gzip.setter
-    def gzip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gzip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gzip", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheck")
-    def health_check(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check")
 
     @health_check.setter
-    def health_check(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConnectPort")
-    def health_check_connect_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_connect_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_connect_port")
 
     @health_check_connect_port.setter
-    def health_check_connect_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_connect_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_connect_port", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckDomain")
-    def health_check_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_domain")
 
     @health_check_domain.setter
-    def health_check_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_domain", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckHttpCode")
-    def health_check_http_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_http_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_http_code")
 
     @health_check_http_code.setter
-    def health_check_http_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_http_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_http_code", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckInterval")
-    def health_check_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_interval")
 
     @health_check_interval.setter
-    def health_check_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckMethod")
-    def health_check_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_method")
 
     @health_check_method.setter
-    def health_check_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_method", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckTimeout")
-    def health_check_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def health_check_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "health_check_timeout")
 
     @health_check_timeout.setter
-    def health_check_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def health_check_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "health_check_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckType")
-    def health_check_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_type")
 
     @health_check_type.setter
-    def health_check_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_type", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckUri")
-    def health_check_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def health_check_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "health_check_uri")
 
     @health_check_uri.setter
-    def health_check_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def health_check_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "health_check_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
-    def healthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def healthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "healthy_threshold")
 
     @healthy_threshold.setter
-    def healthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def healthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "healthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerForward")
-    def listener_forward(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_forward(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "listener_forward")
 
     @listener_forward.setter
-    def listener_forward(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_forward(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter(name="masterSlaveServerGroupId")
-    def master_slave_server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_slave_server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "master_slave_server_group_id")
 
     @master_slave_server_group_id.setter
-    def master_slave_server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_slave_server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_slave_server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="persistenceTimeout")
-    def persistence_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def persistence_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "persistence_timeout")
 
     @persistence_timeout.setter
-    def persistence_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def persistence_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "persistence_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolV2Enabled")
-    def proxy_protocol_v2_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_v2_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "proxy_protocol_v2_enabled")
 
     @proxy_protocol_v2_enabled.setter
-    def proxy_protocol_v2_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_v2_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_v2_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="requestTimeout")
-    def request_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def request_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "request_timeout")
 
     @request_timeout.setter
-    def request_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def request_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "request_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheduler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "scheduler")
 
     @scheduler.setter
-    def scheduler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCertificateId")
-    def server_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_certificate_id")
 
     @server_certificate_id.setter
-    def server_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificateId")
     @_utilities.deprecated("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
-    def ssl_certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ssl_certificate_id")
 
     @ssl_certificate_id.setter
-    def ssl_certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySession")
-    def sticky_session(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sticky_session")
 
     @sticky_session.setter
-    def sticky_session(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessionType")
-    def sticky_session_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sticky_session_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "sticky_session_type")
 
     @sticky_session_type.setter
-    def sticky_session_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sticky_session_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sticky_session_type", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicy")
-    def tls_cipher_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_cipher_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "tls_cipher_policy")
 
     @tls_cipher_policy.setter
-    def tls_cipher_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_cipher_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_cipher_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="unhealthyThreshold")
-    def unhealthy_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def unhealthy_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "unhealthy_threshold")
 
     @unhealthy_threshold.setter
-    def unhealthy_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def unhealthy_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "unhealthy_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="xForwardedFor")
-    def x_forwarded_for(self) -> Optional[pulumi.Input['ListenerXForwardedForArgs']]:
+    def x_forwarded_for(self) -> pulumi.Input[Optional['ListenerXForwardedForArgs']]:
         """
         Whether to set additional HTTP Header field "X-Forwarded-For".
         """
         return pulumi.get(self, "x_forwarded_for")
 
     @x_forwarded_for.setter
-    def x_forwarded_for(self, value: Optional[pulumi.Input['ListenerXForwardedForArgs']]):
+    def x_forwarded_for(self, value: pulumi.Input[Optional['ListenerXForwardedForArgs']]):
         pulumi.set(self, "x_forwarded_for", value)
 
 
@@ -1095,49 +1095,49 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 acl_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 established_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 forward_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 gzip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_slave_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 x_forwarded_for: Optional[pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 acl_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 gzip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_slave_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Classic Load Balancer (SLB) Load Balancer Listener resource.
@@ -1350,49 +1350,49 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 acl_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_http2: Optional[pulumi.Input[_builtins.str]] = None,
-                 established_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 forward_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 gzip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_slave_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_protocol_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 x_forwarded_for: Optional[pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
+                 acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 acl_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_http2: pulumi.Input[Optional[_builtins.str]] = None,
+                 established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 gzip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_slave_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_protocol_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1461,49 +1461,49 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            acl_status: Optional[pulumi.Input[_builtins.str]] = None,
-            acl_type: Optional[pulumi.Input[_builtins.str]] = None,
-            backend_port: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            ca_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cookie: Optional[pulumi.Input[_builtins.str]] = None,
-            cookie_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            delete_protection_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_http2: Optional[pulumi.Input[_builtins.str]] = None,
-            established_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            forward_port: Optional[pulumi.Input[_builtins.int]] = None,
-            frontend_port: Optional[pulumi.Input[_builtins.int]] = None,
-            gzip: Optional[pulumi.Input[_builtins.bool]] = None,
-            health_check: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_connect_port: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_http_code: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_method: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            health_check_type: Optional[pulumi.Input[_builtins.str]] = None,
-            health_check_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            healthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_forward: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            master_slave_server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            persistence_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_protocol_v2_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            request_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            scheduler: Optional[pulumi.Input[_builtins.str]] = None,
-            server_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_session: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_session_type: Optional[pulumi.Input[_builtins.str]] = None,
-            tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            unhealthy_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            x_forwarded_for: Optional[pulumi.Input[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None) -> 'Listener':
+            acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            acl_status: pulumi.Input[Optional[_builtins.str]] = None,
+            acl_type: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            ca_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cookie: pulumi.Input[Optional[_builtins.str]] = None,
+            cookie_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            delete_protection_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_http2: pulumi.Input[Optional[_builtins.str]] = None,
+            established_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            forward_port: pulumi.Input[Optional[_builtins.int]] = None,
+            frontend_port: pulumi.Input[Optional[_builtins.int]] = None,
+            gzip: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_connect_port: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_http_code: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_method: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            health_check_type: pulumi.Input[Optional[_builtins.str]] = None,
+            health_check_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            healthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_forward: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            master_slave_server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            persistence_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_protocol_v2_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            request_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            scheduler: pulumi.Input[Optional[_builtins.str]] = None,
+            server_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_session_type: pulumi.Input[Optional[_builtins.str]] = None,
+            tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            unhealthy_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            x_forwarded_for: pulumi.Input[Optional[Union['ListenerXForwardedForArgs', 'ListenerXForwardedForArgsDict']]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -116,8 +116,8 @@ def get_service(enable: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         password=pulumi.get(__ret__, 'password'),
         status=pulumi.get(__ret__, 'status'))
-def get_service_output(enable: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       password: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_output(enable: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       password: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceResult]:
     """
     Using this data source can open Container Registry (CR) service automatically. If the service has been opened, it will return opened.

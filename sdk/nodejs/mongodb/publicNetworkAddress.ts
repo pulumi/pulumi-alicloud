@@ -129,11 +129,11 @@ export interface PublicNetworkAddressState {
     /**
      * The instance ID.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Replica set instance information.
      */
-    replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.PublicNetworkAddressReplicaSet>[]>;
+    replicaSets?: pulumi.Input<pulumi.Input<inputs.mongodb.PublicNetworkAddressReplicaSet>[] | undefined>;
 }
 
 /**

@@ -149,29 +149,29 @@ export interface GetHoneyPotsOutputArgs {
     /**
      * Honeypot ID.
      */
-    honeypotId?: pulumi.Input<string>;
+    honeypotId?: pulumi.Input<string | undefined>;
     /**
      * Honeypot custom name.
      */
-    honeypotName?: pulumi.Input<string>;
+    honeypotName?: pulumi.Input<string | undefined>;
     /**
      * A list of Honey Pot IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by honey pot name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The ID of the honeypot management node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
     /**
      * The name of the honeypot management node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

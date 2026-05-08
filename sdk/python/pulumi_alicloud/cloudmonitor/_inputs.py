@@ -44,19 +44,19 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgsDict(TypedDict):
     """
     The number of times for which the threshold can be consecutively exceeded.
     """
-    effective_interval: NotRequired[pulumi.Input[_builtins.str]]
+    effective_interval: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time period during which the alert rule is effective.
     """
-    silence_time: NotRequired[pulumi.Input[_builtins.int]]
+    silence_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
     """
-    target_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict']]]]
+    target_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]]
     """
     The alert triggers. See `target_list` below.
     """
-    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    webhook: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The callback URL.
     """
@@ -69,10 +69,10 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
                  statistics: pulumi.Input[_builtins.str],
                  threshold: pulumi.Input[_builtins.str],
                  times: pulumi.Input[_builtins.str],
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         :param pulumi.Input[_builtins.str] escalations_level: The alert level. Valid values: `critical`, `warn`, `info`.
@@ -160,67 +160,67 @@ class ServiceGroupMonitoringAgentProcessAlertConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which the alert rule is effective.
         """
         return pulumi.get(self, "effective_interval")
 
     @effective_interval.setter
-    def effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter(name="targetLists")
-    def target_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]:
+    def target_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]:
         """
         The alert triggers. See `target_list` below.
         """
         return pulumi.get(self, "target_lists")
 
     @target_lists.setter
-    def target_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]):
+    def target_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs']]]]):
         pulumi.set(self, "target_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the resource.
     """
-    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    json_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameters of the alert callback. Specify the parameters in the JSON format.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
     """
-    target_list_id: NotRequired[pulumi.Input[_builtins.str]]
+    target_list_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the resource for which alerts are triggered.
     """
@@ -228,10 +228,10 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgsDict(TypedDict)
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_list_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_list_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
         :param pulumi.Input[_builtins.str] json_params: The parameters of the alert callback. Specify the parameters in the JSON format.
@@ -249,63 +249,63 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonParams")
-    def json_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters of the alert callback. Specify the parameters in the JSON format.
         """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
-    def json_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter(name="targetListId")
-    def target_list_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_list_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource for which alerts are triggered.
         """
         return pulumi.get(self, "target_list_id")
 
     @target_list_id.setter
-    def target_list_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_list_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_list_id", value)
 
 
 class ServiceGroupMonitoringAgentProcessMatchExpressArgsDict(TypedDict):
-    function: NotRequired[pulumi.Input[_builtins.str]]
+    function: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The criteria based on which the instances are matched.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The keyword used to match the instance name.
     """
@@ -313,9 +313,9 @@ class ServiceGroupMonitoringAgentProcessMatchExpressArgsDict(TypedDict):
 @pulumi.input_type
 class ServiceGroupMonitoringAgentProcessMatchExpressArgs:
     def __init__(__self__, *,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] function: The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         :param pulumi.Input[_builtins.str] name: The criteria based on which the instances are matched.
@@ -330,38 +330,38 @@ class ServiceGroupMonitoringAgentProcessMatchExpressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
         """
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The criteria based on which the instances are matched.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The keyword used to match the instance name.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 

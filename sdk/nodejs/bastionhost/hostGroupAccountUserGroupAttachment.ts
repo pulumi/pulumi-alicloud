@@ -176,19 +176,19 @@ export interface HostGroupAccountUserGroupAttachmentState {
     /**
      * A list names of the host account.
      */
-    hostAccountNames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostAccountNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the host group.
      */
-    hostGroupId?: pulumi.Input<string>;
+    hostGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
      */
-    userGroupId?: pulumi.Input<string>;
+    userGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**

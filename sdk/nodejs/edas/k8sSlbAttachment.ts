@@ -185,11 +185,11 @@ export interface K8sSlbAttachmentState {
     /**
      * The ID of the EDAS k8s application to which you want to bind SLB instances.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
-    slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[]>;
+    slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[] | undefined>;
 }
 
 /**
@@ -203,5 +203,5 @@ export interface K8sSlbAttachmentArgs {
     /**
      * The configurations of SLB attachment, which is supported for multiple configurations. See `slbConfigs` below.
      */
-    slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[]>;
+    slbConfigs?: pulumi.Input<pulumi.Input<inputs.edas.K8sSlbAttachmentSlbConfig>[] | undefined>;
 }

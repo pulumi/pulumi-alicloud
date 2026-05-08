@@ -220,19 +220,19 @@ export interface MasterSlaveServerGroupState {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The Load Balancer ID which is used to launch a new master slave server group.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * Name of the master slave server group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
-    servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[] | undefined>;
 }
 
 /**
@@ -242,7 +242,7 @@ export interface MasterSlaveServerGroupArgs {
     /**
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      */
-    deleteProtectionValidation?: pulumi.Input<boolean>;
+    deleteProtectionValidation?: pulumi.Input<boolean | undefined>;
     /**
      * The Load Balancer ID which is used to launch a new master slave server group.
      */
@@ -250,9 +250,9 @@ export interface MasterSlaveServerGroupArgs {
     /**
      * Name of the master slave server group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A list of ECS instances to be added. Only two ECS instances can be supported in one resource. See `servers` below.
      */
-    servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[]>;
+    servers?: pulumi.Input<pulumi.Input<inputs.slb.MasterSlaveServerGroupServer>[] | undefined>;
 }

@@ -103,14 +103,14 @@ export interface NetworkInterfaceAttachmentState {
     /**
      * The instance ID to attach.
      */
-    instanceId?: pulumi.Input<string>;
-    networkCardIndex?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ENI ID to attach.
      */
-    networkInterfaceId?: pulumi.Input<string>;
-    trunkNetworkInstanceId?: pulumi.Input<string>;
-    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
+    trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -121,11 +121,11 @@ export interface NetworkInterfaceAttachmentArgs {
      * The instance ID to attach.
      */
     instanceId: pulumi.Input<string>;
-    networkCardIndex?: pulumi.Input<number>;
+    networkCardIndex?: pulumi.Input<number | undefined>;
     /**
      * The ENI ID to attach.
      */
     networkInterfaceId: pulumi.Input<string>;
-    trunkNetworkInstanceId?: pulumi.Input<string>;
-    waitForNetworkConfigurationReady?: pulumi.Input<boolean>;
+    trunkNetworkInstanceId?: pulumi.Input<string | undefined>;
+    waitForNetworkConfigurationReady?: pulumi.Input<boolean | undefined>;
 }

@@ -295,56 +295,56 @@ export interface DomainResourceState {
      * - watch: the Warning mode
      * - defense: the Defense mode
      */
-    aiMode?: pulumi.Input<string>;
+    aiMode?: pulumi.Input<string | undefined>;
     /**
      * the level of the Intelligent Protection policy.
      * - level30: the Low level
      * - level60: the Normal level
      * - level90: the Strict level
      */
-    aiTemplate?: pulumi.Input<string>;
+    aiTemplate?: pulumi.Input<string | undefined>;
     /**
      * ip blacklist
      */
-    blackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    blackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the blacklist and whitelist feature. Valid values:
      * - 0: Disabled
      * - 1: Enabled
      */
-    bwListEnable?: pulumi.Input<number>;
+    bwListEnable?: pulumi.Input<number | undefined>;
     /**
      * CC safety protection switch.
      * - 0: Disabled
      * - 1: Enabled
      */
-    ccGlobalSwitch?: pulumi.Input<string>;
+    ccGlobalSwitch?: pulumi.Input<string | undefined>;
     /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * The name of the certificate.
      *
      * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
-    certIdentifier?: pulumi.Input<string>;
+    certIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
      */
-    certRegion?: pulumi.Input<string>;
+    certRegion?: pulumi.Input<string | undefined>;
     /**
      * The CNAME address to query.
      */
-    cname?: pulumi.Input<string>;
+    cname?: pulumi.Input<string | undefined>;
     /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
@@ -354,13 +354,13 @@ export interface DomainResourceState {
      * - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
      * - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
      */
-    customHeaders?: pulumi.Input<string>;
+    customHeaders?: pulumi.Input<string | undefined>;
     /**
      * The domain name for which you want to configure the Static Page Caching policy.
      *
      * > **NOTE:**  You can call the [DescribeDomains](https://www.alibabacloud.com/help/en/doc-detail/91724.html) operation to query all the domain names that are added to Anti-DDoS Pro or Anti-DDoS Premium.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
      *
@@ -376,37 +376,37 @@ export interface DomainResourceState {
      *
      * After you turn on the switch, HTTP/2 is used.
      */
-    httpsExt?: pulumi.Input<string>;
+    httpsExt?: pulumi.Input<string | undefined>;
     /**
      * InstanceIds
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
      *
      * > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the OCSP feature. Valid values:
      */
-    ocspEnabled?: pulumi.Input<boolean>;
+    ocspEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Protocol type and port number information. See `proxyTypes` below.
      */
-    proxyTypes?: pulumi.Input<pulumi.Input<inputs.ddos.DomainResourceProxyType>[]>;
+    proxyTypes?: pulumi.Input<pulumi.Input<inputs.ddos.DomainResourceProxyType>[] | undefined>;
     /**
      * Server address information of the source station.
      */
-    realServers?: pulumi.Input<pulumi.Input<string>[]>;
+    realServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The address type of the origin server. Valid values:
      */
-    rsType?: pulumi.Input<number>;
+    rsType?: pulumi.Input<number | undefined>;
     /**
      * IP whitelist list.
      */
-    whiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    whiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -418,52 +418,52 @@ export interface DomainResourceArgs {
      * - watch: the Warning mode
      * - defense: the Defense mode
      */
-    aiMode?: pulumi.Input<string>;
+    aiMode?: pulumi.Input<string | undefined>;
     /**
      * the level of the Intelligent Protection policy.
      * - level30: the Low level
      * - level60: the Normal level
      * - level90: the Strict level
      */
-    aiTemplate?: pulumi.Input<string>;
+    aiTemplate?: pulumi.Input<string | undefined>;
     /**
      * ip blacklist
      */
-    blackLists?: pulumi.Input<pulumi.Input<string>[]>;
+    blackLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the blacklist and whitelist feature. Valid values:
      * - 0: Disabled
      * - 1: Enabled
      */
-    bwListEnable?: pulumi.Input<number>;
+    bwListEnable?: pulumi.Input<number | undefined>;
     /**
      * CC safety protection switch.
      * - 0: Disabled
      * - 1: Enabled
      */
-    ccGlobalSwitch?: pulumi.Input<string>;
+    ccGlobalSwitch?: pulumi.Input<string | undefined>;
     /**
      * The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    cert?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
     /**
      * The name of the certificate.
      *
      * > **NOTE:**   You can specify the name of the certificate that you want to associate. From version 1.249.0, `certIdentifier` is in the "CertificateID-RegionId" format. For example, if the ID of the certificateId is `123`, and the region ID is `cn-hangzhou`, the value of the `certIdentifier` is `123-cn-hangzhou`.
      */
-    certIdentifier?: pulumi.Input<string>;
+    certIdentifier?: pulumi.Input<string | undefined>;
     /**
      * The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
      *
      * > **NOTE:**   If you specify a value for the CertName, Cert, and Key parameters, you do not need to specify a value for the CertId parameter.
      */
-    certName?: pulumi.Input<string>;
+    certName?: pulumi.Input<string | undefined>;
     /**
      * The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
      */
-    certRegion?: pulumi.Input<string>;
+    certRegion?: pulumi.Input<string | undefined>;
     /**
      * The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
      * Take note of the following items:
@@ -473,7 +473,7 @@ export interface DomainResourceArgs {
      * - X-Forwarded-For: This header is used to obtain the IP addresses of clients that access Anti-DDoS Proxy (a Layer 7 proxy).
      * - Do not use standard HTTP headers or specific widely used custom HTTP headers. The standard HTTP headers include Host, User-Agent, Connection, and Upgrade, and the widely used custom HTTP headers include X-Real-IP, X-True-IP, X-Client-IP, Web-Server-Type, WL-Proxy-Client-IP, eEagleEye-RpcID, EagleEye-TraceID, X-Forwarded-Cluster, and X-Forwarded-Proto. If the preceding headers are used, the original content of the headers is overwritten.
      */
-    customHeaders?: pulumi.Input<string>;
+    customHeaders?: pulumi.Input<string | undefined>;
     /**
      * The domain name for which you want to configure the Static Page Caching policy.
      *
@@ -495,7 +495,7 @@ export interface DomainResourceArgs {
      *
      * After you turn on the switch, HTTP/2 is used.
      */
-    httpsExt?: pulumi.Input<string>;
+    httpsExt?: pulumi.Input<string | undefined>;
     /**
      * InstanceIds
      */
@@ -505,11 +505,11 @@ export interface DomainResourceArgs {
      *
      * > **NOTE:**   You can specify only one of this parameter and the CertId parameter.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the OCSP feature. Valid values:
      */
-    ocspEnabled?: pulumi.Input<boolean>;
+    ocspEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Protocol type and port number information. See `proxyTypes` below.
      */
@@ -525,5 +525,5 @@ export interface DomainResourceArgs {
     /**
      * IP whitelist list.
      */
-    whiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    whiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

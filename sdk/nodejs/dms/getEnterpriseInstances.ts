@@ -180,41 +180,41 @@ export interface GetEnterpriseInstancesOutputArgs {
     /**
      * The type of the environment to which the database instance belongs.
      */
-    envType?: pulumi.Input<string>;
+    envType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
      */
-    instanceAliasRegex?: pulumi.Input<string>;
+    instanceAliasRegex?: pulumi.Input<string | undefined>;
     /**
      * The source of the database instance.
      */
-    instanceSource?: pulumi.Input<string>;
+    instanceSource?: pulumi.Input<string | undefined>;
     /**
      * The ID of the database instance.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter the results by the DMS Enterprise Instance instance_alias.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The network type of the database instance. Valid values: CLASSIC and VPC. For more information about the valid values, see the description of the RegisterInstance operation.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The keyword used to query database instances.
      */
-    searchKey?: pulumi.Input<string>;
+    searchKey?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the tenant in Data Management (DMS) Enterprise.
      */
-    tid?: pulumi.Input<number>;
+    tid?: pulumi.Input<number | undefined>;
 }

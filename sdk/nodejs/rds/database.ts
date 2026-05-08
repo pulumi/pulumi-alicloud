@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     engineVersion: "8.0",
  *     dbInstanceStorageType: "cloud_essd",
  *     instanceType: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(defaultGetInstanceClasses.then(defaultGetInstanceClasses => defaultGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  *     instanceChargeType: "Postpaid",
@@ -196,7 +196,7 @@ export interface DatabaseState {
      *
      * More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
      */
-    characterSet?: pulumi.Input<string>;
+    characterSet?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
      * > **NOTE:**
@@ -206,26 +206,26 @@ export interface DatabaseState {
      * The name must be unique within the instance.
      * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
      */
-    dataBaseName?: pulumi.Input<string>;
+    dataBaseName?: pulumi.Input<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The attribute has been deprecated from 1.267.0 and using `dataBaseName` instead.
      * > **NOTE:** The value of "dataBaseName" or "characterSet"  does not support modification.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,7 +244,7 @@ export interface DatabaseArgs {
      *
      * More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
      */
-    characterSet?: pulumi.Input<string>;
+    characterSet?: pulumi.Input<string | undefined>;
     /**
      * The name of the database.
      * > **NOTE:**
@@ -254,11 +254,11 @@ export interface DatabaseArgs {
      * The name must be unique within the instance.
      * For more information about invalid characters, see [Forbidden keywords table](https://help.aliyun.com/zh/rds/developer-reference/forbidden-keywords?spm=api-workbench.api_explorer.0.0.20e15f16d1z52p).
      */
-    dataBaseName?: pulumi.Input<string>;
+    dataBaseName?: pulumi.Input<string | undefined>;
     /**
      * Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
      */
@@ -269,5 +269,5 @@ export interface DatabaseArgs {
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.266.0. New field 'data_base_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

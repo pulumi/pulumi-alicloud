@@ -129,15 +129,15 @@ export interface GetVpcEndpointConnectionsOutputArgs {
     /**
      * The ID of the Vpc Endpoint.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The endpoint owner id.
      */
-    endpointOwnerId?: pulumi.Input<number>;
+    endpointOwnerId?: pulumi.Input<number | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Vpc Endpoint Service.
      */
@@ -145,5 +145,5 @@ export interface GetVpcEndpointConnectionsOutputArgs {
     /**
      * The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

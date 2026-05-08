@@ -121,11 +121,11 @@ export interface NetworkAttachmentState {
     /**
      * The ID of the CCN instance.
      */
-    ccnId?: pulumi.Input<string>;
+    ccnId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Smart Access Gateway instance.
      */
-    sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string | undefined>;
 }
 
 /**

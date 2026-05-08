@@ -141,23 +141,23 @@ export interface WorkspaceExperimentState {
     /**
      * Experimental Visibility
      */
-    accessibility?: pulumi.Input<string>;
+    accessibility?: pulumi.Input<string | undefined>;
     /**
      * ArtifactUri is default OSS storage path of the output of trials in the experiment
      */
-    artifactUri?: pulumi.Input<string>;
+    artifactUri?: pulumi.Input<string | undefined>;
     /**
      * GmtCreateTime is time when this entity is created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Name is the name of the experiment, unique in a namespace
      */
-    experimentName?: pulumi.Input<string>;
+    experimentName?: pulumi.Input<string | undefined>;
     /**
      * WorkspaceId is the workspace id which contains the experiment
      */
-    workspaceId?: pulumi.Input<string>;
+    workspaceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface WorkspaceExperimentArgs {
     /**
      * Experimental Visibility
      */
-    accessibility?: pulumi.Input<string>;
+    accessibility?: pulumi.Input<string | undefined>;
     /**
      * ArtifactUri is default OSS storage path of the output of trials in the experiment
      */

@@ -244,40 +244,40 @@ export interface SearchIndexState {
     /**
      * The search index create time.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * The timestamp for sync phase.
      */
-    currentSyncTimestamp?: pulumi.Input<number>;
+    currentSyncTimestamp?: pulumi.Input<number | undefined>;
     /**
      * The index id of the search index which could not be changed.
      */
-    indexId?: pulumi.Input<string>;
+    indexId?: pulumi.Input<string | undefined>;
     /**
      * The index name of the OTS Table. If changed, a new index would be created.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The schema of the search index. If changed, a new index would be created. See `schema` below.
      */
-    schemas?: pulumi.Input<pulumi.Input<inputs.ots.SearchIndexSchema>[]>;
+    schemas?: pulumi.Input<pulumi.Input<inputs.ots.SearchIndexSchema>[] | undefined>;
     /**
      * The search index sync phase. possible values: `Full`, `Incr`.
      */
-    syncPhase?: pulumi.Input<string>;
+    syncPhase?: pulumi.Input<string | undefined>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
      * If the retention period exceeds the TTL value, OTS automatically deletes expired data.
      */
-    timeToLive?: pulumi.Input<number>;
+    timeToLive?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -304,5 +304,5 @@ export interface SearchIndexArgs {
      * The index type of the OTS Table. Specifies the retention period of data in the search index. Unit: seconds. Default value: -1.
      * If the retention period exceeds the TTL value, OTS automatically deletes expired data.
      */
-    timeToLive?: pulumi.Input<number>;
+    timeToLive?: pulumi.Input<number | undefined>;
 }

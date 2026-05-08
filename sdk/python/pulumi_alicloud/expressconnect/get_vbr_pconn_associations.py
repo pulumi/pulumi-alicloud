@@ -154,11 +154,11 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[_builtins.str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         vbr_id=pulumi.get(__ret__, 'vbr_id'))
-def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                      page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                      vbr_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vbr_pconn_associations_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                      vbr_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVbrPconnAssociationsResult]:
     """
     This data source provides Express Connect Vbr Pconn Association available to the user.

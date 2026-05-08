@@ -187,19 +187,19 @@ export interface GetTransitRouterRouteTablesOutputArgs {
     /**
      * A list of Transit Router Route Table IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Transit Router Route Table name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Enterprise Edition transit router.
      */
@@ -207,17 +207,17 @@ export interface GetTransitRouterRouteTablesOutputArgs {
     /**
      * A list of ID of the CEN Transit Router Route Table.
      */
-    transitRouterRouteTableIds?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouterRouteTableIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of name of the CEN Transit Router Route Table.
      */
-    transitRouterRouteTableNames?: pulumi.Input<pulumi.Input<string>[]>;
+    transitRouterRouteTableNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
      */
-    transitRouterRouteTableStatus?: pulumi.Input<string>;
+    transitRouterRouteTableStatus?: pulumi.Input<string | undefined>;
     /**
      * The type of the route table. Valid values: `System`, `Custom`.
      */
-    transitRouterRouteTableType?: pulumi.Input<string>;
+    transitRouterRouteTableType?: pulumi.Input<string | undefined>;
 }

@@ -117,8 +117,8 @@ def get_connections(ids: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_connections_output(ids: Optional[pulumi.Input[_builtins.str]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_connections_output(ids: pulumi.Input[Optional[_builtins.str]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionsResult]:
     """
     This data source can query the public IP of the specified Tair (Redis OSS-Compatible) And Memcache (KVStore).

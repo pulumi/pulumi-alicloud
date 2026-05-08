@@ -139,15 +139,15 @@ export interface GatewayEndpointRouteTableAttachmentState {
     /**
      * The ID of the gateway endpoint instance to which you want to associate the route table.
      */
-    gatewayEndpointId?: pulumi.Input<string>;
+    gatewayEndpointId?: pulumi.Input<string | undefined>;
     /**
      * Routing table ID.
      */
-    routeTableId?: pulumi.Input<string>;
+    routeTableId?: pulumi.Input<string | undefined>;
     /**
      * Status of the gateway endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -56,9 +56,9 @@ import (
 //				},
 //				RouteTableType: pulumi.String("Custom"),
 //			}, nil)
-//			ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) (interface{}, error) {
+//			ctx.Export("routeTableIds", foo.ApplyT(func(foo vpc.GetRouteTablesResult) ([]string, error) {
 //				return foo.Ids, nil
-//			}).(pulumi.AnyOutput))
+//			}).(pulumi.StringArrayOutput))
 //			return nil
 //		})
 //	}

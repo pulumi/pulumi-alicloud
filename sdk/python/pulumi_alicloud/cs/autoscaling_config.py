@@ -19,23 +19,23 @@ __all__ = ['AutoscalingConfigArgs', 'AutoscalingConfig']
 @pulumi.input_type
 class AutoscalingConfigArgs:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cool_down_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 daemonset_eviction_for_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expander: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_nodes_with_local_storage: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_nodes_with_system_pods: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unneeded_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expander: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoscalingConfig resource.
 
@@ -94,229 +94,229 @@ class AutoscalingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of kubernetes cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="coolDownDuration")
-    def cool_down_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cool_down_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         """
         return pulumi.get(self, "cool_down_duration")
 
     @cool_down_duration.setter
-    def cool_down_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cool_down_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cool_down_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="daemonsetEvictionForNodes")
-    def daemonset_eviction_for_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daemonset_eviction_for_nodes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true DaemonSet pods will be  terminated from nodes. Default is `false`.
         """
         return pulumi.get(self, "daemonset_eviction_for_nodes")
 
     @daemonset_eviction_for_nodes.setter
-    def daemonset_eviction_for_nodes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daemonset_eviction_for_nodes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daemonset_eviction_for_nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def expander(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expander(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         """
         return pulumi.get(self, "expander")
 
     @expander.setter
-    def expander(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expander(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expander", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuUtilizationThreshold")
-    def gpu_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_utilization_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-in threshold for GPU instance. Default is `0.5`.
         """
         return pulumi.get(self, "gpu_utilization_threshold")
 
     @gpu_utilization_threshold.setter
-    def gpu_utilization_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_utilization_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_utilization_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="maxGracefulTerminationSec")
-    def max_graceful_termination_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_graceful_termination_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         """
         return pulumi.get(self, "max_graceful_termination_sec")
 
     @max_graceful_termination_sec.setter
-    def max_graceful_termination_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_graceful_termination_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_graceful_termination_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicaCount")
-    def min_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
         """
         return pulumi.get(self, "min_replica_count")
 
     @min_replica_count.setter
-    def min_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replica_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def priorities(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         """
         return pulumi.get(self, "priorities")
 
     @priorities.setter
-    def priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def priorities(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "priorities", value)
 
     @_builtins.property
     @pulumi.getter(name="recycleNodeDeletionEnabled")
-    def recycle_node_deletion_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recycle_node_deletion_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         """
         return pulumi.get(self, "recycle_node_deletion_enabled")
 
     @recycle_node_deletion_enabled.setter
-    def recycle_node_deletion_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recycle_node_deletion_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recycle_node_deletion_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDownEnabled")
-    def scale_down_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scale_down_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether to allow the scale-in of nodes. Default is `true`.
         """
         return pulumi.get(self, "scale_down_enabled")
 
     @scale_down_enabled.setter
-    def scale_down_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scale_down_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scale_down_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleUpFromZero")
-    def scale_up_from_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scale_up_from_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should CA scale up when there 0 ready nodes. Default is `true`.
         """
         return pulumi.get(self, "scale_up_from_zero")
 
     @scale_up_from_zero.setter
-    def scale_up_from_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scale_up_from_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scale_up_from_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="scalerType")
-    def scaler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaler_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         """
         return pulumi.get(self, "scaler_type")
 
     @scaler_type.setter
-    def scaler_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaler_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaler_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scan_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
-    def scan_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scan_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scan_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="skipNodesWithLocalStorage")
-    def skip_nodes_with_local_storage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_nodes_with_local_storage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         """
         return pulumi.get(self, "skip_nodes_with_local_storage")
 
     @skip_nodes_with_local_storage.setter
-    def skip_nodes_with_local_storage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_nodes_with_local_storage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_nodes_with_local_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="skipNodesWithSystemPods")
-    def skip_nodes_with_system_pods(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_nodes_with_system_pods(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
         """
         return pulumi.get(self, "skip_nodes_with_system_pods")
 
     @skip_nodes_with_system_pods.setter
-    def skip_nodes_with_system_pods(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_nodes_with_system_pods(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_nodes_with_system_pods", value)
 
     @_builtins.property
     @pulumi.getter(name="unneededDuration")
-    def unneeded_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unneeded_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         """
         return pulumi.get(self, "unneeded_duration")
 
     @unneeded_duration.setter
-    def unneeded_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unneeded_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unneeded_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizationThreshold")
-    def utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def utilization_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-in a threshold. Default is `0.5`.
         """
         return pulumi.get(self, "utilization_threshold")
 
     @utilization_threshold.setter
-    def utilization_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def utilization_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "utilization_threshold", value)
 
 
 @pulumi.input_type
 class _AutoscalingConfigState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cool_down_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 daemonset_eviction_for_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expander: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_nodes_with_local_storage: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_nodes_with_system_pods: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unneeded_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expander: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoscalingConfig resources.
 
@@ -375,206 +375,206 @@ class _AutoscalingConfigState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of kubernetes cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="coolDownDuration")
-    def cool_down_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cool_down_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the time interval between detecting a scale-in requirement (when the threshold is reached) and actually executing the scale-in operation (reducing the number of Pods). Default is `10m`. If the delay (cooldown) value is set too long, there could be complaints that the Horizontal Pod Autoscaler is not responsive to workload changes. However, if the delay value is set too short, the scale of the replicas set may keep thrashing as usual.
         """
         return pulumi.get(self, "cool_down_duration")
 
     @cool_down_duration.setter
-    def cool_down_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cool_down_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cool_down_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="daemonsetEvictionForNodes")
-    def daemonset_eviction_for_nodes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def daemonset_eviction_for_nodes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true DaemonSet pods will be  terminated from nodes. Default is `false`.
         """
         return pulumi.get(self, "daemonset_eviction_for_nodes")
 
     @daemonset_eviction_for_nodes.setter
-    def daemonset_eviction_for_nodes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def daemonset_eviction_for_nodes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "daemonset_eviction_for_nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def expander(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expander(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy for selecting which node pool to scale. Valid values: `least-waste`, `random`, `priority`. For scaler type `goatscaler`, only the `least-waste` expander is currently supported. For more information on these policies, see [Configure auto scaling](https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/auto-scaling-of-nodes#section-3bg-2ko-inl)
         """
         return pulumi.get(self, "expander")
 
     @expander.setter
-    def expander(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expander(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expander", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuUtilizationThreshold")
-    def gpu_utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_utilization_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-in threshold for GPU instance. Default is `0.5`.
         """
         return pulumi.get(self, "gpu_utilization_threshold")
 
     @gpu_utilization_threshold.setter
-    def gpu_utilization_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_utilization_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_utilization_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="maxGracefulTerminationSec")
-    def max_graceful_termination_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_graceful_termination_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of seconds CA waits for pod termination when trying to scale down a node. Default is `14400`.
         """
         return pulumi.get(self, "max_graceful_termination_sec")
 
     @max_graceful_termination_sec.setter
-    def max_graceful_termination_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_graceful_termination_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_graceful_termination_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="minReplicaCount")
-    def min_replica_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_replica_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum number of replicas that a replica set or replication controller should have to allow their pods deletion in scale down. Default is `0`.
         """
         return pulumi.get(self, "min_replica_count")
 
     @min_replica_count.setter
-    def min_replica_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_replica_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_replica_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def priorities(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def priorities(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Priority settings for autoscaling node pool scaling groups. This parameter only takes effect when `expander` is set to `priority`. Only supports scaler type `cluster-autoscaler`. Uses key-value pairs where the key is the priority value, and the value is a comma-separated list of scaling group IDs. High numerical values indicate higher priority.
         """
         return pulumi.get(self, "priorities")
 
     @priorities.setter
-    def priorities(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def priorities(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "priorities", value)
 
     @_builtins.property
     @pulumi.getter(name="recycleNodeDeletionEnabled")
-    def recycle_node_deletion_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def recycle_node_deletion_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should CA delete the K8s node object when recycle node has scaled down successfully. Default is `false`.
         """
         return pulumi.get(self, "recycle_node_deletion_enabled")
 
     @recycle_node_deletion_enabled.setter
-    def recycle_node_deletion_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def recycle_node_deletion_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "recycle_node_deletion_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleDownEnabled")
-    def scale_down_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scale_down_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specify whether to allow the scale-in of nodes. Default is `true`.
         """
         return pulumi.get(self, "scale_down_enabled")
 
     @scale_down_enabled.setter
-    def scale_down_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scale_down_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scale_down_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleUpFromZero")
-    def scale_up_from_zero(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scale_up_from_zero(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Should CA scale up when there 0 ready nodes. Default is `true`.
         """
         return pulumi.get(self, "scale_up_from_zero")
 
     @scale_up_from_zero.setter
-    def scale_up_from_zero(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scale_up_from_zero(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scale_up_from_zero", value)
 
     @_builtins.property
     @pulumi.getter(name="scalerType")
-    def scaler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaler_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of autoscaler. Valid values: `cluster-autoscaler`, `goatscaler`. For cluster version 1.22 and below, we only support `cluster-autoscaler`. When switching from `cluster-autoscaler` to `goatscaler`, all configuration parameters will be automatically migrated.
         """
         return pulumi.get(self, "scaler_type")
 
     @scaler_type.setter
-    def scaler_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaler_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaler_type", value)
 
     @_builtins.property
     @pulumi.getter(name="scanInterval")
-    def scan_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scan_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which the cluster is reevaluated for scaling. Default is `30s`.
         """
         return pulumi.get(self, "scan_interval")
 
     @scan_interval.setter
-    def scan_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scan_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scan_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="skipNodesWithLocalStorage")
-    def skip_nodes_with_local_storage(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_nodes_with_local_storage(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true cluster autoscaler will never delete nodes with pods with local storage, e.g. EmptyDir or HostPath. Default is `false`.
         """
         return pulumi.get(self, "skip_nodes_with_local_storage")
 
     @skip_nodes_with_local_storage.setter
-    def skip_nodes_with_local_storage(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_nodes_with_local_storage(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_nodes_with_local_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="skipNodesWithSystemPods")
-    def skip_nodes_with_system_pods(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_nodes_with_system_pods(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Default is `true`.
         """
         return pulumi.get(self, "skip_nodes_with_system_pods")
 
     @skip_nodes_with_system_pods.setter
-    def skip_nodes_with_system_pods(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_nodes_with_system_pods(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_nodes_with_system_pods", value)
 
     @_builtins.property
     @pulumi.getter(name="unneededDuration")
-    def unneeded_duration(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unneeded_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify the time interval during which autoscaler does not perform scale-in operations after the most recent scale-out completion. Nodes added through scale-out can only be considered for scale-in after the period has elapsed. Default is `10m`.
         """
         return pulumi.get(self, "unneeded_duration")
 
     @unneeded_duration.setter
-    def unneeded_duration(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unneeded_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unneeded_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="utilizationThreshold")
-    def utilization_threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def utilization_threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scale-in a threshold. Default is `0.5`.
         """
         return pulumi.get(self, "utilization_threshold")
 
     @utilization_threshold.setter
-    def utilization_threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def utilization_threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "utilization_threshold", value)
 
 
@@ -584,23 +584,23 @@ class AutoscalingConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cool_down_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 daemonset_eviction_for_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expander: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_nodes_with_local_storage: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_nodes_with_system_pods: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unneeded_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expander: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource will help you configure auto scaling for the kubernetes cluster, see [What is autoscaling config](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-configure-auto-scaling).
@@ -623,6 +623,7 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -633,7 +634,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_essd")
         default_network = alicloud.vpc.Network("default",
@@ -656,7 +657,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                 newbits=4,
                 netnum=7).result,
             slb_internet_enabled=True)
-        default_node_pool = []
+        default_node_pool: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
                 node_pool_name=std.format(input="%s-%d",
@@ -752,6 +753,7 @@ class AutoscalingConfig(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -762,7 +764,7 @@ class AutoscalingConfig(pulumi.CustomResource):
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker",
             system_disk_category="cloud_essd")
         default_network = alicloud.vpc.Network("default",
@@ -785,7 +787,7 @@ class AutoscalingConfig(pulumi.CustomResource):
                 newbits=4,
                 netnum=7).result,
             slb_internet_enabled=True)
-        default_node_pool = []
+        default_node_pool: list[Any] = []
         for range in [{"value": i} for i in range(0, 3)]:
             default_node_pool.append(alicloud.cs.NodePool(f"default-{range['value']}",
                 node_pool_name=std.format(input="%s-%d",
@@ -849,23 +851,23 @@ class AutoscalingConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cool_down_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 daemonset_eviction_for_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expander: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scaler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 skip_nodes_with_local_storage: Optional[pulumi.Input[_builtins.bool]] = None,
-                 skip_nodes_with_system_pods: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unneeded_duration: Optional[pulumi.Input[_builtins.str]] = None,
-                 utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expander: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+                 skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+                 utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -902,23 +904,23 @@ class AutoscalingConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cool_down_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            daemonset_eviction_for_nodes: Optional[pulumi.Input[_builtins.bool]] = None,
-            expander: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu_utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None,
-            max_graceful_termination_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            min_replica_count: Optional[pulumi.Input[_builtins.int]] = None,
-            priorities: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            recycle_node_deletion_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            scale_down_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            scale_up_from_zero: Optional[pulumi.Input[_builtins.bool]] = None,
-            scaler_type: Optional[pulumi.Input[_builtins.str]] = None,
-            scan_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            skip_nodes_with_local_storage: Optional[pulumi.Input[_builtins.bool]] = None,
-            skip_nodes_with_system_pods: Optional[pulumi.Input[_builtins.bool]] = None,
-            unneeded_duration: Optional[pulumi.Input[_builtins.str]] = None,
-            utilization_threshold: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutoscalingConfig':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cool_down_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            daemonset_eviction_for_nodes: pulumi.Input[Optional[_builtins.bool]] = None,
+            expander: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None,
+            max_graceful_termination_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            min_replica_count: pulumi.Input[Optional[_builtins.int]] = None,
+            priorities: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            recycle_node_deletion_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scale_down_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            scale_up_from_zero: pulumi.Input[Optional[_builtins.bool]] = None,
+            scaler_type: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            skip_nodes_with_local_storage: pulumi.Input[Optional[_builtins.bool]] = None,
+            skip_nodes_with_system_pods: pulumi.Input[Optional[_builtins.bool]] = None,
+            unneeded_duration: pulumi.Input[Optional[_builtins.str]] = None,
+            utilization_threshold: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutoscalingConfig':
         """
         Get an existing AutoscalingConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

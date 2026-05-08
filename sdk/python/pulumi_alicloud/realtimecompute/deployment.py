@@ -26,15 +26,15 @@ class DeploymentArgs:
                  deployment_target: pulumi.Input['DeploymentDeploymentTargetArgs'],
                  execution_mode: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
-                 batch_resource_setting: Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 flink_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]] = None,
-                 logging: Optional[pulumi.Input['DeploymentLoggingArgs']] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']] = None):
+                 batch_resource_setting: pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]] = None,
+                 logging: pulumi.Input[Optional['DeploymentLoggingArgs']] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_resource_setting: pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']] = None):
         """
         The set of arguments for constructing a Deployment resource.
 
@@ -139,131 +139,131 @@ class DeploymentArgs:
 
     @_builtins.property
     @pulumi.getter(name="batchResourceSetting")
-    def batch_resource_setting(self) -> Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']]:
+    def batch_resource_setting(self) -> pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']]:
         """
         Batch job resource settings See `batch_resource_setting` below.
         """
         return pulumi.get(self, "batch_resource_setting")
 
     @batch_resource_setting.setter
-    def batch_resource_setting(self, value: Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']]):
+    def batch_resource_setting(self, value: pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']]):
         pulumi.set(self, "batch_resource_setting", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version of the deployment instance
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="flinkConf")
-    def flink_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def flink_conf(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Flink configuration
         """
         return pulumi.get(self, "flink_conf")
 
     @flink_conf.setter
-    def flink_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def flink_conf(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flink_conf", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Deployment labels
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localVariables")
-    def local_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]:
+    def local_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]:
         """
         Job variables See `local_variables` below.
         """
         return pulumi.get(self, "local_variables")
 
     @local_variables.setter
-    def local_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]):
+    def local_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]):
         pulumi.set(self, "local_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['DeploymentLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['DeploymentLoggingArgs']]:
         """
         Job log configuration   See `logging` below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['DeploymentLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['DeploymentLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace resource ID
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="streamingResourceSetting")
-    def streaming_resource_setting(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']]:
+    def streaming_resource_setting(self) -> pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']]:
         """
         Resource settings for streaming mode See `streaming_resource_setting` below.
         """
         return pulumi.get(self, "streaming_resource_setting")
 
     @streaming_resource_setting.setter
-    def streaming_resource_setting(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']]):
+    def streaming_resource_setting(self, value: pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']]):
         pulumi.set(self, "streaming_resource_setting", value)
 
 
 @pulumi.input_type
 class _DeploymentState:
     def __init__(__self__, *,
-                 artifact: Optional[pulumi.Input['DeploymentArtifactArgs']] = None,
-                 batch_resource_setting: Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']] = None,
-                 deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_target: Optional[pulumi.Input['DeploymentDeploymentTargetArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 flink_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]] = None,
-                 logging: Optional[pulumi.Input['DeploymentLoggingArgs']] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_resource_setting: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']] = None):
+                 artifact: pulumi.Input[Optional['DeploymentArtifactArgs']] = None,
+                 batch_resource_setting: pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']] = None,
+                 deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_target: pulumi.Input[Optional['DeploymentDeploymentTargetArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]] = None,
+                 logging: pulumi.Input[Optional['DeploymentLoggingArgs']] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_resource_setting: pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']] = None):
         """
         Input properties used for looking up and filtering Deployment resources.
 
@@ -316,182 +316,182 @@ class _DeploymentState:
 
     @_builtins.property
     @pulumi.getter
-    def artifact(self) -> Optional[pulumi.Input['DeploymentArtifactArgs']]:
+    def artifact(self) -> pulumi.Input[Optional['DeploymentArtifactArgs']]:
         """
         Content of the deployment job See `artifact` below.
         """
         return pulumi.get(self, "artifact")
 
     @artifact.setter
-    def artifact(self, value: Optional[pulumi.Input['DeploymentArtifactArgs']]):
+    def artifact(self, value: pulumi.Input[Optional['DeploymentArtifactArgs']]):
         pulumi.set(self, "artifact", value)
 
     @_builtins.property
     @pulumi.getter(name="batchResourceSetting")
-    def batch_resource_setting(self) -> Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']]:
+    def batch_resource_setting(self) -> pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']]:
         """
         Batch job resource settings See `batch_resource_setting` below.
         """
         return pulumi.get(self, "batch_resource_setting")
 
     @batch_resource_setting.setter
-    def batch_resource_setting(self, value: Optional[pulumi.Input['DeploymentBatchResourceSettingArgs']]):
+    def batch_resource_setting(self, value: pulumi.Input[Optional['DeploymentBatchResourceSettingArgs']]):
         pulumi.set(self, "batch_resource_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentId")
-    def deployment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource property field representing the primary resource ID
         """
         return pulumi.get(self, "deployment_id")
 
     @deployment_id.setter
-    def deployment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentName")
-    def deployment_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deployment_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the deployment
         """
         return pulumi.get(self, "deployment_name")
 
     @deployment_name.setter
-    def deployment_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deployment_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deployment_name", value)
 
     @_builtins.property
     @pulumi.getter(name="deploymentTarget")
-    def deployment_target(self) -> Optional[pulumi.Input['DeploymentDeploymentTargetArgs']]:
+    def deployment_target(self) -> pulumi.Input[Optional['DeploymentDeploymentTargetArgs']]:
         """
         Deployment target See `deployment_target` below.
         """
         return pulumi.get(self, "deployment_target")
 
     @deployment_target.setter
-    def deployment_target(self, value: Optional[pulumi.Input['DeploymentDeploymentTargetArgs']]):
+    def deployment_target(self, value: pulumi.Input[Optional['DeploymentDeploymentTargetArgs']]):
         pulumi.set(self, "deployment_target", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Engine version of the deployment instance
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="executionMode")
-    def execution_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def execution_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Execution mode. Valid values: STREAMING or BATCH.
         """
         return pulumi.get(self, "execution_mode")
 
     @execution_mode.setter
-    def execution_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def execution_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "execution_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="flinkConf")
-    def flink_conf(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def flink_conf(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Flink configuration
         """
         return pulumi.get(self, "flink_conf")
 
     @flink_conf.setter
-    def flink_conf(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def flink_conf(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flink_conf", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Deployment labels
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localVariables")
-    def local_variables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]:
+    def local_variables(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]:
         """
         Job variables See `local_variables` below.
         """
         return pulumi.get(self, "local_variables")
 
     @local_variables.setter
-    def local_variables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]):
+    def local_variables(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DeploymentLocalVariableArgs']]]]):
         pulumi.set(self, "local_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def logging(self) -> Optional[pulumi.Input['DeploymentLoggingArgs']]:
+    def logging(self) -> pulumi.Input[Optional['DeploymentLoggingArgs']]:
         """
         Job log configuration   See `logging` below.
         """
         return pulumi.get(self, "logging")
 
     @logging.setter
-    def logging(self, value: Optional[pulumi.Input['DeploymentLoggingArgs']]):
+    def logging(self, value: pulumi.Input[Optional['DeploymentLoggingArgs']]):
         pulumi.set(self, "logging", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace name
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Workspace resource ID
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="streamingResourceSetting")
-    def streaming_resource_setting(self) -> Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']]:
+    def streaming_resource_setting(self) -> pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']]:
         """
         Resource settings for streaming mode See `streaming_resource_setting` below.
         """
         return pulumi.get(self, "streaming_resource_setting")
 
     @streaming_resource_setting.setter
-    def streaming_resource_setting(self, value: Optional[pulumi.Input['DeploymentStreamingResourceSettingArgs']]):
+    def streaming_resource_setting(self, value: pulumi.Input[Optional['DeploymentStreamingResourceSettingArgs']]):
         pulumi.set(self, "streaming_resource_setting", value)
 
 
@@ -501,20 +501,20 @@ class Deployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact: Optional[pulumi.Input[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
-                 batch_resource_setting: Optional[pulumi.Input[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_target: Optional[pulumi.Input[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 flink_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_resource_setting: Optional[pulumi.Input[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None,
+                 artifact: pulumi.Input[Optional[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
+                 batch_resource_setting: pulumi.Input[Optional[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_target: pulumi.Input[Optional[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_resource_setting: pulumi.Input[Optional[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None,
                  __props__=None):
         """
         Provides a Realtime Compute Deployment resource.
@@ -706,20 +706,20 @@ class Deployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 artifact: Optional[pulumi.Input[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
-                 batch_resource_setting: Optional[pulumi.Input[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
-                 deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployment_target: Optional[pulumi.Input[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 flink_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
-                 logging: Optional[pulumi.Input[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 streaming_resource_setting: Optional[pulumi.Input[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None,
+                 artifact: pulumi.Input[Optional[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
+                 batch_resource_setting: pulumi.Input[Optional[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
+                 deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployment_target: pulumi.Input[Optional[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
+                 logging: pulumi.Input[Optional[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 streaming_resource_setting: pulumi.Input[Optional[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -764,21 +764,21 @@ class Deployment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            artifact: Optional[pulumi.Input[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
-            batch_resource_setting: Optional[pulumi.Input[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
-            deployment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_name: Optional[pulumi.Input[_builtins.str]] = None,
-            deployment_target: Optional[pulumi.Input[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            execution_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            flink_conf: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            local_variables: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
-            logging: Optional[pulumi.Input[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            streaming_resource_setting: Optional[pulumi.Input[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None) -> 'Deployment':
+            artifact: pulumi.Input[Optional[Union['DeploymentArtifactArgs', 'DeploymentArtifactArgsDict']]] = None,
+            batch_resource_setting: pulumi.Input[Optional[Union['DeploymentBatchResourceSettingArgs', 'DeploymentBatchResourceSettingArgsDict']]] = None,
+            deployment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_name: pulumi.Input[Optional[_builtins.str]] = None,
+            deployment_target: pulumi.Input[Optional[Union['DeploymentDeploymentTargetArgs', 'DeploymentDeploymentTargetArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            execution_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            flink_conf: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_variables: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DeploymentLocalVariableArgs', 'DeploymentLocalVariableArgsDict']]]]] = None,
+            logging: pulumi.Input[Optional[Union['DeploymentLoggingArgs', 'DeploymentLoggingArgsDict']]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            streaming_resource_setting: pulumi.Input[Optional[Union['DeploymentStreamingResourceSettingArgs', 'DeploymentStreamingResourceSettingArgsDict']]] = None) -> 'Deployment':
         """
         Get an existing Deployment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

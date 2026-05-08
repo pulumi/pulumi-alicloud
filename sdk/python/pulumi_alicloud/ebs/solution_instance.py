@@ -22,10 +22,10 @@ __all__ = ['SolutionInstanceArgs', 'SolutionInstance']
 class SolutionInstanceArgs:
     def __init__(__self__, *,
                  solution_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SolutionInstance resource.
 
@@ -59,63 +59,63 @@ class SolutionInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution Instance Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]:
         """
         Solution Instance Creation Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="solutionInstanceName")
-    def solution_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def solution_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution Instance Name.
         """
         return pulumi.get(self, "solution_instance_name")
 
     @solution_instance_name.setter
-    def solution_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def solution_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "solution_instance_name", value)
 
 
 @pulumi.input_type
 class _SolutionInstanceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SolutionInstance resources.
 
@@ -144,86 +144,86 @@ class _SolutionInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution Instance Creation Time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution Instance Description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]:
         """
         Solution Instance Creation Parameters. See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SolutionInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="solutionId")
-    def solution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def solution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution ID.
         """
         return pulumi.get(self, "solution_id")
 
     @solution_id.setter
-    def solution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def solution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "solution_id", value)
 
     @_builtins.property
     @pulumi.getter(name="solutionInstanceName")
-    def solution_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def solution_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Solution Instance Name.
         """
         return pulumi.get(self, "solution_instance_name")
 
     @solution_instance_name.setter
-    def solution_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def solution_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "solution_instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -233,11 +233,11 @@ class SolutionInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a EBS Solution Instance resource.
@@ -480,11 +480,11 @@ class SolutionInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -513,13 +513,13 @@ class SolutionInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            solution_id: Optional[pulumi.Input[_builtins.str]] = None,
-            solution_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'SolutionInstance':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SolutionInstanceParameterArgs', 'SolutionInstanceParameterArgsDict']]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            solution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            solution_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'SolutionInstance':
         """
         Get an existing SolutionInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

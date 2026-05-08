@@ -22,17 +22,17 @@ __all__ = ['WorkspaceModelArgs', 'WorkspaceModel']
 class WorkspaceModelArgs:
     def __init__(__self__, *,
                  model_name: pulumi.Input[_builtins.str],
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]] = None,
-                 model_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_doc: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]] = None,
+                 model_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WorkspaceModel resource.
 
@@ -89,7 +89,7 @@ class WorkspaceModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
         - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
@@ -98,145 +98,145 @@ class WorkspaceModelArgs:
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="extraInfo")
-    def extra_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Other information about the model.
         """
         return pulumi.get(self, "extra_info")
 
     @extra_info.setter
-    def extra_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]:
         """
         A list of tags. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDescription")
-    def model_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model description, used to distinguish different models.
         """
         return pulumi.get(self, "model_description")
 
     @model_description.setter
-    def model_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_description", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDoc")
-    def model_doc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_doc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The documentation of the model.
         """
         return pulumi.get(self, "model_doc")
 
     @model_doc.setter
-    def model_doc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_doc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_doc", value)
 
     @_builtins.property
     @pulumi.getter(name="modelType")
-    def model_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model type. Example: Checkpoint or LoRA.
         """
         return pulumi.get(self, "model_type")
 
     @model_type.setter
-    def model_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderNumber")
-    def order_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sequence number of the model. Can be used for custom sorting.
         """
         return pulumi.get(self, "order_number")
 
     @order_number.setter
-    def order_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task of the model. Describes the specific problem that the model solves. Example: text-classification.
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the workspace.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
 @pulumi.input_type
 class _WorkspaceModelState:
     def __init__(__self__, *,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]] = None,
-                 model_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_doc: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]] = None,
+                 model_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WorkspaceModel resources.
 
@@ -282,7 +282,7 @@ class _WorkspaceModelState:
 
     @_builtins.property
     @pulumi.getter
-    def accessibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def accessibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The visibility of the model in the workspace. Default value: `PRIVATE`. Valid values:
         - `PRIVATE`: In this workspace, it is only visible to you and the administrator.
@@ -291,139 +291,139 @@ class _WorkspaceModelState:
         return pulumi.get(self, "accessibility")
 
     @accessibility.setter
-    def accessibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def accessibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "accessibility", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain of the model. Describe the domain in which the model solves the problem. For example: nlp (natural language processing), cv (computer vision), etc.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="extraInfo")
-    def extra_info(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extra_info(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Other information about the model.
         """
         return pulumi.get(self, "extra_info")
 
     @extra_info.setter
-    def extra_info(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extra_info(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extra_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]:
+    def labels(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]:
         """
         A list of tags. See `labels` below.
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]):
+    def labels(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['WorkspaceModelLabelArgs']]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDescription")
-    def model_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model description, used to distinguish different models.
         """
         return pulumi.get(self, "model_description")
 
     @model_description.setter
-    def model_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_description", value)
 
     @_builtins.property
     @pulumi.getter(name="modelDoc")
-    def model_doc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_doc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The documentation of the model.
         """
         return pulumi.get(self, "model_doc")
 
     @model_doc.setter
-    def model_doc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_doc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_doc", value)
 
     @_builtins.property
     @pulumi.getter(name="modelName")
-    def model_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the model. The name must be 1 to 127 characters in length.
         """
         return pulumi.get(self, "model_name")
 
     @model_name.setter
-    def model_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_name", value)
 
     @_builtins.property
     @pulumi.getter(name="modelType")
-    def model_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The model type. Example: Checkpoint or LoRA.
         """
         return pulumi.get(self, "model_type")
 
     @model_type.setter
-    def model_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_type", value)
 
     @_builtins.property
     @pulumi.getter(name="orderNumber")
-    def order_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The sequence number of the model. Can be used for custom sorting.
         """
         return pulumi.get(self, "order_number")
 
     @order_number.setter
-    def order_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def task(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def task(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The task of the model. Describes the specific problem that the model solves. Example: text-classification.
         """
         return pulumi.get(self, "task")
 
     @task.setter
-    def task(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def task(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "task", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceId")
-    def workspace_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the workspace.
         """
         return pulumi.get(self, "workspace_id")
 
     @workspace_id.setter
-    def workspace_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_id", value)
 
 
@@ -433,18 +433,18 @@ class WorkspaceModel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
-                 model_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_doc: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+                 model_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PAI Workspace Model resource.
@@ -602,18 +602,18 @@ class WorkspaceModel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
-                 model_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_doc: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 model_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 task: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+                 model_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 model_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 task: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -647,18 +647,18 @@ class WorkspaceModel(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            accessibility: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            extra_info: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            labels: Optional[pulumi.Input[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
-            model_description: Optional[pulumi.Input[_builtins.str]] = None,
-            model_doc: Optional[pulumi.Input[_builtins.str]] = None,
-            model_name: Optional[pulumi.Input[_builtins.str]] = None,
-            model_type: Optional[pulumi.Input[_builtins.str]] = None,
-            order_number: Optional[pulumi.Input[_builtins.int]] = None,
-            origin: Optional[pulumi.Input[_builtins.str]] = None,
-            task: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'WorkspaceModel':
+            accessibility: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            extra_info: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Sequence[pulumi.Input[Union['WorkspaceModelLabelArgs', 'WorkspaceModelLabelArgsDict']]]]] = None,
+            model_description: pulumi.Input[Optional[_builtins.str]] = None,
+            model_doc: pulumi.Input[Optional[_builtins.str]] = None,
+            model_name: pulumi.Input[Optional[_builtins.str]] = None,
+            model_type: pulumi.Input[Optional[_builtins.str]] = None,
+            order_number: pulumi.Input[Optional[_builtins.int]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            task: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'WorkspaceModel':
         """
         Get an existing WorkspaceModel resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

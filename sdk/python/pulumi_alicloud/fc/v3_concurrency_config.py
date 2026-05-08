@@ -20,7 +20,7 @@ __all__ = ['V3ConcurrencyConfigArgs', 'V3ConcurrencyConfig']
 class V3ConcurrencyConfigArgs:
     def __init__(__self__, *,
                  function_name: pulumi.Input[_builtins.str],
-                 reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None):
+                 reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a V3ConcurrencyConfig resource.
 
@@ -45,23 +45,23 @@ class V3ConcurrencyConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="reservedConcurrency")
-    def reserved_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
         """
         return pulumi.get(self, "reserved_concurrency")
 
     @reserved_concurrency.setter
-    def reserved_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_concurrency", value)
 
 
 @pulumi.input_type
 class _V3ConcurrencyConfigState:
     def __init__(__self__, *,
-                 function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None):
+                 function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering V3ConcurrencyConfig resources.
 
@@ -78,38 +78,38 @@ class _V3ConcurrencyConfigState:
 
     @_builtins.property
     @pulumi.getter(name="functionArn")
-    def function_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.234.0) Resource identity of the function
         """
         return pulumi.get(self, "function_arn")
 
     @function_arn.setter
-    def function_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Name
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedConcurrency")
-    def reserved_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
         """
         return pulumi.get(self, "reserved_concurrency")
 
     @reserved_concurrency.setter
-    def reserved_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_concurrency", value)
 
 
@@ -119,8 +119,8 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a FCV3 Concurrency Config resource.
@@ -248,8 +248,8 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -274,9 +274,9 @@ class V3ConcurrencyConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            function_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            function_name: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_concurrency: Optional[pulumi.Input[_builtins.int]] = None) -> 'V3ConcurrencyConfig':
+            function_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            function_name: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_concurrency: pulumi.Input[Optional[_builtins.int]] = None) -> 'V3ConcurrencyConfig':
         """
         Get an existing V3ConcurrencyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

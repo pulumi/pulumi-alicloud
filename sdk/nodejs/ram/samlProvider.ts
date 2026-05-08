@@ -130,24 +130,24 @@ export interface SamlProviderState {
     /**
      * The identity provider's ARN.
      */
-    arn?: pulumi.Input<string>;
+    arn?: pulumi.Input<string | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The metadata file which is Base64-encoded.
      * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
      */
-    encodedsamlMetadataDocument?: pulumi.Input<string>;
+    encodedsamlMetadataDocument?: pulumi.Input<string | undefined>;
     /**
      * The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
      */
-    samlProviderName?: pulumi.Input<string>;
+    samlProviderName?: pulumi.Input<string | undefined>;
     /**
      * Update time.
      */
-    updateDate?: pulumi.Input<string>;
+    updateDate?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface SamlProviderArgs {
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The metadata file which is Base64-encoded.
      * The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.

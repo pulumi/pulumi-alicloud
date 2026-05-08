@@ -48,8 +48,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -98,8 +98,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -148,8 +148,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -198,8 +198,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -248,8 +248,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -298,8 +298,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -348,8 +348,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetEndpointsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -443,8 +443,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -488,8 +488,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -533,8 +533,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -578,8 +578,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -623,8 +623,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -668,8 +668,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetResolverZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -713,8 +713,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -762,8 +762,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -811,8 +811,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -860,8 +860,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -909,8 +909,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -958,8 +958,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1007,8 +1007,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1058,8 +1058,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1104,8 +1104,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1150,8 +1150,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1196,8 +1196,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1242,8 +1242,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1288,8 +1288,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1334,8 +1334,8 @@ public final class PvtzFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1382,8 +1382,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1448,8 +1448,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1514,8 +1514,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1580,8 +1580,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1646,8 +1646,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZoneRecordsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1710,8 +1710,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1763,8 +1763,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1816,8 +1816,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1869,8 +1869,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1922,8 +1922,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1975,8 +1975,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2028,8 +2028,8 @@ public final class PvtzFunctions {
      * import com.pulumi.alicloud.pvtz.ZoneArgs;
      * import com.pulumi.alicloud.pvtz.PvtzFunctions;
      * import com.pulumi.alicloud.pvtz.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

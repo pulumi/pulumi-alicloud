@@ -121,16 +121,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
-//			if length > 0 {
-//				tmp0 = 0
-//			} else {
-//				tmp0 = 1
-//			}
 //			var _default []*ram.Role
-//			for index := 0; index < float64(len(roles.Roles).ApplyT(func(length int) (float64, error) {
+//			for index := 0; index < int(len(roles.Roles).ApplyT(func(length int) (int, error) {
+//				var tmp0 int
+//				if length > 0 {
+//					tmp0 = 0
+//				} else {
+//					tmp0 = 1
+//				}
 //				return tmp0, nil
-//			}).(pulumi.Float64Output)); index++ {
+//			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := ram.NewRole(ctx, fmt.Sprintf("default-%v", key0), &ram.RoleArgs{
@@ -159,22 +159,16 @@ import (
 //				}
 //				_default = append(_default, __res)
 //			}
-//			var tmp1 string
-//			if length > 0 {
-//				tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", roles.Roles[0].Name, current.Id)
-//			} else {
-//				tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", name, current.Id)
-//			}
-//			var tmp2 float64
-//			if length > 0 {
-//				tmp2 = 0
-//			} else {
-//				tmp2 = 1
-//			}
 //			var defaultPolicyAttachment []*resourcemanager.PolicyAttachment
-//			for index := 0; index < float64(len(roles.Roles).ApplyT(func(length int) (float64, error) {
+//			for index := 0; index < int(len(roles.Roles).ApplyT(func(length int) (int, error) {
+//				var tmp2 int
+//				if length > 0 {
+//					tmp2 = 0
+//				} else {
+//					tmp2 = 1
+//				}
 //				return tmp2, nil
-//			}).(pulumi.Float64Output)); index++ {
+//			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := resourcemanager.NewPolicyAttachment(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.PolicyAttachmentArgs{
@@ -183,6 +177,12 @@ import (
 //					PrincipalName: pulumi.All(len(roles.Roles), _default[0].Name).ApplyT(func(_args []interface{}) (string, error) {
 //						length := _args[0].(int)
 //						name := _args[1].(string)
+//						var tmp1 string
+//						if length > 0 {
+//							tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", roles.Roles[0].Name, current.Id)
+//						} else {
+//							tmp1 = fmt.Sprintf("%v@role.%v.onaliyunservice.com", name, current.Id)
+//						}
 //						return tmp1, nil
 //					}).(pulumi.StringOutput),
 //					PrincipalType:   pulumi.String("ServiceRole"),

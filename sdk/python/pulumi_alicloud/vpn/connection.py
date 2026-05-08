@@ -24,21 +24,21 @@ class ConnectionArgs:
                  local_subnets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  remote_subnets: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vpn_gateway_id: pulumi.Input[_builtins.str],
-                 auto_config_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_config: Optional[pulumi.Input['ConnectionBgpConfigArgs']] = None,
-                 customer_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dpd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nat_traversal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tunnels_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']] = None,
-                 ike_config: Optional[pulumi.Input['ConnectionIkeConfigArgs']] = None,
-                 ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
-                 vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_config_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_config: pulumi.Input[Optional['ConnectionBgpConfigArgs']] = None,
+                 customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']] = None,
+                 ike_config: pulumi.Input[Optional['ConnectionIkeConfigArgs']] = None,
+                 ipsec_config: pulumi.Input[Optional['ConnectionIpsecConfigArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
+                 vpn_connection_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Connection resource.
 
@@ -140,7 +140,7 @@ class ConnectionArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoConfigRoute")
-    def auto_config_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_config_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to configure routing automatically. Value:
         - **true**: Automatically configure routes.
@@ -149,133 +149,133 @@ class ConnectionArgs:
         return pulumi.get(self, "auto_config_route")
 
     @auto_config_route.setter
-    def auto_config_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_config_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_config_route", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
+    def bgp_config(self) -> pulumi.Input[Optional['ConnectionBgpConfigArgs']]:
         """
         vpnBgp configuration. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input['ConnectionBgpConfigArgs']]):
+    def bgp_config(self, value: pulumi.Input[Optional['ConnectionBgpConfigArgs']]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="customerGatewayId")
-    def customer_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the customer gateway.
         """
         return pulumi.get(self, "customer_gateway_id")
 
     @customer_gateway_id.setter
-    def customer_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectImmediately")
-    def effect_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def effect_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         """
         return pulumi.get(self, "effect_immediately")
 
     @effect_immediately.setter
-    def effect_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def effect_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "effect_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDpd")
-    def enable_dpd(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dpd(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wether enable Dpd detection.
         """
         return pulumi.get(self, "enable_dpd")
 
     @enable_dpd.setter
-    def enable_dpd(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dpd(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dpd", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNatTraversal")
-    def enable_nat_traversal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_nat_traversal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         enable nat traversal.
         """
         return pulumi.get(self, "enable_nat_traversal")
 
     @enable_nat_traversal.setter
-    def enable_nat_traversal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_nat_traversal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nat_traversal", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTunnelsBgp")
-    def enable_tunnels_bgp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tunnels_bgp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable tunnel bgp.
         """
         return pulumi.get(self, "enable_tunnels_bgp")
 
     @enable_tunnels_bgp.setter
-    def enable_tunnels_bgp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tunnels_bgp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tunnels_bgp", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConfig")
-    def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
+    def health_check_config(self) -> pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']]:
         """
         Health Check information. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
     @health_check_config.setter
-    def health_check_config(self, value: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]):
+    def health_check_config(self, value: pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']]):
         pulumi.set(self, "health_check_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeConfig")
-    def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
+    def ike_config(self) -> pulumi.Input[Optional['ConnectionIkeConfigArgs']]:
         """
         The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
     @ike_config.setter
-    def ike_config(self, value: Optional[pulumi.Input['ConnectionIkeConfigArgs']]):
+    def ike_config(self, value: pulumi.Input[Optional['ConnectionIkeConfigArgs']]):
         pulumi.set(self, "ike_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecConfig")
-    def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
+    def ipsec_config(self) -> pulumi.Input[Optional['ConnectionIpsecConfigArgs']]:
         """
         IPsec configuration. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
     @ipsec_config.setter
-    def ipsec_config(self, value: Optional[pulumi.Input['ConnectionIpsecConfigArgs']]):
+    def ipsec_config(self, value: pulumi.Input[Optional['ConnectionIpsecConfigArgs']]):
         pulumi.set(self, "ipsec_config", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the IPsec connection. Value:
         - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
@@ -284,70 +284,70 @@ class ConnectionArgs:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelOptionsSpecifications")
-    def tunnel_options_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]:
+    def tunnel_options_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]:
         """
         The tunnel options of IPsec. See `tunnel_options_specification` below.
         """
         return pulumi.get(self, "tunnel_options_specifications")
 
     @tunnel_options_specifications.setter
-    def tunnel_options_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]):
+    def tunnel_options_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]):
         pulumi.set(self, "tunnel_options_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnConnectionName")
-    def vpn_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IPsec-VPN connection.
         """
         return pulumi.get(self, "vpn_connection_name")
 
     @vpn_connection_name.setter
-    def vpn_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_connection_name", value)
 
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
-                 auto_config_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_config: Optional[pulumi.Input['ConnectionBgpConfigArgs']] = None,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 customer_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dpd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nat_traversal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tunnels_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']] = None,
-                 ike_config: Optional[pulumi.Input['ConnectionIkeConfigArgs']] = None,
-                 ipsec_config: Optional[pulumi.Input['ConnectionIpsecConfigArgs']] = None,
-                 local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
-                 vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_config_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_config: pulumi.Input[Optional['ConnectionBgpConfigArgs']] = None,
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']] = None,
+                 ike_config: pulumi.Input[Optional['ConnectionIkeConfigArgs']] = None,
+                 ipsec_config: pulumi.Input[Optional['ConnectionIpsecConfigArgs']] = None,
+                 local_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]] = None,
+                 vpn_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
 
@@ -425,7 +425,7 @@ class _ConnectionState:
 
     @_builtins.property
     @pulumi.getter(name="autoConfigRoute")
-    def auto_config_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_config_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to configure routing automatically. Value:
         - **true**: Automatically configure routes.
@@ -434,157 +434,157 @@ class _ConnectionState:
         return pulumi.get(self, "auto_config_route")
 
     @auto_config_route.setter
-    def auto_config_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_config_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_config_route", value)
 
     @_builtins.property
     @pulumi.getter(name="bgpConfig")
-    def bgp_config(self) -> Optional[pulumi.Input['ConnectionBgpConfigArgs']]:
+    def bgp_config(self) -> pulumi.Input[Optional['ConnectionBgpConfigArgs']]:
         """
         vpnBgp configuration. See `bgp_config` below.
         """
         return pulumi.get(self, "bgp_config")
 
     @bgp_config.setter
-    def bgp_config(self, value: Optional[pulumi.Input['ConnectionBgpConfigArgs']]):
+    def bgp_config(self, value: pulumi.Input[Optional['ConnectionBgpConfigArgs']]):
         pulumi.set(self, "bgp_config", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the IPsec-VPN connection was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="customerGatewayId")
-    def customer_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def customer_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the customer gateway.
         """
         return pulumi.get(self, "customer_gateway_id")
 
     @customer_gateway_id.setter
-    def customer_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def customer_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "customer_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter(name="effectImmediately")
-    def effect_immediately(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def effect_immediately(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
         """
         return pulumi.get(self, "effect_immediately")
 
     @effect_immediately.setter
-    def effect_immediately(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def effect_immediately(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "effect_immediately", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDpd")
-    def enable_dpd(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dpd(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wether enable Dpd detection.
         """
         return pulumi.get(self, "enable_dpd")
 
     @enable_dpd.setter
-    def enable_dpd(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dpd(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dpd", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNatTraversal")
-    def enable_nat_traversal(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_nat_traversal(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         enable nat traversal.
         """
         return pulumi.get(self, "enable_nat_traversal")
 
     @enable_nat_traversal.setter
-    def enable_nat_traversal(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_nat_traversal(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_nat_traversal", value)
 
     @_builtins.property
     @pulumi.getter(name="enableTunnelsBgp")
-    def enable_tunnels_bgp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tunnels_bgp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable tunnel bgp.
         """
         return pulumi.get(self, "enable_tunnels_bgp")
 
     @enable_tunnels_bgp.setter
-    def enable_tunnels_bgp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tunnels_bgp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tunnels_bgp", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConfig")
-    def health_check_config(self) -> Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]:
+    def health_check_config(self) -> pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']]:
         """
         Health Check information. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
     @health_check_config.setter
-    def health_check_config(self, value: Optional[pulumi.Input['ConnectionHealthCheckConfigArgs']]):
+    def health_check_config(self, value: pulumi.Input[Optional['ConnectionHealthCheckConfigArgs']]):
         pulumi.set(self, "health_check_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ikeConfig")
-    def ike_config(self) -> Optional[pulumi.Input['ConnectionIkeConfigArgs']]:
+    def ike_config(self) -> pulumi.Input[Optional['ConnectionIkeConfigArgs']]:
         """
         The configuration of Phase 1 negotiations. See `ike_config` below.
         """
         return pulumi.get(self, "ike_config")
 
     @ike_config.setter
-    def ike_config(self, value: Optional[pulumi.Input['ConnectionIkeConfigArgs']]):
+    def ike_config(self, value: pulumi.Input[Optional['ConnectionIkeConfigArgs']]):
         pulumi.set(self, "ike_config", value)
 
     @_builtins.property
     @pulumi.getter(name="ipsecConfig")
-    def ipsec_config(self) -> Optional[pulumi.Input['ConnectionIpsecConfigArgs']]:
+    def ipsec_config(self) -> pulumi.Input[Optional['ConnectionIpsecConfigArgs']]:
         """
         IPsec configuration. See `ipsec_config` below.
         """
         return pulumi.get(self, "ipsec_config")
 
     @ipsec_config.setter
-    def ipsec_config(self, value: Optional[pulumi.Input['ConnectionIpsecConfigArgs']]):
+    def ipsec_config(self, value: pulumi.Input[Optional['ConnectionIpsecConfigArgs']]):
         pulumi.set(self, "ipsec_config", value)
 
     @_builtins.property
     @pulumi.getter(name="localSubnets")
-    def local_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def local_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
         """
         return pulumi.get(self, "local_subnets")
 
     @local_subnets.setter
-    def local_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def local_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "local_subnets", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated since provider version 1.216.0. New field 'vpn_connection_name' instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'name' has been deprecated from provider version 1.216.0. New field 'vpn_connection_name' instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkType")
-    def network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the IPsec connection. Value:
         - **public**: public network, indicating that the IPsec connection establishes an encrypted communication channel through the public network.
@@ -593,91 +593,91 @@ class _ConnectionState:
         return pulumi.get(self, "network_type")
 
     @network_type.setter
-    def network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSubnets")
-    def remote_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def remote_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The CIDR block of the local data center. This parameter is used for phase-two negotiation.
         """
         return pulumi.get(self, "remote_subnets")
 
     @remote_subnets.setter
-    def remote_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def remote_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "remote_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The negotiation status of Tunnel.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="tunnelOptionsSpecifications")
-    def tunnel_options_specifications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]:
+    def tunnel_options_specifications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]:
         """
         The tunnel options of IPsec. See `tunnel_options_specification` below.
         """
         return pulumi.get(self, "tunnel_options_specifications")
 
     @tunnel_options_specifications.setter
-    def tunnel_options_specifications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]):
+    def tunnel_options_specifications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ConnectionTunnelOptionsSpecificationArgs']]]]):
         pulumi.set(self, "tunnel_options_specifications", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnConnectionName")
-    def vpn_connection_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_connection_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IPsec-VPN connection.
         """
         return pulumi.get(self, "vpn_connection_name")
 
     @vpn_connection_name.setter
-    def vpn_connection_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_connection_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_connection_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vpnGatewayId")
-    def vpn_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpn_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPN gateway.
         """
         return pulumi.get(self, "vpn_gateway_id")
 
     @vpn_gateway_id.setter
-    def vpn_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpn_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpn_gateway_id", value)
 
 
@@ -687,24 +687,24 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_config_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
-                 customer_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dpd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nat_traversal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tunnels_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
-                 ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
-                 ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
-                 local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
-                 vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_config_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_config: pulumi.Input[Optional[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
+                 customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+                 ike_config: pulumi.Input[Optional[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+                 ipsec_config: pulumi.Input[Optional[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
+                 local_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
+                 vpn_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPN connection resource.
@@ -755,7 +755,7 @@ class Connection(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             description="defaultCustomerGateway",
             ip_address="2.2.2.5",
@@ -926,7 +926,7 @@ class Connection(pulumi.CustomResource):
             network_type="public",
             payment_type="Subscription",
             enable_ipsec=True,
-            bandwidth=spec)
+            bandwidth=int(spec))
         default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
             description="defaultCustomerGateway",
             ip_address="2.2.2.5",
@@ -1032,24 +1032,24 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_config_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
-                 customer_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_dpd: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_nat_traversal: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_tunnels_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
-                 ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
-                 ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
-                 local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
-                 vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_config_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bgp_config: pulumi.Input[Optional[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
+                 customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 health_check_config: pulumi.Input[Optional[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+                 ike_config: pulumi.Input[Optional[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+                 ipsec_config: pulumi.Input[Optional[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
+                 local_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
+                 vpn_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1096,27 +1096,27 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_config_route: Optional[pulumi.Input[_builtins.bool]] = None,
-            bgp_config: Optional[pulumi.Input[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            customer_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            effect_immediately: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_dpd: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_nat_traversal: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_tunnels_bgp: Optional[pulumi.Input[_builtins.bool]] = None,
-            health_check_config: Optional[pulumi.Input[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
-            ike_config: Optional[pulumi.Input[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
-            ipsec_config: Optional[pulumi.Input[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
-            local_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            tunnel_options_specifications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
-            vpn_connection_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vpn_gateway_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Connection':
+            auto_config_route: pulumi.Input[Optional[_builtins.bool]] = None,
+            bgp_config: pulumi.Input[Optional[Union['ConnectionBgpConfigArgs', 'ConnectionBgpConfigArgsDict']]] = None,
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            customer_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effect_immediately: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_dpd: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_nat_traversal: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_tunnels_bgp: pulumi.Input[Optional[_builtins.bool]] = None,
+            health_check_config: pulumi.Input[Optional[Union['ConnectionHealthCheckConfigArgs', 'ConnectionHealthCheckConfigArgsDict']]] = None,
+            ike_config: pulumi.Input[Optional[Union['ConnectionIkeConfigArgs', 'ConnectionIkeConfigArgsDict']]] = None,
+            ipsec_config: pulumi.Input[Optional[Union['ConnectionIpsecConfigArgs', 'ConnectionIpsecConfigArgsDict']]] = None,
+            local_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            tunnel_options_specifications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ConnectionTunnelOptionsSpecificationArgs', 'ConnectionTunnelOptionsSpecificationArgsDict']]]]] = None,
+            vpn_connection_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vpn_gateway_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Connection':
         """
         Get an existing Connection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -284,75 +284,75 @@ export interface AccessStrategyState {
     /**
      * The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    defaultAddrPoolType?: pulumi.Input<string>;
+    defaultAddrPoolType?: pulumi.Input<string | undefined>;
     /**
      * List of primary address pool collections. See `defaultAddrPools` below for details.
      */
-    defaultAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyDefaultAddrPool>[]>;
+    defaultAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyDefaultAddrPool>[] | undefined>;
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    defaultLatencyOptimization?: pulumi.Input<string>;
+    defaultLatencyOptimization?: pulumi.Input<string | undefined>;
     /**
      * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      */
-    defaultLbaStrategy?: pulumi.Input<string>;
+    defaultLbaStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      */
-    defaultMaxReturnAddrNum?: pulumi.Input<number>;
+    defaultMaxReturnAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of available addresses for the primary address pool set.
      */
-    defaultMinAvailableAddrNum?: pulumi.Input<number>;
+    defaultMinAvailableAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    failoverAddrPoolType?: pulumi.Input<string>;
+    failoverAddrPoolType?: pulumi.Input<string | undefined>;
     /**
      * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
-    failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[]>;
+    failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[] | undefined>;
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    failoverLatencyOptimization?: pulumi.Input<string>;
+    failoverLatencyOptimization?: pulumi.Input<string | undefined>;
     /**
      * The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
      */
-    failoverLbaStrategy?: pulumi.Input<string>;
+    failoverLbaStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of returned addresses in the standby address pool.
      */
-    failoverMaxReturnAddrNum?: pulumi.Input<number>;
+    failoverMaxReturnAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of available addresses in the standby address pool.
      */
-    failoverMinAvailableAddrNum?: pulumi.Input<number>;
+    failoverMinAvailableAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The Id of the associated instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
-    lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[]>;
+    lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[] | undefined>;
     /**
      * The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
      */
-    strategyMode?: pulumi.Input<string>;
+    strategyMode?: pulumi.Input<string | undefined>;
     /**
      * The name of the access policy.
      */
-    strategyName?: pulumi.Input<string>;
+    strategyName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -362,7 +362,7 @@ export interface AccessStrategyArgs {
     /**
      * The primary/secondary switchover policy for address pool groups. Valid values: `AUTO`, `DEFAULT`, `FAILOVER`.
      */
-    accessMode?: pulumi.Input<string>;
+    accessMode?: pulumi.Input<string | undefined>;
     /**
      * The type of the primary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
@@ -374,15 +374,15 @@ export interface AccessStrategyArgs {
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the primary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    defaultLatencyOptimization?: pulumi.Input<string>;
+    defaultLatencyOptimization?: pulumi.Input<string | undefined>;
     /**
      * The load balancing policy of the primary address pool group. Valid values: `ALL_RR`, `RATIO`. **NOTE:** The `defaultLbaStrategy` is required under the condition that `strategyMode` is `GEO`.
      */
-    defaultLbaStrategy?: pulumi.Input<string>;
+    defaultLbaStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of addresses returned by the primary address pool set. **NOTE:** The `defaultMaxReturnAddrNum` is required under the condition that `strategyMode` is `LATENCY`.
      */
-    defaultMaxReturnAddrNum?: pulumi.Input<number>;
+    defaultMaxReturnAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of available addresses for the primary address pool set.
      */
@@ -390,27 +390,27 @@ export interface AccessStrategyArgs {
     /**
      * The type of the secondary address pool. Valid values: `IPV4`, `IPV6`, `DOMAIN`.
      */
-    failoverAddrPoolType?: pulumi.Input<string>;
+    failoverAddrPoolType?: pulumi.Input<string | undefined>;
     /**
      * List of backup address pool sets. See `failoverAddrPools` below for details.
      */
-    failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[]>;
+    failoverAddrPools?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyFailoverAddrPool>[] | undefined>;
     /**
      * Specifies whether to enable scheduling optimization for latency resolution for the secondary address pool group. Valid values: `OPEN`, `CLOSE`.
      */
-    failoverLatencyOptimization?: pulumi.Input<string>;
+    failoverLatencyOptimization?: pulumi.Input<string | undefined>;
     /**
      * The load balancing policy of the secondary address pool group. Valid values: `ALL_RR`, `RATIO`.
      */
-    failoverLbaStrategy?: pulumi.Input<string>;
+    failoverLbaStrategy?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of returned addresses in the standby address pool.
      */
-    failoverMaxReturnAddrNum?: pulumi.Input<number>;
+    failoverMaxReturnAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of available addresses in the standby address pool.
      */
-    failoverMinAvailableAddrNum?: pulumi.Input<number>;
+    failoverMinAvailableAddrNum?: pulumi.Input<number | undefined>;
     /**
      * The Id of the associated instance.
      */
@@ -418,11 +418,11 @@ export interface AccessStrategyArgs {
     /**
      * The lang.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * The source regions. See `lines` below for details. **NOTE:** The `lines` is required under the condition that `strategyMode` is `GEO`.
      */
-    lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[]>;
+    lines?: pulumi.Input<pulumi.Input<inputs.dns.AccessStrategyLine>[] | undefined>;
     /**
      * The type of the access policy. Valid values: `GEO` or `LATENCY`. `GEO`: based on geographic location. `LATENCY`: Based on delay.
      */

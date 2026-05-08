@@ -198,66 +198,66 @@ export interface PasswordPolicyState {
      * - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.
      * - false (default): After the password expires, the RAM user can change the password and log on normally.
      */
-    hardExpiry?: pulumi.Input<boolean>;
+    hardExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * Password retry constraint. After entering the wrong password continuously for the set number of times, the account will be locked for one hour.
      * Value range: 0~32.
      * Default value: 0, which means that the password retry constraint is not enabled.
      */
-    maxLoginAttemps?: pulumi.Input<number>;
+    maxLoginAttemps?: pulumi.Input<number | undefined>;
     /**
      * Password validity period.
      * Value range: 0~1095. Unit: days.
      * Default value: 0, which means never expires.
      */
-    maxPasswordAge?: pulumi.Input<number>;
+    maxPasswordAge?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of unique characters in the password.
      * Valid values: 0 to 8.
      * The default value is 0, which indicates that no limits are imposed on the number of unique characters in a password.
      */
-    minimumPasswordDifferentCharacter?: pulumi.Input<number>;
+    minimumPasswordDifferentCharacter?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of characters in the password.
      * Valid values: 8 to 32. Default value: 8.
      */
-    minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number | undefined>;
     /**
      * Whether the user name is not allowed in the password. Value:
      * - true: The password cannot contain the user name.
      * - false (default): The user name can be included in the password.
      */
-    passwordNotContainUserName?: pulumi.Input<boolean>;
+    passwordNotContainUserName?: pulumi.Input<boolean | undefined>;
     /**
      * Historical password check policy.
      * Do not use the previous N Passwords. The value range of N is 0 to 24.
      * Default value: 0, indicating that the historical password check policy is not enabled.
      */
-    passwordReusePrevention?: pulumi.Input<number>;
+    passwordReusePrevention?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether the password must contain lowercase letters. Valid values:
      * - true
      * - false (default)
      */
-    requireLowercaseCharacters?: pulumi.Input<boolean>;
+    requireLowercaseCharacters?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain digits. Valid values:
      * - true
      * - false (default)
      */
-    requireNumbers?: pulumi.Input<boolean>;
+    requireNumbers?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain special characters. Valid values:
      * - true
      * - false (default)
      */
-    requireSymbols?: pulumi.Input<boolean>;
+    requireSymbols?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain uppercase letters. Valid values:
      * - true
      * - false (default)
      */
-    requireUppercaseCharacters?: pulumi.Input<boolean>;
+    requireUppercaseCharacters?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -269,64 +269,64 @@ export interface PasswordPolicyArgs {
      * - true: After the password expires, you cannot log in to the console. You must reset the password of the RAM user through the main account or a RAM user with administrator permissions to log on normally.
      * - false (default): After the password expires, the RAM user can change the password and log on normally.
      */
-    hardExpiry?: pulumi.Input<boolean>;
+    hardExpiry?: pulumi.Input<boolean | undefined>;
     /**
      * Password retry constraint. After entering the wrong password continuously for the set number of times, the account will be locked for one hour.
      * Value range: 0~32.
      * Default value: 0, which means that the password retry constraint is not enabled.
      */
-    maxLoginAttemps?: pulumi.Input<number>;
+    maxLoginAttemps?: pulumi.Input<number | undefined>;
     /**
      * Password validity period.
      * Value range: 0~1095. Unit: days.
      * Default value: 0, which means never expires.
      */
-    maxPasswordAge?: pulumi.Input<number>;
+    maxPasswordAge?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of unique characters in the password.
      * Valid values: 0 to 8.
      * The default value is 0, which indicates that no limits are imposed on the number of unique characters in a password.
      */
-    minimumPasswordDifferentCharacter?: pulumi.Input<number>;
+    minimumPasswordDifferentCharacter?: pulumi.Input<number | undefined>;
     /**
      * The minimum number of characters in the password.
      * Valid values: 8 to 32. Default value: 8.
      */
-    minimumPasswordLength?: pulumi.Input<number>;
+    minimumPasswordLength?: pulumi.Input<number | undefined>;
     /**
      * Whether the user name is not allowed in the password. Value:
      * - true: The password cannot contain the user name.
      * - false (default): The user name can be included in the password.
      */
-    passwordNotContainUserName?: pulumi.Input<boolean>;
+    passwordNotContainUserName?: pulumi.Input<boolean | undefined>;
     /**
      * Historical password check policy.
      * Do not use the previous N Passwords. The value range of N is 0 to 24.
      * Default value: 0, indicating that the historical password check policy is not enabled.
      */
-    passwordReusePrevention?: pulumi.Input<number>;
+    passwordReusePrevention?: pulumi.Input<number | undefined>;
     /**
      * Specifies whether the password must contain lowercase letters. Valid values:
      * - true
      * - false (default)
      */
-    requireLowercaseCharacters?: pulumi.Input<boolean>;
+    requireLowercaseCharacters?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain digits. Valid values:
      * - true
      * - false (default)
      */
-    requireNumbers?: pulumi.Input<boolean>;
+    requireNumbers?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain special characters. Valid values:
      * - true
      * - false (default)
      */
-    requireSymbols?: pulumi.Input<boolean>;
+    requireSymbols?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies whether the password must contain uppercase letters. Valid values:
      * - true
      * - false (default)
      */
-    requireUppercaseCharacters?: pulumi.Input<boolean>;
+    requireUppercaseCharacters?: pulumi.Input<boolean | undefined>;
 }

@@ -164,19 +164,19 @@ export interface ServiceMonitoringAgentProcessState {
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the process.
      */
-    processId?: pulumi.Input<string>;
+    processId?: pulumi.Input<string | undefined>;
     /**
      * The name of the process.
      */
-    processName?: pulumi.Input<string>;
+    processName?: pulumi.Input<string | undefined>;
     /**
      * The user who launches the process.
      */
-    processUser?: pulumi.Input<string>;
+    processUser?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -194,5 +194,5 @@ export interface ServiceMonitoringAgentProcessArgs {
     /**
      * The user who launches the process.
      */
-    processUser?: pulumi.Input<string>;
+    processUser?: pulumi.Input<string | undefined>;
 }

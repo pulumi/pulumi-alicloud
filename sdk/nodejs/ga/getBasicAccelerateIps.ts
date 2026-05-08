@@ -138,15 +138,15 @@ export interface GetBasicAccelerateIpsOutputArgs {
     /**
      * The address of the Basic Accelerate IP.
      */
-    accelerateIpAddress?: pulumi.Input<string>;
+    accelerateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The id of the Basic Accelerate IP.
      */
-    accelerateIpId?: pulumi.Input<string>;
+    accelerateIpId?: pulumi.Input<string | undefined>;
     /**
      * A list of Global Accelerator Basic Accelerate IP IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the Basic Ip Set.
      */
@@ -154,9 +154,9 @@ export interface GetBasicAccelerateIpsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

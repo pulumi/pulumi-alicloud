@@ -22,7 +22,7 @@ __all__ = ['K8sSlbAttachmentArgs', 'K8sSlbAttachment']
 class K8sSlbAttachmentArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
-                 slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
         """
         The set of arguments for constructing a K8sSlbAttachment resource.
 
@@ -47,22 +47,22 @@ class K8sSlbAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="slbConfigs")
-    def slb_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
+    def slb_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
         """
         The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         return pulumi.get(self, "slb_configs")
 
     @slb_configs.setter
-    def slb_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]):
+    def slb_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]):
         pulumi.set(self, "slb_configs", value)
 
 
 @pulumi.input_type
 class _K8sSlbAttachmentState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]] = None):
         """
         Input properties used for looking up and filtering K8sSlbAttachment resources.
 
@@ -76,26 +76,26 @@ class _K8sSlbAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the EDAS k8s application to which you want to bind SLB instances.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="slbConfigs")
-    def slb_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
+    def slb_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]:
         """
         The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
         """
         return pulumi.get(self, "slb_configs")
 
     @slb_configs.setter
-    def slb_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]):
+    def slb_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['K8sSlbAttachmentSlbConfigArgs']]]]):
         pulumi.set(self, "slb_configs", value)
 
 
@@ -105,8 +105,8 @@ class K8sSlbAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
                  __props__=None):
         """
         Binds SLBs to an EDAS k8s application.
@@ -134,7 +134,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -239,7 +239,7 @@ class K8sSlbAttachment(pulumi.CustomResource):
             owners="system")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=4,
-            memory_size=8,
+            memory_size=float(8),
             kubernetes_node_role="Worker")
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
@@ -322,8 +322,8 @@ class K8sSlbAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -347,8 +347,8 @@ class K8sSlbAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            slb_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None) -> 'K8sSlbAttachment':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            slb_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['K8sSlbAttachmentSlbConfigArgs', 'K8sSlbAttachmentSlbConfigArgsDict']]]]] = None) -> 'K8sSlbAttachment':
         """
         Get an existing K8sSlbAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

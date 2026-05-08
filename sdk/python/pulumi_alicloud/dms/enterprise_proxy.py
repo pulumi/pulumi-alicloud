@@ -22,7 +22,7 @@ class EnterpriseProxyArgs:
                  instance_id: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 tid: Optional[pulumi.Input[_builtins.str]] = None):
+                 tid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseProxy resource.
 
@@ -75,24 +75,24 @@ class EnterpriseProxyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the tenant.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tid", value)
 
 
 @pulumi.input_type
 class _EnterpriseProxyState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseProxy resources.
 
@@ -112,50 +112,50 @@ class _EnterpriseProxyState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the database instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the database account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def tid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the tenant.
         """
         return pulumi.get(self, "tid")
 
     @tid.setter
-    def tid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tid", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the database account.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -165,10 +165,10 @@ class EnterpriseProxy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise Proxy resource.
@@ -219,7 +219,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -236,7 +236,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -246,7 +246,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,
@@ -331,7 +331,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
             instance_type=default_get_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
+            instance_storage=output(default_get_instance_classes.instance_classes[0].storage_range.min).apply(lambda x: int(x)),
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -348,7 +348,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             account_password="Example12345",
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
-            tid=default_get_user_tenants.ids[0],
+            tid=output(default_get_user_tenants.ids[0]).apply(lambda x: int(x)),
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -358,7 +358,7 @@ class EnterpriseProxy(pulumi.CustomResource):
             database_user=default_account.account_name,
             database_password=default_account.account_password,
             instance_name=name,
-            dba_uid=current.id,
+            dba_uid=output(current.id).apply(lambda x: int(x)),
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,
@@ -396,10 +396,10 @@ class EnterpriseProxy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 tid: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 tid: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -431,10 +431,10 @@ class EnterpriseProxy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            tid: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseProxy':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            tid: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseProxy':
         """
         Get an existing EnterpriseProxy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

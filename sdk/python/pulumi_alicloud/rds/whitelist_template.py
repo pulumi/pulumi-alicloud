@@ -62,8 +62,8 @@ class WhitelistTemplateArgs:
 @pulumi.input_type
 class _WhitelistTemplateState:
     def __init__(__self__, *,
-                 ip_white_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip_white_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WhitelistTemplate resources.
 
@@ -79,7 +79,7 @@ class _WhitelistTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="ipWhiteList")
-    def ip_white_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_white_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP whitelist, multiple IP addresses should be separated by commas (,) and cannot be duplicated.Supports the following two formats:
         - IP address format, for example: 10.23.XX.XX.
@@ -88,19 +88,19 @@ class _WhitelistTemplateState:
         return pulumi.get(self, "ip_white_list")
 
     @ip_white_list.setter
-    def ip_white_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_white_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_white_list", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whitelist template name. Passed in when creating a template, and cannot have the same name under the same account, starting with a letter.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
 
@@ -110,8 +110,8 @@ class WhitelistTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_white_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provide a whitelist template resource.
@@ -199,8 +199,8 @@ class WhitelistTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ip_white_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 ip_white_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -226,8 +226,8 @@ class WhitelistTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ip_white_list: Optional[pulumi.Input[_builtins.str]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WhitelistTemplate':
+            ip_white_list: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WhitelistTemplate':
         """
         Get an existing WhitelistTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

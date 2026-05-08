@@ -25,23 +25,23 @@ class ListenerArgs:
                  listener_protocol: pulumi.Input[_builtins.str],
                  load_balancer_id: pulumi.Input[_builtins.str],
                  server_group_id: pulumi.Input[_builtins.str],
-                 alpn_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 mss: Optional[pulumi.Input[_builtins.int]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']] = None,
-                 proxy_protocol_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sec_sensor_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mss: pulumi.Input[Optional[_builtins.int]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']] = None,
+                 proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Listener resource.
 
@@ -181,19 +181,19 @@ class ListenerArgs:
 
     @_builtins.property
     @pulumi.getter(name="alpnEnabled")
-    def alpn_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alpn_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
         """
         return pulumi.get(self, "alpn_enabled")
 
     @alpn_enabled.setter
-    def alpn_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alpn_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alpn_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnPolicy")
-    def alpn_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alpn_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ALPN policy. Valid values:
         - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -208,12 +208,12 @@ class ListenerArgs:
         return pulumi.get(self, "alpn_policy")
 
     @alpn_policy.setter
-    def alpn_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alpn_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alpn_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateIds")
-    def ca_certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ca_certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
 
@@ -222,24 +222,24 @@ class ListenerArgs:
         return pulumi.get(self, "ca_certificate_ids")
 
     @ca_certificate_ids.setter
-    def ca_certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ca_certificate_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_certificate_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="caEnabled")
-    def ca_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable mutual authentication. Valid values:
         """
         return pulumi.get(self, "ca_enabled")
 
     @ca_enabled.setter
-    def ca_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateIds")
-    def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
 
@@ -248,24 +248,24 @@ class ListenerArgs:
         return pulumi.get(self, "certificate_ids")
 
     @certificate_ids.setter
-    def certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def cps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
         """
         return pulumi.get(self, "cps")
 
     @cps.setter
-    def cps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cps", value)
 
     @_builtins.property
     @pulumi.getter(name="endPort")
-    def end_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
 
@@ -274,24 +274,24 @@ class ListenerArgs:
         return pulumi.get(self, "end_port")
 
     @end_port.setter
-    def end_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_port", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enter a name for the listener.
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
@@ -299,12 +299,12 @@ class ListenerArgs:
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def mss(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mss(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
 
@@ -313,48 +313,48 @@ class ListenerArgs:
         return pulumi.get(self, "mss")
 
     @mss.setter
-    def mss(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mss(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mss", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfig")
-    def proxy_protocol_config(self) -> Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]:
+    def proxy_protocol_config(self) -> pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']]:
         """
         The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         """
         return pulumi.get(self, "proxy_protocol_config")
 
     @proxy_protocol_config.setter
-    def proxy_protocol_config(self, value: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]):
+    def proxy_protocol_config(self, value: pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']]):
         pulumi.set(self, "proxy_protocol_config", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolEnabled")
-    def proxy_protocol_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         """
         return pulumi.get(self, "proxy_protocol_enabled")
 
     @proxy_protocol_enabled.setter
-    def proxy_protocol_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="secSensorEnabled")
-    def sec_sensor_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sec_sensor_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable fine-grained monitoring. Valid values:
         """
         return pulumi.get(self, "sec_sensor_enabled")
 
     @sec_sensor_enabled.setter
-    def sec_sensor_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sec_sensor_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sec_sensor_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security policy ID. System security policies and custom security policies are supported.
 
@@ -365,12 +365,12 @@ class ListenerArgs:
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startPort")
-    def start_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The first port in the listener port range. Valid values: `0` to `65535`.
 
@@ -379,59 +379,59 @@ class ListenerArgs:
         return pulumi.get(self, "start_port")
 
     @start_port.setter
-    def start_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ListenerState:
     def __init__(__self__, *,
-                 alpn_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mss: Optional[pulumi.Input[_builtins.int]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']] = None,
-                 proxy_protocol_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sec_sensor_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mss: pulumi.Input[Optional[_builtins.int]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']] = None,
+                 proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Listener resources.
 
@@ -530,19 +530,19 @@ class _ListenerState:
 
     @_builtins.property
     @pulumi.getter(name="alpnEnabled")
-    def alpn_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def alpn_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
         """
         return pulumi.get(self, "alpn_enabled")
 
     @alpn_enabled.setter
-    def alpn_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def alpn_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "alpn_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="alpnPolicy")
-    def alpn_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alpn_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ALPN policy. Valid values:
         - `HTTP1Only`: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
@@ -557,12 +557,12 @@ class _ListenerState:
         return pulumi.get(self, "alpn_policy")
 
     @alpn_policy.setter
-    def alpn_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alpn_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alpn_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="caCertificateIds")
-    def ca_certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ca_certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. 
 
@@ -571,24 +571,24 @@ class _ListenerState:
         return pulumi.get(self, "ca_certificate_ids")
 
     @ca_certificate_ids.setter
-    def ca_certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ca_certificate_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ca_certificate_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="caEnabled")
-    def ca_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ca_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable mutual authentication. Valid values:
         """
         return pulumi.get(self, "ca_enabled")
 
     @ca_enabled.setter
-    def ca_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ca_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateIds")
-    def certificate_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def certificate_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. 
 
@@ -597,24 +597,24 @@ class _ListenerState:
         return pulumi.get(self, "certificate_ids")
 
     @certificate_ids.setter
-    def certificate_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def certificate_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "certificate_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def cps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of connections that can be created per second on the NLB instance. Valid values: `0` to `1000000`. `0` specifies that the number of connections is unlimited.
         """
         return pulumi.get(self, "cps")
 
     @cps.setter
-    def cps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cps", value)
 
     @_builtins.property
     @pulumi.getter(name="endPort")
-    def end_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The last port in the listener port range. Valid values: `0` to `65535`. The number of the last port must be greater than the number of the first port.
 
@@ -623,24 +623,24 @@ class _ListenerState:
         return pulumi.get(self, "end_port")
 
     @end_port.setter
-    def end_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_port", value)
 
     @_builtins.property
     @pulumi.getter(name="idleTimeout")
-    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def idle_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period of idle connections. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
         """
         return pulumi.get(self, "idle_timeout")
 
     @idle_timeout.setter
-    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def idle_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "idle_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerDescription")
-    def listener_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enter a name for the listener.
         The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (\\_), and hyphens (-).
@@ -648,12 +648,12 @@ class _ListenerState:
         return pulumi.get(self, "listener_description")
 
     @listener_description.setter
-    def listener_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_description", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerPort")
-    def listener_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def listener_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listener port. Valid values: `0` to `65535`.
         If you set the value to `0`, the listener listens by port range. If you set the value to `0`, you must specify `StartPort` and `EndPort`.
@@ -661,36 +661,36 @@ class _ListenerState:
         return pulumi.get(self, "listener_port")
 
     @listener_port.setter
-    def listener_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def listener_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "listener_port", value)
 
     @_builtins.property
     @pulumi.getter(name="listenerProtocol")
-    def listener_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def listener_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The listening protocol. Valid values: `TCP`, `UDP`, and `TCPSSL`.
         """
         return pulumi.get(self, "listener_protocol")
 
     @listener_protocol.setter
-    def listener_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def listener_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "listener_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerId")
-    def load_balancer_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Network Load Balancer (NLB) instance.
         """
         return pulumi.get(self, "load_balancer_id")
 
     @load_balancer_id.setter
-    def load_balancer_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mss(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mss(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of a TCP segment. Unit: bytes. Valid values: `0` to `1500`. `0` specifies that the maximum segment size remains unchanged.
 
@@ -699,36 +699,36 @@ class _ListenerState:
         return pulumi.get(self, "mss")
 
     @mss.setter
-    def mss(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mss(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mss", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolConfig")
-    def proxy_protocol_config(self) -> Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]:
+    def proxy_protocol_config(self) -> pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']]:
         """
         The Proxy Protocol is used to carry the VpcId, PrivateLinkEpId, and PrivateLinkEpsId information to the backend server for configuration. See `proxy_protocol_config` below.
         """
         return pulumi.get(self, "proxy_protocol_config")
 
     @proxy_protocol_config.setter
-    def proxy_protocol_config(self, value: Optional[pulumi.Input['ListenerProxyProtocolConfigArgs']]):
+    def proxy_protocol_config(self, value: pulumi.Input[Optional['ListenerProxyProtocolConfigArgs']]):
         pulumi.set(self, "proxy_protocol_config", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyProtocolEnabled")
-    def proxy_protocol_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def proxy_protocol_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
         """
         return pulumi.get(self, "proxy_protocol_enabled")
 
     @proxy_protocol_enabled.setter
-    def proxy_protocol_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def proxy_protocol_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "proxy_protocol_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region where the Network Load Balancer (NLB) instance is deployed.
         You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/doc-detail/443657.html) operation to query the most recent region list.
@@ -736,24 +736,24 @@ class _ListenerState:
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="secSensorEnabled")
-    def sec_sensor_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sec_sensor_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable fine-grained monitoring. Valid values:
         """
         return pulumi.get(self, "sec_sensor_enabled")
 
     @sec_sensor_enabled.setter
-    def sec_sensor_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sec_sensor_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sec_sensor_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="securityPolicyId")
-    def security_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security policy ID. System security policies and custom security policies are supported.
 
@@ -764,24 +764,24 @@ class _ListenerState:
         return pulumi.get(self, "security_policy_id")
 
     @security_policy_id.setter
-    def security_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serverGroupId")
-    def server_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the server group.
         """
         return pulumi.get(self, "server_group_id")
 
     @server_group_id.setter
-    def server_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startPort")
-    def start_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The first port in the listener port range. Valid values: `0` to `65535`.
 
@@ -790,31 +790,31 @@ class _ListenerState:
         return pulumi.get(self, "start_port")
 
     @start_port.setter
-    def start_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `Running`, `Stopped`. When you want to enable this instance, you can set the property value to `Running`;
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -824,27 +824,27 @@ class Listener(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alpn_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mss: Optional[pulumi.Input[_builtins.int]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
-                 proxy_protocol_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sec_sensor_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mss: pulumi.Input[Optional[_builtins.int]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Network Load Balancer (NLB) Listener resource.
@@ -1135,27 +1135,27 @@ class Listener(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alpn_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 alpn_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 cps: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mss: Optional[pulumi.Input[_builtins.int]] = None,
-                 proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
-                 proxy_protocol_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sec_sensor_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cps: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mss: pulumi.Input[Optional[_builtins.int]] = None,
+                 proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+                 proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1205,28 +1205,28 @@ class Listener(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alpn_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            alpn_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ca_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            certificate_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            cps: Optional[pulumi.Input[_builtins.int]] = None,
-            end_port: Optional[pulumi.Input[_builtins.int]] = None,
-            idle_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_description: Optional[pulumi.Input[_builtins.str]] = None,
-            listener_port: Optional[pulumi.Input[_builtins.int]] = None,
-            listener_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mss: Optional[pulumi.Input[_builtins.int]] = None,
-            proxy_protocol_config: Optional[pulumi.Input[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
-            proxy_protocol_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sec_sensor_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            security_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            start_port: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
+            alpn_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            alpn_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ca_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            certificate_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            cps: pulumi.Input[Optional[_builtins.int]] = None,
+            end_port: pulumi.Input[Optional[_builtins.int]] = None,
+            idle_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_description: pulumi.Input[Optional[_builtins.str]] = None,
+            listener_port: pulumi.Input[Optional[_builtins.int]] = None,
+            listener_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mss: pulumi.Input[Optional[_builtins.int]] = None,
+            proxy_protocol_config: pulumi.Input[Optional[Union['ListenerProxyProtocolConfigArgs', 'ListenerProxyProtocolConfigArgsDict']]] = None,
+            proxy_protocol_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sec_sensor_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_port: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'Listener':
         """
         Get an existing Listener resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

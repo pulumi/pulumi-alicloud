@@ -142,31 +142,31 @@ export interface ScimServerCredentialState {
     /**
      * (Available since v1.245.0) The time when the SCIM credential was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SCIM credential.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
      */
-    credentialSecretFile?: pulumi.Input<string>;
+    credentialSecretFile?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.245.0) The type of the SCIM credential.
      */
-    credentialType?: pulumi.Input<string>;
+    credentialType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.245.0) The time when the SCIM credential expires.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -176,7 +176,7 @@ export interface ScimServerCredentialArgs {
     /**
      * The name of file that can save Credential ID and Credential Secret. Strongly suggest you to specified it when you creating credential, otherwise, you wouldn't get its secret ever.
      */
-    credentialSecretFile?: pulumi.Input<string>;
+    credentialSecretFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
@@ -184,5 +184,5 @@ export interface ScimServerCredentialArgs {
     /**
      * The status of the SCIM Server Credential. Valid values: `Enabled`, `Disabled`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

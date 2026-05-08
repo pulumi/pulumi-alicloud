@@ -215,50 +215,50 @@ export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.
  * A collection of arguments for invoking getInstances.
  */
 export interface GetInstancesOutputArgs {
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Ecp Instances IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID Of The Image.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance. It must be 2 to 128 characters in length and must start with an
      * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
      * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
      * the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Instance Type.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the key pair of the mobile phone instance.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by mobile phone name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The payment type.Valid values: `PayAsYouGo`,`Subscription`
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The selected resolution for the cloud mobile phone instance.
      */
-    resolution?: pulumi.Input<string>;
+    resolution?: pulumi.Input<string | undefined>;
     /**
      * Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
      * .
      */
-    status?: pulumi.Input<string>;
-    zoneId?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

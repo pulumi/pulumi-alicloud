@@ -159,47 +159,47 @@ export interface DirectoryState {
     /**
      * CreateTime
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Directory Global Acceleration activation status
      */
-    directoryGlobalAccessStatus?: pulumi.Input<string>;
+    directoryGlobalAccessStatus?: pulumi.Input<string | undefined>;
     /**
      * DirectoryName
      */
-    directoryName?: pulumi.Input<string>;
+    directoryName?: pulumi.Input<string | undefined>;
     /**
      * Login preferences See `loginPreference` below.
      */
-    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference>;
+    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference | undefined>;
     /**
      * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      */
-    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo | undefined>;
     /**
      * MFA Authentication Status
      */
-    mfaAuthenticationStatus?: pulumi.Input<string>;
+    mfaAuthenticationStatus?: pulumi.Input<string | undefined>;
     /**
      * Password policy See `passwordPolicy` below.
      */
-    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy>;
+    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy | undefined>;
     /**
      * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
-    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
+    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration | undefined>;
     /**
      * SP information. See `samlServiceProvider` below.
      */
-    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider>;
+    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider | undefined>;
     /**
      * SCIM Synchronization Status
      */
-    scimSynchronizationStatus?: pulumi.Input<string>;
+    scimSynchronizationStatus?: pulumi.Input<string | undefined>;
     /**
      * User Provisioning configuration See `userProvisioningConfiguration` below.
      */
-    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration>;
+    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration | undefined>;
 }
 
 /**
@@ -209,41 +209,41 @@ export interface DirectoryArgs {
     /**
      * Directory Global Acceleration activation status
      */
-    directoryGlobalAccessStatus?: pulumi.Input<string>;
+    directoryGlobalAccessStatus?: pulumi.Input<string | undefined>;
     /**
      * DirectoryName
      */
-    directoryName?: pulumi.Input<string>;
+    directoryName?: pulumi.Input<string | undefined>;
     /**
      * Login preferences See `loginPreference` below.
      */
-    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference>;
+    loginPreference?: pulumi.Input<inputs.cloudsso.DirectoryLoginPreference | undefined>;
     /**
      * Global MFA verification configuration. See `mfaAuthenticationSettingInfo` below.
      */
-    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo>;
+    mfaAuthenticationSettingInfo?: pulumi.Input<inputs.cloudsso.DirectoryMfaAuthenticationSettingInfo | undefined>;
     /**
      * MFA Authentication Status
      */
-    mfaAuthenticationStatus?: pulumi.Input<string>;
+    mfaAuthenticationStatus?: pulumi.Input<string | undefined>;
     /**
      * Password policy See `passwordPolicy` below.
      */
-    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy>;
+    passwordPolicy?: pulumi.Input<inputs.cloudsso.DirectoryPasswordPolicy | undefined>;
     /**
      * Identity Provider (IDP) See `samlIdentityProviderConfiguration` below.
      */
-    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration>;
+    samlIdentityProviderConfiguration?: pulumi.Input<inputs.cloudsso.DirectorySamlIdentityProviderConfiguration | undefined>;
     /**
      * SP information. See `samlServiceProvider` below.
      */
-    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider>;
+    samlServiceProvider?: pulumi.Input<inputs.cloudsso.DirectorySamlServiceProvider | undefined>;
     /**
      * SCIM Synchronization Status
      */
-    scimSynchronizationStatus?: pulumi.Input<string>;
+    scimSynchronizationStatus?: pulumi.Input<string | undefined>;
     /**
      * User Provisioning configuration See `userProvisioningConfiguration` below.
      */
-    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration>;
+    userProvisioningConfiguration?: pulumi.Input<inputs.cloudsso.DirectoryUserProvisioningConfiguration | undefined>;
 }

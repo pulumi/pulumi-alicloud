@@ -121,21 +121,21 @@ export interface GetEventBusesOutputArgs {
     /**
      * The event bus type.
      */
-    eventBusType?: pulumi.Input<string>;
+    eventBusType?: pulumi.Input<string | undefined>;
     /**
      * A list of Event Bus IDs. Its element value is same as Event Bus Name.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name prefix.
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Event Bus name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

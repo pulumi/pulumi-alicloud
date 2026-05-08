@@ -331,38 +331,38 @@ export interface InstanceState {
     /**
      * The AD auth server of the Instance. See `adAuthServer` below.
      */
-    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[] | undefined>;
     /**
      * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
      * If International-Site Account, its valid values: 0 to 200. Unit: Mbit/s. The value must be a multiple of 10.
      */
-    bandwidth?: pulumi.Input<string>;
+    bandwidth?: pulumi.Input<string | undefined>;
     /**
      * Description of the instance. This name can have a string of 1 to 63 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
      */
-    enablePublicAccess?: pulumi.Input<boolean>;
+    enablePublicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      */
-    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[] | undefined>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
-    licenseCode?: pulumi.Input<string>;
+    licenseCode?: pulumi.Input<string | undefined>;
     /**
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
-    planCode?: pulumi.Input<string>;
+    planCode?: pulumi.Input<string | undefined>;
     /**
      * The public IP address that you want to add to the whitelist.
      *
@@ -374,48 +374,48 @@ export interface InstanceState {
      * }
      * ```
      */
-    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      */
-    renewalPeriodUnit?: pulumi.Input<string>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * security group IDs configured to Bastionhost. 
      * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
      * So, from version 1.160.0, `securityGroupIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Slave VSwitch ID configured to Bastionhost.
      */
-    slaveVswitchId?: pulumi.Input<string>;
+    slaveVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
-    storage?: pulumi.Input<string>;
+    storage?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * VSwitch ID configured to Bastionhost.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -425,7 +425,7 @@ export interface InstanceArgs {
     /**
      * The AD auth server of the Instance. See `adAuthServer` below.
      */
-    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[]>;
+    adAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceAdAuthServer>[] | undefined>;
     /**
      * The bandwidth of Cloud Bastionhost instance. **NOTE:** From version 1.263.0, `bandwidth` can be modified.
      * If China-Site Account, its valid values: 0 to 150. Unit: Mbit/s. The value must be a multiple of 5.
@@ -439,11 +439,11 @@ export interface InstanceArgs {
     /**
      * Whether to Enable the public internet access to a specified Bastionhost instance. The valid values: `true`, `false`.
      */
-    enablePublicAccess?: pulumi.Input<boolean>;
+    enablePublicAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The LDAP auth server of the Instance. See `ldapAuthServer` below.
      */
-    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[]>;
+    ldapAuthServers?: pulumi.Input<pulumi.Input<inputs.bastionhost.InstanceLdapAuthServer>[] | undefined>;
     /**
      * The package type of Cloud Bastionhost instance. You can query more supported types through the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
      */
@@ -452,7 +452,7 @@ export interface InstanceArgs {
      * Duration for initially producing the instance. Valid values: [1~9], 12, 24, 36. At present, the provider does not support modify "period".
      * > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The plan code of Cloud Bastionhost instance. Valid values:
      */
@@ -468,25 +468,25 @@ export interface InstanceArgs {
      * }
      * ```
      */
-    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    publicWhiteLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Automatic renewal period. Valid values: `1` to `9`, `12`, `24`, `36`. **NOTE:** The `renewPeriod` is required under the condition that `renewalStatus` is `AutoRenewal`. From version 1.193.0, `renewPeriod` can be modified.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The unit of the auto-renewal period. Valid values:  **NOTE:** The `renewalPeriodUnit` is required under the condition that `renewalStatus` is `AutoRenewal`.
      * - `M`: months.
      * - `Y`: years.
      */
-    renewalPeriodUnit?: pulumi.Input<string>;
+    renewalPeriodUnit?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`. From version 1.193.0, `renewalStatus` can be modified.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the Bastionhost Instance belongs. If not set, the resource is created in the default resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * security group IDs configured to Bastionhost. 
      * **NOTE:** There is a potential diff error because of the order of `securityGroupIds` values indefinite.
@@ -497,7 +497,7 @@ export interface InstanceArgs {
     /**
      * Slave VSwitch ID configured to Bastionhost.
      */
-    slaveVswitchId?: pulumi.Input<string>;
+    slaveVswitchId?: pulumi.Input<string | undefined>;
     /**
      * The storage of Cloud Bastionhost instance. Valid values: `0` to `500`. Unit: TB. **NOTE:** From version 1.251.0, `storage` can be modified.
      */
@@ -505,7 +505,7 @@ export interface InstanceArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * VSwitch ID configured to Bastionhost.
      */

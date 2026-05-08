@@ -23,9 +23,9 @@ class VpcFirewallIpsConfigArgs:
                  enable_all_patch: pulumi.Input[_builtins.int],
                  run_mode: pulumi.Input[_builtins.int],
                  vpc_firewall_id: pulumi.Input[_builtins.str],
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.str]] = None):
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFirewallIpsConfig resource.
 
@@ -106,7 +106,7 @@ class VpcFirewallIpsConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language
 
@@ -115,12 +115,12 @@ class VpcFirewallIpsConfigArgs:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MemberUid
 
@@ -129,32 +129,32 @@ class VpcFirewallIpsConfigArgs:
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleClass")
-    def rule_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPS rule Group
         """
         return pulumi.get(self, "rule_class")
 
     @rule_class.setter
-    def rule_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_class", value)
 
 
 @pulumi.input_type
 class _VpcFirewallIpsConfigState:
     def __init__(__self__, *,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_all_patch: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_all_patch: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFirewallIpsConfig resources.
 
@@ -189,31 +189,31 @@ class _VpcFirewallIpsConfigState:
 
     @_builtins.property
     @pulumi.getter(name="basicRules")
-    def basic_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def basic_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Base rule switch. Value:
         """
         return pulumi.get(self, "basic_rules")
 
     @basic_rules.setter
-    def basic_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def basic_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "basic_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="enableAllPatch")
-    def enable_all_patch(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def enable_all_patch(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Virtual patch switch. Value:
         """
         return pulumi.get(self, "enable_all_patch")
 
     @enable_all_patch.setter
-    def enable_all_patch(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def enable_all_patch(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "enable_all_patch", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language
 
@@ -222,12 +222,12 @@ class _VpcFirewallIpsConfigState:
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         MemberUid
 
@@ -236,36 +236,36 @@ class _VpcFirewallIpsConfigState:
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleClass")
-    def rule_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPS rule Group
         """
         return pulumi.get(self, "rule_class")
 
     @rule_class.setter
-    def rule_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_class", value)
 
     @_builtins.property
     @pulumi.getter(name="runMode")
-    def run_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IPS defense mode. Value:
         """
         return pulumi.get(self, "run_mode")
 
     @run_mode.setter
-    def run_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallId")
-    def vpc_firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC firewall instance. Value:
         - When VPC firewall protects the network instances (including VPC, VBR, and CCN) and the specified VPC, the instance ID uses the CEN instance ID. You can call the DescribeVpcFirewallCenList operation to query the instance ID of CEN.
@@ -274,7 +274,7 @@ class _VpcFirewallIpsConfigState:
         return pulumi.get(self, "vpc_firewall_id")
 
     @vpc_firewall_id.setter
-    def vpc_firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_firewall_id", value)
 
 
@@ -284,13 +284,13 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_all_patch: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_all_patch: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Firewall Ips Config resource.
@@ -421,13 +421,13 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_all_patch: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_all_patch: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -462,13 +462,13 @@ class VpcFirewallIpsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_all_patch: Optional[pulumi.Input[_builtins.int]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_class: Optional[pulumi.Input[_builtins.str]] = None,
-            run_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcFirewallIpsConfig':
+            basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_all_patch: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_class: pulumi.Input[Optional[_builtins.str]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcFirewallIpsConfig':
         """
         Get an existing VpcFirewallIpsConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

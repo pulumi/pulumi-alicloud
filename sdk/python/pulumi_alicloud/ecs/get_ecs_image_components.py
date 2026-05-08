@@ -191,13 +191,13 @@ def get_ecs_image_components(ids: Optional[Sequence[_builtins.str]] = None,
         owner=pulumi.get(__ret__, 'owner'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_ecs_image_components_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    image_component_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    owner: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    tags: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
+def get_ecs_image_components_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    image_component_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    owner: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    tags: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEcsImageComponentsResult]:
     """
     This data source provides the Ecs Image Components of the current Alibaba Cloud user.

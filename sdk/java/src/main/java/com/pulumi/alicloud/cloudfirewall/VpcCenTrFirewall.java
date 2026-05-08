@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewall;
  * import com.pulumi.alicloud.cloudfirewall.VpcCenTrFirewallArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -145,7 +145,7 @@ import javax.annotation.Nullable;
  *         var wait10Minutes = new Sleep("wait10Minutes", SleepArgs.builder()
  *             .createDuration("10m")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(List.of(tr_vpc1))
+ *                 .dependsOn(Arrays.asList(tr_vpc1))
  *                 .build());
  * 
  *         var defaultVpcCenTrFirewall = new VpcCenTrFirewall("defaultVpcCenTrFirewall", VpcCenTrFirewallArgs.builder()

@@ -22,11 +22,11 @@ class ImageEventOperationArgs:
                  conditions: pulumi.Input[_builtins.str],
                  event_type: pulumi.Input[_builtins.str],
                  operation_code: pulumi.Input[_builtins.str],
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageEventOperation resource.
 
@@ -91,76 +91,76 @@ class ImageEventOperationArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
-    def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The keyword of the alert item.
         """
         return pulumi.get(self, "event_key")
 
     @event_key.setter
-    def event_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_key", value)
 
     @_builtins.property
     @pulumi.getter(name="eventName")
-    def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert item.
         """
         return pulumi.get(self, "event_name")
 
     @event_name.setter
-    def event_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks.
         """
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenarios(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scenarios(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application scope of the rule.
         """
         return pulumi.get(self, "scenarios")
 
     @scenarios.setter
-    def scenarios(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scenarios(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scenarios", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source of the whitelist. Valid values:
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 @pulumi.input_type
 class _ImageEventOperationState:
     def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 conditions: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageEventOperation resources.
 
@@ -192,98 +192,98 @@ class _ImageEventOperationState:
 
     @_builtins.property
     @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def conditions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule conditions. The value is in the JSON format. For more information, see [How to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-addimageeventoperation). **NOTE:** From version 1.255.0, `conditions` can be modified.
         """
         return pulumi.get(self, "conditions")
 
     @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def conditions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "conditions", value)
 
     @_builtins.property
     @pulumi.getter(name="eventKey")
-    def event_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The keyword of the alert item.
         """
         return pulumi.get(self, "event_key")
 
     @event_key.setter
-    def event_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_key", value)
 
     @_builtins.property
     @pulumi.getter(name="eventName")
-    def event_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert item.
         """
         return pulumi.get(self, "event_name")
 
     @event_name.setter
-    def event_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_name", value)
 
     @_builtins.property
     @pulumi.getter(name="eventType")
-    def event_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def event_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert type.
         """
         return pulumi.get(self, "event_type")
 
     @event_type.setter
-    def event_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def event_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "event_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def note(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def note(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remarks.
         """
         return pulumi.get(self, "note")
 
     @note.setter
-    def note(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def note(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "note", value)
 
     @_builtins.property
     @pulumi.getter(name="operationCode")
-    def operation_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operation_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operation code.
         """
         return pulumi.get(self, "operation_code")
 
     @operation_code.setter
-    def operation_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operation_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operation_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def scenarios(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scenarios(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The application scope of the rule.
         """
         return pulumi.get(self, "scenarios")
 
     @scenarios.setter
-    def scenarios(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scenarios(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scenarios", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source of the whitelist. Valid values:
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
@@ -293,14 +293,14 @@ class ImageEventOperation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Image Event Operation resource.
@@ -438,14 +438,14 @@ class ImageEventOperation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conditions: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 event_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 note: Optional[pulumi.Input[_builtins.str]] = None,
-                 operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 scenarios: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
+                 conditions: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 event_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 note: pulumi.Input[Optional[_builtins.str]] = None,
+                 operation_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -479,14 +479,14 @@ class ImageEventOperation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            conditions: Optional[pulumi.Input[_builtins.str]] = None,
-            event_key: Optional[pulumi.Input[_builtins.str]] = None,
-            event_name: Optional[pulumi.Input[_builtins.str]] = None,
-            event_type: Optional[pulumi.Input[_builtins.str]] = None,
-            note: Optional[pulumi.Input[_builtins.str]] = None,
-            operation_code: Optional[pulumi.Input[_builtins.str]] = None,
-            scenarios: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageEventOperation':
+            conditions: pulumi.Input[Optional[_builtins.str]] = None,
+            event_key: pulumi.Input[Optional[_builtins.str]] = None,
+            event_name: pulumi.Input[Optional[_builtins.str]] = None,
+            event_type: pulumi.Input[Optional[_builtins.str]] = None,
+            note: pulumi.Input[Optional[_builtins.str]] = None,
+            operation_code: pulumi.Input[Optional[_builtins.str]] = None,
+            scenarios: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageEventOperation':
         """
         Get an existing ImageEventOperation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

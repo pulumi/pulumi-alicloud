@@ -73,11 +73,11 @@ class EnvFeatureArgs:
 @pulumi.input_type
 class _EnvFeatureState:
     def __init__(__self__, *,
-                 env_feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 env_feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnvFeature resources.
 
@@ -100,62 +100,62 @@ class _EnvFeatureState:
 
     @_builtins.property
     @pulumi.getter(name="envFeatureName")
-    def env_feature_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_feature_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "env_feature_name")
 
     @env_feature_name.setter
-    def env_feature_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_feature_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_feature_name", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter(name="featureVersion")
-    def feature_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def feature_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
         """
         return pulumi.get(self, "feature_version")
 
     @feature_version.setter
-    def feature_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def feature_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "feature_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Namespace.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -165,9 +165,9 @@ class EnvFeature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ARMS Env Feature resource. Feature of the arms environment.
@@ -203,9 +203,9 @@ class EnvFeature(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -219,11 +219,11 @@ class EnvFeature(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -312,9 +312,9 @@ class EnvFeature(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -328,11 +328,11 @@ class EnvFeature(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -390,9 +390,9 @@ class EnvFeature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 env_feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 feature_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 env_feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 feature_version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -423,11 +423,11 @@ class EnvFeature(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            env_feature_name: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            feature_version: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnvFeature':
+            env_feature_name: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_version: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnvFeature':
         """
         Get an existing EnvFeature resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

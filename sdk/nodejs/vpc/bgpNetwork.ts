@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: _default.then(_default => _default.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: defaultInteger.id,
+ *     vlanId: Number(defaultInteger.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -143,19 +143,19 @@ export interface BgpNetworkState {
     /**
      * The CIDR block of the virtual private cloud (VPC) or vSwitch that you want to connect to a data center.
      */
-    dstCidrBlock?: pulumi.Input<string>;
+    dstCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the virtual border router (VBR) group.
      */
-    routerId?: pulumi.Input<string>;
+    routerId?: pulumi.Input<string | undefined>;
     /**
      * The state of the advertised BGP network.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,5 +173,5 @@ export interface BgpNetworkArgs {
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

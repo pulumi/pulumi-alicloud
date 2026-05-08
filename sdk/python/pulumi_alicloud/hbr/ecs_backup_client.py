@@ -20,16 +20,16 @@ __all__ = ['EcsBackupClientArgs', 'EcsBackupClient']
 class EcsBackupClientArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 data_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_proxy_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cpu_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_worker: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None):
+                 data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsBackupClient resource.
 
@@ -81,139 +81,139 @@ class EcsBackupClientArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataNetworkType")
-    def data_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         """
         return pulumi.get(self, "data_network_type")
 
     @data_network_type.setter
-    def data_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataProxySetting")
-    def data_proxy_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_proxy_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         """
         return pulumi.get(self, "data_proxy_setting")
 
     @data_proxy_setting.setter
-    def data_proxy_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_proxy_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_proxy_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCpuCore")
-    def max_cpu_core(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_cpu_core(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
     @max_cpu_core.setter
-    def max_cpu_core(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_cpu_core(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_cpu_core", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorker")
-    def max_worker(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_worker(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
     @max_worker.setter
-    def max_worker(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_worker(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_worker", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyHost")
-    def proxy_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom data plane proxy server host address.
         """
         return pulumi.get(self, "proxy_host")
 
     @proxy_host.setter
-    def proxy_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_host", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPassword")
-    def proxy_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_password")
 
     @proxy_password.setter
-    def proxy_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_password", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom data plane proxy server host port.
         """
         return pulumi.get(self, "proxy_port")
 
     @proxy_port.setter
-    def proxy_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_port", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyUser")
-    def proxy_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
     @proxy_user.setter
-    def proxy_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="useHttps")
-    def use_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
     @use_https.setter
-    def use_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_https", value)
 
 
 @pulumi.input_type
 class _EcsBackupClientState:
     def __init__(__self__, *,
-                 data_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_proxy_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cpu_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_worker: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None):
+                 data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EcsBackupClient resources.
 
@@ -254,134 +254,134 @@ class _EcsBackupClientState:
 
     @_builtins.property
     @pulumi.getter(name="dataNetworkType")
-    def data_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
         """
         return pulumi.get(self, "data_network_type")
 
     @data_network_type.setter
-    def data_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataProxySetting")
-    def data_proxy_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_proxy_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
         """
         return pulumi.get(self, "data_proxy_setting")
 
     @data_proxy_setting.setter
-    def data_proxy_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_proxy_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_proxy_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCpuCore")
-    def max_cpu_core(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_cpu_core(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of CPU cores used by a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_cpu_core")
 
     @max_cpu_core.setter
-    def max_cpu_core(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_cpu_core(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_cpu_core", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorker")
-    def max_worker(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_worker(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of concurrent jobs for a single backup task, 0 means no restrictions.
         """
         return pulumi.get(self, "max_worker")
 
     @max_worker.setter
-    def max_worker(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_worker(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_worker", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyHost")
-    def proxy_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom data plane proxy server host address.
         """
         return pulumi.get(self, "proxy_host")
 
     @proxy_host.setter
-    def proxy_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_host", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPassword")
-    def proxy_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_password")
 
     @proxy_password.setter
-    def proxy_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_password", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyPort")
-    def proxy_port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom data plane proxy server host port.
         """
         return pulumi.get(self, "proxy_port")
 
     @proxy_port.setter
-    def proxy_port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_port", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyUser")
-    def proxy_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of custom data plane proxy server.
         """
         return pulumi.get(self, "proxy_user")
 
     @proxy_user.setter
-    def proxy_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_user", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="useHttps")
-    def use_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "use_https")
 
     @use_https.setter
-    def use_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_https", value)
 
 
@@ -391,17 +391,17 @@ class EcsBackupClient(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_proxy_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cpu_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_worker: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None,
+                 data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Ecs Backup Client resource.
@@ -421,7 +421,7 @@ class EcsBackupClient(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -515,7 +515,7 @@ class EcsBackupClient(pulumi.CustomResource):
         example = alicloud.get_zones(available_resource_creation="Instance")
         example_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=example.zones[0].id,
             cpu_core_count=1,
-            memory_size=2)
+            memory_size=float(2))
         example_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             owners="system")
         example_network = alicloud.vpc.Network("example",
@@ -586,17 +586,17 @@ class EcsBackupClient(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_proxy_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_cpu_core: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_worker: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_port: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_https: Optional[pulumi.Input[_builtins.bool]] = None,
+                 data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_https: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -629,17 +629,17 @@ class EcsBackupClient(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            data_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            data_proxy_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_cpu_core: Optional[pulumi.Input[_builtins.str]] = None,
-            max_worker: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_host: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_password: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_port: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_user: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            use_https: Optional[pulumi.Input[_builtins.bool]] = None) -> 'EcsBackupClient':
+            data_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            data_proxy_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_cpu_core: pulumi.Input[Optional[_builtins.str]] = None,
+            max_worker: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_host: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_password: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_port: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_user: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_https: pulumi.Input[Optional[_builtins.bool]] = None) -> 'EcsBackupClient':
         """
         Get an existing EcsBackupClient resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,15 +20,15 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[_builtins.str],
-                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resell_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -91,19 +91,19 @@ class AccountArgs:
     @_builtins.property
     @pulumi.getter(name="abandonAbleCheckIds")
     @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
-    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def abandon_able_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         """
         return pulumi.get(self, "abandon_able_check_ids")
 
     @abandon_able_check_ids.setter
-    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def abandon_able_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "abandon_able_check_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="abandonableCheckIds")
-    def abandonable_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def abandonable_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the check item that can choose to abandon and continue to perform member deletion.
         The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
@@ -111,12 +111,12 @@ class AccountArgs:
         return pulumi.get(self, "abandonable_check_ids")
 
     @abandonable_check_ids.setter
-    def abandonable_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def abandonable_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "abandonable_check_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="accountNamePrefix")
-    def account_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name prefix. Empty the system randomly generated.
         Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
@@ -126,48 +126,48 @@ class AccountArgs:
         return pulumi.get(self, "account_name_prefix")
 
     @account_name_prefix.setter
-    def account_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent folder
         """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force delete the account.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         """
         return pulumi.get(self, "payer_account_id")
 
     @payer_account_id.setter
-    def payer_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resellAccountType")
-    def resell_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resell_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identity type of the member. Valid values:
         - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
@@ -178,24 +178,24 @@ class AccountArgs:
         return pulumi.get(self, "resell_account_type")
 
     @resell_account_type.setter
-    def resell_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resell_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resell_account_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Member type. The value of ResourceAccount indicates the resource account
 
@@ -204,28 +204,28 @@ class AccountArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 join_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 join_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resell_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 join_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 join_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -292,19 +292,19 @@ class _AccountState:
     @_builtins.property
     @pulumi.getter(name="abandonAbleCheckIds")
     @_utilities.deprecated("""Field 'abandon_able_check_id' has been deprecated since provider version 1.248.0. New field 'abandonable_check_id' instead.""")
-    def abandon_able_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def abandon_able_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         . Field 'abandon_able_check_id' has been deprecated from provider version 1.249.0. New field 'abandonable_check_id' instead.
         """
         return pulumi.get(self, "abandon_able_check_ids")
 
     @abandon_able_check_ids.setter
-    def abandon_able_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def abandon_able_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "abandon_able_check_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="abandonableCheckIds")
-    def abandonable_check_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def abandonable_check_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the check item that can choose to abandon and continue to perform member deletion.
         The ID is obtained from the return parameter AbandonableChecks of GetAccountDeletionCheckResult.
@@ -312,12 +312,12 @@ class _AccountState:
         return pulumi.get(self, "abandonable_check_ids")
 
     @abandonable_check_ids.setter
-    def abandonable_check_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def abandonable_check_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "abandonable_check_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="accountNamePrefix")
-    def account_name_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Account name prefix. Empty the system randomly generated.
         Format: English letters, numbers, and special characters_.-can be entered. It must start and end with an English letter or number, and continuous special characters_.-cannot be entered '_.-'.
@@ -327,96 +327,96 @@ class _AccountState:
         return pulumi.get(self, "account_name_prefix")
 
     @account_name_prefix.setter
-    def account_name_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Member name
         """
         return pulumi.get(self, "display_name")
 
     @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="folderId")
-    def folder_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def folder_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parent folder
         """
         return pulumi.get(self, "folder_id")
 
     @folder_id.setter
-    def folder_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def folder_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "folder_id", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to force delete the account.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="joinMethod")
-    def join_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def join_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Ways for members to join the resource directory.  invited, created
         """
         return pulumi.get(self, "join_method")
 
     @join_method.setter
-    def join_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def join_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "join_method", value)
 
     @_builtins.property
     @pulumi.getter(name="joinTime")
-    def join_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def join_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the member joined the resource directory
         """
         return pulumi.get(self, "join_time")
 
     @join_time.setter
-    def join_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def join_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "join_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The modification time of the invitation
         """
         return pulumi.get(self, "modify_time")
 
     @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_time", value)
 
     @_builtins.property
     @pulumi.getter(name="payerAccountId")
-    def payer_account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payer_account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The settlement account ID. If it is left blank, the newly created member will be used for self-settlement.
         """
         return pulumi.get(self, "payer_account_id")
 
     @payer_account_id.setter
-    def payer_account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payer_account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payer_account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resellAccountType")
-    def resell_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resell_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identity type of the member. Valid values:
         - resell: The member is an account for a reseller. This is the default value. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
@@ -427,48 +427,48 @@ class _AccountState:
         return pulumi.get(self, "resell_account_type")
 
     @resell_account_type.setter
-    def resell_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resell_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resell_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceDirectoryId")
-    def resource_directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_directory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource directory ID
         """
         return pulumi.get(self, "resource_directory_id")
 
     @resource_directory_id.setter
-    def resource_directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_directory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_directory_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Member joining status.  CreateSuccess,CreateVerifying,CreateFailed,CreateExpired,CreateCancelled,PromoteVerifying,PromoteFailed,PromoteExpired,PromoteCancelled,PromoteSuccess,InviteSuccess,Removed
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag of the resource
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Member type. The value of ResourceAccount indicates the resource account
 
@@ -477,7 +477,7 @@ class _AccountState:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -487,16 +487,16 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resell_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Account resource.
@@ -628,16 +628,16 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 payer_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resell_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -674,21 +674,21 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            abandon_able_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            abandonable_check_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            account_name_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            folder_id: Optional[pulumi.Input[_builtins.str]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            join_method: Optional[pulumi.Input[_builtins.str]] = None,
-            join_time: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_time: Optional[pulumi.Input[_builtins.str]] = None,
-            payer_account_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resell_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_directory_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            abandon_able_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            abandonable_check_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            account_name_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            join_method: pulumi.Input[Optional[_builtins.str]] = None,
+            join_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payer_account_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resell_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_directory_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

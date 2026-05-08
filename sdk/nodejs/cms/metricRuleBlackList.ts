@@ -233,59 +233,59 @@ export interface MetricRuleBlackListState {
     /**
      * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The timestamp for creating an alert blacklist policy.Unit: milliseconds.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The effective time range of the alert blacklist policy.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The start timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string | undefined>;
     /**
      * The end timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string | undefined>;
     /**
      * The list of instances of cloud services specified in the alert blacklist policy.
      */
-    instances?: pulumi.Input<pulumi.Input<string>[]>;
+    instances?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
      */
-    isEnable?: pulumi.Input<boolean>;
+    isEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the blacklist policy.
      */
-    metricRuleBlackListId?: pulumi.Input<string>;
+    metricRuleBlackListId?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert blacklist policy.
      */
-    metricRuleBlackListName?: pulumi.Input<string>;
+    metricRuleBlackListName?: pulumi.Input<string | undefined>;
     /**
      * Monitoring metrics in the instance. See `metrics` below.
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleBlackListMetric>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleBlackListMetric>[] | undefined>;
     /**
      * The data namespace of the cloud service.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
      */
-    scopeType?: pulumi.Input<string>;
+    scopeType?: pulumi.Input<string | undefined>;
     /**
      * Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
      */
-    scopeValues?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -299,15 +299,15 @@ export interface MetricRuleBlackListArgs {
     /**
      * The effective time range of the alert blacklist policy.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The start timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    enableEndTime?: pulumi.Input<string>;
+    enableEndTime?: pulumi.Input<string | undefined>;
     /**
      * The end timestamp of the alert blacklist policy.Unit: milliseconds.
      */
-    enableStartTime?: pulumi.Input<string>;
+    enableStartTime?: pulumi.Input<string | undefined>;
     /**
      * The list of instances of cloud services specified in the alert blacklist policy.
      */
@@ -315,7 +315,7 @@ export interface MetricRuleBlackListArgs {
     /**
      * The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
      */
-    isEnable?: pulumi.Input<boolean>;
+    isEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the alert blacklist policy.
      */
@@ -323,7 +323,7 @@ export interface MetricRuleBlackListArgs {
     /**
      * Monitoring metrics in the instance. See `metrics` below.
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleBlackListMetric>[]>;
+    metrics?: pulumi.Input<pulumi.Input<inputs.cms.MetricRuleBlackListMetric>[] | undefined>;
     /**
      * The data namespace of the cloud service.
      */
@@ -331,9 +331,9 @@ export interface MetricRuleBlackListArgs {
     /**
      * The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
      */
-    scopeType?: pulumi.Input<string>;
+    scopeType?: pulumi.Input<string | undefined>;
     /**
      * Application Group ID list. The format is JSON Array.> This parameter is displayed only when 'ScopeType' is 'GROUP.
      */
-    scopeValues?: pulumi.Input<pulumi.Input<string>[]>;
+    scopeValues?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

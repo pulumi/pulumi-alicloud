@@ -24,8 +24,8 @@ class RepoArgs:
                  namespace: pulumi.Input[_builtins.str],
                  repo_type: pulumi.Input[_builtins.str],
                  summary: pulumi.Input[_builtins.str],
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Repo resource.
 
@@ -81,38 +81,38 @@ class RepoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The repository specific information. MarkDown format is supported, and the length limit is 2000.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of container registry repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _RepoState:
     def __init__(__self__, *,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_list: Optional[pulumi.Input['RepoDomainListArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None):
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_list: pulumi.Input[Optional['RepoDomainListArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Repo resources.
 
@@ -138,74 +138,74 @@ class _RepoState:
 
     @_builtins.property
     @pulumi.getter
-    def detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The repository specific information. MarkDown format is supported, and the length limit is 2000.
         """
         return pulumi.get(self, "detail")
 
     @detail.setter
-    def detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "detail", value)
 
     @_builtins.property
     @pulumi.getter(name="domainList")
-    def domain_list(self) -> Optional[pulumi.Input['RepoDomainListArgs']]:
+    def domain_list(self) -> pulumi.Input[Optional['RepoDomainListArgs']]:
         """
         (Optional) The repository domain list.
         """
         return pulumi.get(self, "domain_list")
 
     @domain_list.setter
-    def domain_list(self, value: Optional[pulumi.Input['RepoDomainListArgs']]):
+    def domain_list(self, value: pulumi.Input[Optional['RepoDomainListArgs']]):
         pulumi.set(self, "domain_list", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of container registry repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of container registry namespace where repository is located.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="repoType")
-    def repo_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         `PUBLIC` or `PRIVATE`, repo's visibility.
         """
         return pulumi.get(self, "repo_type")
 
     @repo_type.setter
-    def repo_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def summary(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def summary(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The repository general information. It can contain 1 to 80 characters.
         """
         return pulumi.get(self, "summary")
 
     @summary.setter
-    def summary(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def summary(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "summary", value)
 
 
@@ -215,11 +215,11 @@ class Repo(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATION NOTICE:** This resource is deprecated and will be removed in a future release.
@@ -338,11 +338,11 @@ class Repo(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 summary: Optional[pulumi.Input[_builtins.str]] = None,
+                 detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 summary: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -374,12 +374,12 @@ class Repo(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            detail: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_list: Optional[pulumi.Input[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            repo_type: Optional[pulumi.Input[_builtins.str]] = None,
-            summary: Optional[pulumi.Input[_builtins.str]] = None) -> 'Repo':
+            detail: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_list: pulumi.Input[Optional[Union['RepoDomainListArgs', 'RepoDomainListArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            repo_type: pulumi.Input[Optional[_builtins.str]] = None,
+            summary: pulumi.Input[Optional[_builtins.str]] = None) -> 'Repo':
         """
         Get an existing Repo resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

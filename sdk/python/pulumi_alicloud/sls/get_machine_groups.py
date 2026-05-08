@@ -166,10 +166,10 @@ def get_machine_groups(group_name: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'),
         project_name=pulumi.get(__ret__, 'project_name'))
-def get_machine_groups_output(group_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                              output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              project_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_machine_groups_output(group_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                              output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              project_name: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMachineGroupsResult]:
     """
     This data source provides Sls Machine Group available to the user.[What is Machine Group](https://next.api.alibabacloud.com/document/Sls/2020-12-30/CreateMachineGroup)

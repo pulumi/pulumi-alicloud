@@ -174,46 +174,46 @@ export interface TemplateQuotaState {
     /**
      * Quota application value.
      */
-    desireValue?: pulumi.Input<number>;
+    desireValue?: pulumi.Input<number | undefined>;
     /**
      * The Quota Dimensions. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota alert notification. Value:
      * - zh: Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to notify the result of quota promotion application. Value:
      * - 0: No.
      * - 3: Yes.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * The abbreviation of the cloud service name.
      */
-    productCode?: pulumi.Input<string>;
+    productCode?: pulumi.Input<string | undefined>;
     /**
      * The quota ID.
      */
-    quotaActionCode?: pulumi.Input<string>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
     /**
      * Type of quota. Value:
      * - CommonQuota : Generic quota.
      * - WhiteListLabel: Equity quota.
      * - FlowControl:API rate quota.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -227,27 +227,27 @@ export interface TemplateQuotaArgs {
     /**
      * The Quota Dimensions. See `dimensions` below.
      */
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[]>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.TemplateQuotaDimension>[] | undefined>;
     /**
      * The UTC time when the quota takes effect.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The language of the quota alert notification. Value:
      * - zh: Chinese.
      * - en: English.
      */
-    envLanguage?: pulumi.Input<string>;
+    envLanguage?: pulumi.Input<string | undefined>;
     /**
      * The UTC time when the quota expires.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to notify the result of quota promotion application. Value:
      * - 0: No.
      * - 3: Yes.
      */
-    noticeType?: pulumi.Input<number>;
+    noticeType?: pulumi.Input<number | undefined>;
     /**
      * The abbreviation of the cloud service name.
      */
@@ -262,5 +262,5 @@ export interface TemplateQuotaArgs {
      * - WhiteListLabel: Equity quota.
      * - FlowControl:API rate quota.
      */
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
 }

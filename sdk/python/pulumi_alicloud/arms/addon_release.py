@@ -22,9 +22,9 @@ class AddonReleaseArgs:
                  addon_name: pulumi.Input[_builtins.str],
                  addon_version: pulumi.Input[_builtins.str],
                  environment_id: pulumi.Input[_builtins.str],
-                 addon_release_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None):
+                 addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddonRelease resource.
 
@@ -83,51 +83,51 @@ class AddonReleaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="addonReleaseName")
-    def addon_release_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addon_release_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "addon_release_name")
 
     @addon_release_name.setter
-    def addon_release_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addon_release_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addon_release_name", value)
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The installed locale.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
 class _AddonReleaseState:
     def __init__(__self__, *,
-                 addon_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_release_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None):
+                 addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddonRelease resources.
 
@@ -156,86 +156,86 @@ class _AddonReleaseState:
 
     @_builtins.property
     @pulumi.getter(name="addonName")
-    def addon_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addon_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Addon Name.
         """
         return pulumi.get(self, "addon_name")
 
     @addon_name.setter
-    def addon_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addon_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addon_name", value)
 
     @_builtins.property
     @pulumi.getter(name="addonReleaseName")
-    def addon_release_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addon_release_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "addon_release_name")
 
     @addon_release_name.setter
-    def addon_release_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addon_release_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addon_release_name", value)
 
     @_builtins.property
     @pulumi.getter(name="addonVersion")
-    def addon_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def addon_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version number of Addon. Addon information can be obtained through ListAddons.
         """
         return pulumi.get(self, "addon_version")
 
     @addon_version.setter
-    def addon_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def addon_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "addon_version", value)
 
     @_builtins.property
     @pulumi.getter(name="aliyunLang")
-    def aliyun_lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aliyun_lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The installed locale.
         """
         return pulumi.get(self, "aliyun_lang")
 
     @aliyun_lang.setter
-    def aliyun_lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aliyun_lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aliyun_lang", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentId")
-    def environment_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def environment_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment id.
         """
         return pulumi.get(self, "environment_id")
 
     @environment_id.setter
-    def environment_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def environment_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "environment_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration information for installing Addon. Obtain the configuration template from ListAddonSchema, for example, {"host":"mysql-service.default","port":3306,"username":"root","password":"roots"}.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "values", value)
 
 
@@ -245,12 +245,12 @@ class AddonRelease(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addon_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_release_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
+                 addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ARMS Addon Release resource. Release package of observability addon.
@@ -287,9 +287,9 @@ class AddonRelease(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -303,11 +303,11 @@ class AddonRelease(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -407,9 +407,9 @@ class AddonRelease(pulumi.CustomResource):
             vpc_id=vpc.id,
             vswitch_name=name,
             zone_id=enhanced.zones[0].zone_id,
-            cidr_block=vpc.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=vpc.cidr_block,
                 newbits=8,
-                netnum=8)).apply(lambda invoke: invoke.result))
+                netnum=8).apply(lambda invoke: invoke.result))
         default_snapshot_policy = alicloud.ecs.SnapshotPolicy("default",
             name=name,
             repeat_weekdays=[
@@ -423,11 +423,11 @@ class AddonRelease(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        default = vswitch.zone_id.apply(lambda zone_id: alicloud.ecs.get_instance_types_output(availability_zone=zone_id,
+        default = alicloud.ecs.get_instance_types_output(availability_zone=vswitch.zone_id,
             cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             kubernetes_node_role="Worker",
-            instance_type_family="ecs.sn1ne"))
+            instance_type_family="ecs.sn1ne")
         default_managed_kubernetes = alicloud.cs.ManagedKubernetes("default",
             name=f"terraform-example-{default_integer['result']}",
             cluster_spec="ack.pro.small",
@@ -492,12 +492,12 @@ class AddonRelease(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 addon_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_release_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 addon_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 values: Optional[pulumi.Input[_builtins.str]] = None,
+                 addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 values: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -530,13 +530,13 @@ class AddonRelease(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addon_name: Optional[pulumi.Input[_builtins.str]] = None,
-            addon_release_name: Optional[pulumi.Input[_builtins.str]] = None,
-            addon_version: Optional[pulumi.Input[_builtins.str]] = None,
-            aliyun_lang: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            environment_id: Optional[pulumi.Input[_builtins.str]] = None,
-            values: Optional[pulumi.Input[_builtins.str]] = None) -> 'AddonRelease':
+            addon_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_release_name: pulumi.Input[Optional[_builtins.str]] = None,
+            addon_version: pulumi.Input[Optional[_builtins.str]] = None,
+            aliyun_lang: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            environment_id: pulumi.Input[Optional[_builtins.str]] = None,
+            values: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddonRelease':
         """
         Get an existing AddonRelease resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

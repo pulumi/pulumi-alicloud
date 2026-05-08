@@ -100,7 +100,7 @@ export interface ProductState {
     /**
      * ProductName.
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
 }
 
 /**

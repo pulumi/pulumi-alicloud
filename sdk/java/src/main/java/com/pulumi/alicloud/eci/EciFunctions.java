@@ -42,8 +42,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -87,8 +87,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -132,8 +132,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -177,8 +177,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -222,8 +222,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -267,8 +267,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -312,8 +312,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetContainerGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -355,8 +355,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -441,8 +441,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -527,8 +527,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -570,8 +570,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -613,8 +613,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetImageCachesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -658,8 +658,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -710,8 +710,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -762,8 +762,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -814,8 +814,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -866,8 +866,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -918,8 +918,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -970,8 +970,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetVirtualNodesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1022,8 +1022,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1066,8 +1066,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1110,8 +1110,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1154,8 +1154,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1198,8 +1198,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1242,8 +1242,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1286,8 +1286,8 @@ public final class EciFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.eci.EciFunctions;
      * import com.pulumi.alicloud.eci.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

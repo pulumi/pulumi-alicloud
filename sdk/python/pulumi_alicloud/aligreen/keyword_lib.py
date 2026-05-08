@@ -21,13 +21,13 @@ class KeywordLibArgs:
     def __init__(__self__, *,
                  keyword_lib_name: pulumi.Input[_builtins.str],
                  resource_type: pulumi.Input[_builtins.str],
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 lib_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_mode: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeywordLib resource.
 
@@ -84,101 +84,101 @@ class KeywordLibArgs:
 
     @_builtins.property
     @pulumi.getter(name="bizTypes")
-    def biz_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def biz_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The business scenario. Example:["bizTypeA","bizTypeB"]
         """
         return pulumi.get(self, "biz_types")
 
     @biz_types.setter
-    def biz_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def biz_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "biz_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language used by the text Library
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="libType")
-    def lib_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lib_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
         """
         return pulumi.get(self, "lib_type")
 
     @lib_type.setter
-    def lib_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lib_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lib_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchMode")
-    def match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching method. Valid values:fuzzy: fuzzy match precise: exact match
         """
         return pulumi.get(self, "match_mode")
 
     @match_mode.setter
-    def match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_mode", value)
 
 
 @pulumi.input_type
 class _KeywordLibState:
     def __init__(__self__, *,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keyword_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 lib_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keyword_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeywordLib resources.
 
@@ -213,110 +213,110 @@ class _KeywordLibState:
 
     @_builtins.property
     @pulumi.getter(name="bizTypes")
-    def biz_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def biz_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The business scenario. Example:["bizTypeA","bizTypeB"]
         """
         return pulumi.get(self, "biz_types")
 
     @biz_types.setter
-    def biz_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def biz_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "biz_types", value)
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the text library. Valid values: BLACK: a blacklist. WHITE: a whitelist. REVIEW: a review list
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable text library.true: Enable the text library. This is the default value.false: Disable the text library.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="keywordLibName")
-    def keyword_lib_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keyword_lib_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the keyword library defined by the customer. It can contain no more than 20 characters in Chinese, English, and underscore (_).
         """
         return pulumi.get(self, "keyword_lib_name")
 
     @keyword_lib_name.setter
-    def keyword_lib_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keyword_lib_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keyword_lib_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language used by the text Library
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="libType")
-    def lib_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lib_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
         """
         return pulumi.get(self, "lib_type")
 
     @lib_type.setter
-    def lib_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lib_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lib_type", value)
 
     @_builtins.property
     @pulumi.getter(name="matchMode")
-    def match_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching method. Valid values:fuzzy: fuzzy match precise: exact match
         """
         return pulumi.get(self, "match_mode")
 
     @match_mode.setter
-    def match_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
 
@@ -326,15 +326,15 @@ class KeywordLib(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keyword_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 lib_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keyword_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Aligreen Keyword Lib resource.
@@ -473,15 +473,15 @@ class KeywordLib(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keyword_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 lib_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keyword_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -514,15 +514,15 @@ class KeywordLib(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            keyword_lib_name: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            lib_type: Optional[pulumi.Input[_builtins.str]] = None,
-            match_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'KeywordLib':
+            biz_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            keyword_lib_name: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            lib_type: pulumi.Input[Optional[_builtins.str]] = None,
+            match_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'KeywordLib':
         """
         Get an existing KeywordLib resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -44,7 +44,7 @@ __all__ = [
 ]
 
 class OtsBackupPlanOtsDetailArgsDict(TypedDict):
-    table_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    table_names: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
     """
@@ -52,7 +52,7 @@ class OtsBackupPlanOtsDetailArgsDict(TypedDict):
 @pulumi.input_type
 class OtsBackupPlanOtsDetailArgs:
     def __init__(__self__, *,
-                 table_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 table_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
@@ -61,35 +61,35 @@ class OtsBackupPlanOtsDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="tableNames")
-    def table_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def table_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "table_names")
 
     @table_names.setter
-    def table_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def table_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "table_names", value)
 
 
 class OtsBackupPlanRuleArgsDict(TypedDict):
-    backup_type: NotRequired[pulumi.Input[_builtins.str]]
+    backup_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Backup type. Valid values: `COMPLETE`.
     """
-    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
     """
-    retention: NotRequired[pulumi.Input[_builtins.str]]
+    retention: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Backup retention days, the minimum is 1.
     """
-    rule_name: NotRequired[pulumi.Input[_builtins.str]]
+    rule_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
     """
-    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
     - `startTime` Backup start time, UNIX time seconds.
@@ -98,11 +98,11 @@ class OtsBackupPlanRuleArgsDict(TypedDict):
 @pulumi.input_type
 class OtsBackupPlanRuleArgs:
     def __init__(__self__, *,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 disabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retention: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retention: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] backup_type: Backup type. Valid values: `COMPLETE`.
         :param pulumi.Input[_builtins.bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
@@ -124,55 +124,55 @@ class OtsBackupPlanRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup type. Valid values: `COMPLETE`.
         """
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         """
         return pulumi.get(self, "disabled")
 
     @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup retention days, the minimum is 1.
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         - `startTime` Backup start time, UNIX time seconds.
@@ -180,16 +180,16 @@ class OtsBackupPlanRuleArgs:
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
 
 class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
-    oss_detail: NotRequired[pulumi.Input['PolicyBindingAdvancedOptionsOssDetailArgsDict']]
+    oss_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgs']]]
     """
     OSS Backup Advanced options See `oss_detail` below.
     """
-    udm_detail: NotRequired[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgsDict']]
+    udm_detail: NotRequired[pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgs']]]
     """
     ECS Backup Advanced options See `udm_detail` below.
     """
@@ -197,8 +197,8 @@ class PolicyBindingAdvancedOptionsArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsArgs:
     def __init__(__self__, *,
-                 oss_detail: Optional[pulumi.Input['PolicyBindingAdvancedOptionsOssDetailArgs']] = None,
-                 udm_detail: Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']] = None):
+                 oss_detail: pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgs']] = None,
+                 udm_detail: pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgs']] = None):
         """
         :param pulumi.Input['PolicyBindingAdvancedOptionsOssDetailArgs'] oss_detail: OSS Backup Advanced options See `oss_detail` below.
         :param pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs'] udm_detail: ECS Backup Advanced options See `udm_detail` below.
@@ -210,39 +210,39 @@ class PolicyBindingAdvancedOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="ossDetail")
-    def oss_detail(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsOssDetailArgs']]:
+    def oss_detail(self) -> pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgs']]:
         """
         OSS Backup Advanced options See `oss_detail` below.
         """
         return pulumi.get(self, "oss_detail")
 
     @oss_detail.setter
-    def oss_detail(self, value: Optional[pulumi.Input['PolicyBindingAdvancedOptionsOssDetailArgs']]):
+    def oss_detail(self, value: pulumi.Input[Optional['PolicyBindingAdvancedOptionsOssDetailArgs']]):
         pulumi.set(self, "oss_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="udmDetail")
-    def udm_detail(self) -> Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']]:
+    def udm_detail(self) -> pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgs']]:
         """
         ECS Backup Advanced options See `udm_detail` below.
         """
         return pulumi.get(self, "udm_detail")
 
     @udm_detail.setter
-    def udm_detail(self, value: Optional[pulumi.Input['PolicyBindingAdvancedOptionsUdmDetailArgs']]):
+    def udm_detail(self, value: pulumi.Input[Optional['PolicyBindingAdvancedOptionsUdmDetailArgs']]):
         pulumi.set(self, "udm_detail", value)
 
 
 class PolicyBindingAdvancedOptionsOssDetailArgsDict(TypedDict):
-    ignore_archive_object: NotRequired[pulumi.Input[_builtins.bool]]
+    ignore_archive_object: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Archived objects are not prompted in task statistics and failed file lists
     """
-    inventory_cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
+    inventory_cleanup_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
     """
-    inventory_id: NotRequired[pulumi.Input[_builtins.str]]
+    inventory_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
     """
@@ -250,9 +250,9 @@ class PolicyBindingAdvancedOptionsOssDetailArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsOssDetailArgs:
     def __init__(__self__, *,
-                 ignore_archive_object: Optional[pulumi.Input[_builtins.bool]] = None,
-                 inventory_cleanup_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 inventory_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ignore_archive_object: pulumi.Input[Optional[_builtins.bool]] = None,
+                 inventory_cleanup_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 inventory_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] ignore_archive_object: Archived objects are not prompted in task statistics and failed file lists
         :param pulumi.Input[_builtins.str] inventory_cleanup_policy: Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
@@ -267,51 +267,51 @@ class PolicyBindingAdvancedOptionsOssDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="ignoreArchiveObject")
-    def ignore_archive_object(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_archive_object(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Archived objects are not prompted in task statistics and failed file lists
         """
         return pulumi.get(self, "ignore_archive_object")
 
     @ignore_archive_object.setter
-    def ignore_archive_object(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_archive_object(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_archive_object", value)
 
     @_builtins.property
     @pulumi.getter(name="inventoryCleanupPolicy")
-    def inventory_cleanup_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inventory_cleanup_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to delete the inventory file after the backup. Valid only when using the OSS inventory. Supported: NO_CLEANUP: Do not delete. DELETE_CURRENT: Deletes the current file. DELETE_CURRENT_AND_PREVIOUS: Deletes all files.
         """
         return pulumi.get(self, "inventory_cleanup_policy")
 
     @inventory_cleanup_policy.setter
-    def inventory_cleanup_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inventory_cleanup_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inventory_cleanup_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="inventoryId")
-    def inventory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def inventory_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS inventory. If the value is not empty, the OSS inventory will be used for performance tuning. We recommend that you use a list to improve incremental performance when backing up more than 0.1 billion OSS objects. OSS charges the storage fee for the list file separately. It takes time to generate the OSS inventory file. The backup may fail before the OSS inventory file is generated. You can wait for the next cycle.
         """
         return pulumi.get(self, "inventory_id")
 
     @inventory_id.setter
-    def inventory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def inventory_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "inventory_id", value)
 
 
 class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
-    destination_kms_key_id: NotRequired[pulumi.Input[_builtins.str]]
+    destination_kms_key_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Custom KMS key ID of encrypted copy
     """
-    disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    disk_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of backup disks. If it is empty, all disks are backed up.
     """
-    exclude_disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    exclude_disk_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of cloud disk IDs that are not backed up
     """
@@ -319,9 +319,9 @@ class PolicyBindingAdvancedOptionsUdmDetailArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyBindingAdvancedOptionsUdmDetailArgs:
     def __init__(__self__, *,
-                 destination_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exclude_disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 destination_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exclude_disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] destination_kms_key_id: Custom KMS key ID of encrypted copy
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
@@ -336,38 +336,38 @@ class PolicyBindingAdvancedOptionsUdmDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationKmsKeyId")
-    def destination_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom KMS key ID of encrypted copy
         """
         return pulumi.get(self, "destination_kms_key_id")
 
     @destination_kms_key_id.setter
-    def destination_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="diskIdLists")
-    def disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disk_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of backup disks. If it is empty, all disks are backed up.
         """
         return pulumi.get(self, "disk_id_lists")
 
     @disk_id_lists.setter
-    def disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disk_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disk_id_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeDiskIdLists")
-    def exclude_disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_disk_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of cloud disk IDs that are not backed up
         """
         return pulumi.get(self, "exclude_disk_id_lists")
 
     @exclude_disk_id_lists.setter
-    def exclude_disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_disk_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_disk_id_lists", value)
 
 
@@ -376,47 +376,47 @@ class PolicyRuleArgsDict(TypedDict):
     """
     Rule Type
     """
-    archive_days: NotRequired[pulumi.Input[_builtins.int]]
+    archive_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
     """
-    backup_type: NotRequired[pulumi.Input[_builtins.str]]
+    backup_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
     """
-    data_source_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgsDict']]]]
+    data_source_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]]
     """
     This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
     """
-    keep_latest_snapshots: NotRequired[pulumi.Input[_builtins.int]]
+    keep_latest_snapshots: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     This parameter is required only when `RuleType` is set to `BACKUP`
     """
-    replication_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    replication_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only when the `RuleType` value is
     """
-    retention: NotRequired[pulumi.Input[_builtins.int]]
+    retention: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Retention time, in days
     """
-    retention_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgsDict']]]]
+    retention_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]]
     """
     This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
     """
-    rule_id: NotRequired[pulumi.Input[_builtins.str]]
+    rule_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule ID
     """
-    schedule: NotRequired[pulumi.Input[_builtins.str]]
+    schedule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
     """
-    tag_filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgsDict']]]]
+    tag_filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]]
     """
     This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
     """
-    vault_id: NotRequired[pulumi.Input[_builtins.str]]
+    vault_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Vault ID
     """
@@ -425,17 +425,17 @@ class PolicyRuleArgsDict(TypedDict):
 class PolicyRuleArgs:
     def __init__(__self__, *,
                  rule_type: pulumi.Input[_builtins.str],
-                 archive_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_filters: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]] = None,
-                 keep_latest_snapshots: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 retention_rules: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_filters: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 archive_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_filters: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]] = None,
+                 keep_latest_snapshots: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_rules: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_filters: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rule_type: Rule Type
         :param pulumi.Input[_builtins.int] archive_days: This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
@@ -488,139 +488,139 @@ class PolicyRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="archiveDays")
-    def archive_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def archive_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter is required only when the value of `RuleType` is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60
         """
         return pulumi.get(self, "archive_days")
 
     @archive_days.setter
-    def archive_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def archive_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "archive_days", value)
 
     @_builtins.property
     @pulumi.getter(name="backupType")
-    def backup_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is required only when the `RuleType` value is **BACKUP. Backup Type
         """
         return pulumi.get(self, "backup_type")
 
     @backup_type.setter
-    def backup_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceFilters")
-    def data_source_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]:
+    def data_source_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]:
         """
         This parameter is required only when the value of RuleType is TAG. See `data_source_filters` below.
         """
         return pulumi.get(self, "data_source_filters")
 
     @data_source_filters.setter
-    def data_source_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]):
+    def data_source_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleDataSourceFilterArgs']]]]):
         pulumi.set(self, "data_source_filters", value)
 
     @_builtins.property
     @pulumi.getter(name="keepLatestSnapshots")
-    def keep_latest_snapshots(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def keep_latest_snapshots(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter is required only when `RuleType` is set to `BACKUP`
         """
         return pulumi.get(self, "keep_latest_snapshots")
 
     @keep_latest_snapshots.setter
-    def keep_latest_snapshots(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def keep_latest_snapshots(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "keep_latest_snapshots", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationRegionId")
-    def replication_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only when the `RuleType` value is
         """
         return pulumi.get(self, "replication_region_id")
 
     @replication_region_id.setter
-    def replication_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retention time, in days
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionRules")
-    def retention_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]:
+    def retention_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]:
         """
         This parameter is required only when the value of `RuleType` is `TRANSITION`. See `retention_rules` below.
         """
         return pulumi.get(self, "retention_rules")
 
     @retention_rules.setter
-    def retention_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]):
+    def retention_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleRetentionRuleArgs']]]]):
         pulumi.set(self, "retention_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule ID
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         This parameter is required only if you set the `RuleType` parameter to `BACKUP`. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter(name="tagFilters")
-    def tag_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]:
+    def tag_filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]:
         """
         This parameter is required only when the value of RuleType is TAG. Resource label filtering rules. See `tag_filters` below.
         """
         return pulumi.get(self, "tag_filters")
 
     @tag_filters.setter
-    def tag_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]):
+    def tag_filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PolicyRuleTagFilterArgs']]]]):
         pulumi.set(self, "tag_filters", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Vault ID
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
 class PolicyRuleDataSourceFilterArgsDict(TypedDict):
-    source_type: NotRequired[pulumi.Input[_builtins.str]]
+    source_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
     """
@@ -628,7 +628,7 @@ class PolicyRuleDataSourceFilterArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyRuleDataSourceFilterArgs:
     def __init__(__self__, *,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] source_type: The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
         """
@@ -637,23 +637,23 @@ class PolicyRuleDataSourceFilterArgs:
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The data source type. Value range: UDM_ECS: indicates that the ECS machine is backed up. This data source type is supported only when PolicyType is set to UDM_ECS_ONLY. OSS: indicates an OSS backup. This data source type is supported only when the PolicyType value is STANDARD. NAS: indicates an Alibaba Cloud NAS backup. This data source type is supported only when the PolicyType value is STANDARD. ECS_FILE: indicates an ECS file backup. This data source type is supported only when the PolicyType value is STANDARD. OTS: indicates the Tablestore backup. This data source type is supported only when the PolicyType value is STANDARD.
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
 
 class PolicyRuleRetentionRuleArgsDict(TypedDict):
-    advanced_retention_type: NotRequired[pulumi.Input[_builtins.str]]
+    advanced_retention_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
     """
-    retention: NotRequired[pulumi.Input[_builtins.int]]
+    retention: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Retention time, in days
     """
@@ -661,8 +661,8 @@ class PolicyRuleRetentionRuleArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyRuleRetentionRuleArgs:
     def __init__(__self__, *,
-                 advanced_retention_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention: Optional[pulumi.Input[_builtins.int]] = None):
+                 advanced_retention_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] advanced_retention_type: Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
         :param pulumi.Input[_builtins.int] retention: Retention time, in days
@@ -674,39 +674,39 @@ class PolicyRuleRetentionRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="advancedRetentionType")
-    def advanced_retention_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def advanced_retention_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values: `annually`, `MONTHLY`, and `WEEKLY`:- `annually`: the first backup of each year. - `MONTHLY`: The first backup of the month. - `WEEKLY`: The first backup of the week. - `DAILY`: The first backup of the day.
         """
         return pulumi.get(self, "advanced_retention_type")
 
     @advanced_retention_type.setter
-    def advanced_retention_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def advanced_retention_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "advanced_retention_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retention time, in days
         """
         return pulumi.get(self, "retention")
 
     @retention.setter
-    def retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention", value)
 
 
 class PolicyRuleTagFilterArgsDict(TypedDict):
-    key: NotRequired[pulumi.Input[_builtins.str]]
+    key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag key.
     """
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The label value, which is empty and represents any value.
     """
@@ -714,9 +714,9 @@ class PolicyRuleTagFilterArgsDict(TypedDict):
 @pulumi.input_type
 class PolicyRuleTagFilterArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] key: The tag key.
         :param pulumi.Input[_builtins.str] operator: Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
@@ -731,43 +731,43 @@ class PolicyRuleTagFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The label value, which is empty and represents any value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class RestoreJobOtsDetailArgsDict(TypedDict):
-    overwrite_existing: NotRequired[pulumi.Input[_builtins.bool]]
+    overwrite_existing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
     """
@@ -775,7 +775,7 @@ class RestoreJobOtsDetailArgsDict(TypedDict):
 @pulumi.input_type
 class RestoreJobOtsDetailArgs:
     def __init__(__self__, *,
-                 overwrite_existing: Optional[pulumi.Input[_builtins.bool]] = None):
+                 overwrite_existing: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
         """
@@ -784,14 +784,14 @@ class RestoreJobOtsDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="overwriteExisting")
-    def overwrite_existing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "overwrite_existing")
 
     @overwrite_existing.setter
-    def overwrite_existing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_existing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_existing", value)
 
 
@@ -804,35 +804,35 @@ class ServerBackupPlanDetailArgsDict(TypedDict):
     """
     Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
     """
-    destination_region_id: NotRequired[pulumi.Input[_builtins.str]]
+    destination_region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
     """
-    destination_retention: NotRequired[pulumi.Input[_builtins.int]]
+    destination_retention: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
     """
-    disk_id_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    disk_id_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
     """
-    do_copy: NotRequired[pulumi.Input[_builtins.bool]]
+    do_copy: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether replicate to another region. Valid values: `true`, `false`.
     """
-    enable_fs_freeze: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_fs_freeze: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
     """
-    post_script_path: NotRequired[pulumi.Input[_builtins.str]]
+    post_script_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
     """
-    pre_script_path: NotRequired[pulumi.Input[_builtins.str]]
+    pre_script_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
     """
-    timeout_in_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_in_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
     """
@@ -842,14 +842,14 @@ class ServerBackupPlanDetailArgs:
     def __init__(__self__, *,
                  app_consistent: pulumi.Input[_builtins.bool],
                  snapshot_group: pulumi.Input[_builtins.bool],
-                 destination_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_retention: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 do_copy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_fs_freeze: Optional[pulumi.Input[_builtins.bool]] = None,
-                 post_script_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_script_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_in_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 destination_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_retention: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 do_copy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_fs_freeze: pulumi.Input[Optional[_builtins.bool]] = None,
+                 post_script_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_script_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_in_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] app_consistent: Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
         :param pulumi.Input[_builtins.bool] snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
@@ -907,98 +907,98 @@ class ServerBackupPlanDetailArgs:
 
     @_builtins.property
     @pulumi.getter(name="destinationRegionId")
-    def destination_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "destination_region_id")
 
     @destination_region_id.setter
-    def destination_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationRetention")
-    def destination_retention(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def destination_retention(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
         """
         return pulumi.get(self, "destination_retention")
 
     @destination_retention.setter
-    def destination_retention(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def destination_retention(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "destination_retention", value)
 
     @_builtins.property
     @pulumi.getter(name="diskIdLists")
-    def disk_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def disk_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
         """
         return pulumi.get(self, "disk_id_lists")
 
     @disk_id_lists.setter
-    def disk_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def disk_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "disk_id_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="doCopy")
-    def do_copy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def do_copy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether replicate to another region. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "do_copy")
 
     @do_copy.setter
-    def do_copy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def do_copy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "do_copy", value)
 
     @_builtins.property
     @pulumi.getter(name="enableFsFreeze")
-    def enable_fs_freeze(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_fs_freeze(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "enable_fs_freeze")
 
     @enable_fs_freeze.setter
-    def enable_fs_freeze(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_fs_freeze(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_fs_freeze", value)
 
     @_builtins.property
     @pulumi.getter(name="postScriptPath")
-    def post_script_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def post_script_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
         """
         return pulumi.get(self, "post_script_path")
 
     @post_script_path.setter
-    def post_script_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def post_script_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "post_script_path", value)
 
     @_builtins.property
     @pulumi.getter(name="preScriptPath")
-    def pre_script_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pre_script_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
         """
         return pulumi.get(self, "pre_script_path")
 
     @pre_script_path.setter
-    def pre_script_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pre_script_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pre_script_path", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutInSeconds")
-    def timeout_in_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_in_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
         """
         return pulumi.get(self, "timeout_in_seconds")
 
     @timeout_in_seconds.setter
-    def timeout_in_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_in_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_in_seconds", value)
 
 

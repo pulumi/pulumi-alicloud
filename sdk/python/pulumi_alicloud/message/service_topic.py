@@ -20,10 +20,10 @@ __all__ = ['ServiceTopicArgs', 'ServiceTopic']
 class ServiceTopicArgs:
     def __init__(__self__, *,
                  topic_name: pulumi.Input[_builtins.str],
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ServiceTopic resource.
 
@@ -64,63 +64,63 @@ class ServiceTopicArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
     @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMessageSize")
-    def max_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
 
     @max_message_size.setter
-    def max_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_message_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ServiceTopicState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceTopic resources.
 
@@ -151,68 +151,68 @@ class _ServiceTopicState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.241.0) The time when the topic was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLogging")
-    def enable_logging(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_logging(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the logging feature. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_logging")
 
     @enable_logging.setter
-    def enable_logging(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_logging(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_logging", value)
 
     @_builtins.property
     @pulumi.getter(name="loggingEnabled")
     @_utilities.deprecated("""Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.""")
-    def logging_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logging_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         . Field `logging_enabled` has been deprecated from provider version 1.241.0. New field `enable_logging` instead.
         """
         return pulumi.get(self, "logging_enabled")
 
     @logging_enabled.setter
-    def logging_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logging_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logging_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="maxMessageSize")
-    def max_message_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_message_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
         """
         return pulumi.get(self, "max_message_size")
 
     @max_message_size.setter
-    def max_message_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_message_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_message_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the topic.
 
@@ -221,7 +221,7 @@ class _ServiceTopicState:
         return pulumi.get(self, "topic_name")
 
     @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic_name", value)
 
 
@@ -231,11 +231,11 @@ class ServiceTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Message Service Topic resource.
@@ -340,11 +340,11 @@ class ServiceTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 topic_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 topic_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,12 +372,12 @@ class ServiceTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_logging: Optional[pulumi.Input[_builtins.bool]] = None,
-            logging_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            max_message_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            topic_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceTopic':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_logging: pulumi.Input[Optional[_builtins.bool]] = None,
+            logging_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            max_message_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            topic_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceTopic':
         """
         Get an existing ServiceTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

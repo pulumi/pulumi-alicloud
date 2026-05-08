@@ -53,7 +53,7 @@ import * as utilities from "../utilities";
  *     domainNameLists: ["www.aliyun.com"],
  *     primaryVswitchIp: "172.16.3.1",
  *     standbyVswitchIp: "172.16.4.1",
- *     memberUid: current.then(current => current.id),
+ *     memberUid: output(current.then(current => current.id)).apply(x =>Number(x)),
  * });
  * ```
  *
@@ -241,71 +241,71 @@ export interface PrivateDnsState {
     /**
      * The id of Private DNS instance
      */
-    accessInstanceId?: pulumi.Input<string>;
+    accessInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of Private DNS instance
      */
-    accessInstanceName?: pulumi.Input<string>;
+    accessInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Private DNS domain name list
      */
-    domainNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of firewall
      */
-    firewallTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    firewallTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IP protocol
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The member Uid
      */
-    memberUid?: pulumi.Input<number>;
+    memberUid?: pulumi.Input<number | undefined>;
     /**
      * The Port of Private DNS instance
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Primary DNS IP
      */
-    primaryDns?: pulumi.Input<string>;
+    primaryDns?: pulumi.Input<string | undefined>;
     /**
      * Primary zone Switch ID
      */
-    primaryVswitchId?: pulumi.Input<string>;
+    primaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Primary zone switch IP
      */
-    primaryVswitchIp?: pulumi.Input<string>;
+    primaryVswitchIp?: pulumi.Input<string | undefined>;
     /**
      * The type of Private DNS instance
      */
-    privateDnsType?: pulumi.Input<string>;
+    privateDnsType?: pulumi.Input<string | undefined>;
     /**
      * The region ID of Private DNS instance
      */
-    regionNo?: pulumi.Input<string>;
+    regionNo?: pulumi.Input<string | undefined>;
     /**
      * Standby DNS IP
      */
-    standbyDns?: pulumi.Input<string>;
+    standbyDns?: pulumi.Input<string | undefined>;
     /**
      * Standby zone switch ID
      */
-    standbyVswitchId?: pulumi.Input<string>;
+    standbyVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone switch IP address
      */
-    standbyVswitchIp?: pulumi.Input<string>;
+    standbyVswitchIp?: pulumi.Input<string | undefined>;
     /**
      * status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -319,7 +319,7 @@ export interface PrivateDnsArgs {
     /**
      * Private DNS domain name list
      */
-    domainNameLists?: pulumi.Input<pulumi.Input<string>[]>;
+    domainNameLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The type of firewall
      */
@@ -327,27 +327,27 @@ export interface PrivateDnsArgs {
     /**
      * IP protocol
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The member Uid
      */
-    memberUid?: pulumi.Input<number>;
+    memberUid?: pulumi.Input<number | undefined>;
     /**
      * The Port of Private DNS instance
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Primary DNS IP
      */
-    primaryDns?: pulumi.Input<string>;
+    primaryDns?: pulumi.Input<string | undefined>;
     /**
      * Primary zone Switch ID
      */
-    primaryVswitchId?: pulumi.Input<string>;
+    primaryVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Primary zone switch IP
      */
-    primaryVswitchIp?: pulumi.Input<string>;
+    primaryVswitchIp?: pulumi.Input<string | undefined>;
     /**
      * The type of Private DNS instance
      */
@@ -359,15 +359,15 @@ export interface PrivateDnsArgs {
     /**
      * Standby DNS IP
      */
-    standbyDns?: pulumi.Input<string>;
+    standbyDns?: pulumi.Input<string | undefined>;
     /**
      * Standby zone switch ID
      */
-    standbyVswitchId?: pulumi.Input<string>;
+    standbyVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Standby zone switch IP address
      */
-    standbyVswitchIp?: pulumi.Input<string>;
+    standbyVswitchIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC.
      */

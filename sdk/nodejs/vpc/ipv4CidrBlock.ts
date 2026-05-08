@@ -132,25 +132,25 @@ export interface Ipv4CidrBlockState {
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
-    ipv4IpamPoolId?: pulumi.Input<string>;
+    ipv4IpamPoolId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the VPC resides.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Additional network segment information.
      */
-    secondaryCidrBlock?: pulumi.Input<string>;
+    secondaryCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
      *
      * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
      */
-    secondaryCidrMask?: pulumi.Input<number>;
+    secondaryCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,17 +160,17 @@ export interface Ipv4CidrBlockArgs {
     /**
      * The ID of the IP Address Manager (IPAM) pool that contains IPv4 addresses.
      */
-    ipv4IpamPoolId?: pulumi.Input<string>;
+    ipv4IpamPoolId?: pulumi.Input<string | undefined>;
     /**
      * Additional network segment information.
      */
-    secondaryCidrBlock?: pulumi.Input<string>;
+    secondaryCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * Add an additional CIDR block from the IPAM address pool to the VPC by entering a mask.
      *
      * > **NOTE:**  Specify the IPAM address pool to add an additional CIDR block to the VPC. Enter at least one of the SecondaryCidrBlock or SecondaryCidrMask parameters.
      */
-    secondaryCidrMask?: pulumi.Input<number>;
+    secondaryCidrMask?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC.
      */

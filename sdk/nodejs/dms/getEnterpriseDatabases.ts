@@ -118,7 +118,7 @@ export interface GetEnterpriseDatabasesOutputArgs {
     /**
      * A list of Database IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The instance ID of the target database.
      */
@@ -126,9 +126,9 @@ export interface GetEnterpriseDatabasesOutputArgs {
     /**
      * A regex string to filter the results by the database Schema Name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

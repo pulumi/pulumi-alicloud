@@ -215,64 +215,64 @@ export interface GetInstanceClassesOutputArgs {
     /**
      * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
      */
-    architecture?: pulumi.Input<string>;
+    architecture?: pulumi.Input<string | undefined>;
     /**
      * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance edition type required by the user. Valid values: `Community` and `Enterprise`.
      */
-    editionType?: pulumi.Input<string>;
+    editionType?: pulumi.Input<string | undefined>;
     /**
      * Database type. Options are `Redis`, `Memcache`. Default to `Redis`.
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * Database version required by the user. Value options of Redis can refer to the latest docs [detail info](https://www.alibabacloud.com/help/en/redis/developer-reference/api-r-kvstore-2015-01-01-createinstance-redis) `EngineVersion`. Value of Memcache should be empty.
      */
-    engineVersion?: pulumi.Input<string>;
+    engineVersion?: pulumi.Input<string | undefined>;
     /**
      * Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PrePaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance node type required by the user. Valid values: `double`, `single`, `readone`, `readthree` and `readfive`.
      */
-    nodeType?: pulumi.Input<string>;
+    nodeType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi up`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'package_type' has been deprecated from 1.68.0.
      */
-    packageType?: pulumi.Input<string>;
+    packageType?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'performance_type' has been deprecated from 1.68.0.
      */
-    performanceType?: pulumi.Input<string>;
+    performanceType?: pulumi.Input<string | undefined>;
     /**
      * The type of the service. Valid values:
      * * Local: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a local disk.
      * * OnECS: a Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance with a standard disk. This type is available only on the Alibaba Cloud China site.
      */
-    productType?: pulumi.Input<string>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * The Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance series type required by the user. Valid values: `enhancedPerformanceType` and `hybridStorage`.
      */
-    seriesType?: pulumi.Input<string>;
+    seriesType?: pulumi.Input<string | undefined>;
     /**
      * The number of shard.Valid values: `1`, `2`, `4`, `8`, `16`, `32`, `64`, `128`, `256`.
      */
-    shardNumber?: pulumi.Input<number>;
-    sortedBy?: pulumi.Input<string>;
+    shardNumber?: pulumi.Input<number | undefined>;
+    sortedBy?: pulumi.Input<string | undefined>;
     /**
      * It has been deprecated from 1.68.0.
      *
      * @deprecated The parameter 'storage_type' has been deprecated from 1.68.0.
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
      */

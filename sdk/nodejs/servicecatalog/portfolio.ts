@@ -130,23 +130,23 @@ export interface PortfolioState {
     /**
      * The creation time of the portfolio
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the portfolio
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the portfolio
      */
-    portfolioArn?: pulumi.Input<string>;
+    portfolioArn?: pulumi.Input<string | undefined>;
     /**
      * The name of the portfolio
      */
-    portfolioName?: pulumi.Input<string>;
+    portfolioName?: pulumi.Input<string | undefined>;
     /**
      * The provider name of the portfolio
      */
-    providerName?: pulumi.Input<string>;
+    providerName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -156,7 +156,7 @@ export interface PortfolioArgs {
     /**
      * The description of the portfolio
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the portfolio
      */

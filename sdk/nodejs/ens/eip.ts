@@ -164,39 +164,39 @@ export interface EipState {
     /**
      * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the EIP instance.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the EIP.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIP.
      */
-    eipName?: pulumi.Input<string>;
+    eipName?: pulumi.Input<string | undefined>;
     /**
      * Ens node ID.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * The metering method of the EIP. Valid value: `95BandwidthByMonth`.
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The status of the EIP.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -206,15 +206,15 @@ export interface EipArgs {
     /**
      * The maximum bandwidth of the EIP. Default value: `5`. Valid values: `5` to `10000`. Unit: Mbit/s.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The description of the EIP.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the EIP.
      */
-    eipName?: pulumi.Input<string>;
+    eipName?: pulumi.Input<string | undefined>;
     /**
      * Ens node ID.
      */
@@ -226,7 +226,7 @@ export interface EipArgs {
     /**
      * The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
      */
-    isp?: pulumi.Input<string>;
+    isp?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the EIP. Valid value: `PayAsYouGo`.
      */

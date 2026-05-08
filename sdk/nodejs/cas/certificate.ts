@@ -202,28 +202,28 @@ export interface CertificateState {
     /**
      * Cert of the Certificate in which the Certificate will add.
      */
-    cert?: pulumi.Input<string>;
-    certificateName?: pulumi.Input<string>;
-    encryptCert?: pulumi.Input<string>;
-    encryptPrivateKey?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
+    certificateName?: pulumi.Input<string | undefined>;
+    encryptCert?: pulumi.Input<string | undefined>;
+    encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
-    name?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
-    signCert?: pulumi.Input<string>;
-    signPrivateKey?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    signCert?: pulumi.Input<string | undefined>;
+    signPrivateKey?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -233,26 +233,26 @@ export interface CertificateArgs {
     /**
      * Cert of the Certificate in which the Certificate will add.
      */
-    cert?: pulumi.Input<string>;
-    certificateName?: pulumi.Input<string>;
-    encryptCert?: pulumi.Input<string>;
-    encryptPrivateKey?: pulumi.Input<string>;
+    cert?: pulumi.Input<string | undefined>;
+    certificateName?: pulumi.Input<string | undefined>;
+    encryptCert?: pulumi.Input<string | undefined>;
+    encryptPrivateKey?: pulumi.Input<string | undefined>;
     /**
      * Key of the Certificate in which the Certificate will add.
      */
-    key?: pulumi.Input<string>;
+    key?: pulumi.Input<string | undefined>;
     /**
      * @deprecated Field 'lang' has been deprecated from provider version 1.260.1 and it will be removed in the future version.
      */
-    lang?: pulumi.Input<string>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Name of the Certificate. This name must contain only alphanumeric characters or "-", and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. Suffix `.sh` and `.tel` are not supported.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
      */
-    name?: pulumi.Input<string>;
-    resourceGroupId?: pulumi.Input<string>;
-    signCert?: pulumi.Input<string>;
-    signPrivateKey?: pulumi.Input<string>;
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    name?: pulumi.Input<string | undefined>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
+    signCert?: pulumi.Input<string | undefined>;
+    signPrivateKey?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -170,47 +170,47 @@ export interface RouteTableState {
      * - `VSwitch`: switch.
      * - `Gateway`:IPv4 Gateway.
      */
-    associateType?: pulumi.Input<string>;
+    associateType?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the routing table
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the routing table.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Route Table Receive Propagate Route State
      */
-    routePropagationEnable?: pulumi.Input<boolean>;
+    routePropagationEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the routing table.
      */
-    routeTableName?: pulumi.Input<string>;
+    routeTableName?: pulumi.Input<string | undefined>;
     /**
      * Routing table state
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of VPC.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -222,29 +222,29 @@ export interface RouteTableArgs {
      * - `VSwitch`: switch.
      * - `Gateway`:IPv4 Gateway.
      */
-    associateType?: pulumi.Input<string>;
+    associateType?: pulumi.Input<string | undefined>;
     /**
      * Description of the routing table.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * . Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.119.1. New field 'route_table_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Route Table Receive Propagate Route State
      */
-    routePropagationEnable?: pulumi.Input<boolean>;
+    routePropagationEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the routing table.
      */
-    routeTableName?: pulumi.Input<string>;
+    routeTableName?: pulumi.Input<string | undefined>;
     /**
      * The tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of VPC.
      *

@@ -169,39 +169,39 @@ export interface ProjectState {
     /**
      * Workspace Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is Development Environment Enabled
      */
-    devEnvironmentEnabled?: pulumi.Input<boolean>;
+    devEnvironmentEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Is Development Role Disabled
      */
-    devRoleDisabled?: pulumi.Input<boolean>;
+    devRoleDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Workspace Display Name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Create PAI Workspace Together
      */
-    paiTaskEnabled?: pulumi.Input<boolean>;
+    paiTaskEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Workspace Name
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Aliyun Resource Group Id
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Aliyun Resource Tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -211,15 +211,15 @@ export interface ProjectArgs {
     /**
      * Workspace Description
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Is Development Environment Enabled
      */
-    devEnvironmentEnabled?: pulumi.Input<boolean>;
+    devEnvironmentEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Is Development Role Disabled
      */
-    devRoleDisabled?: pulumi.Input<boolean>;
+    devRoleDisabled?: pulumi.Input<boolean | undefined>;
     /**
      * Workspace Display Name
      */
@@ -235,13 +235,13 @@ export interface ProjectArgs {
     /**
      * Aliyun Resource Group Id
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Workspace Status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Aliyun Resource Tag
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

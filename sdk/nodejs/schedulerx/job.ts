@@ -342,101 +342,101 @@ export interface JobState {
     /**
      * Error retry interval, unit s, default value 30.
      */
-    attemptInterval?: pulumi.Input<number>;
+    attemptInterval?: pulumi.Input<number | undefined>;
     /**
      * Full path of the task interface class.
      *
      * This field is available only when your task is of the Java task type.
      */
-    className?: pulumi.Input<string>;
+    className?: pulumi.Input<string | undefined>;
     /**
      * The script code of the python, shell, and go task types.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Task description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Task execution mode, the possible results are as follows:
      */
-    executeMode?: pulumi.Input<string>;
+    executeMode?: pulumi.Input<string | undefined>;
     /**
      * Number of consecutive failed alarms
      */
-    failTimes?: pulumi.Input<number>;
+    failTimes?: pulumi.Input<number | undefined>;
     /**
      * The application ID, which is obtained from the **application management** page of the console.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * JobId
      */
-    jobId?: pulumi.Input<number>;
+    jobId?: pulumi.Input<number | undefined>;
     /**
      * Task monitoring information See `jobMonitorInfo` below.
      */
-    jobMonitorInfo?: pulumi.Input<inputs.schedulerx.JobJobMonitorInfo>;
+    jobMonitorInfo?: pulumi.Input<inputs.schedulerx.JobJobMonitorInfo | undefined>;
     /**
      * JobName
      */
-    jobName?: pulumi.Input<string>;
+    jobName?: pulumi.Input<string | undefined>;
     /**
      * Job Type
      */
-    jobType?: pulumi.Input<string>;
+    jobType?: pulumi.Input<string | undefined>;
     /**
      * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      */
-    mapTaskXattrs?: pulumi.Input<inputs.schedulerx.JobMapTaskXattrs>;
+    mapTaskXattrs?: pulumi.Input<inputs.schedulerx.JobMapTaskXattrs | undefined>;
     /**
      * The maximum number of error retries, which is set based on business requirements. The default value is 0.
      */
-    maxAttempt?: pulumi.Input<number>;
+    maxAttempt?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    maxConcurrency?: pulumi.Input<string>;
+    maxConcurrency?: pulumi.Input<string | undefined>;
     /**
      * Namespace, which is obtained on the `Namespace` page of the console.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * Special third parties are required.
      */
-    namespaceSource?: pulumi.Input<string>;
+    namespaceSource?: pulumi.Input<string | undefined>;
     /**
      * User-defined parameters, which can be obtained at runtime.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * Task status. The values are as follows:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Success Notification Switch
      */
-    successNoticeEnable?: pulumi.Input<boolean>;
+    successNoticeEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Advanced configuration of parallel grid tasks, push model or pull model
      */
-    taskDispatchMode?: pulumi.Input<string>;
+    taskDispatchMode?: pulumi.Input<string | undefined>;
     /**
      * K8s task type custom task template
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Time configuration information See `timeConfig` below.
      */
-    timeConfig?: pulumi.Input<inputs.schedulerx.JobTimeConfig>;
+    timeConfig?: pulumi.Input<inputs.schedulerx.JobTimeConfig | undefined>;
     /**
      * Time Zone
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Task Extension Field
      */
-    xAttrs?: pulumi.Input<string>;
+    xAttrs?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -446,21 +446,21 @@ export interface JobArgs {
     /**
      * Error retry interval, unit s, default value 30.
      */
-    attemptInterval?: pulumi.Input<number>;
+    attemptInterval?: pulumi.Input<number | undefined>;
     /**
      * Full path of the task interface class.
      *
      * This field is available only when your task is of the Java task type.
      */
-    className?: pulumi.Input<string>;
+    className?: pulumi.Input<string | undefined>;
     /**
      * The script code of the python, shell, and go task types.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * Task description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Task execution mode, the possible results are as follows:
      */
@@ -468,7 +468,7 @@ export interface JobArgs {
     /**
      * Number of consecutive failed alarms
      */
-    failTimes?: pulumi.Input<number>;
+    failTimes?: pulumi.Input<number | undefined>;
     /**
      * The application ID, which is obtained from the **application management** page of the console.
      */
@@ -476,7 +476,7 @@ export interface JobArgs {
     /**
      * Task monitoring information See `jobMonitorInfo` below.
      */
-    jobMonitorInfo?: pulumi.Input<inputs.schedulerx.JobJobMonitorInfo>;
+    jobMonitorInfo?: pulumi.Input<inputs.schedulerx.JobJobMonitorInfo | undefined>;
     /**
      * JobName
      */
@@ -488,15 +488,15 @@ export interface JobArgs {
     /**
      * Advanced configuration, limited to parallel computing, memory grid, and grid computing. See `mapTaskXattrs` below.
      */
-    mapTaskXattrs?: pulumi.Input<inputs.schedulerx.JobMapTaskXattrs>;
+    mapTaskXattrs?: pulumi.Input<inputs.schedulerx.JobMapTaskXattrs | undefined>;
     /**
      * The maximum number of error retries, which is set based on business requirements. The default value is 0.
      */
-    maxAttempt?: pulumi.Input<number>;
+    maxAttempt?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
      */
-    maxConcurrency?: pulumi.Input<string>;
+    maxConcurrency?: pulumi.Input<string | undefined>;
     /**
      * Namespace, which is obtained on the `Namespace` page of the console.
      */
@@ -504,27 +504,27 @@ export interface JobArgs {
     /**
      * Special third parties are required.
      */
-    namespaceSource?: pulumi.Input<string>;
+    namespaceSource?: pulumi.Input<string | undefined>;
     /**
      * User-defined parameters, which can be obtained at runtime.
      */
-    parameters?: pulumi.Input<string>;
+    parameters?: pulumi.Input<string | undefined>;
     /**
      * Task status. The values are as follows:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Success Notification Switch
      */
-    successNoticeEnable?: pulumi.Input<boolean>;
+    successNoticeEnable?: pulumi.Input<boolean | undefined>;
     /**
      * Advanced configuration of parallel grid tasks, push model or pull model
      */
-    taskDispatchMode?: pulumi.Input<string>;
+    taskDispatchMode?: pulumi.Input<string | undefined>;
     /**
      * K8s task type custom task template
      */
-    template?: pulumi.Input<string>;
+    template?: pulumi.Input<string | undefined>;
     /**
      * Time configuration information See `timeConfig` below.
      */
@@ -532,9 +532,9 @@ export interface JobArgs {
     /**
      * Time Zone
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
     /**
      * Task Extension Field
      */
-    xAttrs?: pulumi.Input<string>;
+    xAttrs?: pulumi.Input<string | undefined>;
 }

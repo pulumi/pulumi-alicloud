@@ -234,65 +234,65 @@ export interface EcsImagePipelineState {
     /**
      * The ID of Alibaba Cloud account to which to share the created image.
      */
-    addAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    addAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      */
-    baseImage?: pulumi.Input<string>;
+    baseImage?: pulumi.Input<string | undefined>;
     /**
      * The type of the source image. Valid values: `IMAGE`, `IMAGE_FAMILY`.
      * - IMAGE: custom image.
      * - IMAGE_FAMILY: image family.
      */
-    baseImageType?: pulumi.Input<string>;
+    baseImageType?: pulumi.Input<string | undefined>;
     /**
      * The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
      */
-    buildContent?: pulumi.Input<string>;
+    buildContent?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release the intermediate instance if the image cannot be created.
      */
-    deleteInstanceOnFailure?: pulumi.Input<boolean>;
+    deleteInstanceOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of region to which to distribute the created image.
      */
-    toRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    toRegionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -302,7 +302,7 @@ export interface EcsImagePipelineArgs {
     /**
      * The ID of Alibaba Cloud account to which to share the created image.
      */
-    addAccounts?: pulumi.Input<pulumi.Input<string>[]>;
+    addAccounts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The source image. When you set `baseImageType` to `IMAGE`, set `baseImage` to the ID of a custom image. When you set `baseImageType` to `IMAGE_FAMILY`, set `baseImage` to the name of an image family.
      */
@@ -316,49 +316,49 @@ export interface EcsImagePipelineArgs {
     /**
      * The content of the image template. The content cannot be greater than 16 KB in size, and can contain up to 127 commands.
      */
-    buildContent?: pulumi.Input<string>;
+    buildContent?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release the intermediate instance if the image cannot be created.
      */
-    deleteInstanceOnFailure?: pulumi.Input<boolean>;
+    deleteInstanceOnFailure?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the image template. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`. **Note:** If the intermediate instance cannot be started, the instance is released by default.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name prefix of the image to be created. The prefix must be `2` to `64` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The instance type of the instance. You can call the DescribeInstanceTypes operation to query instance types. If you do not specify this parameter, an instance type that provides the fewest vCPUs and memory resources is automatically selected. This configuration is subject to resource availability of instance types. For example, the `ecs.g6.large` instance type is selected by default. If available `ecs.g6.large` resources are insufficient, the `ecs.g6.xlarge` instance type is selected.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The size of the outbound public bandwidth for the intermediate instance. Unit: `Mbit/s`. Valid values: `0` to `100`. Default value: `0`.
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The name of the image template. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The size of the system disk of the intermediate instance. Unit: GiB. Valid values: `20` to `500`. Default value: `40`.
      */
-    systemDiskSize?: pulumi.Input<number>;
+    systemDiskSize?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of region to which to distribute the created image.
      */
-    toRegionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    toRegionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

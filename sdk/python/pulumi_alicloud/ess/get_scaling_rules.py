@@ -209,11 +209,11 @@ def get_scaling_rules(ids: Optional[Sequence[_builtins.str]] = None,
         rules=pulumi.get(__ret__, 'rules'),
         scaling_group_id=pulumi.get(__ret__, 'scaling_group_id'),
         type=pulumi.get(__ret__, 'type'))
-def get_scaling_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                             name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             scaling_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_scaling_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                             name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             scaling_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScalingRulesResult]:
     """
     This data source provides available scaling rule resources.

@@ -23,17 +23,17 @@ class AppGroupArgs:
                  group_id: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  namespace_name: pulumi.Input[_builtins.str],
-                 app_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_jobs: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_contacts_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None):
+                 app_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a AppGroup resource.
 
@@ -134,7 +134,7 @@ class AppGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def app_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application type.
         - 1, general application.
@@ -143,48 +143,48 @@ class AppGroupArgs:
         return pulumi.get(self, "app_type")
 
     @app_type.setter
-    def app_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def app_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="appVersion")
-    def app_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Version, 1: Basic Edition, 2: Professional Edition
         """
         return pulumi.get(self, "app_version")
 
     @app_version.setter
-    def app_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_version", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteJobs")
-    def delete_jobs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_jobs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the task in the application Group. The values are as follows:
         """
         return pulumi.get(self, "delete_jobs")
 
     @delete_jobs.setter
-    def delete_jobs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_jobs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_jobs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLog")
-    def enable_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the log.
         - true: On
@@ -193,100 +193,100 @@ class AppGroupArgs:
         return pulumi.get(self, "enable_log")
 
     @enable_log.setter
-    def enable_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_log", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         """
         return pulumi.get(self, "max_concurrency")
 
     @max_concurrency.setter
-    def max_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxJobs")
-    def max_jobs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_jobs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application Grouping Configurable Maximum Number of Tasks
         """
         return pulumi.get(self, "max_jobs")
 
     @max_jobs.setter
-    def max_jobs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_jobs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorConfigJson")
-    def monitor_config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
         """
         return pulumi.get(self, "monitor_config_json")
 
     @monitor_config_json.setter
-    def monitor_config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_config_json", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorContactsJson")
-    def monitor_contacts_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_contacts_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm contact JSON format.
         """
         return pulumi.get(self, "monitor_contacts_json")
 
     @monitor_contacts_json.setter
-    def monitor_contacts_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_contacts_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_contacts_json", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceSource")
-    def namespace_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Not supported for the time being, no need to fill in.
         """
         return pulumi.get(self, "namespace_source")
 
     @namespace_source.setter
-    def namespace_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_source", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleBusyWorkers")
-    def schedule_busy_workers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def schedule_busy_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to schedule a busy machine.
         """
         return pulumi.get(self, "schedule_busy_workers")
 
     @schedule_busy_workers.setter
-    def schedule_busy_workers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def schedule_busy_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "schedule_busy_workers", value)
 
 
 @pulumi.input_type
 class _AppGroupState:
     def __init__(__self__, *,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_jobs: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_contacts_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None):
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering AppGroup resources.
 
@@ -343,19 +343,19 @@ class _AppGroupState:
 
     @_builtins.property
     @pulumi.getter(name="appName")
-    def app_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Name
         """
         return pulumi.get(self, "app_name")
 
     @app_name.setter
-    def app_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_name", value)
 
     @_builtins.property
     @pulumi.getter(name="appType")
-    def app_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def app_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application type.
         - 1, general application.
@@ -364,48 +364,48 @@ class _AppGroupState:
         return pulumi.get(self, "app_type")
 
     @app_type.setter
-    def app_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def app_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "app_type", value)
 
     @_builtins.property
     @pulumi.getter(name="appVersion")
-    def app_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Version, 1: Basic Edition, 2: Professional Edition
         """
         return pulumi.get(self, "app_version")
 
     @app_version.setter
-    def app_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_version", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteJobs")
-    def delete_jobs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_jobs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to delete the task in the application Group. The values are as follows:
         """
         return pulumi.get(self, "delete_jobs")
 
     @delete_jobs.setter
-    def delete_jobs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_jobs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_jobs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Description
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableLog")
-    def enable_log(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_log(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the log.
         - true: On
@@ -414,115 +414,115 @@ class _AppGroupState:
         return pulumi.get(self, "enable_log")
 
     @enable_log.setter
-    def enable_log(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_log(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_log", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application ID
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_concurrency(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of instances running at the same time. The default value is 1, that is, the last trigger is not completed, and the next trigger will not be performed even at the running time.
         """
         return pulumi.get(self, "max_concurrency")
 
     @max_concurrency.setter
-    def max_concurrency(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_concurrency(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_concurrency", value)
 
     @_builtins.property
     @pulumi.getter(name="maxJobs")
-    def max_jobs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_jobs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application Grouping Configurable Maximum Number of Tasks
         """
         return pulumi.get(self, "max_jobs")
 
     @max_jobs.setter
-    def max_jobs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_jobs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorConfigJson")
-    def monitor_config_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_config_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm configuration JSON field. For more information about this field, see **Request Parameters * *.
         """
         return pulumi.get(self, "monitor_config_json")
 
     @monitor_config_json.setter
-    def monitor_config_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_config_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_config_json", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorContactsJson")
-    def monitor_contacts_json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def monitor_contacts_json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm contact JSON format.
         """
         return pulumi.get(self, "monitor_contacts_json")
 
     @monitor_contacts_json.setter
-    def monitor_contacts_json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def monitor_contacts_json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "monitor_contacts_json", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace ID, which is obtained on the namespace page of the console.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceName")
-    def namespace_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace name.
         """
         return pulumi.get(self, "namespace_name")
 
     @namespace_name.setter
-    def namespace_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_name", value)
 
     @_builtins.property
     @pulumi.getter(name="namespaceSource")
-    def namespace_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Not supported for the time being, no need to fill in.
         """
         return pulumi.get(self, "namespace_source")
 
     @namespace_source.setter
-    def namespace_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace_source", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleBusyWorkers")
-    def schedule_busy_workers(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def schedule_busy_workers(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to schedule a busy machine.
         """
         return pulumi.get(self, "schedule_busy_workers")
 
     @schedule_busy_workers.setter
-    def schedule_busy_workers(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def schedule_busy_workers(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "schedule_busy_workers", value)
 
 
@@ -532,21 +532,21 @@ class AppGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_jobs: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_contacts_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a Schedulerx App Group resource.
@@ -715,21 +715,21 @@ class AppGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 app_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 app_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_log: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_jobs: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitor_contacts_json: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None,
+                 app_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 app_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 app_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -772,21 +772,21 @@ class AppGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_name: Optional[pulumi.Input[_builtins.str]] = None,
-            app_type: Optional[pulumi.Input[_builtins.int]] = None,
-            app_version: Optional[pulumi.Input[_builtins.str]] = None,
-            delete_jobs: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_log: Optional[pulumi.Input[_builtins.bool]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            max_concurrency: Optional[pulumi.Input[_builtins.int]] = None,
-            max_jobs: Optional[pulumi.Input[_builtins.int]] = None,
-            monitor_config_json: Optional[pulumi.Input[_builtins.str]] = None,
-            monitor_contacts_json: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace_source: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_busy_workers: Optional[pulumi.Input[_builtins.bool]] = None) -> 'AppGroup':
+            app_name: pulumi.Input[Optional[_builtins.str]] = None,
+            app_type: pulumi.Input[Optional[_builtins.int]] = None,
+            app_version: pulumi.Input[Optional[_builtins.str]] = None,
+            delete_jobs: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_log: pulumi.Input[Optional[_builtins.bool]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            max_concurrency: pulumi.Input[Optional[_builtins.int]] = None,
+            max_jobs: pulumi.Input[Optional[_builtins.int]] = None,
+            monitor_config_json: pulumi.Input[Optional[_builtins.str]] = None,
+            monitor_contacts_json: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace_source: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_busy_workers: pulumi.Input[Optional[_builtins.bool]] = None) -> 'AppGroup':
         """
         Get an existing AppGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

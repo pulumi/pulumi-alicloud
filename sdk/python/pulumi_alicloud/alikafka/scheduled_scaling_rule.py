@@ -27,9 +27,9 @@ class ScheduledScalingRuleArgs:
                  rule_name: pulumi.Input[_builtins.str],
                  schedule_type: pulumi.Input[_builtins.str],
                  time_zone: pulumi.Input[_builtins.str],
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScheduledScalingRule resource.
 
@@ -164,19 +164,19 @@ class ScheduledScalingRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the scheduled task policy. Valid values:
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatType")
-    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When `schedule_type` is `repeat`, the parameter is required. Valid values:
         -`Daily`: Daily scheduled task.
@@ -185,36 +185,36 @@ class ScheduledScalingRuleArgs:
         return pulumi.get(self, "repeat_type")
 
     @repeat_type.setter
-    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_type", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyTypes")
-    def weekly_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def weekly_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
         """
         return pulumi.get(self, "weekly_types")
 
     @weekly_types.setter
-    def weekly_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def weekly_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "weekly_types", value)
 
 
 @pulumi.input_type
 class _ScheduledScalingRuleState:
     def __init__(__self__, *,
-                 duration_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 first_scheduled_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_pub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_sub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 duration_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 first_scheduled_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_pub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_sub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ScheduledScalingRule resources.
 
@@ -259,7 +259,7 @@ class _ScheduledScalingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="durationMinutes")
-    def duration_minutes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration_minutes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration (unit: minutes) of a scheduled elastic task.
 
@@ -268,48 +268,48 @@ class _ScheduledScalingRuleState:
         return pulumi.get(self, "duration_minutes")
 
     @duration_minutes.setter
-    def duration_minutes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration_minutes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration_minutes", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the scheduled task policy. Valid values:
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="firstScheduledTime")
-    def first_scheduled_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def first_scheduled_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time when the scheduled policy starts to execute.
         """
         return pulumi.get(self, "first_scheduled_time")
 
     @first_scheduled_time.setter
-    def first_scheduled_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def first_scheduled_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "first_scheduled_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatType")
-    def repeat_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When `schedule_type` is `repeat`, the parameter is required. Valid values:
         -`Daily`: Daily scheduled task.
@@ -318,79 +318,79 @@ class _ScheduledScalingRuleState:
         return pulumi.get(self, "repeat_type")
 
     @repeat_type.setter
-    def repeat_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_type", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedPubFlow")
-    def reserved_pub_flow(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_pub_flow(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The scheduled elastic reserved production specification (unit: MB/s).
         """
         return pulumi.get(self, "reserved_pub_flow")
 
     @reserved_pub_flow.setter
-    def reserved_pub_flow(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_pub_flow(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_pub_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="reservedSubFlow")
-    def reserved_sub_flow(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def reserved_sub_flow(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The scheduled elastic reserved consumption specification (unit: MB/s).
         """
         return pulumi.get(self, "reserved_sub_flow")
 
     @reserved_sub_flow.setter
-    def reserved_sub_flow(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def reserved_sub_flow(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "reserved_sub_flow", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the scheduled policy rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleType")
-    def schedule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule type. Valid values:
         """
         return pulumi.get(self, "schedule_type")
 
     @schedule_type.setter
-    def schedule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_type", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone (Coordinated Universal Time).
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="weeklyTypes")
-    def weekly_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def weekly_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The weekly types. Supports execution on multiple days. When `repeat_type` is set to `Weekly`, you need to input this parameter. Valid values: `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, `Sunday`.
         """
         return pulumi.get(self, "weekly_types")
 
     @weekly_types.setter
-    def weekly_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def weekly_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "weekly_types", value)
 
 
@@ -400,17 +400,17 @@ class ScheduledScalingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duration_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 first_scheduled_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_pub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_sub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 duration_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 first_scheduled_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_pub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_sub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Alikafka Scheduled Scaling Rule resource.
@@ -461,7 +461,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
             reserved_pub_flow=200,
             time_zone="GMT+8",
             duration_minutes=100,
-            first_scheduled_time=1769578000000,
+            first_scheduled_time=int(1769578000000),
             enable=False,
             repeat_type="Weekly",
             weekly_types=[
@@ -559,7 +559,7 @@ class ScheduledScalingRule(pulumi.CustomResource):
             reserved_pub_flow=200,
             time_zone="GMT+8",
             duration_minutes=100,
-            first_scheduled_time=1769578000000,
+            first_scheduled_time=int(1769578000000),
             enable=False,
             repeat_type="Weekly",
             weekly_types=[
@@ -599,17 +599,17 @@ class ScheduledScalingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 duration_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 first_scheduled_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 reserved_pub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 reserved_sub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 duration_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 first_scheduled_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 reserved_pub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 reserved_sub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -656,17 +656,17 @@ class ScheduledScalingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            duration_minutes: Optional[pulumi.Input[_builtins.int]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            first_scheduled_time: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_type: Optional[pulumi.Input[_builtins.str]] = None,
-            reserved_pub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-            reserved_sub_flow: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule_type: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            weekly_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ScheduledScalingRule':
+            duration_minutes: pulumi.Input[Optional[_builtins.int]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            first_scheduled_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_type: pulumi.Input[Optional[_builtins.str]] = None,
+            reserved_pub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+            reserved_sub_flow: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule_type: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            weekly_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ScheduledScalingRule':
         """
         Get an existing ScheduledScalingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

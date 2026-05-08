@@ -27,8 +27,8 @@ import * as utilities from "../utilities";
  * });
  * const auth = k8s.then(k8s => std.toset({
  *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
- *     clusterId: __key,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
+ *     clusterId: String(__key),
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
  * }) }), {}));
@@ -113,8 +113,8 @@ export interface GetClusterCredentialResult {
  * });
  * const auth = k8s.then(k8s => std.toset({
  *     input: k8s.ids,
- * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: alicloud.cs.getClusterCredential({
- *     clusterId: __key,
+ * })).then(invoke => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: alicloud.cs.getClusterCredential({
+ *     clusterId: String(__key),
  *     temporaryDurationMinutes: 60,
  *     outputFile: "my-auth-json",
  * }) }), {}));
@@ -140,9 +140,9 @@ export interface GetClusterCredentialOutputArgs {
     /**
      * File name where to save the returned KubeConfig (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
      */
-    temporaryDurationMinutes?: pulumi.Input<number>;
+    temporaryDurationMinutes?: pulumi.Input<number | undefined>;
 }

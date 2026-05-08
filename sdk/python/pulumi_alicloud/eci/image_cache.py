@@ -25,12 +25,12 @@ class ImageCacheArgs:
                  images: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  security_group_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImageCache resource.
 
@@ -112,92 +112,92 @@ class ImageCacheArgs:
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def image_cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the image cache. Default to `20`. Unit: GiB.
         """
         return pulumi.get(self, "image_cache_size")
 
     @image_cache_size.setter
-    def image_cache_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def image_cache_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "image_cache_size", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
+    def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
         """
         The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
-    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]):
+    def image_registry_credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]):
         pulumi.set(self, "image_registry_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id to cache image.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ImageCacheState:
     def __init__(__self__, *,
-                 container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImageCache resources.
 
@@ -241,146 +241,146 @@ class _ImageCacheState:
 
     @_builtins.property
     @pulumi.getter(name="containerGroupId")
-    def container_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def container_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the container group job that is used to create the image cache.
         """
         return pulumi.get(self, "container_group_id")
 
     @container_group_id.setter
-    def container_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def container_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "container_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="eipInstanceId")
-    def eip_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eip_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
         """
         return pulumi.get(self, "eip_instance_id")
 
     @eip_instance_id.setter
-    def eip_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eip_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eip_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCacheName")
-    def image_cache_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_cache_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image cache.
         """
         return pulumi.get(self, "image_cache_name")
 
     @image_cache_name.setter
-    def image_cache_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_cache_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_cache_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageCacheSize")
-    def image_cache_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def image_cache_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the image cache. Default to `20`. Unit: GiB.
         """
         return pulumi.get(self, "image_cache_size")
 
     @image_cache_size.setter
-    def image_cache_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def image_cache_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "image_cache_size", value)
 
     @_builtins.property
     @pulumi.getter(name="imageRegistryCredentials")
-    def image_registry_credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
+    def image_registry_credentials(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]:
         """
         The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
         """
         return pulumi.get(self, "image_registry_credentials")
 
     @image_registry_credentials.setter
-    def image_registry_credentials(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]):
+    def image_registry_credentials(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ImageCacheImageRegistryCredentialArgs']]]]):
         pulumi.set(self, "image_registry_credentials", value)
 
     @_builtins.property
     @pulumi.getter
-    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def images(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The images to be cached. The image name must be versioned.
         """
         return pulumi.get(self, "images")
 
     @images.setter
-    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def images(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "images", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group. You do not need to specify the same security group as the container group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the image cache.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone id to cache image.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -390,16 +390,16 @@ class ImageCache(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         An ECI Image Cache can help user to solve the time-consuming problem of image pull. For information about Alicloud ECI Image Cache and how to use it, see [What is Resource Alicloud ECI Image Cache](https://www.alibabacloud.com/help/doc-detail/146891.htm).
@@ -551,16 +551,16 @@ class ImageCache(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
-                 images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
+                 images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -600,18 +600,18 @@ class ImageCache(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            eip_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_cache_name: Optional[pulumi.Input[_builtins.str]] = None,
-            image_cache_size: Optional[pulumi.Input[_builtins.int]] = None,
-            image_registry_credentials: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
-            images: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImageCache':
+            container_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            eip_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_cache_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_cache_size: pulumi.Input[Optional[_builtins.int]] = None,
+            image_registry_credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ImageCacheImageRegistryCredentialArgs', 'ImageCacheImageRegistryCredentialArgsDict']]]]] = None,
+            images: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImageCache':
         """
         Get an existing ImageCache resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

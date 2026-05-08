@@ -57,7 +57,7 @@ import * as utilities from "../utilities";
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceStorage: output(exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min)).apply(x =>Number(x)),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
@@ -213,23 +213,23 @@ export interface ConsumerChannelState {
     /**
      * The ID of the consumer group.
      */
-    consumerGroupId?: pulumi.Input<string>;
+    consumerGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the consumer group.
      */
-    consumerGroupName?: pulumi.Input<string>;
+    consumerGroupName?: pulumi.Input<string | undefined>;
     /**
      * The password of the consumer group account. The length of the `consumerGroupPassword` is limited to `8` to `32` characters. It can contain two or more of the following characters: uppercase letters, lowercase letters, digits, and special characters.
      */
-    consumerGroupPassword?: pulumi.Input<string>;
+    consumerGroupPassword?: pulumi.Input<string | undefined>;
     /**
      * The username of the consumer group. The length of the `consumerGroupUserName` is limited to `1` to `16` characters. It can contain one or more of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
      */
-    consumerGroupUserName?: pulumi.Input<string>;
+    consumerGroupUserName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the subscription instance.
      */
-    dtsInstanceId?: pulumi.Input<string>;
+    dtsInstanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -42,7 +42,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: Number(vlanId.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -201,39 +201,39 @@ export interface TransitRouterRouteEntryState {
      * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
      * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The associating status of the Transit Router.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The description of the transit router route entry.
      */
-    transitRouterRouteEntryDescription?: pulumi.Input<string>;
+    transitRouterRouteEntryDescription?: pulumi.Input<string | undefined>;
     /**
      * The CIDR of the transit router route entry.
      */
-    transitRouterRouteEntryDestinationCidrBlock?: pulumi.Input<string>;
+    transitRouterRouteEntryDestinationCidrBlock?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route entry.
      */
-    transitRouterRouteEntryId?: pulumi.Input<string>;
+    transitRouterRouteEntryId?: pulumi.Input<string | undefined>;
     /**
      * The name of the transit router route entry.
      */
-    transitRouterRouteEntryName?: pulumi.Input<string>;
+    transitRouterRouteEntryName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router route entry next hop.
      */
-    transitRouterRouteEntryNextHopId?: pulumi.Input<string>;
+    transitRouterRouteEntryNextHopId?: pulumi.Input<string | undefined>;
     /**
      * The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
      */
-    transitRouterRouteEntryNextHopType?: pulumi.Input<string>;
+    transitRouterRouteEntryNextHopType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router route table.
      */
-    transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -246,11 +246,11 @@ export interface TransitRouterRouteEntryArgs {
      * > **NOTE:** If transitRouterRouteEntryNextHopType is `Attachment`, transitRouterRouteEntryNextHopId is required.
      * If transitRouterRouteEntryNextHopType is `BlackHole`, transitRouterRouteEntryNextHopId cannot be filled.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the transit router route entry.
      */
-    transitRouterRouteEntryDescription?: pulumi.Input<string>;
+    transitRouterRouteEntryDescription?: pulumi.Input<string | undefined>;
     /**
      * The CIDR of the transit router route entry.
      */
@@ -258,11 +258,11 @@ export interface TransitRouterRouteEntryArgs {
     /**
      * The name of the transit router route entry.
      */
-    transitRouterRouteEntryName?: pulumi.Input<string>;
+    transitRouterRouteEntryName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the transit router route entry next hop.
      */
-    transitRouterRouteEntryNextHopId?: pulumi.Input<string>;
+    transitRouterRouteEntryNextHopId?: pulumi.Input<string | undefined>;
     /**
      * The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
      */

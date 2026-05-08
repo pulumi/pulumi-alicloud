@@ -136,7 +136,7 @@ __all__ = [
 ]
 
 class AliasRoutingConfigArgsDict(TypedDict):
-    additional_version_weights: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]]
+    additional_version_weights: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]]]
     """
     A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
     """
@@ -144,7 +144,7 @@ class AliasRoutingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class AliasRoutingConfigArgs:
     def __init__(__self__, *,
-                 additional_version_weights: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]] = None):
+                 additional_version_weights: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]] additional_version_weights: A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
         """
@@ -153,14 +153,14 @@ class AliasRoutingConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="additionalVersionWeights")
-    def additional_version_weights(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]]:
+    def additional_version_weights(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]]:
         """
         A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
         """
         return pulumi.get(self, "additional_version_weights")
 
     @additional_version_weights.setter
-    def additional_version_weights(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.float]]]]):
+    def additional_version_weights(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.float]]]]):
         pulumi.set(self, "additional_version_weights", value)
 
 
@@ -243,11 +243,11 @@ class CustomDomainRouteConfigArgsDict(TypedDict):
     """
     The name of the Function Compute service that requests are routed to.
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
     """
-    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
     """
@@ -258,8 +258,8 @@ class CustomDomainRouteConfigArgs:
                  function_name: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
                  service_name: pulumi.Input[_builtins.str],
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None):
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] function_name: The name of the Function Compute function that requests are routed to.
         :param pulumi.Input[_builtins.str] path: The path that requests are routed from.
@@ -313,35 +313,35 @@ class CustomDomainRouteConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The requests of the specified HTTP methos are routed from. Valid method: GET, POST, DELETE, HEAD, PUT and PATCH. For example, "GET, HEAD" methods indicate that only requests from GET and HEAD methods are routed.
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
 
 class FunctionAsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-    on_failure: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
+    on_failure: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]]
     """
     Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
     """
-    on_success: NotRequired[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
+    on_success: NotRequired[pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]]
     """
     Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
     """
@@ -349,8 +349,8 @@ class FunctionAsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class FunctionAsyncInvokeConfigDestinationConfigArgs:
     def __init__(__self__, *,
-                 on_failure: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
-                 on_success: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
+                 on_failure: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
+                 on_success: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
         """
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
         :param pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
@@ -362,26 +362,26 @@ class FunctionAsyncInvokeConfigDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="onFailure")
-    def on_failure(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]:
+    def on_failure(self) -> pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]:
         """
         Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
         """
         return pulumi.get(self, "on_failure")
 
     @on_failure.setter
-    def on_failure(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]):
+    def on_failure(self, value: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs']]):
         pulumi.set(self, "on_failure", value)
 
     @_builtins.property
     @pulumi.getter(name="onSuccess")
-    def on_success(self) -> Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
+    def on_success(self) -> pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
         """
         Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
         """
         return pulumi.get(self, "on_success")
 
     @on_success.setter
-    def on_success(self, value: Optional[pulumi.Input['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]):
+    def on_success(self, value: pulumi.Input[Optional['FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs']]):
         pulumi.set(self, "on_success", value)
 
 
@@ -446,11 +446,11 @@ class FunctionCustomContainerConfigArgsDict(TypedDict):
     """
     The container image address.
     """
-    args: NotRequired[pulumi.Input[_builtins.str]]
+    args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The args field specifies the arguments passed to the command.
     """
-    command: NotRequired[pulumi.Input[_builtins.str]]
+    command: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The entry point of the container, which specifies the actual command run by the container.
     """
@@ -459,8 +459,8 @@ class FunctionCustomContainerConfigArgsDict(TypedDict):
 class FunctionCustomContainerConfigArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
-                 args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None):
+                 args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] image: The container image address.
         :param pulumi.Input[_builtins.str] args: The args field specifies the arguments passed to the command.
@@ -486,26 +486,26 @@ class FunctionCustomContainerConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The args field specifies the arguments passed to the command.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The entry point of the container, which specifies the actual command run by the container.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
 
@@ -518,11 +518,11 @@ class ServiceLogConfigArgsDict(TypedDict):
     """
     The project name of the Alicloud Simple Log Service.
     """
-    enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_instance_metrics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable instance level metrics.
     """
-    enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_request_metrics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable request level metrics.
     """
@@ -532,8 +532,8 @@ class ServiceLogConfigArgs:
     def __init__(__self__, *,
                  logstore: pulumi.Input[_builtins.str],
                  project: pulumi.Input[_builtins.str],
-                 enable_instance_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_request_metrics: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_instance_metrics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_request_metrics: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] logstore: The log store name of Alicloud Simple Log Service.
         :param pulumi.Input[_builtins.str] project: The project name of the Alicloud Simple Log Service.
@@ -573,26 +573,26 @@ class ServiceLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableInstanceMetrics")
-    def enable_instance_metrics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_instance_metrics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable instance level metrics.
         """
         return pulumi.get(self, "enable_instance_metrics")
 
     @enable_instance_metrics.setter
-    def enable_instance_metrics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_instance_metrics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_instance_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRequestMetrics")
-    def enable_request_metrics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_request_metrics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable request level metrics.
         """
         return pulumi.get(self, "enable_request_metrics")
 
     @enable_request_metrics.setter
-    def enable_request_metrics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_request_metrics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_request_metrics", value)
 
 
@@ -765,7 +765,7 @@ class ServiceVpcConfigArgsDict(TypedDict):
     """
     A list of vswitch IDs associated with the Function Compute Service.
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A vpc ID associated with the Function Compute Service.
     """
@@ -775,7 +775,7 @@ class ServiceVpcConfigArgs:
     def __init__(__self__, *,
                  security_group_id: pulumi.Input[_builtins.str],
                  vswitch_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] security_group_id: A security group ID associated with the Function Compute Service.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vswitch_ids: A list of vswitch IDs associated with the Function Compute Service.
@@ -812,27 +812,27 @@ class ServiceVpcConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A vpc ID associated with the Function Compute Service.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
 class V2FunctionCodeArgsDict(TypedDict):
-    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OSS bucket name of the function code package.
     """
-    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The OSS object name of the function code package.
     """
-    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    zip_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Upload the base64 encoding of the code zip package directly in the request body.
     """
@@ -840,9 +840,9 @@ class V2FunctionCodeArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCodeArgs:
     def __init__(__self__, *,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] oss_bucket_name: The OSS bucket name of the function code package.
         :param pulumi.Input[_builtins.str] oss_object_name: The OSS object name of the function code package.
@@ -857,59 +857,59 @@ class V2FunctionCodeArgs:
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS bucket name of the function code package.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossObjectName")
-    def oss_object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OSS object name of the function code package.
         """
         return pulumi.get(self, "oss_object_name")
 
     @oss_object_name.setter
-    def oss_object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zipFile")
-    def zip_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Upload the base64 encoding of the code zip package directly in the request body.
         """
         return pulumi.get(self, "zip_file")
 
     @zip_file.setter
-    def zip_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_file", value)
 
 
 class V2FunctionCustomContainerConfigArgsDict(TypedDict):
-    acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
+    acceleration_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
     """
-    args: NotRequired[pulumi.Input[_builtins.str]]
+    args: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container startup parameters.
     """
-    command: NotRequired[pulumi.Input[_builtins.str]]
+    command: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container start command, equivalent to Docker ENTRYPOINT.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
     """
-    web_server_mode: NotRequired[pulumi.Input[_builtins.bool]]
+    web_server_mode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
     """
@@ -917,11 +917,11 @@ class V2FunctionCustomContainerConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCustomContainerConfigArgs:
     def __init__(__self__, *,
-                 acceleration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 args: Optional[pulumi.Input[_builtins.str]] = None,
-                 command: Optional[pulumi.Input[_builtins.str]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_server_mode: Optional[pulumi.Input[_builtins.bool]] = None):
+                 acceleration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 args: pulumi.Input[Optional[_builtins.str]] = None,
+                 command: pulumi.Input[Optional[_builtins.str]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 web_server_mode: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] acceleration_type: Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
         :param pulumi.Input[_builtins.str] args: Container startup parameters.
@@ -942,75 +942,75 @@ class V2FunctionCustomContainerConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="accelerationType")
-    def acceleration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acceleration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Image acceleration type. The value Default is to enable acceleration and None is to disable acceleration.
         """
         return pulumi.get(self, "acceleration_type")
 
     @acceleration_type.setter
-    def acceleration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acceleration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acceleration_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def args(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container startup parameters.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def args(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def command(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container start command, equivalent to Docker ENTRYPOINT.
         """
         return pulumi.get(self, "command")
 
     @command.setter
-    def command(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="webServerMode")
-    def web_server_mode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def web_server_mode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
         """
         return pulumi.get(self, "web_server_mode")
 
     @web_server_mode.setter
-    def web_server_mode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def web_server_mode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "web_server_mode", value)
 
 
 class V2FunctionCustomDnsArgsDict(TypedDict):
-    dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgsDict']]]]
+    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]]
     """
     DNS resolver configuration parameter list. See `dns_options` below.
     """
-    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    name_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of IP addresses of DNS servers.
     """
-    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    searches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of DNS search domains.
     """
@@ -1018,9 +1018,9 @@ class V2FunctionCustomDnsArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCustomDnsArgs:
     def __init__(__self__, *,
-                 dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 searches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 dns_options: pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]] = None,
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 searches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]] dns_options: DNS resolver configuration parameter list. See `dns_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of IP addresses of DNS servers.
@@ -1035,47 +1035,47 @@ class V2FunctionCustomDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsOptions")
-    def dns_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]:
+    def dns_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]:
         """
         DNS resolver configuration parameter list. See `dns_options` below.
         """
         return pulumi.get(self, "dns_options")
 
     @dns_options.setter
-    def dns_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]):
+    def dns_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V2FunctionCustomDnsDnsOptionArgs']]]]):
         pulumi.set(self, "dns_options", value)
 
     @_builtins.property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses of DNS servers.
         """
         return pulumi.get(self, "name_servers")
 
     @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "name_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def searches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of DNS search domains.
         """
         return pulumi.get(self, "searches")
 
     @searches.setter
-    def searches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def searches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "searches", value)
 
 
 class V2FunctionCustomDnsDnsOptionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS option name.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS option value.
     """
@@ -1083,8 +1083,8 @@ class V2FunctionCustomDnsDnsOptionArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCustomDnsDnsOptionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: DNS option name.
         :param pulumi.Input[_builtins.str] value: DNS option value.
@@ -1096,51 +1096,51 @@ class V2FunctionCustomDnsDnsOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS option name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS option value.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V2FunctionCustomHealthCheckConfigArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The threshold for the number of health check failures. The system considers the check failed after the health check fails.
     """
-    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
+    http_get_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Container custom health check URL address.
     """
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Delay from container startup to initiation of health check.
     """
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Health check cycle.
     """
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
     """
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Health check timeout.
     """
@@ -1148,12 +1148,12 @@ class V2FunctionCustomHealthCheckConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCustomHealthCheckConfigArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_get_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_get_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] failure_threshold: The threshold for the number of health check failures. The system considers the check failed after the health check fails.
         :param pulumi.Input[_builtins.str] http_get_url: Container custom health check URL address.
@@ -1177,83 +1177,83 @@ class V2FunctionCustomHealthCheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold for the number of health check failures. The system considers the check failed after the health check fails.
         """
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGetUrl")
-    def http_get_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_get_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Container custom health check URL address.
         """
         return pulumi.get(self, "http_get_url")
 
     @http_get_url.setter
-    def http_get_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_get_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_get_url", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Delay from container startup to initiation of health check.
         """
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Health check cycle.
         """
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The threshold for the number of successful health checks. After the health check is reached, the system considers the check successful.
         """
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Health check timeout.
         """
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class V2FunctionCustomRuntimeConfigArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Parameters received by the start entry command.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
     """
@@ -1261,8 +1261,8 @@ class V2FunctionCustomRuntimeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionCustomRuntimeConfigArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Parameters received by the start entry command.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
@@ -1274,35 +1274,35 @@ class V2FunctionCustomRuntimeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Parameters received by the start entry command.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Custom entry commands started by Custom Runtime. When there are multiple commands in the list, they are spliced in sequence.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
 
 class V2FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-    pre_freeze: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgsDict']]
+    pre_freeze: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]]
     """
     PreFreeze function configuration. See `pre_freeze` below.
     """
-    pre_stop: NotRequired[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgsDict']]
+    pre_stop: NotRequired[pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgs']]]
     """
     PreStop function configuration. See `pre_stop` below.
     """
@@ -1310,8 +1310,8 @@ class V2FunctionInstanceLifecycleConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigArgs:
     def __init__(__self__, *,
-                 pre_freeze: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
-                 pre_stop: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None):
+                 pre_freeze: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgs']] = None,
+                 pre_stop: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgs']] = None):
         """
         :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs'] pre_freeze: PreFreeze function configuration. See `pre_freeze` below.
         :param pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop function configuration. See `pre_stop` below.
@@ -1323,35 +1323,35 @@ class V2FunctionInstanceLifecycleConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="preFreeze")
-    def pre_freeze(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]:
+    def pre_freeze(self) -> pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]:
         """
         PreFreeze function configuration. See `pre_freeze` below.
         """
         return pulumi.get(self, "pre_freeze")
 
     @pre_freeze.setter
-    def pre_freeze(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]):
+    def pre_freeze(self, value: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreFreezeArgs']]):
         pulumi.set(self, "pre_freeze", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
-    def pre_stop(self) -> Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']]:
+    def pre_stop(self) -> pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgs']]:
         """
         PreStop function configuration. See `pre_stop` below.
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input['V2FunctionInstanceLifecycleConfigPreStopArgs']]):
+    def pre_stop(self, value: pulumi.Input[Optional['V2FunctionInstanceLifecycleConfigPreStopArgs']]):
         pulumi.set(self, "pre_stop", value)
 
 
 class V2FunctionInstanceLifecycleConfigPreFreezeArgsDict(TypedDict):
-    handler: NotRequired[pulumi.Input[_builtins.str]]
+    handler: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     entry point of function.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     max running time of function.
     """
@@ -1359,8 +1359,8 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
     def __init__(__self__, *,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] handler: entry point of function.
         :param pulumi.Input[_builtins.int] timeout: max running time of function.
@@ -1372,35 +1372,35 @@ class V2FunctionInstanceLifecycleConfigPreFreezeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         entry point of function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of function.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class V2FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
-    handler: NotRequired[pulumi.Input[_builtins.str]]
+    handler: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     entry point of function.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     max running time of function.
     """
@@ -1408,8 +1408,8 @@ class V2FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
 @pulumi.input_type
 class V2FunctionInstanceLifecycleConfigPreStopArgs:
     def __init__(__self__, *,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] handler: entry point of function.
         :param pulumi.Input[_builtins.int] timeout: max running time of function.
@@ -1421,35 +1421,35 @@ class V2FunctionInstanceLifecycleConfigPreStopArgs:
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         entry point of function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         max running time of function.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
-    on_failure: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict']]
+    on_failure: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]]
     """
     Failed callback target structure See `on_failure` below.
     """
-    on_success: NotRequired[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict']]
+    on_success: NotRequired[pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]]
     """
     Successful callback target structure See `on_success` below.
     """
@@ -1457,8 +1457,8 @@ class V3AsyncInvokeConfigDestinationConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigArgs:
     def __init__(__self__, *,
-                 on_failure: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
-                 on_success: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
+                 on_failure: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']] = None,
+                 on_success: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']] = None):
         """
         :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs'] on_failure: Failed callback target structure See `on_failure` below.
         :param pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs'] on_success: Successful callback target structure See `on_success` below.
@@ -1470,31 +1470,31 @@ class V3AsyncInvokeConfigDestinationConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="onFailure")
-    def on_failure(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]:
+    def on_failure(self) -> pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]:
         """
         Failed callback target structure See `on_failure` below.
         """
         return pulumi.get(self, "on_failure")
 
     @on_failure.setter
-    def on_failure(self, value: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]):
+    def on_failure(self, value: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnFailureArgs']]):
         pulumi.set(self, "on_failure", value)
 
     @_builtins.property
     @pulumi.getter(name="onSuccess")
-    def on_success(self) -> Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
+    def on_success(self) -> pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]:
         """
         Successful callback target structure See `on_success` below.
         """
         return pulumi.get(self, "on_success")
 
     @on_success.setter
-    def on_success(self, value: Optional[pulumi.Input['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]):
+    def on_success(self, value: pulumi.Input[Optional['V3AsyncInvokeConfigDestinationConfigOnSuccessArgs']]):
         pulumi.set(self, "on_success", value)
 
 
 class V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Asynchronous call target Resource Descriptor
     """
@@ -1502,7 +1502,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailureArgsDict(TypedDict):
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] destination: Asynchronous call target Resource Descriptor
         """
@@ -1511,19 +1511,19 @@ class V3AsyncInvokeConfigDestinationConfigOnFailureArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
 
 class V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
-    destination: NotRequired[pulumi.Input[_builtins.str]]
+    destination: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Asynchronous call target Resource Descriptor
     """
@@ -1531,7 +1531,7 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccessArgsDict(TypedDict):
 @pulumi.input_type
 class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] destination: Asynchronous call target Resource Descriptor
         """
@@ -1540,23 +1540,23 @@ class V3AsyncInvokeConfigDestinationConfigOnSuccessArgs:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Asynchronous call target Resource Descriptor
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination", value)
 
 
 class V3CustomDomainAuthConfigArgsDict(TypedDict):
-    auth_info: NotRequired[pulumi.Input[_builtins.str]]
+    auth_info: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Authentication Information
     """
-    auth_type: NotRequired[pulumi.Input[_builtins.str]]
+    auth_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Authentication type. anonymous, function, or jwt.
     """
@@ -1564,8 +1564,8 @@ class V3CustomDomainAuthConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainAuthConfigArgs:
     def __init__(__self__, *,
-                 auth_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 auth_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] auth_info: Authentication Information
         :param pulumi.Input[_builtins.str] auth_type: Authentication type. anonymous, function, or jwt.
@@ -1577,39 +1577,39 @@ class V3CustomDomainAuthConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="authInfo")
-    def auth_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication Information
         """
         return pulumi.get(self, "auth_info")
 
     @auth_info.setter
-    def auth_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_info", value)
 
     @_builtins.property
     @pulumi.getter(name="authType")
-    def auth_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication type. anonymous, function, or jwt.
         """
         return pulumi.get(self, "auth_type")
 
     @auth_type.setter
-    def auth_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_type", value)
 
 
 class V3CustomDomainCertConfigArgsDict(TypedDict):
-    cert_name: NotRequired[pulumi.Input[_builtins.str]]
+    cert_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Certificate Name
     """
-    certificate: NotRequired[pulumi.Input[_builtins.str]]
+    certificate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     PEM format certificate
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Private Key in PEM format
     """
@@ -1617,9 +1617,9 @@ class V3CustomDomainCertConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainCertConfigArgs:
     def __init__(__self__, *,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cert_name: Certificate Name
         :param pulumi.Input[_builtins.str] certificate: PEM format certificate
@@ -1634,63 +1634,63 @@ class V3CustomDomainCertConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate Name
         """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PEM format certificate
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private Key in PEM format
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
 
 class V3CustomDomainCorsConfigArgsDict(TypedDict):
-    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_credentials: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
     """
-    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allow_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of allowed request headers, such as Content-Type, Authorization, etc.
     """
-    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allow_methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
     """
-    allow_origins: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    allow_origins: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
     """
-    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    expose_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of response headers that can be exposed to the browser.
     """
-    max_age: NotRequired[pulumi.Input[_builtins.int]]
+    max_age: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
     """
@@ -1698,12 +1698,12 @@ class V3CustomDomainCorsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainCorsConfigArgs:
     def __init__(__self__, *,
-                 allow_credentials: Optional[pulumi.Input[_builtins.bool]] = None,
-                 allow_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 allow_origins: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_age: Optional[pulumi.Input[_builtins.int]] = None):
+                 allow_credentials: pulumi.Input[Optional[_builtins.bool]] = None,
+                 allow_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 allow_origins: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 expose_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_age: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_credentials: Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allow_headers: List of allowed request headers, such as Content-Type, Authorization, etc.
@@ -1727,79 +1727,79 @@ class V3CustomDomainCorsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowCredentials")
-    def allow_credentials(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_credentials(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow credentials (such as Cookies, Authorization headers, etc.). When AllowCredentials is true, AllowOrigins cannot use the wildcard '*'.
         """
         return pulumi.get(self, "allow_credentials")
 
     @allow_credentials.setter
-    def allow_credentials(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_credentials(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_credentials", value)
 
     @_builtins.property
     @pulumi.getter(name="allowHeaders")
-    def allow_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed request headers, such as Content-Type, Authorization, etc.
         """
         return pulumi.get(self, "allow_headers")
 
     @allow_headers.setter
-    def allow_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="allowMethods")
-    def allow_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed HTTP methods, such as GET, POST, PUT, DELETE, etc.
         """
         return pulumi.get(self, "allow_methods")
 
     @allow_methods.setter
-    def allow_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_methods", value)
 
     @_builtins.property
     @pulumi.getter(name="allowOrigins")
-    def allow_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def allow_origins(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed origins. Supports wildcard '*' to allow all origins (when AllowCredentials is false), specific domains like 'https://example.com', or an array of multiple domains.
         """
         return pulumi.get(self, "allow_origins")
 
     @allow_origins.setter
-    def allow_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def allow_origins(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "allow_origins", value)
 
     @_builtins.property
     @pulumi.getter(name="exposeHeaders")
-    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def expose_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of response headers that can be exposed to the browser.
         """
         return pulumi.get(self, "expose_headers")
 
     @expose_headers.setter
-    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def expose_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "expose_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="maxAge")
-    def max_age(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_age(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cache time (seconds) for preflight request results. Browsers will not resend preflight requests within this time.
         """
         return pulumi.get(self, "max_age")
 
     @max_age.setter
-    def max_age(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_age(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_age", value)
 
 
 class V3CustomDomainRouteConfigArgsDict(TypedDict):
-    routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgsDict']]]]
+    routes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]]
     """
     Routing Configuration List See `routes` below.
     """
@@ -1807,7 +1807,7 @@ class V3CustomDomainRouteConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainRouteConfigArgs:
     def __init__(__self__, *,
-                 routes: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]] = None):
+                 routes: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]] routes: Routing Configuration List See `routes` below.
         """
@@ -1816,35 +1816,35 @@ class V3CustomDomainRouteConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def routes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]:
+    def routes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]:
         """
         Routing Configuration List See `routes` below.
         """
         return pulumi.get(self, "routes")
 
     @routes.setter
-    def routes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]):
+    def routes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteArgs']]]]):
         pulumi.set(self, "routes", value)
 
 
 class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
-    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    function_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Function name
     """
-    methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    methods: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of supported HTTP methods
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Route matching rule
     """
-    qualifier: NotRequired[pulumi.Input[_builtins.str]]
+    qualifier: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Version or Alias
     """
-    rewrite_config: NotRequired[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgsDict']]
+    rewrite_config: NotRequired[pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]]
     """
     Override Configuration See `rewrite_config` below.
     """
@@ -1852,11 +1852,11 @@ class V3CustomDomainRouteConfigRouteArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteArgs:
     def __init__(__self__, *,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 methods: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 qualifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 rewrite_config: Optional[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs']] = None):
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 methods: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 qualifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 rewrite_config: pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgs']] = None):
         """
         :param pulumi.Input[_builtins.str] function_name: Function name
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] methods: List of supported HTTP methods
@@ -1877,75 +1877,75 @@ class V3CustomDomainRouteConfigRouteArgs:
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function name
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def methods(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of supported HTTP methods
         """
         return pulumi.get(self, "methods")
 
     @methods.setter
-    def methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def methods(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "methods", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route matching rule
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def qualifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qualifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version or Alias
         """
         return pulumi.get(self, "qualifier")
 
     @qualifier.setter
-    def qualifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qualifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qualifier", value)
 
     @_builtins.property
     @pulumi.getter(name="rewriteConfig")
-    def rewrite_config(self) -> Optional[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]:
+    def rewrite_config(self) -> pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]:
         """
         Override Configuration See `rewrite_config` below.
         """
         return pulumi.get(self, "rewrite_config")
 
     @rewrite_config.setter
-    def rewrite_config(self, value: Optional[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]):
+    def rewrite_config(self, value: pulumi.Input[Optional['V3CustomDomainRouteConfigRouteRewriteConfigArgs']]):
         pulumi.set(self, "rewrite_config", value)
 
 
 class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
-    equal_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict']]]]
+    equal_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]]
     """
     Exact Match Rule List See `equal_rules` below.
     """
-    regex_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict']]]]
+    regex_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]]
     """
     Regular match rule list See `regex_rules` below.
     """
-    wildcard_rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict']]]]
+    wildcard_rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]]
     """
     List of wildcard matching rules See `wildcard_rules` below.
     """
@@ -1953,9 +1953,9 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
     def __init__(__self__, *,
-                 equal_rules: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]] = None,
-                 regex_rules: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]] = None,
-                 wildcard_rules: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]] = None):
+                 equal_rules: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]] = None,
+                 regex_rules: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]] = None,
+                 wildcard_rules: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]] equal_rules: Exact Match Rule List See `equal_rules` below.
         :param pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]] regex_rules: Regular match rule list See `regex_rules` below.
@@ -1970,47 +1970,47 @@ class V3CustomDomainRouteConfigRouteRewriteConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="equalRules")
-    def equal_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]:
+    def equal_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]:
         """
         Exact Match Rule List See `equal_rules` below.
         """
         return pulumi.get(self, "equal_rules")
 
     @equal_rules.setter
-    def equal_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]):
+    def equal_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs']]]]):
         pulumi.set(self, "equal_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="regexRules")
-    def regex_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]:
+    def regex_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]:
         """
         Regular match rule list See `regex_rules` below.
         """
         return pulumi.get(self, "regex_rules")
 
     @regex_rules.setter
-    def regex_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]):
+    def regex_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs']]]]):
         pulumi.set(self, "regex_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="wildcardRules")
-    def wildcard_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]:
+    def wildcard_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]:
         """
         List of wildcard matching rules See `wildcard_rules` below.
         """
         return pulumi.get(self, "wildcard_rules")
 
     @wildcard_rules.setter
-    def wildcard_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]):
+    def wildcard_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs']]]]):
         pulumi.set(self, "wildcard_rules", value)
 
 
 class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict(TypedDict):
-    match: NotRequired[pulumi.Input[_builtins.str]]
+    match: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matching Rules
     """
-    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    replacement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Replace Rules
     """
@@ -2018,8 +2018,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
     def __init__(__self__, *,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 replacement: Optional[pulumi.Input[_builtins.str]] = None):
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 replacement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match: Matching Rules
         :param pulumi.Input[_builtins.str] replacement: Replace Rules
@@ -2031,35 +2031,35 @@ class V3CustomDomainRouteConfigRouteRewriteConfigEqualRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matching Rules
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def replacement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replacement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replace Rules
         """
         return pulumi.get(self, "replacement")
 
     @replacement.setter
-    def replacement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replacement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replacement", value)
 
 
 class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict(TypedDict):
-    match: NotRequired[pulumi.Input[_builtins.str]]
+    match: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matching Rules
     """
-    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    replacement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Replace Rules
     """
@@ -2067,8 +2067,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
     def __init__(__self__, *,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 replacement: Optional[pulumi.Input[_builtins.str]] = None):
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 replacement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match: Matching Rules
         :param pulumi.Input[_builtins.str] replacement: Replace Rules
@@ -2080,35 +2080,35 @@ class V3CustomDomainRouteConfigRouteRewriteConfigRegexRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matching Rules
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def replacement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replacement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replace Rules
         """
         return pulumi.get(self, "replacement")
 
     @replacement.setter
-    def replacement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replacement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replacement", value)
 
 
 class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict(TypedDict):
-    match: NotRequired[pulumi.Input[_builtins.str]]
+    match: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matching Rules
     """
-    replacement: NotRequired[pulumi.Input[_builtins.str]]
+    replacement: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Replace Rules
     """
@@ -2116,8 +2116,8 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgsDict(TypedDict)
 @pulumi.input_type
 class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
     def __init__(__self__, *,
-                 match: Optional[pulumi.Input[_builtins.str]] = None,
-                 replacement: Optional[pulumi.Input[_builtins.str]] = None):
+                 match: pulumi.Input[Optional[_builtins.str]] = None,
+                 replacement: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] match: Matching Rules
         :param pulumi.Input[_builtins.str] replacement: Replace Rules
@@ -2129,39 +2129,39 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def match(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matching Rules
         """
         return pulumi.get(self, "match")
 
     @match.setter
-    def match(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match", value)
 
     @_builtins.property
     @pulumi.getter
-    def replacement(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replacement(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replace Rules
         """
         return pulumi.get(self, "replacement")
 
     @replacement.setter
-    def replacement(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replacement(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replacement", value)
 
 
 class V3CustomDomainTlsConfigArgsDict(TypedDict):
-    cipher_suites: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    cipher_suites: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of TLS cipher suites
     """
-    max_version: NotRequired[pulumi.Input[_builtins.str]]
+    max_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
     """
-    min_version: NotRequired[pulumi.Input[_builtins.str]]
+    min_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
     """
@@ -2169,9 +2169,9 @@ class V3CustomDomainTlsConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainTlsConfigArgs:
     def __init__(__self__, *,
-                 cipher_suites: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 max_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cipher_suites: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 max_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cipher_suites: List of TLS cipher suites
         :param pulumi.Input[_builtins.str] max_version: The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
@@ -2186,43 +2186,43 @@ class V3CustomDomainTlsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="cipherSuites")
-    def cipher_suites(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def cipher_suites(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of TLS cipher suites
         """
         return pulumi.get(self, "cipher_suites")
 
     @cipher_suites.setter
-    def cipher_suites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def cipher_suites(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "cipher_suites", value)
 
     @_builtins.property
     @pulumi.getter(name="maxVersion")
-    def max_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def max_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum version of TLS. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "max_version")
 
     @max_version.setter
-    def max_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def max_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "max_version", value)
 
     @_builtins.property
     @pulumi.getter(name="minVersion")
-    def min_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TLS minimum version number. Enumeration values: TLSv1.3, TLSv1.2, TLSv1.1, TLSv1.0
         """
         return pulumi.get(self, "min_version")
 
     @min_version.setter
-    def min_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_version", value)
 
 
 class V3CustomDomainWafConfigArgsDict(TypedDict):
-    enable_waf: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_waf: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable WAF protection
     """
@@ -2230,7 +2230,7 @@ class V3CustomDomainWafConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3CustomDomainWafConfigArgs:
     def __init__(__self__, *,
-                 enable_waf: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_waf: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_waf: Enable WAF protection
         """
@@ -2239,31 +2239,31 @@ class V3CustomDomainWafConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableWaf")
-    def enable_waf(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_waf(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable WAF protection
         """
         return pulumi.get(self, "enable_waf")
 
     @enable_waf.setter
-    def enable_waf(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_waf(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_waf", value)
 
 
 class V3FunctionCodeArgsDict(TypedDict):
-    checksum: NotRequired[pulumi.Input[_builtins.str]]
+    checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CRC-64 value of the function code package.
     """
-    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the OSS Bucket that stores the function code ZIP package.
     """
-    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the OSS Object that stores the function code ZIP package.
     """
-    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    zip_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Base 64 encoding of the function code ZIP package.
     """
@@ -2271,10 +2271,10 @@ class V3FunctionCodeArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCodeArgs:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] checksum: The CRC-64 value of the function code package.
         :param pulumi.Input[_builtins.str] oss_bucket_name: The name of the OSS Bucket that stores the function code ZIP package.
@@ -2292,87 +2292,87 @@ class V3FunctionCodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CRC-64 value of the function code package.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS Bucket that stores the function code ZIP package.
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossObjectName")
-    def oss_object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the OSS Object that stores the function code ZIP package.
         """
         return pulumi.get(self, "oss_object_name")
 
     @oss_object_name.setter
-    def oss_object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zipFile")
-    def zip_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Base 64 encoding of the function code ZIP package.
         """
         return pulumi.get(self, "zip_file")
 
     @zip_file.setter
-    def zip_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_file", value)
 
 
 class V3FunctionCustomContainerConfigArgsDict(TypedDict):
-    acceleration_info: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgsDict']]
+    acceleration_info: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgs']]]
     """
     (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
     """
-    acceleration_type: NotRequired[pulumi.Input[_builtins.str]]
+    acceleration_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
     """
-    acr_instance_id: NotRequired[pulumi.Input[_builtins.str]]
+    acr_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Container startup parameters.
     """
-    entrypoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    entrypoints: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Container start command.
     """
-    health_check_config: NotRequired[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgsDict']]
+    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]]
     """
     Function custom health check configuration See `health_check_config` below.
     """
-    image: NotRequired[pulumi.Input[_builtins.str]]
+    image: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The container Image address.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The listening port of the HTTP Server when the custom container runs.
     """
-    resolved_image_uri: NotRequired[pulumi.Input[_builtins.str]]
+    resolved_image_uri: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
     """
@@ -2380,15 +2380,15 @@ class V3FunctionCustomContainerConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCustomContainerConfigArgs:
     def __init__(__self__, *,
-                 acceleration_info: Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']] = None,
-                 acceleration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 acr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 entrypoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 health_check_config: Optional[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs']] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 resolved_image_uri: Optional[pulumi.Input[_builtins.str]] = None):
+                 acceleration_info: pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgs']] = None,
+                 acceleration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 acr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 entrypoints: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 health_check_config: pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 resolved_image_uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs'] acceleration_info: (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         :param pulumi.Input[_builtins.str] acceleration_type: Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
@@ -2431,117 +2431,117 @@ class V3FunctionCustomContainerConfigArgs:
     @_builtins.property
     @pulumi.getter(name="accelerationInfo")
     @_utilities.deprecated("""Field 'acceleration_info' has been deprecated from provider version 1.228.0. Image Acceleration Information (Obsolete)""")
-    def acceleration_info(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']]:
+    def acceleration_info(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgs']]:
         """
         (Deprecated since v1.242.0) Image Acceleration Information (Obsolete)
         """
         return pulumi.get(self, "acceleration_info")
 
     @acceleration_info.setter
-    def acceleration_info(self, value: Optional[pulumi.Input['V3FunctionCustomContainerConfigAccelerationInfoArgs']]):
+    def acceleration_info(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigAccelerationInfoArgs']]):
         pulumi.set(self, "acceleration_info", value)
 
     @_builtins.property
     @pulumi.getter(name="accelerationType")
     @_utilities.deprecated("""Field 'acceleration_type' has been deprecated from provider version 1.228.0. Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)""")
-    def acceleration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acceleration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable Image acceleration. Default: The Default value, indicating that image acceleration is enabled. None: indicates that image acceleration is disabled. (Obsolete)
         """
         return pulumi.get(self, "acceleration_type")
 
     @acceleration_type.setter
-    def acceleration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acceleration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acceleration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="acrInstanceId")
     @_utilities.deprecated("""Field 'acr_instance_id' has been deprecated from provider version 1.228.0. ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)""")
-    def acr_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ACR Enterprise version Image Repository ID, which must be entered when using ACR Enterprise version image. (Obsolete)
         """
         return pulumi.get(self, "acr_instance_id")
 
     @acr_instance_id.setter
-    def acr_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container startup parameters.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def entrypoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def entrypoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Container start command.
         """
         return pulumi.get(self, "entrypoints")
 
     @entrypoints.setter
-    def entrypoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def entrypoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "entrypoints", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConfig")
-    def health_check_config(self) -> Optional[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]:
+    def health_check_config(self) -> pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]:
         """
         Function custom health check configuration See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
     @health_check_config.setter
-    def health_check_config(self, value: Optional[pulumi.Input['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]):
+    def health_check_config(self, value: pulumi.Input[Optional['V3FunctionCustomContainerConfigHealthCheckConfigArgs']]):
         pulumi.set(self, "health_check_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The container Image address.
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port of the HTTP Server when the custom container runs.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="resolvedImageUri")
-    def resolved_image_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resolved_image_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The actual digest version of the deployed Image. The code version specified by this digest is used when the function starts.
         """
         return pulumi.get(self, "resolved_image_uri")
 
     @resolved_image_uri.setter
-    def resolved_image_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resolved_image_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resolved_image_uri", value)
 
 
 class V3FunctionCustomContainerConfigAccelerationInfoArgsDict(TypedDict):
-    status: NotRequired[pulumi.Input[_builtins.str]]
+    status: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Image Acceleration Status (Deprecated)
     """
@@ -2549,7 +2549,7 @@ class V3FunctionCustomContainerConfigAccelerationInfoArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCustomContainerConfigAccelerationInfoArgs:
     def __init__(__self__, *,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] status: Image Acceleration Status (Deprecated)
         """
@@ -2562,34 +2562,34 @@ class V3FunctionCustomContainerConfigAccelerationInfoArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'status' has been deprecated from provider version 1.228.0. Image Acceleration Status (Deprecated)""")
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Image Acceleration Status (Deprecated)
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 class V3FunctionCustomContainerConfigHealthCheckConfigArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    http_get_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_get_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_get_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get_url is not None:
@@ -2605,69 +2605,69 @@ class V3FunctionCustomContainerConfigHealthCheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGetUrl")
-    def http_get_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_get_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "http_get_url")
 
     @http_get_url.setter
-    def http_get_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_get_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_get_url", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class V3FunctionCustomDnsArgsDict(TypedDict):
-    dns_options: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgsDict']]]]
+    dns_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]]
     """
     List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
     """
-    name_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    name_servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     IP Address List of DNS servers
     """
-    searches: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    searches: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     DNS search domain list
     """
@@ -2675,9 +2675,9 @@ class V3FunctionCustomDnsArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCustomDnsArgs:
     def __init__(__self__, *,
-                 dns_options: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 searches: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 dns_options: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]] = None,
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 searches: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]] dns_options: List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: IP Address List of DNS servers
@@ -2692,47 +2692,47 @@ class V3FunctionCustomDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsOptions")
-    def dns_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]:
+    def dns_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]:
         """
         List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required. See `dns_options` below.
         """
         return pulumi.get(self, "dns_options")
 
     @dns_options.setter
-    def dns_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]):
+    def dns_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionCustomDnsDnsOptionArgs']]]]):
         pulumi.set(self, "dns_options", value)
 
     @_builtins.property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP Address List of DNS servers
         """
         return pulumi.get(self, "name_servers")
 
     @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "name_servers", value)
 
     @_builtins.property
     @pulumi.getter
-    def searches(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def searches(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         DNS search domain list
         """
         return pulumi.get(self, "searches")
 
     @searches.setter
-    def searches(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def searches(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "searches", value)
 
 
 class V3FunctionCustomDnsDnsOptionArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configuration Item Name
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Configuration Item Value
     """
@@ -2740,8 +2740,8 @@ class V3FunctionCustomDnsDnsOptionArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCustomDnsDnsOptionArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: Configuration Item Name
         :param pulumi.Input[_builtins.str] value: Configuration Item Value
@@ -2753,43 +2753,43 @@ class V3FunctionCustomDnsDnsOptionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration Item Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Configuration Item Value
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class V3FunctionCustomRuntimeConfigArgsDict(TypedDict):
-    args: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    args: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Instance startup parameters.
     """
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Instance start command.
     """
-    health_check_config: NotRequired[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict']]
+    health_check_config: NotRequired[pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]]
     """
     Function custom health check configuration. See `health_check_config` below.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The listening port of the HTTP Server.
     """
@@ -2797,10 +2797,10 @@ class V3FunctionCustomRuntimeConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionCustomRuntimeConfigArgs:
     def __init__(__self__, *,
-                 args: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 health_check_config: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 args: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 health_check_config: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] args: Instance startup parameters.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] commands: Instance start command.
@@ -2818,70 +2818,70 @@ class V3FunctionCustomRuntimeConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def args(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance startup parameters.
         """
         return pulumi.get(self, "args")
 
     @args.setter
-    def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def args(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "args", value)
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Instance start command.
         """
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter(name="healthCheckConfig")
-    def health_check_config(self) -> Optional[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]:
+    def health_check_config(self) -> pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]:
         """
         Function custom health check configuration. See `health_check_config` below.
         """
         return pulumi.get(self, "health_check_config")
 
     @health_check_config.setter
-    def health_check_config(self, value: Optional[pulumi.Input['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]):
+    def health_check_config(self, value: pulumi.Input[Optional['V3FunctionCustomRuntimeConfigHealthCheckConfigArgs']]):
         pulumi.set(self, "health_check_config", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The listening port of the HTTP Server.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
 class V3FunctionCustomRuntimeConfigHealthCheckConfigArgsDict(TypedDict):
-    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    http_get_url: NotRequired[pulumi.Input[_builtins.str]]
-    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    failure_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    http_get_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    initial_delay_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    period_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    success_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    timeout_seconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
 
 @pulumi.input_type
 class V3FunctionCustomRuntimeConfigHealthCheckConfigArgs:
     def __init__(__self__, *,
-                 failure_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_get_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 initial_delay_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 success_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
+                 failure_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_get_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 initial_delay_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 success_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None):
         if failure_threshold is not None:
             pulumi.set(__self__, "failure_threshold", failure_threshold)
         if http_get_url is not None:
@@ -2897,65 +2897,65 @@ class V3FunctionCustomRuntimeConfigHealthCheckConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="failureThreshold")
-    def failure_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def failure_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "failure_threshold")
 
     @failure_threshold.setter
-    def failure_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def failure_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "failure_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="httpGetUrl")
-    def http_get_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_get_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "http_get_url")
 
     @http_get_url.setter
-    def http_get_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_get_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_get_url", value)
 
     @_builtins.property
     @pulumi.getter(name="initialDelaySeconds")
-    def initial_delay_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def initial_delay_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "initial_delay_seconds")
 
     @initial_delay_seconds.setter
-    def initial_delay_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def initial_delay_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "initial_delay_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="periodSeconds")
-    def period_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "period_seconds")
 
     @period_seconds.setter
-    def period_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="successThreshold")
-    def success_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def success_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "success_threshold")
 
     @success_threshold.setter
-    def success_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def success_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "success_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutSeconds")
-    def timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "timeout_seconds")
 
     @timeout_seconds.setter
-    def timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_seconds", value)
 
 
 class V3FunctionGpuConfigArgsDict(TypedDict):
-    gpu_memory_size: NotRequired[pulumi.Input[_builtins.int]]
+    gpu_memory_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     GPU memory specification, unit: MB, multiple of 1024MB
     """
-    gpu_type: NotRequired[pulumi.Input[_builtins.str]]
+    gpu_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     GPU card architecture.
     - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
@@ -2966,8 +2966,8 @@ class V3FunctionGpuConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionGpuConfigArgs:
     def __init__(__self__, *,
-                 gpu_memory_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 gpu_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 gpu_memory_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 gpu_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] gpu_memory_size: GPU memory specification, unit: MB, multiple of 1024MB
         :param pulumi.Input[_builtins.str] gpu_type: GPU card architecture.
@@ -2982,19 +2982,19 @@ class V3FunctionGpuConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="gpuMemorySize")
-    def gpu_memory_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gpu_memory_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         GPU memory specification, unit: MB, multiple of 1024MB
         """
         return pulumi.get(self, "gpu_memory_size")
 
     @gpu_memory_size.setter
-    def gpu_memory_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gpu_memory_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gpu_memory_size", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuType")
-    def gpu_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gpu_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         GPU card architecture.
         - fc.gpu.tesla.1 indicates the type of the Tesla Architecture Series card of the GPU instance (the same as the NVIDIA T4 card type).
@@ -3004,16 +3004,16 @@ class V3FunctionGpuConfigArgs:
         return pulumi.get(self, "gpu_type")
 
     @gpu_type.setter
-    def gpu_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gpu_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gpu_type", value)
 
 
 class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
-    initializer: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgsDict']]
+    initializer: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgs']]]
     """
     Initializer handler method configuration See `initializer` below.
     """
-    pre_stop: NotRequired[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgsDict']]
+    pre_stop: NotRequired[pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgs']]]
     """
     PreStop handler method configuration See `pre_stop` below.
     """
@@ -3021,8 +3021,8 @@ class V3FunctionInstanceLifecycleConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigArgs:
     def __init__(__self__, *,
-                 initializer: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs']] = None,
-                 pre_stop: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs']] = None):
+                 initializer: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgs']] = None,
+                 pre_stop: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgs']] = None):
         """
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs'] initializer: Initializer handler method configuration See `initializer` below.
         :param pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs'] pre_stop: PreStop handler method configuration See `pre_stop` below.
@@ -3034,36 +3034,36 @@ class V3FunctionInstanceLifecycleConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def initializer(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs']]:
+    def initializer(self) -> pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgs']]:
         """
         Initializer handler method configuration See `initializer` below.
         """
         return pulumi.get(self, "initializer")
 
     @initializer.setter
-    def initializer(self, value: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigInitializerArgs']]):
+    def initializer(self, value: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigInitializerArgs']]):
         pulumi.set(self, "initializer", value)
 
     @_builtins.property
     @pulumi.getter(name="preStop")
-    def pre_stop(self) -> Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs']]:
+    def pre_stop(self) -> pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgs']]:
         """
         PreStop handler method configuration See `pre_stop` below.
         """
         return pulumi.get(self, "pre_stop")
 
     @pre_stop.setter
-    def pre_stop(self, value: Optional[pulumi.Input['V3FunctionInstanceLifecycleConfigPreStopArgs']]):
+    def pre_stop(self, value: pulumi.Input[Optional['V3FunctionInstanceLifecycleConfigPreStopArgs']]):
         pulumi.set(self, "pre_stop", value)
 
 
 class V3FunctionInstanceLifecycleConfigInitializerArgsDict(TypedDict):
-    commands: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-    handler: NotRequired[pulumi.Input[_builtins.str]]
+    commands: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    handler: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Function Handler: the call entry for the function compute system to run your function.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum running time of the function, in seconds.
     """
@@ -3071,9 +3071,9 @@ class V3FunctionInstanceLifecycleConfigInitializerArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigInitializerArgs:
     def __init__(__self__, *,
-                 commands: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 commands: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.int] timeout: The maximum running time of the function, in seconds.
@@ -3087,44 +3087,44 @@ class V3FunctionInstanceLifecycleConfigInitializerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commands(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def commands(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "commands")
 
     @commands.setter
-    def commands(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def commands(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "commands", value)
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Handler: the call entry for the function compute system to run your function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum running time of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class V3FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
-    handler: NotRequired[pulumi.Input[_builtins.str]]
+    handler: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Function Handler: the call entry for the function compute system to run your function.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum running time of the function, in seconds.
     """
@@ -3132,8 +3132,8 @@ class V3FunctionInstanceLifecycleConfigPreStopArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionInstanceLifecycleConfigPreStopArgs:
     def __init__(__self__, *,
-                 handler: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 handler: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] handler: Function Handler: the call entry for the function compute system to run your function.
         :param pulumi.Input[_builtins.int] timeout: The maximum running time of the function, in seconds.
@@ -3145,39 +3145,39 @@ class V3FunctionInstanceLifecycleConfigPreStopArgs:
 
     @_builtins.property
     @pulumi.getter
-    def handler(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def handler(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Function Handler: the call entry for the function compute system to run your function.
         """
         return pulumi.get(self, "handler")
 
     @handler.setter
-    def handler(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def handler(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "handler", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum running time of the function, in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class V3FunctionInvocationRestrictionArgsDict(TypedDict):
-    disable: NotRequired[pulumi.Input[_builtins.bool]]
+    disable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether invocation is disabled
     """
-    last_modified_time: NotRequired[pulumi.Input[_builtins.str]]
+    last_modified_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Last time the function was Updated
     """
-    reason: NotRequired[pulumi.Input[_builtins.str]]
+    reason: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Disable Reason
     """
@@ -3185,9 +3185,9 @@ class V3FunctionInvocationRestrictionArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionInvocationRestrictionArgs:
     def __init__(__self__, *,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_modified_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 reason: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_modified_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 reason: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] disable: Whether invocation is disabled
         :param pulumi.Input[_builtins.str] last_modified_time: Last time the function was Updated
@@ -3202,59 +3202,59 @@ class V3FunctionInvocationRestrictionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether invocation is disabled
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModifiedTime")
-    def last_modified_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last time the function was Updated
         """
         return pulumi.get(self, "last_modified_time")
 
     @last_modified_time.setter
-    def last_modified_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Disable Reason
         """
         return pulumi.get(self, "reason")
 
     @reason.setter
-    def reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reason", value)
 
 
 class V3FunctionLogConfigArgsDict(TypedDict):
-    enable_instance_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_instance_metrics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
     """
-    enable_request_metrics: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_request_metrics: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
     """
-    log_begin_rule: NotRequired[pulumi.Input[_builtins.str]]
+    log_begin_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Log Line First Matching Rules
     """
-    logstore: NotRequired[pulumi.Input[_builtins.str]]
+    logstore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Logstore name of log service.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the log service Project.
     """
@@ -3262,11 +3262,11 @@ class V3FunctionLogConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionLogConfigArgs:
     def __init__(__self__, *,
-                 enable_instance_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_request_metrics: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_begin_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 logstore: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_instance_metrics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_request_metrics: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_begin_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 logstore: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_instance_metrics: After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
         :param pulumi.Input[_builtins.bool] enable_request_metrics: After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
@@ -3287,75 +3287,75 @@ class V3FunctionLogConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableInstanceMetrics")
-    def enable_instance_metrics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_instance_metrics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         After this feature is enabled, you can view core metrics such as instance-level CPU usage, memory usage, instance network status, and the number of requests within an instance. false: The default value, which means that instance-level metrics are turned off. true: indicates that instance-level metrics are enabled.
         """
         return pulumi.get(self, "enable_instance_metrics")
 
     @enable_instance_metrics.setter
-    def enable_instance_metrics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_instance_metrics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_instance_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="enableRequestMetrics")
-    def enable_request_metrics(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_request_metrics(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         After this function is enabled, you can view the time and memory consumed by a call to all functions under this service. false: indicates that request-level metrics are turned off. true: The default value, indicating that request-level metrics are enabled.
         """
         return pulumi.get(self, "enable_request_metrics")
 
     @enable_request_metrics.setter
-    def enable_request_metrics(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_request_metrics(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_request_metrics", value)
 
     @_builtins.property
     @pulumi.getter(name="logBeginRule")
-    def log_begin_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_begin_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log Line First Matching Rules
         """
         return pulumi.get(self, "log_begin_rule")
 
     @log_begin_rule.setter
-    def log_begin_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_begin_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_begin_rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def logstore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logstore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Logstore name of log service.
         """
         return pulumi.get(self, "logstore")
 
     @logstore.setter
-    def logstore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logstore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logstore", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the log service Project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
 
 class V3FunctionNasConfigArgsDict(TypedDict):
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group ID
     """
-    mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgsDict']]]]
+    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]]
     """
     Mount point list See `mount_points` below.
     """
-    user_id: NotRequired[pulumi.Input[_builtins.int]]
+    user_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Account ID
     """
@@ -3363,9 +3363,9 @@ class V3FunctionNasConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionNasConfigArgs:
     def __init__(__self__, *,
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] group_id: Group ID
         :param pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]] mount_points: Mount point list See `mount_points` below.
@@ -3380,48 +3380,48 @@ class V3FunctionNasConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]:
+    def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]:
         """
         Mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
     @mount_points.setter
-    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]):
+    def mount_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionNasConfigMountPointArgs']]]]):
         pulumi.set(self, "mount_points", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Account ID
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "user_id", value)
 
 
 class V3FunctionNasConfigMountPointArgsDict(TypedDict):
-    enable_tls: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_tls: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
     """
-    mount_dir: NotRequired[pulumi.Input[_builtins.str]]
-    server_addr: NotRequired[pulumi.Input[_builtins.str]]
+    mount_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    server_addr: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     NAS server address
     """
@@ -3429,9 +3429,9 @@ class V3FunctionNasConfigMountPointArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionNasConfigMountPointArgs:
     def __init__(__self__, *,
-                 enable_tls: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mount_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_addr: Optional[pulumi.Input[_builtins.str]] = None):
+                 enable_tls: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mount_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_addr: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_tls: Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
         :param pulumi.Input[_builtins.str] server_addr: NAS server address
@@ -3445,40 +3445,40 @@ class V3FunctionNasConfigMountPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableTls")
-    def enable_tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
         """
         return pulumi.get(self, "enable_tls")
 
     @enable_tls.setter
-    def enable_tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_tls", value)
 
     @_builtins.property
     @pulumi.getter(name="mountDir")
-    def mount_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_dir")
 
     @mount_dir.setter
-    def mount_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="serverAddr")
-    def server_addr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_addr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NAS server address
         """
         return pulumi.get(self, "server_addr")
 
     @server_addr.setter
-    def server_addr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_addr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_addr", value)
 
 
 class V3FunctionOssMountConfigArgsDict(TypedDict):
-    mount_points: NotRequired[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgsDict']]]]
+    mount_points: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]]
     """
     OSS mount point list See `mount_points` below.
     """
@@ -3486,7 +3486,7 @@ class V3FunctionOssMountConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionOssMountConfigArgs:
     def __init__(__self__, *,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]] = None):
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]] mount_points: OSS mount point list See `mount_points` below.
         """
@@ -3495,32 +3495,32 @@ class V3FunctionOssMountConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]:
+    def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]:
         """
         OSS mount point list See `mount_points` below.
         """
         return pulumi.get(self, "mount_points")
 
     @mount_points.setter
-    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]):
+    def mount_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['V3FunctionOssMountConfigMountPointArgs']]]]):
         pulumi.set(self, "mount_points", value)
 
 
 class V3FunctionOssMountConfigMountPointArgsDict(TypedDict):
-    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OSS Bucket name
     """
-    bucket_path: NotRequired[pulumi.Input[_builtins.str]]
+    bucket_path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Path of the mounted OSS Bucket
     """
-    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    endpoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     OSS access endpoint
     """
-    mount_dir: NotRequired[pulumi.Input[_builtins.str]]
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    mount_dir: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Read-only
     """
@@ -3528,11 +3528,11 @@ class V3FunctionOssMountConfigMountPointArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionOssMountConfigMountPointArgs:
     def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] bucket_name: OSS Bucket name
         :param pulumi.Input[_builtins.str] bucket_path: Path of the mounted OSS Bucket
@@ -3552,68 +3552,68 @@ class V3FunctionOssMountConfigMountPointArgs:
 
     @_builtins.property
     @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS Bucket name
         """
         return pulumi.get(self, "bucket_name")
 
     @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketPath")
-    def bucket_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path of the mounted OSS Bucket
         """
         return pulumi.get(self, "bucket_path")
 
     @bucket_path.setter
-    def bucket_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSS access endpoint
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="mountDir")
-    def mount_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mount_dir")
 
     @mount_dir.setter
-    def mount_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_dir", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read-only
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
 
 class V3FunctionTracingConfigArgsDict(TypedDict):
-    params: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    params: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Tracing parameters
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tracing protocol type. Currently, only Jaeger is supported.
     """
@@ -3621,8 +3621,8 @@ class V3FunctionTracingConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionTracingConfigArgs:
     def __init__(__self__, *,
-                 params: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 params: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] params: Tracing parameters
         :param pulumi.Input[_builtins.str] type: The tracing protocol type. Currently, only Jaeger is supported.
@@ -3634,39 +3634,39 @@ class V3FunctionTracingConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def params(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tracing parameters
         """
         return pulumi.get(self, "params")
 
     @params.setter
-    def params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def params(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "params", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tracing protocol type. Currently, only Jaeger is supported.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class V3FunctionVpcConfigArgsDict(TypedDict):
-    security_group_id: NotRequired[pulumi.Input[_builtins.str]]
+    security_group_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group ID
     """
-    vpc_id: NotRequired[pulumi.Input[_builtins.str]]
+    vpc_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     VPC network ID
     """
-    vswitch_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    vswitch_ids: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Switch List
     """
@@ -3674,9 +3674,9 @@ class V3FunctionVpcConfigArgsDict(TypedDict):
 @pulumi.input_type
 class V3FunctionVpcConfigArgs:
     def __init__(__self__, *,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] security_group_id: Security group ID
         :param pulumi.Input[_builtins.str] vpc_id: VPC network ID
@@ -3691,55 +3691,55 @@ class V3FunctionVpcConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group ID
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPC network ID
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchIds")
-    def vswitch_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vswitch_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Switch List
         """
         return pulumi.get(self, "vswitch_ids")
 
     @vswitch_ids.setter
-    def vswitch_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vswitch_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vswitch_ids", value)
 
 
 class V3LayerVersionCodeArgsDict(TypedDict):
-    checksum: NotRequired[pulumi.Input[_builtins.str]]
+    checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
     """
-    oss_bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_bucket_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the OSS Bucket where the user stores the Layer Code ZIP package
     """
-    oss_object_name: NotRequired[pulumi.Input[_builtins.str]]
+    oss_object_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Name of the OSS Object where the user stores the Layer Code ZIP package
     """
-    zip_file: NotRequired[pulumi.Input[_builtins.str]]
+    zip_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Base 64 encoding of Layer Code ZIP package
     """
@@ -3747,10 +3747,10 @@ class V3LayerVersionCodeArgsDict(TypedDict):
 @pulumi.input_type
 class V3LayerVersionCodeArgs:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 oss_object_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 zip_file: Optional[pulumi.Input[_builtins.str]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 oss_object_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 zip_file: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] checksum: The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
         :param pulumi.Input[_builtins.str] oss_bucket_name: Name of the OSS Bucket where the user stores the Layer Code ZIP package
@@ -3768,75 +3768,75 @@ class V3LayerVersionCodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CRC-64 value of the code package. If checksum is provided, Function Compute checks whether the checksum of the code package is consistent with the provided checksum.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="ossBucketName")
-    def oss_bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_bucket_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the OSS Bucket where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_bucket_name")
 
     @oss_bucket_name.setter
-    def oss_bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_bucket_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_bucket_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ossObjectName")
-    def oss_object_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oss_object_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the OSS Object where the user stores the Layer Code ZIP package
         """
         return pulumi.get(self, "oss_object_name")
 
     @oss_object_name.setter
-    def oss_object_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oss_object_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oss_object_name", value)
 
     @_builtins.property
     @pulumi.getter(name="zipFile")
-    def zip_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zip_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Base 64 encoding of Layer Code ZIP package
         """
         return pulumi.get(self, "zip_file")
 
     @zip_file.setter
-    def zip_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zip_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zip_file", value)
 
 
 class V3ProvisionConfigScheduledActionArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy expiration time
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy Name
     """
-    schedule_expression: NotRequired[pulumi.Input[_builtins.str]]
+    schedule_expression: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Timing Configuration
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy effective time
     """
-    target: NotRequired[pulumi.Input[_builtins.int]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of reserved target resources
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time zone.
     """
@@ -3844,12 +3844,12 @@ class V3ProvisionConfigScheduledActionArgsDict(TypedDict):
 @pulumi.input_type
 class V3ProvisionConfigScheduledActionArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule_expression: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule_expression: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: Policy expiration time
         :param pulumi.Input[_builtins.str] name: Policy Name
@@ -3873,107 +3873,107 @@ class V3ProvisionConfigScheduledActionArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="scheduleExpression")
-    def schedule_expression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule_expression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timing Configuration
         """
         return pulumi.get(self, "schedule_expression")
 
     @schedule_expression.setter
-    def schedule_expression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule_expression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule_expression", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy effective time
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of reserved target resources
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 class V3ProvisionConfigTargetTrackingPolicyArgsDict(TypedDict):
-    end_time: NotRequired[pulumi.Input[_builtins.str]]
+    end_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy expiration time
     """
-    max_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    max_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum value of expansion
     """
-    metric_target: NotRequired[pulumi.Input[_builtins.float]]
+    metric_target: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Tracking value of the indicator
     """
-    metric_type: NotRequired[pulumi.Input[_builtins.str]]
+    metric_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
     """
-    min_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    min_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Minimum Shrinkage
     """
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy Name
     """
-    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    start_time: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Policy Effective Time
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time zone.
     """
@@ -3981,14 +3981,14 @@ class V3ProvisionConfigTargetTrackingPolicyArgsDict(TypedDict):
 @pulumi.input_type
 class V3ProvisionConfigTargetTrackingPolicyArgs:
     def __init__(__self__, *,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 metric_target: Optional[pulumi.Input[_builtins.float]] = None,
-                 metric_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 metric_target: pulumi.Input[Optional[_builtins.float]] = None,
+                 metric_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] end_time: Policy expiration time
         :param pulumi.Input[_builtins.int] max_capacity: Maximum value of expansion
@@ -4018,107 +4018,107 @@ class V3ProvisionConfigTargetTrackingPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy expiration time
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="maxCapacity")
-    def max_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum value of expansion
         """
         return pulumi.get(self, "max_capacity")
 
     @max_capacity.setter
-    def max_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="metricTarget")
-    def metric_target(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def metric_target(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Tracking value of the indicator
         """
         return pulumi.get(self, "metric_target")
 
     @metric_target.setter
-    def metric_target(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def metric_target(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "metric_target", value)
 
     @_builtins.property
     @pulumi.getter(name="metricType")
-    def metric_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Provisionedconcurrency utilization: Concurrency utilization of reserved mode instances. CPU utilization: CPU utilization. GPUMemUtilization:GPU utilization
         """
         return pulumi.get(self, "metric_type")
 
     @metric_type.setter
-    def metric_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_type", value)
 
     @_builtins.property
     @pulumi.getter(name="minCapacity")
-    def min_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum Shrinkage
         """
         return pulumi.get(self, "min_capacity")
 
     @min_capacity.setter
-    def min_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_capacity", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy Name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Policy Effective Time
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time zone.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 class V3TriggerHttpTriggerArgsDict(TypedDict):
-    url_internet: NotRequired[pulumi.Input[_builtins.str]]
+    url_internet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
     """
-    url_intranet: NotRequired[pulumi.Input[_builtins.str]]
+    url_intranet: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
     """
@@ -4126,8 +4126,8 @@ class V3TriggerHttpTriggerArgsDict(TypedDict):
 @pulumi.input_type
 class V3TriggerHttpTriggerArgs:
     def __init__(__self__, *,
-                 url_internet: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_intranet: Optional[pulumi.Input[_builtins.str]] = None):
+                 url_internet: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_intranet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] url_internet: The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
         :param pulumi.Input[_builtins.str] url_intranet: The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
@@ -4139,26 +4139,26 @@ class V3TriggerHttpTriggerArgs:
 
     @_builtins.property
     @pulumi.getter(name="urlInternet")
-    def url_internet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_internet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public domain name address. On the Internet, you can access the HTTP Trigger through the HTTP protocol or HTTPS protocol.
         """
         return pulumi.get(self, "url_internet")
 
     @url_internet.setter
-    def url_internet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_internet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_internet", value)
 
     @_builtins.property
     @pulumi.getter(name="urlIntranet")
-    def url_intranet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_intranet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private domain name address. In a VPC, you can access the HTTP Trigger through HTTP or HTTPS.
         """
         return pulumi.get(self, "url_intranet")
 
     @url_intranet.setter
-    def url_intranet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_intranet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_intranet", value)
 
 

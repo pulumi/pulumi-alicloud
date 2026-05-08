@@ -20,10 +20,10 @@ __all__ = ['BizTypeArgs', 'BizType']
 class BizTypeArgs:
     def __init__(__self__, *,
                  biz_type_name: pulumi.Input[_builtins.str],
-                 biz_type_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 cite_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_info: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_info: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BizType resource.
 
@@ -57,61 +57,61 @@ class BizTypeArgs:
 
     @_builtins.property
     @pulumi.getter(name="bizTypeImport")
-    def biz_type_import(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type_import(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the existing business scenario that was imported from when the business scenario was created.
         """
         return pulumi.get(self, "biz_type_import")
 
     @biz_type_import.setter
-    def biz_type_import(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type_import(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type_import", value)
 
     @_builtins.property
     @pulumi.getter(name="citeTemplate")
-    def cite_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cite_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
         """
         return pulumi.get(self, "cite_template")
 
     @cite_template.setter
-    def cite_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cite_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cite_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the business scenario defined by the customer, which is a combination of Chinese and English, numbers, and underscores, and cannot exceed 32 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="industryInfo")
-    def industry_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The industry classification. Valid values: Social-Registration information-Profile picture Social-Registration information-Nickname Social-Registration information-Bio Social-Instant messaging-Chat Social-Instant messaging-Group chat Social-Instant messaging-Chat room Social-Forums&Communities-Post Social-Forums&Communities-Comment Social-Forums&Communities-Tag Social-Forums&Communities-Recommendation Multimedia-Registration information-Profile picture Multimedia-Registration information-Nickname Multimedia-Registration information-Bio Multimedia-Instant messaging-Chat Multimedia-Live streaming-Heading Multimedia-Live streaming-Cover Multimedia-Live streaming-Content Multimedia-Live streaming-Comment Multimedia-Online storage-Storage content Multimedia-Online storage-Shared content Gaming-Registration information-Nickname Gaming-Registration information-Profile picture Gaming-Registration information-Signature Gaming-Instant messaging-Chat Gaming-Instant messaging-Group chat Gaming-Instant messaging-Chat room Gaming-Forums&Communities-Post Gaming-Forums&Communities-Comment Gaming-Forums&Communities-Tag Gaming-Forums&Communities-Recommendation New retail-Goods-Heading New retail-Goods-Description Reading-Books-Title Reading-Books-Heading Reading-Books-Cover Reading-Books-Content Media-News content-News content Education-Registration information-Nickname Education-Registration information-Profile picture Education-Registration information-Bio Gaming-Instant messaging-Chat Gaming-Forums&Communities-Post Education-Forums&Communities-Comment Education-Forums&Communities-Tag Education-Forums&Communities-Recommendation Education-Customer service-Voice call Others
         """
         return pulumi.get(self, "industry_info")
 
     @industry_info.setter
-    def industry_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_info", value)
 
 
 @pulumi.input_type
 class _BizTypeState:
     def __init__(__self__, *,
-                 biz_type_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cite_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_info: Optional[pulumi.Input[_builtins.str]] = None):
+                 biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_info: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BizType resources.
 
@@ -134,62 +134,62 @@ class _BizTypeState:
 
     @_builtins.property
     @pulumi.getter(name="bizTypeImport")
-    def biz_type_import(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type_import(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the existing business scenario that was imported from when the business scenario was created.
         """
         return pulumi.get(self, "biz_type_import")
 
     @biz_type_import.setter
-    def biz_type_import(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type_import(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type_import", value)
 
     @_builtins.property
     @pulumi.getter(name="bizTypeName")
-    def biz_type_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the business scenario defined by the customer. It can contain no more than 32 characters in English, numbers, and underscores.
         """
         return pulumi.get(self, "biz_type_name")
 
     @biz_type_name.setter
-    def biz_type_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type_name", value)
 
     @_builtins.property
     @pulumi.getter(name="citeTemplate")
-    def cite_template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def cite_template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to import the configuration of an industry template. Default value: false. Valid values: true: imports the configuration of an industry template. false: does not import the configuration of an industry template. If the value is true, you must specify the industryInfo parameter.
         """
         return pulumi.get(self, "cite_template")
 
     @cite_template.setter
-    def cite_template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def cite_template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "cite_template", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the business scenario defined by the customer, which is a combination of Chinese and English, numbers, and underscores, and cannot exceed 32 characters.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="industryInfo")
-    def industry_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def industry_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The industry classification. Valid values: Social-Registration information-Profile picture Social-Registration information-Nickname Social-Registration information-Bio Social-Instant messaging-Chat Social-Instant messaging-Group chat Social-Instant messaging-Chat room Social-Forums&Communities-Post Social-Forums&Communities-Comment Social-Forums&Communities-Tag Social-Forums&Communities-Recommendation Multimedia-Registration information-Profile picture Multimedia-Registration information-Nickname Multimedia-Registration information-Bio Multimedia-Instant messaging-Chat Multimedia-Live streaming-Heading Multimedia-Live streaming-Cover Multimedia-Live streaming-Content Multimedia-Live streaming-Comment Multimedia-Online storage-Storage content Multimedia-Online storage-Shared content Gaming-Registration information-Nickname Gaming-Registration information-Profile picture Gaming-Registration information-Signature Gaming-Instant messaging-Chat Gaming-Instant messaging-Group chat Gaming-Instant messaging-Chat room Gaming-Forums&Communities-Post Gaming-Forums&Communities-Comment Gaming-Forums&Communities-Tag Gaming-Forums&Communities-Recommendation New retail-Goods-Heading New retail-Goods-Description Reading-Books-Title Reading-Books-Heading Reading-Books-Cover Reading-Books-Content Media-News content-News content Education-Registration information-Nickname Education-Registration information-Profile picture Education-Registration information-Bio Gaming-Instant messaging-Chat Gaming-Forums&Communities-Post Education-Forums&Communities-Comment Education-Forums&Communities-Tag Education-Forums&Communities-Recommendation Education-Customer service-Voice call Others
         """
         return pulumi.get(self, "industry_info")
 
     @industry_info.setter
-    def industry_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def industry_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "industry_info", value)
 
 
@@ -199,11 +199,11 @@ class BizType(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_type_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cite_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_info: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_info: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Aligreen Biz Type resource.
@@ -310,11 +310,11 @@ class BizType(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 biz_type_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cite_template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 industry_info: Optional[pulumi.Input[_builtins.str]] = None,
+                 biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 industry_info: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -341,11 +341,11 @@ class BizType(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            biz_type_import: Optional[pulumi.Input[_builtins.str]] = None,
-            biz_type_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cite_template: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            industry_info: Optional[pulumi.Input[_builtins.str]] = None) -> 'BizType':
+            biz_type_import: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cite_template: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            industry_info: pulumi.Input[Optional[_builtins.str]] = None) -> 'BizType':
         """
         Get an existing BizType resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

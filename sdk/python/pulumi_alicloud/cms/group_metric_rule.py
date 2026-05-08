@@ -27,17 +27,17 @@ class GroupMetricRuleArgs:
                  metric_name: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  rule_id: pulumi.Input[_builtins.str],
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_groups: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GroupMetricRule resource.
 
@@ -162,158 +162,158 @@ class GroupMetricRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The abbreviation of the service name.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_groups(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm contact group.
         """
         return pulumi.get(self, "contact_groups")
 
     @contact_groups.setter
-    def contact_groups(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_groups(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimensions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dimensions that specify the resources to be associated with the alert rule.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimensions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which the alert rule is effective.
         """
         return pulumi.get(self, "effective_interval")
 
     @effective_interval.setter
-    def effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="emailSubject")
-    def email_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subject of the alert notification email.
         """
         return pulumi.get(self, "email_subject")
 
     @email_subject.setter
-    def email_subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_subject", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="noEffectiveInterval")
-    def no_effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which the alert rule is ineffective.
         """
         return pulumi.get(self, "no_effective_interval")
 
     @no_effective_interval.setter
-    def no_effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_effective_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
         """
         The information about the resource for which alerts are triggered. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
 @pulumi.input_type
 class _GroupMetricRuleState:
     def __init__(__self__, *,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_groups: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 escalations: Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_metric_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 escalations: pulumi.Input[Optional['GroupMetricRuleEscalationsArgs']] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GroupMetricRule resources.
 
@@ -375,218 +375,218 @@ class _GroupMetricRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The abbreviation of the service name.
         """
         return pulumi.get(self, "category")
 
     @category.setter
-    def category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "category", value)
 
     @_builtins.property
     @pulumi.getter(name="contactGroups")
-    def contact_groups(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_groups(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alarm contact group.
         """
         return pulumi.get(self, "contact_groups")
 
     @contact_groups.setter
-    def contact_groups(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_groups(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_groups", value)
 
     @_builtins.property
     @pulumi.getter
-    def dimensions(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dimensions(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The dimensions that specify the resources to be associated with the alert rule.
         """
         return pulumi.get(self, "dimensions")
 
     @dimensions.setter
-    def dimensions(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dimensions(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dimensions", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveInterval")
-    def effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which the alert rule is effective.
         """
         return pulumi.get(self, "effective_interval")
 
     @effective_interval.setter
-    def effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="emailSubject")
-    def email_subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subject of the alert notification email.
         """
         return pulumi.get(self, "email_subject")
 
     @email_subject.setter
-    def email_subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_subject", value)
 
     @_builtins.property
     @pulumi.getter
-    def escalations(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']]:
+    def escalations(self) -> pulumi.Input[Optional['GroupMetricRuleEscalationsArgs']]:
         """
         Alarm level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
     @escalations.setter
-    def escalations(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsArgs']]):
+    def escalations(self, value: pulumi.Input[Optional['GroupMetricRuleEscalationsArgs']]):
         pulumi.set(self, "escalations", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMetricRuleName")
-    def group_metric_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_metric_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert rule.
         """
         return pulumi.get(self, "group_metric_rule_name")
 
     @group_metric_rule_name.setter
-    def group_metric_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_metric_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_metric_rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interval at which Cloud Monitor checks whether the alert rule is triggered. Unit: seconds.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the metric.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace of the service.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter(name="noEffectiveInterval")
-    def no_effective_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def no_effective_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time period during which the alert rule is ineffective.
         """
         return pulumi.get(self, "no_effective_interval")
 
     @no_effective_interval.setter
-    def no_effective_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def no_effective_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "no_effective_interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The aggregation period of the monitoring data. Unit: seconds. The value is an integral multiple of 60. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the alert rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="silenceTime")
-    def silence_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def silence_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         """
         return pulumi.get(self, "silence_time")
 
     @silence_time.setter
-    def silence_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def silence_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "silence_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of Group Metric Rule.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]:
         """
         The information about the resource for which alerts are triggered. See `targets` below.
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GroupMetricRuleTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
@@ -596,23 +596,23 @@ class GroupMetricRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_groups: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 escalations: Optional[pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_metric_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Group Metric Rule resource.
@@ -783,23 +783,23 @@ class GroupMetricRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 category: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_groups: Optional[pulumi.Input[_builtins.str]] = None,
-                 dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 escalations: Optional[pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_metric_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None,
+                 category: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+                 dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -849,24 +849,24 @@ class GroupMetricRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            category: Optional[pulumi.Input[_builtins.str]] = None,
-            contact_groups: Optional[pulumi.Input[_builtins.str]] = None,
-            dimensions: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            email_subject: Optional[pulumi.Input[_builtins.str]] = None,
-            escalations: Optional[pulumi.Input[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_metric_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            interval: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            no_effective_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            silence_time: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
-            webhook: Optional[pulumi.Input[_builtins.str]] = None) -> 'GroupMetricRule':
+            category: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_groups: pulumi.Input[Optional[_builtins.str]] = None,
+            dimensions: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            email_subject: pulumi.Input[Optional[_builtins.str]] = None,
+            escalations: pulumi.Input[Optional[Union['GroupMetricRuleEscalationsArgs', 'GroupMetricRuleEscalationsArgsDict']]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_metric_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            interval: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            no_effective_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            silence_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GroupMetricRuleTargetArgs', 'GroupMetricRuleTargetArgsDict']]]]] = None,
+            webhook: pulumi.Input[Optional[_builtins.str]] = None) -> 'GroupMetricRule':
         """
         Get an existing GroupMetricRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

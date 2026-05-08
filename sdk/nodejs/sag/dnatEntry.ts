@@ -163,31 +163,31 @@ export interface DnatEntryState {
     /**
      * The external public IP address.when "type" is "Internet",automatically identify the external ip.
      */
-    externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string | undefined>;
     /**
      * The public port.Value range: 1 to 65535 or "any".
      */
-    externalPort?: pulumi.Input<string>;
+    externalPort?: pulumi.Input<string | undefined>;
     /**
      * The destination private IP address.
      */
-    internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string | undefined>;
     /**
      * The destination private port.Value range: 1 to 65535 or "any".
      */
-    internalPort?: pulumi.Input<string>;
+    internalPort?: pulumi.Input<string | undefined>;
     /**
      * The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * The ID of the SAG instance.
      */
-    sagId?: pulumi.Input<string>;
+    sagId?: pulumi.Input<string | undefined>;
     /**
      * The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,7 +197,7 @@ export interface DnatEntryArgs {
     /**
      * The external public IP address.when "type" is "Internet",automatically identify the external ip.
      */
-    externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string | undefined>;
     /**
      * The public port.Value range: 1 to 65535 or "any".
      */

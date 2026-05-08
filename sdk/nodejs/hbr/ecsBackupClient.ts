@@ -214,47 +214,47 @@ export interface EcsBackupClientState {
     /**
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
-    dataNetworkType?: pulumi.Input<string>;
+    dataNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
-    dataProxySetting?: pulumi.Input<string>;
+    dataProxySetting?: pulumi.Input<string | undefined>;
     /**
      * The ID of ECS instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
-    maxCpuCore?: pulumi.Input<string>;
+    maxCpuCore?: pulumi.Input<string | undefined>;
     /**
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
-    maxWorker?: pulumi.Input<string>;
+    maxWorker?: pulumi.Input<string | undefined>;
     /**
      * Custom data plane proxy server host address.
      */
-    proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string | undefined>;
     /**
      * The password of custom data plane proxy server.
      */
-    proxyPassword?: pulumi.Input<string>;
+    proxyPassword?: pulumi.Input<string | undefined>;
     /**
      * Custom data plane proxy server host port.
      */
-    proxyPort?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<string | undefined>;
     /**
      * The username of custom data plane proxy server.
      */
-    proxyUser?: pulumi.Input<string>;
+    proxyUser?: pulumi.Input<string | undefined>;
     /**
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
-    useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -264,11 +264,11 @@ export interface EcsBackupClientArgs {
     /**
      * The data plane access point type. Valid values: `CLASSIC`, `PUBLIC`, `VPC`. **NOTE:** The value of `CLASSIC` has been deprecated in v1.161.0+.
      */
-    dataNetworkType?: pulumi.Input<string>;
+    dataNetworkType?: pulumi.Input<string | undefined>;
     /**
      * The data plane proxy settings. Valid values: `CUSTOM`, `DISABLE`, `USE_CONTROL_PROXY`.
      */
-    dataProxySetting?: pulumi.Input<string>;
+    dataProxySetting?: pulumi.Input<string | undefined>;
     /**
      * The ID of ECS instance.
      */
@@ -276,33 +276,33 @@ export interface EcsBackupClientArgs {
     /**
      * The number of CPU cores used by a single backup task, 0 means no restrictions.
      */
-    maxCpuCore?: pulumi.Input<string>;
+    maxCpuCore?: pulumi.Input<string | undefined>;
     /**
      * The number of concurrent jobs for a single backup task, 0 means no restrictions.
      */
-    maxWorker?: pulumi.Input<string>;
+    maxWorker?: pulumi.Input<string | undefined>;
     /**
      * Custom data plane proxy server host address.
      */
-    proxyHost?: pulumi.Input<string>;
+    proxyHost?: pulumi.Input<string | undefined>;
     /**
      * The password of custom data plane proxy server.
      */
-    proxyPassword?: pulumi.Input<string>;
+    proxyPassword?: pulumi.Input<string | undefined>;
     /**
      * Custom data plane proxy server host port.
      */
-    proxyPort?: pulumi.Input<string>;
+    proxyPort?: pulumi.Input<string | undefined>;
     /**
      * The username of custom data plane proxy server.
      */
-    proxyUser?: pulumi.Input<string>;
+    proxyUser?: pulumi.Input<string | undefined>;
     /**
      * Status of client. Valid values: `ACTIVATED`, `STOPPED`. You can start or stop the client by specifying the status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to use the HTTPS protocol. Valid values: `true`, `false`.
      */
-    useHttps?: pulumi.Input<boolean>;
+    useHttps?: pulumi.Input<boolean | undefined>;
 }

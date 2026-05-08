@@ -167,12 +167,12 @@ def get_hybrid_monitor_datas(end: Optional[_builtins.str] = None,
         period=pulumi.get(__ret__, 'period'),
         prom_sql=pulumi.get(__ret__, 'prom_sql'),
         start=pulumi.get(__ret__, 'start'))
-def get_hybrid_monitor_datas_output(end: Optional[pulumi.Input[_builtins.str]] = None,
-                                    namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    period: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    prom_sql: Optional[pulumi.Input[_builtins.str]] = None,
-                                    start: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hybrid_monitor_datas_output(end: pulumi.Input[Optional[_builtins.str]] = None,
+                                    namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    period: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    prom_sql: pulumi.Input[Optional[_builtins.str]] = None,
+                                    start: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHybridMonitorDatasResult]:
     """
     This data source provides the Cms Hybrid Monitor Datas of the current Alibaba Cloud user.

@@ -21,8 +21,8 @@ class BackendArgs:
     def __init__(__self__, *,
                  backend_name: pulumi.Input[_builtins.str],
                  backend_type: pulumi.Input[_builtins.str],
-                 create_event_bridge_service_linked_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_event_bridge_service_linked_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Backend resource.
 
@@ -64,36 +64,36 @@ class BackendArgs:
 
     @_builtins.property
     @pulumi.getter(name="createEventBridgeServiceLinkedRole")
-    def create_event_bridge_service_linked_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_event_bridge_service_linked_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create an Event bus service association role.
         """
         return pulumi.get(self, "create_event_bridge_service_linked_role")
 
     @create_event_bridge_service_linked_role.setter
-    def create_event_bridge_service_linked_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_event_bridge_service_linked_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_event_bridge_service_linked_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Backend.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _BackendState:
     def __init__(__self__, *,
-                 backend_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_event_bridge_service_linked_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 backend_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_event_bridge_service_linked_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Backend resources.
 
@@ -113,50 +113,50 @@ class _BackendState:
 
     @_builtins.property
     @pulumi.getter(name="backendName")
-    def backend_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Backend.
         """
         return pulumi.get(self, "backend_name")
 
     @backend_name.setter
-    def backend_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_name", value)
 
     @_builtins.property
     @pulumi.getter(name="backendType")
-    def backend_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backend_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_EVENT_V3`, `FC_HTTP`, `FC_HTTP_V3`, `OSS`, `MOCK`.
         """
         return pulumi.get(self, "backend_type")
 
     @backend_type.setter
-    def backend_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backend_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backend_type", value)
 
     @_builtins.property
     @pulumi.getter(name="createEventBridgeServiceLinkedRole")
-    def create_event_bridge_service_linked_role(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def create_event_bridge_service_linked_role(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create an Event bus service association role.
         """
         return pulumi.get(self, "create_event_bridge_service_linked_role")
 
     @create_event_bridge_service_linked_role.setter
-    def create_event_bridge_service_linked_role(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def create_event_bridge_service_linked_role(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "create_event_bridge_service_linked_role", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Backend.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
@@ -166,10 +166,10 @@ class Backend(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_event_bridge_service_linked_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_event_bridge_service_linked_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Api Gateway Backend resource.
@@ -271,10 +271,10 @@ class Backend(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backend_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 backend_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_event_bridge_service_linked_role: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 backend_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_event_bridge_service_linked_role: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -302,10 +302,10 @@ class Backend(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backend_name: Optional[pulumi.Input[_builtins.str]] = None,
-            backend_type: Optional[pulumi.Input[_builtins.str]] = None,
-            create_event_bridge_service_linked_role: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None) -> 'Backend':
+            backend_name: pulumi.Input[Optional[_builtins.str]] = None,
+            backend_type: pulumi.Input[Optional[_builtins.str]] = None,
+            create_event_bridge_service_linked_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None) -> 'Backend':
         """
         Get an existing Backend resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

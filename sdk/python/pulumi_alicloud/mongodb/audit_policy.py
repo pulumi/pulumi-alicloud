@@ -21,8 +21,8 @@ class AuditPolicyArgs:
     def __init__(__self__, *,
                  audit_status: pulumi.Input[_builtins.str],
                  db_instance_id: pulumi.Input[_builtins.str],
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AuditPolicy resource.
 
@@ -64,36 +64,36 @@ class AuditPolicyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePeriod")
-    def storage_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         return pulumi.get(self, "storage_period")
 
     @storage_period.setter
-    def storage_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_period", value)
 
 
 @pulumi.input_type
 class _AuditPolicyState:
     def __init__(__self__, *,
-                 audit_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_period: Optional[pulumi.Input[_builtins.int]] = None):
+                 audit_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AuditPolicy resources.
 
@@ -113,50 +113,50 @@ class _AuditPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="auditStatus")
-    def audit_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audit_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Audit state, Valid values: `enable`, `disabled`.
         """
         return pulumi.get(self, "audit_status")
 
     @audit_status.setter
-    def audit_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audit_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audit_status", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database Instance Id
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePeriod")
-    def storage_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
         """
         return pulumi.get(self, "storage_period")
 
     @storage_period.setter
-    def storage_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_period", value)
 
 
@@ -166,10 +166,10 @@ class AuditPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 audit_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Mongodb Audit Policy resource.
@@ -327,10 +327,10 @@ class AuditPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audit_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_period: Optional[pulumi.Input[_builtins.int]] = None,
+                 audit_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -358,10 +358,10 @@ class AuditPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audit_status: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_period: Optional[pulumi.Input[_builtins.int]] = None) -> 'AuditPolicy':
+            audit_status: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_period: pulumi.Input[Optional[_builtins.int]] = None) -> 'AuditPolicy':
         """
         Get an existing AuditPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

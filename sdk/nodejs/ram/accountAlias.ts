@@ -106,7 +106,7 @@ export interface AccountAliasState {
      * The alias of the account.
      * It can be 3 to 32 characters in length and can contain lowercase letters, digits, and dashes (-).
      */
-    accountAlias?: pulumi.Input<string>;
+    accountAlias?: pulumi.Input<string | undefined>;
 }
 
 /**

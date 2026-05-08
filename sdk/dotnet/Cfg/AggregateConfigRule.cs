@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         Status = "CreateSuccess",
     ///     });
     /// 
-    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length.Apply(length =&gt; length - 1);
+    ///     var last = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts)).Length().Apply(length =&gt; length - 1);
     /// 
     ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("default", new()
     ///     {

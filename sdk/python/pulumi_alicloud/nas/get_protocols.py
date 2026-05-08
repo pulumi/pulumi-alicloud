@@ -127,9 +127,9 @@ def get_protocols(output_file: Optional[_builtins.str] = None,
         protocols=pulumi.get(__ret__, 'protocols'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_protocols_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         type: Optional[pulumi.Input[_builtins.str]] = None,
-                         zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_protocols_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         type: pulumi.Input[Optional[_builtins.str]] = None,
+                         zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProtocolsResult]:
     """
     Provide  a data source to retrieve the type of protocol used to create NAS file system.

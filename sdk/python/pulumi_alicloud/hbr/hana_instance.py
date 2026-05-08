@@ -20,17 +20,17 @@ __all__ = ['HanaInstanceArgs', 'HanaInstance']
 class HanaInstanceArgs:
     def __init__(__self__, *,
                  vault_id: pulumi.Input[_builtins.str],
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hana_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HanaInstance resource.
 
@@ -85,154 +85,154 @@ class HanaInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertSetting")
-    def alert_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
         """
         return pulumi.get(self, "alert_setting")
 
     @alert_setting.setter
-    def alert_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceIds")
-    def ecs_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ecs_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
         """
         return pulumi.get(self, "ecs_instance_ids")
 
     @ecs_instance_ids.setter
-    def ecs_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ecs_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ecs_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="hanaName")
-    def hana_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hana_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SAP HANA instance.
         """
         return pulumi.get(self, "hana_name")
 
     @hana_name.setter
-    def hana_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hana_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hana_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
-    def instance_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The instance number of the SAP HANA system.
         """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
-    def instance_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password that is used to connect with the SAP HANA database.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security identifier (SID) of the SAP HANA database.
         """
         return pulumi.get(self, "sid")
 
     @sid.setter
-    def sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sid", value)
 
     @_builtins.property
     @pulumi.getter(name="useSsl")
-    def use_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
         """
         return pulumi.get(self, "use_ssl")
 
     @use_ssl.setter
-    def use_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the SYSTEMDB database.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="validateCertificate")
-    def validate_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate_certificate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to verify the SSL certificate of the SAP HANA database.
         """
         return pulumi.get(self, "validate_certificate")
 
     @validate_certificate.setter
-    def validate_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate_certificate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate_certificate", value)
 
 
 @pulumi.input_type
 class _HanaInstanceState:
     def __init__(__self__, *,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hana_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hana_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HanaInstance resources.
 
@@ -282,170 +282,170 @@ class _HanaInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="alertSetting")
-    def alert_setting(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_setting(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert settings. Valid value: `INHERITED`, which indicates that the backup client sends alert notifications in the same way as the backup vault.
         """
         return pulumi.get(self, "alert_setting")
 
     @alert_setting.setter
-    def alert_setting(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_setting(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_setting", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceIds")
-    def ecs_instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ecs_instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of ECS instances that host the SAP HANA instance to be registered. HBR installs backup clients on the specified ECS instances.
         """
         return pulumi.get(self, "ecs_instance_ids")
 
     @ecs_instance_ids.setter
-    def ecs_instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ecs_instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ecs_instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="hanaInstanceId")
-    def hana_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hana_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the Hana Instance.
         """
         return pulumi.get(self, "hana_instance_id")
 
     @hana_instance_id.setter
-    def hana_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hana_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hana_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hanaName")
-    def hana_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hana_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the SAP HANA instance.
         """
         return pulumi.get(self, "hana_name")
 
     @hana_name.setter
-    def hana_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hana_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hana_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private or internal IP address of the host where the primary node of the SAP HANA instance resides.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceNumber")
-    def instance_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The instance number of the SAP HANA system.
         """
         return pulumi.get(self, "instance_number")
 
     @instance_number.setter
-    def instance_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password that is used to connect with the SAP HANA database.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def sid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security identifier (SID) of the SAP HANA database.
         """
         return pulumi.get(self, "sid")
 
     @sid.setter
-    def sid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sid", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="useSsl")
-    def use_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to connect with the SAP HANA database over Secure Sockets Layer (SSL).
         """
         return pulumi.get(self, "use_ssl")
 
     @use_ssl.setter
-    def use_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of the SYSTEMDB database.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="validateCertificate")
-    def validate_certificate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def validate_certificate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to verify the SSL certificate of the SAP HANA database.
         """
         return pulumi.get(self, "validate_certificate")
 
     @validate_certificate.setter
-    def validate_certificate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def validate_certificate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "validate_certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
@@ -455,18 +455,18 @@ class HanaInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hana_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Hana Instance resource.
@@ -600,18 +600,18 @@ class HanaInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hana_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sid: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sid: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -649,20 +649,20 @@ class HanaInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_setting: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hana_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hana_name: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_number: Optional[pulumi.Input[_builtins.int]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sid: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            use_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            validate_certificate: Optional[pulumi.Input[_builtins.bool]] = None,
-            vault_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HanaInstance':
+            alert_setting: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hana_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hana_name: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_number: pulumi.Input[Optional[_builtins.int]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sid: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            use_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            validate_certificate: pulumi.Input[Optional[_builtins.bool]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HanaInstance':
         """
         Get an existing HanaInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

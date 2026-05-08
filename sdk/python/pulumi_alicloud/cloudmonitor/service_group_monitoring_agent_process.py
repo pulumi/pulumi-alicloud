@@ -24,8 +24,8 @@ class ServiceGroupMonitoringAgentProcessArgs:
                  alert_configs: pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]],
                  group_id: pulumi.Input[_builtins.str],
                  process_name: pulumi.Input[_builtins.str],
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] = None):
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] = None):
         """
         The set of arguments for constructing a ServiceGroupMonitoringAgentProcess resource.
 
@@ -81,38 +81,38 @@ class ServiceGroupMonitoringAgentProcessArgs:
 
     @_builtins.property
     @pulumi.getter(name="matchExpressFilterRelation")
-    def match_express_filter_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_express_filter_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
         """
         return pulumi.get(self, "match_express_filter_relation")
 
     @match_express_filter_relation.setter
-    def match_express_filter_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_express_filter_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_express_filter_relation", value)
 
     @_builtins.property
     @pulumi.getter(name="matchExpresses")
-    def match_expresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]:
+    def match_expresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]:
         """
         The expressions used to match instances. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 
     @match_expresses.setter
-    def match_expresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]):
+    def match_expresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]):
         pulumi.set(self, "match_expresses", value)
 
 
 @pulumi.input_type
 class _ServiceGroupMonitoringAgentProcessState:
     def __init__(__self__, *,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_monitoring_agent_process_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_monitoring_agent_process_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceGroupMonitoringAgentProcess resources.
 
@@ -138,74 +138,74 @@ class _ServiceGroupMonitoringAgentProcessState:
 
     @_builtins.property
     @pulumi.getter(name="alertConfigs")
-    def alert_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]:
+    def alert_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]:
         """
         The alert rule configurations. See `alert_config` below.
         """
         return pulumi.get(self, "alert_configs")
 
     @alert_configs.setter
-    def alert_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]):
+    def alert_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessAlertConfigArgs']]]]):
         pulumi.set(self, "alert_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the application group.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMonitoringAgentProcessId")
-    def group_monitoring_agent_process_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_monitoring_agent_process_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Group Monitoring Agent Process.
         """
         return pulumi.get(self, "group_monitoring_agent_process_id")
 
     @group_monitoring_agent_process_id.setter
-    def group_monitoring_agent_process_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_monitoring_agent_process_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_monitoring_agent_process_id", value)
 
     @_builtins.property
     @pulumi.getter(name="matchExpressFilterRelation")
-    def match_express_filter_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def match_express_filter_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical operator used between conditional expressions that are used to match instances. Valid values: `all`, `and`, `or`.
         """
         return pulumi.get(self, "match_express_filter_relation")
 
     @match_express_filter_relation.setter
-    def match_express_filter_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def match_express_filter_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "match_express_filter_relation", value)
 
     @_builtins.property
     @pulumi.getter(name="matchExpresses")
-    def match_expresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]:
+    def match_expresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]:
         """
         The expressions used to match instances. See `match_express` below.
         """
         return pulumi.get(self, "match_expresses")
 
     @match_expresses.setter
-    def match_expresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]):
+    def match_expresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceGroupMonitoringAgentProcessMatchExpressArgs']]]]):
         pulumi.set(self, "match_expresses", value)
 
     @_builtins.property
     @pulumi.getter(name="processName")
-    def process_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def process_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the process.
         """
         return pulumi.get(self, "process_name")
 
     @process_name.setter
-    def process_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def process_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "process_name", value)
 
 
@@ -215,11 +215,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Monitor Service Group Monitoring Agent Process resource.
@@ -384,11 +384,11 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
-                 group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-                 match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
-                 process_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+                 group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+                 match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+                 process_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,12 +420,12 @@ class ServiceGroupMonitoringAgentProcess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
-            group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_monitoring_agent_process_id: Optional[pulumi.Input[_builtins.str]] = None,
-            match_express_filter_relation: Optional[pulumi.Input[_builtins.str]] = None,
-            match_expresses: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
-            process_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceGroupMonitoringAgentProcess':
+            alert_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessAlertConfigArgs', 'ServiceGroupMonitoringAgentProcessAlertConfigArgsDict']]]]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_monitoring_agent_process_id: pulumi.Input[Optional[_builtins.str]] = None,
+            match_express_filter_relation: pulumi.Input[Optional[_builtins.str]] = None,
+            match_expresses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceGroupMonitoringAgentProcessMatchExpressArgs', 'ServiceGroupMonitoringAgentProcessMatchExpressArgsDict']]]]] = None,
+            process_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceGroupMonitoringAgentProcess':
         """
         Get an existing ServiceGroupMonitoringAgentProcess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

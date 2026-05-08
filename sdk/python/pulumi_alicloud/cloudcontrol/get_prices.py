@@ -148,10 +148,10 @@ def get_prices(desire_attributes: Optional[Mapping[str, _builtins.str]] = None,
         prices=pulumi.get(__ret__, 'prices'),
         product=pulumi.get(__ret__, 'product'),
         resource_code=pulumi.get(__ret__, 'resource_code'))
-def get_prices_output(desire_attributes: Optional[pulumi.Input[Optional[Mapping[str, _builtins.str]]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      product: Optional[pulumi.Input[_builtins.str]] = None,
-                      resource_code: Optional[pulumi.Input[_builtins.str]] = None,
+def get_prices_output(desire_attributes: pulumi.Input[Optional[Optional[Mapping[str, _builtins.str]]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      product: pulumi.Input[Optional[_builtins.str]] = None,
+                      resource_code: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPricesResult]:
     """
     This data source provides Cloud Control Price available to the user.[What is Price](https://next.api.aliyun.com/document/cloudcontrol/2022-08-30/GetPrice)

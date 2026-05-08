@@ -19,39 +19,39 @@ __all__ = ['OssStockTaskArgs', 'OssStockTask']
 @pulumi.input_type
 class OssStockTaskArgs:
     def __init__(__self__, *,
-                 audio_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_freeze_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 buckets: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 image_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_image_no_file_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_frame_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_max_frames: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 buckets: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OssStockTask resource.
 
@@ -167,211 +167,211 @@ class OssStockTaskArgs:
 
     @_builtins.property
     @pulumi.getter(name="audioAntispamFreezeConfig")
-    def audio_antispam_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_antispam_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
         """
         return pulumi.get(self, "audio_antispam_freeze_config")
 
     @audio_antispam_freeze_config.setter
-    def audio_antispam_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_antispam_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_antispam_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="audioAutoFreezeOpened")
-    def audio_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audio_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         """
         return pulumi.get(self, "audio_auto_freeze_opened")
 
     @audio_auto_freeze_opened.setter
-    def audio_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audio_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audio_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="audioMaxSize")
-    def audio_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audio_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
         """
         return pulumi.get(self, "audio_max_size")
 
     @audio_max_size.setter
-    def audio_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audio_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audio_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="audioOpened")
-    def audio_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audio_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect audio. true: scan audio, false: do not scan audio
         """
         return pulumi.get(self, "audio_opened")
 
     @audio_opened.setter
-    def audio_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audio_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audio_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="audioScanLimit")
-    def audio_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audio_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of voice scan in the oss stock scan task. The default value is 1000/Bucket.
         """
         return pulumi.get(self, "audio_scan_limit")
 
     @audio_scan_limit.setter
-    def audio_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audio_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audio_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="audioScenes")
-    def audio_scenes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_scenes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The audio detection scenarios included in the oss stock scan task. Set the value to antispam.
         """
         return pulumi.get(self, "audio_scenes")
 
     @audio_scenes.setter
-    def audio_scenes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_scenes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="autoFreezeType")
-    def auto_freeze_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_freeze_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic freeze type. Value: acl: modify permissions, copy: Move files
         """
         return pulumi.get(self, "auto_freeze_type")
 
     @auto_freeze_type.setter
-    def auto_freeze_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_freeze_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_freeze_type", value)
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business scenarios used by the oss stock scan task
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def buckets(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def buckets(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket_01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
         """
         return pulumi.get(self, "buckets")
 
     @buckets.setter
-    def buckets(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def buckets(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackId")
-    def callback_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def callback_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the primary key of the notification message bound to the oss stock scan task.
         """
         return pulumi.get(self, "callback_id")
 
     @callback_id.setter
-    def callback_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def callback_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "callback_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the file upload time range indicates the scanning of files uploaded before this time point.
         """
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="imageAdFreezeConfig")
-    def image_ad_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_ad_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatically freezes the configuration of ad scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_ad_freeze_config")
 
     @image_ad_freeze_config.setter
-    def image_ad_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_ad_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_ad_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageAutoFreezeOpened")
-    def image_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Picture detection auto freeze switch. Value: true: auto freeze, false: not auto freeze.
         """
         return pulumi.get(self, "image_auto_freeze_opened")
 
     @image_auto_freeze_opened.setter
-    def image_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="imageLiveFreezeConfig")
-    def image_live_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_live_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatic freezing live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_live_freeze_config")
 
     @image_live_freeze_config.setter
-    def image_live_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_live_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_live_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOpened")
-    def image_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect images. true: scan images, false: do not scan images
         """
         return pulumi.get(self, "image_opened")
 
     @image_opened.setter
-    def image_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePornFreezeConfig")
-    def image_porn_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_porn_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_porn_freeze_config")
 
     @image_porn_freeze_config.setter
-    def image_porn_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_porn_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_porn_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScanLimit")
-    def image_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def image_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
         """
         return pulumi.get(self, "image_scan_limit")
 
     @image_scan_limit.setter
-    def image_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def image_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "image_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScenes")
-    def image_scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def image_scenes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The image moderation scenario included in the oss stock scan task.Valid values:
         porn: pornography detection
@@ -382,156 +382,156 @@ class OssStockTaskArgs:
         return pulumi.get(self, "image_scenes")
 
     @image_scenes.setter
-    def image_scenes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def image_scenes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "image_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="imageTerrorismFreezeConfig")
-    def image_terrorism_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_terrorism_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_terrorism_freeze_config")
 
     @image_terrorism_freeze_config.setter
-    def image_terrorism_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_terrorism_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_terrorism_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scanImageNoFileType")
-    def scan_image_no_file_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scan_image_no_file_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         """
         return pulumi.get(self, "scan_image_no_file_type")
 
     @scan_image_no_file_type.setter
-    def scan_image_no_file_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scan_image_no_file_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scan_image_no_file_type", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the file upload time range represents the files uploaded after scanning this time point.
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter(name="videoAdFreezeConfig")
-    def video_ad_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_ad_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video automatically freezes the configuration of ad scenarios. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_ad_freeze_config")
 
     @video_ad_freeze_config.setter
-    def video_ad_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_ad_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_ad_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoAutoFreezeOpened")
-    def video_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def video_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Video detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         """
         return pulumi.get(self, "video_auto_freeze_opened")
 
     @video_auto_freeze_opened.setter
-    def video_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def video_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "video_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="videoFrameInterval")
-    def video_frame_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_frame_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource attribute field representing the framing frequency. 1~60 seconds/frame, the default is 1 second/frame
         """
         return pulumi.get(self, "video_frame_interval")
 
     @video_frame_interval.setter
-    def video_frame_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_frame_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_frame_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="videoLiveFreezeConfig")
-    def video_live_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_live_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Video automatic freeze live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_live_freeze_config")
 
     @video_live_freeze_config.setter
-    def video_live_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_live_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_live_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoMaxFrames")
-    def video_max_frames(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_max_frames(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A resource attribute field that represents the upper limit of a single video frame cut. 5 to 20000 frames, the default is 200 frames
         """
         return pulumi.get(self, "video_max_frames")
 
     @video_max_frames.setter
-    def video_max_frames(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_max_frames(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_max_frames", value)
 
     @_builtins.property
     @pulumi.getter(name="videoMaxSize")
-    def video_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource property field representing the maximum size of a single video. 1~2048MB, the default is 500MB, more than not detected.
         """
         return pulumi.get(self, "video_max_size")
 
     @video_max_size.setter
-    def video_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="videoOpened")
-    def video_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def video_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect video. true: scan video, false: do not scan video
         """
         return pulumi.get(self, "video_opened")
 
     @video_opened.setter
-    def video_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def video_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "video_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="videoPornFreezeConfig")
-    def video_porn_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_porn_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         """
         return pulumi.get(self, "video_porn_freeze_config")
 
     @video_porn_freeze_config.setter
-    def video_porn_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_porn_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_porn_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoScanLimit")
-    def video_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
         """
         return pulumi.get(self, "video_scan_limit")
 
     @video_scan_limit.setter
-    def video_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="videoScenes")
-    def video_scenes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_scenes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video detection scenarios included in the oss stock scan task.
         porn: pornography detection
@@ -543,70 +543,70 @@ class OssStockTaskArgs:
         return pulumi.get(self, "video_scenes")
 
     @video_scenes.setter
-    def video_scenes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_scenes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="videoTerrorismFreezeConfig")
-    def video_terrorism_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_terrorism_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_terrorism_freeze_config")
 
     @video_terrorism_freeze_config.setter
-    def video_terrorism_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_terrorism_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_terrorism_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoVoiceAntispamFreezeConfig")
-    def video_voice_antispam_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_voice_antispam_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_voice_antispam_freeze_config")
 
     @video_voice_antispam_freeze_config.setter
-    def video_voice_antispam_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_voice_antispam_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_voice_antispam_freeze_config", value)
 
 
 @pulumi.input_type
 class _OssStockTaskState:
     def __init__(__self__, *,
-                 audio_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_freeze_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 buckets: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 image_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_image_no_file_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_frame_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_max_frames: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None):
+                 audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 buckets: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OssStockTask resources.
 
@@ -722,211 +722,211 @@ class _OssStockTaskState:
 
     @_builtins.property
     @pulumi.getter(name="audioAntispamFreezeConfig")
-    def audio_antispam_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_antispam_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Voice auto freeze configuration. Example:{"type":"suggestion","value":"block,review"}. The results are frozen according to the suggestion in the speech detection results.
         """
         return pulumi.get(self, "audio_antispam_freeze_config")
 
     @audio_antispam_freeze_config.setter
-    def audio_antispam_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_antispam_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_antispam_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="audioAutoFreezeOpened")
-    def audio_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audio_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Audio detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         """
         return pulumi.get(self, "audio_auto_freeze_opened")
 
     @audio_auto_freeze_opened.setter
-    def audio_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audio_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audio_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="audioMaxSize")
-    def audio_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audio_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource property field representing the maximum size of a single audio. 1~2048MB, the default is 200MB, more than not detected.
         """
         return pulumi.get(self, "audio_max_size")
 
     @audio_max_size.setter
-    def audio_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audio_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audio_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="audioOpened")
-    def audio_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def audio_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect audio. true: scan audio, false: do not scan audio
         """
         return pulumi.get(self, "audio_opened")
 
     @audio_opened.setter
-    def audio_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def audio_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "audio_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="audioScanLimit")
-    def audio_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def audio_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of voice scan in the oss stock scan task. The default value is 1000/Bucket.
         """
         return pulumi.get(self, "audio_scan_limit")
 
     @audio_scan_limit.setter
-    def audio_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def audio_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "audio_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="audioScenes")
-    def audio_scenes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def audio_scenes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The audio detection scenarios included in the oss stock scan task. Set the value to antispam.
         """
         return pulumi.get(self, "audio_scenes")
 
     @audio_scenes.setter
-    def audio_scenes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def audio_scenes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "audio_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="autoFreezeType")
-    def auto_freeze_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_freeze_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic freeze type. Value: acl: modify permissions, copy: Move files
         """
         return pulumi.get(self, "auto_freeze_type")
 
     @auto_freeze_type.setter
-    def auto_freeze_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_freeze_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_freeze_type", value)
 
     @_builtins.property
     @pulumi.getter(name="bizType")
-    def biz_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def biz_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Business scenarios used by the oss stock scan task
         """
         return pulumi.get(self, "biz_type")
 
     @biz_type.setter
-    def biz_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def biz_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "biz_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def buckets(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def buckets(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket configuration list of the oss stock scan task. Example:[{"Bucket":"bucket_01","Selected":true,"Prefixes":["img/test_"],"Type":"exclude"}]
         """
         return pulumi.get(self, "buckets")
 
     @buckets.setter
-    def buckets(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def buckets(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="callbackId")
-    def callback_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def callback_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the primary key of the notification message bound to the oss stock scan task.
         """
         return pulumi.get(self, "callback_id")
 
     @callback_id.setter
-    def callback_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def callback_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "callback_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The end time of the file upload time range indicates the scanning of files uploaded before this time point.
         """
         return pulumi.get(self, "end_date")
 
     @end_date.setter
-    def end_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_date", value)
 
     @_builtins.property
     @pulumi.getter(name="imageAdFreezeConfig")
-    def image_ad_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_ad_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatically freezes the configuration of ad scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_ad_freeze_config")
 
     @image_ad_freeze_config.setter
-    def image_ad_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_ad_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_ad_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageAutoFreezeOpened")
-    def image_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Picture detection auto freeze switch. Value: true: auto freeze, false: not auto freeze.
         """
         return pulumi.get(self, "image_auto_freeze_opened")
 
     @image_auto_freeze_opened.setter
-    def image_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="imageLiveFreezeConfig")
-    def image_live_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_live_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatic freezing live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_live_freeze_config")
 
     @image_live_freeze_config.setter
-    def image_live_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_live_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_live_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOpened")
-    def image_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect images. true: scan images, false: do not scan images
         """
         return pulumi.get(self, "image_opened")
 
     @image_opened.setter
-    def image_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePornFreezeConfig")
-    def image_porn_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_porn_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Picture automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_porn_freeze_config")
 
     @image_porn_freeze_config.setter
-    def image_porn_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_porn_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_porn_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScanLimit")
-    def image_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def image_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit for scanning images in the oss stock scan task. The default value is 10000 images per Bucket.
         """
         return pulumi.get(self, "image_scan_limit")
 
     @image_scan_limit.setter
-    def image_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def image_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "image_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="imageScenes")
-    def image_scenes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def image_scenes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The image moderation scenario included in the oss stock scan task.Valid values:
         porn: pornography detection
@@ -937,156 +937,156 @@ class _OssStockTaskState:
         return pulumi.get(self, "image_scenes")
 
     @image_scenes.setter
-    def image_scenes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def image_scenes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "image_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="imageTerrorismFreezeConfig")
-    def image_terrorism_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_terrorism_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The picture automatically freezes the configuration of terrorism scenes. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the picture detection result.
         """
         return pulumi.get(self, "image_terrorism_freeze_config")
 
     @image_terrorism_freeze_config.setter
-    def image_terrorism_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_terrorism_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_terrorism_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="scanImageNoFileType")
-    def scan_image_no_file_type(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def scan_image_no_file_type(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the oss stock scan task detects images with file names without suffixes. true: Detect pictures with file names without suffixes, false: Do not detect pictures with file names without suffixes
         """
         return pulumi.get(self, "scan_image_no_file_type")
 
     @scan_image_no_file_type.setter
-    def scan_image_no_file_type(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def scan_image_no_file_type(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "scan_image_no_file_type", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start time of the file upload time range represents the files uploaded after scanning this time point.
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter(name="videoAdFreezeConfig")
-    def video_ad_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_ad_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video automatically freezes the configuration of ad scenarios. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_ad_freeze_config")
 
     @video_ad_freeze_config.setter
-    def video_ad_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_ad_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_ad_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoAutoFreezeOpened")
-    def video_auto_freeze_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def video_auto_freeze_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Video detection auto freeze switch. Value: true: automatically freeze, false: not automatically freeze.
         """
         return pulumi.get(self, "video_auto_freeze_opened")
 
     @video_auto_freeze_opened.setter
-    def video_auto_freeze_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def video_auto_freeze_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "video_auto_freeze_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="videoFrameInterval")
-    def video_frame_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_frame_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource attribute field representing the framing frequency. 1~60 seconds/frame, the default is 1 second/frame
         """
         return pulumi.get(self, "video_frame_interval")
 
     @video_frame_interval.setter
-    def video_frame_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_frame_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_frame_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="videoLiveFreezeConfig")
-    def video_live_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_live_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Video automatic freeze live scene configuration. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_live_freeze_config")
 
     @video_live_freeze_config.setter
-    def video_live_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_live_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_live_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoMaxFrames")
-    def video_max_frames(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_max_frames(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A resource attribute field that represents the upper limit of a single video frame cut. 5 to 20000 frames, the default is 200 frames
         """
         return pulumi.get(self, "video_max_frames")
 
     @video_max_frames.setter
-    def video_max_frames(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_max_frames(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_max_frames", value)
 
     @_builtins.property
     @pulumi.getter(name="videoMaxSize")
-    def video_max_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_max_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource property field representing the maximum size of a single video. 1~2048MB, the default is 500MB, more than not detected.
         """
         return pulumi.get(self, "video_max_size")
 
     @video_max_size.setter
-    def video_max_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_max_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_max_size", value)
 
     @_builtins.property
     @pulumi.getter(name="videoOpened")
-    def video_opened(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def video_opened(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         oss stock scan task detect video. true: scan video, false: do not scan video
         """
         return pulumi.get(self, "video_opened")
 
     @video_opened.setter
-    def video_opened(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def video_opened(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "video_opened", value)
 
     @_builtins.property
     @pulumi.getter(name="videoPornFreezeConfig")
-    def video_porn_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_porn_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Video automatic freezing porn scene configuration. Example: {"type": "suggestion", "value": "block,review"}. The result will be frozen according to the suggestion in the video detection result.
         """
         return pulumi.get(self, "video_porn_freeze_config")
 
     @video_porn_freeze_config.setter
-    def video_porn_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_porn_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_porn_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoScanLimit")
-    def video_scan_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def video_scan_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The upper limit of video scanning in the oss stock scan task. The default value is 1000/Bucket.
         """
         return pulumi.get(self, "video_scan_limit")
 
     @video_scan_limit.setter
-    def video_scan_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def video_scan_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "video_scan_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="videoScenes")
-    def video_scenes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_scenes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video detection scenarios included in the oss stock scan task.
         porn: pornography detection
@@ -1098,31 +1098,31 @@ class _OssStockTaskState:
         return pulumi.get(self, "video_scenes")
 
     @video_scenes.setter
-    def video_scenes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_scenes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_scenes", value)
 
     @_builtins.property
     @pulumi.getter(name="videoTerrorismFreezeConfig")
-    def video_terrorism_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_terrorism_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The video automatically freezes the configuration of terrorism scenes. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_terrorism_freeze_config")
 
     @video_terrorism_freeze_config.setter
-    def video_terrorism_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_terrorism_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_terrorism_freeze_config", value)
 
     @_builtins.property
     @pulumi.getter(name="videoVoiceAntispamFreezeConfig")
-    def video_voice_antispam_freeze_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def video_voice_antispam_freeze_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Voice auto freeze configuration in video. Example:{"type":"suggestion","value":"block,review"}. The results will be frozen according to the suggestion in the video detection results.
         """
         return pulumi.get(self, "video_voice_antispam_freeze_config")
 
     @video_voice_antispam_freeze_config.setter
-    def video_voice_antispam_freeze_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def video_voice_antispam_freeze_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "video_voice_antispam_freeze_config", value)
 
 
@@ -1132,39 +1132,39 @@ class OssStockTask(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_freeze_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 buckets: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 image_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_image_no_file_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_frame_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_max_frames: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
+                 audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 buckets: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Aligreen Oss Stock Task resource.
@@ -1235,7 +1235,7 @@ class OssStockTask(pulumi.CustomResource):
                 "Type": "suggestion",
                 "Value": "block",
             }),
-            callback_id=default_jn_w8_na.id,
+            callback_id=default_jn_w8_na.id.apply(lambda x: int(x)),
             image_ad_freeze_config=json.dumps({
                 "Type": "suggestion",
                 "Value": "block",
@@ -1406,7 +1406,7 @@ class OssStockTask(pulumi.CustomResource):
                 "Type": "suggestion",
                 "Value": "block",
             }),
-            callback_id=default_jn_w8_na.id,
+            callback_id=default_jn_w8_na.id.apply(lambda x: int(x)),
             image_ad_freeze_config=json.dumps({
                 "Type": "suggestion",
                 "Value": "block",
@@ -1472,39 +1472,39 @@ class OssStockTask(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 audio_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 audio_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 audio_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 audio_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_freeze_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 buckets: Optional[pulumi.Input[_builtins.str]] = None,
-                 callback_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 end_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 image_scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 image_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_image_no_file_type: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_frame_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_max_frames: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-                 video_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 video_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
+                 audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 buckets: pulumi.Input[Optional[_builtins.str]] = None,
+                 callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 end_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+                 video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1557,39 +1557,39 @@ class OssStockTask(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            audio_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            audio_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            audio_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            audio_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            audio_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            audio_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_freeze_type: Optional[pulumi.Input[_builtins.str]] = None,
-            biz_type: Optional[pulumi.Input[_builtins.str]] = None,
-            buckets: Optional[pulumi.Input[_builtins.str]] = None,
-            callback_id: Optional[pulumi.Input[_builtins.int]] = None,
-            end_date: Optional[pulumi.Input[_builtins.str]] = None,
-            image_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            image_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            image_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            image_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            image_scenes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            image_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            scan_image_no_file_type: Optional[pulumi.Input[_builtins.bool]] = None,
-            start_date: Optional[pulumi.Input[_builtins.str]] = None,
-            video_ad_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            video_auto_freeze_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            video_frame_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            video_live_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            video_max_frames: Optional[pulumi.Input[_builtins.int]] = None,
-            video_max_size: Optional[pulumi.Input[_builtins.int]] = None,
-            video_opened: Optional[pulumi.Input[_builtins.bool]] = None,
-            video_porn_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            video_scan_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            video_scenes: Optional[pulumi.Input[_builtins.str]] = None,
-            video_terrorism_freeze_config: Optional[pulumi.Input[_builtins.str]] = None,
-            video_voice_antispam_freeze_config: Optional[pulumi.Input[_builtins.str]] = None) -> 'OssStockTask':
+            audio_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            audio_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            audio_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            audio_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            audio_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            audio_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_freeze_type: pulumi.Input[Optional[_builtins.str]] = None,
+            biz_type: pulumi.Input[Optional[_builtins.str]] = None,
+            buckets: pulumi.Input[Optional[_builtins.str]] = None,
+            callback_id: pulumi.Input[Optional[_builtins.int]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            image_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            image_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            image_scenes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            image_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_image_no_file_type: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            video_ad_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_auto_freeze_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            video_frame_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            video_live_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_max_frames: pulumi.Input[Optional[_builtins.int]] = None,
+            video_max_size: pulumi.Input[Optional[_builtins.int]] = None,
+            video_opened: pulumi.Input[Optional[_builtins.bool]] = None,
+            video_porn_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_scan_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            video_scenes: pulumi.Input[Optional[_builtins.str]] = None,
+            video_terrorism_freeze_config: pulumi.Input[Optional[_builtins.str]] = None,
+            video_voice_antispam_freeze_config: pulumi.Input[Optional[_builtins.str]] = None) -> 'OssStockTask':
         """
         Get an existing OssStockTask resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

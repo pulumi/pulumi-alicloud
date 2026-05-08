@@ -112,8 +112,8 @@ def get_meta_tags(key_name: Optional[_builtins.str] = None,
         key_name=pulumi.get(__ret__, 'key_name'),
         output_file=pulumi.get(__ret__, 'output_file'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_meta_tags_output(key_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetaTagsResult]:
     """
     This data source provides the Tag Meta Tags of the current Alibaba Cloud user.

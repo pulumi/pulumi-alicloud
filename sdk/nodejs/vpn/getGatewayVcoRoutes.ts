@@ -273,21 +273,21 @@ export interface GetGatewayVcoRoutesOutputArgs {
     /**
      * A list of Vco Route IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Routing input type. Valid values: `custom`, `bgp`.
      */
-    routeEntryType?: pulumi.Input<string>;
+    routeEntryType?: pulumi.Input<string | undefined>;
     /**
      * The status of the vpn route entry. Valid values: `normal`, `published`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The id of the vpn connection.
      */

@@ -113,11 +113,11 @@ export interface CustomPropertyState {
     /**
      * The Custom attribute key.
      */
-    propertyKey?: pulumi.Input<string>;
+    propertyKey?: pulumi.Input<string | undefined>;
     /**
      * Custom attribute sets the value of. See `propertyValues` below.
      */
-    propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[]>;
+    propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[] | undefined>;
 }
 
 /**
@@ -131,5 +131,5 @@ export interface CustomPropertyArgs {
     /**
      * Custom attribute sets the value of. See `propertyValues` below.
      */
-    propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[]>;
+    propertyValues?: pulumi.Input<pulumi.Input<inputs.eds.CustomPropertyPropertyValue>[] | undefined>;
 }

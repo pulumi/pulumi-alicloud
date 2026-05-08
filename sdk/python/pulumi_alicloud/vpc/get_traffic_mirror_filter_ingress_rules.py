@@ -143,10 +143,10 @@ def get_traffic_mirror_filter_ingress_rules(ids: Optional[Sequence[_builtins.str
         rules=pulumi.get(__ret__, 'rules'),
         status=pulumi.get(__ret__, 'status'),
         traffic_mirror_filter_id=pulumi.get(__ret__, 'traffic_mirror_filter_id'))
-def get_traffic_mirror_filter_ingress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                                   output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                   traffic_mirror_filter_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_traffic_mirror_filter_ingress_rules_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                                   output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                   traffic_mirror_filter_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTrafficMirrorFilterIngressRulesResult]:
     """
     This data source provides the Vpc Traffic Mirror Filter Ingress Rules of the current Alibaba Cloud user.

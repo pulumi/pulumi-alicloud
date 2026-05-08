@@ -200,23 +200,23 @@ export interface GreyTagRouteState {
     /**
      * The ID  of the SAE Application.
      */
-    appId?: pulumi.Input<string>;
+    appId?: pulumi.Input<string | undefined>;
     /**
      * The description of GreyTagRoute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The grayscale rule created for Dubbo Application. See `dubboRules` below.
      */
-    dubboRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRule>[]>;
+    dubboRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRule>[] | undefined>;
     /**
      * The name of GreyTagRoute.
      */
-    greyTagRouteName?: pulumi.Input<string>;
+    greyTagRouteName?: pulumi.Input<string | undefined>;
     /**
      * The grayscale rule created for SpringCloud Application. See `scRules` below.
      */
-    scRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRule>[]>;
+    scRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRule>[] | undefined>;
 }
 
 /**
@@ -230,11 +230,11 @@ export interface GreyTagRouteArgs {
     /**
      * The description of GreyTagRoute.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The grayscale rule created for Dubbo Application. See `dubboRules` below.
      */
-    dubboRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRule>[]>;
+    dubboRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteDubboRule>[] | undefined>;
     /**
      * The name of GreyTagRoute.
      */
@@ -242,5 +242,5 @@ export interface GreyTagRouteArgs {
     /**
      * The grayscale rule created for SpringCloud Application. See `scRules` below.
      */
-    scRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRule>[]>;
+    scRules?: pulumi.Input<pulumi.Input<inputs.sae.GreyTagRouteScRule>[] | undefined>;
 }

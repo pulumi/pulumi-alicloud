@@ -170,11 +170,11 @@ export interface EcsKeyPairAttachmentState {
     /**
      * Specifies whether to make the key pair effective immediately. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The IDs of instances to which you want to bind the SSH key pair.
      */
-    instanceIds?: pulumi.Input<pulumi.Input<string>[]>;
+    instanceIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      *
@@ -182,11 +182,11 @@ export interface EcsKeyPairAttachmentState {
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the SSH key pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface EcsKeyPairAttachmentArgs {
     /**
      * Specifies whether to make the key pair effective immediately. Valid values:
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The IDs of instances to which you want to bind the SSH key pair.
      */
@@ -208,9 +208,9 @@ export interface EcsKeyPairAttachmentArgs {
      *
      * @deprecated Field `keyName` has been deprecated from provider version 1.121.0. New field `keyPairName` instead.
      */
-    keyName?: pulumi.Input<string>;
+    keyName?: pulumi.Input<string | undefined>;
     /**
      * The name of the SSH key pair.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
 }

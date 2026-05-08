@@ -172,22 +172,22 @@ export interface GetInstanceTypesOutputArgs {
     /**
      * Filter the specific ecs instance type to create emr cluster.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Whether the current storage disk is local or not.
      */
-    supportLocalStorage?: pulumi.Input<boolean>;
+    supportLocalStorage?: pulumi.Input<boolean | undefined>;
     /**
      * The specific supported node type list.
      * Possible values may be any one or combination of these: ["MASTER", "CORE", "TASK", "GATEWAY"]
      */
-    supportNodeTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    supportNodeTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The supported resources of specific zoneId.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

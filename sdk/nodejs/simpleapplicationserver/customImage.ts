@@ -155,25 +155,25 @@ export interface CustomImageState {
     /**
      * The name of the resource. The name must be `2` to `128` characters in length. It must start with a letter or a number. It can contain letters, digits, colons (:), underscores (_) and hyphens (-).
      */
-    customImageName?: pulumi.Input<string>;
+    customImageName?: pulumi.Input<string | undefined>;
     /**
      * The description of the Custom Image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The Shared status of the Custom Image. Valid values: `Share`, `UnShare`.
      *
      * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the system snapshot.
      */
-    systemSnapshotId?: pulumi.Input<string>;
+    systemSnapshotId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,7 +187,7 @@ export interface CustomImageArgs {
     /**
      * The description of the Custom Image.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
@@ -197,7 +197,7 @@ export interface CustomImageArgs {
      *
      * **NOTE:** The `status` will be automatically change to `UnShare` when the resource is deleted, please operate with caution.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the system snapshot.
      */

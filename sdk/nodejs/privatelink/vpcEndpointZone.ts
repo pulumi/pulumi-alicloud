@@ -182,31 +182,31 @@ export interface VpcEndpointZoneState {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint ID.
      */
-    endpointId?: pulumi.Input<string>;
+    endpointId?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the endpoint ENI.
      */
-    eniIp?: pulumi.Input<string>;
+    eniIp?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.235.0) The ID of the region to which the endpoint service belongs.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The state of the zone.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch in the zone.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface VpcEndpointZoneArgs {
     /**
      * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint ID.
      */
@@ -224,7 +224,7 @@ export interface VpcEndpointZoneArgs {
     /**
      * The IP address of the endpoint ENI.
      */
-    eniIp?: pulumi.Input<string>;
+    eniIp?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch in the zone.
      */
@@ -232,5 +232,5 @@ export interface VpcEndpointZoneArgs {
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

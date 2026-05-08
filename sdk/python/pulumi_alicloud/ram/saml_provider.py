@@ -21,7 +21,7 @@ class SamlProviderArgs:
     def __init__(__self__, *,
                  encodedsaml_metadata_document: pulumi.Input[_builtins.str],
                  saml_provider_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SamlProvider resource.
 
@@ -62,25 +62,25 @@ class SamlProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _SamlProviderState:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encodedsaml_metadata_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_date: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encodedsaml_metadata_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_date: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SamlProvider resources.
 
@@ -104,31 +104,31 @@ class _SamlProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identity provider's ARN.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="encodedsamlMetadataDocument")
-    def encodedsaml_metadata_document(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encodedsaml_metadata_document(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metadata file which is Base64-encoded.
         The file is provided by an IdP that supports Security Assertion Markup Language (SAML) 2.0.
@@ -136,31 +136,31 @@ class _SamlProviderState:
         return pulumi.get(self, "encodedsaml_metadata_document")
 
     @encodedsaml_metadata_document.setter
-    def encodedsaml_metadata_document(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encodedsaml_metadata_document(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encodedsaml_metadata_document", value)
 
     @_builtins.property
     @pulumi.getter(name="samlProviderName")
-    def saml_provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def saml_provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IdP.  The name can be up to 128 characters in length. The name can contain letters, digits, periods (.), hyphens (-), and underscores (_). The name cannot start or end with periods (.), hyphens (-), or underscores (_).
         """
         return pulumi.get(self, "saml_provider_name")
 
     @saml_provider_name.setter
-    def saml_provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def saml_provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "saml_provider_name", value)
 
     @_builtins.property
     @pulumi.getter(name="updateDate")
-    def update_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Update time.
         """
         return pulumi.get(self, "update_date")
 
     @update_date.setter
-    def update_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update_date", value)
 
 
@@ -170,9 +170,9 @@ class SamlProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encodedsaml_metadata_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encodedsaml_metadata_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RAM Saml Provider resource.
@@ -266,9 +266,9 @@ class SamlProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 encodedsaml_metadata_document: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 encodedsaml_metadata_document: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,11 +297,11 @@ class SamlProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            arn: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            encodedsaml_metadata_document: Optional[pulumi.Input[_builtins.str]] = None,
-            saml_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-            update_date: Optional[pulumi.Input[_builtins.str]] = None) -> 'SamlProvider':
+            arn: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            encodedsaml_metadata_document: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            update_date: pulumi.Input[Optional[_builtins.str]] = None) -> 'SamlProvider':
         """
         Get an existing SamlProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -26,16 +26,16 @@ class NodeGroupArgs:
                  image_id: pulumi.Input[_builtins.str],
                  machine_type: pulumi.Input[_builtins.str],
                  node_group_name: pulumi.Input[_builtins.str],
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
 
@@ -143,145 +143,145 @@ class NodeGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="ignoreFailedNodeTasks")
-    def ignore_failed_node_tasks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_failed_node_tasks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow skipping failed nodes. Default value: False
         """
         return pulumi.get(self, "ignore_failed_node_tasks")
 
     @ignore_failed_node_tasks.setter
-    def ignore_failed_node_tasks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_failed_node_tasks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_failed_node_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]:
+    def ip_allocation_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]:
         """
         IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
 
     @ip_allocation_policies.setter
-    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
+    def ip_allocation_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         key pair name
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupDescription")
-    def node_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NodeGroupDescription
         """
         return pulumi.get(self, "node_group_description")
 
     @node_group_description.setter
-    def node_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_description", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]:
         """
         Node List See `nodes` below.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdSubnets")
-    def vpd_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpd_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cluster subnet list
         """
         return pulumi.get(self, "vpd_subnets")
 
     @vpd_subnets.setter
-    def vpd_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpd_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpd_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchZoneId")
-    def vswitch_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID of the switch
         """
         return pulumi.get(self, "vswitch_zone_id")
 
     @vswitch_zone_id.setter
-    def vswitch_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _NodeGroupState:
     def __init__(__self__, *,
-                 az: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 az: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NodeGroup resources.
 
@@ -340,206 +340,206 @@ class _NodeGroupState:
 
     @_builtins.property
     @pulumi.getter
-    def az(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def az(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Az
         """
         return pulumi.get(self, "az")
 
     @az.setter
-    def az(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def az(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "az", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster ID
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Create time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreFailedNodeTasks")
-    def ignore_failed_node_tasks(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ignore_failed_node_tasks(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow skipping failed nodes. Default value: False
         """
         return pulumi.get(self, "ignore_failed_node_tasks")
 
     @ignore_failed_node_tasks.setter
-    def ignore_failed_node_tasks(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ignore_failed_node_tasks(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ignore_failed_node_tasks", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Image ID. You can modify the image ID since v1.252.0.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAllocationPolicies")
-    def ip_allocation_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]:
+    def ip_allocation_policies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]:
         """
         IP address combination policy: only one policy type can be selected for each policy, and multiple policies can be combined. See `ip_allocation_policy` below.
         """
         return pulumi.get(self, "ip_allocation_policies")
 
     @ip_allocation_policies.setter
-    def ip_allocation_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
+    def ip_allocation_policies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupIpAllocationPolicyArgs']]]]):
         pulumi.set(self, "ip_allocation_policies", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         key pair name
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loginPassword")
-    def login_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Login Password
         """
         return pulumi.get(self, "login_password")
 
     @login_password.setter
-    def login_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_password", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Machine type
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupDescription")
-    def node_group_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         NodeGroupDescription
         """
         return pulumi.get(self, "node_group_description")
 
     @node_group_description.setter
-    def node_group_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_description", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupId")
-    def node_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
-    def node_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeGroupName")
-    def node_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource
         """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
-    def node_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]:
         """
         Node List See `nodes` below.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NodeGroupNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom Data
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="vpdSubnets")
-    def vpd_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vpd_subnets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Cluster subnet list
         """
         return pulumi.get(self, "vpd_subnets")
 
     @vpd_subnets.setter
-    def vpd_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vpd_subnets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vpd_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchZoneId")
-    def vswitch_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID of the switch
         """
         return pulumi.get(self, "vswitch_zone_id")
 
     @vswitch_zone_id.setter
-    def vswitch_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_zone_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone ID
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -549,21 +549,21 @@ class NodeGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 az: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 az: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Node Group resource.
@@ -940,21 +940,21 @@ class NodeGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 az: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 az: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1003,23 +1003,23 @@ class NodeGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            az: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            ignore_failed_node_tasks: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_allocation_policies: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            login_password: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_description: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            node_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vpd_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vswitch_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NodeGroup':
+            az: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            ignore_failed_node_tasks: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_allocation_policies: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupIpAllocationPolicyArgs', 'NodeGroupIpAllocationPolicyArgsDict']]]]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            login_password: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_description: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            node_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NodeGroupNodeArgs', 'NodeGroupNodeArgsDict']]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vpd_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vswitch_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NodeGroup':
         """
         Get an existing NodeGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

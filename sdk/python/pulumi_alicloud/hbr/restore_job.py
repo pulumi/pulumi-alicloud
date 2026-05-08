@@ -26,26 +26,26 @@ class RestoreJobArgs:
                  snapshot_id: pulumi.Input[_builtins.str],
                  source_type: pulumi.Input[_builtins.str],
                  vault_id: pulumi.Input[_builtins.str],
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
-                 restore_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 udm_detail: Optional[pulumi.Input[_builtins.str]] = None):
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_detail: pulumi.Input[Optional['RestoreJobOtsDetailArgs']] = None,
+                 restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 udm_detail: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RestoreJob resource.
 
@@ -183,274 +183,274 @@ class RestoreJobArgs:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
-    def exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude", value)
 
     @_builtins.property
     @pulumi.getter
-    def include(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
     @include.setter
-    def include(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="otsDetail")
-    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+    def ots_detail(self) -> pulumi.Input[Optional['RestoreJobOtsDetailArgs']]:
         """
         The details about the Tablestore instance. See the following `Block ots_detail`.
         """
         return pulumi.get(self, "ots_detail")
 
     @ots_detail.setter
-    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+    def ots_detail(self, value: pulumi.Input[Optional['RestoreJobOtsDetailArgs']]):
         pulumi.set(self, "ots_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreJobId")
-    def restore_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         """
         return pulumi.get(self, "restore_job_id")
 
     @restore_job_id.setter
-    def restore_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")
-    def target_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         """
         return pulumi.get(self, "target_bucket")
 
     @target_bucket.setter
-    def target_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="targetClientId")
-    def target_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target client ID.
         """
         return pulumi.get(self, "target_client_id")
 
     @target_client_id.setter
-    def target_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCreateTime")
-    def target_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
     @target_create_time.setter
-    def target_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="targetDataSourceId")
-    def target_data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target data source ID.
         """
         return pulumi.get(self, "target_data_source_id")
 
     @target_data_source_id.setter
-    def target_data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetFileSystemId")
-    def target_file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         """
         return pulumi.get(self, "target_file_system_id")
 
     @target_file_system_id.setter
-    def target_file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceId")
-    def target_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         """
         return pulumi.get(self, "target_instance_id")
 
     @target_instance_id.setter
-    def target_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceName")
-    def target_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "target_instance_name")
 
     @target_instance_name.setter
-    def target_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPath")
-    def target_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_path")
 
     @target_path.setter
-    def target_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_path", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
-    def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
-    def target_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTableName")
-    def target_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "target_table_name")
 
     @target_table_name.setter
-    def target_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTime")
-    def target_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         """
         return pulumi.get(self, "target_time")
 
     @target_time.setter
-    def target_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_time", value)
 
     @_builtins.property
     @pulumi.getter(name="udmDetail")
-    def udm_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def udm_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full machine backup details.
         """
         return pulumi.get(self, "udm_detail")
 
     @udm_detail.setter
-    def udm_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def udm_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "udm_detail", value)
 
 
 @pulumi.input_type
 class _RestoreJobState:
     def __init__(__self__, *,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_detail: Optional[pulumi.Input['RestoreJobOtsDetailArgs']] = None,
-                 restore_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 udm_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_detail: pulumi.Input[Optional['RestoreJobOtsDetailArgs']] = None,
+                 restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 udm_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RestoreJob resources.
 
@@ -536,314 +536,314 @@ class _RestoreJobState:
 
     @_builtins.property
     @pulumi.getter(name="crossAccountRoleName")
-    def cross_account_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The role name created in the original account RAM backup by the cross account managed by the current account.
         """
         return pulumi.get(self, "cross_account_role_name")
 
     @cross_account_role_name.setter
-    def cross_account_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountType")
-    def cross_account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cross_account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
         """
         return pulumi.get(self, "cross_account_type")
 
     @cross_account_type.setter
-    def cross_account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cross_account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cross_account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="crossAccountUserId")
-    def cross_account_user_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cross_account_user_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The original account ID of the cross account backup managed by the current account.
         """
         return pulumi.get(self, "cross_account_user_id")
 
     @cross_account_user_id.setter
-    def cross_account_user_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cross_account_user_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cross_account_user_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def exclude(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "exclude")
 
     @exclude.setter
-    def exclude(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude", value)
 
     @_builtins.property
     @pulumi.getter
-    def include(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def include(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It's a json string with format:`["/includePath"]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "include")
 
     @include.setter
-    def include(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def include(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "include", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It's a json string with format:`"{"includes":[],"excludes":[]}",`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{"UI_TargetTime":1650032529018}`.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="otsDetail")
-    def ots_detail(self) -> Optional[pulumi.Input['RestoreJobOtsDetailArgs']]:
+    def ots_detail(self) -> pulumi.Input[Optional['RestoreJobOtsDetailArgs']]:
         """
         The details about the Tablestore instance. See the following `Block ots_detail`.
         """
         return pulumi.get(self, "ots_detail")
 
     @ots_detail.setter
-    def ots_detail(self, value: Optional[pulumi.Input['RestoreJobOtsDetailArgs']]):
+    def ots_detail(self, value: pulumi.Input[Optional['RestoreJobOtsDetailArgs']]):
         pulumi.set(self, "ots_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreJobId")
-    def restore_job_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_job_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restore Job ID. It's the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
         """
         return pulumi.get(self, "restore_job_id")
 
     @restore_job_id.setter
-    def restore_job_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_job_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_job_id", value)
 
     @_builtins.property
     @pulumi.getter(name="restoreType")
-    def restore_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def restore_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
         """
         return pulumi.get(self, "restore_type")
 
     @restore_type.setter
-    def restore_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def restore_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "restore_type", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotHash")
-    def snapshot_hash(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_hash(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hashcode of Snapshot.
         """
         return pulumi.get(self, "snapshot_hash")
 
     @snapshot_hash.setter
-    def snapshot_hash(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_hash(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_hash", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotId")
-    def snapshot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def snapshot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of Snapshot.
         """
         return pulumi.get(self, "snapshot_id")
 
     @snapshot_id.setter
-    def snapshot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def snapshot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "snapshot_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceType")
-    def source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
         """
         return pulumi.get(self, "source_type")
 
     @source_type.setter
-    def source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Restore Job Status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="targetBucket")
-    def target_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
         """
         return pulumi.get(self, "target_bucket")
 
     @target_bucket.setter
-    def target_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="targetClientId")
-    def target_client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target client ID.
         """
         return pulumi.get(self, "target_client_id")
 
     @target_client_id.setter
-    def target_client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetCreateTime")
-    def target_create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
         """
         return pulumi.get(self, "target_create_time")
 
     @target_create_time.setter
-    def target_create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="targetDataSourceId")
-    def target_data_source_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_data_source_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target data source ID.
         """
         return pulumi.get(self, "target_data_source_id")
 
     @target_data_source_id.setter
-    def target_data_source_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_data_source_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetFileSystemId")
-    def target_file_system_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_file_system_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
         """
         return pulumi.get(self, "target_file_system_id")
 
     @target_file_system_id.setter
-    def target_file_system_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_file_system_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_file_system_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceId")
-    def target_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
         """
         return pulumi.get(self, "target_instance_id")
 
     @target_instance_id.setter
-    def target_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetInstanceName")
-    def target_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "target_instance_name")
 
     @target_instance_name.setter
-    def target_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPath")
-    def target_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_path")
 
     @target_path.setter
-    def target_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_path", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPrefix")
-    def target_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
         """
         return pulumi.get(self, "target_prefix")
 
     @target_prefix.setter
-    def target_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTableName")
-    def target_table_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_table_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "target_table_name")
 
     @target_table_name.setter
-    def target_table_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_table_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_table_name", value)
 
     @_builtins.property
     @pulumi.getter(name="targetTime")
-    def target_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
         """
         return pulumi.get(self, "target_time")
 
     @target_time.setter
-    def target_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_time", value)
 
     @_builtins.property
     @pulumi.getter(name="udmDetail")
-    def udm_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def udm_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full machine backup details.
         """
         return pulumi.get(self, "udm_detail")
 
     @udm_detail.setter
-    def udm_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def udm_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "udm_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="vaultId")
-    def vault_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vault_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of backup vault.
         """
         return pulumi.get(self, "vault_id")
 
     @vault_id.setter
-    def vault_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vault_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vault_id", value)
 
 
@@ -853,31 +853,31 @@ class RestoreJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_detail: Optional[pulumi.Input[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
-                 restore_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 udm_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_detail: pulumi.Input[Optional[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
+                 restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 udm_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Hybrid Backup Recovery (HBR) Restore Job resource.
@@ -1068,31 +1068,31 @@ class RestoreJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 exclude: Optional[pulumi.Input[_builtins.str]] = None,
-                 include: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_detail: Optional[pulumi.Input[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
-                 restore_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_hash: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 udm_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 vault_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 exclude: pulumi.Input[Optional[_builtins.str]] = None,
+                 include: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_detail: pulumi.Input[Optional[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
+                 restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_hash: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 udm_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 vault_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1148,32 +1148,32 @@ class RestoreJob(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cross_account_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            cross_account_user_id: Optional[pulumi.Input[_builtins.int]] = None,
-            exclude: Optional[pulumi.Input[_builtins.str]] = None,
-            include: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            ots_detail: Optional[pulumi.Input[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
-            restore_job_id: Optional[pulumi.Input[_builtins.str]] = None,
-            restore_type: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_hash: Optional[pulumi.Input[_builtins.str]] = None,
-            snapshot_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            target_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            target_client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            target_data_source_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_file_system_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            target_path: Optional[pulumi.Input[_builtins.str]] = None,
-            target_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            target_table_name: Optional[pulumi.Input[_builtins.str]] = None,
-            target_time: Optional[pulumi.Input[_builtins.str]] = None,
-            udm_detail: Optional[pulumi.Input[_builtins.str]] = None,
-            vault_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'RestoreJob':
+            cross_account_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            cross_account_user_id: pulumi.Input[Optional[_builtins.int]] = None,
+            exclude: pulumi.Input[Optional[_builtins.str]] = None,
+            include: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            ots_detail: pulumi.Input[Optional[Union['RestoreJobOtsDetailArgs', 'RestoreJobOtsDetailArgsDict']]] = None,
+            restore_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            restore_type: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_hash: pulumi.Input[Optional[_builtins.str]] = None,
+            snapshot_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            target_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            target_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            target_data_source_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_file_system_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_path: pulumi.Input[Optional[_builtins.str]] = None,
+            target_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            target_table_name: pulumi.Input[Optional[_builtins.str]] = None,
+            target_time: pulumi.Input[Optional[_builtins.str]] = None,
+            udm_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            vault_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'RestoreJob':
         """
         Get an existing RestoreJob resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -28,25 +28,25 @@ class DedicatedPropreHostArgs:
                  security_group_id: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
                  vswitch_id: pulumi.Input[_builtins.str],
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_unique_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DedicatedPropreHost resource.
 
@@ -230,19 +230,19 @@ class DedicatedPropreHostArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically when the host is created.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable automatic renewal. Valid values:
         - **true**: On
@@ -251,60 +251,60 @@ class DedicatedPropreHostArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupId")
-    def dedicated_host_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         You have a dedicated cluster ID.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
     @dedicated_host_group_id.setter
-    def dedicated_host_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsDeploymentSetId")
-    def ecs_deployment_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud server deployment set.
         """
         return pulumi.get(self, "ecs_deployment_set_id")
 
     @ecs_deployment_set_id.setter
-    def ecs_deployment_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_deployment_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_deployment_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsHostName")
-    def ecs_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         """
         return pulumi.get(self, "ecs_host_name")
 
     @ecs_host_name.setter
-    def ecs_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceName")
-    def ecs_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         """
         return pulumi.get(self, "ecs_instance_name")
 
     @ecs_instance_name.setter
-    def ecs_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsUniqueSuffix")
-    def ecs_unique_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_unique_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
@@ -314,12 +314,12 @@ class DedicatedPropreHostArgs:
         return pulumi.get(self, "ecs_unique_suffix")
 
     @ecs_unique_suffix.setter
-    def ecs_unique_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_unique_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_unique_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom image.
         > **NOTE:**  If you need to use the default image, you do not need to fill it in.
@@ -327,48 +327,48 @@ class DedicatedPropreHostArgs:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key pair name.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="osPassword")
-    def os_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host login password, which can be set later. The password must meet the following requirements:
         - Length is 8~30 characters.
@@ -379,12 +379,12 @@ class DedicatedPropreHostArgs:
         return pulumi.get(self, "os_password")
 
     @os_password.setter
-    def os_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use the default password of the image.
         - **false**: (default)Do not use
@@ -394,112 +394,112 @@ class DedicatedPropreHostArgs:
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of purchase.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodType")
-    def period_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription type. Currently, only **Monthly** (subscription) is supported.
         """
         return pulumi.get(self, "period_type")
 
     @period_type.setter
-    def period_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Host tag information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined script data. The maximum size of the original data is 16kB.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="userDataEncoded")
-    def user_data_encoded(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_data_encoded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether custom data is encoded in Base64 format.
         """
         return pulumi.get(self, "user_data_encoded")
 
     @user_data_encoded.setter
-    def user_data_encoded(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_data_encoded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_data_encoded", value)
 
 
 @pulumi.input_type
 class _DedicatedPropreHostState:
     def __init__(__self__, *,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]] = None,
-                 ecs_deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_unique_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_class_lists: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]] = None,
+                 ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedPropreHost resources.
 
@@ -605,19 +605,19 @@ class _DedicatedPropreHostState:
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically when the host is created.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable automatic renewal. Valid values:
         - **true**: On
@@ -626,84 +626,84 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupId")
-    def dedicated_host_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         You have a dedicated cluster ID.
         """
         return pulumi.get(self, "dedicated_host_group_id")
 
     @dedicated_host_group_id.setter
-    def dedicated_host_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsClassLists")
-    def ecs_class_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]]:
+    def ecs_class_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]]:
         """
         ECS specifications. See `ecs_class_list` below.
         """
         return pulumi.get(self, "ecs_class_lists")
 
     @ecs_class_lists.setter
-    def ecs_class_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]]):
+    def ecs_class_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DedicatedPropreHostEcsClassListArgs']]]]):
         pulumi.set(self, "ecs_class_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsDeploymentSetId")
-    def ecs_deployment_set_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_deployment_set_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud server deployment set.
         """
         return pulumi.get(self, "ecs_deployment_set_id")
 
     @ecs_deployment_set_id.setter
-    def ecs_deployment_set_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_deployment_set_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_deployment_set_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsHostName")
-    def ecs_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Windows system: length of 2 to 15 characters, allowing the use of upper and lower case letters, numbers. You cannot use only numbers. Other operating systems (such as Linux): the length of 2 to 64 characters, allowing the use of dot (.) to separate characters into multiple segments, each segment allows the use of upper and lower case letters, numbers, but can not use continuous dot (.). Cannot start or end with a dot (.).
         """
         return pulumi.get(self, "ecs_host_name")
 
     @ecs_host_name.setter
-    def ecs_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceId")
-    def ecs_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ECS instance ID.
         """
         return pulumi.get(self, "ecs_instance_id")
 
     @ecs_instance_id.setter
-    def ecs_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsInstanceName")
-    def ecs_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance name. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of the instance.
         """
         return pulumi.get(self, "ecs_instance_name")
 
     @ecs_instance_name.setter
-    def ecs_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsUniqueSuffix")
-    def ecs_unique_suffix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_unique_suffix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
@@ -713,24 +713,24 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "ecs_unique_suffix")
 
     @ecs_unique_suffix.setter
-    def ecs_unique_suffix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_unique_suffix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_unique_suffix", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsZoneId")
-    def ecs_zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone.
         """
         return pulumi.get(self, "ecs_zone_id")
 
     @ecs_zone_id.setter
-    def ecs_zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_zone_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type, value:
         - **alisql**
@@ -741,12 +741,12 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom image.
         > **NOTE:**  If you need to use the default image, you do not need to fill it in.
@@ -754,48 +754,48 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network billing type. Value range: PayByBandwidth: Billing based on fixed bandwidth. PayByTraffic: charges by using the flow meter.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum outbound bandwidth of the public network, in Mbit/s. Value range: 0~100.  Default value: 0. When set to greater than 0, a public IP is automatically created.
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key pair name.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="osPassword")
-    def os_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Host login password, which can be set later. The password must meet the following requirements:
         - Length is 8~30 characters.
@@ -806,12 +806,12 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "os_password")
 
     @os_password.setter
-    def os_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to use the default password of the image.
         - **false**: (default)Do not use
@@ -821,127 +821,127 @@ class _DedicatedPropreHostState:
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Payment type. Currently, only **Subscription** is supported.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration of purchase.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodType")
-    def period_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subscription type. Currently, only **Monthly** (subscription) is supported.
         """
         return pulumi.get(self, "period_type")
 
     @period_type.setter
-    def period_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Host tag information.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined script data. The maximum size of the original data is 16kB.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="userDataEncoded")
-    def user_data_encoded(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def user_data_encoded(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether custom data is encoded in Base64 format.
         """
         return pulumi.get(self, "user_data_encoded")
 
     @user_data_encoded.setter
-    def user_data_encoded(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def user_data_encoded(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "user_data_encoded", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VPCID of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual switch.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -951,32 +951,32 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
-                 ecs_deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_unique_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_class_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
+                 ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CDDC Dedicated Propre Host resource. MyBase proprietary cluster host resources, you need to add a whitelist to purchase a proprietary version of the cluster.
@@ -993,6 +993,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -1005,13 +1006,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
             owners="system")
         essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             system_disk_category="cloud_essd")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id="cn-hangzhou-i")
         default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_security_group = []
+        default_security_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
@@ -1020,7 +1021,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_ecs_deployment_set = []
+        default_ecs_deployment_set: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
@@ -1032,7 +1033,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_key_pair = []
+        default_key_pair: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
@@ -1040,7 +1041,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_dedicated_host_group = []
+        default_dedicated_host_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
@@ -1074,10 +1075,10 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=alicloud_security_group_id,
-            dedicated_host_group_id=dedicated_host_group_id,
+            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
+            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",
@@ -1183,6 +1184,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -1195,13 +1197,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_get_images = alicloud.ecs.get_images(name_regex="^aliyun_3_x64_20G_scc*",
             owners="system")
         essd = alicloud.ecs.get_instance_types(cpu_core_count=2,
-            memory_size=4,
+            memory_size=float(4),
             system_disk_category="cloud_essd")
         default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
         default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id="cn-hangzhou-i")
         default_get_security_groups = alicloud.ecs.get_security_groups(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_security_group = []
+        default_security_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_security_group.append(alicloud.ecs.SecurityGroup(f"default-{range['value']}",
@@ -1210,7 +1212,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_security_groups.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_ecs_deployment_sets = alicloud.ecs.get_ecs_deployment_sets(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_ecs_deployment_set = []
+        default_ecs_deployment_set: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_ecs_deployment_set.append(alicloud.ecs.EcsDeploymentSet(f"default-{range['value']}",
@@ -1222,7 +1224,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
 
         len(default_get_ecs_deployment_sets.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_key_pairs = alicloud.ecs.get_key_pairs(name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_key_pair = []
+        default_key_pair: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_key_pair.append(alicloud.ecs.KeyPair(f"default-{range['value']}", key_pair_name="tf-exampleacc-cddc-dedicated_propre_host"))
@@ -1230,7 +1232,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         len(default_get_key_pairs.ids).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
         default_get_dedicated_host_groups = alicloud.cddc.get_dedicated_host_groups(engine="MySQL",
             name_regex="tf-exampleacc-cddc-dedicated_propre_host")
-        default_dedicated_host_group = []
+        default_dedicated_host_group: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_dedicated_host_group.append(alicloud.cddc.DedicatedHostGroup(f"default-{range['value']}",
@@ -1264,10 +1266,10 @@ class DedicatedPropreHost(pulumi.CustomResource):
         default_dedicated_propre_host = alicloud.cddc.DedicatedPropreHost("default",
             vswitch_id=default_get_switches.ids[0],
             ecs_instance_name="exampleTf",
-            ecs_deployment_set_id=alicloud_ecs_deployment_set_id,
+            ecs_deployment_set_id=output(alicloud_ecs_deployment_set_id).apply(lambda x: str(x)),
             auto_renew="false",
-            security_group_id=alicloud_security_group_id,
-            dedicated_host_group_id=dedicated_host_group_id,
+            security_group_id=output(alicloud_security_group_id).apply(lambda x: str(x)),
+            dedicated_host_group_id=output(dedicated_host_group_id).apply(lambda x: str(x)),
             ecs_host_name="exampleTf",
             vpc_id=default_get_networks.ids[0],
             ecs_unique_suffix="false",
@@ -1321,32 +1323,32 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-                 dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
-                 ecs_deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_unique_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 period_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+                 dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_class_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
+                 ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 period_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1407,33 +1409,33 @@ class DedicatedPropreHost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.str]] = None,
-            dedicated_host_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_class_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
-            ecs_deployment_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_unique_suffix: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_zone_id: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            os_password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_inherit: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.str]] = None,
-            period_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            user_data_encoded: Optional[pulumi.Input[_builtins.bool]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedPropreHost':
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.str]] = None,
+            dedicated_host_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_class_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DedicatedPropreHostEcsClassListArgs', 'DedicatedPropreHostEcsClassListArgsDict']]]]] = None,
+            ecs_deployment_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_unique_suffix: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_zone_id: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            os_password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.str]] = None,
+            period_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data_encoded: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedPropreHost':
         """
         Get an existing DedicatedPropreHost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

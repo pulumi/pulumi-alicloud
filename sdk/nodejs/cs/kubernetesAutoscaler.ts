@@ -216,27 +216,27 @@ export interface KubernetesAutoscalerState {
     /**
      * The id of kubernetes cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The coolDownDuration option of cluster-autoscaler.
      */
-    coolDownDuration?: pulumi.Input<string>;
+    coolDownDuration?: pulumi.Input<string | undefined>;
     /**
      * The deferScaleInDuration option of cluster-autoscaler.
      */
-    deferScaleInDuration?: pulumi.Input<string>;
+    deferScaleInDuration?: pulumi.Input<string | undefined>;
     /**
      * The list of the node pools. See `nodepools` below.
      */
-    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
+    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[] | undefined>;
     /**
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      */
-    useEcsRamRoleToken?: pulumi.Input<boolean>;
+    useEcsRamRoleToken?: pulumi.Input<boolean | undefined>;
     /**
      * The utilization option of cluster-autoscaler.
      */
-    utilization?: pulumi.Input<string>;
+    utilization?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,11 +258,11 @@ export interface KubernetesAutoscalerArgs {
     /**
      * The list of the node pools. See `nodepools` below.
      */
-    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[]>;
+    nodepools?: pulumi.Input<pulumi.Input<inputs.cs.KubernetesAutoscalerNodepool>[] | undefined>;
     /**
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      */
-    useEcsRamRoleToken?: pulumi.Input<boolean>;
+    useEcsRamRoleToken?: pulumi.Input<boolean | undefined>;
     /**
      * The utilization option of cluster-autoscaler.
      */

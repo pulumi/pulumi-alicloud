@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
+//			cen2, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(pulumi.String(name)),
 //			})
 //			if err != nil {
@@ -72,7 +72,7 @@ import (
 //			}
 //			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
 //				CcnId:  _default.ID(),
-//				CenId:  cen.ID(),
+//				CenId:  cen2.ID(),
 //				CenUid: pulumi.String(pulumi.Float64(anotherUid)),
 //			})
 //			if err != nil {

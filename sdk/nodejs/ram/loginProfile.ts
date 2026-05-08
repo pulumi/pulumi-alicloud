@@ -140,27 +140,27 @@ export interface LoginProfileState {
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
      * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
      * - false (default): does not forcefully enable MFA for the RAM user.
      */
-    mfaBindRequired?: pulumi.Input<boolean>;
+    mfaBindRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Whether the user must reset the password at the next logon. Value:
      * - true
      * - false (default)
      */
-    passwordResetRequired?: pulumi.Input<boolean>;
+    passwordResetRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The user name.
      */
-    userName?: pulumi.Input<string>;
+    userName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface LoginProfileArgs {
      * - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
      * - false (default): does not forcefully enable MFA for the RAM user.
      */
-    mfaBindRequired?: pulumi.Input<boolean>;
+    mfaBindRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
      */
@@ -182,7 +182,7 @@ export interface LoginProfileArgs {
      * - true
      * - false (default)
      */
-    passwordResetRequired?: pulumi.Input<boolean>;
+    passwordResetRequired?: pulumi.Input<boolean | undefined>;
     /**
      * The user name.
      */

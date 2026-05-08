@@ -210,54 +210,54 @@ export interface SupabaseProjectState {
      * - Support for special characters:! @#$%^& *()_+-=
      * - Length is 8~32 characters.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * cloud disk performance level
      */
-    diskPerformanceLevel?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The project name. The naming rules are as follows:
      * - 1~128 characters in length.
      * - Can only contain English letters, numbers, dashes (-) and underscores (_).
      * - Must begin with an English letter or an underscore (_).
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * The performance level of the Supabase instance.
      */
-    projectSpec?: pulumi.Input<string>;
+    projectSpec?: pulumi.Input<string | undefined>;
     /**
      * The region ID.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The IP address whitelist.
      */
-    securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the Supabase instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage capacity of the instance. Unit: GB.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The vSwitch ID.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,7 +274,7 @@ export interface SupabaseProjectArgs {
     /**
      * cloud disk performance level
      */
-    diskPerformanceLevel?: pulumi.Input<string>;
+    diskPerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The project name. The naming rules are as follows:
      * - 1~128 characters in length.
@@ -293,7 +293,7 @@ export interface SupabaseProjectArgs {
     /**
      * The storage capacity of the instance. Unit: GB.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
     /**
      * The VPC ID.
      */

@@ -21,8 +21,8 @@ class PolicyArgs:
     def __init__(__self__, *,
                  policy_content: pulumi.Input[_builtins.str],
                  policy_name: pulumi.Input[_builtins.str],
-                 policy_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Policy resource.
 
@@ -64,36 +64,36 @@ class PolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="policyDesc")
-    def policy_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the policy. The description must be 1 to 512 characters in length.
         """
         return pulumi.get(self, "policy_desc")
 
     @policy_desc.setter
-    def policy_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="userType")
-    def user_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         return pulumi.get(self, "user_type")
 
     @user_type.setter
-    def user_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_type", value)
 
 
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
-                 policy_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 policy_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Policy resources.
 
@@ -113,50 +113,50 @@ class _PolicyState:
 
     @_builtins.property
     @pulumi.getter(name="policyContent")
-    def policy_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The document of the tag policy.
         """
         return pulumi.get(self, "policy_content")
 
     @policy_content.setter
-    def policy_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_content", value)
 
     @_builtins.property
     @pulumi.getter(name="policyDesc")
-    def policy_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the policy. The description must be 1 to 512 characters in length.
         """
         return pulumi.get(self, "policy_desc")
 
     @policy_desc.setter
-    def policy_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userType")
-    def user_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
         """
         return pulumi.get(self, "user_type")
 
     @user_type.setter
-    def user_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_type", value)
 
 
@@ -166,10 +166,10 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a TAG Policy resource.
@@ -273,10 +273,10 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 policy_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,10 +304,10 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            policy_content: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Policy':
+            policy_content: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Policy':
         """
         Get an existing Policy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

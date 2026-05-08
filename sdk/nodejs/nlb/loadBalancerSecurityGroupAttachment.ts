@@ -164,15 +164,15 @@ export interface LoadBalancerSecurityGroupAttachmentState {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the NLB instance to be associated with the security group.
      */
-    loadBalancerId?: pulumi.Input<string>;
+    loadBalancerId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the security group to be disassociated.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface LoadBalancerSecurityGroupAttachmentArgs {
     /**
      * Specifies whether to perform a dry run, without performing the actual request. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the NLB instance to be associated with the security group.
      */

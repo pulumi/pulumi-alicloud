@@ -26,20 +26,20 @@ class RocketMQInstanceArgs:
                  series_code: pulumi.Input[_builtins.str],
                  service_code: pulumi.Input[_builtins.str],
                  sub_series_code: pulumi.Input[_builtins.str],
-                 acl_info: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_info: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 software: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 acl_info: pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_info: pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 software: pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a RocketMQInstance resource.
 
@@ -214,19 +214,19 @@ class RocketMQInstanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclInfo")
-    def acl_info(self) -> Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]:
+    def acl_info(self) -> pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']]:
         """
         The access control list for the instance. See `acl_info` below.
         """
         return pulumi.get(self, "acl_info")
 
     @acl_info.setter
-    def acl_info(self, value: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]):
+    def acl_info(self, value: pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']]):
         pulumi.set(self, "acl_info", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         - true: Enable auto-renewal
@@ -235,12 +235,12 @@ class RocketMQInstanceArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
 
@@ -250,24 +250,24 @@ class RocketMQInstanceArgs:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriodUnit")
-    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "auto_renew_period_unit")
 
     @auto_renew_period_unit.setter
-    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="commodityCode")
-    def commodity_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commodity code
 
@@ -280,36 +280,36 @@ class RocketMQInstanceArgs:
         return pulumi.get(self, "commodity_code")
 
     @commodity_code.setter
-    def commodity_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_code", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of instance
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhitelists")
-    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ip whitelist.
         """
         return pulumi.get(self, "ip_whitelists")
 
     @ip_whitelists.setter
-    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_whitelists", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
 
@@ -320,12 +320,12 @@ class RocketMQInstanceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum periodic unit for the duration of purchase.
 
@@ -336,95 +336,95 @@ class RocketMQInstanceArgs:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="productInfo")
-    def product_info(self) -> Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]:
+    def product_info(self) -> pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']]:
         """
         product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
 
     @product_info.setter
-    def product_info(self, value: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]):
+    def product_info(self, value: pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']]):
         pulumi.set(self, "product_info", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom description
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def software(self) -> Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']]:
+    def software(self) -> pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']]:
         """
         Instance software information. See `software` below.
         """
         return pulumi.get(self, "software")
 
     @software.setter
-    def software(self, value: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']]):
+    def software(self, value: pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']]):
         pulumi.set(self, "software", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _RocketMQInstanceState:
     def __init__(__self__, *,
-                 acl_info: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_info: Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_info: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 software: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 acl_info: pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network_info: pulumi.Input[Optional['RocketMQInstanceNetworkInfoArgs']] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_info: pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 software: pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering RocketMQInstance resources.
 
@@ -535,19 +535,19 @@ class _RocketMQInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="aclInfo")
-    def acl_info(self) -> Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]:
+    def acl_info(self) -> pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']]:
         """
         The access control list for the instance. See `acl_info` below.
         """
         return pulumi.get(self, "acl_info")
 
     @acl_info.setter
-    def acl_info(self, value: Optional[pulumi.Input['RocketMQInstanceAclInfoArgs']]):
+    def acl_info(self, value: pulumi.Input[Optional['RocketMQInstanceAclInfoArgs']]):
         pulumi.set(self, "acl_info", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal. This parameter is only applicable when the payment type for the instance is Subscription (prepaid).
         - true: Enable auto-renewal
@@ -556,12 +556,12 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period. This parameter is only valid when auto-renewal is enabled. Unit: months.
 
@@ -571,24 +571,24 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriodUnit")
-    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum periodic unit for the duration of auto-renewal. This parameter is only valid when auto-renewal is enabled. Valid values: `Month`, `Year`.
         """
         return pulumi.get(self, "auto_renew_period_unit")
 
     @auto_renew_period_unit.setter
-    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="commodityCode")
-    def commodity_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def commodity_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Commodity code
 
@@ -601,60 +601,60 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "commodity_code")
 
     @commodity_code.setter
-    def commodity_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def commodity_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "commodity_code", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of instance
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipWhitelists")
-    def ip_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ip whitelist.
         """
         return pulumi.get(self, "ip_whitelists")
 
     @ip_whitelists.setter
-    def ip_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInfo")
-    def network_info(self) -> Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']]:
+    def network_info(self) -> pulumi.Input[Optional['RocketMQInstanceNetworkInfoArgs']]:
         """
         Instance network configuration information See `network_info` below.
         """
         return pulumi.get(self, "network_info")
 
     @network_info.setter
-    def network_info(self, value: Optional[pulumi.Input['RocketMQInstanceNetworkInfoArgs']]):
+    def network_info(self, value: pulumi.Input[Optional['RocketMQInstanceNetworkInfoArgs']]):
         pulumi.set(self, "network_info", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type for the instance. Alibaba Cloud Message Queue RocketMQ version supports two types of payment:
 
@@ -667,12 +667,12 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Duration of purchase. This parameter is only valid when the payment type for the instance is Subscription (prepaid).
 
@@ -683,12 +683,12 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum periodic unit for the duration of purchase.
 
@@ -699,60 +699,60 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="productInfo")
-    def product_info(self) -> Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]:
+    def product_info(self) -> pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']]:
         """
         product info See `product_info` below.
         """
         return pulumi.get(self, "product_info")
 
     @product_info.setter
-    def product_info(self, value: Optional[pulumi.Input['RocketMQInstanceProductInfoArgs']]):
+    def product_info(self, value: pulumi.Input[Optional['RocketMQInstanceProductInfoArgs']]):
         pulumi.set(self, "product_info", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.245.0) The ID of the region in which the instance resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def remark(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remark(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom description
         """
         return pulumi.get(self, "remark")
 
     @remark.setter
-    def remark(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remark(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remark", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="seriesCode")
-    def series_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def series_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The primary series encoding for the instance. For specific differences between the primary series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
 
@@ -764,48 +764,48 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "series_code")
 
     @series_code.setter
-    def series_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def series_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "series_code", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceCode")
-    def service_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The code of the service code instance. The code of the RocketMQ is rmq.
         """
         return pulumi.get(self, "service_code")
 
     @service_code.setter
-    def service_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def software(self) -> Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']]:
+    def software(self) -> pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']]:
         """
         Instance software information. See `software` below.
         """
         return pulumi.get(self, "software")
 
     @software.setter
-    def software(self, value: Optional[pulumi.Input['RocketMQInstanceSoftwareArgs']]):
+    def software(self, value: pulumi.Input[Optional['RocketMQInstanceSoftwareArgs']]):
         pulumi.set(self, "software", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the instance
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="subSeriesCode")
-    def sub_series_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_series_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The sub-series encoding for the instance. For specific differences between the sub-series, please refer to [Product Selection](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-selection).
 
@@ -819,19 +819,19 @@ class _RocketMQInstanceState:
         return pulumi.get(self, "sub_series_code")
 
     @sub_series_code.setter
-    def sub_series_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_series_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_series_code", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The resource label.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -841,25 +841,25 @@ class RocketMQInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_info: Optional[pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
-                 sub_series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+                 sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a RocketMQ Instance resource.
@@ -1117,25 +1117,25 @@ class RocketMQInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 product_info: Optional[pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
-                 remark: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
-                 sub_series_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+                 remark: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+                 sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1187,28 +1187,28 @@ class RocketMQInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_info: Optional[pulumi.Input[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            commodity_code: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            network_info: Optional[pulumi.Input[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            product_info: Optional[pulumi.Input[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            remark: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            series_code: Optional[pulumi.Input[_builtins.str]] = None,
-            service_code: Optional[pulumi.Input[_builtins.str]] = None,
-            software: Optional[pulumi.Input[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_series_code: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'RocketMQInstance':
+            acl_info: pulumi.Input[Optional[Union['RocketMQInstanceAclInfoArgs', 'RocketMQInstanceAclInfoArgsDict']]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            commodity_code: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            network_info: pulumi.Input[Optional[Union['RocketMQInstanceNetworkInfoArgs', 'RocketMQInstanceNetworkInfoArgsDict']]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            product_info: pulumi.Input[Optional[Union['RocketMQInstanceProductInfoArgs', 'RocketMQInstanceProductInfoArgsDict']]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            remark: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            series_code: pulumi.Input[Optional[_builtins.str]] = None,
+            service_code: pulumi.Input[Optional[_builtins.str]] = None,
+            software: pulumi.Input[Optional[Union['RocketMQInstanceSoftwareArgs', 'RocketMQInstanceSoftwareArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_series_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'RocketMQInstance':
         """
         Get an existing RocketMQInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

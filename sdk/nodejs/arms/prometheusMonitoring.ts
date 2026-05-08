@@ -33,11 +33,11 @@ import * as utilities from "../utilities";
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
  *     vpcId: defaultNetwork.id,
- *     cidrBlock: defaultNetwork.cidrBlock.apply(cidrBlock => std.cidrsubnetOutput({
- *         input: cidrBlock,
+ *     cidrBlock: std.cidrsubnetOutput({
+ *         input: defaultNetwork.cidrBlock,
  *         newbits: 8,
  *         netnum: 8,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
@@ -55,13 +55,13 @@ import * as utilities from "../utilities";
  *         "23",
  *     ],
  * });
- * const defaultGetInstanceTypes = vswitch.zoneId.apply(zoneId => alicloud.ecs.getInstanceTypesOutput({
- *     availabilityZone: zoneId,
+ * const defaultGetInstanceTypes = alicloud.ecs.getInstanceTypesOutput({
+ *     availabilityZone: vswitch.zoneId,
  *     cpuCoreCount: 2,
  *     memorySize: 4,
  *     kubernetesNodeRole: "Worker",
  *     instanceTypeFamily: "ecs.sn1ne",
- * }));
+ * });
  * const defaultManagedKubernetes = new alicloud.cs.ManagedKubernetes("default", {
  *     name: name,
  *     clusterSpec: "ack.pro.small",
@@ -224,23 +224,23 @@ export interface PrometheusMonitoringState {
     /**
      * The ID of the prometheus instance.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Yaml configuration for monitoring.
      */
-    configYaml?: pulumi.Input<string>;
+    configYaml?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource.
      */
-    monitoringName?: pulumi.Input<string>;
+    monitoringName?: pulumi.Input<string | undefined>;
     /**
      * Valid values: `stop`, `run`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,7 +258,7 @@ export interface PrometheusMonitoringArgs {
     /**
      * Valid values: `stop`, `run`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
      */

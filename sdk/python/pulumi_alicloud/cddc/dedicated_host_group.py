@@ -21,13 +21,13 @@ class DedicatedHostGroupArgs:
     def __init__(__self__, *,
                  engine: pulumi.Input[_builtins.str],
                  vpc_id: pulumi.Input[_builtins.str],
-                 allocation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 dedicated_host_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 host_replace_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 open_permission: Optional[pulumi.Input[_builtins.bool]] = None):
+                 allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 open_permission: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DedicatedHostGroup resource.
 
@@ -85,79 +85,79 @@ class DedicatedHostGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="allocationPolicy")
-    def allocation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         """
         return pulumi.get(self, "allocation_policy")
 
     @allocation_policy.setter
-    def allocation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuAllocationRatio")
-    def cpu_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         """
         return pulumi.get(self, "cpu_allocation_ratio")
 
     @cpu_allocation_ratio.setter
-    def cpu_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupDesc")
-    def dedicated_host_group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "dedicated_host_group_desc")
 
     @dedicated_host_group_desc.setter
-    def dedicated_host_group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_group_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="diskAllocationRatio")
-    def disk_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         """
         return pulumi.get(self, "disk_allocation_ratio")
 
     @disk_allocation_ratio.setter
-    def disk_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="hostReplacePolicy")
-    def host_replace_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_replace_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         """
         return pulumi.get(self, "host_replace_policy")
 
     @host_replace_policy.setter
-    def host_replace_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_replace_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_replace_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="memAllocationRatio")
-    def mem_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mem_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Memory Allocation Ratio of the Dedicated Host Group.
         """
         return pulumi.get(self, "mem_allocation_ratio")
 
     @mem_allocation_ratio.setter
-    def mem_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mem_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mem_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="openPermission")
-    def open_permission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_permission(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
@@ -165,22 +165,22 @@ class DedicatedHostGroupArgs:
         return pulumi.get(self, "open_permission")
 
     @open_permission.setter
-    def open_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_permission(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_permission", value)
 
 
 @pulumi.input_type
 class _DedicatedHostGroupState:
     def __init__(__self__, *,
-                 allocation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 dedicated_host_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_replace_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 open_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 open_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DedicatedHostGroup resources.
 
@@ -216,91 +216,91 @@ class _DedicatedHostGroupState:
 
     @_builtins.property
     @pulumi.getter(name="allocationPolicy")
-    def allocation_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allocation_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
         """
         return pulumi.get(self, "allocation_policy")
 
     @allocation_policy.setter
-    def allocation_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allocation_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allocation_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="cpuAllocationRatio")
-    def cpu_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cpu_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
         """
         return pulumi.get(self, "cpu_allocation_ratio")
 
     @cpu_allocation_ratio.setter
-    def cpu_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cpu_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cpu_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostGroupDesc")
-    def dedicated_host_group_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_group_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
         """
         return pulumi.get(self, "dedicated_host_group_desc")
 
     @dedicated_host_group_desc.setter
-    def dedicated_host_group_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_group_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_group_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="diskAllocationRatio")
-    def disk_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
         """
         return pulumi.get(self, "disk_allocation_ratio")
 
     @disk_allocation_ratio.setter
-    def disk_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="hostReplacePolicy")
-    def host_replace_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_replace_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
         """
         return pulumi.get(self, "host_replace_policy")
 
     @host_replace_policy.setter
-    def host_replace_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_replace_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_replace_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="memAllocationRatio")
-    def mem_allocation_ratio(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mem_allocation_ratio(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Memory Allocation Ratio of the Dedicated Host Group.
         """
         return pulumi.get(self, "mem_allocation_ratio")
 
     @mem_allocation_ratio.setter
-    def mem_allocation_ratio(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mem_allocation_ratio(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mem_allocation_ratio", value)
 
     @_builtins.property
     @pulumi.getter(name="openPermission")
-    def open_permission(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def open_permission(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the feature that allows you to have OS permissions on the hosts in the dedicated cluster. Valid values: `true` and `false`.
         **NOTE:** The `open_permission` should be `true` when `engine = "SQLServer"`
@@ -308,19 +308,19 @@ class _DedicatedHostGroupState:
         return pulumi.get(self, "open_permission")
 
     @open_permission.setter
-    def open_permission(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def open_permission(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "open_permission", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual private cloud (VPC) ID of the dedicated cluster.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -330,15 +330,15 @@ class DedicatedHostGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 dedicated_host_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_replace_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 open_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 open_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ApsaraDB for MyBase Dedicated Host Group resource.
@@ -466,15 +466,15 @@ class DedicatedHostGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allocation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 cpu_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 dedicated_host_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 host_replace_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 mem_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-                 open_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+                 open_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -507,15 +507,15 @@ class DedicatedHostGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allocation_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            cpu_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-            dedicated_host_group_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            host_replace_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            mem_allocation_ratio: Optional[pulumi.Input[_builtins.int]] = None,
-            open_permission: Optional[pulumi.Input[_builtins.bool]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DedicatedHostGroup':
+            allocation_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            cpu_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            dedicated_host_group_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            host_replace_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            mem_allocation_ratio: pulumi.Input[Optional[_builtins.int]] = None,
+            open_permission: pulumi.Input[Optional[_builtins.bool]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DedicatedHostGroup':
         """
         Get an existing DedicatedHostGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

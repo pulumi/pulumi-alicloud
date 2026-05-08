@@ -126,39 +126,39 @@ export class ApplicationInfo extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationInfo resources.
  */
 export interface ApplicationInfoState {
-    approveValue?: pulumi.Input<string>;
-    auditMode?: pulumi.Input<string>;
-    auditReason?: pulumi.Input<string>;
-    createTime?: pulumi.Input<string>;
-    desireValue?: pulumi.Input<number>;
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
-    effectiveTime?: pulumi.Input<string>;
-    envLanguage?: pulumi.Input<string>;
-    expireTime?: pulumi.Input<string>;
-    noticeType?: pulumi.Input<number>;
-    productCode?: pulumi.Input<string>;
-    quotaActionCode?: pulumi.Input<string>;
-    quotaCategory?: pulumi.Input<string>;
-    quotaDescription?: pulumi.Input<string>;
-    quotaName?: pulumi.Input<string>;
-    quotaUnit?: pulumi.Input<string>;
-    reason?: pulumi.Input<string>;
-    status?: pulumi.Input<string>;
+    approveValue?: pulumi.Input<string | undefined>;
+    auditMode?: pulumi.Input<string | undefined>;
+    auditReason?: pulumi.Input<string | undefined>;
+    createTime?: pulumi.Input<string | undefined>;
+    desireValue?: pulumi.Input<number | undefined>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[] | undefined>;
+    effectiveTime?: pulumi.Input<string | undefined>;
+    envLanguage?: pulumi.Input<string | undefined>;
+    expireTime?: pulumi.Input<string | undefined>;
+    noticeType?: pulumi.Input<number | undefined>;
+    productCode?: pulumi.Input<string | undefined>;
+    quotaActionCode?: pulumi.Input<string | undefined>;
+    quotaCategory?: pulumi.Input<string | undefined>;
+    quotaDescription?: pulumi.Input<string | undefined>;
+    quotaName?: pulumi.Input<string | undefined>;
+    quotaUnit?: pulumi.Input<string | undefined>;
+    reason?: pulumi.Input<string | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ApplicationInfo resource.
  */
 export interface ApplicationInfoArgs {
-    auditMode?: pulumi.Input<string>;
+    auditMode?: pulumi.Input<string | undefined>;
     desireValue: pulumi.Input<number>;
-    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[]>;
-    effectiveTime?: pulumi.Input<string>;
-    envLanguage?: pulumi.Input<string>;
-    expireTime?: pulumi.Input<string>;
-    noticeType?: pulumi.Input<number>;
+    dimensions?: pulumi.Input<pulumi.Input<inputs.quotas.ApplicationInfoDimension>[] | undefined>;
+    effectiveTime?: pulumi.Input<string | undefined>;
+    envLanguage?: pulumi.Input<string | undefined>;
+    expireTime?: pulumi.Input<string | undefined>;
+    noticeType?: pulumi.Input<number | undefined>;
     productCode: pulumi.Input<string>;
     quotaActionCode: pulumi.Input<string>;
-    quotaCategory?: pulumi.Input<string>;
+    quotaCategory?: pulumi.Input<string | undefined>;
     reason: pulumi.Input<string>;
 }

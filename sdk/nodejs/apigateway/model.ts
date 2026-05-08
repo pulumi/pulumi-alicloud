@@ -131,19 +131,19 @@ export interface ModelState {
     /**
      * The description of the model.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The group of the model belongs to.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the model.
      */
-    modelName?: pulumi.Input<string>;
+    modelName?: pulumi.Input<string | undefined>;
     /**
      * The schema of the model.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -153,7 +153,7 @@ export interface ModelArgs {
     /**
      * The description of the model.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The group of the model belongs to.
      */

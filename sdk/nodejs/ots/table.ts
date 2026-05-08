@@ -228,51 +228,51 @@ export interface TableState {
     /**
      * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
      */
-    allowUpdate?: pulumi.Input<boolean>;
+    allowUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
-    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
+    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[] | undefined>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
-    deviationCellVersionInSec?: pulumi.Input<string>;
+    deviationCellVersionInSec?: pulumi.Input<string | undefined>;
     /**
      * Whether enable OTS server side encryption. Default value is false.
      */
-    enableSse?: pulumi.Input<boolean>;
+    enableSse?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of versions stored in this table. The valid value is 1-2147483647.
      */
-    maxVersion?: pulumi.Input<number>;
+    maxVersion?: pulumi.Input<number | undefined>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primaryKey` should not be less than one and not be more than four. See `primaryKey` below.
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<inputs.ots.TablePrimaryKey>[] | undefined>;
     /**
      * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    sseKeyId?: pulumi.Input<string>;
+    sseKeyId?: pulumi.Input<string | undefined>;
     /**
      * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
-    sseKeyType?: pulumi.Input<string>;
+    sseKeyType?: pulumi.Input<string | undefined>;
     /**
      * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    sseRoleArn?: pulumi.Input<string>;
+    sseRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
     /**
      * The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
      */
-    timeToLive?: pulumi.Input<number>;
+    timeToLive?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -282,19 +282,19 @@ export interface TableArgs {
     /**
      * Whether allow data update operations. Default value is true. Skipping the resource state refresh step may result in unnecessary execution plan when upgrading from an earlier version.
      */
-    allowUpdate?: pulumi.Input<boolean>;
+    allowUpdate?: pulumi.Input<boolean | undefined>;
     /**
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `definedColumn` should not be more than 32. See `definedColumn` below.
      */
-    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[]>;
+    definedColumns?: pulumi.Input<pulumi.Input<inputs.ots.TableDefinedColumn>[] | undefined>;
     /**
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      */
-    deviationCellVersionInSec?: pulumi.Input<string>;
+    deviationCellVersionInSec?: pulumi.Input<string | undefined>;
     /**
      * Whether enable OTS server side encryption. Default value is false.
      */
-    enableSse?: pulumi.Input<boolean>;
+    enableSse?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
@@ -310,15 +310,15 @@ export interface TableArgs {
     /**
      * . The key ID of secret. `sseKeyId` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    sseKeyId?: pulumi.Input<string>;
+    sseKeyId?: pulumi.Input<string | undefined>;
     /**
      * The key type of OTS server side encryption. `SSE_KMS_SERVICE`, `SSE_BYOK` is allowed.
      */
-    sseKeyType?: pulumi.Input<string>;
+    sseKeyType?: pulumi.Input<string | undefined>;
     /**
      * The arn of role that can access kms service. `sseRoleArn` is valid only when `sseKeyType` is set to `SSE_BYOK`.
      */
-    sseRoleArn?: pulumi.Input<string>;
+    sseRoleArn?: pulumi.Input<string | undefined>;
     /**
      * The table name of the OTS instance. If changed, a new table would be created.
      */

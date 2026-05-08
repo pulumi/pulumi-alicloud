@@ -21,7 +21,7 @@ class EnterpriseLogicDatabaseArgs:
     def __init__(__self__, *,
                  alias: pulumi.Input[_builtins.str],
                  database_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 logic_database_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 logic_database_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseLogicDatabase resource.
 
@@ -60,30 +60,30 @@ class EnterpriseLogicDatabaseArgs:
 
     @_builtins.property
     @pulumi.getter(name="logicDatabaseId")
-    def logic_database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logic_database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the logical Library.
         """
         return pulumi.get(self, "logic_database_id")
 
     @logic_database_id.setter
-    def logic_database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logic_database_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logic_database_id", value)
 
 
 @pulumi.input_type
 class _EnterpriseLogicDatabaseState:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 db_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 env_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 logic: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logic_database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 owner_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 db_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 env_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 logic: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logic_database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 owner_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseLogicDatabase resources.
 
@@ -121,122 +121,122 @@ class _EnterpriseLogicDatabaseState:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logical Library alias.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="databaseIds")
-    def database_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def database_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Sub-Database ID
         """
         return pulumi.get(self, "database_ids")
 
     @database_ids.setter
-    def database_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def database_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "database_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="dbType")
-    def db_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type.
         """
         return pulumi.get(self, "db_type")
 
     @db_type.setter
-    def db_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_type", value)
 
     @_builtins.property
     @pulumi.getter(name="envType")
-    def env_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def env_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
         """
         return pulumi.get(self, "env_type")
 
     @env_type.setter
-    def env_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def env_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "env_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def logic(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def logic(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether it is a logical Library, the return value is true.
         """
         return pulumi.get(self, "logic")
 
     @logic.setter
-    def logic(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def logic(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "logic", value)
 
     @_builtins.property
     @pulumi.getter(name="logicDatabaseId")
-    def logic_database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logic_database_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the logical Library.
         """
         return pulumi.get(self, "logic_database_id")
 
     @logic_database_id.setter
-    def logic_database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logic_database_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logic_database_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerIdLists")
-    def owner_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owner_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The user ID list of the logical library Owner.
         """
         return pulumi.get(self, "owner_id_lists")
 
     @owner_id_lists.setter
-    def owner_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owner_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owner_id_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerNameLists")
-    def owner_name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def owner_name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The nickname list of the logical library Owner.
         """
         return pulumi.get(self, "owner_name_lists")
 
     @owner_name_lists.setter
-    def owner_name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def owner_name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "owner_name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaName")
-    def schema_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logical Library name.
         """
         return pulumi.get(self, "schema_name")
 
     @schema_name.setter
-    def schema_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_name", value)
 
     @_builtins.property
     @pulumi.getter(name="searchName")
-    def search_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def search_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Logical library search name.
         """
         return pulumi.get(self, "search_name")
 
     @search_name.setter
-    def search_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def search_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "search_name", value)
 
 
@@ -246,9 +246,9 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 logic_database_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 logic_database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise Logic Database resource.
@@ -345,9 +345,9 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 logic_database_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 database_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 logic_database_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -381,16 +381,16 @@ class EnterpriseLogicDatabase(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            database_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            db_type: Optional[pulumi.Input[_builtins.str]] = None,
-            env_type: Optional[pulumi.Input[_builtins.str]] = None,
-            logic: Optional[pulumi.Input[_builtins.bool]] = None,
-            logic_database_id: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            owner_name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            schema_name: Optional[pulumi.Input[_builtins.str]] = None,
-            search_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseLogicDatabase':
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            database_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            db_type: pulumi.Input[Optional[_builtins.str]] = None,
+            env_type: pulumi.Input[Optional[_builtins.str]] = None,
+            logic: pulumi.Input[Optional[_builtins.bool]] = None,
+            logic_database_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            owner_name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            schema_name: pulumi.Input[Optional[_builtins.str]] = None,
+            search_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseLogicDatabase':
         """
         Get an existing EnterpriseLogicDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

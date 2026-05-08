@@ -105,12 +105,12 @@ class EndpointArgs:
 @pulumi.input_type
 class _EndpointState:
     def __init__(__self__, *,
-                 endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input['EndpointIpConfigArgs']]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Endpoint resources.
 
@@ -136,74 +136,74 @@ class _EndpointState:
 
     @_builtins.property
     @pulumi.getter(name="endpointName")
-    def endpoint_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "endpoint_name")
 
     @endpoint_name.setter
-    def endpoint_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EndpointIpConfigArgs']]]]:
         """
         The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
         """
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EndpointIpConfigArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EndpointIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Security Group.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VPC ID.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcRegionId")
-    def vpc_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Region of the VPC.
         """
         return pulumi.get(self, "vpc_region_id")
 
     @vpc_region_id.setter
-    def vpc_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_region_id", value)
 
 
@@ -213,11 +213,11 @@ class Endpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Private Zone Endpoint resource.
@@ -232,6 +232,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -244,13 +245,13 @@ class Endpoint(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
-                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
@@ -312,6 +313,7 @@ class Endpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -324,13 +326,13 @@ class Endpoint(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, 2)]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=default_network.id,
-                cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+                cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                     newbits=8,
-                    netnum=range["value"])).apply(lambda invoke: invoke.result),
+                    netnum=range["value"]).apply(lambda invoke: invoke.result),
                 zone_id=default.zones[range["value"]].zone_id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             vpc_id=default_network.id,
@@ -380,11 +382,11 @@ class Endpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_region_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -420,12 +422,12 @@ class Endpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            endpoint_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Endpoint':
+            endpoint_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['EndpointIpConfigArgs', 'EndpointIpConfigArgsDict']]]]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Endpoint':
         """
         Get an existing Endpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

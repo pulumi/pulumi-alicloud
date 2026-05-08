@@ -25,9 +25,9 @@ class DispatchRuleArgs:
                  group_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]],
                  label_match_expression_grids: pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]],
                  notify_rules: pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]],
-                 dispatch_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_recover: Optional[pulumi.Input[_builtins.bool]] = None,
-                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None):
+                 dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+                 notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None):
         """
         The set of arguments for constructing a DispatchRule resource.
 
@@ -100,52 +100,52 @@ class DispatchRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="dispatchType")
-    def dispatch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dispatch_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         """
         return pulumi.get(self, "dispatch_type")
 
     @dispatch_type.setter
-    def dispatch_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dispatch_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dispatch_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecover")
-    def is_recover(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_recover(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         """
         return pulumi.get(self, "is_recover")
 
     @is_recover.setter
-    def is_recover(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_recover(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_recover", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyTemplates")
-    def notify_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
+    def notify_templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
         """
         Sets the notification template. See `notify_template` below.
         """
         return pulumi.get(self, "notify_templates")
 
     @notify_templates.setter
-    def notify_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
+    def notify_templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
         pulumi.set(self, "notify_templates", value)
 
 
 @pulumi.input_type
 class _DispatchRuleState:
     def __init__(__self__, *,
-                 dispatch_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]] = None,
-                 is_recover: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
-                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
-                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 dispatch_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_rules: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]] = None,
+                 is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label_match_expression_grids: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]] = None,
+                 notify_rules: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]] = None,
+                 notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DispatchRule resources.
 
@@ -177,98 +177,98 @@ class _DispatchRuleState:
 
     @_builtins.property
     @pulumi.getter(name="dispatchRuleName")
-    def dispatch_rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dispatch_rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the dispatch policy.
         """
         return pulumi.get(self, "dispatch_rule_name")
 
     @dispatch_rule_name.setter
-    def dispatch_rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dispatch_rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dispatch_rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dispatchType")
-    def dispatch_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dispatch_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert handling method. Valid values: CREATE_ALERT: generates an alert. DISCARD_ALERT: discards the alert event and generates no alert.
         """
         return pulumi.get(self, "dispatch_type")
 
     @dispatch_type.setter
-    def dispatch_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dispatch_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dispatch_type", value)
 
     @_builtins.property
     @pulumi.getter(name="groupRules")
-    def group_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]]:
+    def group_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]]:
         """
         Sets the event group. See `group_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "group_rules")
 
     @group_rules.setter
-    def group_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]]):
+    def group_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleGroupRuleArgs']]]]):
         pulumi.set(self, "group_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="isRecover")
-    def is_recover(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_recover(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to send the restored alert. Valid values: true: sends the alert. false: does not send the alert.
         """
         return pulumi.get(self, "is_recover")
 
     @is_recover.setter
-    def is_recover(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_recover(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_recover", value)
 
     @_builtins.property
     @pulumi.getter(name="labelMatchExpressionGrids")
-    def label_match_expression_grids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]]:
+    def label_match_expression_grids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]]:
         """
         Sets the dispatch rule. See `label_match_expression_grid` below.
         """
         return pulumi.get(self, "label_match_expression_grids")
 
     @label_match_expression_grids.setter
-    def label_match_expression_grids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]]):
+    def label_match_expression_grids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleLabelMatchExpressionGridArgs']]]]):
         pulumi.set(self, "label_match_expression_grids", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyRules")
-    def notify_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]]:
+    def notify_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]]:
         """
         Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
         """
         return pulumi.get(self, "notify_rules")
 
     @notify_rules.setter
-    def notify_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]]):
+    def notify_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyRuleArgs']]]]):
         pulumi.set(self, "notify_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyTemplates")
-    def notify_templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
+    def notify_templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]:
         """
         Sets the notification template. See `notify_template` below.
         """
         return pulumi.get(self, "notify_templates")
 
     @notify_templates.setter
-    def notify_templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
+    def notify_templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DispatchRuleNotifyTemplateArgs']]]]):
         pulumi.set(self, "notify_templates", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource status of Alert Dispatch Rule.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -278,13 +278,13 @@ class DispatchRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
-                 is_recover: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
-                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
-                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
+                 dispatch_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
+                 is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label_match_expression_grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+                 notify_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+                 notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Dispatch Rule resource.
@@ -483,13 +483,13 @@ class DispatchRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dispatch_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 dispatch_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
-                 is_recover: Optional[pulumi.Input[_builtins.bool]] = None,
-                 label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
-                 notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
-                 notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
+                 dispatch_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
+                 is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+                 label_match_expression_grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+                 notify_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+                 notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -525,14 +525,14 @@ class DispatchRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dispatch_rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            dispatch_type: Optional[pulumi.Input[_builtins.str]] = None,
-            group_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
-            is_recover: Optional[pulumi.Input[_builtins.bool]] = None,
-            label_match_expression_grids: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
-            notify_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
-            notify_templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'DispatchRule':
+            dispatch_rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dispatch_type: pulumi.Input[Optional[_builtins.str]] = None,
+            group_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleGroupRuleArgs', 'DispatchRuleGroupRuleArgsDict']]]]] = None,
+            is_recover: pulumi.Input[Optional[_builtins.bool]] = None,
+            label_match_expression_grids: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleLabelMatchExpressionGridArgs', 'DispatchRuleLabelMatchExpressionGridArgsDict']]]]] = None,
+            notify_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyRuleArgs', 'DispatchRuleNotifyRuleArgsDict']]]]] = None,
+            notify_templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DispatchRuleNotifyTemplateArgs', 'DispatchRuleNotifyTemplateArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DispatchRule':
         """
         Get an existing DispatchRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -174,23 +174,23 @@ export interface ServiceEventRuleState {
      * DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
      * - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
      */
-    deliveryMode?: pulumi.Input<string>;
+    deliveryMode?: pulumi.Input<string | undefined>;
     /**
      * Message Receiving Terminal Endpoint Object. See `endpoint` below.
      */
-    endpoint?: pulumi.Input<inputs.message.ServiceEventRuleEndpoint>;
+    endpoint?: pulumi.Input<inputs.message.ServiceEventRuleEndpoint | undefined>;
     /**
      * Event Type List
      */
-    eventTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    eventTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Matching rules, or relationships between multiple rules. See `matchRules` below.
      */
-    matchRules?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.message.ServiceEventRuleMatchRule>[]>[]>;
+    matchRules?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.message.ServiceEventRuleMatchRule>[]>[] | undefined>;
     /**
      * The event notification rule name.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,11 +201,11 @@ export interface ServiceEventRuleArgs {
      * DIRECT: directly delivers to a single queue (1:1) without creating a Topic;
      * - BROADCAST: BROADCAST to all subscription queues (1:N). You need to create a Topic;
      */
-    deliveryMode?: pulumi.Input<string>;
+    deliveryMode?: pulumi.Input<string | undefined>;
     /**
      * Message Receiving Terminal Endpoint Object. See `endpoint` below.
      */
-    endpoint?: pulumi.Input<inputs.message.ServiceEventRuleEndpoint>;
+    endpoint?: pulumi.Input<inputs.message.ServiceEventRuleEndpoint | undefined>;
     /**
      * Event Type List
      */
@@ -213,7 +213,7 @@ export interface ServiceEventRuleArgs {
     /**
      * Matching rules, or relationships between multiple rules. See `matchRules` below.
      */
-    matchRules?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.message.ServiceEventRuleMatchRule>[]>[]>;
+    matchRules?: pulumi.Input<pulumi.Input<pulumi.Input<inputs.message.ServiceEventRuleMatchRule>[]>[] | undefined>;
     /**
      * The event notification rule name.
      */

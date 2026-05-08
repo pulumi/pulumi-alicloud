@@ -137,27 +137,27 @@ export interface HoneypotNodeState {
     /**
      * Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      */
-    allowHoneypotAccessInternet?: pulumi.Input<boolean>;
+    allowHoneypotAccessInternet?: pulumi.Input<boolean | undefined>;
     /**
      * Number of probes available.
      */
-    availableProbeNum?: pulumi.Input<number>;
+    availableProbeNum?: pulumi.Input<number | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Management node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Release the collection of network segments.
      */
-    securityGroupProbeIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupProbeIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -167,7 +167,7 @@ export interface HoneypotNodeArgs {
     /**
      * Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      */
-    allowHoneypotAccessInternet?: pulumi.Input<boolean>;
+    allowHoneypotAccessInternet?: pulumi.Input<boolean | undefined>;
     /**
      * Number of probes available.
      */
@@ -179,5 +179,5 @@ export interface HoneypotNodeArgs {
     /**
      * Release the collection of network segments.
      */
-    securityGroupProbeIpLists?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupProbeIpLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

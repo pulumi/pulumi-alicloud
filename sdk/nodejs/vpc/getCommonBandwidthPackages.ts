@@ -178,33 +178,33 @@ export interface GetCommonBandwidthPackagesOutputArgs {
     /**
      * The name of bandwidth package.
      */
-    bandwidthPackageName?: pulumi.Input<string>;
+    bandwidthPackageName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck only the request.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Common Bandwidth Packages IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Specifies whether to return data of orders that have not taken effect.
      */
-    includeReservationData?: pulumi.Input<boolean>;
+    includeReservationData?: pulumi.Input<boolean | undefined>;
     /**
      * A regex string to filter results by name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The Id of resource group which the common bandwidth package belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of bandwidth package. Valid values: `Available` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

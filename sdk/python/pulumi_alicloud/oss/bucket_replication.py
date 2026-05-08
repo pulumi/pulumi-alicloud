@@ -23,14 +23,14 @@ class BucketReplicationArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  destination: pulumi.Input['BucketReplicationDestinationArgs'],
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_configuration: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']] = None,
-                 historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
-                 progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
-                 rtc: Optional[pulumi.Input['BucketReplicationRtcArgs']] = None,
-                 source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
-                 sync_role: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_configuration: pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']] = None,
+                 historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_set: pulumi.Input[Optional['BucketReplicationPrefixSetArgs']] = None,
+                 progress: pulumi.Input[Optional['BucketReplicationProgressArgs']] = None,
+                 rtc: pulumi.Input[Optional['BucketReplicationRtcArgs']] = None,
+                 source_selection_criteria: pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']] = None,
+                 sync_role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a BucketReplication resource.
 
@@ -90,116 +90,116 @@ class BucketReplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfiguration")
-    def encryption_configuration(self) -> Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']]:
+    def encryption_configuration(self) -> pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']]:
         """
         Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         """
         return pulumi.get(self, "encryption_configuration")
 
     @encryption_configuration.setter
-    def encryption_configuration(self, value: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']]):
+    def encryption_configuration(self, value: pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']]):
         pulumi.set(self, "encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="historicalObjectReplication")
-    def historical_object_replication(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def historical_object_replication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         """
         return pulumi.get(self, "historical_object_replication")
 
     @historical_object_replication.setter
-    def historical_object_replication(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def historical_object_replication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "historical_object_replication", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixSet")
-    def prefix_set(self) -> Optional[pulumi.Input['BucketReplicationPrefixSetArgs']]:
+    def prefix_set(self) -> pulumi.Input[Optional['BucketReplicationPrefixSetArgs']]:
         """
         The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         """
         return pulumi.get(self, "prefix_set")
 
     @prefix_set.setter
-    def prefix_set(self, value: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']]):
+    def prefix_set(self, value: pulumi.Input[Optional['BucketReplicationPrefixSetArgs']]):
         pulumi.set(self, "prefix_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input['BucketReplicationProgressArgs']]:
+    def progress(self) -> pulumi.Input[Optional['BucketReplicationProgressArgs']]:
         """
         Specifies the progress for querying the progress of a data replication task of a bucket.
         """
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input['BucketReplicationProgressArgs']]):
+    def progress(self, value: pulumi.Input[Optional['BucketReplicationProgressArgs']]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter
-    def rtc(self) -> Optional[pulumi.Input['BucketReplicationRtcArgs']]:
+    def rtc(self) -> pulumi.Input[Optional['BucketReplicationRtcArgs']]:
         """
         Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         """
         return pulumi.get(self, "rtc")
 
     @rtc.setter
-    def rtc(self, value: Optional[pulumi.Input['BucketReplicationRtcArgs']]):
+    def rtc(self, value: pulumi.Input[Optional['BucketReplicationRtcArgs']]):
         pulumi.set(self, "rtc", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSelectionCriteria")
-    def source_selection_criteria(self) -> Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']]:
+    def source_selection_criteria(self) -> pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']]:
         """
         Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         """
         return pulumi.get(self, "source_selection_criteria")
 
     @source_selection_criteria.setter
-    def source_selection_criteria(self, value: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']]):
+    def source_selection_criteria(self, value: pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']]):
         pulumi.set(self, "source_selection_criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRole")
-    def sync_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
         return pulumi.get(self, "sync_role")
 
     @sync_role.setter
-    def sync_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_role", value)
 
 
 @pulumi.input_type
 class _BucketReplicationState:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['BucketReplicationDestinationArgs']] = None,
-                 encryption_configuration: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']] = None,
-                 historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_set: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']] = None,
-                 progress: Optional[pulumi.Input['BucketReplicationProgressArgs']] = None,
-                 rtc: Optional[pulumi.Input['BucketReplicationRtcArgs']] = None,
-                 rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_selection_criteria: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_role: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['BucketReplicationDestinationArgs']] = None,
+                 encryption_configuration: pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']] = None,
+                 historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_set: pulumi.Input[Optional['BucketReplicationPrefixSetArgs']] = None,
+                 progress: pulumi.Input[Optional['BucketReplicationProgressArgs']] = None,
+                 rtc: pulumi.Input[Optional['BucketReplicationRtcArgs']] = None,
+                 rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_selection_criteria: pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_role: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BucketReplication resources.
 
@@ -243,146 +243,146 @@ class _BucketReplicationState:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['BucketReplicationDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['BucketReplicationDestinationArgs']]:
         """
         Specifies the destination for the rule. See `destination` below.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['BucketReplicationDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['BucketReplicationDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionConfiguration")
-    def encryption_configuration(self) -> Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']]:
+    def encryption_configuration(self) -> pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']]:
         """
         Specifies the encryption configuration for the objects replicated to the destination bucket. See `encryption_configuration` below.
         """
         return pulumi.get(self, "encryption_configuration")
 
     @encryption_configuration.setter
-    def encryption_configuration(self, value: Optional[pulumi.Input['BucketReplicationEncryptionConfigurationArgs']]):
+    def encryption_configuration(self, value: pulumi.Input[Optional['BucketReplicationEncryptionConfigurationArgs']]):
         pulumi.set(self, "encryption_configuration", value)
 
     @_builtins.property
     @pulumi.getter(name="historicalObjectReplication")
-    def historical_object_replication(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def historical_object_replication(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
         """
         return pulumi.get(self, "historical_object_replication")
 
     @historical_object_replication.setter
-    def historical_object_replication(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def historical_object_replication(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "historical_object_replication", value)
 
     @_builtins.property
     @pulumi.getter(name="prefixSet")
-    def prefix_set(self) -> Optional[pulumi.Input['BucketReplicationPrefixSetArgs']]:
+    def prefix_set(self) -> pulumi.Input[Optional['BucketReplicationPrefixSetArgs']]:
         """
         The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket. See `prefix_set` below.
         """
         return pulumi.get(self, "prefix_set")
 
     @prefix_set.setter
-    def prefix_set(self, value: Optional[pulumi.Input['BucketReplicationPrefixSetArgs']]):
+    def prefix_set(self, value: pulumi.Input[Optional['BucketReplicationPrefixSetArgs']]):
         pulumi.set(self, "prefix_set", value)
 
     @_builtins.property
     @pulumi.getter
-    def progress(self) -> Optional[pulumi.Input['BucketReplicationProgressArgs']]:
+    def progress(self) -> pulumi.Input[Optional['BucketReplicationProgressArgs']]:
         """
         Specifies the progress for querying the progress of a data replication task of a bucket.
         """
         return pulumi.get(self, "progress")
 
     @progress.setter
-    def progress(self, value: Optional[pulumi.Input['BucketReplicationProgressArgs']]):
+    def progress(self, value: pulumi.Input[Optional['BucketReplicationProgressArgs']]):
         pulumi.set(self, "progress", value)
 
     @_builtins.property
     @pulumi.getter
-    def rtc(self) -> Optional[pulumi.Input['BucketReplicationRtcArgs']]:
+    def rtc(self) -> pulumi.Input[Optional['BucketReplicationRtcArgs']]:
         """
         Configures the Replication Time Control (RTC) feature for a data replication task of a bucket. See `rtc` below.
         """
         return pulumi.get(self, "rtc")
 
     @rtc.setter
-    def rtc(self, value: Optional[pulumi.Input['BucketReplicationRtcArgs']]):
+    def rtc(self, value: pulumi.Input[Optional['BucketReplicationRtcArgs']]):
         pulumi.set(self, "rtc", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleId")
-    def rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the data replication rule.
         """
         return pulumi.get(self, "rule_id")
 
     @rule_id.setter
-    def rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceSelectionCriteria")
-    def source_selection_criteria(self) -> Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']]:
+    def source_selection_criteria(self) -> pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']]:
         """
         Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
         """
         return pulumi.get(self, "source_selection_criteria")
 
     @source_selection_criteria.setter
-    def source_selection_criteria(self, value: Optional[pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs']]):
+    def source_selection_criteria(self, value: pulumi.Input[Optional['BucketReplicationSourceSelectionCriteriaArgs']]):
         pulumi.set(self, "source_selection_criteria", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the data replication task. Can be starting, doing and closing.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="syncRole")
-    def sync_role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
         return pulumi.get(self, "sync_role")
 
     @sync_role.setter
-    def sync_role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_role", value)
 
 
@@ -392,16 +392,16 @@ class BucketReplication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-                 encryption_configuration: Optional[pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
-                 historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-                 progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-                 rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
-                 source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
-                 sync_role: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+                 historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
+                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
+                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+                 sync_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an independent replication configuration resource for OSS bucket.
@@ -643,16 +643,16 @@ class BucketReplication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-                 encryption_configuration: Optional[pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
-                 historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-                 progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-                 rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
-                 source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
-                 sync_role: Optional[pulumi.Input[_builtins.str]] = None,
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
+                 encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+                 historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
+                 progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+                 rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
+                 source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+                 sync_role: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -688,18 +688,18 @@ class BucketReplication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
-            encryption_configuration: Optional[pulumi.Input[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
-            historical_object_replication: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix_set: Optional[pulumi.Input[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
-            progress: Optional[pulumi.Input[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
-            rtc: Optional[pulumi.Input[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
-            rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            source_selection_criteria: Optional[pulumi.Input[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_role: Optional[pulumi.Input[_builtins.str]] = None) -> 'BucketReplication':
+            action: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['BucketReplicationDestinationArgs', 'BucketReplicationDestinationArgsDict']]] = None,
+            encryption_configuration: pulumi.Input[Optional[Union['BucketReplicationEncryptionConfigurationArgs', 'BucketReplicationEncryptionConfigurationArgsDict']]] = None,
+            historical_object_replication: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix_set: pulumi.Input[Optional[Union['BucketReplicationPrefixSetArgs', 'BucketReplicationPrefixSetArgsDict']]] = None,
+            progress: pulumi.Input[Optional[Union['BucketReplicationProgressArgs', 'BucketReplicationProgressArgsDict']]] = None,
+            rtc: pulumi.Input[Optional[Union['BucketReplicationRtcArgs', 'BucketReplicationRtcArgsDict']]] = None,
+            rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            source_selection_criteria: pulumi.Input[Optional[Union['BucketReplicationSourceSelectionCriteriaArgs', 'BucketReplicationSourceSelectionCriteriaArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_role: pulumi.Input[Optional[_builtins.str]] = None) -> 'BucketReplication':
         """
         Get an existing BucketReplication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.Index.CloudFirewallTlsInspectCaCertificate("default");
+        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.CloudFirewallTlsInspectCaCertificate("default");
         /// 
         ///     var @default = AliCloud.CloudFirewall.GetTlsInspectCaCertificates.Invoke(new()
         ///     {
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.Index.CloudFirewallTlsInspectCaCertificate("default");
+        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.CloudFirewallTlsInspectCaCertificate("default");
         /// 
         ///     var @default = AliCloud.CloudFirewall.GetTlsInspectCaCertificates.Invoke(new()
         ///     {
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "terraform-example";
-        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.Index.CloudFirewallTlsInspectCaCertificate("default");
+        ///     var defaultCloudFirewallTlsInspectCaCertificate = new AliCloud.CloudFirewallTlsInspectCaCertificate("default");
         /// 
         ///     var @default = AliCloud.CloudFirewall.GetTlsInspectCaCertificates.Invoke(new()
         ///     {

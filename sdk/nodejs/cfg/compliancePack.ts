@@ -188,33 +188,33 @@ export interface CompliancePackState {
     /**
      * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliancePackName` can be modified.
      */
-    compliancePackName?: pulumi.Input<string>;
+    compliancePackName?: pulumi.Input<string | undefined>;
     /**
      * Compliance Package Template Id.
      */
-    compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string | undefined>;
     /**
      * A list of Config Rule IDs. See `configRuleIds` below.
      */
-    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[] | undefined>;
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
      * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      */
-    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[] | undefined>;
     /**
      * The Description of compliance pack.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The Risk Level. Valid values:
      */
-    riskLevel?: pulumi.Input<number>;
+    riskLevel?: pulumi.Input<number | undefined>;
     /**
      * The status of the Compliance Pack.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -228,17 +228,17 @@ export interface CompliancePackArgs {
     /**
      * Compliance Package Template Id.
      */
-    compliancePackTemplateId?: pulumi.Input<string>;
+    compliancePackTemplateId?: pulumi.Input<string | undefined>;
     /**
      * A list of Config Rule IDs. See `configRuleIds` below.
      */
-    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[]>;
+    configRuleIds?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRuleId>[] | undefined>;
     /**
      * A list of Config Rules. See `configRules` below. **NOTE:** Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      *
      * @deprecated Field `configRules` has been deprecated from provider version 1.141.0. New field `configRuleIds` instead.
      */
-    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[]>;
+    configRules?: pulumi.Input<pulumi.Input<inputs.cfg.CompliancePackConfigRule>[] | undefined>;
     /**
      * The Description of compliance pack.
      */

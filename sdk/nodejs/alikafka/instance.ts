@@ -412,162 +412,162 @@ export interface InstanceState {
     /**
      * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
-    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig>;
+    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig | undefined>;
     /**
      * The number of partitions in a topic that is automatically created.
      */
-    defaultTopicPartitionNum?: pulumi.Input<number>;
+    defaultTopicPartitionNum?: pulumi.Input<number | undefined>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      */
-    deployType?: pulumi.Input<number>;
+    deployType?: pulumi.Input<number | undefined>;
     /**
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of the instance. Valid values:
      */
-    diskType?: pulumi.Input<number>;
+    diskType?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.234.0) The default endpoint of the instance in domain name mode.
      */
-    domainEndpoint?: pulumi.Input<string>;
+    domainEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
-    eipMax?: pulumi.Input<number>;
+    eipMax?: pulumi.Input<number | undefined>;
     /**
      * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
      */
-    enableAutoGroup?: pulumi.Input<boolean>;
+    enableAutoGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
      */
-    enableAutoTopic?: pulumi.Input<string>;
+    enableAutoTopic?: pulumi.Input<string | undefined>;
     /**
      * The EndPoint to access the kafka instance.
      */
-    endPoint?: pulumi.Input<string>;
+    endPoint?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.214.1) The number of available groups.
      */
-    groupLeft?: pulumi.Input<number>;
+    groupLeft?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.214.1) The number of used groups.
      */
-    groupUsed?: pulumi.Input<number>;
+    groupUsed?: pulumi.Input<number | undefined>;
     /**
      * The type of the Instance. Default value: `alikafka`. Valid values:
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    ioMax?: pulumi.Input<number>;
+    ioMax?: pulumi.Input<number | undefined>;
     /**
      * The traffic specification of the instance. We recommend that you configure this parameter.
      * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
-    ioMaxSpec?: pulumi.Input<string>;
+    ioMaxSpec?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.214.1) The method that you use to purchase partitions.
      */
-    isPartitionBuy?: pulumi.Input<number>;
+    isPartitionBuy?: pulumi.Input<number | undefined>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
-    paidType?: pulumi.Input<string>;
+    paidType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.214.1) The number of available partitions.
      */
-    partitionLeft?: pulumi.Input<number>;
+    partitionLeft?: pulumi.Input<number | undefined>;
     /**
      * The number of partitions.
      */
-    partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.214.1) The number of used partitions.
      */
-    partitionUsed?: pulumi.Input<number>;
+    partitionUsed?: pulumi.Input<number | undefined>;
     /**
      * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) The Simple Authentication and Security Layer (SASL) endpoint of the instance in domain name mode.
      */
-    saslDomainEndpoint?: pulumi.Input<string>;
+    saslDomainEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    securityGroup?: pulumi.Input<string>;
+    securityGroup?: pulumi.Input<string | undefined>;
     /**
      * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      */
-    selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
-    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig>;
+    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig | undefined>;
     /**
      * The version of the Instance. Valid values:
      * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
      * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
      * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
      * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
-    specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) The SSL endpoint of the instance in domain name mode.
      */
-    sslDomainEndpoint?: pulumi.Input<string>;
+    sslDomainEndpoint?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.234.0) The Secure Sockets Layer (SSL) endpoint of the instance in IP address mode.
      */
-    sslEndpoint?: pulumi.Input<string>;
+    sslEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The status of the instance.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Available since v1.214.1) The number of available topics.
      */
-    topicLeft?: pulumi.Input<number>;
+    topicLeft?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.214.1) The number of purchased topics.
      */
-    topicNumOfBuy?: pulumi.Input<number>;
+    topicNumOfBuy?: pulumi.Input<number | undefined>;
     /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
@@ -576,28 +576,28 @@ export interface InstanceState {
      *
      * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
-    topicQuota?: pulumi.Input<number>;
+    topicQuota?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.214.1) The number of used topics.
      */
-    topicUsed?: pulumi.Input<number>;
+    topicUsed?: pulumi.Input<number | undefined>;
     /**
      * The VPC ID of the instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
      * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -607,16 +607,16 @@ export interface InstanceArgs {
     /**
      * The initial configurations of the ApsaraMQ for Kafka instance. The values must be valid JSON strings.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The configurations of Confluent. See `confluentConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `confluentConfig` is required.
      */
-    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig>;
+    confluentConfig?: pulumi.Input<inputs.alikafka.InstanceConfluentConfig | undefined>;
     /**
      * The number of partitions in a topic that is automatically created.
      */
-    defaultTopicPartitionNum?: pulumi.Input<number>;
+    defaultTopicPartitionNum?: pulumi.Input<number | undefined>;
     /**
      * The deployment type of the instance. **NOTE:** From version 1.161.0, this attribute supports to be updated. Valid values:
      */
@@ -625,92 +625,92 @@ export interface InstanceArgs {
      * The disk size of the instance. When modify this value, it only supports adjust to a greater value.
      * > **NOTE:** If `instanceType` is set to `alikafka`, `diskSize` is required.
      */
-    diskSize?: pulumi.Input<number>;
+    diskSize?: pulumi.Input<number | undefined>;
     /**
      * The disk type of the instance. Valid values:
      */
-    diskType?: pulumi.Input<number>;
+    diskType?: pulumi.Input<number | undefined>;
     /**
      * The max bandwidth of the instance. It will be ignored when `deployType = 5`. When modify this value, it only supports adjust to a greater value.
      */
-    eipMax?: pulumi.Input<number>;
+    eipMax?: pulumi.Input<number | undefined>;
     /**
      * Specify whether to enable the flexible group creation feature. Default value: `false`. Valid values:
      */
-    enableAutoGroup?: pulumi.Input<boolean>;
+    enableAutoGroup?: pulumi.Input<boolean | undefined>;
     /**
      * Specify whether to enable the automatic topic creation feature. Default value: `disable`. Valid values:
      */
-    enableAutoTopic?: pulumi.Input<string>;
+    enableAutoTopic?: pulumi.Input<string | undefined>;
     /**
      * The type of the Instance. Default value: `alikafka`. Valid values:
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The max value of io of the instance. When modify this value, it only support adjust to a greater value.
      */
-    ioMax?: pulumi.Input<number>;
+    ioMax?: pulumi.Input<number | undefined>;
     /**
      * The traffic specification of the instance. We recommend that you configure this parameter.
      * - You should specify one of the `ioMax` and `ioMaxSpec` parameters, and `ioMaxSpec` is recommended.
      * - For more information about the valid values, see [Billing](https://www.alibabacloud.com/help/en/message-queue-for-apache-kafka/latest/billing-overview).
      */
-    ioMaxSpec?: pulumi.Input<string>;
+    ioMaxSpec?: pulumi.Input<string | undefined>;
     /**
      * The ID of the key that is used to encrypt data on standard SSDs in the region of the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-updateinstanceconfig).
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * Name of your Kafka instance. The length should between 3 and 64 characters. If not set, will use instance id as instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Default value: `PostPaid`. Valid values: `PostPaid`, `PrePaid`. When modify this value, it only support adjust from `PostPaid` to `PrePaid`.
      */
-    paidType?: pulumi.Input<string>;
+    paidType?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions.
      */
-    partitionNum?: pulumi.Input<number>;
+    partitionNum?: pulumi.Input<number | undefined>;
     /**
      * The instance password. **NOTE:** If `instanceType` is set to `alikafkaConfluent`, `password` is required.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID of security group for this instance. If the security group is empty, system will create a default one.
      */
-    securityGroup?: pulumi.Input<string>;
+    securityGroup?: pulumi.Input<string | undefined>;
     /**
      * The zones among which you want to deploy the instance. For more information, see [How to use it](https://www.alibabacloud.com/help/en/apsaramq-for-kafka/cloud-message-queue-for-kafka/developer-reference/api-alikafka-2019-09-16-startinstance).
      */
-    selectedZones?: pulumi.Input<pulumi.Input<string>[]>;
+    selectedZones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The parameters configured for the serverless ApsaraMQ for Kafka instance. See `serverlessConfig` below.
      * > **NOTE:** If `instanceType` is set to `alikafkaServerless`, `serverlessConfig` is required.
      */
-    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig>;
+    serverlessConfig?: pulumi.Input<inputs.alikafka.InstanceServerlessConfig | undefined>;
     /**
      * The version of the Instance. Valid values:
      * - If `instanceType` is set to `alikafka`. Default value: `2.2.0`. Valid values: `2.2.0`, `2.6.2`.
      * - If `instanceType` is set to `alikafkaServerless`. Default value: `3.3.1`. Valid values: `3.3.1`.
      * - If `instanceType` is set to `alikafkaConfluent`. Default value: `7.4.0`. Valid values: `7.4.0`.
      */
-    serviceVersion?: pulumi.Input<string>;
+    serviceVersion?: pulumi.Input<string | undefined>;
     /**
      * The instance edition. Default value: `normal`. Valid values:
      * - If `instanceType` is set to `alikafka`. Valid values: `normal`, `professional`, `professionalForHighRead`.
      * - If `instanceType` is set to `alikafkaServerless`. Valid values: `normal`.
      * - If `instanceType` is set to `alikafkaConfluent`. Valid values: `professional`, `enterprise`.
      */
-    specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
@@ -719,22 +719,22 @@ export interface InstanceArgs {
      *
      * @deprecated Attribute `topicQuota` has been deprecated since 1.194.0 and it will be removed in the next future. Using new attribute `partitionNum` instead.
      */
-    topicQuota?: pulumi.Input<number>;
+    topicQuota?: pulumi.Input<number | undefined>;
     /**
      * The VPC ID of the instance.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of attaching vswitch to instance.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the vSwitches with which the instance is associated.
      * > **NOTE:** If `instanceType` is set to `alikafka` or `alikafkaServerless`, `vswitchIds` is required. When `instanceType` is set to `alikafkaConfluent`, you must specify at least one of the `vswitchId` and `vswitchIds`, and if you specify both `vswitchId` and `vswitchIds`, only the `vswitchIds` takes effect.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

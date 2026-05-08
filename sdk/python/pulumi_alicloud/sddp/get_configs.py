@@ -131,9 +131,9 @@ def get_configs(ids: Optional[Sequence[_builtins.str]] = None,
         ids=pulumi.get(__ret__, 'ids'),
         lang=pulumi.get(__ret__, 'lang'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                       lang: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_configs_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                       lang: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConfigsResult]:
     """
     This data source provides the Sddp Configs of the current Alibaba Cloud user.

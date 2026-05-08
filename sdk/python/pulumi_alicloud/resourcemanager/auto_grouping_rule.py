@@ -24,15 +24,15 @@ class AutoGroupingRuleArgs:
                  rule_contents: pulumi.Input[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]],
                  rule_name: pulumi.Input[_builtins.str],
                  rule_type: pulumi.Input[_builtins.str],
-                 exclude_region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AutoGroupingRule resource.
 
@@ -109,128 +109,128 @@ class AutoGroupingRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="excludeRegionIdsScope")
-    def exclude_region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of regions to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_region_ids_scope")
 
     @exclude_region_ids_scope.setter
-    def exclude_region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceGroupIdsScope")
-    def exclude_resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_resource_group_ids_scope")
 
     @exclude_resource_group_ids_scope.setter
-    def exclude_resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceIdsScope")
-    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resources to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
     @exclude_resource_ids_scope.setter
-    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceTypesScope")
-    def exclude_resource_types_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_types_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource types to be excluded. Separate multiple resource types with commas (,).
         """
         return pulumi.get(self, "exclude_resource_types_scope")
 
     @exclude_resource_types_scope.setter
-    def exclude_resource_types_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_types_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_types_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="regionIdsScope")
-    def region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of regions. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "region_ids_scope")
 
     @region_ids_scope.setter
-    def region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdsScope")
-    def resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resource groups. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
     @resource_group_ids_scope.setter
-    def resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceIdsScope")
-    def resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resources. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "resource_ids_scope")
 
     @resource_ids_scope.setter
-    def resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTypesScope")
-    def resource_types_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_types_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource types. Separate multiple resource types with commas (,).
         """
         return pulumi.get(self, "resource_types_scope")
 
     @resource_types_scope.setter
-    def resource_types_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_types_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_types_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleDesc")
-    def rule_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "rule_desc")
 
     @rule_desc.setter
-    def rule_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_desc", value)
 
 
 @pulumi.input_type
 class _AutoGroupingRuleState:
     def __init__(__self__, *,
-                 exclude_region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_contents: Optional[pulumi.Input[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]] = None,
-                 rule_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]] = None,
+                 rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AutoGroupingRule resources.
 
@@ -274,146 +274,146 @@ class _AutoGroupingRuleState:
 
     @_builtins.property
     @pulumi.getter(name="excludeRegionIdsScope")
-    def exclude_region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of regions to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_region_ids_scope")
 
     @exclude_region_ids_scope.setter
-    def exclude_region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceGroupIdsScope")
-    def exclude_resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resource groups to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_resource_group_ids_scope")
 
     @exclude_resource_group_ids_scope.setter
-    def exclude_resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceIdsScope")
-    def exclude_resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resources to be excluded. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "exclude_resource_ids_scope")
 
     @exclude_resource_ids_scope.setter
-    def exclude_resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="excludeResourceTypesScope")
-    def exclude_resource_types_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def exclude_resource_types_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource types to be excluded. Separate multiple resource types with commas (,).
         """
         return pulumi.get(self, "exclude_resource_types_scope")
 
     @exclude_resource_types_scope.setter
-    def exclude_resource_types_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def exclude_resource_types_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "exclude_resource_types_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="regionIdsScope")
-    def region_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of regions. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "region_ids_scope")
 
     @region_ids_scope.setter
-    def region_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupIdsScope")
-    def resource_group_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resource groups. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "resource_group_ids_scope")
 
     @resource_group_ids_scope.setter
-    def resource_group_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceIdsScope")
-    def resource_ids_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_ids_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IDs of resources. Separate multiple IDs with commas (,).
         """
         return pulumi.get(self, "resource_ids_scope")
 
     @resource_ids_scope.setter
-    def resource_ids_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_ids_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_ids_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceTypesScope")
-    def resource_types_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_types_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource types. Separate multiple resource types with commas (,).
         """
         return pulumi.get(self, "resource_types_scope")
 
     @resource_types_scope.setter
-    def resource_types_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_types_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_types_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleContents")
-    def rule_contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]]:
+    def rule_contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]]:
         """
         The content records of the rule. See `rule_contents` below.
         """
         return pulumi.get(self, "rule_contents")
 
     @rule_contents.setter
-    def rule_contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]]):
+    def rule_contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AutoGroupingRuleRuleContentArgs']]]]):
         pulumi.set(self, "rule_contents", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleDesc")
-    def rule_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the rule.
         """
         return pulumi.get(self, "rule_desc")
 
     @rule_desc.setter
-    def rule_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the rule.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleType")
-    def rule_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
     @rule_type.setter
-    def rule_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_type", value)
 
 
@@ -423,18 +423,18 @@ class AutoGroupingRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 exclude_region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
-                 rule_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+                 rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Resource Manager Auto Grouping Rule resource.
@@ -608,18 +608,18 @@ class AutoGroupingRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 exclude_region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 exclude_resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
-                 rule_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+                 rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -657,18 +657,18 @@ class AutoGroupingRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            exclude_region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            exclude_resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            region_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_ids_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_types_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_contents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
-            rule_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AutoGroupingRule':
+            exclude_region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            exclude_resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            region_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_ids_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_types_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_contents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AutoGroupingRuleRuleContentArgs', 'AutoGroupingRuleRuleContentArgsDict']]]]] = None,
+            rule_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AutoGroupingRule':
         """
         Get an existing AutoGroupingRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

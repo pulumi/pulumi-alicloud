@@ -258,83 +258,83 @@ export interface AutoProvisioningGroupState {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    autoProvisioningGroupName?: pulumi.Input<string>;
+    autoProvisioningGroupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
-    autoProvisioningGroupType?: pulumi.Input<string>;
+    autoProvisioningGroupType?: pulumi.Input<string | undefined>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      */
-    defaultTargetCapacityType?: pulumi.Input<string>;
+    defaultTargetCapacityType?: pulumi.Input<string | undefined>;
     /**
      * The description of the auto provisioning group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      */
-    excessCapacityTerminationPolicy?: pulumi.Input<string>;
+    excessCapacityTerminationPolicy?: pulumi.Input<string | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
-    launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[]>;
+    launchTemplateConfigs?: pulumi.Input<pulumi.Input<inputs.ecs.AutoProvisioningGroupLaunchTemplateConfig>[] | undefined>;
     /**
      * The ID of the instance launch template associated with the auto provisioning group.
      */
-    launchTemplateId?: pulumi.Input<string>;
+    launchTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    maxSpotPrice?: pulumi.Input<number>;
+    maxSpotPrice?: pulumi.Input<number | undefined>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
-    payAsYouGoAllocationStrategy?: pulumi.Input<string>;
+    payAsYouGoAllocationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      */
-    payAsYouGoTargetCapacity?: pulumi.Input<string>;
+    payAsYouGoTargetCapacity?: pulumi.Input<string | undefined>;
     /**
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      */
-    spotAllocationStrategy?: pulumi.Input<string>;
+    spotAllocationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
-    spotInstanceInterruptionBehavior?: pulumi.Input<string>;
+    spotInstanceInterruptionBehavior?: pulumi.Input<string | undefined>;
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    spotInstancePoolsToUseCount?: pulumi.Input<number>;
+    spotInstancePoolsToUseCount?: pulumi.Input<number | undefined>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
-    spotTargetCapacity?: pulumi.Input<string>;
+    spotTargetCapacity?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      */
-    terminateInstances?: pulumi.Input<boolean>;
+    terminateInstances?: pulumi.Input<boolean | undefined>;
     /**
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      */
-    terminateInstancesWithExpiration?: pulumi.Input<boolean>;
+    terminateInstancesWithExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      */
-    totalTargetCapacity?: pulumi.Input<string>;
+    totalTargetCapacity?: pulumi.Input<string | undefined>;
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    validFrom?: pulumi.Input<string>;
+    validFrom?: pulumi.Input<string | undefined>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -344,23 +344,23 @@ export interface AutoProvisioningGroupArgs {
     /**
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      */
-    autoProvisioningGroupName?: pulumi.Input<string>;
+    autoProvisioningGroupName?: pulumi.Input<string | undefined>;
     /**
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      */
-    autoProvisioningGroupType?: pulumi.Input<string>;
+    autoProvisioningGroupType?: pulumi.Input<string | undefined>;
     /**
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      */
-    defaultTargetCapacityType?: pulumi.Input<string>;
+    defaultTargetCapacityType?: pulumi.Input<string | undefined>;
     /**
      * The description of the auto provisioning group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      */
-    excessCapacityTerminationPolicy?: pulumi.Input<string>;
+    excessCapacityTerminationPolicy?: pulumi.Input<string | undefined>;
     /**
      * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      */
@@ -372,43 +372,43 @@ export interface AutoProvisioningGroupArgs {
     /**
      * The version of the instance launch template associated with the auto provisioning group.
      */
-    launchTemplateVersion?: pulumi.Input<string>;
+    launchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      */
-    maxSpotPrice?: pulumi.Input<number>;
+    maxSpotPrice?: pulumi.Input<number | undefined>;
     /**
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      */
-    payAsYouGoAllocationStrategy?: pulumi.Input<string>;
+    payAsYouGoAllocationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      */
-    payAsYouGoTargetCapacity?: pulumi.Input<string>;
+    payAsYouGoTargetCapacity?: pulumi.Input<string | undefined>;
     /**
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      */
-    spotAllocationStrategy?: pulumi.Input<string>;
+    spotAllocationStrategy?: pulumi.Input<string | undefined>;
     /**
      * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      */
-    spotInstanceInterruptionBehavior?: pulumi.Input<string>;
+    spotInstanceInterruptionBehavior?: pulumi.Input<string | undefined>;
     /**
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      */
-    spotInstancePoolsToUseCount?: pulumi.Input<number>;
+    spotInstancePoolsToUseCount?: pulumi.Input<number | undefined>;
     /**
      * The target capacity of preemptible instances in the auto provisioning group.
      */
-    spotTargetCapacity?: pulumi.Input<string>;
+    spotTargetCapacity?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      */
-    terminateInstances?: pulumi.Input<boolean>;
+    terminateInstances?: pulumi.Input<boolean | undefined>;
     /**
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      */
-    terminateInstancesWithExpiration?: pulumi.Input<boolean>;
+    terminateInstancesWithExpiration?: pulumi.Input<boolean | undefined>;
     /**
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      */
@@ -416,9 +416,9 @@ export interface AutoProvisioningGroupArgs {
     /**
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `validUntil` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      */
-    validFrom?: pulumi.Input<string>;
+    validFrom?: pulumi.Input<string | undefined>;
     /**
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `validFrom` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }

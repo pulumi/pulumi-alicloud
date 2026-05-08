@@ -24,11 +24,11 @@ class AddressBookArgs:
                  description: pulumi.Input[_builtins.str],
                  group_name: pulumi.Input[_builtins.str],
                  group_type: pulumi.Input[_builtins.str],
-                 address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_add_tag_ecs: Optional[pulumi.Input[_builtins.int]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_relation: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+                 ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_relation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AddressBook resource.
 
@@ -95,76 +95,76 @@ class AddressBookArgs:
 
     @_builtins.property
     @pulumi.getter(name="addressLists")
-    def address_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses.
         """
         return pulumi.get(self, "address_lists")
 
     @address_lists.setter
-    def address_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAddTagEcs")
-    def auto_add_tag_ecs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_add_tag_ecs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         """
         return pulumi.get(self, "auto_add_tag_ecs")
 
     @auto_add_tag_ecs.setter
-    def auto_add_tag_ecs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_add_tag_ecs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_add_tag_ecs", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsTags")
-    def ecs_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
+    def ecs_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
         """
         A list of ECS tags. See `ecs_tags` below.
         """
         return pulumi.get(self, "ecs_tags")
 
     @ecs_tags.setter
-    def ecs_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]):
+    def ecs_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]):
         pulumi.set(self, "ecs_tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="tagRelation")
-    def tag_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         return pulumi.get(self, "tag_relation")
 
     @tag_relation.setter
-    def tag_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_relation", value)
 
 
 @pulumi.input_type
 class _AddressBookState:
     def __init__(__self__, *,
-                 address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_add_tag_ecs: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_relation: Optional[pulumi.Input[_builtins.str]] = None):
+                 address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_relation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AddressBook resources.
 
@@ -197,67 +197,67 @@ class _AddressBookState:
 
     @_builtins.property
     @pulumi.getter(name="addressLists")
-    def address_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def address_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of addresses.
         """
         return pulumi.get(self, "address_lists")
 
     @address_lists.setter
-    def address_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def address_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "address_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="autoAddTagEcs")
-    def auto_add_tag_ecs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_add_tag_ecs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether you want to automatically add new matching tags of the ECS IP address to the Address Book. Valid values: `0`, `1`.
         """
         return pulumi.get(self, "auto_add_tag_ecs")
 
     @auto_add_tag_ecs.setter
-    def auto_add_tag_ecs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_add_tag_ecs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_add_tag_ecs", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the Address Book.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsTags")
-    def ecs_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
+    def ecs_tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]:
         """
         A list of ECS tags. See `ecs_tags` below.
         """
         return pulumi.get(self, "ecs_tags")
 
     @ecs_tags.setter
-    def ecs_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]):
+    def ecs_tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AddressBookEcsTagArgs']]]]):
         pulumi.set(self, "ecs_tags", value)
 
     @_builtins.property
     @pulumi.getter(name="groupName")
-    def group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Address Book.
         """
         return pulumi.get(self, "group_name")
 
     @group_name.setter
-    def group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="groupType")
-    def group_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Address Book. Valid values: `ip`, `ipv6`, `domain`, `port`, `tag`.
         **NOTE:** From version 1.213.1, `group_type` can be set to `ipv6`, `domain`, `port`.
@@ -265,31 +265,31 @@ class _AddressBookState:
         return pulumi.get(self, "group_type")
 
     @group_type.setter
-    def group_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language of the content within the request and response. Valid values: `zh`, `en`.
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="tagRelation")
-    def tag_relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tag_relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The logical relation among the ECS tags that to be matched. Default value: `and`. Valid values:
         """
         return pulumi.get(self, "tag_relation")
 
     @tag_relation.setter
-    def tag_relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tag_relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tag_relation", value)
 
 
@@ -299,14 +299,14 @@ class AddressBook(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_add_tag_ecs: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_relation: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_relation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Address Book resource.
@@ -417,14 +417,14 @@ class AddressBook(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_add_tag_ecs: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
-                 group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag_relation: Optional[pulumi.Input[_builtins.str]] = None,
+                 address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag_relation: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -458,14 +458,14 @@ class AddressBook(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            auto_add_tag_ecs: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_tags: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
-            group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            group_type: Optional[pulumi.Input[_builtins.str]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            tag_relation: Optional[pulumi.Input[_builtins.str]] = None) -> 'AddressBook':
+            address_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            auto_add_tag_ecs: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AddressBookEcsTagArgs', 'AddressBookEcsTagArgsDict']]]]] = None,
+            group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            tag_relation: pulumi.Input[Optional[_builtins.str]] = None) -> 'AddressBook':
         """
         Get an existing AddressBook resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

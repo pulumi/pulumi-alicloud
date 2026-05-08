@@ -25,8 +25,8 @@ class ScanRuleArgs:
                  scan_scope: pulumi.Input[_builtins.str],
                  scan_type: pulumi.Input[_builtins.str],
                  trigger_type: pulumi.Input[_builtins.str],
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ScanRule resource.
 
@@ -136,7 +136,7 @@ class ScanRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of namespaces:  
         - This parameter must not be empty when the scan scope is NAMESPACE.
@@ -145,12 +145,12 @@ class ScanRuleArgs:
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="repoNames")
-    def repo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repo_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Repository list:  
         - This parameter must be empty when the scan scope is NAMESPACE.
@@ -159,23 +159,23 @@ class ScanRuleArgs:
         return pulumi.get(self, "repo_names")
 
     @repo_names.setter
-    def repo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repo_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repo_names", value)
 
 
 @pulumi.input_type
 class _ScanRuleState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_tag_filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_tag_filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScanRule resources.
 
@@ -221,31 +221,31 @@ class _ScanRuleState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance ID
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def namespaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of namespaces:  
         - This parameter must not be empty when the scan scope is NAMESPACE.
@@ -254,12 +254,12 @@ class _ScanRuleState:
         return pulumi.get(self, "namespaces")
 
     @namespaces.setter
-    def namespaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def namespaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "namespaces", value)
 
     @_builtins.property
     @pulumi.getter(name="repoNames")
-    def repo_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repo_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Repository list:  
         - This parameter must be empty when the scan scope is NAMESPACE.
@@ -268,60 +268,60 @@ class _ScanRuleState:
         return pulumi.get(self, "repo_names")
 
     @repo_names.setter
-    def repo_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repo_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repo_names", value)
 
     @_builtins.property
     @pulumi.getter(name="repoTagFilterPattern")
-    def repo_tag_filter_pattern(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repo_tag_filter_pattern(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Regular expression for matching tags that trigger a scan
         """
         return pulumi.get(self, "repo_tag_filter_pattern")
 
     @repo_tag_filter_pattern.setter
-    def repo_tag_filter_pattern(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repo_tag_filter_pattern(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repo_tag_filter_pattern", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Event rule name
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scanRuleId")
-    def scan_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scan_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule ID
         """
         return pulumi.get(self, "scan_rule_id")
 
     @scan_rule_id.setter
-    def scan_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scan_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scan_rule_id", value)
 
     @_builtins.property
     @pulumi.getter(name="scanScope")
-    def scan_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scan_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scan scope
         """
         return pulumi.get(self, "scan_scope")
 
     @scan_scope.setter
-    def scan_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scan_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scan_scope", value)
 
     @_builtins.property
     @pulumi.getter(name="scanType")
-    def scan_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scan_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Scan type:  
         - `VUL`: Artifact vulnerability scan
@@ -332,19 +332,19 @@ class _ScanRuleState:
         return pulumi.get(self, "scan_type")
 
     @scan_type.setter
-    def scan_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scan_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scan_type", value)
 
     @_builtins.property
     @pulumi.getter(name="triggerType")
-    def trigger_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trigger_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Trigger type
         """
         return pulumi.get(self, "trigger_type")
 
     @trigger_type.setter
-    def trigger_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trigger_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trigger_type", value)
 
 
@@ -354,14 +354,14 @@ class ScanRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_tag_filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_tag_filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CR Scan Rule resource.
@@ -513,14 +513,14 @@ class ScanRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 repo_tag_filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_scope: Optional[pulumi.Input[_builtins.str]] = None,
-                 scan_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 trigger_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 repo_tag_filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 scan_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 trigger_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -562,16 +562,16 @@ class ScanRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            namespaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            repo_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            repo_tag_filter_pattern: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scan_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scan_scope: Optional[pulumi.Input[_builtins.str]] = None,
-            scan_type: Optional[pulumi.Input[_builtins.str]] = None,
-            trigger_type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScanRule':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            namespaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            repo_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            repo_tag_filter_pattern: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_rule_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_scope: pulumi.Input[Optional[_builtins.str]] = None,
+            scan_type: pulumi.Input[Optional[_builtins.str]] = None,
+            trigger_type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScanRule':
         """
         Get an existing ScanRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

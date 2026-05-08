@@ -100,7 +100,7 @@ export interface GetVpcEndpointServiceResourcesOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of Vpc Endpoint Service.
      */

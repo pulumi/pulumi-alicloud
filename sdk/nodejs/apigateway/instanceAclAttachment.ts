@@ -137,15 +137,15 @@ export interface InstanceAclAttachmentState {
     /**
      * The ID of the ACL to attach.
      */
-    aclId?: pulumi.Input<string>;
+    aclId?: pulumi.Input<string | undefined>;
     /**
      * The type of the ACL. Valid values: `white`, `black`.
      */
-    aclType?: pulumi.Input<string>;
+    aclType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the API Gateway instance that the ACL will be attached to.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 /**

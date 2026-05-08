@@ -88,16 +88,16 @@ class AutoSnapShotPolicyArgs:
 @pulumi.input_type
 class _AutoSnapShotPolicyState:
     def __init__(__self__, *,
-                 applied_dbfs_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status_detail: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 applied_dbfs_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status_detail: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapShotPolicy resources.
 
@@ -135,122 +135,122 @@ class _AutoSnapShotPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="appliedDbfsNumber")
-    def applied_dbfs_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def applied_dbfs_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of database file systems set by the automatic snapshot policy.
         """
         return pulumi.get(self, "applied_dbfs_number")
 
     @applied_dbfs_number.setter
-    def applied_dbfs_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def applied_dbfs_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "applied_dbfs_number", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lastModified")
-    def last_modified(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_modified(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Last modification time of automatic snapshot policy
         """
         return pulumi.get(self, "last_modified")
 
     @last_modified.setter
-    def last_modified(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_modified(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_modified", value)
 
     @_builtins.property
     @pulumi.getter(name="policyId")
-    def policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic snapshot policy ID
         """
         return pulumi.get(self, "policy_id")
 
     @policy_id.setter
-    def policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="policyName")
-    def policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic snapshot policy name
         """
         return pulumi.get(self, "policy_name")
 
     @policy_name.setter
-    def policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatWeekdays")
-    def repeat_weekdays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repeat_weekdays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
         """
         return pulumi.get(self, "repeat_weekdays")
 
     @repeat_weekdays.setter
-    def repeat_weekdays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repeat_weekdays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repeat_weekdays", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic snapshot retention days.
         """
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic snapshot policy status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="statusDetail")
-    def status_detail(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status_detail(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Automatic snapshot policy status details
         """
         return pulumi.get(self, "status_detail")
 
     @status_detail.setter
-    def status_detail(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status_detail(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status_detail", value)
 
     @_builtins.property
     @pulumi.getter(name="timePoints")
-    def time_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def time_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
         """
         return pulumi.get(self, "time_points")
 
     @time_points.setter
-    def time_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def time_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "time_points", value)
 
 
@@ -260,10 +260,10 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Dbfs Auto Snap Shot Policy resource.
@@ -359,10 +359,10 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -400,16 +400,16 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            applied_dbfs_number: Optional[pulumi.Input[_builtins.int]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            last_modified: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            status_detail: Optional[pulumi.Input[_builtins.str]] = None,
-            time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapShotPolicy':
+            applied_dbfs_number: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            last_modified: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            status_detail: pulumi.Input[Optional[_builtins.str]] = None,
+            time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapShotPolicy':
         """
         Get an existing AutoSnapShotPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

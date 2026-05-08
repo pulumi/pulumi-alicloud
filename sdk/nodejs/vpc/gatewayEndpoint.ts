@@ -182,44 +182,44 @@ export interface GatewayEndpointState {
     /**
      * The creation time of the VPC gateway endpoint.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the VPC gateway endpoint.
      * The length of the description information is between 1 and 255 characters.
      */
-    gatewayEndpointDescrption?: pulumi.Input<string>;
+    gatewayEndpointDescrption?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC gateway endpoint.
      */
-    gatewayEndpointName?: pulumi.Input<string>;
+    gatewayEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      */
-    routeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The endpoint service name.
      */
-    serviceName?: pulumi.Input<string>;
+    serviceName?: pulumi.Input<string | undefined>;
     /**
      * The status of VPC gateway endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -230,23 +230,23 @@ export interface GatewayEndpointArgs {
      * The description of the VPC gateway endpoint.
      * The length of the description information is between 1 and 255 characters.
      */
-    gatewayEndpointDescrption?: pulumi.Input<string>;
+    gatewayEndpointDescrption?: pulumi.Input<string | undefined>;
     /**
      * The name of the VPC gateway endpoint.
      */
-    gatewayEndpointName?: pulumi.Input<string>;
+    gatewayEndpointName?: pulumi.Input<string | undefined>;
     /**
      * Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
      */
-    policyDocument?: pulumi.Input<string>;
+    policyDocument?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the instance belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The ID list of the route table associated with the VPC gateway endpoint. **NOTE:** this argument cannot be set at the same time as `alicloud.vpc.GatewayEndpointRouteTableAttachment`.
      */
-    routeTables?: pulumi.Input<pulumi.Input<string>[]>;
+    routeTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The endpoint service name.
      */
@@ -254,7 +254,7 @@ export interface GatewayEndpointArgs {
     /**
      * The tags of the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC.
      */

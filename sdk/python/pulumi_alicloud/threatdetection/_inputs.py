@@ -34,15 +34,15 @@ __all__ = [
 ]
 
 class AntiBruteForceRuleProtocolTypeArgsDict(TypedDict):
-    rdp: NotRequired[pulumi.Input[_builtins.str]]
+    rdp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
     """
-    sql_server: NotRequired[pulumi.Input[_builtins.str]]
+    sql_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
     """
-    ssh: NotRequired[pulumi.Input[_builtins.str]]
+    ssh: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
     """
@@ -50,9 +50,9 @@ class AntiBruteForceRuleProtocolTypeArgsDict(TypedDict):
 @pulumi.input_type
 class AntiBruteForceRuleProtocolTypeArgs:
     def __init__(__self__, *,
-                 rdp: Optional[pulumi.Input[_builtins.str]] = None,
-                 sql_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssh: Optional[pulumi.Input[_builtins.str]] = None):
+                 rdp: pulumi.Input[Optional[_builtins.str]] = None,
+                 sql_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssh: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] rdp: Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
         :param pulumi.Input[_builtins.str] sql_server: Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
@@ -67,38 +67,38 @@ class AntiBruteForceRuleProtocolTypeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def rdp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rdp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable RDP interception. Default value: `on`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "rdp")
 
     @rdp.setter
-    def rdp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rdp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rdp", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlServer")
-    def sql_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable the SqlServer interception method. Default value: `off`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "sql_server")
 
     @sql_server.setter
-    def sql_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_server", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssh(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable SSH interception. Default value: `on`. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssh(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssh", value)
 
 
@@ -207,11 +207,11 @@ class AttackPathSensitiveAssetConfigAttackPathAssetListArgs:
 
 
 class CheckConfigSelectedCheckArgsDict(TypedDict):
-    check_id: NotRequired[pulumi.Input[_builtins.int]]
+    check_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the check item.
     """
-    section_id: NotRequired[pulumi.Input[_builtins.int]]
+    section_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The section ID of the check item.
     """
@@ -219,8 +219,8 @@ class CheckConfigSelectedCheckArgsDict(TypedDict):
 @pulumi.input_type
 class CheckConfigSelectedCheckArgs:
     def __init__(__self__, *,
-                 check_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 section_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 check_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 section_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] check_id: The ID of the check item.
         :param pulumi.Input[_builtins.int] section_id: The section ID of the check item.
@@ -232,26 +232,26 @@ class CheckConfigSelectedCheckArgs:
 
     @_builtins.property
     @pulumi.getter(name="checkId")
-    def check_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def check_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the check item.
         """
         return pulumi.get(self, "check_id")
 
     @check_id.setter
-    def check_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def check_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "check_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sectionId")
-    def section_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def section_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The section ID of the check item.
         """
         return pulumi.get(self, "section_id")
 
     @section_id.setter
-    def section_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def section_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "section_id", value)
 
 
@@ -260,11 +260,11 @@ class HoneypotPresetMetaArgsDict(TypedDict):
     """
     Burp counter.
     """
-    portrait_option: NotRequired[pulumi.Input[_builtins.bool]]
+    portrait_option: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Social traceability.
     """
-    trojan_git: NotRequired[pulumi.Input[_builtins.str]]
+    trojan_git: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Git countered.
     """
@@ -273,8 +273,8 @@ class HoneypotPresetMetaArgsDict(TypedDict):
 class HoneypotPresetMetaArgs:
     def __init__(__self__, *,
                  burp: pulumi.Input[_builtins.str],
-                 portrait_option: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trojan_git: Optional[pulumi.Input[_builtins.str]] = None):
+                 portrait_option: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trojan_git: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] burp: Burp counter.
         :param pulumi.Input[_builtins.bool] portrait_option: Social traceability.
@@ -300,35 +300,35 @@ class HoneypotPresetMetaArgs:
 
     @_builtins.property
     @pulumi.getter(name="portraitOption")
-    def portrait_option(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def portrait_option(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Social traceability.
         """
         return pulumi.get(self, "portrait_option")
 
     @portrait_option.setter
-    def portrait_option(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def portrait_option(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "portrait_option", value)
 
     @_builtins.property
     @pulumi.getter(name="trojanGit")
-    def trojan_git(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trojan_git(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Git countered.
         """
         return pulumi.get(self, "trojan_git")
 
     @trojan_git.setter
-    def trojan_git(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trojan_git(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trojan_git", value)
 
 
 class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
-    bind_port_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgsDict']]]]
+    bind_port_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]]
     """
     List of listening ports.See the following `Block BindPortList`.
     """
-    honeypot_id: NotRequired[pulumi.Input[_builtins.str]]
+    honeypot_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Honeypot ID.
     """
@@ -336,8 +336,8 @@ class HoneypotProbeHoneypotBindListArgsDict(TypedDict):
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListArgs:
     def __init__(__self__, *,
-                 bind_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
-                 honeypot_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 bind_port_lists: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
+                 honeypot_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
         :param pulumi.Input[_builtins.str] honeypot_id: Honeypot ID.
@@ -349,47 +349,47 @@ class HoneypotProbeHoneypotBindListArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindPortLists")
-    def bind_port_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]:
+    def bind_port_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]:
         """
         List of listening ports.See the following `Block BindPortList`.
         """
         return pulumi.get(self, "bind_port_lists")
 
     @bind_port_lists.setter
-    def bind_port_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]):
+    def bind_port_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]):
         pulumi.set(self, "bind_port_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="honeypotId")
-    def honeypot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def honeypot_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Honeypot ID.
         """
         return pulumi.get(self, "honeypot_id")
 
     @honeypot_id.setter
-    def honeypot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def honeypot_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "honeypot_id", value)
 
 
 class HoneypotProbeHoneypotBindListBindPortListArgsDict(TypedDict):
-    bind_port: NotRequired[pulumi.Input[_builtins.bool]]
+    bind_port: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to bind the port.
     """
-    end_port: NotRequired[pulumi.Input[_builtins.int]]
+    end_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     End port.
     """
-    fixed: NotRequired[pulumi.Input[_builtins.bool]]
+    fixed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the port is fixed.
     """
-    start_port: NotRequired[pulumi.Input[_builtins.int]]
+    start_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Start port.
     """
-    target_port: NotRequired[pulumi.Input[_builtins.int]]
+    target_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Destination port.
     """
@@ -397,11 +397,11 @@ class HoneypotProbeHoneypotBindListBindPortListArgsDict(TypedDict):
 @pulumi.input_type
 class HoneypotProbeHoneypotBindListBindPortListArgs:
     def __init__(__self__, *,
-                 bind_port: Optional[pulumi.Input[_builtins.bool]] = None,
-                 end_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 fixed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_port: Optional[pulumi.Input[_builtins.int]] = None):
+                 bind_port: pulumi.Input[Optional[_builtins.bool]] = None,
+                 end_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 fixed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] bind_port: Whether to bind the port.
         :param pulumi.Input[_builtins.int] end_port: End port.
@@ -422,111 +422,111 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindPort")
-    def bind_port(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bind_port(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to bind the port.
         """
         return pulumi.get(self, "bind_port")
 
     @bind_port.setter
-    def bind_port(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bind_port(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bind_port", value)
 
     @_builtins.property
     @pulumi.getter(name="endPort")
-    def end_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         End port.
         """
         return pulumi.get(self, "end_port")
 
     @end_port.setter
-    def end_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_port", value)
 
     @_builtins.property
     @pulumi.getter
-    def fixed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fixed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the port is fixed.
         """
         return pulumi.get(self, "fixed")
 
     @fixed.setter
-    def fixed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fixed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fixed", value)
 
     @_builtins.property
     @pulumi.getter(name="startPort")
-    def start_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Start port.
         """
         return pulumi.get(self, "start_port")
 
     @start_port.setter
-    def start_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_port", value)
 
     @_builtins.property
     @pulumi.getter(name="targetPort")
-    def target_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def target_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Destination port.
         """
         return pulumi.get(self, "target_port")
 
     @target_port.setter
-    def target_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def target_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "target_port", value)
 
 
 class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
-    agentless: NotRequired[pulumi.Input[_builtins.int]]
+    agentless: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Agentless Detection Module. Valid values:
     """
-    anti_ransomware: NotRequired[pulumi.Input[_builtins.int]]
+    anti_ransomware: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Anti-Ransomware Module. Valid values:
     """
-    basic_service: NotRequired[pulumi.Input[_builtins.int]]
+    basic_service: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Basic service module. Valid values:
     """
-    cspm: NotRequired[pulumi.Input[_builtins.int]]
+    cspm: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Cloud Security Configuration Check Module. Valid values:
     """
-    ctdr: NotRequired[pulumi.Input[_builtins.int]]
+    ctdr: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Threat Analysis and Response Module. Valid values:
     """
-    ctdr_storage: NotRequired[pulumi.Input[_builtins.int]]
+    ctdr_storage: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Log Management Module. Valid values:
     """
-    post_host: NotRequired[pulumi.Input[_builtins.int]]
+    post_host: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Host and Container Security Module. Valid values:
     """
-    rasp: NotRequired[pulumi.Input[_builtins.int]]
+    rasp: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Application Protection Module. Valid values:
     """
-    sdk: NotRequired[pulumi.Input[_builtins.int]]
+    sdk: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Malicious File Detection SDK Module. Valid values:
     """
-    serverless: NotRequired[pulumi.Input[_builtins.int]]
+    serverless: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Serverless Security Module. Valid values:
     """
-    vul: NotRequired[pulumi.Input[_builtins.int]]
+    vul: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Vulnerability Repair Module. Valid values:
     """
-    web_lock: NotRequired[pulumi.Input[_builtins.int]]
+    web_lock: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     File Tamper Protection Module. Valid values:
     """
@@ -534,18 +534,18 @@ class InstancePostPayModuleSwitchObjArgsDict(TypedDict):
 @pulumi.input_type
 class InstancePostPayModuleSwitchObjArgs:
     def __init__(__self__, *,
-                 agentless: Optional[pulumi.Input[_builtins.int]] = None,
-                 anti_ransomware: Optional[pulumi.Input[_builtins.int]] = None,
-                 basic_service: Optional[pulumi.Input[_builtins.int]] = None,
-                 cspm: Optional[pulumi.Input[_builtins.int]] = None,
-                 ctdr: Optional[pulumi.Input[_builtins.int]] = None,
-                 ctdr_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 post_host: Optional[pulumi.Input[_builtins.int]] = None,
-                 rasp: Optional[pulumi.Input[_builtins.int]] = None,
-                 sdk: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless: Optional[pulumi.Input[_builtins.int]] = None,
-                 vul: Optional[pulumi.Input[_builtins.int]] = None,
-                 web_lock: Optional[pulumi.Input[_builtins.int]] = None):
+                 agentless: pulumi.Input[Optional[_builtins.int]] = None,
+                 anti_ransomware: pulumi.Input[Optional[_builtins.int]] = None,
+                 basic_service: pulumi.Input[Optional[_builtins.int]] = None,
+                 cspm: pulumi.Input[Optional[_builtins.int]] = None,
+                 ctdr: pulumi.Input[Optional[_builtins.int]] = None,
+                 ctdr_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 post_host: pulumi.Input[Optional[_builtins.int]] = None,
+                 rasp: pulumi.Input[Optional[_builtins.int]] = None,
+                 sdk: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless: pulumi.Input[Optional[_builtins.int]] = None,
+                 vul: pulumi.Input[Optional[_builtins.int]] = None,
+                 web_lock: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] agentless: Agentless Detection Module. Valid values:
         :param pulumi.Input[_builtins.int] anti_ransomware: Anti-Ransomware Module. Valid values:
@@ -587,157 +587,157 @@ class InstancePostPayModuleSwitchObjArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agentless(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def agentless(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Agentless Detection Module. Valid values:
         """
         return pulumi.get(self, "agentless")
 
     @agentless.setter
-    def agentless(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def agentless(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "agentless", value)
 
     @_builtins.property
     @pulumi.getter(name="antiRansomware")
-    def anti_ransomware(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def anti_ransomware(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Anti-Ransomware Module. Valid values:
         """
         return pulumi.get(self, "anti_ransomware")
 
     @anti_ransomware.setter
-    def anti_ransomware(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def anti_ransomware(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "anti_ransomware", value)
 
     @_builtins.property
     @pulumi.getter(name="basicService")
-    def basic_service(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def basic_service(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Basic service module. Valid values:
         """
         return pulumi.get(self, "basic_service")
 
     @basic_service.setter
-    def basic_service(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def basic_service(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "basic_service", value)
 
     @_builtins.property
     @pulumi.getter
-    def cspm(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cspm(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Cloud Security Configuration Check Module. Valid values:
         """
         return pulumi.get(self, "cspm")
 
     @cspm.setter
-    def cspm(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cspm(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cspm", value)
 
     @_builtins.property
     @pulumi.getter
-    def ctdr(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ctdr(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threat Analysis and Response Module. Valid values:
         """
         return pulumi.get(self, "ctdr")
 
     @ctdr.setter
-    def ctdr(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ctdr(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ctdr", value)
 
     @_builtins.property
     @pulumi.getter(name="ctdrStorage")
-    def ctdr_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ctdr_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Log Management Module. Valid values:
         """
         return pulumi.get(self, "ctdr_storage")
 
     @ctdr_storage.setter
-    def ctdr_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ctdr_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ctdr_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="postHost")
-    def post_host(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def post_host(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Host and Container Security Module. Valid values:
         """
         return pulumi.get(self, "post_host")
 
     @post_host.setter
-    def post_host(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def post_host(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "post_host", value)
 
     @_builtins.property
     @pulumi.getter
-    def rasp(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rasp(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Application Protection Module. Valid values:
         """
         return pulumi.get(self, "rasp")
 
     @rasp.setter
-    def rasp(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rasp(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rasp", value)
 
     @_builtins.property
     @pulumi.getter
-    def sdk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sdk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Malicious File Detection SDK Module. Valid values:
         """
         return pulumi.get(self, "sdk")
 
     @sdk.setter
-    def sdk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sdk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sdk", value)
 
     @_builtins.property
     @pulumi.getter
-    def serverless(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serverless(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Serverless Security Module. Valid values:
         """
         return pulumi.get(self, "serverless")
 
     @serverless.setter
-    def serverless(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serverless(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serverless", value)
 
     @_builtins.property
     @pulumi.getter
-    def vul(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vul(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Vulnerability Repair Module. Valid values:
         """
         return pulumi.get(self, "vul")
 
     @vul.setter
-    def vul(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vul(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vul", value)
 
     @_builtins.property
     @pulumi.getter(name="webLock")
-    def web_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def web_lock(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         File Tamper Protection Module. Valid values:
         """
         return pulumi.get(self, "web_lock")
 
     @web_lock.setter
-    def web_lock(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def web_lock(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "web_lock", value)
 
 
 class SasTrailServiceTrailArgsDict(TypedDict):
-    config: NotRequired[pulumi.Input[_builtins.str]]
+    config: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Service tracking on status. The value is:
     - **on:** Open
     - **off:** off.
     """
-    update_time: NotRequired[pulumi.Input[_builtins.int]]
+    update_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The timestamp of the last service update. Unit: milliseconds.
     """
@@ -745,8 +745,8 @@ class SasTrailServiceTrailArgsDict(TypedDict):
 @pulumi.input_type
 class SasTrailServiceTrailArgs:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 update_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 update_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] config: Service tracking on status. The value is:
                - **on:** Open
@@ -760,7 +760,7 @@ class SasTrailServiceTrailArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service tracking on status. The value is:
         - **on:** Open
@@ -769,19 +769,19 @@ class SasTrailServiceTrailArgs:
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="updateTime")
-    def update_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def update_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timestamp of the last service update. Unit: milliseconds.
         """
         return pulumi.get(self, "update_time")
 
     @update_time.setter
-    def update_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def update_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "update_time", value)
 
 

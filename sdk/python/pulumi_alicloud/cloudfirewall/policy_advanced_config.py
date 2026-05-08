@@ -43,7 +43,7 @@ class PolicyAdvancedConfigArgs:
 @pulumi.input_type
 class _PolicyAdvancedConfigState:
     def __init__(__self__, *,
-                 internet_switch: Optional[pulumi.Input[_builtins.str]] = None):
+                 internet_switch: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PolicyAdvancedConfig resources.
 
@@ -54,14 +54,14 @@ class _PolicyAdvancedConfigState:
 
     @_builtins.property
     @pulumi.getter(name="internetSwitch")
-    def internet_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access control policy strict mode of on-state. Valid values:
         """
         return pulumi.get(self, "internet_switch")
 
     @internet_switch.setter
-    def internet_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_switch", value)
 
 
@@ -71,7 +71,7 @@ class PolicyAdvancedConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 internet_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 internet_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Policy Advanced Config resource.
@@ -176,7 +176,7 @@ class PolicyAdvancedConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 internet_switch: Optional[pulumi.Input[_builtins.str]] = None,
+                 internet_switch: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -199,7 +199,7 @@ class PolicyAdvancedConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            internet_switch: Optional[pulumi.Input[_builtins.str]] = None) -> 'PolicyAdvancedConfig':
+            internet_switch: pulumi.Input[Optional[_builtins.str]] = None) -> 'PolicyAdvancedConfig':
         """
         Get an existing PolicyAdvancedConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

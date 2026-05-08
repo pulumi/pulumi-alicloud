@@ -21,16 +21,16 @@ __all__ = ['DhcpOptionsSetArgs', 'DhcpOptionsSet']
 @pulumi.input_type
 class DhcpOptionsSetArgs:
     def __init__(__self__, *,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
-                 dhcp_options_set_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_options_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
+                 dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DhcpOptionsSet resource.
 
@@ -79,31 +79,31 @@ class DhcpOptionsSetArgs:
     @_builtins.property
     @pulumi.getter(name="associateVpcs")
     @_utilities.deprecated("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
-    def associate_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
+    def associate_vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
         """
         Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
         return pulumi.get(self, "associate_vpcs")
 
     @associate_vpcs.setter
-    def associate_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]):
+    def associate_vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]):
         pulumi.set(self, "associate_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetDescription")
-    def dhcp_options_set_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         """
         return pulumi.get(self, "dhcp_options_set_description")
 
     @dhcp_options_set_description.setter
-    def dhcp_options_set_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetName")
-    def dhcp_options_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the DHCP options set.
         The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -111,12 +111,12 @@ class DhcpOptionsSetArgs:
         return pulumi.get(self, "dhcp_options_set_name")
 
     @dhcp_options_set_name.setter
-    def dhcp_options_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root domain. For example, you can set the value to example.com.
         After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
@@ -124,12 +124,12 @@ class DhcpOptionsSetArgs:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNameServers")
-    def domain_name_servers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name_servers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
         If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
@@ -137,24 +137,24 @@ class DhcpOptionsSetArgs:
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
-    def domain_name_servers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name_servers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request, value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6LeaseTime")
-    def ipv6_lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_lease_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lease time of the IPv6 DHCP option set.
         When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
@@ -163,12 +163,12 @@ class DhcpOptionsSetArgs:
         return pulumi.get(self, "ipv6_lease_time")
 
     @ipv6_lease_time.setter
-    def ipv6_lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_lease_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="leaseTime")
-    def lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lease_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lease time of the IPv4 addresses for the DHCP options set.
         If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
@@ -177,49 +177,49 @@ class DhcpOptionsSetArgs:
         return pulumi.get(self, "lease_time")
 
     @lease_time.setter
-    def lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lease_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the DHCP options set belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DhcpOptionsSetState:
     def __init__(__self__, *,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
-                 dhcp_options_set_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_options_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]] = None,
+                 dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DhcpOptionsSet resources.
 
@@ -274,31 +274,31 @@ class _DhcpOptionsSetState:
     @_builtins.property
     @pulumi.getter(name="associateVpcs")
     @_utilities.deprecated("""Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.""")
-    def associate_vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
+    def associate_vpcs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]:
         """
         Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. See `associate_vpcs` below.
         """
         return pulumi.get(self, "associate_vpcs")
 
     @associate_vpcs.setter
-    def associate_vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]):
+    def associate_vpcs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DhcpOptionsSetAssociateVpcArgs']]]]):
         pulumi.set(self, "associate_vpcs", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetDescription")
-    def dhcp_options_set_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
         """
         return pulumi.get(self, "dhcp_options_set_description")
 
     @dhcp_options_set_description.setter
-    def dhcp_options_set_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpOptionsSetName")
-    def dhcp_options_set_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_options_set_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the DHCP options set.
         The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
@@ -306,12 +306,12 @@ class _DhcpOptionsSetState:
         return pulumi.get(self, "dhcp_options_set_name")
 
     @dhcp_options_set_name.setter
-    def dhcp_options_set_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_options_set_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_options_set_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root domain. For example, you can set the value to example.com.
         After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
@@ -319,12 +319,12 @@ class _DhcpOptionsSetState:
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="domainNameServers")
-    def domain_name_servers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name_servers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
         If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
@@ -332,24 +332,24 @@ class _DhcpOptionsSetState:
         return pulumi.get(self, "domain_name_servers")
 
     @domain_name_servers.setter
-    def domain_name_servers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name_servers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to PreCheck only this request, value:
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6LeaseTime")
-    def ipv6_lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_lease_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lease time of the IPv6 DHCP option set.
         When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
@@ -358,12 +358,12 @@ class _DhcpOptionsSetState:
         return pulumi.get(self, "ipv6_lease_time")
 
     @ipv6_lease_time.setter
-    def ipv6_lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_lease_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="leaseTime")
-    def lease_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lease_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The lease time of the IPv4 addresses for the DHCP options set.
         If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
@@ -372,55 +372,55 @@ class _DhcpOptionsSetState:
         return pulumi.get(self, "lease_time")
 
     @lease_time.setter
-    def lease_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lease_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lease_time", value)
 
     @_builtins.property
     @pulumi.getter(name="ownerId")
-    def owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the account to which the DHCP options set belongs.
         """
         return pulumi.get(self, "owner_id")
 
     @owner_id.setter
-    def owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group to which the DHCP options set belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Tags of the current resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -430,16 +430,16 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
-                 dhcp_options_set_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_options_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
+                 dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a VPC Dhcp Options Set resource.
@@ -566,16 +566,16 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
-                 dhcp_options_set_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_options_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name_servers: Optional[pulumi.Input[_builtins.str]] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
+                 dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -607,18 +607,18 @@ class DhcpOptionsSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            associate_vpcs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
-            dhcp_options_set_description: Optional[pulumi.Input[_builtins.str]] = None,
-            dhcp_options_set_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name_servers: Optional[pulumi.Input[_builtins.str]] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipv6_lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-            lease_time: Optional[pulumi.Input[_builtins.str]] = None,
-            owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DhcpOptionsSet':
+            associate_vpcs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DhcpOptionsSetAssociateVpcArgs', 'DhcpOptionsSetAssociateVpcArgsDict']]]]] = None,
+            dhcp_options_set_description: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_options_set_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name_servers: pulumi.Input[Optional[_builtins.str]] = None,
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+            lease_time: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> 'DhcpOptionsSet':
         """
         Get an existing DhcpOptionsSet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

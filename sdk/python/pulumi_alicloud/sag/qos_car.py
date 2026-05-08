@@ -22,13 +22,13 @@ class QosCarArgs:
                  limit_type: pulumi.Input[_builtins.str],
                  priority: pulumi.Input[_builtins.int],
                  qos_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percent_source_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percent_source_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a QosCar resource.
 
@@ -99,102 +99,102 @@ class QosCarArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS speed limiting rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthAbs")
-    def max_bandwidth_abs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bandwidth_abs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         """
         return pulumi.get(self, "max_bandwidth_abs")
 
     @max_bandwidth_abs.setter
-    def max_bandwidth_abs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bandwidth_abs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bandwidth_abs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthPercent")
-    def max_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
         return pulumi.get(self, "max_bandwidth_percent")
 
     @max_bandwidth_percent.setter
-    def max_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter(name="minBandwidthAbs")
-    def min_bandwidth_abs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_bandwidth_abs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
         """
         return pulumi.get(self, "min_bandwidth_abs")
 
     @min_bandwidth_abs.setter
-    def min_bandwidth_abs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_bandwidth_abs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_bandwidth_abs", value)
 
     @_builtins.property
     @pulumi.getter(name="minBandwidthPercent")
-    def min_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
         return pulumi.get(self, "min_bandwidth_percent")
 
     @min_bandwidth_percent.setter
-    def min_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS speed limiting rule..
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="percentSourceType")
-    def percent_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def percent_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
         """
         return pulumi.get(self, "percent_source_type")
 
     @percent_source_type.setter
-    def percent_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def percent_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "percent_source_type", value)
 
 
 @pulumi.input_type
 class _QosCarState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percent_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percent_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering QosCar resources.
 
@@ -232,122 +232,122 @@ class _QosCarState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS speed limiting rule.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="limitType")
-    def limit_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def limit_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The speed limiting method. Valid values: `Absolute`, `Percent`.
         """
         return pulumi.get(self, "limit_type")
 
     @limit_type.setter
-    def limit_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def limit_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "limit_type", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthAbs")
-    def max_bandwidth_abs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bandwidth_abs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
         """
         return pulumi.get(self, "max_bandwidth_abs")
 
     @max_bandwidth_abs.setter
-    def max_bandwidth_abs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bandwidth_abs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bandwidth_abs", value)
 
     @_builtins.property
     @pulumi.getter(name="maxBandwidthPercent")
-    def max_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
         return pulumi.get(self, "max_bandwidth_percent")
 
     @max_bandwidth_percent.setter
-    def max_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter(name="minBandwidthAbs")
-    def min_bandwidth_abs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_bandwidth_abs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
         """
         return pulumi.get(self, "min_bandwidth_abs")
 
     @min_bandwidth_abs.setter
-    def min_bandwidth_abs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_bandwidth_abs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_bandwidth_abs", value)
 
     @_builtins.property
     @pulumi.getter(name="minBandwidthPercent")
-    def min_bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
         """
         return pulumi.get(self, "min_bandwidth_percent")
 
     @min_bandwidth_percent.setter
-    def min_bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS speed limiting rule..
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="percentSourceType")
-    def percent_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def percent_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
         """
         return pulumi.get(self, "percent_source_type")
 
     @percent_source_type.setter
-    def percent_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def percent_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "percent_source_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The priority of the specified stream.
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def priority(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "priority", value)
 
     @_builtins.property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID of the QoS.
         """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
-    def qos_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_id", value)
 
 
@@ -357,16 +357,16 @@ class QosCar(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percent_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percent_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Sag Qos Car resource.
@@ -490,16 +490,16 @@ class QosCar(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 limit_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 percent_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 priority: Optional[pulumi.Input[_builtins.int]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 limit_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 percent_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 priority: pulumi.Input[Optional[_builtins.int]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -537,16 +537,16 @@ class QosCar(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            limit_type: Optional[pulumi.Input[_builtins.str]] = None,
-            max_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-            max_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-            min_bandwidth_abs: Optional[pulumi.Input[_builtins.int]] = None,
-            min_bandwidth_percent: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            percent_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            priority: Optional[pulumi.Input[_builtins.int]] = None,
-            qos_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'QosCar':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            limit_type: pulumi.Input[Optional[_builtins.str]] = None,
+            max_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+            max_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+            min_bandwidth_abs: pulumi.Input[Optional[_builtins.int]] = None,
+            min_bandwidth_percent: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            percent_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            priority: pulumi.Input[Optional[_builtins.int]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'QosCar':
         """
         Get an existing QosCar resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

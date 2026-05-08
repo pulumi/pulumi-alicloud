@@ -28,7 +28,7 @@ class IpamServiceArgs:
 @pulumi.input_type
 class _IpamServiceState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering IpamService resources.
 
@@ -39,14 +39,14 @@ class _IpamServiceState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the IPAM service has been activated.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
@@ -179,7 +179,7 @@ class IpamService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'IpamService':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'IpamService':
         """
         Get an existing IpamService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

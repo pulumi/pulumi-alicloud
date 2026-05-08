@@ -21,9 +21,9 @@ class AutoSnapshotPolicyArgs:
     def __init__(__self__, *,
                  repeat_weekdays: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  time_points: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 auto_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AutoSnapshotPolicy resource.
 
@@ -81,7 +81,7 @@ class AutoSnapshotPolicyArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
-    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_snapshot_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the automatic snapshot policy. Limits:
         - The name must be `2` to `128` characters in length,
@@ -92,24 +92,24 @@ class AutoSnapshotPolicyArgs:
         return pulumi.get(self, "auto_snapshot_policy_name")
 
     @auto_snapshot_policy_name.setter
-    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_snapshot_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_snapshot_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file system type.
         """
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
         - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
@@ -117,20 +117,20 @@ class AutoSnapshotPolicyArgs:
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
 
 @pulumi.input_type
 class _AutoSnapshotPolicyState:
     def __init__(__self__, *,
-                 auto_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AutoSnapshotPolicy resources.
 
@@ -168,7 +168,7 @@ class _AutoSnapshotPolicyState:
 
     @_builtins.property
     @pulumi.getter(name="autoSnapshotPolicyName")
-    def auto_snapshot_policy_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_snapshot_policy_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the automatic snapshot policy. Limits:
         - The name must be `2` to `128` characters in length,
@@ -179,36 +179,36 @@ class _AutoSnapshotPolicyState:
         return pulumi.get(self, "auto_snapshot_policy_name")
 
     @auto_snapshot_policy_name.setter
-    def auto_snapshot_policy_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_snapshot_policy_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_snapshot_policy_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSystemType")
-    def file_system_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file system type.
         """
         return pulumi.get(self, "file_system_type")
 
     @file_system_type.setter
-    def file_system_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_system_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_system_type", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatWeekdays")
-    def repeat_weekdays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def repeat_weekdays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The day on which an auto snapshot is created.
         - A maximum of 7 time points can be selected.
@@ -217,12 +217,12 @@ class _AutoSnapshotPolicyState:
         return pulumi.get(self, "repeat_weekdays")
 
     @repeat_weekdays.setter
-    def repeat_weekdays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def repeat_weekdays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "repeat_weekdays", value)
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    def retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
         - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
@@ -230,24 +230,24 @@ class _AutoSnapshotPolicyState:
         return pulumi.get(self, "retention_days")
 
     @retention_days.setter
-    def retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the automatic snapshot policy.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="timePoints")
-    def time_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def time_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The point in time at which an auto snapshot is created.
         - A maximum of 24 time points can be selected.
@@ -256,7 +256,7 @@ class _AutoSnapshotPolicyState:
         return pulumi.get(self, "time_points")
 
     @time_points.setter
-    def time_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def time_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "time_points", value)
 
 
@@ -266,11 +266,11 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a NAS Auto Snapshot Policy resource. Automatic snapshot policy.
@@ -402,11 +402,11 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -437,13 +437,13 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_snapshot_policy_name: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            file_system_type: Optional[pulumi.Input[_builtins.str]] = None,
-            repeat_weekdays: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            time_points: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapshotPolicy':
+            auto_snapshot_policy_name: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            file_system_type: pulumi.Input[Optional[_builtins.str]] = None,
+            repeat_weekdays: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            time_points: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AutoSnapshotPolicy':
         """
         Get an existing AutoSnapshotPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

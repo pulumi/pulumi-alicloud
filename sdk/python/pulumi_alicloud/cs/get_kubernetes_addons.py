@@ -169,9 +169,9 @@ def get_kubernetes_addons(cluster_id: Optional[_builtins.str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         name_regex=pulumi.get(__ret__, 'name_regex'),
         names=pulumi.get(__ret__, 'names'))
-def get_kubernetes_addons_output(cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                 name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kubernetes_addons_output(cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                 name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesAddonsResult]:
     """
     This data source provides a list of available addons that the cluster can install.

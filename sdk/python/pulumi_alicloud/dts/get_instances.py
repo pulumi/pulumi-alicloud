@@ -183,12 +183,12 @@ def get_instances(ids: Optional[Sequence[_builtins.str]] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'))
-def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                         resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instances_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                         resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides Dts Instance available to the user.[What is Instance](https://www.alibabacloud.com/help/en/data-transmission-service/latest/createdtsinstance)

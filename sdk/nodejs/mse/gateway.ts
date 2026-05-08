@@ -205,51 +205,51 @@ export interface GatewayState {
     /**
      * The backup vswitch id.
      */
-    backupVswitchId?: pulumi.Input<string>;
+    backupVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the SLB purchased on behalf of the gateway at the same time.
      */
-    deleteSlb?: pulumi.Input<boolean>;
+    deleteSlb?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the enterprise security group type.
      */
-    enterpriseSecurityGroup?: pulumi.Input<boolean>;
+    enterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Gateway .
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * Public network SLB specifications.
      */
-    internetSlbSpec?: pulumi.Input<string>;
+    internetSlbSpec?: pulumi.Input<string | undefined>;
     /**
      * Number of Gateway Nodes.
      */
-    replica?: pulumi.Input<number>;
+    replica?: pulumi.Input<number | undefined>;
     /**
      * A list of gateway Slb.
      */
-    slbLists?: pulumi.Input<pulumi.Input<inputs.mse.GatewaySlbList>[]>;
+    slbLists?: pulumi.Input<pulumi.Input<inputs.mse.GatewaySlbList>[] | undefined>;
     /**
      * Private network SLB specifications.
      */
-    slbSpec?: pulumi.Input<string>;
+    slbSpec?: pulumi.Input<string | undefined>;
     /**
      * Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
      */
-    spec?: pulumi.Input<string>;
+    spec?: pulumi.Input<string | undefined>;
     /**
      * The status of the gateway.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vpc.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vswitch.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -259,23 +259,23 @@ export interface GatewayArgs {
     /**
      * The backup vswitch id.
      */
-    backupVswitchId?: pulumi.Input<string>;
+    backupVswitchId?: pulumi.Input<string | undefined>;
     /**
      * Whether to delete the SLB purchased on behalf of the gateway at the same time.
      */
-    deleteSlb?: pulumi.Input<boolean>;
+    deleteSlb?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the enterprise security group type.
      */
-    enterpriseSecurityGroup?: pulumi.Input<boolean>;
+    enterpriseSecurityGroup?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Gateway .
      */
-    gatewayName?: pulumi.Input<string>;
+    gatewayName?: pulumi.Input<string | undefined>;
     /**
      * Public network SLB specifications.
      */
-    internetSlbSpec?: pulumi.Input<string>;
+    internetSlbSpec?: pulumi.Input<string | undefined>;
     /**
      * Number of Gateway Nodes.
      */
@@ -283,7 +283,7 @@ export interface GatewayArgs {
     /**
      * Private network SLB specifications.
      */
-    slbSpec?: pulumi.Input<string>;
+    slbSpec?: pulumi.Input<string | undefined>;
     /**
      * Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
      */

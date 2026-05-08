@@ -24,7 +24,7 @@ class ExperimentPlanTemplateArgs:
                  privacy_level: pulumi.Input[_builtins.str],
                  template_name: pulumi.Input[_builtins.str],
                  template_pipelines: pulumi.Input[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]],
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None):
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ExperimentPlanTemplate resource.
 
@@ -81,26 +81,26 @@ class ExperimentPlanTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="templateDescription")
-    def template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describe the purpose of this template.
         """
         return pulumi.get(self, "template_description")
 
     @template_description.setter
-    def template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_description", value)
 
 
 @pulumi.input_type
 class _ExperimentPlanTemplateState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 privacy_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_pipelines: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]] = None):
         """
         Input properties used for looking up and filtering ExperimentPlanTemplate resources.
 
@@ -128,19 +128,19 @@ class _ExperimentPlanTemplateState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="privacyLevel")
-    def privacy_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def privacy_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Used to indicate the privacy level of the content or information. It can have the following optional parameters:
         - private: Indicates that the content is private and restricted to specific users or permission groups. Private content is usually not publicly displayed, and only authorized users can view or edit it.
@@ -149,55 +149,55 @@ class _ExperimentPlanTemplateState:
         return pulumi.get(self, "privacy_level")
 
     @privacy_level.setter
-    def privacy_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def privacy_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "privacy_level", value)
 
     @_builtins.property
     @pulumi.getter(name="templateDescription")
-    def template_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Describe the purpose of this template.
         """
         return pulumi.get(self, "template_description")
 
     @template_description.setter
-    def template_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_description", value)
 
     @_builtins.property
     @pulumi.getter(name="templateId")
-    def template_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the template.
         """
         return pulumi.get(self, "template_id")
 
     @template_id.setter
-    def template_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_id", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Help users identify and select specific templates.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
     @_builtins.property
     @pulumi.getter(name="templatePipelines")
-    def template_pipelines(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]]:
+    def template_pipelines(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]]:
         """
         Representative Template Pipeline. See `template_pipeline` below.
         """
         return pulumi.get(self, "template_pipelines")
 
     @template_pipelines.setter
-    def template_pipelines(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]]):
+    def template_pipelines(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ExperimentPlanTemplateTemplatePipelineArgs']]]]):
         pulumi.set(self, "template_pipelines", value)
 
 
@@ -207,10 +207,10 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privacy_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
+                 privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a Eflo Experiment Plan Template resource.
@@ -348,10 +348,10 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 privacy_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 template_pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
+                 privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -383,12 +383,12 @@ class ExperimentPlanTemplate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            privacy_level: Optional[pulumi.Input[_builtins.str]] = None,
-            template_description: Optional[pulumi.Input[_builtins.str]] = None,
-            template_id: Optional[pulumi.Input[_builtins.str]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None,
-            template_pipelines: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None) -> 'ExperimentPlanTemplate':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            privacy_level: pulumi.Input[Optional[_builtins.str]] = None,
+            template_description: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None,
+            template_pipelines: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ExperimentPlanTemplateTemplatePipelineArgs', 'ExperimentPlanTemplateTemplatePipelineArgsDict']]]]] = None) -> 'ExperimentPlanTemplate':
         """
         Get an existing ExperimentPlanTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

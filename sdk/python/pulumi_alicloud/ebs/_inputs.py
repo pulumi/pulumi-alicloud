@@ -34,11 +34,11 @@ __all__ = [
 ]
 
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable Snapshot replication.
     """
-    regions: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict']]]]
+    regions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]]
     """
     Destination region for Snapshot replication. See `regions` below.
     """
@@ -46,8 +46,8 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 regions: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 regions: pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Enable Snapshot replication.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]] regions: Destination region for Snapshot replication. See `regions` below.
@@ -59,35 +59,35 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Snapshot replication.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]:
+    def regions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]:
         """
         Destination region for Snapshot replication. See `regions` below.
         """
         return pulumi.get(self, "regions")
 
     @regions.setter
-    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]):
+    def regions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs']]]]):
         pulumi.set(self, "regions", value)
 
 
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict(TypedDict):
-    region_id: NotRequired[pulumi.Input[_builtins.str]]
+    region_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Destination region ID.
     """
-    retain_days: NotRequired[pulumi.Input[_builtins.int]]
+    retain_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of days of snapshot retention for replication.
     """
@@ -95,8 +95,8 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
     def __init__(__self__, *,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 retain_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 retain_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] region_id: Destination region ID.
         :param pulumi.Input[_builtins.int] retain_days: Number of days of snapshot retention for replication.
@@ -108,39 +108,39 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs:
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Destination region ID.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="retainDays")
-    def retain_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retain_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of days of snapshot retention for replication.
         """
         return pulumi.get(self, "retain_days")
 
     @retain_days.setter
-    def retain_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retain_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retain_days", value)
 
 
 class EnterpriseSnapshotPolicyRetainRuleArgsDict(TypedDict):
-    number: NotRequired[pulumi.Input[_builtins.int]]
+    number: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Retention based on counting method.
     """
-    time_interval: NotRequired[pulumi.Input[_builtins.int]]
+    time_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Time unit.
     """
-    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    time_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Time-based retention.
     """
@@ -148,9 +148,9 @@ class EnterpriseSnapshotPolicyRetainRuleArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseSnapshotPolicyRetainRuleArgs:
     def __init__(__self__, *,
-                 number: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 number: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] number: Retention based on counting method.
         :param pulumi.Input[_builtins.int] time_interval: Time unit.
@@ -165,38 +165,38 @@ class EnterpriseSnapshotPolicyRetainRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retention based on counting method.
         """
         return pulumi.get(self, "number")
 
     @number.setter
-    def number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number", value)
 
     @_builtins.property
     @pulumi.getter(name="timeInterval")
-    def time_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Time unit.
         """
         return pulumi.get(self, "time_interval")
 
     @time_interval.setter
-    def time_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="timeUnit")
-    def time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time-based retention.
         """
         return pulumi.get(self, "time_unit")
 
     @time_unit.setter
-    def time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_unit", value)
 
 
@@ -229,13 +229,13 @@ class EnterpriseSnapshotPolicyScheduleArgs:
 
 
 class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether special reservations are enabled. Value range:
     - true
     - false.
     """
-    rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict']]]]
+    rules: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]]
     """
     List of special retention rules. See `rules` below.
     """
@@ -243,8 +243,8 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether special reservations are enabled. Value range:
                - true
@@ -258,7 +258,7 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether special reservations are enabled. Value range:
         - true
@@ -267,39 +267,39 @@ class EnterpriseSnapshotPolicySpecialRetainRulesArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]:
         """
         List of special retention rules. See `rules` below.
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
 class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgsDict(TypedDict):
-    special_period_unit: NotRequired[pulumi.Input[_builtins.str]]
+    special_period_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
     - WEEKS
     - MONTHS
     - YEARS.
     """
-    time_interval: NotRequired[pulumi.Input[_builtins.int]]
-    time_unit: NotRequired[pulumi.Input[_builtins.str]]
+    time_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    time_unit: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
     def __init__(__self__, *,
-                 special_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_unit: Optional[pulumi.Input[_builtins.str]] = None):
+                 special_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_unit: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] special_period_unit: The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
                - WEEKS
@@ -315,7 +315,7 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="specialPeriodUnit")
-    def special_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def special_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
         - WEEKS
@@ -325,30 +325,30 @@ class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs:
         return pulumi.get(self, "special_period_unit")
 
     @special_period_unit.setter
-    def special_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def special_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "special_period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="timeInterval")
-    def time_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def time_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "time_interval")
 
     @time_interval.setter
-    def time_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def time_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "time_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="timeUnit")
-    def time_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "time_unit")
 
     @time_unit.setter
-    def time_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_unit", value)
 
 
 class EnterpriseSnapshotPolicyStorageRuleArgsDict(TypedDict):
-    enable_immediate_access: NotRequired[pulumi.Input[_builtins.bool]]
+    enable_immediate_access: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Snapshot speed available.
     """
@@ -356,7 +356,7 @@ class EnterpriseSnapshotPolicyStorageRuleArgsDict(TypedDict):
 @pulumi.input_type
 class EnterpriseSnapshotPolicyStorageRuleArgs:
     def __init__(__self__, *,
-                 enable_immediate_access: Optional[pulumi.Input[_builtins.bool]] = None):
+                 enable_immediate_access: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] enable_immediate_access: Snapshot speed available.
         """
@@ -365,14 +365,14 @@ class EnterpriseSnapshotPolicyStorageRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="enableImmediateAccess")
-    def enable_immediate_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_immediate_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Snapshot speed available.
         """
         return pulumi.get(self, "enable_immediate_access")
 
     @enable_immediate_access.setter
-    def enable_immediate_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_immediate_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_immediate_access", value)
 
 

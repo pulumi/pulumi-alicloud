@@ -125,9 +125,9 @@ def get_enterprise_proxies(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         proxies=pulumi.get(__ret__, 'proxies'),
         tid=pulumi.get(__ret__, 'tid'))
-def get_enterprise_proxies_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                  output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  tid: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_enterprise_proxies_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                  output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  tid: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnterpriseProxiesResult]:
     """
     This data source provides the Dms Enterprise Proxies of the current Alibaba Cloud user.

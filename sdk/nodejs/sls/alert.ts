@@ -291,35 +291,35 @@ export interface AlertState {
     /**
      * Alert rule ID, unique under Project.
      */
-    alertName?: pulumi.Input<string>;
+    alertName?: pulumi.Input<string | undefined>;
     /**
      * Detailed configuration of alarm monitoring rules. See `configuration` below.
      */
-    configuration?: pulumi.Input<inputs.sls.AlertConfiguration>;
+    configuration?: pulumi.Input<inputs.sls.AlertConfiguration | undefined>;
     /**
      * Alarm rule creation time.
      */
-    createTime?: pulumi.Input<number>;
+    createTime?: pulumi.Input<number | undefined>;
     /**
      * Compatible fields, set to empty strings.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the alarm rule.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Project Name.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Check the frequency-dependent configuration. See `schedule` below.
      */
-    schedule?: pulumi.Input<inputs.sls.AlertSchedule>;
+    schedule?: pulumi.Input<inputs.sls.AlertSchedule | undefined>;
     /**
      * Resource attribute field representing alarm status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,7 +337,7 @@ export interface AlertArgs {
     /**
      * Compatible fields, set to empty strings.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name of the alarm rule.
      */
@@ -353,5 +353,5 @@ export interface AlertArgs {
     /**
      * Resource attribute field representing alarm status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

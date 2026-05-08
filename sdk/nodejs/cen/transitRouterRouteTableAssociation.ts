@@ -171,19 +171,19 @@ export interface TransitRouterRouteTableAssociationState {
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterAttachmentId
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * TransitRouterRouteTableId
      */
-    transitRouterRouteTableId?: pulumi.Input<string>;
+    transitRouterRouteTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -193,7 +193,7 @@ export interface TransitRouterRouteTableAssociationArgs {
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * TransitRouterAttachmentId
      */

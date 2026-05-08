@@ -88,10 +88,10 @@ class ExtensionProviderArgs:
 @pulumi.input_type
 class _ExtensionProviderState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ExtensionProvider resources.
 
@@ -111,50 +111,50 @@ class _ExtensionProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The config of the Service Mesh Extension Provider. The `config` format is json.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="extensionProviderName")
-    def extension_provider_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def extension_provider_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
         """
         return pulumi.get(self, "extension_provider_name")
 
     @extension_provider_name.setter
-    def extension_provider_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def extension_provider_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "extension_provider_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceMeshId")
-    def service_mesh_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_mesh_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Service Mesh.
         """
         return pulumi.get(self, "service_mesh_id")
 
     @service_mesh_id.setter
-    def service_mesh_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_mesh_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_mesh_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -164,10 +164,10 @@ class ExtensionProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Service Mesh Extension Provider resource.
@@ -182,6 +182,7 @@ class ExtensionProvider(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -191,7 +192,7 @@ class ExtensionProvider(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_network = []
+        default_network: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
@@ -202,14 +203,14 @@ class ExtensionProvider(pulumi.CustomResource):
             id=default_network[0].id
         ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
-        default_switch = []
+        default_switch: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                     vpc_id=pulumi.Output.all(
                         length=len(default_get_networks.ids),
                         id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else resolved_outputs['id'])
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         ,
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,
@@ -278,6 +279,7 @@ class ExtensionProvider(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_std as std
 
@@ -287,7 +289,7 @@ class ExtensionProvider(pulumi.CustomResource):
             name = "tf_example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_network = []
+        default_network: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_network.append(alicloud.vpc.Network(f"default-{range['value']}"))
@@ -298,14 +300,14 @@ class ExtensionProvider(pulumi.CustomResource):
             id=default_network[0].id
         ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         .apply(lambda value: alicloud.vpc.get_switches_output(vpc_id=value))
-        default_switch = []
+        default_switch: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                     vpc_id=pulumi.Output.all(
                         length=len(default_get_networks.ids),
                         id=default_network[0].id
-        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else resolved_outputs['id'])
+        ).apply(lambda resolved_outputs: default_get_networks.ids[0] if resolved_outputs['length'] > 0 else resolved_outputs['id'])
         ,
                     cidr_block=std.cidrsubnet(input=default_get_networks.vpcs[0].cidr_block,
                         newbits=8,
@@ -363,10 +365,10 @@ class ExtensionProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[_builtins.str]] = None,
-                 extension_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_mesh_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[_builtins.str]] = None,
+                 extension_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_mesh_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,10 +400,10 @@ class ExtensionProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[_builtins.str]] = None,
-            extension_provider_name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_mesh_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'ExtensionProvider':
+            config: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_provider_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_mesh_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'ExtensionProvider':
         """
         Get an existing ExtensionProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

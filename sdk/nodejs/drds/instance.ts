@@ -197,30 +197,30 @@ export interface InstanceState {
     /**
      * (Available since v1.196.0) The connection string of the DRDS instance.
      */
-    connectionString?: pulumi.Input<string>;
+    connectionString?: pulumi.Input<string | undefined>;
     /**
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
      * - `drds.sn2.4c16g` Starter Edition.
      * - `drds.sn2.8c32g` Standard Edition.
      * - `drds.sn2.16c64g` Enterprise Edition.
      */
-    instanceSeries?: pulumi.Input<string>;
+    instanceSeries?: pulumi.Input<string | undefined>;
     /**
      * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
      */
-    mysqlVersion?: pulumi.Input<number>;
+    mysqlVersion?: pulumi.Input<number | undefined>;
     /**
      * (Available since v1.196.0) The connection port of the DRDS instance.
      */
-    port?: pulumi.Input<string>;
+    port?: pulumi.Input<string | undefined>;
     /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -232,19 +232,19 @@ export interface InstanceState {
      * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
      * - value range : `drds.sn1.32c64g.128c256g`
      */
-    specification?: pulumi.Input<string>;
+    specification?: pulumi.Input<string | undefined>;
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitch ID to launch in.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The Zone to launch the DRDS instance.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -258,7 +258,7 @@ export interface InstanceArgs {
     /**
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
      * - `drds.sn2.4c16g` Starter Edition.
@@ -269,7 +269,7 @@ export interface InstanceArgs {
     /**
      * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
      */
-    mysqlVersion?: pulumi.Input<number>;
+    mysqlVersion?: pulumi.Input<number | undefined>;
     /**
      * User-defined DRDS instance specification. Value range:
      * - `drds.sn1.4c8g` for DRDS instance Starter version;
@@ -285,7 +285,7 @@ export interface InstanceArgs {
     /**
      * The id of the VPC.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The VSwitch ID to launch in.
      */

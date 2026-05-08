@@ -20,16 +20,16 @@ __all__ = ['ClusterEndpointArgs', 'ClusterEndpoint']
 class ClusterEndpointArgs:
     def __init__(__self__, *,
                  db_cluster_id: pulumi.Input[_builtins.str],
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_auto_rotate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClusterEndpoint resource.
 
@@ -83,103 +83,103 @@ class ClusterEndpointArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_add_new_nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         """
         return pulumi.get(self, "auto_add_new_nodes")
 
     @auto_add_new_nodes.setter
-    def auto_add_new_nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_add_new_nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_add_new_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointDescription")
-    def db_endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "db_endpoint_description")
 
     @db_endpoint_description.setter
-    def db_endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def endpoint_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def endpoint_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the endpoint address.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
 
     @read_write_mode.setter
-    def read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
-    def ssl_auto_rotate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
@@ -188,41 +188,41 @@ class ClusterEndpointArgs:
         return pulumi.get(self, "ssl_auto_rotate")
 
     @ssl_auto_rotate.setter
-    def ssl_auto_rotate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_auto_rotate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_auto_rotate", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_enabled", value)
 
 
 @pulumi.input_type
 class _ClusterEndpointState:
     def __init__(__self__, *,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_auto_rotate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_certificate_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_expire_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_expire_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClusterEndpoint resources.
 
@@ -280,139 +280,139 @@ class _ClusterEndpointState:
 
     @_builtins.property
     @pulumi.getter(name="autoAddNewNodes")
-    def auto_add_new_nodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_add_new_nodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the new node automatically joins the default cluster address. Valid values are `Enable`, `Disable`. When creating a new custom endpoint, default to `Disable`.
         """
         return pulumi.get(self, "auto_add_new_nodes")
 
     @auto_add_new_nodes.setter
-    def auto_add_new_nodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_add_new_nodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_add_new_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionPrefix")
-    def connection_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix of the specified endpoint. The prefix must be 6 to 30 characters in length, and can contain lowercase letters, digits, and hyphens (-), must start with a letter and end with a digit or letter.
         """
         return pulumi.get(self, "connection_prefix")
 
     @connection_prefix.setter
-    def connection_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster that can run database.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointDescription")
-    def db_endpoint_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the endpoint.
         """
         return pulumi.get(self, "db_endpoint_description")
 
     @db_endpoint_description.setter
-    def db_endpoint_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dbEndpointId")
-    def db_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cluster endpoint.
         """
         return pulumi.get(self, "db_endpoint_id")
 
     @db_endpoint_id.setter
-    def db_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointConfig")
-    def endpoint_config(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def endpoint_config(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The advanced settings of the endpoint of Apsara PolarDB clusters are in JSON format. Including the settings of consistency level, transaction splitting, connection pool, and offload reads from primary node. For more details, see the [description of EndpointConfig in the Request parameters table for details](https://www.alibabacloud.com/help/doc-detail/116593.htm).
         """
         return pulumi.get(self, "endpoint_config")
 
     @endpoint_config.setter
-    def endpoint_config(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def endpoint_config(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "endpoint_config", value)
 
     @_builtins.property
     @pulumi.getter(name="endpointType")
-    def endpoint_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Type of endpoint.
         """
         return pulumi.get(self, "endpoint_type")
 
     @endpoint_type.setter
-    def endpoint_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint_type", value)
 
     @_builtins.property
     @pulumi.getter(name="netType")
-    def net_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def net_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the endpoint address.
         """
         return pulumi.get(self, "net_type")
 
     @net_type.setter
-    def net_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def net_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "net_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Node id list for endpoint configuration. At least 2 nodes if specified, or if the cluster has more than 3 nodes, read-only endpoint is allowed to mount only one node. Default is all nodes.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Port of the specified endpoint. Valid values: 3000 to 5999.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="readWriteMode")
-    def read_write_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read_write_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
         """
         return pulumi.get(self, "read_write_mode")
 
     @read_write_mode.setter
-    def read_write_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read_write_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read_write_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="sslAutoRotate")
-    def ssl_auto_rotate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_auto_rotate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
         **NOTE:** For a PolarDB for MySQL cluster, this parameter is required, and only one connection string in each endpoint can enable the ssl, for other notes, see [Configure SSL encryption](https://www.alibabacloud.com/help/doc-detail/153182.htm).
@@ -421,55 +421,55 @@ class _ClusterEndpointState:
         return pulumi.get(self, "ssl_auto_rotate")
 
     @ssl_auto_rotate.setter
-    def ssl_auto_rotate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_auto_rotate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_auto_rotate", value)
 
     @_builtins.property
     @pulumi.getter(name="sslCertificateUrl")
-    def ssl_certificate_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_certificate_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifies SSL certificate download link.
         """
         return pulumi.get(self, "ssl_certificate_url")
 
     @ssl_certificate_url.setter
-    def ssl_certificate_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_certificate_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_certificate_url", value)
 
     @_builtins.property
     @pulumi.getter(name="sslConnectionString")
-    def ssl_connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL connection string.
         """
         return pulumi.get(self, "ssl_connection_string")
 
     @ssl_connection_string.setter
-    def ssl_connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
         """
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="sslExpireTime")
-    def ssl_expire_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_expire_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         """
         return pulumi.get(self, "ssl_expire_time")
 
     @ssl_expire_time.setter
-    def ssl_expire_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_expire_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_expire_time", value)
 
 
@@ -479,17 +479,17 @@ class ClusterEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_auto_rotate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a PolarDB endpoint resource to manage cluster endpoint of PolarDB cluster.
@@ -620,17 +620,17 @@ class ClusterEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 net_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_auto_rotate: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
+                 auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 net_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -668,22 +668,22 @@ class ClusterEndpoint(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_add_new_nodes: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_endpoint_description: Optional[pulumi.Input[_builtins.str]] = None,
-            db_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint_config: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            endpoint_type: Optional[pulumi.Input[_builtins.str]] = None,
-            net_type: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            read_write_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_auto_rotate: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_certificate_url: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_enabled: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_expire_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClusterEndpoint':
+            auto_add_new_nodes: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_description: pulumi.Input[Optional[_builtins.str]] = None,
+            db_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint_config: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            endpoint_type: pulumi.Input[Optional[_builtins.str]] = None,
+            net_type: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            read_write_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_auto_rotate: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_certificate_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_expire_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClusterEndpoint':
         """
         Get an existing ClusterEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

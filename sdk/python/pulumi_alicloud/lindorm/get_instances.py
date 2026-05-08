@@ -189,13 +189,13 @@ def get_instances(enable_details: Optional[_builtins.bool] = None,
         query_str=pulumi.get(__ret__, 'query_str'),
         status=pulumi.get(__ret__, 'status'),
         support_engine=pulumi.get(__ret__, 'support_engine'))
-def get_instances_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         query_str: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         support_engine: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
+def get_instances_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         query_str: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         support_engine: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Lindorm Instances of the current Alibaba Cloud user.

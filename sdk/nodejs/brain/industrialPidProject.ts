@@ -116,15 +116,15 @@ export interface IndustrialPidProjectState {
     /**
      * The ID of Pid Organization.
      */
-    pidOrganizationId?: pulumi.Input<string>;
+    pidOrganizationId?: pulumi.Input<string | undefined>;
     /**
      * The description of Pid Project.
      */
-    pidProjectDesc?: pulumi.Input<string>;
+    pidProjectDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of Pid Project.
      */
-    pidProjectName?: pulumi.Input<string>;
+    pidProjectName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface IndustrialPidProjectArgs {
     /**
      * The description of Pid Project.
      */
-    pidProjectDesc?: pulumi.Input<string>;
+    pidProjectDesc?: pulumi.Input<string | undefined>;
     /**
      * The name of Pid Project.
      */

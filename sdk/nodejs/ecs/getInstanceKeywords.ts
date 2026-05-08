@@ -100,5 +100,5 @@ export interface GetInstanceKeywordsOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi up`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
 }

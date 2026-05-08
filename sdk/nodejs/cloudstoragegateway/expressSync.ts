@@ -212,23 +212,23 @@ export interface ExpressSyncState {
     /**
      * The name of the OSS Bucket.
      */
-    bucketName?: pulumi.Input<string>;
+    bucketName?: pulumi.Input<string | undefined>;
     /**
      * The prefix of the OSS Bucket.
      */
-    bucketPrefix?: pulumi.Input<string>;
+    bucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The region of the OSS Bucket.
      */
-    bucketRegion?: pulumi.Input<string>;
+    bucketRegion?: pulumi.Input<string | undefined>;
     /**
      * The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
      */
-    expressSyncName?: pulumi.Input<string>;
+    expressSyncName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -242,7 +242,7 @@ export interface ExpressSyncArgs {
     /**
      * The prefix of the OSS Bucket.
      */
-    bucketPrefix?: pulumi.Input<string>;
+    bucketPrefix?: pulumi.Input<string | undefined>;
     /**
      * The region of the OSS Bucket.
      */
@@ -250,7 +250,7 @@ export interface ExpressSyncArgs {
     /**
      * The description of the Express Sync. The length of the name is limited to `1` to `255` characters.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the ExpressSync. The length of the name is limited to `1` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, English periods (.), underscores (_), or hyphens (-), and must start with  letters.
      */

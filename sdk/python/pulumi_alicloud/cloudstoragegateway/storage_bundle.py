@@ -20,7 +20,7 @@ __all__ = ['StorageBundleArgs', 'StorageBundle']
 class StorageBundleArgs:
     def __init__(__self__, *,
                  storage_bundle_name: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a StorageBundle resource.
 
@@ -45,22 +45,22 @@ class StorageBundleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of storage bundle.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
 class _StorageBundleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_bundle_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_bundle_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering StorageBundle resources.
 
@@ -74,26 +74,26 @@ class _StorageBundleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of storage bundle.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="storageBundleName")
-    def storage_bundle_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_bundle_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of storage bundle.
         """
         return pulumi.get(self, "storage_bundle_name")
 
     @storage_bundle_name.setter
-    def storage_bundle_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_bundle_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_bundle_name", value)
 
 
@@ -103,8 +103,8 @@ class StorageBundle(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Storage Gateway Storage Bundle resource.
@@ -190,8 +190,8 @@ class StorageBundle(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,8 +215,8 @@ class StorageBundle(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_bundle_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'StorageBundle':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_bundle_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'StorageBundle':
         """
         Get an existing StorageBundle resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

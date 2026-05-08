@@ -420,198 +420,198 @@ export interface InstanceState {
     /**
      * The number of instances created, with a minimum of 1 and a maximum of 100
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
      * - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
      * - The minimum release time is one hour after the current time.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use vouchers. The default is to use. Value:
      * - true (used)
      * - false (not used)
      */
-    autoUseCoupon?: pulumi.Input<string>;
+    autoUseCoupon?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
      * - Month: monthly billing
      */
-    billingCycle?: pulumi.Input<string>;
+    billingCycle?: pulumi.Input<string | undefined>;
     /**
      * Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
      * - telecom
      */
-    carrier?: pulumi.Input<string>;
+    carrier?: pulumi.Input<string | undefined>;
     /**
      * Data disk specifications See `dataDisk` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ens.InstanceDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ens.InstanceDataDisk>[] | undefined>;
     /**
      * The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Whether to force the identity when operating the instance. Optional values:
      * - true: Force
      * - false (default): non-mandatory
      */
-    forceStop?: pulumi.Input<string>;
+    forceStop?: pulumi.Input<string | undefined>;
     /**
      * The host name of the instance. Example value: test-HostName
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Whether the Payment type of the disk created with the instance is converted.
      */
-    includeDataDisks?: pulumi.Input<boolean>;
+    includeDataDisks?: pulumi.Input<boolean | undefined>;
     /**
      * The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
      * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      */
-    instanceChargeStrategy?: pulumi.Input<string>;
+    instanceChargeStrategy?: pulumi.Input<string | undefined>;
     /**
      * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
      *
      * The default value is the InstanceId of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The specification of the instance. Example value: ens.sn1.small
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Instance bandwidth billing method. If the billing method can be selected for the first purchase, the subsequent value of this field will be processed by default according to the billing method selected for the first time. Optional values:
      * - BandwidthByDay: Daily peak bandwidth
      * - 95bandwidthbymonth: 95 peak bandwidth
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
      * - ipv4Andipv6:IPv4 and IPv6
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * The key pair name.
      *
      * > **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      */
-    netDistrictCode?: pulumi.Input<string>;
+    netDistrictCode?: pulumi.Input<string | undefined>;
     /**
      * The network ID of the instance. Can only be used in node-level scheduling
      */
-    netWorkId?: pulumi.Input<string>;
+    netWorkId?: pulumi.Input<string | undefined>;
     /**
      * The instance password. At least one of Password, KeyPairName, and PasswordInherit
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
      * - PayAsYouGo: Pay by volume
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The duration of the resource purchase. Value method:
      * - If PeriodUnit is set to Day, Period can only be set to 3.
      * - If PeriodUnit is set to Month, Period can be set to 1-9,12.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
      * - Day: buy by Day
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Whether to assign a public IP identifier. Value:
      * - true (default): Assign
      * - false: do not assign
      */
-    publicIpIdentification?: pulumi.Input<boolean>;
+    publicIpIdentification?: pulumi.Input<boolean | undefined>;
     /**
      * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
      * - Regional scheduling: Big (region),Middle (province),Small (city)
      */
-    scheduleAreaLevel?: pulumi.Input<string>;
+    scheduleAreaLevel?: pulumi.Input<string | undefined>;
     /**
      * Scheduling price policy. If it is not filled in, the default priority is low price. Value:
      * - PriceLowPriority
      * - PriceLowPriority (priority low price)
      */
-    schedulingPriceStrategy?: pulumi.Input<string>;
+    schedulingPriceStrategy?: pulumi.Input<string | undefined>;
     /**
      * Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
      * - For regional scheduling, Concentrate, Disperse
      */
-    schedulingStrategy?: pulumi.Input<string>;
+    schedulingStrategy?: pulumi.Input<string | undefined>;
     /**
      * ID of the security group to which the instance belongs.
      */
-    securityId?: pulumi.Input<string>;
+    securityId?: pulumi.Input<string | undefined>;
     /**
      * The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
      * - NoSpot: normal pay-as-you-go instance (default)
      * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * Status of the instance
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.ens.InstanceSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.ens.InstanceSystemDisk | undefined>;
     /**
      * The tag bound to the instance
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
      */
-    uniqueSuffix?: pulumi.Input<boolean>;
+    uniqueSuffix?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -621,75 +621,75 @@ export interface InstanceArgs {
     /**
      * The number of instances created, with a minimum of 1 and a maximum of 100
      */
-    amount?: pulumi.Input<number>;
+    amount?: pulumi.Input<number | undefined>;
     /**
      * The automatic release time of the pay-as-you-go instance. According to the [ISO 8601] standard, UTC +0 time is used. The format is: 'yyyy-MM-ddTHH:mm:ssZ '.
      * - If the second ('ss') value is not '00', it is automatically taken as the start of the current minute ('mm').
      * - The minimum release time is one hour after the current time.
      */
-    autoReleaseTime?: pulumi.Input<string>;
+    autoReleaseTime?: pulumi.Input<string | undefined>;
     /**
      * Whether to automatically renew the logo. The default value is false. This parameter is invalid when you pay by volume.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to use vouchers. The default is to use. Value:
      * - true (used)
      * - false (not used)
      */
-    autoUseCoupon?: pulumi.Input<string>;
+    autoUseCoupon?: pulumi.Input<string | undefined>;
     /**
      * The billing cycle for instance computing resources. Only instance-level pay-as-you-go is supported. Value
      * - Hour: hourly billing
      * - Day: Daily billing
      * - Month: monthly billing
      */
-    billingCycle?: pulumi.Input<string>;
+    billingCycle?: pulumi.Input<string | undefined>;
     /**
      * Operator, required for regional scheduling. Optional values:
      * - cmcc (mobile)
      * - unicom
      * - telecom
      */
-    carrier?: pulumi.Input<string>;
+    carrier?: pulumi.Input<string | undefined>;
     /**
      * Data disk specifications See `dataDisk` below.
      */
-    dataDisks?: pulumi.Input<pulumi.Input<inputs.ens.InstanceDataDisk>[]>;
+    dataDisks?: pulumi.Input<pulumi.Input<inputs.ens.InstanceDataDisk>[] | undefined>;
     /**
      * The node ID. When ScheduleAreaLevel is Region, EnsRegionId is required. When ScheduleAreaLevel is Big,Middle,Small, EnsRegionId is invalid.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * Whether to force the identity when operating the instance. Optional values:
      * - true: Force
      * - false (default): non-mandatory
      */
-    forceStop?: pulumi.Input<string>;
+    forceStop?: pulumi.Input<string | undefined>;
     /**
      * The host name of the instance. Example value: test-HostName
      */
-    hostName?: pulumi.Input<string>;
+    hostName?: pulumi.Input<string | undefined>;
     /**
      * The image ID of the instance. The arm version card cannot be filled in. Other specifications are required. Example value: m-5si16wo6simkt267p8b7h * * * *
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Whether the Payment type of the disk created with the instance is converted.
      */
-    includeDataDisks?: pulumi.Input<boolean>;
+    includeDataDisks?: pulumi.Input<boolean | undefined>;
     /**
      * The instance billing policy. Optional values:
      * - instance: instance granularity (the subscription method does not support instance)
      * - user: user Dimension (user is not transmitted or supported in the prepaid mode)
      */
-    instanceChargeStrategy?: pulumi.Input<string>;
+    instanceChargeStrategy?: pulumi.Input<string | undefined>;
     /**
      * The instance name. Example value: test-InstanceName. It must be 2 to 128 characters in length and must start with an uppercase or lowercase letter or a Chinese character. It cannot start with http:// or https. Can contain Chinese, English, numbers, half-width colons (:), underscores (_), periods (.), or hyphens (-)
      *
      * The default value is the InstanceId of the instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * The specification of the instance. Example value: ens.sn1.small
      */
@@ -699,40 +699,40 @@ export interface InstanceArgs {
      * - BandwidthByDay: Daily peak bandwidth
      * - 95bandwidthbymonth: 95 peak bandwidth
      */
-    internetChargeType?: pulumi.Input<string>;
+    internetChargeType?: pulumi.Input<string | undefined>;
     /**
      * Maximum public network bandwidth. The field type is Long, and the precision may be lost during serialization/deserialization. Please note that the value must not be greater than 9007199254740991
      */
-    internetMaxBandwidthOut?: pulumi.Input<number>;
+    internetMaxBandwidthOut?: pulumi.Input<number | undefined>;
     /**
      * The IP type. Value:
      * - ipv4 (default):IPv4
      * - ipv6:IPv6
      * - ipv4Andipv6:IPv4 and IPv6
      */
-    ipType?: pulumi.Input<string>;
+    ipType?: pulumi.Input<string | undefined>;
     /**
      * The key pair name.
      *
      * > **NOTE:**  At least one of `Password`, `KeyPairName`, and **PasswordInherit.
      */
-    keyPairName?: pulumi.Input<string>;
+    keyPairName?: pulumi.Input<string | undefined>;
     /**
      * The area code. Example value: 350000. Required for regional-level scheduling, invalid for node-level scheduling
      */
-    netDistrictCode?: pulumi.Input<string>;
+    netDistrictCode?: pulumi.Input<string | undefined>;
     /**
      * The network ID of the instance. Can only be used in node-level scheduling
      */
-    netWorkId?: pulumi.Input<string>;
+    netWorkId?: pulumi.Input<string | undefined>;
     /**
      * The instance password. At least one of Password, KeyPairName, and PasswordInherit
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Whether to use image preset password prompt: Password and KeyPairNamePasswordInherit must be passed
      */
-    passwordInherit?: pulumi.Input<boolean>;
+    passwordInherit?: pulumi.Input<boolean | undefined>;
     /**
      * Instance payment method. Since v1.230.0, you can modify payment_type. Optional values:
      * - Subscription: prepaid, annual and monthly
@@ -744,23 +744,23 @@ export interface InstanceArgs {
      * - If PeriodUnit is set to Day, Period can only be set to 3.
      * - If PeriodUnit is set to Month, Period can be set to 1-9,12.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of time for purchasing resources. Value:
      * - Month (default): purchase by Month
      * - Day: buy by Day
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The private IP address. Can only be used for node-level scheduling. If a private IP address is specified, the number of instances can only be one, and both the private IP address and the vSwitch ID are not empty, the private IP address takes effect.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Whether to assign a public IP identifier. Value:
      * - true (default): Assign
      * - false: do not assign
      */
-    publicIpIdentification?: pulumi.Input<boolean>;
+    publicIpIdentification?: pulumi.Input<boolean | undefined>;
     /**
      * Scheduling level, through which node-level scheduling or area scheduling is performed. Optional values:
      * - Node-level scheduling: Region
@@ -772,45 +772,45 @@ export interface InstanceArgs {
      * - PriceLowPriority
      * - PriceLowPriority (priority low price)
      */
-    schedulingPriceStrategy?: pulumi.Input<string>;
+    schedulingPriceStrategy?: pulumi.Input<string | undefined>;
     /**
      * Scheduling policy. Optional values:
      * - Concentrate for node-level scheduling
      * - For regional scheduling, Concentrate, Disperse
      */
-    schedulingStrategy?: pulumi.Input<string>;
+    schedulingStrategy?: pulumi.Input<string | undefined>;
     /**
      * ID of the security group to which the instance belongs.
      */
-    securityId?: pulumi.Input<string>;
+    securityId?: pulumi.Input<string | undefined>;
     /**
      * The bidding strategy for pay-as-you-go instances. It takes effect when the value of the 'InstanceChargeType' parameter is set to 'PostPaid. Value range:
      * - NoSpot: normal pay-as-you-go instance (default)
      * - SpotAsPriceGo: The system automatically bids, following the actual price in the current market.
      */
-    spotStrategy?: pulumi.Input<string>;
+    spotStrategy?: pulumi.Input<string | undefined>;
     /**
      * Status of the instance
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * System Disk Specification. SystemDisk is a non-required parameter when InstanceType is x86_pm,x86_bmi,x86_bm,pc_bmi, or arm_bmi. SystemDisk is a required parameter when instanceType is other specification families. See `systemDisk` below.
      */
-    systemDisk?: pulumi.Input<inputs.ens.InstanceSystemDisk>;
+    systemDisk?: pulumi.Input<inputs.ens.InstanceSystemDisk | undefined>;
     /**
      * The tag bound to the instance
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
      */
-    uniqueSuffix?: pulumi.Input<boolean>;
+    uniqueSuffix?: pulumi.Input<boolean | undefined>;
     /**
      * User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

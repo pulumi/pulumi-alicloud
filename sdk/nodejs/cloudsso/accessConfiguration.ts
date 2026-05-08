@@ -170,37 +170,37 @@ export interface AccessConfigurationState {
     /**
      * The ID of the Access Configuration.
      */
-    accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * The name of the access configuration. The name can be up to `32` characters long and can contain letters, digits, and hyphens (-).
      */
-    accessConfigurationName?: pulumi.Input<string>;
+    accessConfigurationName?: pulumi.Input<string | undefined>;
     /**
      * The description of the access configuration. The description can be up to `1024` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
-    directoryId?: pulumi.Input<string>;
+    directoryId?: pulumi.Input<string | undefined>;
     /**
      * This parameter is used to force deletion `permissionPolicies`. Valid Value: `true`, `false`.
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
-    forceRemovePermissionPolicies?: pulumi.Input<boolean>;
+    forceRemovePermissionPolicies?: pulumi.Input<boolean | undefined>;
     /**
      * The Policy List. See `permissionPolicies` below.
      */
-    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
+    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[] | undefined>;
     /**
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      */
-    relayState?: pulumi.Input<string>;
+    relayState?: pulumi.Input<string | undefined>;
     /**
      * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -214,7 +214,7 @@ export interface AccessConfigurationArgs {
     /**
      * The description of the access configuration. The description can be up to `1024` characters in length.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Directory.
      */
@@ -224,17 +224,17 @@ export interface AccessConfigurationArgs {
      *
      * * **NOTE:** The `permissionPolicies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
      */
-    forceRemovePermissionPolicies?: pulumi.Input<boolean>;
+    forceRemovePermissionPolicies?: pulumi.Input<boolean | undefined>;
     /**
      * The Policy List. See `permissionPolicies` below.
      */
-    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[]>;
+    permissionPolicies?: pulumi.Input<pulumi.Input<inputs.cloudsso.AccessConfigurationPermissionPolicy>[] | undefined>;
     /**
      * The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
      */
-    relayState?: pulumi.Input<string>;
+    relayState?: pulumi.Input<string | undefined>;
     /**
      * The SessionDuration of the Access Configuration. Unit: Seconds. Valid values: `900` to `43200`.
      */
-    sessionDuration?: pulumi.Input<number>;
+    sessionDuration?: pulumi.Input<number | undefined>;
 }

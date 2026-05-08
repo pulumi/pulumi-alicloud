@@ -126,19 +126,19 @@ export interface GetResourceSharesOutputArgs {
     /**
      * A list of Resource Share IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Resource Share name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The name of resource share.
      */
-    resourceShareName?: pulumi.Input<string>;
+    resourceShareName?: pulumi.Input<string | undefined>;
     /**
      * The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      */
@@ -146,5 +146,5 @@ export interface GetResourceSharesOutputArgs {
     /**
      * The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

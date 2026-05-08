@@ -19,21 +19,21 @@ __all__ = ['InvocationArgs', 'Invocation']
 @pulumi.input_type
 class InvocationArgs:
     def __init__(__self__, *,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 launcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 launcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Invocation resource.
 
@@ -128,7 +128,7 @@ class InvocationArgs:
 
     @_builtins.property
     @pulumi.getter(name="commandContent")
-    def command_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command content. You need to pay attention:
         - Specify the parameter 'EnableParameter = true' to enable the custom parameter feature in the command content.
@@ -140,24 +140,24 @@ class InvocationArgs:
         return pulumi.get(self, "command_content")
 
     @command_content.setter
-    def command_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_content", value)
 
     @_builtins.property
     @pulumi.getter(name="commandId")
-    def command_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Command ID
         """
         return pulumi.get(self, "command_id")
 
     @command_id.setter
-    def command_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_id", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding of the script content. Value range:
         - PlainText: no encoding, using PlainText transmission.
@@ -168,24 +168,24 @@ class InvocationArgs:
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableParameter")
-    def enable_parameter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_parameter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether custom parameters are included in the command.
         Default value: false.
@@ -193,12 +193,12 @@ class InvocationArgs:
         return pulumi.get(self, "enable_parameter")
 
     @enable_parameter.setter
-    def enable_parameter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_parameter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution time of the scheduled execution command. Currently, three scheduled execution methods are supported: fixed interval execution (based on Rate expression), only once at a specified time, and timed execution based on clock (based on Cron expression).
         - Fixed time interval execution: Based on the Rate expression, the command is executed at the set time interval. Time intervals can be selected by seconds (s), minutes (m), hours (h), and days (d), which is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate( ). If the execution is performed every 5 minutes, the format is rate(5m). Executing with a fixed time interval has the following limitations:
@@ -217,48 +217,48 @@ class InvocationArgs:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def launcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bootstrapper for script execution. The length cannot exceed 1KB.
         """
         return pulumi.get(self, "launcher")
 
     @launcher.setter
-    def launcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launcher", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIdLists")
-    def node_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes.
         """
         return pulumi.get(self, "node_id_lists")
 
     @node_id_lists.setter
-    def node_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_id_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         When the command contains custom parameters, the key-value pair of the custom parameters passed in when the command is executed. For example, if the command content is 'echo {{name}}', the key-value pair'{"name":"Jack"}'can be passed through the 'Parameter' parameter'. The custom parameter will automatically replace the variable value 'name' to get a new command that actually executes 'echo Jack '.
 
@@ -273,12 +273,12 @@ class InvocationArgs:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMode")
-    def repeat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the way the command is executed. Value range:
         - Once: Execute the command immediately.
@@ -293,12 +293,12 @@ class InvocationArgs:
         return pulumi.get(self, "repeat_mode")
 
     @repeat_mode.setter
-    def repeat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationMode")
-    def termination_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode when the task is stopped (manually stopped or execution time-out interrupted). Possible values:
         Process: Stops the current script Process.
@@ -307,24 +307,24 @@ class InvocationArgs:
         return pulumi.get(self, "termination_mode")
 
     @termination_mode.setter
-    def termination_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user who executed the command in the instance. The length must not exceed 255 characters.
         The instance of the Linux system. By default, the root user runs commands.
@@ -332,12 +332,12 @@ class InvocationArgs:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         You can customize the command execution path. The default path is as follows:
         Linux instance: the execution path is in the/home directory of the root user by default.
@@ -345,28 +345,28 @@ class InvocationArgs:
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
 @pulumi.input_type
 class _InvocationState:
     def __init__(__self__, *,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 launcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None):
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 launcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Invocation resources.
 
@@ -461,7 +461,7 @@ class _InvocationState:
 
     @_builtins.property
     @pulumi.getter(name="commandContent")
-    def command_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command content. You need to pay attention:
         - Specify the parameter 'EnableParameter = true' to enable the custom parameter feature in the command content.
@@ -473,24 +473,24 @@ class _InvocationState:
         return pulumi.get(self, "command_content")
 
     @command_content.setter
-    def command_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_content", value)
 
     @_builtins.property
     @pulumi.getter(name="commandId")
-    def command_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def command_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Command ID
         """
         return pulumi.get(self, "command_id")
 
     @command_id.setter
-    def command_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def command_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "command_id", value)
 
     @_builtins.property
     @pulumi.getter(name="contentEncoding")
-    def content_encoding(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_encoding(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encoding of the script content. Value range:
         - PlainText: no encoding, using PlainText transmission.
@@ -501,24 +501,24 @@ class _InvocationState:
         return pulumi.get(self, "content_encoding")
 
     @content_encoding.setter
-    def content_encoding(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_encoding(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_encoding", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableParameter")
-    def enable_parameter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_parameter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether custom parameters are included in the command.
         Default value: false.
@@ -526,12 +526,12 @@ class _InvocationState:
         return pulumi.get(self, "enable_parameter")
 
     @enable_parameter.setter
-    def enable_parameter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_parameter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_parameter", value)
 
     @_builtins.property
     @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def frequency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The execution time of the scheduled execution command. Currently, three scheduled execution methods are supported: fixed interval execution (based on Rate expression), only once at a specified time, and timed execution based on clock (based on Cron expression).
         - Fixed time interval execution: Based on the Rate expression, the command is executed at the set time interval. Time intervals can be selected by seconds (s), minutes (m), hours (h), and days (d), which is suitable for scenarios where tasks are executed at fixed time intervals. The format is rate( ). If the execution is performed every 5 minutes, the format is rate(5m). Executing with a fixed time interval has the following limitations:
@@ -550,48 +550,48 @@ class _InvocationState:
         return pulumi.get(self, "frequency")
 
     @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def frequency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "frequency", value)
 
     @_builtins.property
     @pulumi.getter
-    def launcher(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launcher(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bootstrapper for script execution. The length cannot exceed 1KB.
         """
         return pulumi.get(self, "launcher")
 
     @launcher.setter
-    def launcher(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launcher(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launcher", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The command name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeIdLists")
-    def node_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def node_id_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes.
         """
         return pulumi.get(self, "node_id_lists")
 
     @node_id_lists.setter
-    def node_id_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def node_id_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "node_id_lists", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         When the command contains custom parameters, the key-value pair of the custom parameters passed in when the command is executed. For example, if the command content is 'echo {{name}}', the key-value pair'{"name":"Jack"}'can be passed through the 'Parameter' parameter'. The custom parameter will automatically replace the variable value 'name' to get a new command that actually executes 'echo Jack '.
 
@@ -606,12 +606,12 @@ class _InvocationState:
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMode")
-    def repeat_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def repeat_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sets the way the command is executed. Value range:
         - Once: Execute the command immediately.
@@ -626,12 +626,12 @@ class _InvocationState:
         return pulumi.get(self, "repeat_mode")
 
     @repeat_mode.setter
-    def repeat_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def repeat_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "repeat_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="terminationMode")
-    def termination_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def termination_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode when the task is stopped (manually stopped or execution time-out interrupted). Possible values:
         Process: Stops the current script Process.
@@ -640,24 +640,24 @@ class _InvocationState:
         return pulumi.get(self, "termination_mode")
 
     @termination_mode.setter
-    def termination_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def termination_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "termination_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The timeout period for command execution. Unit: seconds. A timeout occurs when a command cannot be run due to a process, a missing module, or a missing cloud assistant Agent. After the timeout, the command process is forcibly terminated. Default value: 60.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the user who executed the command in the instance. The length must not exceed 255 characters.
         The instance of the Linux system. By default, the root user runs commands.
@@ -665,12 +665,12 @@ class _InvocationState:
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
     @_builtins.property
     @pulumi.getter(name="workingDir")
-    def working_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def working_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         You can customize the command execution path. The default path is as follows:
         Linux instance: the execution path is in the/home directory of the root user by default.
@@ -678,7 +678,7 @@ class _InvocationState:
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter
-    def working_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def working_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "working_dir", value)
 
 
@@ -688,21 +688,21 @@ class Invocation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 launcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 launcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Eflo Invocation resource.
@@ -841,21 +841,21 @@ class Invocation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 command_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 command_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 frequency: Optional[pulumi.Input[_builtins.str]] = None,
-                 launcher: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 termination_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
-                 working_dir: Optional[pulumi.Input[_builtins.str]] = None,
+                 command_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 command_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 frequency: pulumi.Input[Optional[_builtins.str]] = None,
+                 launcher: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
+                 working_dir: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -890,21 +890,21 @@ class Invocation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            command_content: Optional[pulumi.Input[_builtins.str]] = None,
-            command_id: Optional[pulumi.Input[_builtins.str]] = None,
-            content_encoding: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_parameter: Optional[pulumi.Input[_builtins.bool]] = None,
-            frequency: Optional[pulumi.Input[_builtins.str]] = None,
-            launcher: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            repeat_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            termination_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None,
-            working_dir: Optional[pulumi.Input[_builtins.str]] = None) -> 'Invocation':
+            command_content: pulumi.Input[Optional[_builtins.str]] = None,
+            command_id: pulumi.Input[Optional[_builtins.str]] = None,
+            content_encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_parameter: pulumi.Input[Optional[_builtins.bool]] = None,
+            frequency: pulumi.Input[Optional[_builtins.str]] = None,
+            launcher: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            repeat_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            termination_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None,
+            working_dir: pulumi.Input[Optional[_builtins.str]] = None) -> 'Invocation':
         """
         Get an existing Invocation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

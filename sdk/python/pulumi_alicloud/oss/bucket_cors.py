@@ -23,7 +23,7 @@ class BucketCorsArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[_builtins.str],
                  cors_rules: pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]],
-                 response_vary: Optional[pulumi.Input[_builtins.bool]] = None):
+                 response_vary: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a BucketCors resource.
 
@@ -62,23 +62,23 @@ class BucketCorsArgs:
 
     @_builtins.property
     @pulumi.getter(name="responseVary")
-    def response_vary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def response_vary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         return pulumi.get(self, "response_vary")
 
     @response_vary.setter
-    def response_vary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def response_vary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "response_vary", value)
 
 
 @pulumi.input_type
 class _BucketCorsState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]] = None,
-                 response_vary: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]] = None,
+                 response_vary: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering BucketCors resources.
 
@@ -95,38 +95,38 @@ class _BucketCorsState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Bucket.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]]:
         """
         The Cross-Origin Resource Sharing (CORS) configuration of the Bucket. See `cors_rule` below.
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['BucketCorsCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="responseVary")
-    def response_vary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def response_vary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to return the Vary: Origin header. Valid values: true: returns the Vary: Origin header, regardless of whether the request is a cross-origin request or whether the cross-origin request succeeds. false: does not return the Vary: Origin header. This element is valid only when at least one CORS rule is configured.
         """
         return pulumi.get(self, "response_vary")
 
     @response_vary.setter
-    def response_vary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def response_vary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "response_vary", value)
 
 
@@ -136,9 +136,9 @@ class BucketCors(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
-                 response_vary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+                 response_vary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a OSS Bucket Cors resource. Cross-Origin Resource Sharing (CORS) allows web applications to access resources in other regions.
@@ -267,9 +267,9 @@ class BucketCors(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
-                 response_vary: Optional[pulumi.Input[_builtins.bool]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+                 response_vary: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,9 +296,9 @@ class BucketCors(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
-            response_vary: Optional[pulumi.Input[_builtins.bool]] = None) -> 'BucketCors':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['BucketCorsCorsRuleArgs', 'BucketCorsCorsRuleArgsDict']]]]] = None,
+            response_vary: pulumi.Input[Optional[_builtins.bool]] = None) -> 'BucketCors':
         """
         Get an existing BucketCors resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

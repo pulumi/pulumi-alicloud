@@ -104,7 +104,7 @@ export interface FileUploadLimitState {
     /**
      * File Upload Threshold.
      */
-    limit?: pulumi.Input<number>;
+    limit?: pulumi.Input<number | undefined>;
 }
 
 /**

@@ -24,77 +24,77 @@ class ClusterArgs:
                  db_node_class: pulumi.Input[_builtins.str],
                  db_type: pulumi.Input[_builtins.str],
                  db_version: pulumi.Input[_builtins.str],
-                 allow_shut_down: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 clone_data_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 collector_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
-                 db_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hot_replica_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_standby_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 imci_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_polar_log_bin: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine_use_memory_pct: Optional[pulumi.Input[_builtins.int]] = None,
-                 lower_case_table_names: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 planned_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 planned_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_ap_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ap_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds_until_auto_pause: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_steady_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_az: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_db_revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 collector_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+                 db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hot_replica_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_standby_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 imci_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_polar_log_bin: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine_use_memory_pct: pulumi.Input[Optional[_builtins.int]] = None,
+                 lower_case_table_names: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 planned_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds_until_auto_pause: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_steady_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_az: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -400,43 +400,43 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowShutDown")
-    def allow_shut_down(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allow_shut_down(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "allow_shut_down")
 
     @allow_shut_down.setter
-    def allow_shut_down(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allow_shut_down(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allow_shut_down", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="cloneDataPoint")
-    def clone_data_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clone_data_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
@@ -444,24 +444,24 @@ class ClusterArgs:
         return pulumi.get(self, "clone_data_point")
 
     @clone_data_point.setter
-    def clone_data_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clone_data_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clone_data_point", value)
 
     @_builtins.property
     @pulumi.getter(name="collectorStatus")
-    def collector_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collector_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         """
         return pulumi.get(self, "collector_status")
 
     @collector_status.setter
-    def collector_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collector_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collector_status", value)
 
     @_builtins.property
     @pulumi.getter(name="compressStorage")
-    def compress_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
         > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -469,12 +469,12 @@ class ClusterArgs:
         return pulumi.get(self, "compress_storage")
 
     @compress_storage.setter
-    def compress_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="creationCategory")
-    def creation_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
@@ -482,12 +482,12 @@ class ClusterArgs:
         return pulumi.get(self, "creation_category")
 
     @creation_category.setter
-    def creation_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_category", value)
 
     @_builtins.property
     @pulumi.getter(name="creationOption")
-    def creation_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
@@ -495,36 +495,36 @@ class ClusterArgs:
         return pulumi.get(self, "creation_option")
 
     @creation_option.setter
-    def creation_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_option", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrays")
-    def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
+    def db_cluster_ip_arrays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
         """
         db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
 
     @db_cluster_ip_arrays.setter
-    def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
+    def db_cluster_ip_arrays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
         pulumi.set(self, "db_cluster_ip_arrays", value)
 
     @_builtins.property
     @pulumi.getter(name="dbMinorVersion")
-    def db_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         """
         return pulumi.get(self, "db_minor_version")
 
     @db_minor_version.setter
-    def db_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
         > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -532,24 +532,24 @@ class ClusterArgs:
         return pulumi.get(self, "db_node_count")
 
     @db_node_count.setter
-    def db_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeId")
-    def db_node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node or node subscript. Node subscript values: 1 to 15.
         """
         return pulumi.get(self, "db_node_id")
 
     @db_node_id.setter
-    def db_node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeNum")
-    def db_node_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `db_node_count`.
@@ -557,12 +557,12 @@ class ClusterArgs:
         return pulumi.get(self, "db_node_num")
 
     @db_node_num.setter
-    def db_node_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTimeZone")
-    def default_time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -570,12 +570,12 @@ class ClusterArgs:
         return pulumi.get(self, "default_time_zone")
 
     @default_time_zone.setter
-    def default_time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionLock")
-    def deletion_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_lock(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
         > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
@@ -583,24 +583,24 @@ class ClusterArgs:
         return pulumi.get(self, "deletion_lock")
 
     @deletion_lock.setter
-    def deletion_lock(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_lock(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamodb")
-    def enable_dynamodb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dynamodb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -608,12 +608,12 @@ class ClusterArgs:
         return pulumi.get(self, "enable_dynamodb")
 
     @enable_dynamodb.setter
-    def enable_dynamodb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dynamodb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dynamodb", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptNewTables")
-    def encrypt_new_tables(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_new_tables(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
         > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -621,36 +621,36 @@ class ClusterArgs:
         return pulumi.get(self, "encrypt_new_tables")
 
     @encrypt_new_tables.setter
-    def encrypt_new_tables(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_new_tables(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_new_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTimeService")
-    def from_time_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_time_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         """
         return pulumi.get(self, "from_time_service")
 
     @from_time_service.setter
-    def from_time_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_time_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_time_service", value)
 
     @_builtins.property
     @pulumi.getter(name="gdnId")
-    def gdn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gdn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the global database network (GDN).
         > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
@@ -658,36 +658,36 @@ class ClusterArgs:
         return pulumi.get(self, "gdn_id")
 
     @gdn_id.setter
-    def gdn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gdn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gdn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityGroupLists")
-    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of global security ip group ids.
         """
         return pulumi.get(self, "global_security_group_lists")
 
     @global_security_group_lists.setter
-    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hotReplicaMode")
-    def hot_replica_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_replica_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
         """
         return pulumi.get(self, "hot_replica_mode")
 
     @hot_replica_mode.setter
-    def hot_replica_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_replica_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_replica_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="hotStandbyCluster")
-    def hot_standby_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_standby_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
         > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
@@ -695,12 +695,12 @@ class ClusterArgs:
         return pulumi.get(self, "hot_standby_cluster")
 
     @hot_standby_cluster.setter
-    def hot_standby_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_standby_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_standby_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="imciSwitch")
-    def imci_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def imci_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
         > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -709,12 +709,12 @@ class ClusterArgs:
         return pulumi.get(self, "imci_switch")
 
     @imci_switch.setter
-    def imci_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def imci_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "imci_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="loosePolarLogBin")
-    def loose_polar_log_bin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loose_polar_log_bin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
         > **NOTE:** This parameter is valid only MySQL Engine supports.
@@ -722,12 +722,12 @@ class ClusterArgs:
         return pulumi.get(self, "loose_polar_log_bin")
 
     @loose_polar_log_bin.setter
-    def loose_polar_log_bin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loose_polar_log_bin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loose_polar_log_bin", value)
 
     @_builtins.property
     @pulumi.getter(name="looseXengine")
-    def loose_xengine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loose_xengine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
         > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
@@ -735,12 +735,12 @@ class ClusterArgs:
         return pulumi.get(self, "loose_xengine")
 
     @loose_xengine.setter
-    def loose_xengine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loose_xengine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loose_xengine", value)
 
     @_builtins.property
     @pulumi.getter(name="looseXengineUseMemoryPct")
-    def loose_xengine_use_memory_pct(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def loose_xengine_use_memory_pct(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
         > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
@@ -748,12 +748,12 @@ class ClusterArgs:
         return pulumi.get(self, "loose_xengine_use_memory_pct")
 
     @loose_xengine_use_memory_pct.setter
-    def loose_xengine_use_memory_pct(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def loose_xengine_use_memory_pct(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "loose_xengine_use_memory_pct", value)
 
     @_builtins.property
     @pulumi.getter(name="lowerCaseTableNames")
-    def lower_case_table_names(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lower_case_table_names(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -761,36 +761,36 @@ class ClusterArgs:
         return pulumi.get(self, "lower_case_table_names")
 
     @lower_case_table_names.setter
-    def lower_case_table_names(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lower_case_table_names(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lower_case_table_names", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         """
         return pulumi.get(self, "maintain_time")
 
     @maintain_time.setter
-    def maintain_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupId")
-    def parameter_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parameter template
         > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -798,36 +798,36 @@ class ClusterArgs:
         return pulumi.get(self, "parameter_group_id")
 
     @parameter_group_id.setter
-    def parameter_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -835,12 +835,12 @@ class ClusterArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="plannedEndTime")
-    def planned_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planned_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
         > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
@@ -848,12 +848,12 @@ class ClusterArgs:
         return pulumi.get(self, "planned_end_time")
 
     @planned_end_time.setter
-    def planned_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planned_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planned_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="plannedStartTime")
-    def planned_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planned_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
         > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
@@ -861,12 +861,12 @@ class ClusterArgs:
         return pulumi.get(self, "planned_start_time")
 
     @planned_start_time.setter
-    def planned_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planned_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planned_start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
@@ -874,12 +874,12 @@ class ClusterArgs:
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyClass")
-    def proxy_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         > **NOTE:** This parameter is valid only for standard edition clusters.
@@ -887,12 +887,12 @@ class ClusterArgs:
         return pulumi.get(self, "proxy_class")
 
     @proxy_class.setter
-    def proxy_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_class", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyType")
-    def proxy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
         > **NOTE:** This parameter is valid for both standard and enterprise clusters.
@@ -900,24 +900,24 @@ class ClusterArgs:
         return pulumi.get(self, "proxy_type")
 
     @proxy_type.setter
-    def proxy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
@@ -925,108 +925,108 @@ class ClusterArgs:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleApRoNumMax")
-    def scale_ap_ro_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ap_ro_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         """
         return pulumi.get(self, "scale_ap_ro_num_max")
 
     @scale_ap_ro_num_max.setter
-    def scale_ap_ro_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ap_ro_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ap_ro_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleApRoNumMin")
-    def scale_ap_ro_num_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ap_ro_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         """
         return pulumi.get(self, "scale_ap_ro_num_min")
 
     @scale_ap_ro_num_min.setter
-    def scale_ap_ro_num_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ap_ro_num_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ap_ro_num_min", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMax")
-    def scale_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_max")
 
     @scale_max.setter
-    def scale_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMin")
-    def scale_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_min")
 
     @scale_min.setter
-    def scale_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_min", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleRoNumMax")
-    def scale_ro_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ro_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_max")
 
     @scale_ro_num_max.setter
-    def scale_ro_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ro_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ro_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleRoNumMin")
-    def scale_ro_num_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ro_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_min")
 
     @scale_ro_num_min.setter
-    def scale_ro_num_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ro_num_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ro_num_min", value)
 
     @_builtins.property
     @pulumi.getter(name="secondsUntilAutoPause")
-    def seconds_until_auto_pause(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds_until_auto_pause(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "seconds_until_auto_pause")
 
     @seconds_until_auto_pause.setter
-    def seconds_until_auto_pause(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds_until_auto_pause(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds_until_auto_pause", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
         > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -1034,12 +1034,12 @@ class ClusterArgs:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
         Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
@@ -1047,12 +1047,12 @@ class ClusterArgs:
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleCpuEnlargeThreshold")
-    def serverless_rule_cpu_enlarge_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serverless_rule_cpu_enlarge_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
         > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
@@ -1060,36 +1060,36 @@ class ClusterArgs:
         return pulumi.get(self, "serverless_rule_cpu_enlarge_threshold")
 
     @serverless_rule_cpu_enlarge_threshold.setter
-    def serverless_rule_cpu_enlarge_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serverless_rule_cpu_enlarge_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serverless_rule_cpu_enlarge_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleCpuShrinkThreshold")
-    def serverless_rule_cpu_shrink_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serverless_rule_cpu_shrink_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_rule_cpu_shrink_threshold")
 
     @serverless_rule_cpu_shrink_threshold.setter
-    def serverless_rule_cpu_shrink_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serverless_rule_cpu_shrink_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serverless_rule_cpu_shrink_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleMode")
-    def serverless_rule_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_rule_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_rule_mode")
 
     @serverless_rule_mode.setter
-    def serverless_rule_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_rule_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_rule_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessSteadySwitch")
-    def serverless_steady_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_steady_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
         > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
@@ -1097,36 +1097,36 @@ class ClusterArgs:
         return pulumi.get(self, "serverless_steady_switch")
 
     @serverless_steady_switch.setter
-    def serverless_steady_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_steady_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_steady_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessType")
-    def serverless_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_type")
 
     @serverless_type.setter
-    def serverless_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResourceId")
-    def source_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
 
     @source_resource_id.setter
-    def source_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyAz")
-    def standby_az(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_az(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
         > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
@@ -1134,24 +1134,24 @@ class ClusterArgs:
         return pulumi.get(self, "standby_az")
 
     @standby_az.setter
-    def standby_az(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_az(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_az", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePayType")
-    def storage_pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         """
         return pulumi.get(self, "storage_pay_type")
 
     @storage_pay_type.setter
-    def storage_pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSpace")
-    def storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
         > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
@@ -1160,48 +1160,48 @@ class ClusterArgs:
         return pulumi.get(self, "storage_space")
 
     @storage_space.setter
-    def storage_space(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_space(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_space", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="strictConsistency")
-    def strict_consistency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strict_consistency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         """
         return pulumi.get(self, "strict_consistency")
 
     @strict_consistency.setter
-    def strict_consistency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strict_consistency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strict_consistency", value)
 
     @_builtins.property
     @pulumi.getter(name="subCategory")
-    def sub_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         """
         return pulumi.get(self, "sub_category")
 
     @sub_category.setter
-    def sub_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1210,24 +1210,24 @@ class ClusterArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetDbRevisionVersionCode")
-    def target_db_revision_version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_db_revision_version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         """
         return pulumi.get(self, "target_db_revision_version_code")
 
     @target_db_revision_version_code.setter
-    def target_db_revision_version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_db_revision_version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_db_revision_version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
         > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
@@ -1235,36 +1235,36 @@ class ClusterArgs:
         return pulumi.get(self, "tde_status")
 
     @tde_status.setter
-    def tde_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tde_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tde_status", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeType")
-    def upgrade_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         """
         return pulumi.get(self, "upgrade_type")
 
     @upgrade_type.setter
-    def upgrade_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -1272,105 +1272,105 @@ class ClusterArgs:
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB cluster. it supports multiple zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 allow_shut_down: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 clone_data_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 collector_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
-                 db_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]] = None,
-                 db_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hot_replica_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_standby_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 imci_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_polar_log_bin: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine_use_memory_pct: Optional[pulumi.Input[_builtins.int]] = None,
-                 lower_case_table_names: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 planned_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 planned_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_ap_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ap_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds_until_auto_pause: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_steady_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_az: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_db_revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tde_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 collector_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]] = None,
+                 db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_revision_version_lists: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]] = None,
+                 db_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hot_replica_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_standby_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 imci_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_polar_log_bin: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine_use_memory_pct: pulumi.Input[Optional[_builtins.int]] = None,
+                 lower_case_table_names: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 planned_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds_until_auto_pause: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_steady_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_az: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tde_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -1660,43 +1660,43 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="allowShutDown")
-    def allow_shut_down(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allow_shut_down(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "allow_shut_down")
 
     @allow_shut_down.setter
-    def allow_shut_down(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allow_shut_down(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allow_shut_down", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="backupRetentionPolicyOnClusterDeletion")
-    def backup_retention_policy_on_cluster_deletion(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_retention_policy_on_cluster_deletion(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
         """
         return pulumi.get(self, "backup_retention_policy_on_cluster_deletion")
 
     @backup_retention_policy_on_cluster_deletion.setter
-    def backup_retention_policy_on_cluster_deletion(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_retention_policy_on_cluster_deletion(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_retention_policy_on_cluster_deletion", value)
 
     @_builtins.property
     @pulumi.getter(name="cloneDataPoint")
-    def clone_data_point(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clone_data_point(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time point of data to be cloned. Valid values are `LATEST`,`BackupID`,`Timestamp`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CloneDataPoint`.
         > **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be `LATEST`. When clone to a historical backup set, you must specify a specific backup set ID. When clone to a specific point in time, specify a YYYY-MM-DDThh:mm:ssZ format UTC timestamp.
@@ -1704,24 +1704,24 @@ class _ClusterState:
         return pulumi.get(self, "clone_data_point")
 
     @clone_data_point.setter
-    def clone_data_point(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clone_data_point(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clone_data_point", value)
 
     @_builtins.property
     @pulumi.getter(name="collectorStatus")
-    def collector_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def collector_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
         """
         return pulumi.get(self, "collector_status")
 
     @collector_status.setter
-    def collector_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def collector_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "collector_status", value)
 
     @_builtins.property
     @pulumi.getter(name="compressStorage")
-    def compress_storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress_storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable storage compression function. The value of this parameter is `ON`. Only MySQL supports.
         > **NOTE:** When the value of db_type is not MySQL, the value of creation_option is neither empty nor Normal, and the value of storage_type is not PSL4, this field will be ignored.
@@ -1729,36 +1729,36 @@ class _ClusterState:
         return pulumi.get(self, "compress_storage")
 
     @compress_storage.setter
-    def compress_storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress_storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since 1.81.0) PolarDB cluster connection string.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since 1.204.1) PolarDB cluster creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="creationCategory")
-    def creation_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The edition of the PolarDB service. Valid values are `Normal`,`Basic`,`ArchiveNormal`,`NormalMultimaster`,`SENormal`.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationCategory`.
         > **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
@@ -1766,12 +1766,12 @@ class _ClusterState:
         return pulumi.get(self, "creation_category")
 
     @creation_category.setter
-    def creation_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_category", value)
 
     @_builtins.property
     @pulumi.getter(name="creationOption")
-    def creation_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to create a cluster. Valid values are `Normal`,`CloneFromPolarDB`,`CloneFromRDS`,`MigrationFromRDS`,`CreateGdnStandby`,`RecoverFromRecyclebin`,`UpgradeFromPolarDB`. **NOTE:** From version 1.233.0, `creation_option` can be set to `RecoverFromRecyclebin`. From version 1.255.0, `creation_option` can be set to `UpgradeFromPolarDB`. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `CreationOption`.
         * > **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby. If `creation_option` is RecoverFromRecyclebin, you need to pass in the released source PolarDB cluster ID for this parameter. The DBType of the cluster recovered from the recycle bin and the source cluster must be consistent. For example, if the source cluster is MySQL 8.0, the cluster recovered from the recycle bin also needs to have its DBType set to MySQL and DBVersion set to 8.0.
@@ -1779,36 +1779,36 @@ class _ClusterState:
         return pulumi.get(self, "creation_option")
 
     @creation_option.setter
-    def creation_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_option", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterIpArrays")
-    def db_cluster_ip_arrays(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
+    def db_cluster_ip_arrays(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]:
         """
         db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
         """
         return pulumi.get(self, "db_cluster_ip_arrays")
 
     @db_cluster_ip_arrays.setter
-    def db_cluster_ip_arrays(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
+    def db_cluster_ip_arrays(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbClusterIpArrayArgs']]]]):
         pulumi.set(self, "db_cluster_ip_arrays", value)
 
     @_builtins.property
     @pulumi.getter(name="dbMinorVersion")
-    def db_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database minor version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBMinorVersion`. This parameter takes effect only when `db_type` is MySQL and `db_version` is 8.0.
         """
         return pulumi.get(self, "db_minor_version")
 
     @db_minor_version.setter
-    def db_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeClass")
-    def db_node_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The db_node_class of cluster node.
         > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
@@ -1818,12 +1818,12 @@ class _ClusterState:
         return pulumi.get(self, "db_node_class")
 
     @db_node_class.setter
-    def db_node_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_class", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeCount")
-    def db_node_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of the PolarDB cluster nodes, default is 2(Each cluster must contain at least a primary node and a read-only node). Add/remove nodes by modifying this parameter, valid values: [2~16].  
         > **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
@@ -1831,24 +1831,24 @@ class _ClusterState:
         return pulumi.get(self, "db_node_count")
 
     @db_node_count.setter
-    def db_node_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_count", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeId")
-    def db_node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the node or node subscript. Node subscript values: 1 to 15.
         """
         return pulumi.get(self, "db_node_id")
 
     @db_node_id.setter
-    def db_node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_node_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNodeNum")
-    def db_node_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def db_node_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Standard and Enterprise Edition nodes. Default value: `1` for Standard Edition, `2` for Enterprise Edition. Valid values are `1`, `2`. From version 1.235.0, Valid values for PolarDB for MySQL Standard Edition: `1` to `8`. Valid values for PolarDB for MySQL Enterprise Edition: `1` to `16`.
         > **NOTE:** This parameter only takes effect on creation. To further manage target db node number, please refer to parameter `db_node_count`.
@@ -1856,48 +1856,48 @@ class _ClusterState:
         return pulumi.get(self, "db_node_num")
 
     @db_node_num.setter
-    def db_node_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def db_node_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "db_node_num", value)
 
     @_builtins.property
     @pulumi.getter(name="dbRevisionVersionLists")
-    def db_revision_version_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]:
+    def db_revision_version_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]:
         """
         (Available since v1.216.0) The db_revision_version_list supports the following:
         """
         return pulumi.get(self, "db_revision_version_lists")
 
     @db_revision_version_lists.setter
-    def db_revision_version_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]):
+    def db_revision_version_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterDbRevisionVersionListArgs']]]]):
         pulumi.set(self, "db_revision_version_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="dbType")
-    def db_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type. Value options: MySQL, Oracle, PostgreSQL.
         """
         return pulumi.get(self, "db_type")
 
     @db_type.setter
-    def db_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbVersion")
-    def db_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
         """
         return pulumi.get(self, "db_version")
 
     @db_version.setter
-    def db_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_version", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTimeZone")
-    def default_time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone of the cluster. You can set the parameter to a value that is on the hour from -12:00 to +13:00 based on UTC. Example: 00:00. Default value: SYSTEM. This value indicates that the time zone of the cluster is the same as the time zone of the region.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -1905,12 +1905,12 @@ class _ClusterState:
         return pulumi.get(self, "default_time_zone")
 
     @default_time_zone.setter
-    def default_time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionLock")
-    def deletion_lock(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def deletion_lock(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         turn on table deletion_lock. Valid values are 0, 1. 1 means to open the cluster protection lock, 0 means to close the cluster protection lock
         > **NOTE:**  Cannot modify after created when `pay_type` is `PrePaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `PostPaid`.
@@ -1918,24 +1918,24 @@ class _ClusterState:
         return pulumi.get(self, "deletion_lock")
 
     @deletion_lock.setter
-    def deletion_lock(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def deletion_lock(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "deletion_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of cluster.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="enableDynamodb")
-    def enable_dynamodb(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_dynamodb(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable DynamoDB compatibility. Valid values: `true`, `false`.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to PostgreSQL.
@@ -1943,12 +1943,12 @@ class _ClusterState:
         return pulumi.get(self, "enable_dynamodb")
 
     @enable_dynamodb.setter
-    def enable_dynamodb(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_dynamodb(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_dynamodb", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptNewTables")
-    def encrypt_new_tables(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encrypt_new_tables(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         turn on table auto encryption. Valid values are `ON`, `OFF`. Only MySQL 8.0 supports. 
         > **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
@@ -1956,36 +1956,36 @@ class _ClusterState:
         return pulumi.get(self, "encrypt_new_tables")
 
     @encrypt_new_tables.setter
-    def encrypt_new_tables(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encrypt_new_tables(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encrypt_new_tables", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="fromTimeService")
-    def from_time_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def from_time_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
         """
         return pulumi.get(self, "from_time_service")
 
     @from_time_service.setter
-    def from_time_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def from_time_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "from_time_service", value)
 
     @_builtins.property
     @pulumi.getter(name="gdnId")
-    def gdn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gdn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the global database network (GDN).
         > **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
@@ -1993,36 +1993,36 @@ class _ClusterState:
         return pulumi.get(self, "gdn_id")
 
     @gdn_id.setter
-    def gdn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gdn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gdn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="globalSecurityGroupLists")
-    def global_security_group_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def global_security_group_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of global security ip group ids.
         """
         return pulumi.get(self, "global_security_group_lists")
 
     @global_security_group_lists.setter
-    def global_security_group_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def global_security_group_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "global_security_group_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="hotReplicaMode")
-    def hot_replica_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_replica_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
         """
         return pulumi.get(self, "hot_replica_mode")
 
     @hot_replica_mode.setter
-    def hot_replica_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_replica_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_replica_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="hotStandbyCluster")
-    def hot_standby_cluster(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hot_standby_cluster(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`, `EQUAL`.
         > **NOTE:** From version 1.249.0, `hot_standby_cluster` can be set to `EQUAL`, and this value is only valid for MySQL.
@@ -2030,12 +2030,12 @@ class _ClusterState:
         return pulumi.get(self, "hot_standby_cluster")
 
     @hot_standby_cluster.setter
-    def hot_standby_cluster(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hot_standby_cluster(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hot_standby_cluster", value)
 
     @_builtins.property
     @pulumi.getter(name="imciSwitch")
-    def imci_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def imci_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the In-Memory Column Index (IMCI) feature. Valid values are `ON`, `OFF`.
         > **NOTE:**  Only polardb MySQL Cluster version is available. The cluster with minor version number of 8.0.1 supports the column index feature, and the specific kernel version must be 8.0.1.1.22 or above.
@@ -2044,12 +2044,12 @@ class _ClusterState:
         return pulumi.get(self, "imci_switch")
 
     @imci_switch.setter
-    def imci_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def imci_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "imci_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="loosePolarLogBin")
-    def loose_polar_log_bin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loose_polar_log_bin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable the Binlog function. Default value: `OFF`. Valid values are `OFF`, `ON`.
         > **NOTE:** This parameter is valid only MySQL Engine supports.
@@ -2057,12 +2057,12 @@ class _ClusterState:
         return pulumi.get(self, "loose_polar_log_bin")
 
     @loose_polar_log_bin.setter
-    def loose_polar_log_bin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loose_polar_log_bin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loose_polar_log_bin", value)
 
     @_builtins.property
     @pulumi.getter(name="looseXengine")
-    def loose_xengine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loose_xengine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable X-Engine. Valid values are `ON`, `OFF`.
         > **NOTE:** This parameter takes effect only if you do not set `creation_option` to CreateGdnStandby and you set `db_type` to MySQL and `db_version` to 8.0. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
@@ -2070,12 +2070,12 @@ class _ClusterState:
         return pulumi.get(self, "loose_xengine")
 
     @loose_xengine.setter
-    def loose_xengine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loose_xengine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loose_xengine", value)
 
     @_builtins.property
     @pulumi.getter(name="looseXengineUseMemoryPct")
-    def loose_xengine_use_memory_pct(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def loose_xengine_use_memory_pct(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Set the ratio to enable the X-Engine storage engine. Valid values: 10 to 90.
         > **NOTE:** When the parameter `loose_xengine` is ON, `loose_xengine_use_memory_pct` takes effect.
@@ -2083,12 +2083,12 @@ class _ClusterState:
         return pulumi.get(self, "loose_xengine_use_memory_pct")
 
     @loose_xengine_use_memory_pct.setter
-    def loose_xengine_use_memory_pct(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def loose_xengine_use_memory_pct(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "loose_xengine_use_memory_pct", value)
 
     @_builtins.property
     @pulumi.getter(name="lowerCaseTableNames")
-    def lower_case_table_names(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lower_case_table_names(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether the table names are case-sensitive. Default value: `1`.  Valid values are `1`, `0`.
         > **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
@@ -2096,36 +2096,36 @@ class _ClusterState:
         return pulumi.get(self, "lower_case_table_names")
 
     @lower_case_table_names.setter
-    def lower_case_table_names(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lower_case_table_names(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lower_case_table_names", value)
 
     @_builtins.property
     @pulumi.getter(name="maintainTime")
-    def maintain_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maintain_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
         """
         return pulumi.get(self, "maintain_time")
 
     @maintain_time.setter
-    def maintain_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maintain_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maintain_time", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyType")
-    def modify_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
         """
         return pulumi.get(self, "modify_type")
 
     @modify_type.setter
-    def modify_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_type", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterGroupId")
-    def parameter_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the parameter template
         > **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
@@ -2133,36 +2133,36 @@ class _ClusterState:
         return pulumi.get(self, "parameter_group_id")
 
     @parameter_group_id.setter
-    def parameter_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="payType")
-    def pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         """
         return pulumi.get(self, "pay_type")
 
     @pay_type.setter
-    def pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pay_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB cluster (in month). It is valid when pay_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -2170,12 +2170,12 @@ class _ClusterState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="plannedEndTime")
-    def planned_end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planned_end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The latest time to start executing the target scheduled task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
         > **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
@@ -2183,12 +2183,12 @@ class _ClusterState:
         return pulumi.get(self, "planned_end_time")
 
     @planned_end_time.setter
-    def planned_end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planned_end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planned_end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="plannedStartTime")
-    def planned_start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def planned_start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The earliest time to start executing a scheduled (i.e. within the target time period) kernel version upgrade task. The format is YYYY-MM-DDThh: mm: ssZ (UTC).
         > **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
@@ -2196,24 +2196,24 @@ class _ClusterState:
         return pulumi.get(self, "planned_start_time")
 
     @planned_start_time.setter
-    def planned_start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def planned_start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "planned_start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since 1.196.0) PolarDB cluster connection port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="provisionedIops")
-    def provisioned_iops(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def provisioned_iops(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}.
         > **NOTE:** This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
@@ -2221,12 +2221,12 @@ class _ClusterState:
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
-    def provisioned_iops(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def provisioned_iops(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyClass")
-    def proxy_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specifications of the Standard Edition PolarProxy. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         > **NOTE:** This parameter is valid only for standard edition clusters.
@@ -2234,12 +2234,12 @@ class _ClusterState:
         return pulumi.get(self, "proxy_class")
 
     @proxy_class.setter
-    def proxy_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_class", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyType")
-    def proxy_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of PolarProxy. Valid values are `EXCLUSIVE` `GENERAL`.
         > **NOTE:** This parameter is valid for both standard and enterprise clusters.
@@ -2247,24 +2247,24 @@ class _ClusterState:
         return pulumi.get(self, "proxy_type")
 
     @proxy_type.setter
-    def proxy_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_type", value)
 
     @_builtins.property
     @pulumi.getter(name="renewalStatus")
-    def renewal_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renewal_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
         """
         return pulumi.get(self, "renewal_status")
 
     @renewal_status.setter
-    def renewal_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renewal_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renewal_status", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
         > **NOTE:** From version 1.250.0, `resource_group_id` can be modified.
@@ -2272,108 +2272,108 @@ class _ClusterState:
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleArn")
-    def role_arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
         """
         return pulumi.get(self, "role_arn")
 
     @role_arn.setter
-    def role_arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_arn", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleApRoNumMax")
-    def scale_ap_ro_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ap_ro_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         """
         return pulumi.get(self, "scale_ap_ro_num_max")
 
     @scale_ap_ro_num_max.setter
-    def scale_ap_ro_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ap_ro_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ap_ro_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleApRoNumMin")
-    def scale_ap_ro_num_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ap_ro_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
         """
         return pulumi.get(self, "scale_ap_ro_num_min")
 
     @scale_ap_ro_num_min.setter
-    def scale_ap_ro_num_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ap_ro_num_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ap_ro_num_min", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMax")
-    def scale_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_max")
 
     @scale_max.setter
-    def scale_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleMin")
-    def scale_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs when serverless_type is `AgileServerless` and 0 PCU to 8 PCUs when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_min")
 
     @scale_min.setter
-    def scale_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_min", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleRoNumMax")
-    def scale_ro_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ro_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_max")
 
     @scale_ro_num_max.setter
-    def scale_ro_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ro_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ro_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="scaleRoNumMin")
-    def scale_ro_num_min(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def scale_ro_num_min(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum number of read-only nodes for scaling. Valid values: 0 to 15 when serverless_type is `AgileServerless` and 0 to 7 when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "scale_ro_num_min")
 
     @scale_ro_num_min.setter
-    def scale_ro_num_min(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def scale_ro_num_min(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "scale_ro_num_min", value)
 
     @_builtins.property
     @pulumi.getter(name="secondsUntilAutoPause")
-    def seconds_until_auto_pause(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def seconds_until_auto_pause(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "seconds_until_auto_pause")
 
     @seconds_until_auto_pause.setter
-    def seconds_until_auto_pause(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def seconds_until_auto_pause(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "seconds_until_auto_pause", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The ID of the security group. Separate multiple security groups with commas (,). You can add a maximum of three security groups to a cluster.
         > **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
@@ -2381,12 +2381,12 @@ class _ClusterState:
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         This attribute has been deprecated from v1.130.0 and using `db_cluster_ip_array` sub-element `security_ips` instead.
         Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is "default".
@@ -2394,12 +2394,12 @@ class _ClusterState:
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleCpuEnlargeThreshold")
-    def serverless_rule_cpu_enlarge_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serverless_rule_cpu_enlarge_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU upscale threshold. Valid values: 40 to 100. This parameter is valid only for serverless clusters.
         > **NOTE:** `serverless_rule_cpu_enlarge_threshold` should be at least 30 greater than `serverless_rule_cpu_shrink_threshold`.
@@ -2407,36 +2407,36 @@ class _ClusterState:
         return pulumi.get(self, "serverless_rule_cpu_enlarge_threshold")
 
     @serverless_rule_cpu_enlarge_threshold.setter
-    def serverless_rule_cpu_enlarge_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serverless_rule_cpu_enlarge_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serverless_rule_cpu_enlarge_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleCpuShrinkThreshold")
-    def serverless_rule_cpu_shrink_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serverless_rule_cpu_shrink_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU downscale threshold. Valid values: 10 to 100. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_rule_cpu_shrink_threshold")
 
     @serverless_rule_cpu_shrink_threshold.setter
-    def serverless_rule_cpu_shrink_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serverless_rule_cpu_shrink_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serverless_rule_cpu_shrink_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessRuleMode")
-    def serverless_rule_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_rule_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Elasticity sensitivity. Valid values: `normal` for standard and `flexible` for sensitive. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_rule_mode")
 
     @serverless_rule_mode.setter
-    def serverless_rule_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_rule_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_rule_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessSteadySwitch")
-    def serverless_steady_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_steady_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Serverless steady-state switch. Valid values are `ON`, `OFF`. This parameter is valid only for serverless clusters.
         > **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
@@ -2444,36 +2444,36 @@ class _ClusterState:
         return pulumi.get(self, "serverless_steady_switch")
 
     @serverless_steady_switch.setter
-    def serverless_steady_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_steady_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_steady_switch", value)
 
     @_builtins.property
     @pulumi.getter(name="serverlessType")
-    def serverless_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serverless_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
         """
         return pulumi.get(self, "serverless_type")
 
     @serverless_type.setter
-    def serverless_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serverless_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serverless_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceResourceId")
-    def source_resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
         """
         return pulumi.get(self, "source_resource_id")
 
     @source_resource_id.setter
-    def source_resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="standbyAz")
-    def standby_az(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def standby_az(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone where the hot standby cluster is stored, takes effect when `hot_standby_cluster` is `ON` or `EQUAL`.
         > **NOTE:** `standby_az` is required when `hot_standby_cluster` is `EQUAL`.
@@ -2481,36 +2481,36 @@ class _ClusterState:
         return pulumi.get(self, "standby_az")
 
     @standby_az.setter
-    def standby_az(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def standby_az(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "standby_az", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since 1.204.1) PolarDB cluster status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="storagePayType")
-    def storage_pay_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_pay_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the storage. Valid values `PostPaid`, `PrePaid`.
         """
         return pulumi.get(self, "storage_pay_type")
 
     @storage_pay_type.setter
-    def storage_pay_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_pay_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_pay_type", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSpace")
-    def storage_space(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_space(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Storage space charged by space (monthly package). Unit: GB.
         > **NOTE:**  Valid values for PolarDB for MySQL Standard Edition: 20 to 32000. It is valid when pay_type are `PrePaid` ,`PostPaid`.
@@ -2519,48 +2519,48 @@ class _ClusterState:
         return pulumi.get(self, "storage_space")
 
     @storage_space.setter
-    def storage_space(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_space(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_space", value)
 
     @_builtins.property
     @pulumi.getter(name="storageType")
-    def storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the cluster. Enterprise storage type values are `PSL5`, `PSL4`. The standard version storage type values are `ESSDPL1`, `ESSDPL2`, `ESSDPL3`, `ESSDPL0`, `ESSDAUTOPL`. The standard version only supports MySQL and PostgreSQL.
         """
         return pulumi.get(self, "storage_type")
 
     @storage_type.setter
-    def storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="strictConsistency")
-    def strict_consistency(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def strict_consistency(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether the cluster has enabled strong data consistency across multiple zones. Valid values are `ON`, `OFF`. Available parameters can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1)
         """
         return pulumi.get(self, "strict_consistency")
 
     @strict_consistency.setter
-    def strict_consistency(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def strict_consistency(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "strict_consistency", value)
 
     @_builtins.property
     @pulumi.getter(name="subCategory")
-    def sub_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sub_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
         """
         return pulumi.get(self, "sub_category")
 
     @sub_category.setter
-    def sub_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sub_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sub_category", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -2569,24 +2569,24 @@ class _ClusterState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetDbRevisionVersionCode")
-    def target_db_revision_version_code(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_db_revision_version_code(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Version Code of the target version, whose parameter values can be obtained from the [DescribeDBClusterVersion](https://www.alibabacloud.com/help/en/polardb/latest/describedbclusterversion) interface.
         """
         return pulumi.get(self, "target_db_revision_version_code")
 
     @target_db_revision_version_code.setter
-    def target_db_revision_version_code(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_db_revision_version_code(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_db_revision_version_code", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeRegion")
-    def tde_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tde_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since 1.200.0) The region where the TDE key resides.
         > **NOTE:** TDE can be enabled on clusters that have joined a global database network (GDN). After TDE is enabled on the primary cluster in a GDN, TDE is enabled on the secondary clusters in the GDN by default. The key used by the secondary clusters and the region for the key resides must be the same as the primary cluster. The region of the key cannot be modified.
@@ -2595,12 +2595,12 @@ class _ClusterState:
         return pulumi.get(self, "tde_region")
 
     @tde_region.setter
-    def tde_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tde_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tde_region", value)
 
     @_builtins.property
     @pulumi.getter(name="tdeStatus")
-    def tde_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tde_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         turn on TDE encryption. Valid values are `Enabled`, `Disabled`. Default to `Disabled`. TDE cannot be closed after it is turned on. 
         > **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
@@ -2608,36 +2608,36 @@ class _ClusterState:
         return pulumi.get(self, "tde_status")
 
     @tde_status.setter
-    def tde_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tde_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tde_status", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeType")
-    def upgrade_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
         """
         return pulumi.get(self, "upgrade_type")
 
     @upgrade_type.setter
-    def upgrade_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of the VPC.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         > **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
@@ -2645,19 +2645,19 @@ class _ClusterState:
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB cluster. it supports multiple zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -2667,80 +2667,80 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_shut_down: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 clone_data_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 collector_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
-                 db_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hot_replica_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_standby_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 imci_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_polar_log_bin: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine_use_memory_pct: Optional[pulumi.Input[_builtins.int]] = None,
-                 lower_case_table_names: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 planned_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 planned_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_ap_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ap_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds_until_auto_pause: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_steady_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_az: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_db_revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 collector_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hot_replica_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_standby_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 imci_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_polar_log_bin: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine_use_memory_pct: pulumi.Input[Optional[_builtins.int]] = None,
+                 lower_case_table_names: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 planned_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds_until_auto_pause: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_steady_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_az: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an PolarDB cluster resource. An PolarDB cluster is an isolated database
@@ -2796,11 +2796,12 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         current = alicloud.get_account()
         roles = alicloud.ram.get_roles(name_regex="AliyunRDSInstanceEncryptionDefaultRole")
-        default = []
+        default: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default.append(alicloud.ram.Role(f"default-{range['value']}",
@@ -2823,7 +2824,7 @@ class Cluster(pulumi.CustomResource):
                     description="RDS使用此角色来访问您在其他云产品中的资源"))
 
         len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_policy_attachment = []
+        default_policy_attachment: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{range['value']}",
@@ -2832,7 +2833,7 @@ class Cluster(pulumi.CustomResource):
                     principal_name=pulumi.Output.all(
                         length=len(roles.roles),
                         name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
         ,
                     principal_type="ServiceRole",
                     resource_group_id=current.id))
@@ -3032,11 +3033,12 @@ class Cluster(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
 
         current = alicloud.get_account()
         roles = alicloud.ram.get_roles(name_regex="AliyunRDSInstanceEncryptionDefaultRole")
-        default = []
+        default: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default.append(alicloud.ram.Role(f"default-{range['value']}",
@@ -3059,7 +3061,7 @@ class Cluster(pulumi.CustomResource):
                     description="RDS使用此角色来访问您在其他云产品中的资源"))
 
         len(roles.roles).apply(lambda resolved_outputs: create_default(0 if resolved_outputs['length'] > 0 else 1))
-        default_policy_attachment = []
+        default_policy_attachment: list[Any] = []
         def create_default(range_body):
             for range in [{"value": i} for i in range(0, range_body)]:
                 default_policy_attachment.append(alicloud.resourcemanager.PolicyAttachment(f"default-{range['value']}",
@@ -3068,7 +3070,7 @@ class Cluster(pulumi.CustomResource):
                     principal_name=pulumi.Output.all(
                         length=len(roles.roles),
                         name=default[0].name
-        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'].apply(lambda __convert: __convert > 0) else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
+        ).apply(lambda resolved_outputs: f"{roles.roles[0].name}@role.{current.id}.onaliyunservice.com" if resolved_outputs['length'] > 0 else f"{resolved_outputs['name']}@role.{current.id}.onaliyunservice.com")
         ,
                     principal_type="ServiceRole",
                     resource_group_id=current.id))
@@ -3106,80 +3108,80 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allow_shut_down: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-                 clone_data_point: Optional[pulumi.Input[_builtins.str]] = None,
-                 collector_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 compress_storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
-                 db_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
-                 gdn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hot_replica_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 hot_standby_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-                 imci_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_polar_log_bin: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine: Optional[pulumi.Input[_builtins.str]] = None,
-                 loose_xengine_use_memory_pct: Optional[pulumi.Input[_builtins.int]] = None,
-                 lower_case_table_names: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
-                 pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 planned_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 planned_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 scale_ap_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ap_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 scale_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-                 seconds_until_auto_pause: Optional[pulumi.Input[_builtins.int]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 serverless_rule_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_steady_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 serverless_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 source_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 standby_az: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_space: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_consistency: Optional[pulumi.Input[_builtins.str]] = None,
-                 sub_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_db_revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-                 tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+                 clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+                 collector_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+                 db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 from_time_service: pulumi.Input[Optional[_builtins.str]] = None,
+                 gdn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hot_replica_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 hot_standby_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+                 imci_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_polar_log_bin: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine: pulumi.Input[Optional[_builtins.str]] = None,
+                 loose_xengine_use_memory_pct: pulumi.Input[Optional[_builtins.int]] = None,
+                 lower_case_table_names: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+                 pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 planned_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 scale_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+                 seconds_until_auto_pause: pulumi.Input[Optional[_builtins.int]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 serverless_rule_cpu_enlarge_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_cpu_shrink_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 serverless_rule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_steady_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 serverless_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 source_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 standby_az: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_consistency: pulumi.Input[Optional[_builtins.str]] = None,
+                 sub_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+                 tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -3285,86 +3287,86 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allow_shut_down: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            backup_retention_policy_on_cluster_deletion: Optional[pulumi.Input[_builtins.str]] = None,
-            clone_data_point: Optional[pulumi.Input[_builtins.str]] = None,
-            collector_status: Optional[pulumi.Input[_builtins.str]] = None,
-            compress_storage: Optional[pulumi.Input[_builtins.str]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_category: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_option: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_ip_arrays: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
-            db_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_class: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_count: Optional[pulumi.Input[_builtins.int]] = None,
-            db_node_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_node_num: Optional[pulumi.Input[_builtins.int]] = None,
-            db_revision_version_lists: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]]] = None,
-            db_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_version: Optional[pulumi.Input[_builtins.str]] = None,
-            default_time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_lock: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_dynamodb: Optional[pulumi.Input[_builtins.bool]] = None,
-            encrypt_new_tables: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            from_time_service: Optional[pulumi.Input[_builtins.str]] = None,
-            gdn_id: Optional[pulumi.Input[_builtins.str]] = None,
-            global_security_group_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            hot_replica_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            hot_standby_cluster: Optional[pulumi.Input[_builtins.str]] = None,
-            imci_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            loose_polar_log_bin: Optional[pulumi.Input[_builtins.str]] = None,
-            loose_xengine: Optional[pulumi.Input[_builtins.str]] = None,
-            loose_xengine_use_memory_pct: Optional[pulumi.Input[_builtins.int]] = None,
-            lower_case_table_names: Optional[pulumi.Input[_builtins.int]] = None,
-            maintain_time: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_type: Optional[pulumi.Input[_builtins.str]] = None,
-            parameter_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
-            pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            planned_end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            planned_start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            provisioned_iops: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_class: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_type: Optional[pulumi.Input[_builtins.str]] = None,
-            renewal_status: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_arn: Optional[pulumi.Input[_builtins.str]] = None,
-            scale_ap_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_ap_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_max: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_min: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_ro_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-            scale_ro_num_min: Optional[pulumi.Input[_builtins.int]] = None,
-            seconds_until_auto_pause: Optional[pulumi.Input[_builtins.int]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            serverless_rule_cpu_enlarge_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            serverless_rule_cpu_shrink_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-            serverless_rule_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            serverless_steady_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            serverless_type: Optional[pulumi.Input[_builtins.str]] = None,
-            source_resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            standby_az: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_pay_type: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_space: Optional[pulumi.Input[_builtins.int]] = None,
-            storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            strict_consistency: Optional[pulumi.Input[_builtins.str]] = None,
-            sub_category: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target_db_revision_version_code: Optional[pulumi.Input[_builtins.str]] = None,
-            tde_region: Optional[pulumi.Input[_builtins.str]] = None,
-            tde_status: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_type: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            allow_shut_down: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            backup_retention_policy_on_cluster_deletion: pulumi.Input[Optional[_builtins.str]] = None,
+            clone_data_point: pulumi.Input[Optional[_builtins.str]] = None,
+            collector_status: pulumi.Input[Optional[_builtins.str]] = None,
+            compress_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_category: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_option: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_ip_arrays: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbClusterIpArrayArgs', 'ClusterDbClusterIpArrayArgsDict']]]]] = None,
+            db_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_class: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_count: pulumi.Input[Optional[_builtins.int]] = None,
+            db_node_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_node_num: pulumi.Input[Optional[_builtins.int]] = None,
+            db_revision_version_lists: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterDbRevisionVersionListArgs', 'ClusterDbRevisionVersionListArgsDict']]]]] = None,
+            db_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_version: pulumi.Input[Optional[_builtins.str]] = None,
+            default_time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_lock: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_dynamodb: pulumi.Input[Optional[_builtins.bool]] = None,
+            encrypt_new_tables: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            from_time_service: pulumi.Input[Optional[_builtins.str]] = None,
+            gdn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            global_security_group_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            hot_replica_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            hot_standby_cluster: pulumi.Input[Optional[_builtins.str]] = None,
+            imci_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            loose_polar_log_bin: pulumi.Input[Optional[_builtins.str]] = None,
+            loose_xengine: pulumi.Input[Optional[_builtins.str]] = None,
+            loose_xengine_use_memory_pct: pulumi.Input[Optional[_builtins.int]] = None,
+            lower_case_table_names: pulumi.Input[Optional[_builtins.int]] = None,
+            maintain_time: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_type: pulumi.Input[Optional[_builtins.str]] = None,
+            parameter_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterParameterArgs', 'ClusterParameterArgsDict']]]]] = None,
+            pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            planned_end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            planned_start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            provisioned_iops: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_class: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_type: pulumi.Input[Optional[_builtins.str]] = None,
+            renewal_status: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_arn: pulumi.Input[Optional[_builtins.str]] = None,
+            scale_ap_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_ap_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_max: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_min: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_ro_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+            scale_ro_num_min: pulumi.Input[Optional[_builtins.int]] = None,
+            seconds_until_auto_pause: pulumi.Input[Optional[_builtins.int]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            serverless_rule_cpu_enlarge_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            serverless_rule_cpu_shrink_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+            serverless_rule_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_steady_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            serverless_type: pulumi.Input[Optional[_builtins.str]] = None,
+            source_resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            standby_az: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_pay_type: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_space: pulumi.Input[Optional[_builtins.int]] = None,
+            storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_consistency: pulumi.Input[Optional[_builtins.str]] = None,
+            sub_category: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_db_revision_version_code: pulumi.Input[Optional[_builtins.str]] = None,
+            tde_region: pulumi.Input[Optional[_builtins.str]] = None,
+            tde_status: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

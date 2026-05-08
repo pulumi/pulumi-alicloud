@@ -44,10 +44,10 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     securityGroupIds: [defaultSecurityGroup.id],
  *     description: "terraform-example",
- *     primaryIpAddress: defaultSwitch.cidrBlock.apply(cidrBlock => std.cidrhostOutput({
- *         input: cidrBlock,
+ *     primaryIpAddress: std.cidrhostOutput({
+ *         input: defaultSwitch.cidrBlock,
  *         host: 100,
- *     })).apply(invoke => invoke.result),
+ *     }).apply(invoke => invoke.result),
  *     tags: {
  *         Created: "TF",
  *         For: "example",
@@ -168,23 +168,23 @@ export interface EcsNetworkInterfacePermissionState {
     /**
      * Alibaba Cloud Partner (Certified ISV) account ID or individual user ID.
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * Whether to force deletion of Network Interface Permission. Default value: `true`.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the network interface.
      */
-    networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * The permissions of the Network Interface. Valid values: `InstanceAttach`. `InstanceAttach`: Allows authorized users to mount your ENI to the other ECS instance. The ECS instance must be in the same zone as the ENI.
      */
-    permission?: pulumi.Input<string>;
+    permission?: pulumi.Input<string | undefined>;
     /**
      * The Status of the Network Interface Permissions. Valid values: `Pending`, `Granted`, `Revoking`, `Revoked`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,7 +198,7 @@ export interface EcsNetworkInterfacePermissionArgs {
     /**
      * Whether to force deletion of Network Interface Permission. Default value: `true`.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the network interface.
      */

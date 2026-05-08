@@ -180,29 +180,29 @@ export interface HAVipAttachmentState {
     /**
      * Specifies whether to force delete the snapshot.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the HaVip instance.
      */
-    haVipId?: pulumi.Input<string>;
+    haVipId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
-    havipId?: pulumi.Input<string>;
+    havipId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ECS instance bound to the HaVip instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -212,17 +212,17 @@ export interface HAVipAttachmentArgs {
     /**
      * Specifies whether to force delete the snapshot.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the HaVip instance.
      */
-    haVipId?: pulumi.Input<string>;
+    haVipId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
-    havipId?: pulumi.Input<string>;
+    havipId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ECS instance bound to the HaVip instance.
      */
@@ -230,5 +230,5 @@ export interface HAVipAttachmentArgs {
     /**
      * The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
 }

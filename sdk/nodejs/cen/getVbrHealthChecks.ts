@@ -102,19 +102,19 @@ export interface GetVbrHealthChecksOutputArgs {
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VBR instance.
      */
-    vbrInstanceId?: pulumi.Input<string>;
+    vbrInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The User ID (UID) of the account to which the VBR instance belongs.
      */
-    vbrInstanceOwnerId?: pulumi.Input<number>;
+    vbrInstanceOwnerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the region where the VBR instance is deployed.
      */

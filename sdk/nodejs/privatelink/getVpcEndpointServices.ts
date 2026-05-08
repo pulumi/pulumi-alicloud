@@ -171,33 +171,33 @@ export interface GetVpcEndpointServicesOutputArgs {
     /**
      * Specifies whether to automatically accept endpoint connection requests. Valid values: : `true`, `false`.
      */
-    autoAcceptConnection?: pulumi.Input<boolean>;
+    autoAcceptConnection?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Vpc Endpoint Service IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Vpc Endpoint Service name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The service state of the endpoint service. Default value: `Normal`. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
      */
-    serviceBusinessStatus?: pulumi.Input<string>;
+    serviceBusinessStatus?: pulumi.Input<string | undefined>;
     /**
      * The state of the endpoint service. Valid values: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the endpoint service.
      */
-    vpcEndpointServiceName?: pulumi.Input<string>;
+    vpcEndpointServiceName?: pulumi.Input<string | undefined>;
 }

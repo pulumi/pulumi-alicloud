@@ -216,72 +216,72 @@ export interface AiInstanceState {
     /**
      * The name of the new AI application.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * Application type. Currently, only `supabase` is supported.
      */
-    appType?: pulumi.Input<string>;
+    appType?: pulumi.Input<string | undefined>;
     /**
      * Authentication information list. See `authConfigList` below.
      */
-    authConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceAuthConfigList>[]>;
+    authConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceAuthConfigList>[] | undefined>;
     /**
      * The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
      *
      * > **NOTE:**  When `sslEnabled` is set to `1`, this parameter must be configured.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * Supabase Dashboard password.
      * The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
      */
-    dashboardPassword?: pulumi.Input<string>;
+    dashboardPassword?: pulumi.Input<string | undefined>;
     /**
      * The RDS Database access password.
      * The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
      */
-    databasePassword?: pulumi.Input<string>;
+    databasePassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the RDS PostgreSQL database instance accessed by the AI application.
      * supports only **newly purchased empty RDS PostgreSQL instances**. The major version is `17`, and the minor version is **20250630 or later**.>
      */
-    dbInstanceName?: pulumi.Input<string>;
+    dbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Whether to recover from existing PG data. Valid values:
      */
-    initializeWithExistingData?: pulumi.Input<boolean>;
+    initializeWithExistingData?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the public network connection address. Valid values:
      */
-    publicEndpointEnabled?: pulumi.Input<boolean>;
+    publicEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the public network NAT gateway. Valid values:
      */
-    publicNetworkAccessEnabled?: pulumi.Input<boolean>;
+    publicNetworkAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Customize the certificate content.
      *
      * > **NOTE:**  When `caType` is set to `custom`, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key.
      *
      * > **NOTE:**  When `caType` is set to `custom`, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable SSL. Valid values:
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * The status of the instance. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of storage configurations. See `storageConfigList` below.
      */
-    storageConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceStorageConfigList>[]>;
+    storageConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceStorageConfigList>[] | undefined>;
 }
 
 /**
@@ -299,62 +299,62 @@ export interface AiInstanceArgs {
     /**
      * Authentication information list. See `authConfigList` below.
      */
-    authConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceAuthConfigList>[]>;
+    authConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceAuthConfigList>[] | undefined>;
     /**
      * The type of the certificate. Currently, only `custom` is supported. A custom certificate is used.
      *
      * > **NOTE:**  When `sslEnabled` is set to `1`, this parameter must be configured.
      */
-    caType?: pulumi.Input<string>;
+    caType?: pulumi.Input<string | undefined>;
     /**
      * Supabase Dashboard password.
      * The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
      */
-    dashboardPassword?: pulumi.Input<string>;
+    dashboardPassword?: pulumi.Input<string | undefined>;
     /**
      * The RDS Database access password.
      * The password must be 8 to 32 characters in length and contain three or more characters: uppercase letters, lowercase letters, numbers, and underscores (_).
      */
-    databasePassword?: pulumi.Input<string>;
+    databasePassword?: pulumi.Input<string | undefined>;
     /**
      * The ID of the RDS PostgreSQL database instance accessed by the AI application.
      * supports only **newly purchased empty RDS PostgreSQL instances**. The major version is `17`, and the minor version is **20250630 or later**.>
      */
-    dbInstanceName?: pulumi.Input<string>;
+    dbInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Whether to recover from existing PG data. Valid values:
      */
-    initializeWithExistingData?: pulumi.Input<boolean>;
+    initializeWithExistingData?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the public network connection address. Valid values:
      */
-    publicEndpointEnabled?: pulumi.Input<boolean>;
+    publicEndpointEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable the public network NAT gateway. Valid values:
      */
-    publicNetworkAccessEnabled?: pulumi.Input<boolean>;
+    publicNetworkAccessEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Customize the certificate content.
      *
      * > **NOTE:**  When `caType` is set to `custom`, this parameter must be configured.
      */
-    serverCert?: pulumi.Input<string>;
+    serverCert?: pulumi.Input<string | undefined>;
     /**
      * The certificate private key.
      *
      * > **NOTE:**  When `caType` is set to `custom`, this parameter must be configured.
      */
-    serverKey?: pulumi.Input<string>;
+    serverKey?: pulumi.Input<string | undefined>;
     /**
      * Enable or disable SSL. Valid values:
      */
-    sslEnabled?: pulumi.Input<number>;
+    sslEnabled?: pulumi.Input<number | undefined>;
     /**
      * The status of the instance. Valid values: `Running`, `Stopped`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A list of storage configurations. See `storageConfigList` below.
      */
-    storageConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceStorageConfigList>[]>;
+    storageConfigLists?: pulumi.Input<pulumi.Input<inputs.rds.AiInstanceStorageConfigList>[] | undefined>;
 }

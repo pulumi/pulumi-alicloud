@@ -180,21 +180,21 @@ export interface BaselineStrategyState {
     /**
      * The ID of the baseline check policy.
      */
-    baselineStrategyId?: pulumi.Input<string>;
+    baselineStrategyId?: pulumi.Input<string | undefined>;
     /**
      * Policy name.
      */
-    baselineStrategyName?: pulumi.Input<string>;
+    baselineStrategyName?: pulumi.Input<string | undefined>;
     /**
      * The type of policy. Value:
      * * **common**: standard policy
      * * **custom**: custom policy
      */
-    customType?: pulumi.Input<string>;
+    customType?: pulumi.Input<string | undefined>;
     /**
      * The detection period of the policy.
      */
-    cycleDays?: pulumi.Input<number>;
+    cycleDays?: pulumi.Input<number | undefined>;
     /**
      * The detection period of the policy. Value:
      * * **0**: 0:00~06:00
@@ -202,25 +202,25 @@ export interface BaselineStrategyState {
      * * **12**: 12:00~18:00
      * * **18**: 18:00~24:00
      */
-    cycleStartTime?: pulumi.Input<number>;
+    cycleStartTime?: pulumi.Input<number | undefined>;
     /**
      * The baseline check policy execution end time.
      */
-    endTime?: pulumi.Input<string>;
+    endTime?: pulumi.Input<string | undefined>;
     /**
      * Detection item subtype.
      */
-    riskSubTypeName?: pulumi.Input<string>;
+    riskSubTypeName?: pulumi.Input<string | undefined>;
     /**
      * The baseline check policy start time.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The method of adding assets that take effect from the policy. Value:
      * * **groupId**: Added by asset group.
      * * **uuid**: Add by single asset.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -248,7 +248,7 @@ export interface BaselineStrategyArgs {
      * * **12**: 12:00~18:00
      * * **18**: 18:00~24:00
      */
-    cycleStartTime?: pulumi.Input<number>;
+    cycleStartTime?: pulumi.Input<number | undefined>;
     /**
      * The baseline check policy execution end time.
      */

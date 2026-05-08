@@ -22,7 +22,7 @@ __all__ = ['KubernetesPermissionArgs', 'KubernetesPermission']
 class KubernetesPermissionArgs:
     def __init__(__self__, *,
                  uid: pulumi.Input[_builtins.str],
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None):
         """
         The set of arguments for constructing a KubernetesPermission resource.
 
@@ -47,22 +47,22 @@ class KubernetesPermissionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
         """
         A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
 
 @pulumi.input_type
 class _KubernetesPermissionState:
     def __init__(__self__, *,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesPermission resources.
 
@@ -76,26 +76,26 @@ class _KubernetesPermissionState:
 
     @_builtins.property
     @pulumi.getter
-    def permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
+    def permissions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]:
         """
         A list of user permission. See `permissions` below.
         """
         return pulumi.get(self, "permissions")
 
     @permissions.setter
-    def permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]):
+    def permissions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesPermissionPermissionArgs']]]]):
         pulumi.set(self, "permissions", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uid", value)
 
 
@@ -105,8 +105,8 @@ class KubernetesPermission(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         This resource will help you implement RBAC authorization for the kubernetes cluster, see [What is kubernetes permissions](https://www.alibabacloud.com/help/en/ack/ack-managed-and-ack-dedicated/developer-reference/api-grantpermissions).
@@ -124,6 +124,7 @@ class KubernetesPermission(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -158,7 +159,7 @@ class KubernetesPermission(pulumi.CustomResource):
         default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
         vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=vpc.id,
@@ -231,6 +232,7 @@ class KubernetesPermission(pulumi.CustomResource):
 
         ```python
         import pulumi
+        from typing import Any
         import pulumi_alicloud as alicloud
         import pulumi_random as random
         import pulumi_std as std
@@ -265,7 +267,7 @@ class KubernetesPermission(pulumi.CustomResource):
         default = alicloud.cs.get_kubernetes_version(cluster_type="ManagedKubernetes")
         vpc = alicloud.vpc.Network("vpc", cidr_block=vpc_cidr)
         # According to the vswitch cidr blocks to launch several vswitches
-        default_switch = []
+        default_switch: list[Any] = []
         for range in [{"value": i} for i in range(0, len(vswitch_cidrs))]:
             default_switch.append(alicloud.vpc.Switch(f"default-{range['value']}",
                 vpc_id=vpc.id,
@@ -326,8 +328,8 @@ class KubernetesPermission(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
-                 uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+                 uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,8 +353,8 @@ class KubernetesPermission(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            permissions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
-            uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'KubernetesPermission':
+            permissions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesPermissionPermissionArgs', 'KubernetesPermissionPermissionArgsDict']]]]] = None,
+            uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesPermission':
         """
         Get an existing KubernetesPermission resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

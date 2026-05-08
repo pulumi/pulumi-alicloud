@@ -292,43 +292,43 @@ export interface AnycastEipAddressAttachmentState {
     /**
      * The ID of the Anycast EIP instance.
      */
-    anycastId?: pulumi.Input<string>;
+    anycastId?: pulumi.Input<string | undefined>;
     /**
      * Binding mode, value:
      * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
      * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
      */
-    associationMode?: pulumi.Input<string>;
+    associationMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cloud resource instance to be bound.
      */
-    bindInstanceId?: pulumi.Input<string>;
+    bindInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the cloud resource instance to be bound.You can only bind cloud resource instances in some regions. You can call the describeanystserverregions operation to obtain the region ID of the cloud resource instances that can be bound.
      */
-    bindInstanceRegionId?: pulumi.Input<string>;
+    bindInstanceRegionId?: pulumi.Input<string | undefined>;
     /**
      * The type of the cloud resource instance to be bound. Value:
      * - **SlbInstance**: a private network SLB instance.
      * - **NetworkInterface**: ENI.
      */
-    bindInstanceType?: pulumi.Input<string>;
+    bindInstanceType?: pulumi.Input<string | undefined>;
     /**
      * Binding time.Time is expressed according to ISO8601 standard and UTC time is used. The format is: 'YYYY-MM-DDThh:mm:ssZ'.
      */
-    bindTime?: pulumi.Input<string>;
+    bindTime?: pulumi.Input<string | undefined>;
     /**
      * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      */
-    popLocations?: pulumi.Input<pulumi.Input<inputs.eipanycast.AnycastEipAddressAttachmentPopLocation>[]>;
+    popLocations?: pulumi.Input<pulumi.Input<inputs.eipanycast.AnycastEipAddressAttachmentPopLocation>[] | undefined>;
     /**
      * The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
     /**
      * The status of the bound cloud resource instance. Value:BINDING: BINDING.Bound: Bound.UNBINDING: UNBINDING.DELETED: DELETED.MODIFYING: being modified.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -344,7 +344,7 @@ export interface AnycastEipAddressAttachmentArgs {
      * - **Default**: The Default mode. The cloud resource instance to be bound is set as the Default origin.
      * - **Normal**: In Normal mode, the cloud resource instance to be bound is set to the common source station.
      */
-    associationMode?: pulumi.Input<string>;
+    associationMode?: pulumi.Input<string | undefined>;
     /**
      * The ID of the cloud resource instance to be bound.
      */
@@ -362,9 +362,9 @@ export interface AnycastEipAddressAttachmentArgs {
     /**
      * The access point information of the associated access area when the cloud resource instance is bound.If you are binding for the first time, this parameter does not need to be configured, and the system automatically associates all access areas. See `popLocations` below.
      */
-    popLocations?: pulumi.Input<pulumi.Input<inputs.eipanycast.AnycastEipAddressAttachmentPopLocation>[]>;
+    popLocations?: pulumi.Input<pulumi.Input<inputs.eipanycast.AnycastEipAddressAttachmentPopLocation>[] | undefined>;
     /**
      * The secondary private IP address of the elastic network card to be bound.This parameter takes effect only when **BindInstanceType** is set to **NetworkInterface. When you do not enter, this parameter is the primary private IP of the ENI by default.
      */
-    privateIpAddress?: pulumi.Input<string>;
+    privateIpAddress?: pulumi.Input<string | undefined>;
 }

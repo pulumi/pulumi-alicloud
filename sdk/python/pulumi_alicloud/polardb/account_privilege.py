@@ -22,7 +22,7 @@ class AccountPrivilegeArgs:
                  account_name: pulumi.Input[_builtins.str],
                  db_cluster_id: pulumi.Input[_builtins.str],
                  db_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 account_privilege: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a AccountPrivilege resource.
 
@@ -75,24 +75,24 @@ class AccountPrivilegeArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
-    def account_privilege(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         """
         return pulumi.get(self, "account_privilege")
 
     @account_privilege.setter
-    def account_privilege(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_privilege", value)
 
 
 @pulumi.input_type
 class _AccountPrivilegeState:
     def __init__(__self__, *,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_privilege: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AccountPrivilege resources.
 
@@ -112,50 +112,50 @@ class _AccountPrivilegeState:
 
     @_builtins.property
     @pulumi.getter(name="accountName")
-    def account_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A specified account name.
         """
         return pulumi.get(self, "account_name")
 
     @account_name.setter
-    def account_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_name", value)
 
     @_builtins.property
     @pulumi.getter(name="accountPrivilege")
-    def account_privilege(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_privilege(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The privilege of one account access database. Valid values: ["ReadOnly", "ReadWrite"], ["DMLOnly", "DDLOnly"] added since version v1.101.0. Default to "ReadOnly".
         """
         return pulumi.get(self, "account_privilege")
 
     @account_privilege.setter
-    def account_privilege(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_privilege(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_privilege", value)
 
     @_builtins.property
     @pulumi.getter(name="dbClusterId")
-    def db_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Id of cluster in which account belongs.
         """
         return pulumi.get(self, "db_cluster_id")
 
     @db_cluster_id.setter
-    def db_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dbNames")
-    def db_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def db_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of specified database name.
         """
         return pulumi.get(self, "db_names")
 
     @db_names.setter
-    def db_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def db_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "db_names", value)
 
 
@@ -165,10 +165,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_privilege: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a PolarDB account privilege resource and used to grant several database some access privilege. A database can be granted by multiple account.
@@ -310,10 +310,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_privilege: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 account_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,10 +343,10 @@ class AccountPrivilege(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_name: Optional[pulumi.Input[_builtins.str]] = None,
-            account_privilege: Optional[pulumi.Input[_builtins.str]] = None,
-            db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            db_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AccountPrivilege':
+            account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            account_privilege: pulumi.Input[Optional[_builtins.str]] = None,
+            db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            db_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AccountPrivilege':
         """
         Get an existing AccountPrivilege resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

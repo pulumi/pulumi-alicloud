@@ -23,17 +23,17 @@ class NestServiceInstanceArgs:
     def __init__(__self__, *,
                  service_id: pulumi.Input[_builtins.str],
                  service_version: pulumi.Input[_builtins.str],
-                 commodity: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']] = None,
-                 enable_instance_ops: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_user_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 operation_metadata: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 commodity: pulumi.Input[Optional['NestServiceInstanceCommodityArgs']] = None,
+                 enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 operation_metadata: pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NestServiceInstance resource.
 
@@ -102,154 +102,154 @@ class NestServiceInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def commodity(self) -> Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]:
+    def commodity(self) -> pulumi.Input[Optional['NestServiceInstanceCommodityArgs']]:
         """
         The order information of cloud market. See `commodity` below.
         """
         return pulumi.get(self, "commodity")
 
     @commodity.setter
-    def commodity(self, value: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]):
+    def commodity(self, value: pulumi.Input[Optional['NestServiceInstanceCommodityArgs']]):
         pulumi.set(self, "commodity", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInstanceOps")
-    def enable_instance_ops(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_instance_ops(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the service instance has the O&M function. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_instance_ops")
 
     @enable_instance_ops.setter
-    def enable_instance_ops(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_instance_ops(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_instance_ops", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUserPrometheus")
-    def enable_user_prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_user_prometheus(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_user_prometheus")
 
     @enable_user_prometheus.setter
-    def enable_user_prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_user_prometheus(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_user_prometheus", value)
 
     @_builtins.property
     @pulumi.getter(name="operationMetadata")
-    def operation_metadata(self) -> Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]:
+    def operation_metadata(self) -> pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']]:
         """
         The configuration of O&M. See `operation_metadata` below.
         """
         return pulumi.get(self, "operation_metadata")
 
     @operation_metadata.setter
-    def operation_metadata(self, value: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]):
+    def operation_metadata(self, value: pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']]):
         pulumi.set(self, "operation_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters entered by the deployment service instance.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceInstanceName")
-    def service_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service Instance.
         """
         return pulumi.get(self, "service_instance_name")
 
     @service_instance_name.setter
-    def service_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="specificationName")
-    def specification_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def specification_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the specification.
         """
         return pulumi.get(self, "specification_name")
 
     @specification_name.setter
-    def specification_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def specification_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "specification_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the template.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
 
 @pulumi.input_type
 class _NestServiceInstanceState:
     def __init__(__self__, *,
-                 commodity: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']] = None,
-                 enable_instance_ops: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_user_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 operation_metadata: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 commodity: pulumi.Input[Optional['NestServiceInstanceCommodityArgs']] = None,
+                 enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 operation_metadata: pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NestServiceInstance resources.
 
@@ -299,170 +299,170 @@ class _NestServiceInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def commodity(self) -> Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]:
+    def commodity(self) -> pulumi.Input[Optional['NestServiceInstanceCommodityArgs']]:
         """
         The order information of cloud market. See `commodity` below.
         """
         return pulumi.get(self, "commodity")
 
     @commodity.setter
-    def commodity(self, value: Optional[pulumi.Input['NestServiceInstanceCommodityArgs']]):
+    def commodity(self, value: pulumi.Input[Optional['NestServiceInstanceCommodityArgs']]):
         pulumi.set(self, "commodity", value)
 
     @_builtins.property
     @pulumi.getter(name="enableInstanceOps")
-    def enable_instance_ops(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_instance_ops(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the service instance has the O&M function. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_instance_ops")
 
     @enable_instance_ops.setter
-    def enable_instance_ops(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_instance_ops(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_instance_ops", value)
 
     @_builtins.property
     @pulumi.getter(name="enableUserPrometheus")
-    def enable_user_prometheus(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_user_prometheus(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether Prometheus monitoring is enabled. Default value: `false`. Valid values:
         """
         return pulumi.get(self, "enable_user_prometheus")
 
     @enable_user_prometheus.setter
-    def enable_user_prometheus(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_user_prometheus(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_user_prometheus", value)
 
     @_builtins.property
     @pulumi.getter(name="operationMetadata")
-    def operation_metadata(self) -> Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]:
+    def operation_metadata(self) -> pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']]:
         """
         The configuration of O&M. See `operation_metadata` below.
         """
         return pulumi.get(self, "operation_metadata")
 
     @operation_metadata.setter
-    def operation_metadata(self, value: Optional[pulumi.Input['NestServiceInstanceOperationMetadataArgs']]):
+    def operation_metadata(self, value: pulumi.Input[Optional['NestServiceInstanceOperationMetadataArgs']]):
         pulumi.set(self, "operation_metadata", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameters(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters entered by the deployment service instance.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameters(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of payment. Valid values: `Permanent`, `Subscription`, `PayAsYouGo`, `CustomFixTime`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceId")
-    def service_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the service.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
-    def service_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceInstanceName")
-    def service_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Service Instance.
         """
         return pulumi.get(self, "service_instance_name")
 
     @service_instance_name.setter
-    def service_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceVersion")
-    def service_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the service.
         """
         return pulumi.get(self, "service_version")
 
     @service_version.setter
-    def service_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_version", value)
 
     @_builtins.property
     @pulumi.getter(name="specificationName")
-    def specification_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def specification_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the specification.
         """
         return pulumi.get(self, "specification_name")
 
     @specification_name.setter
-    def specification_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def specification_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "specification_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Service Instance.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="templateName")
-    def template_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def template_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the template.
         """
         return pulumi.get(self, "template_name")
 
     @template_name.setter
-    def template_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def template_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "template_name", value)
 
 
@@ -472,19 +472,19 @@ class NestServiceInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
-                 enable_instance_ops: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_user_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+                 enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Compute Nest Service Instance resource.
@@ -687,19 +687,19 @@ class NestServiceInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
-                 enable_instance_ops: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_user_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-                 operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
-                 parameters: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 specification_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 template_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+                 enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+                 operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 template_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -737,20 +737,20 @@ class NestServiceInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            commodity: Optional[pulumi.Input[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
-            enable_instance_ops: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_user_prometheus: Optional[pulumi.Input[_builtins.bool]] = None,
-            operation_metadata: Optional[pulumi.Input[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
-            parameters: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            service_version: Optional[pulumi.Input[_builtins.str]] = None,
-            specification_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            template_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'NestServiceInstance':
+            commodity: pulumi.Input[Optional[Union['NestServiceInstanceCommodityArgs', 'NestServiceInstanceCommodityArgsDict']]] = None,
+            enable_instance_ops: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_user_prometheus: pulumi.Input[Optional[_builtins.bool]] = None,
+            operation_metadata: pulumi.Input[Optional[Union['NestServiceInstanceOperationMetadataArgs', 'NestServiceInstanceOperationMetadataArgsDict']]] = None,
+            parameters: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_version: pulumi.Input[Optional[_builtins.str]] = None,
+            specification_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            template_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'NestServiceInstance':
         """
         Get an existing NestServiceInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

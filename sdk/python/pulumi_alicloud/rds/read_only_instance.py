@@ -25,41 +25,41 @@ class ReadOnlyInstanceArgs:
                  instance_storage: pulumi.Input[_builtins.int],
                  instance_type: pulumi.Input[_builtins.str],
                  master_db_instance_id: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReadOnlyInstance resource.
 
@@ -286,7 +286,7 @@ class ReadOnlyInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - cert
@@ -297,36 +297,36 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         - aliyun: a cloud certificate
@@ -335,24 +335,24 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "ca_type")
 
     @ca_type.setter
-    def ca_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaCert")
-    def client_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "client_ca_cert")
 
     @client_ca_cert.setter
-    def client_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaEnabled")
-    def client_ca_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_ca_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
         - 1: enables the public key
@@ -361,24 +361,24 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "client_ca_enabled")
 
     @client_ca_enabled.setter
-    def client_ca_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_ca_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertRevocationList")
-    def client_cert_revocation_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_revocation_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "client_cert_revocation_list")
 
     @client_cert_revocation_list.setter
-    def client_cert_revocation_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_revocation_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_revocation_list", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCrlEnabled")
-    def client_crl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_crl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - 1: enables the CRL
@@ -387,12 +387,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "client_crl_enabled")
 
     @client_crl_enabled.setter
-    def client_crl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_crl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_crl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
-    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute of the IP address whitelist. By default, this parameter is empty.
 
@@ -401,12 +401,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @db_instance_ip_array_attribute.setter
-    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayName")
-    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP address whitelist. Default value: Default.
 
@@ -415,12 +415,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @db_instance_ip_array_name.setter
-    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceStorageType")
-    def db_instance_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the instance. Valid values:
         - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -432,12 +432,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "db_instance_storage_type")
 
     @db_instance_storage_type.setter
-    def db_instance_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The switch of delete protection. Valid values:
         - true: delete protect.
@@ -446,12 +446,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance configuration type. Valid values:
         - Up
@@ -462,12 +462,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method to change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
@@ -476,48 +476,48 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
-    def force_restart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_restart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set it to true to make some parameter efficient when modifying them. Default to false.
         """
         return pulumi.get(self, "force_restart")
 
     @force_restart.setter
-    def force_restart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_restart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_restart", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
-    def modify_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
         - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
@@ -527,36 +527,36 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "modify_mode")
 
     @modify_mode.setter
-    def modify_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationAcl")
-    def replication_acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - cert
@@ -568,72 +568,72 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "replication_acl")
 
     @replication_acl.setter
-    def replication_acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the DB read-only instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpType")
-    def security_ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address in the IP address whitelist.
         """
         return pulumi.get(self, "security_ip_type")
 
     @security_ip_type.setter
-    def security_ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCert")
-    def server_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "server_cert")
 
     @server_cert.setter
-    def server_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="serverKey")
-    def server_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "server_key")
 
     @server_key.setter
-    def server_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable or disable SSL encryption. Valid values:
         - 1: enables SSL encryption
@@ -642,12 +642,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
 
@@ -656,12 +656,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -670,12 +670,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetMinorVersion")
-    def target_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -690,12 +690,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "target_minor_version")
 
     @target_minor_version.setter
-    def target_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
-    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgrade_db_instance_kernel_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to upgrade a minor version of the kernel. Valid values:
         - true: upgrade
@@ -704,12 +704,12 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
-    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgrade_db_instance_kernel_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgrade_db_instance_kernel_version", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeTime")
-    def upgrade_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
         - Immediate: The minor engine version is immediately updated.
@@ -719,24 +719,24 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "upgrade_time")
 
     @upgrade_time.setter
-    def upgrade_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="whitelistNetworkType")
-    def whitelist_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whitelist_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the IP address whitelist. Default value: MIX. Valid values:
         - Classic: classic network in enhanced whitelist mode
@@ -747,67 +747,67 @@ class ReadOnlyInstanceArgs:
         return pulumi.get(self, "whitelist_network_type")
 
     @whitelist_network_type.setter
-    def whitelist_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whitelist_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whitelist_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ReadOnlyInstanceState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 port: Optional[pulumi.Input[_builtins.str]] = None,
-                 replication_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 port: pulumi.Input[Optional[_builtins.str]] = None,
+                 replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReadOnlyInstance resources.
 
@@ -999,7 +999,7 @@ class _ReadOnlyInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to verify the identities of clients. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - cert
@@ -1010,36 +1010,36 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to renewal a DB instance automatically or not. It is valid when instance_charge_type is `PrePaid`. Default to `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Auto-renewal period of an instance, in the unit of the month. It is valid when instance_charge_type is `PrePaid`. Valid value:[1~12], Default to 1.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="caType")
-    def ca_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the SSLEnabled parameter to 1, the default value of this parameter is aliyun. It is valid only when `ssl_enabled  = 1`. Value range:
         - aliyun: a cloud certificate
@@ -1048,24 +1048,24 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "ca_type")
 
     @ca_type.setter
-    def ca_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaCert")
-    def client_ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "client_ca_cert")
 
     @client_ca_cert.setter
-    def client_ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCaEnabled")
-    def client_ca_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_ca_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable the public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. It is valid only when `ssl_enabled  = 1`. Valid values:
         - 1: enables the public key
@@ -1074,24 +1074,24 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "client_ca_enabled")
 
     @client_ca_enabled.setter
-    def client_ca_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_ca_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_ca_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCertRevocationList")
-    def client_cert_revocation_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_revocation_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "client_cert_revocation_list")
 
     @client_cert_revocation_list.setter
-    def client_cert_revocation_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_revocation_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_revocation_list", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCrlEnabled")
-    def client_crl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_crl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable a certificate revocation list (CRL) that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - 1: enables the CRL
@@ -1100,24 +1100,24 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "client_crl_enabled")
 
     @client_crl_enabled.setter
-    def client_crl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_crl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_crl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="connectionString")
-    def connection_string(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def connection_string(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RDS database connection string.
         """
         return pulumi.get(self, "connection_string")
 
     @connection_string.setter
-    def connection_string(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def connection_string(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "connection_string", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
-    def db_instance_ip_array_attribute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_attribute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The attribute of the IP address whitelist. By default, this parameter is empty.
 
@@ -1126,12 +1126,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @db_instance_ip_array_attribute.setter
-    def db_instance_ip_array_attribute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_attribute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_attribute", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceIpArrayName")
-    def db_instance_ip_array_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_ip_array_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the IP address whitelist. Default value: Default.
 
@@ -1140,12 +1140,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @db_instance_ip_array_name.setter
-    def db_instance_ip_array_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_ip_array_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_ip_array_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceStorageType")
-    def db_instance_storage_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_storage_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage type of the instance. Valid values:
         - local_ssd: specifies to use local SSDs. This value is recommended.
@@ -1157,12 +1157,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "db_instance_storage_type")
 
     @db_instance_storage_type.setter
-    def db_instance_storage_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_storage_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_storage_type", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The switch of delete protection. Valid values:
         - true: delete protect.
@@ -1171,12 +1171,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance configuration type. Valid values:
         - Up
@@ -1187,12 +1187,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveTime")
-    def effective_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def effective_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method to change.  Default value: Immediate. Valid values:
         - Immediate: The change immediately takes effect.
@@ -1201,108 +1201,108 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "effective_time")
 
     @effective_time.setter
-    def effective_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def effective_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def engine(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database type.
         """
         return pulumi.get(self, "engine")
 
     @engine.setter
-    def engine(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine", value)
 
     @_builtins.property
     @pulumi.getter(name="engineVersion")
-    def engine_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def engine_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
         """
         return pulumi.get(self, "engine_version")
 
     @engine_version.setter
-    def engine_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def engine_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "engine_version", value)
 
     @_builtins.property
     @pulumi.getter(name="forceRestart")
-    def force_restart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_restart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set it to true to make some parameter efficient when modifying them. Default to false.
         """
         return pulumi.get(self, "force_restart")
 
     @force_restart.setter
-    def force_restart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_restart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_restart", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Valid values are `Prepaid`, `Postpaid`, Default to `Postpaid`. The interval between the two conversion operations must be greater than 15 minutes. Only when this parameter is `Postpaid`, the instance can be released.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of DB instance. It a string of 2 to 256 characters.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceStorage")
-    def instance_storage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_storage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User-defined DB instance storage space. Value range: [5, 2000] for MySQL/SQL Server HA dual node edition. Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         """
         return pulumi.get(self, "instance_storage")
 
     @instance_storage.setter
-    def instance_storage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_storage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_storage", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DB Instance type. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="masterDbInstanceId")
-    def master_db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def master_db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the master instance.
         """
         return pulumi.get(self, "master_db_instance_id")
 
     @master_db_instance_id.setter
-    def master_db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def master_db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "master_db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyMode")
-    def modify_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modify_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to modify the IP address whitelist. Default value: Cover. Valid values:
         - Cover: Use the value of the SecurityIps parameter to overwrite the existing entries in the IP address whitelist.
@@ -1312,48 +1312,48 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "modify_mode")
 
     @modify_mode.setter
-    def modify_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modify_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modify_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
+    def parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]:
         """
         Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm). See `parameters` below.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
+    def parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ReadOnlyInstanceParameterArgs']]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         RDS database connection port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationAcl")
-    def replication_acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def replication_acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to verify the replication permission. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. In addition, this parameter is available only when the public key of the CA that issues client certificates is enabled. It is valid only when `ssl_enabled  = 1`. Valid values:
         - cert
@@ -1365,72 +1365,72 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "replication_acl")
 
     @replication_acl.setter
-    def replication_acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def replication_acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "replication_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of resource group which the DB read-only instance belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIpType")
-    def security_ip_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_ip_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of IP address in the IP address whitelist.
         """
         return pulumi.get(self, "security_ip_type")
 
     @security_ip_type.setter
-    def security_ip_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_ip_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_ip_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityIps")
-    def security_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
         """
         return pulumi.get(self, "security_ips")
 
     @security_ips.setter
-    def security_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_ips", value)
 
     @_builtins.property
     @pulumi.getter(name="serverCert")
-    def server_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "server_cert")
 
     @server_cert.setter
-    def server_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="serverKey")
-    def server_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter. It is valid only when `ssl_enabled  = 1`.
         """
         return pulumi.get(self, "server_key")
 
     @server_key.setter
-    def server_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_key", value)
 
     @_builtins.property
     @pulumi.getter(name="sslEnabled")
-    def ssl_enabled(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ssl_enabled(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies whether to enable or disable SSL encryption. Valid values:
         - 1: enables SSL encryption
@@ -1439,12 +1439,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "ssl_enabled")
 
     @ssl_enabled.setter
-    def ssl_enabled(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ssl_enabled(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ssl_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="switchTime")
-    def switch_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The specific point in time when you want to perform the update. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. It is valid only when `upgrade_db_instance_kernel_version = true`. The time must be in UTC.
 
@@ -1453,12 +1453,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "switch_time")
 
     @switch_time.setter
-    def switch_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1467,12 +1467,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="targetMinorVersion")
-    def target_minor_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_minor_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
@@ -1487,12 +1487,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "target_minor_version")
 
     @target_minor_version.setter
-    def target_minor_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_minor_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_minor_version", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeDbInstanceKernelVersion")
-    def upgrade_db_instance_kernel_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgrade_db_instance_kernel_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to upgrade a minor version of the kernel. Valid values:
         - true: upgrade
@@ -1501,12 +1501,12 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "upgrade_db_instance_kernel_version")
 
     @upgrade_db_instance_kernel_version.setter
-    def upgrade_db_instance_kernel_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgrade_db_instance_kernel_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgrade_db_instance_kernel_version", value)
 
     @_builtins.property
     @pulumi.getter(name="upgradeTime")
-    def upgrade_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def upgrade_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method to update the minor engine version. Default value: Immediate. It is valid only when `upgrade_db_instance_kernel_version = true`. Valid values:
         - Immediate: The minor engine version is immediately updated.
@@ -1516,24 +1516,24 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "upgrade_time")
 
     @upgrade_time.setter
-    def upgrade_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def upgrade_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "upgrade_time", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The virtual switch ID to launch DB instances in one VPC.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="whitelistNetworkType")
-    def whitelist_network_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def whitelist_network_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the IP address whitelist. Default value: MIX. Valid values:
         - Classic: classic network in enhanced whitelist mode
@@ -1544,19 +1544,19 @@ class _ReadOnlyInstanceState:
         return pulumi.get(self, "whitelist_network_type")
 
     @whitelist_network_type.setter
-    def whitelist_network_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def whitelist_network_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "whitelist_network_type", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Zone to launch the DB instance.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1566,45 +1566,45 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides an RDS readonly instance resource, see [What is DB Readonly Instance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/api-rds-2014-08-15-createreadonlydbinstance).
@@ -1849,45 +1849,45 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_ca_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 master_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 whitelist_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1957,48 +1957,48 @@ class ReadOnlyInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            ca_type: Optional[pulumi.Input[_builtins.str]] = None,
-            client_ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_ca_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-            client_cert_revocation_list: Optional[pulumi.Input[_builtins.str]] = None,
-            client_crl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-            connection_string: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ip_array_attribute: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_ip_array_name: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_storage_type: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            effective_time: Optional[pulumi.Input[_builtins.str]] = None,
-            engine: Optional[pulumi.Input[_builtins.str]] = None,
-            engine_version: Optional[pulumi.Input[_builtins.str]] = None,
-            force_restart: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_storage: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            master_db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            port: Optional[pulumi.Input[_builtins.str]] = None,
-            replication_acl: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ip_type: Optional[pulumi.Input[_builtins.str]] = None,
-            security_ips: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            server_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            server_key: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_enabled: Optional[pulumi.Input[_builtins.int]] = None,
-            switch_time: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            target_minor_version: Optional[pulumi.Input[_builtins.str]] = None,
-            upgrade_db_instance_kernel_version: Optional[pulumi.Input[_builtins.bool]] = None,
-            upgrade_time: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            whitelist_network_type: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ReadOnlyInstance':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            ca_type: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_ca_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            client_cert_revocation_list: pulumi.Input[Optional[_builtins.str]] = None,
+            client_crl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            connection_string: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_attribute: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_ip_array_name: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_storage_type: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_time: pulumi.Input[Optional[_builtins.str]] = None,
+            engine: pulumi.Input[Optional[_builtins.str]] = None,
+            engine_version: pulumi.Input[Optional[_builtins.str]] = None,
+            force_restart: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_storage: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            master_db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ReadOnlyInstanceParameterArgs', 'ReadOnlyInstanceParameterArgsDict']]]]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            port: pulumi.Input[Optional[_builtins.str]] = None,
+            replication_acl: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ip_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            server_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            server_key: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_enabled: pulumi.Input[Optional[_builtins.int]] = None,
+            switch_time: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            target_minor_version: pulumi.Input[Optional[_builtins.str]] = None,
+            upgrade_db_instance_kernel_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            upgrade_time: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            whitelist_network_type: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ReadOnlyInstance':
         """
         Get an existing ReadOnlyInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

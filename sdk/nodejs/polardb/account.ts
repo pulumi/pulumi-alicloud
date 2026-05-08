@@ -195,13 +195,13 @@ export interface AccountState {
     /**
      * The description of the database account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The lock status of the account. Valid values:
      * - `UnLock`: The account is not locked.
      * - `Lock`: The account is locked.
      */
-    accountLockState?: pulumi.Input<string>;
+    accountLockState?: pulumi.Input<string | undefined>;
     /**
      * The account name. Must meet the following requirements:
      * - Start with a lowercase letter and end with a letter or number.
@@ -209,38 +209,38 @@ export interface AccountState {
      * - The length is 2 to 16 characters.
      * - You cannot use some reserved usernames, such as root and admin.
      */
-    accountName?: pulumi.Input<string>;
+    accountName?: pulumi.Input<string | undefined>;
     /**
      * The account password. You have to specify one of `accountPassword` and `kmsEncryptedPassword` fields. Must  meet the following requirements:
      * - Contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
      * - Be 8 to 32 characters in length.
      * - Special characters include !@#$%^&*()_+-=.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The time when the password for the database account expires.
      */
-    accountPasswordValidTime?: pulumi.Input<string>;
+    accountPasswordValidTime?: pulumi.Input<string | undefined>;
     /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The cluster ID.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Available since v1.265.0) The status of the database account.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -250,13 +250,13 @@ export interface AccountArgs {
     /**
      * The description of the database account.
      */
-    accountDescription?: pulumi.Input<string>;
+    accountDescription?: pulumi.Input<string | undefined>;
     /**
      * The lock status of the account. Valid values:
      * - `UnLock`: The account is not locked.
      * - `Lock`: The account is locked.
      */
-    accountLockState?: pulumi.Input<string>;
+    accountLockState?: pulumi.Input<string | undefined>;
     /**
      * The account name. Must meet the following requirements:
      * - Start with a lowercase letter and end with a letter or number.
@@ -271,15 +271,15 @@ export interface AccountArgs {
      * - Be 8 to 32 characters in length.
      * - Special characters include !@#$%^&*()_+-=.
      */
-    accountPassword?: pulumi.Input<string>;
+    accountPassword?: pulumi.Input<string | undefined>;
     /**
      * The time when the password for the database account expires.
      */
-    accountPasswordValidTime?: pulumi.Input<string>;
+    accountPasswordValidTime?: pulumi.Input<string | undefined>;
     /**
      * The account type. Default value:`Normal`. Valid values: `Normal`, `Super`.
      */
-    accountType?: pulumi.Input<string>;
+    accountType?: pulumi.Input<string | undefined>;
     /**
      * The cluster ID.
      */
@@ -287,9 +287,9 @@ export interface AccountArgs {
     /**
      * An KMS encrypts password used to a db account. If the `accountPassword` is filled in, this field will be ignored.
      */
-    kmsEncryptedPassword?: pulumi.Input<string>;
+    kmsEncryptedPassword?: pulumi.Input<string | undefined>;
     /**
      * An KMS encryption context used to decrypt `kmsEncryptedPassword` before creating or updating a db account with `kmsEncryptedPassword`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kmsEncryptedPassword` is set.
      */
-    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    kmsEncryptionContext?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

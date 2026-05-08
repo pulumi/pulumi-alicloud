@@ -248,35 +248,35 @@ export interface ForwardingRuleState {
     /**
      * The ID of the Global Accelerator instance.
      */
-    acceleratorId?: pulumi.Input<string>;
+    acceleratorId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Forwarding Rule.
      */
-    forwardingRuleId?: pulumi.Input<string>;
+    forwardingRuleId?: pulumi.Input<string | undefined>;
     /**
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      */
-    forwardingRuleName?: pulumi.Input<string>;
+    forwardingRuleName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Forwarding Rule.
      */
-    forwardingRuleStatus?: pulumi.Input<string>;
+    forwardingRuleStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
-    listenerId?: pulumi.Input<string>;
+    listenerId?: pulumi.Input<string | undefined>;
     /**
      * Forwarding policy priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Forward action. See `ruleActions` below.
      */
-    ruleActions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[]>;
+    ruleActions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleAction>[] | undefined>;
     /**
      * Forwarding condition list. See `ruleConditions` below.
      */
-    ruleConditions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[]>;
+    ruleConditions?: pulumi.Input<pulumi.Input<inputs.ga.ForwardingRuleRuleCondition>[] | undefined>;
 }
 
 /**
@@ -290,7 +290,7 @@ export interface ForwardingRuleArgs {
     /**
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      */
-    forwardingRuleName?: pulumi.Input<string>;
+    forwardingRuleName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the listener.
      */
@@ -298,7 +298,7 @@ export interface ForwardingRuleArgs {
     /**
      * Forwarding policy priority.
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * Forward action. See `ruleActions` below.
      */

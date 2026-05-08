@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * const defaultNetworkGrant = new alicloud.cloudconnect.NetworkGrant("default", {
  *     ccnId: _default.id,
  *     cenId: cen.id,
- *     cenUid: anotherUid,
+ *     cenUid: String(anotherUid),
  * });
  * ```
  *
@@ -139,15 +139,15 @@ export interface NetworkGrantState {
     /**
      * The ID of the CCN instance.
      */
-    ccnId?: pulumi.Input<string>;
+    ccnId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the CEN instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the account to which the CEN instance belongs.
      */
-    cenUid?: pulumi.Input<string>;
+    cenUid?: pulumi.Input<string | undefined>;
 }
 
 /**

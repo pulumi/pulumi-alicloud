@@ -23,12 +23,12 @@ class VPCRouteEntryArgs:
     def __init__(__self__, *,
                  destination_cidr_block: pulumi.Input[_builtins.str],
                  route_table_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hops: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]] = None):
         """
         The set of arguments for constructing a VPCRouteEntry resource.
 
@@ -95,43 +95,43 @@ class VPCRouteEntryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the route entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHops")
-    def next_hops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]:
+    def next_hops(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]:
         """
         Next jump See `next_hops` below.
         """
         return pulumi.get(self, "next_hops")
 
     @next_hops.setter
-    def next_hops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]):
+    def next_hops(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]):
         pulumi.set(self, "next_hops", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the next hop instance of the custom route entry.
         """
         return pulumi.get(self, "nexthop_id")
 
     @nexthop_id.setter
-    def nexthop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the next hop of the custom route entry. Valid values:
         - `Instance` (default): The ECS Instance.
@@ -151,46 +151,46 @@ class VPCRouteEntryArgs:
         return pulumi.get(self, "nexthop_type")
 
     @nexthop_type.setter
-    def nexthop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeEntryName")
-    def route_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the route entry.
         """
         return pulumi.get(self, "route_entry_name")
 
     @route_entry_name.setter
-    def route_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routePublishTargets")
-    def route_publish_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]:
+    def route_publish_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]:
         """
         Route publish status and publish target type See `route_publish_targets` below.
         """
         return pulumi.get(self, "route_publish_targets")
 
     @route_publish_targets.setter
-    def route_publish_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]):
+    def route_publish_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]):
         pulumi.set(self, "route_publish_targets", value)
 
 
 @pulumi.input_type
 class _VPCRouteEntryState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hops: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VPCRouteEntry resources.
 
@@ -238,55 +238,55 @@ class _VPCRouteEntryState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the route entry.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationCidrBlock")
-    def destination_cidr_block(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_cidr_block(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination network segment of the routing entry.
         """
         return pulumi.get(self, "destination_cidr_block")
 
     @destination_cidr_block.setter
-    def destination_cidr_block(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_cidr_block(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_cidr_block", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHops")
-    def next_hops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]:
+    def next_hops(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]:
         """
         Next jump See `next_hops` below.
         """
         return pulumi.get(self, "next_hops")
 
     @next_hops.setter
-    def next_hops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]):
+    def next_hops(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryNextHopArgs']]]]):
         pulumi.set(self, "next_hops", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopId")
-    def nexthop_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the next hop instance of the custom route entry.
         """
         return pulumi.get(self, "nexthop_id")
 
     @nexthop_id.setter
-    def nexthop_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nexthopType")
-    def nexthop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nexthop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the next hop of the custom route entry. Valid values:
         - `Instance` (default): The ECS Instance.
@@ -306,55 +306,55 @@ class _VPCRouteEntryState:
         return pulumi.get(self, "nexthop_type")
 
     @nexthop_type.setter
-    def nexthop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nexthop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nexthop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="routeEntryName")
-    def route_entry_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_entry_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the route entry.
         """
         return pulumi.get(self, "route_entry_name")
 
     @route_entry_name.setter
-    def route_entry_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_entry_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_entry_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routePublishTargets")
-    def route_publish_targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]:
+    def route_publish_targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]:
         """
         Route publish status and publish target type See `route_publish_targets` below.
         """
         return pulumi.get(self, "route_publish_targets")
 
     @route_publish_targets.setter
-    def route_publish_targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]):
+    def route_publish_targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VPCRouteEntryRoutePublishTargetArgs']]]]):
         pulumi.set(self, "route_publish_targets", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routing table ID
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the route entry.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -364,14 +364,14 @@ class VPCRouteEntry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hops: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Route Entry resource.
@@ -510,14 +510,14 @@ class VPCRouteEntry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hops: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
-                 nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+                 nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -550,15 +550,15 @@ class VPCRouteEntry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_cidr_block: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hops: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
-            nexthop_id: Optional[pulumi.Input[_builtins.str]] = None,
-            nexthop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            route_entry_name: Optional[pulumi.Input[_builtins.str]] = None,
-            route_publish_targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'VPCRouteEntry':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_cidr_block: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hops: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryNextHopArgs', 'VPCRouteEntryNextHopArgsDict']]]]] = None,
+            nexthop_id: pulumi.Input[Optional[_builtins.str]] = None,
+            nexthop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            route_entry_name: pulumi.Input[Optional[_builtins.str]] = None,
+            route_publish_targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['VPCRouteEntryRoutePublishTargetArgs', 'VPCRouteEntryRoutePublishTargetArgsDict']]]]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'VPCRouteEntry':
         """
         Get an existing VPCRouteEntry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

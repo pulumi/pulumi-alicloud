@@ -45,7 +45,7 @@ class TemplateServiceArgs:
 @pulumi.input_type
 class _TemplateServiceState:
     def __init__(__self__, *,
-                 service_status: Optional[pulumi.Input[_builtins.int]] = None):
+                 service_status: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering TemplateService resources.
 
@@ -57,7 +57,7 @@ class _TemplateServiceState:
 
     @_builtins.property
     @pulumi.getter(name="serviceStatus")
-    def service_status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def service_status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Status of the quota template. Valid values:
         - `-1`: disabled.
@@ -65,7 +65,7 @@ class _TemplateServiceState:
         return pulumi.get(self, "service_status")
 
     @service_status.setter
-    def service_status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def service_status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "service_status", value)
 
 
@@ -75,7 +75,7 @@ class TemplateService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 service_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Quotas Template Service resource.
@@ -181,7 +181,7 @@ class TemplateService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 service_status: Optional[pulumi.Input[_builtins.int]] = None,
+                 service_status: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -204,7 +204,7 @@ class TemplateService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            service_status: Optional[pulumi.Input[_builtins.int]] = None) -> 'TemplateService':
+            service_status: pulumi.Input[Optional[_builtins.int]] = None) -> 'TemplateService':
         """
         Get an existing TemplateService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

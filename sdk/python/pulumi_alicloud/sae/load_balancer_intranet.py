@@ -23,7 +23,7 @@ class LoadBalancerIntranetArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[_builtins.str],
                  intranets: pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]],
-                 intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancerIntranet resource.
 
@@ -62,24 +62,24 @@ class LoadBalancerIntranetArgs:
 
     @_builtins.property
     @pulumi.getter(name="intranetSlbId")
-    def intranet_slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intranet_slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The intranet SLB ID.
         """
         return pulumi.get(self, "intranet_slb_id")
 
     @intranet_slb_id.setter
-    def intranet_slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intranet_slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intranet_slb_id", value)
 
 
 @pulumi.input_type
 class _LoadBalancerIntranetState:
     def __init__(__self__, *,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None):
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]] = None):
         """
         Input properties used for looking up and filtering LoadBalancerIntranet resources.
 
@@ -99,50 +99,50 @@ class _LoadBalancerIntranetState:
 
     @_builtins.property
     @pulumi.getter(name="appId")
-    def app_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target application ID that needs to be bound to the SLB.
         """
         return pulumi.get(self, "app_id")
 
     @app_id.setter
-    def app_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_id", value)
 
     @_builtins.property
     @pulumi.getter(name="intranetIp")
-    def intranet_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intranet_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use designated private network SLBs that have been purchased to support non-shared instances.
         """
         return pulumi.get(self, "intranet_ip")
 
     @intranet_ip.setter
-    def intranet_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intranet_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intranet_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="intranetSlbId")
-    def intranet_slb_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def intranet_slb_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The intranet SLB ID.
         """
         return pulumi.get(self, "intranet_slb_id")
 
     @intranet_slb_id.setter
-    def intranet_slb_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def intranet_slb_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "intranet_slb_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def intranets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]]:
+    def intranets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]]:
         """
         The bound private network SLB. See `intranet` below.
         """
         return pulumi.get(self, "intranets")
 
     @intranets.setter
-    def intranets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]]):
+    def intranets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerIntranetIntranetArgs']]]]):
         pulumi.set(self, "intranets", value)
 
 
@@ -152,9 +152,9 @@ class LoadBalancerIntranet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides an Alicloud Serverless App Engine (SAE) Application Load Balancer Attachment resource.
@@ -343,9 +343,9 @@ class LoadBalancerIntranet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 intranets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
+                 app_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -373,10 +373,10 @@ class LoadBalancerIntranet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_id: Optional[pulumi.Input[_builtins.str]] = None,
-            intranet_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            intranet_slb_id: Optional[pulumi.Input[_builtins.str]] = None,
-            intranets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None) -> 'LoadBalancerIntranet':
+            app_id: pulumi.Input[Optional[_builtins.str]] = None,
+            intranet_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            intranet_slb_id: pulumi.Input[Optional[_builtins.str]] = None,
+            intranets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerIntranetIntranetArgs', 'LoadBalancerIntranetIntranetArgsDict']]]]] = None) -> 'LoadBalancerIntranet':
         """
         Get an existing LoadBalancerIntranet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

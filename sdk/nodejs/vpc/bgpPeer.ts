@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     peeringSubnetMask: "255.255.255.252",
  *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
- *     vlanId: vlanId.id,
+ *     vlanId: Number(vlanId.id),
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
@@ -169,31 +169,31 @@ export interface BgpPeerState {
     /**
      * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      */
-    bfdMultiHop?: pulumi.Input<number>;
+    bfdMultiHop?: pulumi.Input<number | undefined>;
     /**
      * The ID of the BGP group.
      */
-    bgpGroupId?: pulumi.Input<string>;
+    bgpGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the BGP neighbor.
      */
-    bgpPeerName?: pulumi.Input<string>;
+    bgpPeerName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      */
-    enableBfd?: pulumi.Input<boolean>;
+    enableBfd?: pulumi.Input<boolean | undefined>;
     /**
      * The IP version.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the BGP peer.
      */
-    peerIpAddress?: pulumi.Input<string>;
+    peerIpAddress?: pulumi.Input<string | undefined>;
     /**
      * Status of BGP neighbors.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,7 +203,7 @@ export interface BgpPeerArgs {
     /**
      * The BFD hop count. Valid values: `1` to `255`. **NOTE:** The attribute is valid when the attribute `enableBfd` is `true`. The parameter specifies the maximum number of network devices that a packet can traverse from the source to the destination. You can set a proper value based on the factors that affect the physical connection.
      */
-    bfdMultiHop?: pulumi.Input<number>;
+    bfdMultiHop?: pulumi.Input<number | undefined>;
     /**
      * The ID of the BGP group.
      */
@@ -211,13 +211,13 @@ export interface BgpPeerArgs {
     /**
      * Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
      */
-    enableBfd?: pulumi.Input<boolean>;
+    enableBfd?: pulumi.Input<boolean | undefined>;
     /**
      * The IP version.
      */
-    ipVersion?: pulumi.Input<string>;
+    ipVersion?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the BGP peer.
      */
-    peerIpAddress?: pulumi.Input<string>;
+    peerIpAddress?: pulumi.Input<string | undefined>;
 }

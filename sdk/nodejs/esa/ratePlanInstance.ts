@@ -172,44 +172,44 @@ export interface RatePlanInstanceState {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
-    coverage?: pulumi.Input<string>;
+    coverage?: pulumi.Input<string | undefined>;
     /**
      * The time when the plan was purchased.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The instance status.
      */
-    instanceStatus?: pulumi.Input<string>;
+    instanceStatus?: pulumi.Input<string | undefined>;
     /**
      * The billing method. Valid values:
      * - `Subscription`: subscription.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Subscription period (in months).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Package name.  
      *
      * For China site accounts:
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The plan status.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
@@ -217,7 +217,7 @@ export interface RatePlanInstanceState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -229,32 +229,32 @@ export interface RatePlanInstanceArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Auto-renewal:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The service locations for the websites that can be associated with the plan. Multiple values are separated by commas (,). Valid values:
      */
-    coverage?: pulumi.Input<string>;
+    coverage?: pulumi.Input<string | undefined>;
     /**
      * The billing method. Valid values:
      * - `Subscription`: subscription.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Subscription period (in months).
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Package name.  
      *
      * For China site accounts:
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * The DNS setup option for the website. Valid values:
      * - `NS`
@@ -262,5 +262,5 @@ export interface RatePlanInstanceArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

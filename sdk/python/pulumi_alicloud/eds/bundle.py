@@ -23,11 +23,11 @@ class BundleArgs:
                  image_id: pulumi.Input[_builtins.str],
                  root_disk_size_gib: pulumi.Input[_builtins.int],
                  user_disk_size_gibs: pulumi.Input[Sequence[pulumi.Input[_builtins.int]]],
-                 bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Bundle resource.
 
@@ -110,77 +110,77 @@ class BundleArgs:
 
     @_builtins.property
     @pulumi.getter(name="bundleName")
-    def bundle_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bundle.
         """
         return pulumi.get(self, "bundle_name")
 
     @bundle_name.setter
-    def bundle_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the bundle.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDiskPerformanceLevel")
-    def root_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "root_disk_performance_level")
 
     @root_disk_performance_level.setter
-    def root_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="userDiskPerformanceLevel")
-    def user_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "user_disk_performance_level")
 
     @user_disk_performance_level.setter
-    def user_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_disk_performance_level", value)
 
 
 @pulumi.input_type
 class _BundleState:
     def __init__(__self__, *,
-                 bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gibs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
         """
         Input properties used for looking up and filtering Bundle resources.
 
@@ -217,103 +217,103 @@ class _BundleState:
 
     @_builtins.property
     @pulumi.getter(name="bundleName")
-    def bundle_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bundle_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bundle.
         """
         return pulumi.get(self, "bundle_name")
 
     @bundle_name.setter
-    def bundle_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bundle_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bundle_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the bundle.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="desktopType")
-    def desktop_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desktop_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desktop type. You can call `eds_get_desktop_types` to query desktop type.
         """
         return pulumi.get(self, "desktop_type")
 
     @desktop_type.setter
-    def desktop_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desktop_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desktop_type", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The language. Valid values: `zh-CN`, `zh-HK`, `en-US`, `ja-JP`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDiskPerformanceLevel")
-    def root_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def root_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "root_disk_performance_level")
 
     @root_disk_performance_level.setter
-    def root_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def root_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "root_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="rootDiskSizeGib")
-    def root_disk_size_gib(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def root_disk_size_gib(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The root disk size gib.
         """
         return pulumi.get(self, "root_disk_size_gib")
 
     @root_disk_size_gib.setter
-    def root_disk_size_gib(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def root_disk_size_gib(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "root_disk_size_gib", value)
 
     @_builtins.property
     @pulumi.getter(name="userDiskPerformanceLevel")
-    def user_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user disk performance level. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
         """
         return pulumi.get(self, "user_disk_performance_level")
 
     @user_disk_performance_level.setter
-    def user_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="userDiskSizeGibs")
-    def user_disk_size_gibs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def user_disk_size_gibs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The size of the data disk. Currently, only one data disk can be set. Unit: GiB.
         - The size of the data disk that supports the setting corresponds to the specification. For more information, see [Overview of Desktop Specifications](https://help.aliyun.com/document_detail/188609.htm?spm=a2c4g.11186623.0.0.6406297bE0U5DG).
@@ -322,7 +322,7 @@ class _BundleState:
         return pulumi.get(self, "user_disk_size_gibs")
 
     @user_disk_size_gibs.setter
-    def user_disk_size_gibs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def user_disk_size_gibs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "user_disk_size_gibs", value)
 
 
@@ -332,15 +332,15 @@ class Bundle(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gibs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         """
         Provides a ECD Bundle resource.
@@ -471,15 +471,15 @@ class Bundle(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_disk_size_gibs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -516,15 +516,15 @@ class Bundle(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bundle_name: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            desktop_type: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            root_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            root_disk_size_gib: Optional[pulumi.Input[_builtins.int]] = None,
-            user_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            user_disk_size_gibs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'Bundle':
+            bundle_name: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            desktop_type: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            root_disk_size_gib: pulumi.Input[Optional[_builtins.int]] = None,
+            user_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            user_disk_size_gibs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None) -> 'Bundle':
         """
         Get an existing Bundle resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

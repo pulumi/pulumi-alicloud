@@ -148,11 +148,11 @@ export interface CustomDeploymentSetState {
     /**
      * The name of the resource
      */
-    customDeploymentSetName?: pulumi.Input<string>;
+    customDeploymentSetName?: pulumi.Input<string | undefined>;
     /**
      * Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
      *
@@ -160,7 +160,7 @@ export interface CustomDeploymentSetState {
      *
      * > **NOTE:**  This parameter takes effect only when 'Strategy = AvailabilityGroup.
      */
-    groupCount?: pulumi.Input<number>;
+    groupCount?: pulumi.Input<number | undefined>;
     /**
      * After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
      * - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
@@ -168,11 +168,11 @@ export interface CustomDeploymentSetState {
      *
      * Default value: CancelMembershipAndStart.
      */
-    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Deployment strategy. Value range:
      * - `Availability`: High Availability policy.
@@ -181,7 +181,7 @@ export interface CustomDeploymentSetState {
      *
      * Default value: Availability.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -191,11 +191,11 @@ export interface CustomDeploymentSetArgs {
     /**
      * The name of the resource
      */
-    customDeploymentSetName?: pulumi.Input<string>;
+    customDeploymentSetName?: pulumi.Input<string | undefined>;
     /**
      * Deployment set description information. It must be 2 to 256 characters in length and cannot start with http:// or https.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Set the number of groups for the deployment set group high availability policy. Value range: 1~7.
      *
@@ -203,7 +203,7 @@ export interface CustomDeploymentSetArgs {
      *
      * > **NOTE:**  This parameter takes effect only when 'Strategy = AvailabilityGroup.
      */
-    groupCount?: pulumi.Input<number>;
+    groupCount?: pulumi.Input<number | undefined>;
     /**
      * After the instance in the deployment set is down and migrated, there is no emergency solution for the scattered instance inventory. Value range:
      * - `CancelMembershipAndStart`: removes the instance from the deployment set and starts the instance immediately after the instance is down and migrated.
@@ -211,7 +211,7 @@ export interface CustomDeploymentSetArgs {
      *
      * Default value: CancelMembershipAndStart.
      */
-    onUnableToRedeployFailedInstance?: pulumi.Input<string>;
+    onUnableToRedeployFailedInstance?: pulumi.Input<string | undefined>;
     /**
      * Deployment strategy. Value range:
      * - `Availability`: High Availability policy.
@@ -220,5 +220,5 @@ export interface CustomDeploymentSetArgs {
      *
      * Default value: Availability.
      */
-    strategy?: pulumi.Input<string>;
+    strategy?: pulumi.Input<string | undefined>;
 }

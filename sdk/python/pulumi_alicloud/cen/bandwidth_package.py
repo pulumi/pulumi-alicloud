@@ -20,16 +20,16 @@ __all__ = ['BandwidthPackageArgs', 'BandwidthPackage']
 class BandwidthPackageArgs:
     def __init__(__self__, *,
                  bandwidth: pulumi.Input[_builtins.int],
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_a_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_b_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a BandwidthPackage resource.
 
@@ -95,7 +95,7 @@ class BandwidthPackageArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
 
@@ -106,111 +106,111 @@ class BandwidthPackageArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="cenBandwidthPackageName")
-    def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_bandwidth_package_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bandwidth package. Defaults to null.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
     @cen_bandwidth_package_name.setter
-    def cen_bandwidth_package_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_bandwidth_package_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_bandwidth_package_name", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
     @_utilities.deprecated("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the bandwidth package. Default to null.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionAId")
-    def geographic_region_a_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geographic_region_a_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         """
         return pulumi.get(self, "geographic_region_a_id")
 
     @geographic_region_a_id.setter
-    def geographic_region_a_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geographic_region_a_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geographic_region_a_id", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionBId")
-    def geographic_region_b_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geographic_region_b_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         """
         return pulumi.get(self, "geographic_region_b_id")
 
     @geographic_region_b_id.setter
-    def geographic_region_b_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geographic_region_b_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geographic_region_b_id", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionIds")
     @_utilities.deprecated("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
-    def geographic_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def geographic_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
         return pulumi.get(self, "geographic_region_ids")
 
     @geographic_region_ids.setter
-    def geographic_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def geographic_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "geographic_region_ids", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -218,26 +218,26 @@ class BandwidthPackageArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
 
 @pulumi.input_type
 class _BandwidthPackageState:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_a_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_b_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering BandwidthPackage resources.
 
@@ -298,7 +298,7 @@ class _BandwidthPackageState:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable auto-renewal for the bandwidth package. Only applicable when `payment_type` is `PrePaid`. Valid values: `true`, `false`. Default to `false`.
 
@@ -309,135 +309,135 @@ class _BandwidthPackageState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def bandwidth(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The bandwidth in Mbps of the bandwidth package. Cannot be less than 2Mbps.
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
-    def bandwidth(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth", value)
 
     @_builtins.property
     @pulumi.getter(name="cenBandwidthPackageName")
-    def cen_bandwidth_package_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cen_bandwidth_package_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bandwidth package. Defaults to null.
         """
         return pulumi.get(self, "cen_bandwidth_package_name")
 
     @cen_bandwidth_package_name.setter
-    def cen_bandwidth_package_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cen_bandwidth_package_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cen_bandwidth_package_name", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
     @_utilities.deprecated("""Field 'charge_type' has been deprecated from version 1.98.0. Use 'payment_type' and instead.""")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `charge_type` has been deprecated from version 1.97.0. Use `payment_type` and instead.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the bandwidth package. Default to null.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expiredTime")
-    def expired_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expired_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time of the bandwidth package to expire.
         """
         return pulumi.get(self, "expired_time")
 
     @expired_time.setter
-    def expired_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expired_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expired_time", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionAId")
-    def geographic_region_a_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geographic_region_a_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The area A to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         """
         return pulumi.get(self, "geographic_region_a_id")
 
     @geographic_region_a_id.setter
-    def geographic_region_a_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geographic_region_a_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geographic_region_a_id", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionBId")
-    def geographic_region_b_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def geographic_region_b_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The area B to which the network instance belongs. Valid values: `China` | `North-America` | `Asia-Pacific` | `Europe` | `Australia`.
         """
         return pulumi.get(self, "geographic_region_b_id")
 
     @geographic_region_b_id.setter
-    def geographic_region_b_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def geographic_region_b_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "geographic_region_b_id", value)
 
     @_builtins.property
     @pulumi.getter(name="geographicRegionIds")
     @_utilities.deprecated("""Field 'geographic_region_ids' has been deprecated from version 1.98.0. Use 'geographic_region_a_id' and 'geographic_region_b_id' instead.""")
-    def geographic_region_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def geographic_region_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Field `geographic_region_ids` has been deprecated from version 1.97.0. Use `geographic_region_a_id` and `geographic_region_b_id` instead.
         """
         return pulumi.get(self, "geographic_region_ids")
 
     @geographic_region_ids.setter
-    def geographic_region_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def geographic_region_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "geographic_region_ids", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'name' has been deprecated from version 1.98.0. Use 'cen_bandwidth_package_name' and instead.""")
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
         > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -445,19 +445,19 @@ class _BandwidthPackageState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The association status of the bandwidth package.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -467,17 +467,17 @@ class BandwidthPackage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_a_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_b_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a CEN bandwidth package resource. The CEN bandwidth package is an abstracted object that includes an interconnection bandwidth and interconnection areas. To buy a bandwidth package, you must specify the areas to connect. An area consists of one or more Alibaba Cloud regions. The areas in CEN include Mainland China, Asia Pacific, North America, and Europe.
@@ -597,17 +597,17 @@ class BandwidthPackage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-                 cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_a_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_b_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+                 cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -642,19 +642,19 @@ class BandwidthPackage(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            bandwidth: Optional[pulumi.Input[_builtins.int]] = None,
-            cen_bandwidth_package_name: Optional[pulumi.Input[_builtins.str]] = None,
-            charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            expired_time: Optional[pulumi.Input[_builtins.str]] = None,
-            geographic_region_a_id: Optional[pulumi.Input[_builtins.str]] = None,
-            geographic_region_b_id: Optional[pulumi.Input[_builtins.str]] = None,
-            geographic_region_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'BandwidthPackage':
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            bandwidth: pulumi.Input[Optional[_builtins.int]] = None,
+            cen_bandwidth_package_name: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            expired_time: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_a_id: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_b_id: pulumi.Input[Optional[_builtins.str]] = None,
+            geographic_region_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'BandwidthPackage':
         """
         Get an existing BandwidthPackage resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

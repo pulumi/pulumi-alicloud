@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultTransportLayerApplication = new alicloud.esa.TransportLayerApplication("default", {
  *     recordName: "resource2.gositecdn.cn",
- *     siteId: _default.then(_default => _default.sites?.[0]?.siteId),
+ *     siteId: output(_default.then(_default => _default.sites?.[0]?.siteId)).apply(x =>String(x)),
  *     ipAccessRule: "off",
  *     ipv6: "off",
  *     crossBorderOptimization: "off",
@@ -177,35 +177,35 @@ export interface TransportLayerApplicationState {
     /**
      * Layer 4 application ID.
      */
-    applicationId?: pulumi.Input<number>;
+    applicationId?: pulumi.Input<number | undefined>;
     /**
      * Whether to enable China mainland network access optimization, default is disabled. Value range:
      */
-    crossBorderOptimization?: pulumi.Input<string>;
+    crossBorderOptimization?: pulumi.Input<string | undefined>;
     /**
      * IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
      */
-    ipAccessRule?: pulumi.Input<string>;
+    ipAccessRule?: pulumi.Input<string | undefined>;
     /**
      * IPv6 switch.
      */
-    ipv6?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string | undefined>;
     /**
      * Domain name of the transport layer application
      */
-    recordName?: pulumi.Input<string>;
+    recordName?: pulumi.Input<string | undefined>;
     /**
      * The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.esa.TransportLayerApplicationRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.esa.TransportLayerApplicationRule>[] | undefined>;
     /**
      * Site ID.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Status of the transport layer application, modification and deletion are not allowed.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -215,15 +215,15 @@ export interface TransportLayerApplicationArgs {
     /**
      * Whether to enable China mainland network access optimization, default is disabled. Value range:
      */
-    crossBorderOptimization?: pulumi.Input<string>;
+    crossBorderOptimization?: pulumi.Input<string | undefined>;
     /**
      * IP access rule switch. When enabled, the WAF's IP access rules apply to the transport layer application.
      */
-    ipAccessRule?: pulumi.Input<string>;
+    ipAccessRule?: pulumi.Input<string | undefined>;
     /**
      * IPv6 switch.
      */
-    ipv6?: pulumi.Input<string>;
+    ipv6?: pulumi.Input<string | undefined>;
     /**
      * Domain name of the transport layer application
      */

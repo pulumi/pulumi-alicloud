@@ -21,9 +21,9 @@ class EnterpriseProxyAccessArgs:
     def __init__(__self__, *,
                  proxy_id: pulumi.Input[_builtins.str],
                  user_id: pulumi.Input[_builtins.str],
-                 indep_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 indep_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EnterpriseProxyAccess resource.
 
@@ -68,56 +68,56 @@ class EnterpriseProxyAccessArgs:
 
     @_builtins.property
     @pulumi.getter(name="indepAccount")
-    def indep_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def indep_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database account.
         """
         return pulumi.get(self, "indep_account")
 
     @indep_account.setter
-    def indep_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def indep_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "indep_account", value)
 
     @_builtins.property
     @pulumi.getter(name="indepPassword")
-    def indep_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def indep_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database password.
         """
         return pulumi.get(self, "indep_password")
 
     @indep_password.setter
-    def indep_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def indep_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "indep_password", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAccessId")
-    def proxy_access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
         """
         return pulumi.get(self, "proxy_access_id")
 
     @proxy_access_id.setter
-    def proxy_access_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_access_id", value)
 
 
 @pulumi.input_type
 class _EnterpriseProxyAccessState:
     def __init__(__self__, *,
-                 access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_secret: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 indep_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 indep_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin_info: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_secret: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin_info: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EnterpriseProxyAccess resources.
 
@@ -162,76 +162,76 @@ class _EnterpriseProxyAccessState:
 
     @_builtins.property
     @pulumi.getter(name="accessId")
-    def access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authorized account of the security agent.
         """
         return pulumi.get(self, "access_id")
 
     @access_id.setter
-    def access_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accessSecret")
-    def access_secret(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_secret(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Secure access agent authorization password.
         """
         return pulumi.get(self, "access_secret")
 
     @access_secret.setter
-    def access_secret(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_secret(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_secret", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="indepAccount")
-    def indep_account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def indep_account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database account.
         """
         return pulumi.get(self, "indep_account")
 
     @indep_account.setter
-    def indep_account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def indep_account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "indep_account", value)
 
     @_builtins.property
     @pulumi.getter(name="indepPassword")
-    def indep_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def indep_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database password.
         """
         return pulumi.get(self, "indep_password")
 
     @indep_password.setter
-    def indep_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def indep_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "indep_password", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="originInfo")
-    def origin_info(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin_info(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source information of the security access agent permission is enabled, and the return value is as follows:
         * **Owner Authorization**: The UID of the owner in parentheses.
@@ -240,67 +240,67 @@ class _EnterpriseProxyAccessState:
         return pulumi.get(self, "origin_info")
 
     @origin_info.setter
-    def origin_info(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin_info(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin_info", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyAccessId")
-    def proxy_access_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_access_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
         """
         return pulumi.get(self, "proxy_access_id")
 
     @proxy_access_id.setter
-    def proxy_access_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_access_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_access_id", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyId")
-    def proxy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proxy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security agent.
         """
         return pulumi.get(self, "proxy_id")
 
     @proxy_id.setter
-    def proxy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proxy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proxy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user ID.
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User nickname.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
     @_builtins.property
     @pulumi.getter(name="userUid")
-    def user_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User UID.
         """
         return pulumi.get(self, "user_uid")
 
     @user_uid.setter
-    def user_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_uid", value)
 
 
@@ -310,11 +310,11 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 indep_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 indep_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DMS Enterprise Proxy Access resource.
@@ -413,11 +413,11 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 indep_account: Optional[pulumi.Input[_builtins.str]] = None,
-                 indep_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 proxy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+                 indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -455,18 +455,18 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_id: Optional[pulumi.Input[_builtins.str]] = None,
-            access_secret: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            indep_account: Optional[pulumi.Input[_builtins.str]] = None,
-            indep_password: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            origin_info: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_access_id: Optional[pulumi.Input[_builtins.str]] = None,
-            proxy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None,
-            user_uid: Optional[pulumi.Input[_builtins.str]] = None) -> 'EnterpriseProxyAccess':
+            access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            access_secret: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            indep_account: pulumi.Input[Optional[_builtins.str]] = None,
+            indep_password: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            origin_info: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_access_id: pulumi.Input[Optional[_builtins.str]] = None,
+            proxy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_uid: pulumi.Input[Optional[_builtins.str]] = None) -> 'EnterpriseProxyAccess':
         """
         Get an existing EnterpriseProxyAccess resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

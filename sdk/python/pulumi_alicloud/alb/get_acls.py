@@ -202,14 +202,14 @@ def get_acls(acl_ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         resource_group_id=pulumi.get(__ret__, 'resource_group_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                    acl_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                    ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                    name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    resource_group_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                    status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_acls_output(acl_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                    acl_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                    ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                    name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    resource_group_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                    status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAclsResult]:
     """
     This data source provides the Application Load Balancer (ALB) Acls of the current Alibaba Cloud user.

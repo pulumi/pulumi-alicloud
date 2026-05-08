@@ -188,13 +188,13 @@ def get_log_backups(db_instance_id: Optional[_builtins.str] = None,
         page_number=pulumi.get(__ret__, 'page_number'),
         page_size=pulumi.get(__ret__, 'page_size'),
         start_time=pulumi.get(__ret__, 'start_time'))
-def get_log_backups_output(db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           end_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                           output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                           page_number: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           page_size: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                           start_time: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_log_backups_output(db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           end_time: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                           output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                           page_number: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                           page_size: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                           start_time: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogBackupsResult]:
     """
     This data source provides Gpdb Logbackup available to the user.[What is Log Backup](https://www.alibabacloud.com/help/en/)

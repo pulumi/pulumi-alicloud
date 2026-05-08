@@ -172,19 +172,19 @@ export interface VpcAccessState {
     /**
      * The ID of an ECS or SLB instance in the VPC.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The name of the authorization. The name must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number that corresponds to the instance.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,7 +198,7 @@ export interface VpcAccessArgs {
     /**
      * The name of the authorization. The name must be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The port number that corresponds to the instance.
      */

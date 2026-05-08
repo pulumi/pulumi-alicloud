@@ -20,7 +20,7 @@ __all__ = ['WafDomainArgs', 'WafDomain']
 class WafDomainArgs:
     def __init__(__self__, *,
                  domain_name: pulumi.Input[_builtins.str],
-                 client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a WafDomain resource.
 
@@ -45,22 +45,22 @@ class WafDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="clientIpTag")
-    def client_ip_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client ip tag.
         """
         return pulumi.get(self, "client_ip_tag")
 
     @client_ip_tag.setter
-    def client_ip_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip_tag", value)
 
 
 @pulumi.input_type
 class _WafDomainState:
     def __init__(__self__, *,
-                 client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering WafDomain resources.
 
@@ -74,26 +74,26 @@ class _WafDomainState:
 
     @_builtins.property
     @pulumi.getter(name="clientIpTag")
-    def client_ip_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_ip_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The client ip tag.
         """
         return pulumi.get(self, "client_ip_tag")
 
     @client_ip_tag.setter
-    def client_ip_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_ip_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_ip_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The accelerated domain name.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_name", value)
 
 
@@ -103,8 +103,8 @@ class WafDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DCDN Waf Domain resource.
@@ -230,8 +230,8 @@ class WafDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -255,8 +255,8 @@ class WafDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_ip_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'WafDomain':
+            client_ip_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'WafDomain':
         """
         Get an existing WafDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

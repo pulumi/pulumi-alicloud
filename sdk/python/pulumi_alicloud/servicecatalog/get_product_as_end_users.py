@@ -156,11 +156,11 @@ def get_product_as_end_users(ids: Optional[Sequence[_builtins.str]] = None,
         sort_by=pulumi.get(__ret__, 'sort_by'),
         sort_order=pulumi.get(__ret__, 'sort_order'),
         users=pulumi.get(__ret__, 'users'))
-def get_product_as_end_users_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                    name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    sort_by: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    sort_order: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_product_as_end_users_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                    name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    sort_by: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    sort_order: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProductAsEndUsersResult]:
     """
     > **DEPRECATED:** It has been deprecated from version `1.197.0`.

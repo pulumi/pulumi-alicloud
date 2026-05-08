@@ -168,39 +168,39 @@ export interface WebLockConfigState {
     /**
      * Protection mode. Value:-**block**: Intercept-**audit**: Alarm
      */
-    defenceMode?: pulumi.Input<string>;
+    defenceMode?: pulumi.Input<string | undefined>;
     /**
      * Specify the protection directory.
      */
-    dir?: pulumi.Input<string>;
+    dir?: pulumi.Input<string | undefined>;
     /**
      * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveDir?: pulumi.Input<string>;
+    exclusiveDir?: pulumi.Input<string | undefined>;
     /**
      * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveFile?: pulumi.Input<string>;
+    exclusiveFile?: pulumi.Input<string | undefined>;
     /**
      * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveFileType?: pulumi.Input<string>;
+    exclusiveFileType?: pulumi.Input<string | undefined>;
     /**
      * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      */
-    inclusiveFileType?: pulumi.Input<string>;
+    inclusiveFileType?: pulumi.Input<string | undefined>;
     /**
      * The local backup path is used to protect the safe backup of the Directory.
      */
-    localBackupDir?: pulumi.Input<string>;
+    localBackupDir?: pulumi.Input<string | undefined>;
     /**
      * Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,19 +218,19 @@ export interface WebLockConfigArgs {
     /**
      * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveDir?: pulumi.Input<string>;
+    exclusiveDir?: pulumi.Input<string | undefined>;
     /**
      * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveFile?: pulumi.Input<string>;
+    exclusiveFile?: pulumi.Input<string | undefined>;
     /**
      * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      */
-    exclusiveFileType?: pulumi.Input<string>;
+    exclusiveFileType?: pulumi.Input<string | undefined>;
     /**
      * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      */
-    inclusiveFileType?: pulumi.Input<string>;
+    inclusiveFileType?: pulumi.Input<string | undefined>;
     /**
      * The local backup path is used to protect the safe backup of the Directory.
      */

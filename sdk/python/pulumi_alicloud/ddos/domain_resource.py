@@ -26,20 +26,20 @@ class DomainResourceArgs:
                  proxy_types: pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]],
                  real_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  rs_type: pulumi.Input[_builtins.int],
-                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ext: Optional[pulumi.Input[_builtins.str]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DomainResource resource.
 
@@ -198,7 +198,7 @@ class DomainResourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="aiMode")
-    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the mode of the Intelligent Protection policy.
         - watch: the Warning mode
@@ -207,12 +207,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "ai_mode")
 
     @ai_mode.setter
-    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="aiTemplate")
-    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the level of the Intelligent Protection policy.
         - level30: the Low level
@@ -222,24 +222,24 @@ class DomainResourceArgs:
         return pulumi.get(self, "ai_template")
 
     @ai_template.setter
-    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_template", value)
 
     @_builtins.property
     @pulumi.getter(name="blackLists")
-    def black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def black_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ip blacklist
         """
         return pulumi.get(self, "black_lists")
 
     @black_lists.setter
-    def black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def black_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "black_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="bwListEnable")
-    def bw_list_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bw_list_enable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the blacklist and whitelist feature. Valid values:
         - 0: Disabled
@@ -248,12 +248,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "bw_list_enable")
 
     @bw_list_enable.setter
-    def bw_list_enable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bw_list_enable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bw_list_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ccGlobalSwitch")
-    def cc_global_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cc_global_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CC safety protection switch.
         - 0: Disabled
@@ -262,12 +262,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "cc_global_switch")
 
     @cc_global_switch.setter
-    def cc_global_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cc_global_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cc_global_switch", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 
@@ -276,12 +276,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="certIdentifier")
-    def cert_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the certificate.
 
@@ -290,12 +290,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "cert_identifier")
 
     @cert_identifier.setter
-    def cert_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 
@@ -304,24 +304,24 @@ class DomainResourceArgs:
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certRegion")
-    def cert_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         """
         return pulumi.get(self, "cert_region")
 
     @cert_region.setter
-    def cert_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_region", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         Take note of the following items:
@@ -334,12 +334,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsExt")
-    def https_ext(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_ext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 
@@ -358,12 +358,12 @@ class DomainResourceArgs:
         return pulumi.get(self, "https_ext")
 
     @https_ext.setter
-    def https_ext(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_ext(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_ext", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
 
@@ -372,57 +372,57 @@ class DomainResourceArgs:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="ocspEnabled")
-    def ocsp_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocsp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the OCSP feature. Valid values:
         """
         return pulumi.get(self, "ocsp_enabled")
 
     @ocsp_enabled.setter
-    def ocsp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocsp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocsp_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteLists")
-    def white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP whitelist list.
         """
         return pulumi.get(self, "white_lists")
 
     @white_lists.setter
-    def white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "white_lists", value)
 
 
 @pulumi.input_type
 class _DomainResourceState:
     def __init__(__self__, *,
-                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 cname: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ext: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rs_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 cname: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainResource resources.
 
@@ -527,7 +527,7 @@ class _DomainResourceState:
 
     @_builtins.property
     @pulumi.getter(name="aiMode")
-    def ai_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the mode of the Intelligent Protection policy.
         - watch: the Warning mode
@@ -536,12 +536,12 @@ class _DomainResourceState:
         return pulumi.get(self, "ai_mode")
 
     @ai_mode.setter
-    def ai_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="aiTemplate")
-    def ai_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ai_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         the level of the Intelligent Protection policy.
         - level30: the Low level
@@ -551,24 +551,24 @@ class _DomainResourceState:
         return pulumi.get(self, "ai_template")
 
     @ai_template.setter
-    def ai_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ai_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ai_template", value)
 
     @_builtins.property
     @pulumi.getter(name="blackLists")
-    def black_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def black_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         ip blacklist
         """
         return pulumi.get(self, "black_lists")
 
     @black_lists.setter
-    def black_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def black_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "black_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="bwListEnable")
-    def bw_list_enable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bw_list_enable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The status of the blacklist and whitelist feature. Valid values:
         - 0: Disabled
@@ -577,12 +577,12 @@ class _DomainResourceState:
         return pulumi.get(self, "bw_list_enable")
 
     @bw_list_enable.setter
-    def bw_list_enable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bw_list_enable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bw_list_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="ccGlobalSwitch")
-    def cc_global_switch(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cc_global_switch(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CC safety protection switch.
         - 0: Disabled
@@ -591,12 +591,12 @@ class _DomainResourceState:
         return pulumi.get(self, "cc_global_switch")
 
     @cc_global_switch.setter
-    def cc_global_switch(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cc_global_switch(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cc_global_switch", value)
 
     @_builtins.property
     @pulumi.getter
-    def cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key of the certificate that you want to associate. This parameter must be used together with the CertName and Cert parameters.
 
@@ -605,12 +605,12 @@ class _DomainResourceState:
         return pulumi.get(self, "cert")
 
     @cert.setter
-    def cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert", value)
 
     @_builtins.property
     @pulumi.getter(name="certIdentifier")
-    def cert_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the certificate.
 
@@ -619,12 +619,12 @@ class _DomainResourceState:
         return pulumi.get(self, "cert_identifier")
 
     @cert_identifier.setter
-    def cert_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="certName")
-    def cert_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key of the certificate that you want to associate. This parameter must be used together with the CertName and Key parameters.
 
@@ -633,36 +633,36 @@ class _DomainResourceState:
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
-    def cert_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_name", value)
 
     @_builtins.property
     @pulumi.getter(name="certRegion")
-    def cert_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region of the certificate. `cn-hangzhou` and `ap-southeast-1` are supported. The default value is `cn-hangzhou`.
         """
         return pulumi.get(self, "cert_region")
 
     @cert_region.setter
-    def cert_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_region", value)
 
     @_builtins.property
     @pulumi.getter
-    def cname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CNAME address to query.
         """
         return pulumi.get(self, "cname")
 
     @cname.setter
-    def cname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cname", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaders")
-    def custom_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
         Take note of the following items:
@@ -675,12 +675,12 @@ class _DomainResourceState:
         return pulumi.get(self, "custom_headers")
 
     @custom_headers.setter
-    def custom_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name for which you want to configure the Static Page Caching policy.
 
@@ -689,12 +689,12 @@ class _DomainResourceState:
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="httpsExt")
-    def https_ext(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def https_ext(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The advanced HTTPS settings. This parameter takes effect only when the value of the `ProxyType` parameter includes `https`. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 
@@ -713,24 +713,24 @@ class _DomainResourceState:
         return pulumi.get(self, "https_ext")
 
     @https_ext.setter
-    def https_ext(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def https_ext(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "https_ext", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         InstanceIds
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The globally unique ID of the certificate. The value is in the "Certificate ID-cn-hangzhou" format. For example, if the ID of the certificate is 123, the value of the CertIdentifier parameter is 123-cn-hangzhou.
 
@@ -739,67 +739,67 @@ class _DomainResourceState:
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key", value)
 
     @_builtins.property
     @pulumi.getter(name="ocspEnabled")
-    def ocsp_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ocsp_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the OCSP feature. Valid values:
         """
         return pulumi.get(self, "ocsp_enabled")
 
     @ocsp_enabled.setter
-    def ocsp_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ocsp_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ocsp_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="proxyTypes")
-    def proxy_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]:
+    def proxy_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]:
         """
         Protocol type and port number information. See `proxy_types` below.
         """
         return pulumi.get(self, "proxy_types")
 
     @proxy_types.setter
-    def proxy_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]):
+    def proxy_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DomainResourceProxyTypeArgs']]]]):
         pulumi.set(self, "proxy_types", value)
 
     @_builtins.property
     @pulumi.getter(name="realServers")
-    def real_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def real_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Server address information of the source station.
         """
         return pulumi.get(self, "real_servers")
 
     @real_servers.setter
-    def real_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def real_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "real_servers", value)
 
     @_builtins.property
     @pulumi.getter(name="rsType")
-    def rs_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rs_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The address type of the origin server. Valid values:
         """
         return pulumi.get(self, "rs_type")
 
     @rs_type.setter
-    def rs_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rs_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rs_type", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteLists")
-    def white_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def white_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         IP whitelist list.
         """
         return pulumi.get(self, "white_lists")
 
     @white_lists.setter
-    def white_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def white_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "white_lists", value)
 
 
@@ -809,25 +809,25 @@ class DomainResource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ext: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rs_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Ddos Coo Domain Resource resource.
@@ -1027,25 +1027,25 @@ class DomainResource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 ai_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
-                 cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 https_ext: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 key: Optional[pulumi.Input[_builtins.str]] = None,
-                 ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
-                 real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rs_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+                 cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 key: pulumi.Input[Optional[_builtins.str]] = None,
+                 ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+                 real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1097,26 +1097,26 @@ class DomainResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ai_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            ai_template: Optional[pulumi.Input[_builtins.str]] = None,
-            black_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            bw_list_enable: Optional[pulumi.Input[_builtins.int]] = None,
-            cc_global_switch: Optional[pulumi.Input[_builtins.str]] = None,
-            cert: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_region: Optional[pulumi.Input[_builtins.str]] = None,
-            cname: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_headers: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            https_ext: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            key: Optional[pulumi.Input[_builtins.str]] = None,
-            ocsp_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            proxy_types: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
-            real_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rs_type: Optional[pulumi.Input[_builtins.int]] = None,
-            white_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainResource':
+            ai_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            ai_template: pulumi.Input[Optional[_builtins.str]] = None,
+            black_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            bw_list_enable: pulumi.Input[Optional[_builtins.int]] = None,
+            cc_global_switch: pulumi.Input[Optional[_builtins.str]] = None,
+            cert: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_region: pulumi.Input[Optional[_builtins.str]] = None,
+            cname: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            https_ext: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            key: pulumi.Input[Optional[_builtins.str]] = None,
+            ocsp_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            proxy_types: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DomainResourceProxyTypeArgs', 'DomainResourceProxyTypeArgsDict']]]]] = None,
+            real_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rs_type: pulumi.Input[Optional[_builtins.int]] = None,
+            white_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainResource':
         """
         Get an existing DomainResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,17 +20,17 @@ __all__ = ['HadoopDataSourceArgs', 'HadoopDataSource']
 class HadoopDataSourceArgs:
     def __init__(__self__, *,
                  db_instance_id: pulumi.Input[_builtins.str],
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 emr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_core_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_create_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_hosts_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 hdfs_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_reduce_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarn_conf: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarn_conf: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HadoopDataSource resource.
 
@@ -93,31 +93,31 @@ class HadoopDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataSourceDescription")
-    def data_source_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Description
         """
         return pulumi.get(self, "data_source_description")
 
     @data_source_description.setter
-    def data_source_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the data source. Valid values:
 
@@ -130,36 +130,36 @@ class HadoopDataSourceArgs:
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="emrInstanceId")
-    def emr_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def emr_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Emr instance.
         """
         return pulumi.get(self, "emr_instance_id")
 
     @emr_instance_id.setter
-    def emr_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def emr_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "emr_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopCoreConf")
-    def hadoop_core_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_core_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop core-site.xml file.
         """
         return pulumi.get(self, "hadoop_core_conf")
 
     @hadoop_core_conf.setter
-    def hadoop_core_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_core_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_core_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopCreateType")
-    def hadoop_create_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_create_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the external service. Valid values:
         - emr: E-MapReduce (EMR) Hadoop cluster.
@@ -168,88 +168,88 @@ class HadoopDataSourceArgs:
         return pulumi.get(self, "hadoop_create_type")
 
     @hadoop_create_type.setter
-    def hadoop_create_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_create_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_create_type", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopHostsAddress")
-    def hadoop_hosts_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_hosts_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
         """
         return pulumi.get(self, "hadoop_hosts_address")
 
     @hadoop_hosts_address.setter
-    def hadoop_hosts_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_hosts_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_hosts_address", value)
 
     @_builtins.property
     @pulumi.getter(name="hdfsConf")
-    def hdfs_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hdfs_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "hdfs_conf")
 
     @hdfs_conf.setter
-    def hdfs_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hdfs_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hdfs_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hiveConf")
-    def hive_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hive_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
         """
         return pulumi.get(self, "hive_conf")
 
     @hive_conf.setter
-    def hive_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hive_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hive_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="mapReduceConf")
-    def map_reduce_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_reduce_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "map_reduce_conf")
 
     @map_reduce_conf.setter
-    def map_reduce_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_reduce_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_reduce_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="yarnConf")
-    def yarn_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yarn_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "yarn_conf")
 
     @yarn_conf.setter
-    def yarn_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yarn_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yarn_conf", value)
 
 
 @pulumi.input_type
 class _HadoopDataSourceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 emr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_core_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_create_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_hosts_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 hdfs_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_reduce_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarn_conf: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarn_conf: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HadoopDataSource resources.
 
@@ -310,55 +310,55 @@ class _HadoopDataSourceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceDescription")
-    def data_source_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Description
         """
         return pulumi.get(self, "data_source_description")
 
     @data_source_description.setter
-    def data_source_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_description", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceId")
-    def data_source_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def data_source_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The data source ID.
         """
         return pulumi.get(self, "data_source_id")
 
     @data_source_id.setter
-    def data_source_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def data_source_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "data_source_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceName")
-    def data_source_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Name
         """
         return pulumi.get(self, "data_source_name")
 
     @data_source_name.setter
-    def data_source_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_name", value)
 
     @_builtins.property
     @pulumi.getter(name="dataSourceType")
-    def data_source_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_source_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the data source. Valid values:
 
@@ -371,48 +371,48 @@ class _HadoopDataSourceState:
         return pulumi.get(self, "data_source_type")
 
     @data_source_type.setter
-    def data_source_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_source_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_source_type", value)
 
     @_builtins.property
     @pulumi.getter(name="dbInstanceId")
-    def db_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def db_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance ID.
         """
         return pulumi.get(self, "db_instance_id")
 
     @db_instance_id.setter
-    def db_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def db_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "db_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="emrInstanceId")
-    def emr_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def emr_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Emr instance.
         """
         return pulumi.get(self, "emr_instance_id")
 
     @emr_instance_id.setter
-    def emr_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def emr_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "emr_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopCoreConf")
-    def hadoop_core_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_core_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop core-site.xml file.
         """
         return pulumi.get(self, "hadoop_core_conf")
 
     @hadoop_core_conf.setter
-    def hadoop_core_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_core_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_core_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopCreateType")
-    def hadoop_create_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_create_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the external service. Valid values:
         - emr: E-MapReduce (EMR) Hadoop cluster.
@@ -421,79 +421,79 @@ class _HadoopDataSourceState:
         return pulumi.get(self, "hadoop_create_type")
 
     @hadoop_create_type.setter
-    def hadoop_create_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_create_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_create_type", value)
 
     @_builtins.property
     @pulumi.getter(name="hadoopHostsAddress")
-    def hadoop_hosts_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hadoop_hosts_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address and hostname of the Hadoop cluster (data source) in the /etc/hosts file.
         """
         return pulumi.get(self, "hadoop_hosts_address")
 
     @hadoop_hosts_address.setter
-    def hadoop_hosts_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hadoop_hosts_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hadoop_hosts_address", value)
 
     @_builtins.property
     @pulumi.getter(name="hdfsConf")
-    def hdfs_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hdfs_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop hdfs-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "hdfs_conf")
 
     @hdfs_conf.setter
-    def hdfs_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hdfs_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hdfs_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="hiveConf")
-    def hive_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hive_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop hive-site.xml file. This parameter must be specified when DataSourceType is set to Hive.
         """
         return pulumi.get(self, "hive_conf")
 
     @hive_conf.setter
-    def hive_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hive_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hive_conf", value)
 
     @_builtins.property
     @pulumi.getter(name="mapReduceConf")
-    def map_reduce_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def map_reduce_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the Hadoop mapred-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "map_reduce_conf")
 
     @map_reduce_conf.setter
-    def map_reduce_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def map_reduce_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "map_reduce_conf", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data Source Status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="yarnConf")
-    def yarn_conf(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def yarn_conf(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The string that specifies the content of the Hadoop yarn-site.xml file. This parameter must be specified when DataSourceType is set to HDFS.
         """
         return pulumi.get(self, "yarn_conf")
 
     @yarn_conf.setter
-    def yarn_conf(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def yarn_conf(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "yarn_conf", value)
 
 
@@ -503,18 +503,18 @@ class HadoopDataSource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 emr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_core_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_create_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_hosts_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 hdfs_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_reduce_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarn_conf: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarn_conf: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a GPDB Hadoop Data Source resource.
@@ -904,18 +904,18 @@ class HadoopDataSource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 emr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_core_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_create_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 hadoop_hosts_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 hdfs_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 hive_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 map_reduce_conf: Optional[pulumi.Input[_builtins.str]] = None,
-                 yarn_conf: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+                 yarn_conf: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -952,21 +952,21 @@ class HadoopDataSource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_description: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_id: Optional[pulumi.Input[_builtins.int]] = None,
-            data_source_name: Optional[pulumi.Input[_builtins.str]] = None,
-            data_source_type: Optional[pulumi.Input[_builtins.str]] = None,
-            db_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            emr_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            hadoop_core_conf: Optional[pulumi.Input[_builtins.str]] = None,
-            hadoop_create_type: Optional[pulumi.Input[_builtins.str]] = None,
-            hadoop_hosts_address: Optional[pulumi.Input[_builtins.str]] = None,
-            hdfs_conf: Optional[pulumi.Input[_builtins.str]] = None,
-            hive_conf: Optional[pulumi.Input[_builtins.str]] = None,
-            map_reduce_conf: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            yarn_conf: Optional[pulumi.Input[_builtins.str]] = None) -> 'HadoopDataSource':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_description: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_id: pulumi.Input[Optional[_builtins.int]] = None,
+            data_source_name: pulumi.Input[Optional[_builtins.str]] = None,
+            data_source_type: pulumi.Input[Optional[_builtins.str]] = None,
+            db_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            emr_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_core_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_create_type: pulumi.Input[Optional[_builtins.str]] = None,
+            hadoop_hosts_address: pulumi.Input[Optional[_builtins.str]] = None,
+            hdfs_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            hive_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            map_reduce_conf: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            yarn_conf: pulumi.Input[Optional[_builtins.str]] = None) -> 'HadoopDataSource':
         """
         Get an existing HadoopDataSource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

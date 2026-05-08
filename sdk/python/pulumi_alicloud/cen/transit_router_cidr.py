@@ -21,9 +21,9 @@ class TransitRouterCidrArgs:
     def __init__(__self__, *,
                  cidr: pulumi.Input[_builtins.str],
                  transit_router_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_cidr_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TransitRouterCidr resource.
 
@@ -70,7 +70,7 @@ class TransitRouterCidrArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the transit router CIDR block.
         The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -78,24 +78,24 @@ class TransitRouterCidrArgs:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="publishCidrRoute")
-    def publish_cidr_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish_cidr_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """
         return pulumi.get(self, "publish_cidr_route")
 
     @publish_cidr_route.setter
-    def publish_cidr_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish_cidr_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish_cidr_route", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterCidrName")
-    def transit_router_cidr_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_cidr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the transit router CIDR block.
         The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -103,19 +103,19 @@ class TransitRouterCidrArgs:
         return pulumi.get(self, "transit_router_cidr_name")
 
     @transit_router_cidr_name.setter
-    def transit_router_cidr_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_cidr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_cidr_name", value)
 
 
 @pulumi.input_type
 class _TransitRouterCidrState:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_cidr_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_cidr_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TransitRouterCidr resources.
 
@@ -143,19 +143,19 @@ class _TransitRouterCidrState:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new CIDR block of the transit router.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new description of the transit router CIDR block.
         The description must be 1 to 256 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -163,36 +163,36 @@ class _TransitRouterCidrState:
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="publishCidrRoute")
-    def publish_cidr_route(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def publish_cidr_route(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
         """
         return pulumi.get(self, "publish_cidr_route")
 
     @publish_cidr_route.setter
-    def publish_cidr_route(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def publish_cidr_route(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "publish_cidr_route", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterCidrId")
-    def transit_router_cidr_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_cidr_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CIDR block.
         """
         return pulumi.get(self, "transit_router_cidr_id")
 
     @transit_router_cidr_id.setter
-    def transit_router_cidr_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_cidr_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_cidr_id", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterCidrName")
-    def transit_router_cidr_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_cidr_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The new name of the transit router CIDR block.
         The name must be 1 to 128 characters in length, and cannot start with http:// or https://. You can also leave this parameter empty.
@@ -200,19 +200,19 @@ class _TransitRouterCidrState:
         return pulumi.get(self, "transit_router_cidr_name")
 
     @transit_router_cidr_name.setter
-    def transit_router_cidr_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_cidr_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_cidr_name", value)
 
     @_builtins.property
     @pulumi.getter(name="transitRouterId")
-    def transit_router_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transit_router_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the transit router.
         """
         return pulumi.get(self, "transit_router_id")
 
     @transit_router_id.setter
-    def transit_router_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transit_router_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transit_router_id", value)
 
 
@@ -222,11 +222,11 @@ class TransitRouterCidr(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_cidr_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Enterprise Network (CEN) Transit Router Cidr resource.
@@ -343,11 +343,11 @@ class TransitRouterCidr(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 publish_cidr_route: Optional[pulumi.Input[_builtins.bool]] = None,
-                 transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 transit_router_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+                 transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 transit_router_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,12 +377,12 @@ class TransitRouterCidr(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            publish_cidr_route: Optional[pulumi.Input[_builtins.bool]] = None,
-            transit_router_cidr_id: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_cidr_name: Optional[pulumi.Input[_builtins.str]] = None,
-            transit_router_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'TransitRouterCidr':
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            publish_cidr_route: pulumi.Input[Optional[_builtins.bool]] = None,
+            transit_router_cidr_id: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_cidr_name: pulumi.Input[Optional[_builtins.str]] = None,
+            transit_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'TransitRouterCidr':
         """
         Get an existing TransitRouterCidr resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

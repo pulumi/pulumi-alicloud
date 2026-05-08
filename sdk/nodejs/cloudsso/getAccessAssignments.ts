@@ -140,7 +140,7 @@ export interface GetAccessAssignmentsOutputArgs {
     /**
      * Access configuration ID.
      */
-    accessConfigurationId?: pulumi.Input<string>;
+    accessConfigurationId?: pulumi.Input<string | undefined>;
     /**
      * Directory ID.
      */
@@ -148,21 +148,21 @@ export interface GetAccessAssignmentsOutputArgs {
     /**
      * A list of Access Assignment IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      */
-    principalType?: pulumi.Input<string>;
+    principalType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target to create the resource range.
      */
-    targetId?: pulumi.Input<string>;
+    targetId?: pulumi.Input<string | undefined>;
     /**
      * The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
      */
-    targetType?: pulumi.Input<string>;
+    targetType?: pulumi.Input<string | undefined>;
 }

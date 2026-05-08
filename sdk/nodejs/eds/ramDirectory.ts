@@ -151,27 +151,27 @@ export interface RamDirectoryState {
     /**
      * The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public network access.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to grant local administrator rights to users who use cloud desktops.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    ramDirectoryName?: pulumi.Input<string>;
+    ramDirectoryName?: pulumi.Input<string | undefined>;
     /**
      * The status of directory.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * List of VSwitch IDs in the directory.
      */
-    vswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -181,15 +181,15 @@ export interface RamDirectoryArgs {
     /**
      * The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
      */
-    desktopAccessType?: pulumi.Input<string>;
+    desktopAccessType?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable public network access.
      */
-    enableAdminAccess?: pulumi.Input<boolean>;
+    enableAdminAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to grant local administrator rights to users who use cloud desktops.
      */
-    enableInternetAccess?: pulumi.Input<boolean>;
+    enableInternetAccess?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */

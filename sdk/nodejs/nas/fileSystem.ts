@@ -323,11 +323,11 @@ export interface FileSystemState {
      * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
      * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * CreateTime
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * File system description.
      *
@@ -336,7 +336,7 @@ export interface FileSystemState {
      * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the file system is encrypted.
      *
@@ -347,7 +347,7 @@ export interface FileSystemState {
      * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
      * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
-    encryptType?: pulumi.Input<number>;
+    encryptType?: pulumi.Input<number | undefined>;
     /**
      * File system type.
      *
@@ -356,63 +356,63 @@ export interface FileSystemState {
      * - extreme: extreme NAS
      * - cpfs: file storage CPFS
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * String of keytab file content encrypted by base64
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    keytab?: pulumi.Input<string>;
+    keytab?: pulumi.Input<string | undefined>;
     /**
      * String of the keytab file content encrypted by MD5
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    keytabMd5?: pulumi.Input<string>;
+    keytabMd5?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS key.
      * This parameter is required only when EncryptType = 2.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * NFS ACL See `nfsAcl` below.
      */
-    nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl>;
+    nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl | undefined>;
     /**
      * Option. See `options` below.
      */
-    options?: pulumi.Input<inputs.nas.FileSystemOptions>;
+    options?: pulumi.Input<inputs.nas.FileSystemOptions | undefined>;
     /**
      * File transfer protocol type.
      * - When FileSystemType = standard, the values are NFS and SMB.
      * - When FileSystemType = extreme, the value is NFS.
      * - When FileSystemType = cpfs, the value is cpfs.
      */
-    protocolType?: pulumi.Input<string>;
+    protocolType?: pulumi.Input<string | undefined>;
     /**
      * Recycle Bin See `recycleBin` below.
      */
-    recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
+    recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin | undefined>;
     /**
      * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
      */
-    redundancyType?: pulumi.Input<string>;
+    redundancyType?: pulumi.Input<string | undefined>;
     /**
      * Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
      */
-    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * RegionId
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * SMB ACL See `smbAcl` below.
      */
-    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl>;
+    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl | undefined>;
     /**
      * Only extreme NAS is supported.
      *
@@ -421,34 +421,34 @@ export interface FileSystemState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * File system status. Includes:(such as creating a mount point) can only be performed when the file system is in the Running state.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The storage type.
      * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
      * - When FileSystemType = extreme, the value is standard or advance.
      * - When FileSystemType = cpfs, the values are advance_100(100MB/s/TiB baseline) and advance_200(200MB/s/TiB baseline).
      */
-    storageType?: pulumi.Input<string>;
+    storageType?: pulumi.Input<string | undefined>;
     /**
      * Label information collection.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC network.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the switch.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      *
@@ -460,7 +460,7 @@ export interface FileSystemState {
      *
      * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -478,7 +478,7 @@ export interface FileSystemArgs {
      * -[Parallel File System CPFS Pay-As-You-Go Purchase Page](https://common-buy.aliyun.com/? commodityCode=nas_cpfs_post#/buy)
      * -[Parallel File System CPFS Package Monthly Purchase Page](https://common-buy.aliyun.com/? commodityCode=cpfs#/buy)
      */
-    capacity?: pulumi.Input<number>;
+    capacity?: pulumi.Input<number | undefined>;
     /**
      * File system description.
      *
@@ -487,7 +487,7 @@ export interface FileSystemArgs {
      * - Must start with upper and lower case letters or Chinese, and cannot start with'http: // 'and'https.
      * - Can contain numbers, colons (:), underscores (_), or dashes (-).
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Whether the file system is encrypted.
      *
@@ -498,7 +498,7 @@ export interface FileSystemArgs {
      * - 1:NAS managed key. NAS managed keys are supported when FileSystemType = standard or extreme.
      * - 2: User management key. You can manage keys only when FileSystemType = extreme.
      */
-    encryptType?: pulumi.Input<number>;
+    encryptType?: pulumi.Input<number | undefined>;
     /**
      * File system type.
      *
@@ -507,32 +507,32 @@ export interface FileSystemArgs {
      * - extreme: extreme NAS
      * - cpfs: file storage CPFS
      */
-    fileSystemType?: pulumi.Input<string>;
+    fileSystemType?: pulumi.Input<string | undefined>;
     /**
      * String of keytab file content encrypted by base64
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    keytab?: pulumi.Input<string>;
+    keytab?: pulumi.Input<string | undefined>;
     /**
      * String of the keytab file content encrypted by MD5
      *
      * > **NOTE:** This parameter only applies during resource update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    keytabMd5?: pulumi.Input<string>;
+    keytabMd5?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS key.
      * This parameter is required only when EncryptType = 2.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * NFS ACL See `nfsAcl` below.
      */
-    nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl>;
+    nfsAcl?: pulumi.Input<inputs.nas.FileSystemNfsAcl | undefined>;
     /**
      * Option. See `options` below.
      */
-    options?: pulumi.Input<inputs.nas.FileSystemOptions>;
+    options?: pulumi.Input<inputs.nas.FileSystemOptions | undefined>;
     /**
      * File transfer protocol type.
      * - When FileSystemType = standard, the values are NFS and SMB.
@@ -543,23 +543,23 @@ export interface FileSystemArgs {
     /**
      * Recycle Bin See `recycleBin` below.
      */
-    recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin>;
+    recycleBin?: pulumi.Input<inputs.nas.FileSystemRecycleBin | undefined>;
     /**
      * Storage redundancy type. Only effective for General CPFS.Options: Locally Redundant Storage (LRS), Zone-Redundant Storage (ZRS) Default value: LRS
      */
-    redundancyType?: pulumi.Input<string>;
+    redundancyType?: pulumi.Input<string | undefined>;
     /**
      * Redundancy vSwitch ID list. Only set when the file system's storage redundancy type is Zone-Redundant Storage (ZRS), and must set vSwitch IDs from three different availability zones under the same VPC.
      */
-    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[]>;
+    redundancyVswitchIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * SMB ACL See `smbAcl` below.
      */
-    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl>;
+    smbAcl?: pulumi.Input<inputs.nas.FileSystemSmbAcl | undefined>;
     /**
      * Only extreme NAS is supported.
      *
@@ -568,7 +568,7 @@ export interface FileSystemArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The storage type.
      * - When FileSystemType = standard, the values are Performance, Capacity, and Premium.
@@ -579,19 +579,19 @@ export interface FileSystemArgs {
     /**
      * Label information collection.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The ID of the VPC network.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the switch.
      * This parameter must be configured when FileSystemType = cpfs.
      * When the FileSystemType is standard or extreme, this parameter is reserved for the interface and has not taken effect yet. You do not need to configure it.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      *
@@ -603,5 +603,5 @@ export interface FileSystemArgs {
      *
      * > **NOTE:** - We recommend that the file system and the ECS instance belong to the same zone to avoid cross-zone latency.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

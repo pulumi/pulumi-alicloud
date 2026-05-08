@@ -19,13 +19,13 @@ __all__ = ['IpsConfigArgs', 'IpsConfig']
 @pulumi.input_type
 class IpsConfigArgs:
     def __init__(__self__, *,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 cti_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_sdl: Optional[pulumi.Input[_builtins.int]] = None,
-                 patch_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None):
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+                 patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a IpsConfig resource.
 
@@ -65,7 +65,7 @@ class IpsConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicRules")
-    def basic_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def basic_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Basic rule switch. Value:
         - 1: Open.
@@ -74,12 +74,12 @@ class IpsConfigArgs:
         return pulumi.get(self, "basic_rules")
 
     @basic_rules.setter
-    def basic_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def basic_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "basic_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ctiRules")
-    def cti_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cti_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threat intelligence. Value:
         - 1: Open.
@@ -88,36 +88,36 @@ class IpsConfigArgs:
         return pulumi.get(self, "cti_rules")
 
     @cti_rules.setter
-    def cti_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cti_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cti_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSdl")
-    def max_sdl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_sdl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sensitive data detection Daily detection traffic limit. Defaults to 0.
         """
         return pulumi.get(self, "max_sdl")
 
     @max_sdl.setter
-    def max_sdl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_sdl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_sdl", value)
 
     @_builtins.property
     @pulumi.getter(name="patchRules")
-    def patch_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def patch_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Virtual patch switch. Value:
         - 1: Open.
@@ -126,12 +126,12 @@ class IpsConfigArgs:
         return pulumi.get(self, "patch_rules")
 
     @patch_rules.setter
-    def patch_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def patch_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "patch_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleClass")
-    def rule_class(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_class(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IPS rule Group. Value:
         - 1: loose rule Group.
@@ -141,12 +141,12 @@ class IpsConfigArgs:
         return pulumi.get(self, "rule_class")
 
     @rule_class.setter
-    def rule_class(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_class(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_class", value)
 
     @_builtins.property
     @pulumi.getter(name="runMode")
-    def run_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IPS defense mode. Value:
         - 1: Intercept mode.
@@ -155,20 +155,20 @@ class IpsConfigArgs:
         return pulumi.get(self, "run_mode")
 
     @run_mode.setter
-    def run_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_mode", value)
 
 
 @pulumi.input_type
 class _IpsConfigState:
     def __init__(__self__, *,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 cti_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_sdl: Optional[pulumi.Input[_builtins.int]] = None,
-                 patch_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None):
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+                 patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering IpsConfig resources.
 
@@ -208,7 +208,7 @@ class _IpsConfigState:
 
     @_builtins.property
     @pulumi.getter(name="basicRules")
-    def basic_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def basic_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Basic rule switch. Value:
         - 1: Open.
@@ -217,12 +217,12 @@ class _IpsConfigState:
         return pulumi.get(self, "basic_rules")
 
     @basic_rules.setter
-    def basic_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def basic_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "basic_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ctiRules")
-    def cti_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cti_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Threat intelligence. Value:
         - 1: Open.
@@ -231,36 +231,36 @@ class _IpsConfigState:
         return pulumi.get(self, "cti_rules")
 
     @cti_rules.setter
-    def cti_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cti_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cti_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def lang(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def lang(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Language
         """
         return pulumi.get(self, "lang")
 
     @lang.setter
-    def lang(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def lang(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "lang", value)
 
     @_builtins.property
     @pulumi.getter(name="maxSdl")
-    def max_sdl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_sdl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Sensitive data detection Daily detection traffic limit. Defaults to 0.
         """
         return pulumi.get(self, "max_sdl")
 
     @max_sdl.setter
-    def max_sdl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_sdl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_sdl", value)
 
     @_builtins.property
     @pulumi.getter(name="patchRules")
-    def patch_rules(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def patch_rules(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Virtual patch switch. Value:
         - 1: Open.
@@ -269,12 +269,12 @@ class _IpsConfigState:
         return pulumi.get(self, "patch_rules")
 
     @patch_rules.setter
-    def patch_rules(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def patch_rules(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "patch_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleClass")
-    def rule_class(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def rule_class(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IPS rule Group. Value:
         - 1: loose rule Group.
@@ -284,12 +284,12 @@ class _IpsConfigState:
         return pulumi.get(self, "rule_class")
 
     @rule_class.setter
-    def rule_class(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def rule_class(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "rule_class", value)
 
     @_builtins.property
     @pulumi.getter(name="runMode")
-    def run_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def run_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IPS defense mode. Value:
         - 1: Intercept mode.
@@ -298,7 +298,7 @@ class _IpsConfigState:
         return pulumi.get(self, "run_mode")
 
     @run_mode.setter
-    def run_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def run_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "run_mode", value)
 
 
@@ -308,13 +308,13 @@ class IpsConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 cti_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_sdl: Optional[pulumi.Input[_builtins.int]] = None,
-                 patch_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None,
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+                 patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall IPS Config resource.
@@ -454,13 +454,13 @@ class IpsConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 cti_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 lang: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_sdl: Optional[pulumi.Input[_builtins.int]] = None,
-                 patch_rules: Optional[pulumi.Input[_builtins.int]] = None,
-                 rule_class: Optional[pulumi.Input[_builtins.int]] = None,
-                 run_mode: Optional[pulumi.Input[_builtins.int]] = None,
+                 basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 lang: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+                 patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+                 rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+                 run_mode: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -487,13 +487,13 @@ class IpsConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_rules: Optional[pulumi.Input[_builtins.int]] = None,
-            cti_rules: Optional[pulumi.Input[_builtins.int]] = None,
-            lang: Optional[pulumi.Input[_builtins.str]] = None,
-            max_sdl: Optional[pulumi.Input[_builtins.int]] = None,
-            patch_rules: Optional[pulumi.Input[_builtins.int]] = None,
-            rule_class: Optional[pulumi.Input[_builtins.int]] = None,
-            run_mode: Optional[pulumi.Input[_builtins.int]] = None) -> 'IpsConfig':
+            basic_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            cti_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            lang: pulumi.Input[Optional[_builtins.str]] = None,
+            max_sdl: pulumi.Input[Optional[_builtins.int]] = None,
+            patch_rules: pulumi.Input[Optional[_builtins.int]] = None,
+            rule_class: pulumi.Input[Optional[_builtins.int]] = None,
+            run_mode: pulumi.Input[Optional[_builtins.int]] = None) -> 'IpsConfig':
         """
         Get an existing IpsConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -161,19 +161,19 @@ export interface DbResourceGroupState {
     /**
      * The instance ID.> You can call the DescribeDBInstances operation to view the instance IDs of all AnalyticDB PostgreSQL instances in the target region.
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Resource group configuration.
      */
-    resourceGroupConfig?: pulumi.Input<string>;
+    resourceGroupConfig?: pulumi.Input<string | undefined>;
     /**
      * Resource group name.
      */
-    resourceGroupName?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string | undefined>;
     /**
      * Role List
      */
-    roleLists?: pulumi.Input<pulumi.Input<string>[]>;
+    roleLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -195,5 +195,5 @@ export interface DbResourceGroupArgs {
     /**
      * Role List
      */
-    roleLists?: pulumi.Input<pulumi.Input<string>[]>;
+    roleLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

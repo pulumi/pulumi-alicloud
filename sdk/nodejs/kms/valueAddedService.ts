@@ -160,27 +160,27 @@ export interface ValueAddedServiceState {
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The payment type of the resource
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Prepaid cycle. Unit for year
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal period, in years.
      *
      * > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The renewal status of the specified instance. Valid values:
      *
@@ -188,17 +188,17 @@ export interface ValueAddedServiceState {
      * - ManualRenewal: The instance is manually renewed.
      * - NotRenewal: The instance is not renewed.
      */
-    renewStatus?: pulumi.Input<string>;
+    renewStatus?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    valueAddedService?: pulumi.Input<string>;
+    valueAddedService?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -214,13 +214,13 @@ export interface ValueAddedServiceArgs {
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal period, in years.
      *
      * > **NOTE:**  When setting `RenewalStatus` to `AutoRenewal`, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The renewal status of the specified instance. Valid values:
      *
@@ -228,11 +228,11 @@ export interface ValueAddedServiceArgs {
      * - ManualRenewal: The instance is manually renewed.
      * - NotRenewal: The instance is not renewed.
      */
-    renewStatus?: pulumi.Input<string>;
+    renewStatus?: pulumi.Input<string | undefined>;
     /**
      * value added service type, Instance Backup 1 default key rotation 2 Expert service 3
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    valueAddedService?: pulumi.Input<string>;
+    valueAddedService?: pulumi.Input<string | undefined>;
 }

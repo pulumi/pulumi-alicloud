@@ -36,19 +36,19 @@ class DedicatedPropreHostEcsClassListArgsDict(TypedDict):
     - **cloud_efficiency**: The ultra cloud disk.
     - **cloud_auto**: ESSD AutoPL cloud disk.
     """
-    data_disk_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    data_disk_performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk PL level.
     """
-    disk_capacity: NotRequired[pulumi.Input[_builtins.int]]
+    disk_capacity: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The capacity of the data disk.
     """
-    disk_count: NotRequired[pulumi.Input[_builtins.int]]
+    disk_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of mounted data disks.
     """
-    disk_type: NotRequired[pulumi.Input[_builtins.str]]
+    disk_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Data disk type, value range:
     - **cloud_essd**: the ESSD cloud disk.
@@ -56,7 +56,7 @@ class DedicatedPropreHostEcsClassListArgsDict(TypedDict):
     - **cloud_efficiency**: The ultra cloud disk.
     - **cloud_auto**: ESSD AutoPL cloud disk.
     """
-    system_disk_performance_level: NotRequired[pulumi.Input[_builtins.str]]
+    system_disk_performance_level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     System disk PL level.
     """
@@ -67,11 +67,11 @@ class DedicatedPropreHostEcsClassListArgs:
                  instance_type: pulumi.Input[_builtins.str],
                  sys_disk_capacity: pulumi.Input[_builtins.int],
                  sys_disk_type: pulumi.Input[_builtins.str],
-                 data_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_capacity: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 data_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_capacity: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instance_type: ECS specifications.
         :param pulumi.Input[_builtins.int] sys_disk_capacity: System disk capacity.
@@ -146,43 +146,43 @@ class DedicatedPropreHostEcsClassListArgs:
 
     @_builtins.property
     @pulumi.getter(name="dataDiskPerformanceLevel")
-    def data_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def data_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk PL level.
         """
         return pulumi.get(self, "data_disk_performance_level")
 
     @data_disk_performance_level.setter
-    def data_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def data_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "data_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCapacity")
-    def disk_capacity(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_capacity(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The capacity of the data disk.
         """
         return pulumi.get(self, "disk_capacity")
 
     @disk_capacity.setter
-    def disk_capacity(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_capacity(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_capacity", value)
 
     @_builtins.property
     @pulumi.getter(name="diskCount")
-    def disk_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of mounted data disks.
         """
         return pulumi.get(self, "disk_count")
 
     @disk_count.setter
-    def disk_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk_count", value)
 
     @_builtins.property
     @pulumi.getter(name="diskType")
-    def disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Data disk type, value range:
         - **cloud_essd**: the ESSD cloud disk.
@@ -193,19 +193,19 @@ class DedicatedPropreHostEcsClassListArgs:
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
-    def disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskPerformanceLevel")
-    def system_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         System disk PL level.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
     @system_disk_performance_level.setter
-    def system_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
 
 

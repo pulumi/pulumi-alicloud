@@ -429,59 +429,59 @@ export interface GetClustersOutputArgs {
     /**
      * The cluster name.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * The cluster type list.
      */
-    clusterTypeLists?: pulumi.Input<pulumi.Input<string>[]>;
+    clusterTypeLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How to create a cluster. Valid values: `ON-DEMAND`, `MANUAL`.
      */
-    createType?: pulumi.Input<string>;
+    createType?: pulumi.Input<string | undefined>;
     /**
      * The default status.
      */
-    defaultStatus?: pulumi.Input<boolean>;
+    defaultStatus?: pulumi.Input<boolean | undefined>;
     /**
      * The hosting type of the cluster. Valid values: `HALF_MANAGED`, `MANAGED`.
      */
-    depositType?: pulumi.Input<string>;
+    depositType?: pulumi.Input<string | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Cluster IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The is desc.
      */
-    isDesc?: pulumi.Input<boolean>;
+    isDesc?: pulumi.Input<boolean | undefined>;
     /**
      * The host type of the cluster. The default is ECS. Valid values: `DOCKER`, `ECS`, `PYHSICAL_MACHINE`, `ECS_FROM_ECM_HOSTPOOL`.
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * A regex string to filter results by Cluster name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * The Resource Group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status list. Valid values: `ABNORMAL`, `CREATE_FAILED`, `CREATING`, `IDLE`, `RELEASED`, `RELEASE_FAILED`, `RELEASING`, `RUNNING`, `WAIT_FOR_PAY`.
      */
-    statusLists?: pulumi.Input<pulumi.Input<string>[]>;
+    statusLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The VPC ID.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }

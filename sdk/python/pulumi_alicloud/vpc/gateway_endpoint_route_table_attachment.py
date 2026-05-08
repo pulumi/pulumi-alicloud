@@ -58,9 +58,9 @@ class GatewayEndpointRouteTableAttachmentArgs:
 @pulumi.input_type
 class _GatewayEndpointRouteTableAttachmentState:
     def __init__(__self__, *,
-                 gateway_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 gateway_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GatewayEndpointRouteTableAttachment resources.
 
@@ -77,38 +77,38 @@ class _GatewayEndpointRouteTableAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="gatewayEndpointId")
-    def gateway_endpoint_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway_endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the gateway endpoint instance to which you want to associate the route table.
         """
         return pulumi.get(self, "gateway_endpoint_id")
 
     @gateway_endpoint_id.setter
-    def gateway_endpoint_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway_endpoint_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway_endpoint_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routeTableId")
-    def route_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Routing table ID.
         """
         return pulumi.get(self, "route_table_id")
 
     @route_table_id.setter
-    def route_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_table_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the gateway endpoint.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -118,8 +118,8 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Gateway Endpoint Route Table Attachment resource. VPC gateway node association route.
@@ -255,8 +255,8 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 gateway_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 gateway_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -283,9 +283,9 @@ class GatewayEndpointRouteTableAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            gateway_endpoint_id: Optional[pulumi.Input[_builtins.str]] = None,
-            route_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'GatewayEndpointRouteTableAttachment':
+            gateway_endpoint_id: pulumi.Input[Optional[_builtins.str]] = None,
+            route_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'GatewayEndpointRouteTableAttachment':
         """
         Get an existing GatewayEndpointRouteTableAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

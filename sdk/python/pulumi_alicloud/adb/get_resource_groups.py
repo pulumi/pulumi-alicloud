@@ -146,10 +146,10 @@ def get_resource_groups(db_cluster_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_resource_groups_output(db_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               group_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                               output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resource_groups_output(db_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               group_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                               output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourceGroupsResult]:
     """
     This data source provides Adb Resource Group available to the user.[What is Resource Group](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describedbresourcegroup)

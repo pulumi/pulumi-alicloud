@@ -172,11 +172,11 @@ def get_prefix_lists(enable_details: Optional[_builtins.bool] = None,
         names=pulumi.get(__ret__, 'names'),
         output_file=pulumi.get(__ret__, 'output_file'),
         prefix_list_name=pulumi.get(__ret__, 'prefix_list_name'))
-def get_prefix_lists_output(enable_details: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                            ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                            name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                            prefix_list_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_prefix_lists_output(enable_details: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                            ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                            name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                            prefix_list_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrefixListsResult]:
     """
     This data source provides the Vpc Prefix Lists of the current Alibaba Cloud user.

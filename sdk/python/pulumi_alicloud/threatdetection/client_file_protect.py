@@ -24,9 +24,9 @@ class ClientFileProtectArgs:
                  proc_paths: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  rule_action: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
-                 alert_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientFileProtect resource.
 
@@ -113,52 +113,52 @@ class ClientFileProtectArgs:
 
     @_builtins.property
     @pulumi.getter(name="alertLevel")
-    def alert_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def alert_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 no alert 1 info 2 suspicious 3 critical.
         """
         return pulumi.get(self, "alert_level")
 
     @alert_level.setter
-    def alert_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def alert_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "alert_level", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         rule status 0 is disable 1 is enable.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="switchId")
-    def switch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         switch id.
         """
         return pulumi.get(self, "switch_id")
 
     @switch_id.setter
-    def switch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_id", value)
 
 
 @pulumi.input_type
 class _ClientFileProtectState:
     def __init__(__self__, *,
-                 alert_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_ops: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proc_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_ops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proc_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientFileProtect resources.
 
@@ -190,98 +190,98 @@ class _ClientFileProtectState:
 
     @_builtins.property
     @pulumi.getter(name="alertLevel")
-    def alert_level(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def alert_level(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         0 no alert 1 info 2 suspicious 3 critical.
         """
         return pulumi.get(self, "alert_level")
 
     @alert_level.setter
-    def alert_level(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def alert_level(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "alert_level", value)
 
     @_builtins.property
     @pulumi.getter(name="fileOps")
-    def file_ops(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def file_ops(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         file operation.
         """
         return pulumi.get(self, "file_ops")
 
     @file_ops.setter
-    def file_ops(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def file_ops(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "file_ops", value)
 
     @_builtins.property
     @pulumi.getter(name="filePaths")
-    def file_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def file_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         file path.
         """
         return pulumi.get(self, "file_paths")
 
     @file_paths.setter
-    def file_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def file_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "file_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="procPaths")
-    def proc_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def proc_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         process path.
         """
         return pulumi.get(self, "proc_paths")
 
     @proc_paths.setter
-    def proc_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def proc_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "proc_paths", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleAction")
-    def rule_action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         rule action, pass or alert.
         """
         return pulumi.get(self, "rule_action")
 
     @rule_action.setter
-    def rule_action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_action", value)
 
     @_builtins.property
     @pulumi.getter(name="ruleName")
-    def rule_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ruleName.
         """
         return pulumi.get(self, "rule_name")
 
     @rule_name.setter
-    def rule_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         rule status 0 is disable 1 is enable.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="switchId")
-    def switch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def switch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         switch id.
         """
         return pulumi.get(self, "switch_id")
 
     @switch_id.setter
-    def switch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def switch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "switch_id", value)
 
 
@@ -291,14 +291,14 @@ class ClientFileProtect(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_ops: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proc_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_ops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proc_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Threat Detection Client File Protect resource. Client core file protection event monitoring, including file reading and writing, deletion, and permission change.
@@ -414,14 +414,14 @@ class ClientFileProtect(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_level: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_ops: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 file_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 proc_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-                 rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.int]] = None,
-                 switch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_ops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 file_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 proc_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+                 rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.int]] = None,
+                 switch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -459,14 +459,14 @@ class ClientFileProtect(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_level: Optional[pulumi.Input[_builtins.int]] = None,
-            file_ops: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            file_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            proc_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rule_action: Optional[pulumi.Input[_builtins.str]] = None,
-            rule_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.int]] = None,
-            switch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientFileProtect':
+            alert_level: pulumi.Input[Optional[_builtins.int]] = None,
+            file_ops: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            file_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proc_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule_action: pulumi.Input[Optional[_builtins.str]] = None,
+            rule_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.int]] = None,
+            switch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientFileProtect':
         """
         Get an existing ClientFileProtect resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

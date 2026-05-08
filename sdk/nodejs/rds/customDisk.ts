@@ -236,37 +236,37 @@ export interface CustomDiskState {
     /**
      * Whether to pay automatically. Value range:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
      * Default value: empty.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of the data disk. Value range:
      */
-    diskCategory?: pulumi.Input<string>;
+    diskCategory?: pulumi.Input<string | undefined>;
     /**
      * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
      * Default value: empty.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * Whether to pre-check the instance creation operation. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -276,48 +276,48 @@ export interface CustomDiskState {
      *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The region ID. You can view the region ID through the DescribeRegions interface.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the disk belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The snapshot used to create the cloud disk. Snapshots made on or before July 15, 2013 cannot be used to create cloud disks. The 'SnapshotId' parameter and the 'Size' parameter have the following limitations:
      * - If the snapshot capacity corresponding to the 'SnapshotId' parameter is greater than the set 'Size' parameter value, the actual size of the cloud disk created is the size of the specified snapshot.
      * - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
      * - Snapshots are not supported for creating elastic temporary disks.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * Disk status. Value Description:_use: In use.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
      * online: online expansion, which can be completed without restarting the instance.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -327,16 +327,16 @@ export interface CustomDiskArgs {
     /**
      * Whether to pay automatically. Value range:
      */
-    autoPay?: pulumi.Input<boolean>;
+    autoPay?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to automatically renew. This parameter is passed in only when you create a data disk. Valid values:
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The disk description. It must be 2 to 256 characters in length and cannot start with 'http:// 'or 'https.
      * Default value: empty.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The type of the data disk. Value range:
      */
@@ -345,15 +345,15 @@ export interface CustomDiskArgs {
      * The disk name. It can be 2 to 128 characters in length. It supports letters in Unicode (including English, Chinese, and numbers). Can contain a colon (:), an underscore (_), a period (.), or a dash (-).
      * Default value: empty.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * Whether to pre-check the instance creation operation. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The Payment type. Only `Postpaid`: Pay-As-You-Go is supported.
      */
-    instanceChargeType?: pulumi.Input<string>;
+    instanceChargeType?: pulumi.Input<string | undefined>;
     /**
      * When creating an ESSD cloud disk, set the performance level of the disk. Value range:
      * - `PL0`: The maximum random read/write IOPS 10000 for a single disk.
@@ -363,15 +363,15 @@ export interface CustomDiskArgs {
      *
      * For more information about how to select an ESSD performance level, see ESSD cloud disk.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Reserved parameters, no need to fill in.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * Capacity size. Unit: GiB. You must pass in a parameter value for this parameter. Value range:
      */
@@ -382,13 +382,13 @@ export interface CustomDiskArgs {
      * - If the snapshot capacity corresponding to the 'SnapshotId' parameter is less than the set 'Size' parameter value, the size of the cloud disk created is the specified 'Size' parameter value.
      * - Snapshots are not supported for creating elastic temporary disks.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The method of expanding the disk. Value range:
      * offline (default): offline expansion. After the expansion, the instance must be restarted to take effect.
      * online: online expansion, which can be completed without restarting the instance.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */

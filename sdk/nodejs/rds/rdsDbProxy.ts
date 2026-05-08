@@ -340,23 +340,23 @@ export interface RdsDbProxyState {
     /**
      * The port number that is associated with the proxy endpoint.
      */
-    dbProxyConnectStringPort?: pulumi.Input<number>;
+    dbProxyConnectStringPort?: pulumi.Input<number | undefined>;
     /**
      * The new prefix of the proxy endpoint. Enter a prefix.
      */
-    dbProxyConnectionPrefix?: pulumi.Input<string>;
+    dbProxyConnectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * Connection instance string.
      */
-    dbProxyConnectionString?: pulumi.Input<string>;
+    dbProxyConnectionString?: pulumi.Input<string | undefined>;
     /**
      * Remarks of agent terminal.
      */
-    dbProxyEndpointAliases?: pulumi.Input<string>;
+    dbProxyEndpointAliases?: pulumi.Input<string | undefined>;
     /**
      * Proxy connection address ID.
      */
-    dbProxyEndpointId?: pulumi.Input<string>;
+    dbProxyEndpointId?: pulumi.Input<string | undefined>;
     /**
      * The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
@@ -364,7 +364,7 @@ export interface RdsDbProxyState {
      *
      * > **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      */
-    dbProxyEndpointReadWriteMode?: pulumi.Input<string>;
+    dbProxyEndpointReadWriteMode?: pulumi.Input<string | undefined>;
     /**
      * The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: Feature 1:Status;Feature 2:Status;.... Do not add a semicolon (;) at the end of the last value. Valid feature values:
      * - ReadWriteSpliting: read/write splitting.
@@ -376,28 +376,28 @@ export interface RdsDbProxyState {
      *
      * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
-    dbProxyFeatures?: pulumi.Input<string>;
+    dbProxyFeatures?: pulumi.Input<string | undefined>;
     /**
      * The number of proxy instances that are enabled. Valid values: 1 to 60.
      */
-    dbProxyInstanceNum?: pulumi.Input<number>;
+    dbProxyInstanceNum?: pulumi.Input<number | undefined>;
     /**
      * The database proxy type. Valid values:
      * - common: universal proxy.
      * - exclusive: Exclusive proxy (default).
      */
-    dbProxyInstanceType?: pulumi.Input<string>;
+    dbProxyInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
      * - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
      * - Update: updates the validity period of the SSL certificate.
      */
-    dbProxySslEnabled?: pulumi.Input<string>;
+    dbProxySslEnabled?: pulumi.Input<string | undefined>;
     /**
      * The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    effectiveSpecificTime?: pulumi.Input<string>;
+    effectiveSpecificTime?: pulumi.Input<string | undefined>;
     /**
      * When modifying the number of proxy instances,The time when you want to apply the new database proxy settings.Valid values:
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
@@ -406,19 +406,19 @@ export interface RdsDbProxyState {
      *
      * > **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The network type of the instance. Set the value to VPC.
      */
-    instanceNetworkType?: pulumi.Input<string>;
+    instanceNetworkType?: pulumi.Input<string | undefined>;
     /**
      * Network type of proxy connection address.
      */
-    netType?: pulumi.Input<string>;
+    netType?: pulumi.Input<string | undefined>;
     /**
      * The policy that is used to allocate read weights. Valid values:
      * - Standard: ApsaraDB RDS automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
@@ -426,44 +426,44 @@ export interface RdsDbProxyState {
      *
      * > **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      */
-    readOnlyInstanceDistributionType?: pulumi.Input<string>;
+    readOnlyInstanceDistributionType?: pulumi.Input<string | undefined>;
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
      *
      * > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      */
-    readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
+    readOnlyInstanceMaxDelayTime?: pulumi.Input<number | undefined>;
     /**
      * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      */
-    readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[]>;
+    readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The time when the certificate expires.
      */
-    sslExpiredTime?: pulumi.Input<string>;
+    sslExpiredTime?: pulumi.Input<string | undefined>;
     /**
      * The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * The time when you want to upgrade the database proxy version of the instance. Valid values:
      * - MaintainTime: ApsaraDB RDS performs the upgrade during the maintenance window that you specified. This is the default value. For more information, see Modify the maintenance window.
      * - Immediate: ApsaraDB RDS immediately performs the upgrade.
      * - SpecificTime: ApsaraDB RDS performs the upgrade at a specified point in time.
      */
-    upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the instance belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch that is associated with the specified VPC.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -473,11 +473,11 @@ export interface RdsDbProxyArgs {
     /**
      * The port number that is associated with the proxy endpoint.
      */
-    dbProxyConnectStringPort?: pulumi.Input<number>;
+    dbProxyConnectStringPort?: pulumi.Input<number | undefined>;
     /**
      * The new prefix of the proxy endpoint. Enter a prefix.
      */
-    dbProxyConnectionPrefix?: pulumi.Input<string>;
+    dbProxyConnectionPrefix?: pulumi.Input<string | undefined>;
     /**
      * The read and write attributes of the proxy terminal. Valid values:
      * - ReadWrite: The proxy terminal connects to the primary instance and can receive both read and write requests.
@@ -485,7 +485,7 @@ export interface RdsDbProxyArgs {
      *
      * > **NOTE:** Note This setting causes your instance to restart. Proceed with caution.
      */
-    dbProxyEndpointReadWriteMode?: pulumi.Input<string>;
+    dbProxyEndpointReadWriteMode?: pulumi.Input<string | undefined>;
     /**
      * The features that you want to enable for the proxy endpoint. If you specify more than one feature, separate the features with semicolons (;). Format: Feature 1:Status;Feature 2:Status;.... Do not add a semicolon (;) at the end of the last value. Valid feature values:
      * - ReadWriteSpliting: read/write splitting.
@@ -497,7 +497,7 @@ export interface RdsDbProxyArgs {
      *
      * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
-    dbProxyFeatures?: pulumi.Input<string>;
+    dbProxyFeatures?: pulumi.Input<string | undefined>;
     /**
      * The number of proxy instances that are enabled. Valid values: 1 to 60.
      */
@@ -507,18 +507,18 @@ export interface RdsDbProxyArgs {
      * - common: universal proxy.
      * - exclusive: Exclusive proxy (default).
      */
-    dbProxyInstanceType?: pulumi.Input<string>;
+    dbProxyInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The SSL configuration setting that you want to apply on the instance. Valid values:
      * - Close: disables SSL encryption.
      * - Open: enables SSL encryption or modifies the endpoint that requires SSL encryption.
      * - Update: updates the validity period of the SSL certificate.
      */
-    dbProxySslEnabled?: pulumi.Input<string>;
+    dbProxySslEnabled?: pulumi.Input<string | undefined>;
     /**
      * The point in time at which you want to apply the new database proxy settings. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    effectiveSpecificTime?: pulumi.Input<string>;
+    effectiveSpecificTime?: pulumi.Input<string | undefined>;
     /**
      * When modifying the number of proxy instances,The time when you want to apply the new database proxy settings.Valid values:
      * - Immediate: ApsaraDB RDS immediately applies the new settings.
@@ -527,7 +527,7 @@ export interface RdsDbProxyArgs {
      *
      * > **NOTE:** Note If you set the EffectiveTime parameter to SpecificTime, you must specify the EffectiveSpecificTime parameter.
      */
-    effectiveTime?: pulumi.Input<string>;
+    effectiveTime?: pulumi.Input<string | undefined>;
     /**
      * The Id of instance that can run database.
      */
@@ -543,32 +543,32 @@ export interface RdsDbProxyArgs {
      *
      * > **NOTE:** Note If you set the ReadOnlyInstanceDistributionType parameter to Custom, you must specify the ReadOnlyInstanceWeight parameter.
      */
-    readOnlyInstanceDistributionType?: pulumi.Input<string>;
+    readOnlyInstanceDistributionType?: pulumi.Input<string | undefined>;
     /**
      * The maximum latency threshold that is allowed for read/write splitting. If the latency on a read-only instance exceeds the threshold that you specified, ApsaraDB RDS no longer forwards read requests to the read-only instance. If you do not specify this parameter, the default value of this parameter is retained. Unit: seconds. Valid values: 0 to 3600.
      *
      * > **NOTE:** Note If the instance runs PostgreSQL, you can enable only the read/write splitting feature, which is specified by ReadWriteSpliting.
      */
-    readOnlyInstanceMaxDelayTime?: pulumi.Input<number>;
+    readOnlyInstanceMaxDelayTime?: pulumi.Input<number | undefined>;
     /**
      * A list of the read weights of the instance and its read-only instances.  It contains two sub-fields(instance_id and weight). Read weights increase in increments of 100, and the maximum read weight is 10000. See `readOnlyInstanceWeight` below.
      */
-    readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[]>;
+    readOnlyInstanceWeights?: pulumi.Input<pulumi.Input<inputs.rds.RdsDbProxyReadOnlyInstanceWeight>[] | undefined>;
     /**
      * The ID of the resource group.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The point in time at which you want to upgrade the database proxy version of the instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      */
-    switchTime?: pulumi.Input<string>;
+    switchTime?: pulumi.Input<string | undefined>;
     /**
      * The time when you want to upgrade the database proxy version of the instance. Valid values:
      * - MaintainTime: ApsaraDB RDS performs the upgrade during the maintenance window that you specified. This is the default value. For more information, see Modify the maintenance window.
      * - Immediate: ApsaraDB RDS immediately performs the upgrade.
      * - SpecificTime: ApsaraDB RDS performs the upgrade at a specified point in time.
      */
-    upgradeTime?: pulumi.Input<string>;
+    upgradeTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the virtual private cloud (VPC) to which the instance belongs.
      */

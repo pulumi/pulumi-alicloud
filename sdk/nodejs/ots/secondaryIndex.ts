@@ -215,31 +215,31 @@ export interface SecondaryIndexState {
     /**
      * A list of defined column for index, referenced from Table's primary keys or predefined columns.
      */
-    definedColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    definedColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      */
-    includeBaseData?: pulumi.Input<boolean>;
+    includeBaseData?: pulumi.Input<boolean | undefined>;
     /**
      * The index name of the OTS Table. If changed, a new index would be created.
      */
-    indexName?: pulumi.Input<string>;
+    indexName?: pulumi.Input<string | undefined>;
     /**
      * The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
      */
-    indexType?: pulumi.Input<string>;
+    indexType?: pulumi.Input<string | undefined>;
     /**
      * The name of the OTS instance in which table will located.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * A list of primary keys for index, referenced from Table's primary keys or predefined columns.
      */
-    primaryKeys?: pulumi.Input<pulumi.Input<string>[]>;
+    primaryKeys?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the OTS table. If changed, a new table would be created.
      */
-    tableName?: pulumi.Input<string>;
+    tableName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -249,7 +249,7 @@ export interface SecondaryIndexArgs {
     /**
      * A list of defined column for index, referenced from Table's primary keys or predefined columns.
      */
-    definedColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    definedColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * whether the index contains data that already exists in the data table. When includeBaseData is set to true, it means that stock data is included.
      */

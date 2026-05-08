@@ -141,35 +141,35 @@ export interface ResourceDirectoryState {
     /**
      * The time when the resource directory was created
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the master account
      */
-    masterAccountId?: pulumi.Input<string>;
+    masterAccountId?: pulumi.Input<string | undefined>;
     /**
      * The name of the master account
      */
-    masterAccountName?: pulumi.Input<string>;
+    masterAccountName?: pulumi.Input<string | undefined>;
     /**
      * The status of the Member Display Name Synchronization feature. Valid values:
      * - Enabled
      * - Disabled
      */
-    memberAccountDisplayNameSyncStatus?: pulumi.Input<string>;
+    memberAccountDisplayNameSyncStatus?: pulumi.Input<string | undefined>;
     /**
      * The status of the member deletion feature. Valid values:
      * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
      * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      */
-    memberDeletionStatus?: pulumi.Input<string>;
+    memberDeletionStatus?: pulumi.Input<string | undefined>;
     /**
      * The ID of the root folder
      */
-    rootFolderId?: pulumi.Input<string>;
+    rootFolderId?: pulumi.Input<string | undefined>;
     /**
      * ScpStatus
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -181,15 +181,15 @@ export interface ResourceDirectoryArgs {
      * - Enabled
      * - Disabled
      */
-    memberAccountDisplayNameSyncStatus?: pulumi.Input<string>;
+    memberAccountDisplayNameSyncStatus?: pulumi.Input<string | undefined>;
     /**
      * The status of the member deletion feature. Valid values:
      * - Enabled: The feature is enabled. You can call the DeleteAccount operation to delete members of the resource account type.
      * - Disabled: The feature is disabled. You cannot delete members of the resource account type.
      */
-    memberDeletionStatus?: pulumi.Input<string>;
+    memberDeletionStatus?: pulumi.Input<string | undefined>;
     /**
      * ScpStatus
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

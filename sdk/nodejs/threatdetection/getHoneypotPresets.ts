@@ -157,33 +157,33 @@ export function getHoneypotPresetsOutput(args?: GetHoneypotPresetsOutputArgs, op
  * A collection of arguments for invoking getHoneypotPresets.
  */
 export interface GetHoneypotPresetsOutputArgs {
-    currentPage?: pulumi.Input<number>;
+    currentPage?: pulumi.Input<number | undefined>;
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * Honeypot mirror name
      */
-    honeypotImageName?: pulumi.Input<string>;
+    honeypotImageName?: pulumi.Input<string | undefined>;
     /**
      * A list of Honeypot Preset IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
-    lang?: pulumi.Input<string>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    lang?: pulumi.Input<string | undefined>;
     /**
      * Unique id of management node
      */
-    nodeId?: pulumi.Input<string>;
-    nodeName?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
-    pageNumber?: pulumi.Input<number>;
-    pageSize?: pulumi.Input<number>;
+    outputFile?: pulumi.Input<string | undefined>;
+    pageNumber?: pulumi.Input<number | undefined>;
+    pageSize?: pulumi.Input<number | undefined>;
     /**
      * Honeypot template custom name
      */
-    presetName?: pulumi.Input<string>;
+    presetName?: pulumi.Input<string | undefined>;
 }

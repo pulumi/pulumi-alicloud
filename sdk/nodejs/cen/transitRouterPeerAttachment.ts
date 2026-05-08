@@ -267,107 +267,107 @@ export interface TransitRouterPeerAttachmentState {
     /**
      * Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      */
-    autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth value of the inter-region connection. Unit: Mbit/s.
      *
      * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
      * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The method that is used to allocate bandwidth to the inter-region connection. Valid values:
      *
      * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
      * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      */
-    bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
      *
      * > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      */
-    cenBandwidthPackageId?: pulumi.Input<string>;
+    cenBandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The default line type.
      * Valid values: Platinum and Gold.
      * Platinum is supported only when BandwidthType is set to DataTransfer.
      */
-    defaultLinkType?: pulumi.Input<string>;
+    defaultLinkType?: pulumi.Input<string | undefined>;
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the peer transit router.
      */
-    peerTransitRouterId?: pulumi.Input<string>;
+    peerTransitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the peer transit router is deployed.
      */
-    peerTransitRouterRegionId?: pulumi.Input<string>;
+    peerTransitRouterRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region where the local Enterprise Edition transit router is deployed.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
-    routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
-    routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The new description of the inter-region connection.
      * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * The ID of the inter-region connection.
      */
-    transitRouterAttachmentId?: pulumi.Input<string>;
+    transitRouterAttachmentId?: pulumi.Input<string | undefined>;
     /**
      * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      */
-    transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the local Enterprise Edition transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The new name of the inter-region connection.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    transitRouterPeerAttachmentName?: pulumi.Input<string>;
+    transitRouterPeerAttachmentName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -377,41 +377,41 @@ export interface TransitRouterPeerAttachmentArgs {
     /**
      * Specifies whether to enable the local Enterprise Edition transit router to automatically advertise the routes of the inter-region connection to the peer transit router. Valid values:
      */
-    autoPublishRouteEnabled?: pulumi.Input<boolean>;
+    autoPublishRouteEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The bandwidth value of the inter-region connection. Unit: Mbit/s.
      *
      * - This parameter specifies the maximum bandwidth value for the inter-region connection if you set `BandwidthType` to `BandwidthPackage`.
      * - This parameter specifies the bandwidth throttling threshold for the inter-region connection if you set `BandwidthType` to `DataTransfer`.
      */
-    bandwidth?: pulumi.Input<number>;
+    bandwidth?: pulumi.Input<number | undefined>;
     /**
      * The method that is used to allocate bandwidth to the inter-region connection. Valid values:
      *
      * - `BandwidthPackage`: allocates bandwidth from a bandwidth plan.
      * - `DataTransfer`: bandwidth is billed based on the pay-by-data-transfer metering method.
      */
-    bandwidthType?: pulumi.Input<string>;
+    bandwidthType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the bandwidth plan that is used to allocate bandwidth to the inter-region connection.
      *
      * > **NOTE:**   If you set `BandwidthType` to `DataTransfer`, you do not need to set this parameter.
      */
-    cenBandwidthPackageId?: pulumi.Input<string>;
+    cenBandwidthPackageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cloud Enterprise Network (CEN) instance.
      */
-    cenId?: pulumi.Input<string>;
+    cenId?: pulumi.Input<string | undefined>;
     /**
      * The default line type.
      * Valid values: Platinum and Gold.
      * Platinum is supported only when BandwidthType is set to DataTransfer.
      */
-    defaultLinkType?: pulumi.Input<string>;
+    defaultLinkType?: pulumi.Input<string | undefined>;
     /**
      * Whether to perform PreCheck on this request, including permissions and instance status verification. Value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the peer transit router.
      */
@@ -419,47 +419,47 @@ export interface TransitRouterPeerAttachmentArgs {
     /**
      * The ID of the region where the peer transit router is deployed.
      */
-    peerTransitRouterRegionId?: pulumi.Input<string>;
+    peerTransitRouterRegionId?: pulumi.Input<string | undefined>;
     /**
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      *
      * The following arguments will be discarded. Please use new fields as soon as possible:
      */
-    resourceType?: pulumi.Input<string>;
+    resourceType?: pulumi.Input<string | undefined>;
     /**
      * Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTableAssociationEnabled` has been deprecated from provider version 1.230.0.
      */
-    routeTableAssociationEnabled?: pulumi.Input<boolean>;
+    routeTableAssociationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      *
      * @deprecated Field `routeTablePropagationEnabled` has been deprecated from provider version 1.230.0.
      */
-    routeTablePropagationEnabled?: pulumi.Input<boolean>;
+    routeTablePropagationEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The new description of the inter-region connection.
      * This parameter is optional. If you enter a description, it must be 1 to 256 characters in length, and cannot start with http:// or https://.
      */
-    transitRouterAttachmentDescription?: pulumi.Input<string>;
+    transitRouterAttachmentDescription?: pulumi.Input<string | undefined>;
     /**
      * . Field 'transit_router_attachment_name' has been deprecated from provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      *
      * @deprecated Field 'transit_router_attachment_name' has been deprecated since provider version 1.247.0. New field 'transit_router_peer_attachment_name' instead.
      */
-    transitRouterAttachmentName?: pulumi.Input<string>;
+    transitRouterAttachmentName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the local Enterprise Edition transit router.
      */
-    transitRouterId?: pulumi.Input<string>;
+    transitRouterId?: pulumi.Input<string | undefined>;
     /**
      * The new name of the inter-region connection.
      * The name can be empty or 1 to 128 characters in length, and cannot start with http:// or https://.
      */
-    transitRouterPeerAttachmentName?: pulumi.Input<string>;
+    transitRouterPeerAttachmentName?: pulumi.Input<string | undefined>;
 }

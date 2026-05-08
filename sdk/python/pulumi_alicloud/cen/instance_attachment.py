@@ -23,8 +23,8 @@ class InstanceAttachmentArgs:
                  child_instance_region_id: pulumi.Input[_builtins.str],
                  child_instance_type: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cen_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a InstanceAttachment resource.
 
@@ -96,7 +96,7 @@ class InstanceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The account ID to which the CEN instance belongs.
 
@@ -105,32 +105,32 @@ class InstanceAttachmentArgs:
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def child_instance_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The uid of the child instance. Only used when attach a child instance of other account.
         """
         return pulumi.get(self, "child_instance_owner_id")
 
     @child_instance_owner_id.setter
-    def child_instance_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def child_instance_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "child_instance_owner_id", value)
 
 
 @pulumi.input_type
 class _InstanceAttachmentState:
     def __init__(__self__, *,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cen_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAttachment resources.
 
@@ -161,7 +161,7 @@ class _InstanceAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="cenOwnerId")
-    def cen_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cen_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The account ID to which the CEN instance belongs.
 
@@ -170,79 +170,79 @@ class _InstanceAttachmentState:
         return pulumi.get(self, "cen_owner_id")
 
     @cen_owner_id.setter
-    def cen_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cen_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cen_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceId")
-    def child_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the child instance to attach.
         """
         return pulumi.get(self, "child_instance_id")
 
     @child_instance_id.setter
-    def child_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceOwnerId")
-    def child_instance_owner_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def child_instance_owner_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The uid of the child instance. Only used when attach a child instance of other account.
         """
         return pulumi.get(self, "child_instance_owner_id")
 
     @child_instance_owner_id.setter
-    def child_instance_owner_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def child_instance_owner_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "child_instance_owner_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceRegionId")
-    def child_instance_region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the child instance to attach.
         """
         return pulumi.get(self, "child_instance_region_id")
 
     @child_instance_region_id.setter
-    def child_instance_region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="childInstanceType")
-    def child_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def child_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
         """
         return pulumi.get(self, "child_instance_type")
 
     @child_instance_type.setter
-    def child_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def child_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "child_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CEN.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The associating status of the network.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -252,12 +252,12 @@ class InstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CEN child instance attachment resource that associate the network(VPC, CCN, VBR) with the CEN instance.
@@ -367,12 +367,12 @@ class InstanceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 cen_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,13 +407,13 @@ class InstanceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cen_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-            child_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_owner_id: Optional[pulumi.Input[_builtins.int]] = None,
-            child_instance_region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            child_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceAttachment':
+            cen_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            child_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_owner_id: pulumi.Input[Optional[_builtins.int]] = None,
+            child_instance_region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            child_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceAttachment':
         """
         Get an existing InstanceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

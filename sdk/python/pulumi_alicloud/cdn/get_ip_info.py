@@ -137,7 +137,7 @@ def get_ip_info(ip: Optional[_builtins.str] = None,
         isp_ename=pulumi.get(__ret__, 'isp_ename'),
         region=pulumi.get(__ret__, 'region'),
         region_ename=pulumi.get(__ret__, 'region_ename'))
-def get_ip_info_output(ip: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ip_info_output(ip: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIpInfoResult]:
     """
     This data source provides the function of verifying whether an IP is a CDN node.

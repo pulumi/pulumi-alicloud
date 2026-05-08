@@ -155,27 +155,27 @@ export interface CallbackState {
     /**
      * The Callback name defined by the customer. It can contain no more than 20 characters in Chinese, English, underscore (_), and digits.
      */
-    callbackName?: pulumi.Input<string>;
+    callbackName?: pulumi.Input<string | undefined>;
     /**
      * List of audit results supported by message notification. Value: block: confirmed violation, review: Suspected violation, review: normal.
      */
-    callbackSuggestions?: pulumi.Input<pulumi.Input<string>[]>;
+    callbackSuggestions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
      */
-    callbackTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    callbackTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The detection result will be called back to the url.
      */
-    callbackUrl?: pulumi.Input<string>;
+    callbackUrl?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the Callback.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
      */
-    cryptType?: pulumi.Input<number>;
+    cryptType?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -201,5 +201,5 @@ export interface CallbackArgs {
     /**
      * The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
      */
-    cryptType?: pulumi.Input<number>;
+    cryptType?: pulumi.Input<number | undefined>;
 }

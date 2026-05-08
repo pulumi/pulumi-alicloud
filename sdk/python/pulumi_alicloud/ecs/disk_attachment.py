@@ -21,10 +21,10 @@ class DiskAttachmentArgs:
     def __init__(__self__, *,
                  disk_id: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
-                 bootable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 bootable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DiskAttachment resource.
 
@@ -68,51 +68,51 @@ class DiskAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bootable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bootable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "bootable")
 
     @bootable.setter
-    def bootable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bootable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bootable", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
 @pulumi.input_type
 class _DiskAttachmentState:
     def __init__(__self__, *,
-                 bootable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 bootable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DiskAttachment resources.
 
@@ -136,71 +136,71 @@ class _DiskAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def bootable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def bootable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "bootable")
 
     @bootable.setter
-    def bootable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def bootable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "bootable", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteWithInstance")
-    def delete_with_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_with_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
-    def delete_with_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_with_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_with_instance", value)
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter(name="diskId")
-    def disk_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Disk to be attached.
         """
         return pulumi.get(self, "disk_id")
 
     @disk_id.setter
-    def disk_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Instance to attach to.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
@@ -210,12 +210,12 @@ class DiskAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 bootable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **DEPRECATED:** This resource has been renamed to ecs.EcsDiskAttachment from version 1.122.0.
@@ -341,12 +341,12 @@ class DiskAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bootable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
+                 bootable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -377,13 +377,13 @@ class DiskAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bootable: Optional[pulumi.Input[_builtins.bool]] = None,
-            delete_with_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            device: Optional[pulumi.Input[_builtins.str]] = None,
-            disk_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None) -> 'DiskAttachment':
+            bootable: pulumi.Input[Optional[_builtins.bool]] = None,
+            delete_with_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            disk_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None) -> 'DiskAttachment':
         """
         Get an existing DiskAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -146,27 +146,27 @@ export interface DynamicTagGroupState {
     /**
      * The alert contact groups. The alert notifications of the application group are sent to the alert contacts that belong to the specified alert contact groups.
      */
-    contactGroupLists?: pulumi.Input<pulumi.Input<string>[]>;
+    contactGroupLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      */
-    matchExpressFilterRelation?: pulumi.Input<string>;
+    matchExpressFilterRelation?: pulumi.Input<string | undefined>;
     /**
      * The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      */
-    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cms.DynamicTagGroupMatchExpress>[]>;
+    matchExpresses?: pulumi.Input<pulumi.Input<inputs.cms.DynamicTagGroupMatchExpress>[] | undefined>;
     /**
      * The status of the Dynamic Tag Group.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag keys of the cloud resources.
      */
-    tagKey?: pulumi.Input<string>;
+    tagKey?: pulumi.Input<string | undefined>;
     /**
      * The IDs of the alert templates.
      */
-    templateIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    templateIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -180,7 +180,7 @@ export interface DynamicTagGroupArgs {
     /**
      * The relationship between the conditional expressions for the tag values of the cloud resources. Valid values: `and`, `or`.
      */
-    matchExpressFilterRelation?: pulumi.Input<string>;
+    matchExpressFilterRelation?: pulumi.Input<string | undefined>;
     /**
      * The conditional expressions used to create an application group based on the tag. See `matchExpress` below.
      */
@@ -192,5 +192,5 @@ export interface DynamicTagGroupArgs {
     /**
      * The IDs of the alert templates.
      */
-    templateIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    templateIdLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -151,35 +151,35 @@ export interface AlidnsInstanceState {
     /**
      * Alidns security level. Valid values: `no`, `basic`, `advanced`.
      */
-    dnsSecurity?: pulumi.Input<string>;
+    dnsSecurity?: pulumi.Input<string | undefined>;
     /**
      * Number of domain names bound.
      */
-    domainNumbers?: pulumi.Input<string>;
+    domainNumbers?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */
-    versionCode?: pulumi.Input<string>;
+    versionCode?: pulumi.Input<string | undefined>;
     /**
      * Paid package version name.
      */
-    versionName?: pulumi.Input<string>;
+    versionName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -197,19 +197,19 @@ export interface AlidnsInstanceArgs {
     /**
      * The billing method of the Alidns instance. Valid values: `Subscription`. Default to `Subscription`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * Creating a pre-paid instance, it must be set, the unit is month, please enter an integer multiple of 12 for annually paid products.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal period, the unit is month. When setting RenewalStatus to AutoRenewal, it must be set.
      */
-    renewPeriod?: pulumi.Input<number>;
+    renewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`, `ManualRenewal`, default to `ManualRenewal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Paid package version. Valid values: `versionPersonal`, `versionEnterpriseBasic`, `versionEnterpriseAdvanced`.
      */

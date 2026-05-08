@@ -126,15 +126,15 @@ export interface NamespaceState {
     /**
      * Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
      */
-    autoCreate?: pulumi.Input<boolean>;
+    autoCreate?: pulumi.Input<boolean | undefined>;
     /**
      * `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
      */
-    defaultVisibility?: pulumi.Input<string>;
+    defaultVisibility?: pulumi.Input<string | undefined>;
     /**
      * Name of Container Registry namespace.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -152,5 +152,5 @@ export interface NamespaceArgs {
     /**
      * Name of Container Registry namespace.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

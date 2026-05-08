@@ -22,8 +22,8 @@ class NatFirewallControlPolicyOrderArgs:
                  acl_uuid: pulumi.Input[_builtins.str],
                  nat_gateway_id: pulumi.Input[_builtins.str],
                  order: pulumi.Input[_builtins.str],
-                 current_page: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None):
+                 current_page: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NatFirewallControlPolicyOrder resource.
 
@@ -83,7 +83,7 @@ class NatFirewallControlPolicyOrderArgs:
 
     @_builtins.property
     @pulumi.getter(name="currentPage")
-    def current_page(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_page(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The page number of the current page for paginated queries.
 
@@ -92,30 +92,30 @@ class NatFirewallControlPolicyOrderArgs:
         return pulumi.get(self, "current_page")
 
     @current_page.setter
-    def current_page(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_page(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_page", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic direction controlled by the access control policy. Valid values:
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
 
 @pulumi.input_type
 class _NatFirewallControlPolicyOrderState:
     def __init__(__self__, *,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_page: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_page: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NatFirewallControlPolicyOrder resources.
 
@@ -141,19 +141,19 @@ class _NatFirewallControlPolicyOrderState:
 
     @_builtins.property
     @pulumi.getter(name="aclUuid")
-    def acl_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier ID of the security access control policy.
         """
         return pulumi.get(self, "acl_uuid")
 
     @acl_uuid.setter
-    def acl_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="currentPage")
-    def current_page(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_page(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The page number of the current page for paginated queries.
 
@@ -162,36 +162,36 @@ class _NatFirewallControlPolicyOrderState:
         return pulumi.get(self, "current_page")
 
     @current_page.setter
-    def current_page(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_page(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_page", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The traffic direction controlled by the access control policy. Valid values:
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="natGatewayId")
-    def nat_gateway_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def nat_gateway_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NAT gateway to query.
         """
         return pulumi.get(self, "nat_gateway_id")
 
     @nat_gateway_id.setter
-    def nat_gateway_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def nat_gateway_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "nat_gateway_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The priority at which the access control policy takes effect.
         Priority numbers start from 1 and increment sequentially. A smaller priority number indicates a higher priority.
@@ -199,7 +199,7 @@ class _NatFirewallControlPolicyOrderState:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order", value)
 
 
@@ -209,11 +209,11 @@ class NatFirewallControlPolicyOrder(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_page: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_page: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Nat Firewall Control Policy Order resource.
@@ -337,11 +337,11 @@ class NatFirewallControlPolicyOrder(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_page: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 order: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_page: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 order: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,11 +372,11 @@ class NatFirewallControlPolicyOrder(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            current_page: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            nat_gateway_id: Optional[pulumi.Input[_builtins.str]] = None,
-            order: Optional[pulumi.Input[_builtins.str]] = None) -> 'NatFirewallControlPolicyOrder':
+            acl_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            current_page: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            nat_gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            order: pulumi.Input[Optional[_builtins.str]] = None) -> 'NatFirewallControlPolicyOrder':
         """
         Get an existing NatFirewallControlPolicyOrder resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

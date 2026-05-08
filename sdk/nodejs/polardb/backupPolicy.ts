@@ -234,78 +234,78 @@ export interface BackupPolicyState {
     /**
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    backupFrequency?: pulumi.Input<string>;
+    backupFrequency?: pulumi.Input<string | undefined>;
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
      */
-    backupRetentionPeriod?: pulumi.Input<string>;
+    backupRetentionPeriod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
      */
-    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    dataLevel1BackupFrequency?: pulumi.Input<string>;
+    dataLevel1BackupFrequency?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
      */
-    dataLevel1BackupRetentionPeriod?: pulumi.Input<number>;
+    dataLevel1BackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
      */
-    dataLevel1BackupTime?: pulumi.Input<string>;
+    dataLevel1BackupTime?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-2 backup is a cross regional backup area.
      */
-    dataLevel2BackupAnotherRegionRegion?: pulumi.Input<string>;
+    dataLevel2BackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number>;
+    dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    dataLevel2BackupRetentionPeriod?: pulumi.Input<number>;
+    dataLevel2BackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The Id of cluster that can run database.
      */
-    dbClusterId?: pulumi.Input<string>;
+    dbClusterId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the log backup feature was enabled. Valid values are `0`, `1`. `1` By default, the log backup feature is enabled and cannot be disabled.
      */
-    enableBackupLog?: pulumi.Input<number>;
+    enableBackupLog?: pulumi.Input<number | undefined>;
     /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      */
-    logBackupAnotherRegionRegion?: pulumi.Input<string>;
+    logBackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
-    logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number>;
+    logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
      */
-    logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
-    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -315,49 +315,49 @@ export interface BackupPolicyArgs {
     /**
      * The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    backupFrequency?: pulumi.Input<string>;
+    backupFrequency?: pulumi.Input<string | undefined>;
     /**
      * Cluster backup retention days, Fixed for 7 days, not modified.
      */
-    backupRetentionPeriod?: pulumi.Input<string>;
+    backupRetentionPeriod?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to retain backups when you delete a cluster. Valid values are `ALL`, `LATEST`, `NONE`. Default to `NONE`. Value options can refer to the latest docs [ModifyBackupPolicy](https://www.alibabacloud.com/help/en/polardb/latest/modifybackuppolicy)
      */
-    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string>;
+    backupRetentionPolicyOnClusterDeletion?: pulumi.Input<string | undefined>;
     /**
      * The Id of cluster that can run database.The backup frequency. Valid values are `Normal`, `2/24H`, `3/24H`, `4/24H`.Default to `Normal`.
      */
-    dataLevel1BackupFrequency?: pulumi.Input<string>;
+    dataLevel1BackupFrequency?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-1 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    dataLevel1BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
      */
-    dataLevel1BackupRetentionPeriod?: pulumi.Input<number>;
+    dataLevel1BackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The time period during which automatic backup is performed. The format is HH: MMZ HH: MMZ (UTC time), and the entered value must be an hour apart, such as 14:00z-15:00z.
      */
-    dataLevel1BackupTime?: pulumi.Input<string>;
+    dataLevel1BackupTime?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-2 backup is a cross regional backup area.
      */
-    dataLevel2BackupAnotherRegionRegion?: pulumi.Input<string>;
+    dataLevel2BackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * PolarDB Cluster of level-2 backup cross region backup retention period. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number>;
+    dataLevel2BackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster of level-2 backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
      * > **NOTE:** Note Select at least two values. Separate multiple values with commas (,).
      */
-    dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    dataLevel2BackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The retention period of level-2 backups. Valid values are `0`, `30 to 7300`, `-1`. Default to `0`.
      */
-    dataLevel2BackupRetentionPeriod?: pulumi.Input<number>;
+    dataLevel2BackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The Id of cluster that can run database.
      */
@@ -365,22 +365,22 @@ export interface BackupPolicyArgs {
     /**
      * The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview.](https://www.alibabacloud.com/help/en/polardb/latest/backup-and-restoration-overview)
      */
-    logBackupAnotherRegionRegion?: pulumi.Input<string>;
+    logBackupAnotherRegionRegion?: pulumi.Input<string | undefined>;
     /**
      * The retention period of cross-region log backups. Default value: OFF. Valid values are `0`, `30 to 7300`, `-1`.
      * > **NOTE:** Note When you create a cluster, the default value of this parameter is 0.
      */
-    logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number>;
+    logBackupAnotherRegionRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The retention period of the log backups. Valid values are `3 to 7300`, `-1`.
      */
-    logBackupRetentionPeriod?: pulumi.Input<number>;
+    logBackupRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * PolarDB Cluster backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]. Default to ["Tuesday", "Thursday", "Saturday"].
      */
-    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[]>;
+    preferredBackupPeriods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * PolarDB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
      */
-    preferredBackupTime?: pulumi.Input<string>;
+    preferredBackupTime?: pulumi.Input<string | undefined>;
 }

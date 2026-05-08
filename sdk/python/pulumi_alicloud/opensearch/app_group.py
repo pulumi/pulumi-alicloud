@@ -25,11 +25,11 @@ class AppGroupArgs:
                  payment_type: pulumi.Input[_builtins.str],
                  quota: pulumi.Input['AppGroupQuotaArgs'],
                  type: pulumi.Input[_builtins.str],
-                 charge_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None):
+                 charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None):
         """
         The set of arguments for constructing a AppGroup resource.
 
@@ -108,79 +108,79 @@ class AppGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="chargeWay")
-    def charge_way(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_way(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing model. Valid values:`compute_resource` and `qps`.
         """
         return pulumi.get(self, "charge_way")
 
     @charge_way.setter
-    def charge_way(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_way(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_way", value)
 
     @_builtins.property
     @pulumi.getter(name="currentVersion")
-    def current_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Application Group Name.
         """
         return pulumi.get(self, "current_version")
 
     @current_version.setter
-    def current_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
+    def orders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
         """
         Order cycle information. The details see Block order.
         """
         return pulumi.get(self, "orders")
 
     @orders.setter
-    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]]):
+    def orders(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]):
         pulumi.set(self, "orders", value)
 
 
 @pulumi.input_type
 class _AppGroupState:
     def __init__(__self__, *,
-                 app_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input['AppGroupQuotaArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 app_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional['AppGroupQuotaArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AppGroup resources.
 
@@ -221,134 +221,134 @@ class _AppGroupState:
 
     @_builtins.property
     @pulumi.getter(name="appGroupName")
-    def app_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def app_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application Group Name.
         """
         return pulumi.get(self, "app_group_name")
 
     @app_group_name.setter
-    def app_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def app_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "app_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeWay")
-    def charge_way(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_way(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Billing model. Valid values:`compute_resource` and `qps`.
         """
         return pulumi.get(self, "charge_way")
 
     @charge_way.setter
-    def charge_way(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_way(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_way", value)
 
     @_builtins.property
     @pulumi.getter(name="currentVersion")
-    def current_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def current_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of Application Group Name.
         """
         return pulumi.get(self, "current_version")
 
     @current_version.setter
-    def current_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def current_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "current_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the resource.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance id.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="orderType")
-    def order_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def order_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
         """
         return pulumi.get(self, "order_type")
 
     @order_type.setter
-    def order_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def order_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "order_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
+    def orders(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]:
         """
         Order cycle information. The details see Block order.
         """
         return pulumi.get(self, "orders")
 
     @orders.setter
-    def orders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppGroupOrderArgs']]]]):
+    def orders(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppGroupOrderArgs']]]]):
         pulumi.set(self, "orders", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input['AppGroupQuotaArgs']]:
+    def quota(self) -> pulumi.Input[Optional['AppGroupQuotaArgs']]:
         """
         Quota information.  The details see Block quota.
         """
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input['AppGroupQuotaArgs']]):
+    def quota(self, value: pulumi.Input[Optional['AppGroupQuotaArgs']]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Application type. Valid Values: `standard`, `enhanced`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -358,15 +358,15 @@ class AppGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Open Search App Group resource.
@@ -483,15 +483,15 @@ class AppGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 app_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 charge_way: Optional[pulumi.Input[_builtins.str]] = None,
-                 current_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 order_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 app_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+                 current_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 order_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -530,17 +530,17 @@ class AppGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            app_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            charge_way: Optional[pulumi.Input[_builtins.str]] = None,
-            current_version: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            order_type: Optional[pulumi.Input[_builtins.str]] = None,
-            orders: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            quota: Optional[pulumi.Input[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'AppGroup':
+            app_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            charge_way: pulumi.Input[Optional[_builtins.str]] = None,
+            current_version: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            order_type: pulumi.Input[Optional[_builtins.str]] = None,
+            orders: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppGroupOrderArgs', 'AppGroupOrderArgsDict']]]]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            quota: pulumi.Input[Optional[Union['AppGroupQuotaArgs', 'AppGroupQuotaArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'AppGroup':
         """
         Get an existing AppGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

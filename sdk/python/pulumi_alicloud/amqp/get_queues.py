@@ -170,11 +170,11 @@ def get_queues(ids: Optional[Sequence[_builtins.str]] = None,
         output_file=pulumi.get(__ret__, 'output_file'),
         queues=pulumi.get(__ret__, 'queues'),
         virtual_host_name=pulumi.get(__ret__, 'virtual_host_name'))
-def get_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                      instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                      name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_queues_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                      instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                      name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQueuesResult]:
     """
     This data source provides the Amqp Queues of the current Alibaba Cloud user.

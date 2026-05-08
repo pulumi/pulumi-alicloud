@@ -192,49 +192,49 @@ export interface RewriteUrlRuleState {
     /**
      * ConfigId
      */
-    configId?: pulumi.Input<number>;
+    configId?: pulumi.Input<number | undefined>;
     /**
      * The desired query string to which you want to rewrite the query string in the original request.
      */
-    queryString?: pulumi.Input<string>;
+    queryString?: pulumi.Input<string | undefined>;
     /**
      * Query string rewrite type. Value range:
      */
-    rewriteQueryStringType?: pulumi.Input<string>;
+    rewriteQueryStringType?: pulumi.Input<string | undefined>;
     /**
      * URI rewrite type. Value range:
      */
-    rewriteUriType?: pulumi.Input<string>;
+    rewriteUriType?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * ‒ on: open.
      * ‒ off: close.
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
-    siteId?: pulumi.Input<string>;
+    siteId?: pulumi.Input<string | undefined>;
     /**
      * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * The desired URI to which you want to rewrite the path in the original request.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -244,33 +244,33 @@ export interface RewriteUrlRuleArgs {
     /**
      * The desired query string to which you want to rewrite the query string in the original request.
      */
-    queryString?: pulumi.Input<string>;
+    queryString?: pulumi.Input<string | undefined>;
     /**
      * Query string rewrite type. Value range:
      */
-    rewriteQueryStringType?: pulumi.Input<string>;
+    rewriteQueryStringType?: pulumi.Input<string | undefined>;
     /**
      * URI rewrite type. Value range:
      */
-    rewriteUriType?: pulumi.Input<string>;
+    rewriteUriType?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
      * ‒ on: open.
      * ‒ off: close.
      */
-    ruleEnable?: pulumi.Input<string>;
+    ruleEnable?: pulumi.Input<string | undefined>;
     /**
      * Rule name. When adding global configuration, this parameter does not need to be set.
      */
-    ruleName?: pulumi.Input<string>;
+    ruleName?: pulumi.Input<string | undefined>;
     /**
      * The rule execution order prioritizes lower numerical values. It is only applicable when setting or modifying the order of individual rule configurations.
      */
-    sequence?: pulumi.Input<number>;
+    sequence?: pulumi.Input<number | undefined>;
     /**
      * The website ID, which can be obtained by calling the [ListSites](https://www.alibabacloud.com/help/en/doc-detail/2850189.html) operation.
      */
@@ -278,9 +278,9 @@ export interface RewriteUrlRuleArgs {
     /**
      * Version number of the site configuration. For a site with configuration version management enabled, you can use this parameter to specify the site version in which the configuration takes effect. The default version is 0.
      */
-    siteVersion?: pulumi.Input<number>;
+    siteVersion?: pulumi.Input<number | undefined>;
     /**
      * The desired URI to which you want to rewrite the path in the original request.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
 }

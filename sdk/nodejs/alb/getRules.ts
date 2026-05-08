@@ -340,29 +340,29 @@ export interface GetRulesOutputArgs {
     /**
      * A list of Rule IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The listener ids.
      */
-    listenerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    listenerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The load balancer ids.
      */
-    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A regex string to filter results by Rule name.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The rule ids.
      */
-    ruleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    ruleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

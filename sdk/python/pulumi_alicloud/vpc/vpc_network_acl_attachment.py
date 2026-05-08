@@ -73,10 +73,10 @@ class VpcNetworkAclAttachmentArgs:
 @pulumi.input_type
 class _VpcNetworkAclAttachmentState:
     def __init__(__self__, *,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcNetworkAclAttachment resources.
 
@@ -96,50 +96,50 @@ class _VpcNetworkAclAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="networkAclId")
-    def network_acl_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_acl_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network ACL instance.
         """
         return pulumi.get(self, "network_acl_id")
 
     @network_acl_id.setter
-    def network_acl_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_acl_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_acl_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the associated  vswitch instance.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceType")
-    def resource_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the associated resource. Valid values: `VSwitch`.
         """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
-    def resource_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Network Acl Attachment.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -149,9 +149,9 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Network Acl Attachment resource.
@@ -177,9 +177,9 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default", cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=2)).apply(lambda invoke: invoke.result),
+                netnum=2).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id)
         default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
         default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",
@@ -235,9 +235,9 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
         default_network = alicloud.vpc.Network("default", cidr_block="192.168.0.0/16")
         default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
-            cidr_block=default_network.cidr_block.apply(lambda cidr_block: std.cidrsubnet_output(input=cidr_block,
+            cidr_block=std.cidrsubnet_output(input=default_network.cidr_block,
                 newbits=8,
-                netnum=2)).apply(lambda invoke: invoke.result),
+                netnum=2).apply(lambda invoke: invoke.result),
             zone_id=default.zones[0].id)
         default_network_acl = alicloud.vpc.NetworkAcl("default", vpc_id=default_switch.vpc_id)
         default_vpc_network_acl_attachment = alicloud.vpc.VpcNetworkAclAttachment("default",
@@ -272,9 +272,9 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,10 +304,10 @@ class VpcNetworkAclAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            network_acl_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcNetworkAclAttachment':
+            network_acl_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcNetworkAclAttachment':
         """
         Get an existing VpcNetworkAclAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

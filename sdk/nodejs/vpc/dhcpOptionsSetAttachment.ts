@@ -134,19 +134,19 @@ export interface DhcpOptionsSetAttachmentState {
     /**
      * The ID of the DHCP options set.
      */
-    dhcpOptionsSetId?: pulumi.Input<string>;
+    dhcpOptionsSetId?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The status of the VPC network that is associated with the DHCP options set.  Valid values: `InUse` or `Pending`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC network that is to be associated with the DHCP options set..
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,7 +160,7 @@ export interface DhcpOptionsSetAttachmentArgs {
     /**
      * Specifies whether to precheck this request only. Default values: `false`. Valid values:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the VPC network that is to be associated with the DHCP options set..
      */

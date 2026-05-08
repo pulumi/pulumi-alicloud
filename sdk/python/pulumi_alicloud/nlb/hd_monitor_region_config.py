@@ -58,9 +58,9 @@ class HdMonitorRegionConfigArgs:
 @pulumi.input_type
 class _HdMonitorRegionConfigState:
     def __init__(__self__, *,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HdMonitorRegionConfig resources.
 
@@ -77,38 +77,38 @@ class _HdMonitorRegionConfigState:
 
     @_builtins.property
     @pulumi.getter(name="logProject")
-    def log_project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the LogProject.
         """
         return pulumi.get(self, "log_project")
 
     @log_project.setter
-    def log_project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_project", value)
 
     @_builtins.property
     @pulumi.getter(name="metricStore")
-    def metric_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the MetricStore.
         """
         return pulumi.get(self, "metric_store")
 
     @metric_store.setter
-    def metric_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_store", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the region in which the resource resides.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
 
@@ -118,8 +118,8 @@ class HdMonitorRegionConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_store: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_store: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Network Load Balancer (NLB) Hd Monitor Region Config resource.
@@ -221,8 +221,8 @@ class HdMonitorRegionConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 log_project: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_store: Optional[pulumi.Input[_builtins.str]] = None,
+                 log_project: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_store: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -249,9 +249,9 @@ class HdMonitorRegionConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            log_project: Optional[pulumi.Input[_builtins.str]] = None,
-            metric_store: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'HdMonitorRegionConfig':
+            log_project: pulumi.Input[Optional[_builtins.str]] = None,
+            metric_store: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'HdMonitorRegionConfig':
         """
         Get an existing HdMonitorRegionConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -20,7 +20,7 @@ __all__ = ['InstanceMemberArgs', 'InstanceMember']
 class InstanceMemberArgs:
     def __init__(__self__, *,
                  member_uid: pulumi.Input[_builtins.str],
-                 member_desc: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_desc: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a InstanceMember resource.
 
@@ -45,26 +45,26 @@ class InstanceMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberDesc")
-    def member_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remarks of cloud firewall member accounts.
         """
         return pulumi.get(self, "member_desc")
 
     @member_desc.setter
-    def member_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_desc", value)
 
 
 @pulumi.input_type
 class _InstanceMemberState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 member_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 member_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceMember resources.
 
@@ -90,74 +90,74 @@ class _InstanceMemberState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When the cloud firewall member account was added.> use second-level timestamp format.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="memberDesc")
-    def member_desc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_desc(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Remarks of cloud firewall member accounts.
         """
         return pulumi.get(self, "member_desc")
 
     @member_desc.setter
-    def member_desc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_desc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_desc", value)
 
     @_builtins.property
     @pulumi.getter(name="memberDisplayName")
-    def member_display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cloud firewall member account.
         """
         return pulumi.get(self, "member_display_name")
 
     @member_display_name.setter
-    def member_display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_display_name", value)
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UID of the cloud firewall member account.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="modifyTime")
-    def modify_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def modify_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The last modification time of the cloud firewall member account.> use second-level timestamp format.
         """
         return pulumi.get(self, "modify_time")
 
     @modify_time.setter
-    def modify_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def modify_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "modify_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource attribute field that represents the resource status.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -167,8 +167,8 @@ class InstanceMember(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Instance Member resource.
@@ -276,8 +276,8 @@ class InstanceMember(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_desc: Optional[pulumi.Input[_builtins.str]] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_desc: pulumi.Input[Optional[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,12 +305,12 @@ class InstanceMember(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            member_desc: Optional[pulumi.Input[_builtins.str]] = None,
-            member_display_name: Optional[pulumi.Input[_builtins.str]] = None,
-            member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            modify_time: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceMember':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            member_desc: pulumi.Input[Optional[_builtins.str]] = None,
+            member_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            modify_time: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceMember':
         """
         Get an existing InstanceMember resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

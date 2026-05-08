@@ -214,51 +214,51 @@ export interface NacosConfigState {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The name of the application.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * The list of IP addresses where the beta release of the configuration is performed.
      */
-    betaIps?: pulumi.Input<string>;
+    betaIps?: pulumi.Input<string | undefined>;
     /**
      * The content of the configuration.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The ID of the data.
      */
-    dataId?: pulumi.Input<string>;
+    dataId?: pulumi.Input<string | undefined>;
     /**
      * The description of the configuration.
      */
-    desc?: pulumi.Input<string>;
+    desc?: pulumi.Input<string | undefined>;
     /**
      * The encryption key.
      */
-    encryptedDataKey?: pulumi.Input<string>;
+    encryptedDataKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The tags of the configuration.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * The format of the configuration. Supported formats include TEXT, JSON, and XML.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -268,15 +268,15 @@ export interface NacosConfigArgs {
     /**
      * The language type of the returned information. Valid values: `zh`, `en`.
      */
-    acceptLanguage?: pulumi.Input<string>;
+    acceptLanguage?: pulumi.Input<string | undefined>;
     /**
      * The name of the application.
      */
-    appName?: pulumi.Input<string>;
+    appName?: pulumi.Input<string | undefined>;
     /**
      * The list of IP addresses where the beta release of the configuration is performed.
      */
-    betaIps?: pulumi.Input<string>;
+    betaIps?: pulumi.Input<string | undefined>;
     /**
      * The content of the configuration.
      */
@@ -288,7 +288,7 @@ export interface NacosConfigArgs {
     /**
      * The description of the configuration.
      */
-    desc?: pulumi.Input<string>;
+    desc?: pulumi.Input<string | undefined>;
     /**
      * The ID of the group.
      */
@@ -300,13 +300,13 @@ export interface NacosConfigArgs {
     /**
      * The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
      */
-    namespaceId?: pulumi.Input<string>;
+    namespaceId?: pulumi.Input<string | undefined>;
     /**
      * The tags of the configuration.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
     /**
      * The format of the configuration. Supported formats include TEXT, JSON, and XML.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

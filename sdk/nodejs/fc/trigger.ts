@@ -688,43 +688,43 @@ export interface TriggerState {
     /**
      * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
      */
-    configMns?: pulumi.Input<string>;
+    configMns?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute function name.
      */
-    function?: pulumi.Input<string>;
+    function?: pulumi.Input<string | undefined>;
     /**
      * The date this resource was last modified.
      */
-    lastModified?: pulumi.Input<string>;
+    lastModified?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute service name.
      */
-    service?: pulumi.Input<string>;
+    service?: pulumi.Input<string | undefined>;
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute trigger ID.
      */
-    triggerId?: pulumi.Input<string>;
+    triggerId?: pulumi.Input<string | undefined>;
     /**
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *
@@ -732,7 +732,7 @@ export interface TriggerState {
      * > **NOTE:** type = cdn_events, available in 1.47.0+.
      * > **NOTE:** type = eventbridge, available in 1.173.0+.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -742,11 +742,11 @@ export interface TriggerArgs {
     /**
      * The config of Function Compute trigger.It is valid when `type` is not "mnsTopic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      */
-    config?: pulumi.Input<string>;
+    config?: pulumi.Input<string | undefined>;
     /**
      * The config of Function Compute trigger when the type is "mnsTopic".It is conflict with `config`.
      */
-    configMns?: pulumi.Input<string>;
+    configMns?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute function name.
      */
@@ -754,15 +754,15 @@ export interface TriggerArgs {
     /**
      * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Setting a prefix to get a only trigger name. It is conflict with "name".
      */
-    namePrefix?: pulumi.Input<string>;
+    namePrefix?: pulumi.Input<string | undefined>;
     /**
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * The Function Compute service name.
      */
@@ -770,7 +770,7 @@ export interface TriggerArgs {
     /**
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      */
-    sourceArn?: pulumi.Input<string>;
+    sourceArn?: pulumi.Input<string | undefined>;
     /**
      * The Type of the trigger. Valid values: ["oss", "log", "timer", "http", "mnsTopic", "cdnEvents", "eventbridge"].
      *

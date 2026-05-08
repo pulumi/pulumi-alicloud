@@ -64,8 +64,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -109,8 +109,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -154,8 +154,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -199,8 +199,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -289,8 +289,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -334,8 +334,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessGroupsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -379,8 +379,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -425,8 +425,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -471,8 +471,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -517,8 +517,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -563,8 +563,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAccessRulesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -609,8 +609,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -652,8 +652,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -695,8 +695,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -738,8 +738,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -781,8 +781,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -824,8 +824,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -867,8 +867,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetAutoSnapshotPoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -912,8 +912,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -966,8 +966,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1020,8 +1020,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1074,8 +1074,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1128,8 +1128,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetDataFlowsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1180,8 +1180,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1224,8 +1224,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1268,8 +1268,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1312,8 +1312,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1356,8 +1356,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1400,8 +1400,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1444,8 +1444,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFileSystemsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1490,8 +1490,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1538,8 +1538,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1586,8 +1586,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1634,8 +1634,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1682,8 +1682,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetFilesetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1730,8 +1730,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1784,8 +1784,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1838,8 +1838,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1892,8 +1892,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1946,8 +1946,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetLifecyclePoliciesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1998,8 +1998,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2042,8 +2042,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2086,8 +2086,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2130,8 +2130,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2174,8 +2174,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetMountTargetsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2218,8 +2218,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2263,8 +2263,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2308,8 +2308,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2353,8 +2353,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2398,8 +2398,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetProtocolsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2445,8 +2445,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2489,8 +2489,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2533,8 +2533,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2577,8 +2577,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2621,8 +2621,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2665,8 +2665,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2709,8 +2709,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetServiceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2753,8 +2753,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2802,8 +2802,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2851,8 +2851,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2900,8 +2900,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2949,8 +2949,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2998,8 +2998,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3047,8 +3047,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetSnapshotsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3094,8 +3094,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3136,8 +3136,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3178,8 +3178,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3220,8 +3220,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3262,8 +3262,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3304,8 +3304,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3346,8 +3346,8 @@ public final class NasFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.alicloud.nas.NasFunctions;
      * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

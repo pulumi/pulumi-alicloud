@@ -20,7 +20,7 @@ __all__ = ['AlertContactGroupArgs', 'AlertContactGroup']
 class AlertContactGroupArgs:
     def __init__(__self__, *,
                  alert_contact_group_name: pulumi.Input[_builtins.str],
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a AlertContactGroup resource.
 
@@ -45,22 +45,22 @@ class AlertContactGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactIds")
-    def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list id of alert contact.
         """
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
-    def contact_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_ids", value)
 
 
 @pulumi.input_type
 class _AlertContactGroupState:
     def __init__(__self__, *,
-                 alert_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 alert_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering AlertContactGroup resources.
 
@@ -74,26 +74,26 @@ class _AlertContactGroupState:
 
     @_builtins.property
     @pulumi.getter(name="alertContactGroupName")
-    def alert_contact_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alert_contact_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the resource.
         """
         return pulumi.get(self, "alert_contact_group_name")
 
     @alert_contact_group_name.setter
-    def alert_contact_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alert_contact_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alert_contact_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="contactIds")
-    def contact_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contact_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list id of alert contact.
         """
         return pulumi.get(self, "contact_ids")
 
     @contact_ids.setter
-    def contact_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contact_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contact_ids", value)
 
 
@@ -103,8 +103,8 @@ class AlertContactGroup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Alert Contact Group resource.
@@ -204,8 +204,8 @@ class AlertContactGroup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alert_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -229,8 +229,8 @@ class AlertContactGroup(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alert_contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            contact_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AlertContactGroup':
+            alert_contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            contact_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'AlertContactGroup':
         """
         Get an existing AlertContactGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

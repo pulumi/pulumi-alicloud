@@ -20,33 +20,33 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role: Optional[pulumi.Input['ProviderAssumeRoleArgs']] = None,
-                 assume_role_with_oidc: Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']] = None,
-                 client_connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 configuration_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
-                 fc: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 mns_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_credentials_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_version: Optional[pulumi.Input['ProviderSignVersionArgs']] = None,
-                 skip_region_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role: pulumi.Input[Optional['ProviderAssumeRoleArgs']] = None,
+                 assume_role_with_oidc: pulumi.Input[Optional['ProviderAssumeRoleWithOidcArgs']] = None,
+                 client_connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 configuration_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]] = None,
+                 fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_credentials_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_version: pulumi.Input[Optional['ProviderSignVersionArgs']] = None,
+                 skip_region_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -142,297 +142,297 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRole")
-    def assume_role(self) -> Optional[pulumi.Input['ProviderAssumeRoleArgs']]:
+    def assume_role(self) -> pulumi.Input[Optional['ProviderAssumeRoleArgs']]:
         return pulumi.get(self, "assume_role")
 
     @assume_role.setter
-    def assume_role(self, value: Optional[pulumi.Input['ProviderAssumeRoleArgs']]):
+    def assume_role(self, value: pulumi.Input[Optional['ProviderAssumeRoleArgs']]):
         pulumi.set(self, "assume_role", value)
 
     @_builtins.property
     @pulumi.getter(name="assumeRoleWithOidc")
-    def assume_role_with_oidc(self) -> Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']]:
+    def assume_role_with_oidc(self) -> pulumi.Input[Optional['ProviderAssumeRoleWithOidcArgs']]:
         return pulumi.get(self, "assume_role_with_oidc")
 
     @assume_role_with_oidc.setter
-    def assume_role_with_oidc(self, value: Optional[pulumi.Input['ProviderAssumeRoleWithOidcArgs']]):
+    def assume_role_with_oidc(self, value: pulumi.Input[Optional['ProviderAssumeRoleWithOidcArgs']]):
         pulumi.set(self, "assume_role_with_oidc", value)
 
     @_builtins.property
     @pulumi.getter(name="clientConnectTimeout")
-    def client_connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum timeout of the client connection server.
         """
         return pulumi.get(self, "client_connect_timeout")
 
     @client_connect_timeout.setter
-    def client_connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="clientReadTimeout")
-    def client_read_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def client_read_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum timeout of the client read request.
         """
         return pulumi.get(self, "client_read_timeout")
 
     @client_read_timeout.setter
-    def client_read_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def client_read_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "client_read_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="configurationSource")
-    def configuration_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def configuration_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Use this to mark a terraform configuration file source.
         """
         return pulumi.get(self, "configuration_source")
 
     @configuration_source.setter
-    def configuration_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def configuration_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "configuration_source", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsUri")
-    def credentials_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URI of sidecar credentials service.
         """
         return pulumi.get(self, "credentials_uri")
 
     @credentials_uri.setter
-    def credentials_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_uri", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsRoleName")
-    def ecs_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "ecs_role_name")
 
     @ecs_role_name.setter
-    def ecs_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_role_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]:
+    def endpoints(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]]:
         return pulumi.get(self, "endpoints")
 
     @endpoints.setter
-    def endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderEndpointArgs']]]]):
+    def endpoints(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderEndpointArgs']]]]):
         pulumi.set(self, "endpoints", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Field 'fc' has been deprecated from provider version 1.28.0. New field 'fc' which in nested endpoints instead.""")
-    def fc(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fc(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "fc")
 
     @fc.setter
-    def fc(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fc(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fc", value)
 
     @_builtins.property
     @pulumi.getter(name="logEndpoint")
     @_utilities.deprecated("""Field 'log_endpoint' has been deprecated from provider version 1.28.0. New field 'log' which in nested endpoints instead.""")
-    def log_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "log_endpoint")
 
     @log_endpoint.setter
-    def log_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRetryTimeout")
-    def max_retry_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_retry_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum retry timeout of the request.
         """
         return pulumi.get(self, "max_retry_timeout")
 
     @max_retry_timeout.setter
-    def max_retry_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_retry_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_retry_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsEndpoint")
     @_utilities.deprecated("""Field 'mns_endpoint' has been deprecated from provider version 1.28.0. New field 'mns' which in nested endpoints instead.""")
-    def mns_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "mns_endpoint")
 
     @mns_endpoint.setter
-    def mns_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="otsInstanceName")
     @_utilities.deprecated("""Field 'ots_instance_name' has been deprecated from provider version 1.10.0. New field 'instance_name' of resource 'alicloud_ots_table' instead.""")
-    def ots_instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ots_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ots_instance_name")
 
     @ots_instance_name.setter
-    def ots_instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ots_instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ots_instance_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def profile(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def profile(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The profile for API operations. If not set, the default profile created with `aliyun configure` will be used.
         """
         return pulumi.get(self, "profile")
 
     @profile.setter
-    def profile(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def profile(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "profile", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where Alibaba Cloud operations will take place. Examples are cn-beijing, cn-hangzhou, eu-central-1, etc.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretKey")
-    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The secret key for API operations. You can retrieve this from the 'Security Management' section of the Alibaba Cloud console.
         """
         return pulumi.get(self, "secret_key")
 
     @secret_key.setter
-    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_key", value)
 
     @_builtins.property
     @pulumi.getter(name="secureTransport")
-    def secure_transport(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secure_transport(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security transport for the assume role invoking.
         """
         return pulumi.get(self, "secure_transport")
 
     @secure_transport.setter
-    def secure_transport(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secure_transport(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secure_transport", value)
 
     @_builtins.property
     @pulumi.getter(name="securityToken")
-    def security_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         security token. A security token is only required if you are using Security Token Service.
         """
         return pulumi.get(self, "security_token")
 
     @security_token.setter
-    def security_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_token", value)
 
     @_builtins.property
     @pulumi.getter(name="securityTransport")
-    def security_transport(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_transport(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "security_transport")
 
     @security_transport.setter
-    def security_transport(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_transport(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_transport", value)
 
     @_builtins.property
     @pulumi.getter(name="sharedCredentialsFile")
-    def shared_credentials_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def shared_credentials_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the shared credentials file. If not set this defaults to ~/.aliyun/config.json
         """
         return pulumi.get(self, "shared_credentials_file")
 
     @shared_credentials_file.setter
-    def shared_credentials_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def shared_credentials_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "shared_credentials_file", value)
 
     @_builtins.property
     @pulumi.getter(name="signVersion")
-    def sign_version(self) -> Optional[pulumi.Input['ProviderSignVersionArgs']]:
+    def sign_version(self) -> pulumi.Input[Optional['ProviderSignVersionArgs']]:
         return pulumi.get(self, "sign_version")
 
     @sign_version.setter
-    def sign_version(self, value: Optional[pulumi.Input['ProviderSignVersionArgs']]):
+    def sign_version(self, value: pulumi.Input[Optional['ProviderSignVersionArgs']]):
         pulumi.set(self, "sign_version", value)
 
     @_builtins.property
     @pulumi.getter(name="skipRegionValidation")
-    def skip_region_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def skip_region_validation(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
         """
         return pulumi.get(self, "skip_region_validation")
 
     @skip_region_validation.setter
-    def skip_region_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def skip_region_validation(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "skip_region_validation", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceIp")
-    def source_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source ip for the assume role invoking.
         """
         return pulumi.get(self, "source_ip")
 
     @source_ip.setter
-    def source_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source_ip", value)
 
 
@@ -442,33 +442,33 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role: Optional[pulumi.Input[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
-                 assume_role_with_oidc: Optional[pulumi.Input[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
-                 client_connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 configuration_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
-                 fc: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 mns_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_credentials_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_version: Optional[pulumi.Input[Union['ProviderSignVersionArgs', 'ProviderSignVersionArgsDict']]] = None,
-                 skip_region_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role: pulumi.Input[Optional[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
+                 assume_role_with_oidc: pulumi.Input[Optional[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
+                 client_connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 configuration_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_credentials_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_version: pulumi.Input[Optional[Union['ProviderSignVersionArgs', 'ProviderSignVersionArgsDict']]] = None,
+                 skip_region_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the alicloud package. By default, resources use package-wide configuration
@@ -524,33 +524,33 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 assume_role: Optional[pulumi.Input[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
-                 assume_role_with_oidc: Optional[pulumi.Input[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
-                 client_connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_read_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 configuration_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
-                 fc: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_retry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 mns_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ots_instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 profile: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_transport: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared_credentials_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 sign_version: Optional[pulumi.Input[Union['ProviderSignVersionArgs', 'ProviderSignVersionArgsDict']]] = None,
-                 skip_region_validation: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_ip: Optional[pulumi.Input[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 assume_role: pulumi.Input[Optional[Union['ProviderAssumeRoleArgs', 'ProviderAssumeRoleArgsDict']]] = None,
+                 assume_role_with_oidc: pulumi.Input[Optional[Union['ProviderAssumeRoleWithOidcArgs', 'ProviderAssumeRoleWithOidcArgsDict']]] = None,
+                 client_connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_read_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 configuration_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoints: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ProviderEndpointArgs', 'ProviderEndpointArgsDict']]]]] = None,
+                 fc: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_retry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 mns_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ots_instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 profile: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_transport: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared_credentials_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 sign_version: pulumi.Input[Optional[Union['ProviderSignVersionArgs', 'ProviderSignVersionArgsDict']]] = None,
+                 skip_region_validation: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

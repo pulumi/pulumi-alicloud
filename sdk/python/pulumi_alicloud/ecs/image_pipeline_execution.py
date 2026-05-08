@@ -20,7 +20,7 @@ __all__ = ['ImagePipelineExecutionArgs', 'ImagePipelineExecution']
 class ImagePipelineExecutionArgs:
     def __init__(__self__, *,
                  image_pipeline_id: pulumi.Input[_builtins.str],
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ImagePipelineExecution resource.
 
@@ -46,7 +46,7 @@ class ImagePipelineExecutionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the image build task. Valid values:
         - CANCELLED: canceled. The build process has been canceled.
@@ -54,16 +54,16 @@ class ImagePipelineExecutionArgs:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ImagePipelineExecutionState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ImagePipelineExecution resources.
 
@@ -81,31 +81,31 @@ class _ImagePipelineExecutionState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the image build task was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="imagePipelineId")
-    def image_pipeline_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_pipeline_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image template.
         """
         return pulumi.get(self, "image_pipeline_id")
 
     @image_pipeline_id.setter
-    def image_pipeline_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_pipeline_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_pipeline_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the image build task. Valid values:
         - CANCELLED: canceled. The build process has been canceled.
@@ -113,7 +113,7 @@ class _ImagePipelineExecutionState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -123,8 +123,8 @@ class ImagePipelineExecution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ECS Image Pipeline Execution resource.
@@ -279,8 +279,8 @@ class ImagePipelineExecution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 image_pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 image_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,9 +305,9 @@ class ImagePipelineExecution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            image_pipeline_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'ImagePipelineExecution':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            image_pipeline_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'ImagePipelineExecution':
         """
         Get an existing ImagePipelineExecution resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

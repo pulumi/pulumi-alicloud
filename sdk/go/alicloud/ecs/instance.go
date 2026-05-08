@@ -48,7 +48,7 @@ import (
 // imageId = param
 // }
 // // Create a new ECS instance for VPC
-// vpc, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
+// vpc2, err := vpc.NewNetwork(ctx, "vpc", &vpc.NetworkArgs{
 // VpcName: pulumi.String(pulumi.String(name)),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
@@ -59,7 +59,7 @@ import (
 // group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
 // SecurityGroupName: pulumi.String(pulumi.String(name)),
 // Description: pulumi.String("foo"),
-// VpcId: vpc.ID(),
+// VpcId: vpc2.ID(),
 // })
 // if err != nil {
 // return err
@@ -81,7 +81,7 @@ import (
 // return err
 // }
 // vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
-// VpcId: vpc.ID(),
+// VpcId: vpc2.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
 // ZoneId: pulumi.String(pulumi.String(_default.Zones[0].Id)),
 // VswitchName: pulumi.String(pulumi.String(name)),

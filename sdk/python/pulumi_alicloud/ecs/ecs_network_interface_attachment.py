@@ -21,9 +21,9 @@ class EcsNetworkInterfaceAttachmentArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  network_interface_id: pulumi.Input[_builtins.str],
-                 network_card_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 trunk_network_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None):
+                 network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a EcsNetworkInterfaceAttachment resource.
 
@@ -68,49 +68,49 @@ class EcsNetworkInterfaceAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
-    def network_card_index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_card_index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index of the network card.
         """
         return pulumi.get(self, "network_card_index")
 
     @network_card_index.setter
-    def network_card_index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_card_index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_card_index", value)
 
     @_builtins.property
     @pulumi.getter(name="trunkNetworkInstanceId")
-    def trunk_network_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trunk_network_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the trunk network instance.
         """
         return pulumi.get(self, "trunk_network_instance_id")
 
     @trunk_network_instance_id.setter
-    def trunk_network_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trunk_network_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trunk_network_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForNetworkConfigurationReady")
-    def wait_for_network_configuration_ready(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_network_configuration_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The wait for network configuration ready.
         """
         return pulumi.get(self, "wait_for_network_configuration_ready")
 
     @wait_for_network_configuration_ready.setter
-    def wait_for_network_configuration_ready(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_network_configuration_ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_network_configuration_ready", value)
 
 
 @pulumi.input_type
 class _EcsNetworkInterfaceAttachmentState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_card_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 trunk_network_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering EcsNetworkInterfaceAttachment resources.
 
@@ -133,62 +133,62 @@ class _EcsNetworkInterfaceAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkCardIndex")
-    def network_card_index(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def network_card_index(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The index of the network card.
         """
         return pulumi.get(self, "network_card_index")
 
     @network_card_index.setter
-    def network_card_index(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def network_card_index(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "network_card_index", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
-    def network_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_interface_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the network interface.
         """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
-    def network_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_interface_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_interface_id", value)
 
     @_builtins.property
     @pulumi.getter(name="trunkNetworkInstanceId")
-    def trunk_network_instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trunk_network_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the trunk network instance.
         """
         return pulumi.get(self, "trunk_network_instance_id")
 
     @trunk_network_instance_id.setter
-    def trunk_network_instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trunk_network_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trunk_network_instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForNetworkConfigurationReady")
-    def wait_for_network_configuration_ready(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def wait_for_network_configuration_ready(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The wait for network configuration ready.
         """
         return pulumi.get(self, "wait_for_network_configuration_ready")
 
     @wait_for_network_configuration_ready.setter
-    def wait_for_network_configuration_ready(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def wait_for_network_configuration_ready(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "wait_for_network_configuration_ready", value)
 
 
@@ -198,11 +198,11 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_card_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 trunk_network_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a ECS Network Interface Attachment resource.
@@ -379,11 +379,11 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_card_index: Optional[pulumi.Input[_builtins.int]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 trunk_network_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,11 +412,11 @@ class EcsNetworkInterfaceAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_card_index: Optional[pulumi.Input[_builtins.int]] = None,
-            network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-            trunk_network_instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            wait_for_network_configuration_ready: Optional[pulumi.Input[_builtins.bool]] = None) -> 'EcsNetworkInterfaceAttachment':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_card_index: pulumi.Input[Optional[_builtins.int]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            trunk_network_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            wait_for_network_configuration_ready: pulumi.Input[Optional[_builtins.bool]] = None) -> 'EcsNetworkInterfaceAttachment':
         """
         Get an existing EcsNetworkInterfaceAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

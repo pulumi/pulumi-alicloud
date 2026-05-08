@@ -250,91 +250,91 @@ export interface ProvisionedProductState {
     /**
      * The creation time of the product instance
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the last instance operation task
      */
-    lastProvisioningTaskId?: pulumi.Input<string>;
+    lastProvisioningTaskId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the last successful instance operation task
      */
-    lastSuccessfulProvisioningTaskId?: pulumi.Input<string>;
+    lastSuccessfulProvisioningTaskId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the last task
      */
-    lastTaskId?: pulumi.Input<string>;
+    lastTaskId?: pulumi.Input<string | undefined>;
     /**
      * The output value of the template.
      */
-    outputs?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductOutput>[]>;
+    outputs?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductOutput>[] | undefined>;
     /**
      * The RAM entity ID of the owner
      */
-    ownerPrincipalId?: pulumi.Input<string>;
+    ownerPrincipalId?: pulumi.Input<string | undefined>;
     /**
      * The RAM entity type of the owner
      */
-    ownerPrincipalType?: pulumi.Input<string>;
+    ownerPrincipalType?: pulumi.Input<string | undefined>;
     /**
      * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[] | undefined>;
     /**
      * Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
      */
-    portfolioId?: pulumi.Input<string>;
+    portfolioId?: pulumi.Input<string | undefined>;
     /**
      * Product ID.
      */
-    productId?: pulumi.Input<string>;
+    productId?: pulumi.Input<string | undefined>;
     /**
      * The name of the product
      */
-    productName?: pulumi.Input<string>;
+    productName?: pulumi.Input<string | undefined>;
     /**
      * Product version ID.
      */
-    productVersionId?: pulumi.Input<string>;
+    productVersionId?: pulumi.Input<string | undefined>;
     /**
      * The name of the product version
      */
-    productVersionName?: pulumi.Input<string>;
+    productVersionName?: pulumi.Input<string | undefined>;
     /**
      * The ARN of the product instance
      */
-    provisionedProductArn?: pulumi.Input<string>;
+    provisionedProductArn?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    provisionedProductId?: pulumi.Input<string>;
+    provisionedProductId?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.The length is 1~128 characters.
      */
-    provisionedProductName?: pulumi.Input<string>;
+    provisionedProductName?: pulumi.Input<string | undefined>;
     /**
      * Instance type.The value is RosStack, which indicates the stack of Alibaba Cloud resource orchestration service (ROS).
      */
-    provisionedProductType?: pulumi.Input<string>;
+    provisionedProductType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the ROS stack
      */
-    stackId?: pulumi.Input<string>;
+    stackId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the region to which the resource stack of the Alibaba Cloud resource orchestration service (ROS) belongs.
      */
-    stackRegionId?: pulumi.Input<string>;
+    stackRegionId?: pulumi.Input<string | undefined>;
     /**
      * Instance status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The status message of the product instance
      */
-    statusMessage?: pulumi.Input<string>;
+    statusMessage?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -344,11 +344,11 @@ export interface ProvisionedProductArgs {
     /**
      * Template parameters entered by the user.The maximum value of N is 200.See the following `Block Parameters`.
      */
-    parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[]>;
+    parameters?: pulumi.Input<pulumi.Input<inputs.servicecatalog.ProvisionedProductParameter>[] | undefined>;
     /**
      * Product mix ID.> When there is a default Startup option, there is no need to fill in the portfolio. When there is no default Startup option, you must fill in the portfolio.
      */
-    portfolioId?: pulumi.Input<string>;
+    portfolioId?: pulumi.Input<string | undefined>;
     /**
      * Product ID.
      */
@@ -360,7 +360,7 @@ export interface ProvisionedProductArgs {
     /**
      * The ID of the instance.
      */
-    provisionedProductId?: pulumi.Input<string>;
+    provisionedProductId?: pulumi.Input<string | undefined>;
     /**
      * The name of the instance.The length is 1~128 characters.
      */
@@ -372,5 +372,5 @@ export interface ProvisionedProductArgs {
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

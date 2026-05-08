@@ -147,24 +147,24 @@ export interface GetIpv6AddressesOutputArgs {
     /**
      * The ID of the instance that is assigned the IPv6 address.
      */
-    associatedInstanceId?: pulumi.Input<string>;
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    associatedInstanceId?: pulumi.Input<string | undefined>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The status of the IPv6 address. Valid values:`Pending` or `Available`. 
      * - `Pending`: The IPv6 address is being configured.
      * - `Available`: The IPv6 address is available.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC to which the IPv6 address belongs.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vSwitch to which the IPv6 address belongs.
      */
-    vswitchId?: pulumi.Input<string>;
+    vswitchId?: pulumi.Input<string | undefined>;
 }

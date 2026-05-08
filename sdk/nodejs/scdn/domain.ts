@@ -162,35 +162,35 @@ export interface DomainState {
      *
      * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
-    bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string | undefined>;
     /**
      * Certificate Information. See the following `Block certInfos`.
      */
-    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
+    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[] | undefined>;
     /**
      * The health check url.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of domain.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * Whether to set certificate forcibly.
      */
-    forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * the Origin Server Information. See the following `Block sources`.
      */
-    sources?: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[]>;
+    sources?: pulumi.Input<pulumi.Input<inputs.scdn.DomainSource>[] | undefined>;
     /**
      * The status of the resource. Valid values: `offline`, `online`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,15 +202,15 @@ export interface DomainArgs {
      *
      * @deprecated Attribute bizName has been deprecated and suggest removing it from your template.
      */
-    bizName?: pulumi.Input<string>;
+    bizName?: pulumi.Input<string | undefined>;
     /**
      * Certificate Information. See the following `Block certInfos`.
      */
-    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[]>;
+    certInfos?: pulumi.Input<pulumi.Input<inputs.scdn.DomainCertInfo>[] | undefined>;
     /**
      * The health check url.
      */
-    checkUrl?: pulumi.Input<string>;
+    checkUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of domain.
      */
@@ -218,11 +218,11 @@ export interface DomainArgs {
     /**
      * Whether to set certificate forcibly.
      */
-    forceSet?: pulumi.Input<string>;
+    forceSet?: pulumi.Input<string | undefined>;
     /**
      * The resource group id.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * the Origin Server Information. See the following `Block sources`.
      */
@@ -230,5 +230,5 @@ export interface DomainArgs {
     /**
      * The status of the resource. Valid values: `offline`, `online`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

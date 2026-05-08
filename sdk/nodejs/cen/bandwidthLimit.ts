@@ -168,15 +168,15 @@ export interface BandwidthLimitState {
      *
      * ->**NOTE:** The `alicloud.cen.BandwidthLimit` resource depends on the related "alicloud.cen.BandwidthPackageAttachment" resource and "alicloud.cen.InstanceAttachment" resource.
      */
-    bandwidthLimit?: pulumi.Input<number>;
+    bandwidthLimit?: pulumi.Input<number | undefined>;
     /**
      * The ID of the CEN.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * List of the two regions to interconnect. Must be two different regions.
      */
-    regionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    regionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

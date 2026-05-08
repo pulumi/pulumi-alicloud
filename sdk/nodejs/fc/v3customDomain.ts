@@ -330,55 +330,55 @@ export interface V3CustomDomainState {
     /**
      * The ID of your Alibaba Cloud account (primary account).
      */
-    accountId?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string | undefined>;
     /**
      * API version of Function Compute.
      */
-    apiVersion?: pulumi.Input<string>;
+    apiVersion?: pulumi.Input<string | undefined>;
     /**
      * Permission authentication configuration See `authConfig` below.
      */
-    authConfig?: pulumi.Input<inputs.fc.V3CustomDomainAuthConfig>;
+    authConfig?: pulumi.Input<inputs.fc.V3CustomDomainAuthConfig | undefined>;
     /**
      * HTTPS certificate information See `certConfig` below.
      */
-    certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig | undefined>;
     /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      */
-    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig>;
+    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig | undefined>;
     /**
      * The creation time of the resource.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    customDomainName?: pulumi.Input<string>;
+    customDomainName?: pulumi.Input<string | undefined>;
     /**
      * The last time the custom domain name was Updated.
      */
-    lastModifiedTime?: pulumi.Input<string>;
+    lastModifiedTime?: pulumi.Input<string | undefined>;
     /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Route matching rule configuration See `routeConfig` below.
      */
-    routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig>;
+    routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig | undefined>;
     /**
      * Number of subdomains.
      */
-    subdomainCount?: pulumi.Input<string>;
+    subdomainCount?: pulumi.Input<string | undefined>;
     /**
      * TLS configuration information See `tlsConfig` below.
      */
-    tlsConfig?: pulumi.Input<inputs.fc.V3CustomDomainTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.fc.V3CustomDomainTlsConfig | undefined>;
     /**
      * Web application firewall configuration information See `wafConfig` below.
      */
-    wafConfig?: pulumi.Input<inputs.fc.V3CustomDomainWafConfig>;
+    wafConfig?: pulumi.Input<inputs.fc.V3CustomDomainWafConfig | undefined>;
 }
 
 /**
@@ -388,33 +388,33 @@ export interface V3CustomDomainArgs {
     /**
      * Permission authentication configuration See `authConfig` below.
      */
-    authConfig?: pulumi.Input<inputs.fc.V3CustomDomainAuthConfig>;
+    authConfig?: pulumi.Input<inputs.fc.V3CustomDomainAuthConfig | undefined>;
     /**
      * HTTPS certificate information See `certConfig` below.
      */
-    certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig>;
+    certConfig?: pulumi.Input<inputs.fc.V3CustomDomainCertConfig | undefined>;
     /**
      * Cross-Origin Resource Sharing (CORS) configuration, used to control which origins can access resources under the custom domain. See `corsConfig` below.
      */
-    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig>;
+    corsConfig?: pulumi.Input<inputs.fc.V3CustomDomainCorsConfig | undefined>;
     /**
      * The name of the resource
      */
-    customDomainName?: pulumi.Input<string>;
+    customDomainName?: pulumi.Input<string | undefined>;
     /**
      * The protocol type supported by the domain name. HTTP: only HTTP protocol is supported. HTTPS: only HTTPS is supported. HTTP,HTTPS: Supports HTTP and HTTPS protocols.
      */
-    protocol?: pulumi.Input<string>;
+    protocol?: pulumi.Input<string | undefined>;
     /**
      * Route matching rule configuration See `routeConfig` below.
      */
-    routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig>;
+    routeConfig?: pulumi.Input<inputs.fc.V3CustomDomainRouteConfig | undefined>;
     /**
      * TLS configuration information See `tlsConfig` below.
      */
-    tlsConfig?: pulumi.Input<inputs.fc.V3CustomDomainTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.fc.V3CustomDomainTlsConfig | undefined>;
     /**
      * Web application firewall configuration information See `wafConfig` below.
      */
-    wafConfig?: pulumi.Input<inputs.fc.V3CustomDomainWafConfig>;
+    wafConfig?: pulumi.Input<inputs.fc.V3CustomDomainWafConfig | undefined>;
 }

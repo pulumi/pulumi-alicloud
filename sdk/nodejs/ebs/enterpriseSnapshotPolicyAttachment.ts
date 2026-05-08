@@ -130,11 +130,11 @@ export interface EnterpriseSnapshotPolicyAttachmentState {
     /**
      * Cloud Disk ID.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * the enterprise snapshot policy id.
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -144,7 +144,7 @@ export interface EnterpriseSnapshotPolicyAttachmentArgs {
     /**
      * Cloud Disk ID.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * the enterprise snapshot policy id.
      */

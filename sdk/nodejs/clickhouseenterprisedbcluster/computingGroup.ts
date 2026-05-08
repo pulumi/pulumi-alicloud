@@ -203,47 +203,47 @@ export interface ComputingGroupState {
     /**
      * Computing group name
      */
-    computingGroupDescription?: pulumi.Input<string>;
+    computingGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * A list of computing group endpoint names.
      */
-    computingGroupEndpointNames?: pulumi.Input<pulumi.Input<string>[]>;
+    computingGroupEndpointNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of computing group endpoints.
      */
-    computingGroupEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    computingGroupEndpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A resource property field representing the primary resource ID.
      */
-    computingGroupId?: pulumi.Input<string>;
+    computingGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of public endpoints for the computing group.
      */
-    computingGroupPublicEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    computingGroupPublicEndpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Computing group status.
      */
-    computingGroupStatus?: pulumi.Input<string>;
+    computingGroupStatus?: pulumi.Input<string | undefined>;
     /**
      * ClickHouse Enterprise Edition instance ID
      */
-    dbInstanceId?: pulumi.Input<string>;
+    dbInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Computing group read-only
      */
-    isReadonly?: pulumi.Input<boolean>;
+    isReadonly?: pulumi.Input<boolean | undefined>;
     /**
      * Number of computing group nodes
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Computing group node elasticity upper limit
      */
-    nodeScaleMax?: pulumi.Input<number>;
+    nodeScaleMax?: pulumi.Input<number | undefined>;
     /**
      * Lower limit of computing group node elasticity
      */
-    nodeScaleMin?: pulumi.Input<number>;
+    nodeScaleMin?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -253,7 +253,7 @@ export interface ComputingGroupArgs {
     /**
      * Computing group name
      */
-    computingGroupDescription?: pulumi.Input<string>;
+    computingGroupDescription?: pulumi.Input<string | undefined>;
     /**
      * ClickHouse Enterprise Edition instance ID
      */

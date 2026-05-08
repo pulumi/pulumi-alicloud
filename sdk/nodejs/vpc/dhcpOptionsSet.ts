@@ -184,58 +184,58 @@ export interface DhcpOptionsSetState {
      *
      * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
-    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
+    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[] | undefined>;
     /**
      * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
-    dhcpOptionsSetDescription?: pulumi.Input<string>;
+    dhcpOptionsSetDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the DHCP options set.
      * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    dhcpOptionsSetName?: pulumi.Input<string>;
+    dhcpOptionsSetName?: pulumi.Input<string | undefined>;
     /**
      * The root domain. For example, you can set the value to example.com.
      * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
      * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      */
-    domainNameServers?: pulumi.Input<string>;
+    domainNameServers?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request, value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The lease time of the IPv6 DHCP option set.
      * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
      * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      */
-    ipv6LeaseTime?: pulumi.Input<string>;
+    ipv6LeaseTime?: pulumi.Input<string | undefined>;
     /**
      * The lease time of the IPv4 addresses for the DHCP options set.
      * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
      * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      */
-    leaseTime?: pulumi.Input<string>;
+    leaseTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the account to which the DHCP options set belongs.
      */
-    ownerId?: pulumi.Input<number>;
+    ownerId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the resource group to which the DHCP options set belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -247,48 +247,48 @@ export interface DhcpOptionsSetArgs {
      *
      * @deprecated Field 'associate_vpcs' has been deprecated from provider version 1.153.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc.
      */
-    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[]>;
+    associateVpcs?: pulumi.Input<pulumi.Input<inputs.vpc.DhcpOptionsSetAssociateVpc>[] | undefined>;
     /**
      * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      */
-    dhcpOptionsSetDescription?: pulumi.Input<string>;
+    dhcpOptionsSetDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the DHCP options set.
      * The name must be 1 to 128 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      */
-    dhcpOptionsSetName?: pulumi.Input<string>;
+    dhcpOptionsSetName?: pulumi.Input<string | undefined>;
     /**
      * The root domain. For example, you can set the value to example.com.
      * After a DHCP options set is associated with a virtual private cloud (VPC), the root domain in the DHCP options set is automatically synchronized with the ECS instances in the VPC.
      */
-    domainName?: pulumi.Input<string>;
+    domainName?: pulumi.Input<string | undefined>;
     /**
      * The IP address of the DNS server. You can enter at most four DNS server IP addresses. Separate IP addresses with commas (,).
      * If no IP address is specified, the Elastic Compute Service (ECS) instance uses the IP addresses 100.100.2.136 and 100.100.2.138, which are provided by Alibaba Cloud by default.
      */
-    domainNameServers?: pulumi.Input<string>;
+    domainNameServers?: pulumi.Input<string | undefined>;
     /**
      * Whether to PreCheck only this request, value:
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * The lease time of the IPv6 DHCP option set.
      * When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.
      * When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 1d.
      */
-    ipv6LeaseTime?: pulumi.Input<string>;
+    ipv6LeaseTime?: pulumi.Input<string | undefined>;
     /**
      * The lease time of the IPv4 addresses for the DHCP options set.
      * If you use hours as the unit, valid values are 24h to 1176h and 87600h to 175200h. Default value: 87600h.
      * If you use days as the unit, valid values are 1d to 49d and 3650d to 7300d. Default value: 3650d.
      */
-    leaseTime?: pulumi.Input<string>;
+    leaseTime?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group to which the DHCP options set belongs.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Tags of the current resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

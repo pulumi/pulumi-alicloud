@@ -102,7 +102,7 @@ def get_instances(output_file: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         instances=pulumi.get(__ret__, 'instances'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_instances_output(output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_instances_output(output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstancesResult]:
     """
     This data source provides the Sddp Instances of the current Alibaba Cloud user.

@@ -208,69 +208,69 @@ export interface GetExecutionsOutputArgs {
     /**
      * The category of template. Valid: `AlarmTrigger`, `EventTrigger`, `Other` and `TimerTrigger`.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The time when the execution was ended.
      */
-    endDate?: pulumi.Input<string>;
+    endDate?: pulumi.Input<string | undefined>;
     /**
      * Execution whose end time is less than or equal to the specified time.
      */
-    endDateAfter?: pulumi.Input<string>;
+    endDateAfter?: pulumi.Input<string | undefined>;
     /**
      * The user who execute the template.
      */
-    executedBy?: pulumi.Input<string>;
+    executedBy?: pulumi.Input<string | undefined>;
     /**
      * A list of OOS Execution ids.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to include sub-execution.
      */
-    includeChildExecution?: pulumi.Input<boolean>;
+    includeChildExecution?: pulumi.Input<boolean | undefined>;
     /**
      * The mode of OOS Execution. Valid: `Automatic`, `Debug`.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The id of parent OOS Execution.
      */
-    parentExecutionId?: pulumi.Input<string>;
+    parentExecutionId?: pulumi.Input<string | undefined>;
     /**
      * The role that executes the current template.
      */
-    ramRole?: pulumi.Input<string>;
+    ramRole?: pulumi.Input<string | undefined>;
     /**
      * The sort field.
      */
-    sortField?: pulumi.Input<string>;
+    sortField?: pulumi.Input<string | undefined>;
     /**
      * The sort order.
      */
-    sortOrder?: pulumi.Input<string>;
+    sortOrder?: pulumi.Input<string | undefined>;
     /**
      * The execution whose start time is greater than or equal to the specified time.
      */
-    startDateAfter?: pulumi.Input<string>;
+    startDateAfter?: pulumi.Input<string | undefined>;
     /**
      * The execution with start time less than or equal to the specified time.
      */
-    startDateBefore?: pulumi.Input<string>;
+    startDateBefore?: pulumi.Input<string | undefined>;
     /**
      * The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of execution template.
      */
-    templateName?: pulumi.Input<string>;
+    templateName?: pulumi.Input<string | undefined>;
 }

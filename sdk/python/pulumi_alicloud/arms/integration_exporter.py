@@ -73,10 +73,10 @@ class IntegrationExporterArgs:
 @pulumi.input_type
 class _IntegrationExporterState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntegrationExporter resources.
 
@@ -96,50 +96,50 @@ class _IntegrationExporterState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Prometheus instance.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the Integration Exporter instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="integrationType")
-    def integration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def integration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of prometheus integration.
         """
         return pulumi.get(self, "integration_type")
 
     @integration_type.setter
-    def integration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def integration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "integration_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def param(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def param(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Exporter configuration parameter json string.
         """
         return pulumi.get(self, "param")
 
     @param.setter
-    def param(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def param(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "param", value)
 
 
@@ -149,9 +149,9 @@ class IntegrationExporter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Application Real-Time Monitoring Service (ARMS) Integration Exporter resource.
@@ -180,7 +180,7 @@ class IntegrationExporter(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -253,7 +253,7 @@ class IntegrationExporter(pulumi.CustomResource):
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=len(default.zones).apply(lambda length: default.zones[length - 1]).apply(lambda obj: obj.id))
+            zone_id=len(default.zones).apply(lambda length: default.zones[int(length - 1)]).apply(lambda obj: obj.id))
         default_security_group = alicloud.ecs.SecurityGroup("default",
             name=name,
             vpc_id=default_network.id)
@@ -302,9 +302,9 @@ class IntegrationExporter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 param: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 param: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,10 +334,10 @@ class IntegrationExporter(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.int]] = None,
-            integration_type: Optional[pulumi.Input[_builtins.str]] = None,
-            param: Optional[pulumi.Input[_builtins.str]] = None) -> 'IntegrationExporter':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.int]] = None,
+            integration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            param: pulumi.Input[Optional[_builtins.str]] = None) -> 'IntegrationExporter':
         """
         Get an existing IntegrationExporter resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

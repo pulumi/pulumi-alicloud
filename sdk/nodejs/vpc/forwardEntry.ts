@@ -220,54 +220,54 @@ export interface ForwardEntryState {
      * When querying DNAT entries of an Internet NAT gateway, this parameter indicates the Elastic IP address used in the DNAT entry to provide public network access.
      * - When querying DNAT entries of a VPC NAT gateway, this parameter indicates the NAT IP address used for access from external networks.
      */
-    externalIp?: pulumi.Input<string>;
+    externalIp?: pulumi.Input<string | undefined>;
     /**
      * The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: `1` to `65535`.
      * - If you want to query a port range, separate the first port and last port with a forward slash (/), such as 10/20.
      * - If you set ExternalPort to a port range, you must also set InternalPort to a port range, and the number of ports specified by these parameters must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
      */
-    externalPort?: pulumi.Input<string>;
+    externalPort?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.43.0) The id of the forward entry on the server.
      */
-    forwardEntryId?: pulumi.Input<string>;
+    forwardEntryId?: pulumi.Input<string | undefined>;
     /**
      * The name of the DNAT entry.
      */
-    forwardEntryName?: pulumi.Input<string>;
+    forwardEntryName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNAT table to which the DNAT entry belongs.
      */
-    forwardTableId?: pulumi.Input<string>;
+    forwardTableId?: pulumi.Input<string | undefined>;
     /**
      * The private IP address.
      * - The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
      * - The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
      */
-    internalIp?: pulumi.Input<string>;
+    internalIp?: pulumi.Input<string | undefined>;
     /**
      * When you configure a DNAT entry for an Internet NAT gateway, this parameter specifies the internal port or port range that requires port forwarding. Valid values: `1` to `65535`.
      * - When you configure a DNAT entry for a VPC NAT gateway, this parameter specifies the destination ECS instance port to be mapped. Valid values: `1` to `65535`.
      */
-    internalPort?: pulumi.Input<string>;
+    internalPort?: pulumi.Input<string | undefined>;
     /**
      * The protocol type. Valid values:
      */
-    ipProtocol?: pulumi.Input<string>;
+    ipProtocol?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      *
      * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable port break. Valid values:
      */
-    portBreak?: pulumi.Input<boolean>;
+    portBreak?: pulumi.Input<boolean | undefined>;
     /**
      * (Available since v1.119.1) The status of forward entry.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface ForwardEntryArgs {
     /**
      * The name of the DNAT entry.
      */
-    forwardEntryName?: pulumi.Input<string>;
+    forwardEntryName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the DNAT table to which the DNAT entry belongs.
      */
@@ -313,9 +313,9 @@ export interface ForwardEntryArgs {
      *
      * @deprecated Field `name` has been deprecated from provider version 1.119.1. New field `forwardEntryName` instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to enable port break. Valid values:
      */
-    portBreak?: pulumi.Input<boolean>;
+    portBreak?: pulumi.Input<boolean | undefined>;
 }

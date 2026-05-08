@@ -22,60 +22,60 @@ __all__ = ['ScalingConfigurationArgs', 'ScalingConfiguration']
 class ScalingConfigurationArgs:
     def __init__(__self__, *,
                  scaling_group_id: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_optimized: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_outdated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 substitute: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypt_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_options_login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_outdated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 substitute: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ScalingConfiguration resource.
 
@@ -281,477 +281,477 @@ class ScalingConfigurationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether active current scaling configuration in the specified scaling group. Default to `false`.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="creditSpecification")
-    def credit_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         """
         return pulumi.get(self, "credit_specification")
 
     @credit_specification.setter
-    def credit_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credit_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credit_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="customPriorities")
-    def custom_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
+    def custom_priorities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
         """
         You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         """
         return pulumi.get(self, "custom_priorities")
 
     @custom_priorities.setter
-    def custom_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
+    def custom_priorities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
         pulumi.set(self, "custom_priorities", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]:
         """
         DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterId")
-    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dedicated host cluster.
         """
         return pulumi.get(self, "dedicated_host_cluster_id")
 
     @dedicated_host_cluster_id.setter
-    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of an ECS instance.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
-    def http_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         """
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
-    def http_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an image file, indicating the image resource selected when an instance is enabled.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of an image file, indicating the image resource selected when an instance is enabled.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOptionsLoginAsNonRoot")
-    def image_options_login_as_non_root(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_options_login_as_non_root(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
         """
         return pulumi.get(self, "image_options_login_as_non_root")
 
     @image_options_login_as_non_root.setter
-    def image_options_login_as_non_root(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_options_login_as_non_root(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_options_login_as_non_root", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceDescription")
-    def instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         """
         return pulumi.get(self, "instance_description")
 
     @instance_description.setter
-    def instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
     @_utilities.deprecated("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePatternInfos")
-    def instance_pattern_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
+    def instance_pattern_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
         """
         intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         """
         return pulumi.get(self, "instance_pattern_infos")
 
     @instance_pattern_infos.setter
-    def instance_pattern_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
+    def instance_pattern_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
         pulumi.set(self, "instance_pattern_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type of an ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypeOverrides")
-    def instance_type_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
+    def instance_type_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
         """
         specify the weight of instance type.  See `instance_type_override` below for details.
         """
         return pulumi.get(self, "instance_type_overrides")
 
     @instance_type_overrides.setter
-    def instance_type_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
+    def instance_type_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
         pulumi.set(self, "instance_type_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource types of an ECS instance.
         """
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
-    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_in(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
-    def internet_max_bandwidth_in(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_in(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_in", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="ioOptimized")
     @_utilities.deprecated("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
-    def io_optimized(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def io_optimized(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
-    def io_optimized(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def io_optimized(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "io_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_outdated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use outdated instance type. Default to false.
         """
         return pulumi.get(self, "is_outdated")
 
     @is_outdated.setter
-    def is_outdated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_outdated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_outdated", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
         """
         Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to overwrite the existing data. Default to false.
         """
         return pulumi.get(self, "override")
 
     @override.setter
-    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingConfigurationName")
-    def scaling_configuration_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_configuration_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         """
         return pulumi.get(self, "scaling_configuration_name")
 
     @scaling_configuration_name.setter
-    def scaling_configuration_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_configuration_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_configuration_name", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
     @security_enhancement_strategy.setter
-    def security_enhancement_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_enhancement_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_enhancement_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")
-    def spot_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         """
         return pulumi.get(self, "spot_duration")
 
     @spot_duration.setter
-    def spot_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimits")
-    def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
+    def spot_price_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
 
@@ -772,156 +772,156 @@ class ScalingConfigurationArgs:
         return pulumi.get(self, "spot_price_limits")
 
     @spot_price_limits.setter
-    def spot_price_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
+    def spot_price_limits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
         pulumi.set(self, "spot_price_limits", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def substitute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def substitute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         """
         return pulumi.get(self, "substitute")
 
     @substitute.setter
-    def substitute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def substitute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "substitute", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of auto snapshot policy for system disk.
         """
         return pulumi.get(self, "system_disk_auto_snapshot_policy_id")
 
     @system_disk_auto_snapshot_policy_id.setter
-    def system_disk_auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
-    def system_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
-    def system_disk_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskEncryptAlgorithm")
-    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         """
         return pulumi.get(self, "system_disk_encrypt_algorithm")
 
     @system_disk_encrypt_algorithm.setter
-    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_encrypt_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_encrypt_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskEncrypted")
-    def system_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to encrypt the system disk.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
     @system_disk_encrypted.setter
-    def system_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskKmsKeyId")
-    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key that you want to use to encrypt the system disk.
         """
         return pulumi.get(self, "system_disk_kms_key_id")
 
     @system_disk_kms_key_id.setter
-    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
-    def system_disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskPerformanceLevel")
-    def system_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD used as the system disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
     @system_disk_performance_level.setter
-    def system_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskProvisionedIops")
-    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IOPS measures the number of read and write operations that an EBS device can process per second.
         """
         return pulumi.get(self, "system_disk_provisioned_iops")
 
     @system_disk_provisioned_iops.setter
-    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -930,80 +930,80 @@ class ScalingConfigurationArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
 
 @pulumi.input_type
 class _ScalingConfigurationState:
     def __init__(__self__, *,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_optimized: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_outdated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 substitute: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypt_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_options_login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_outdated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 substitute: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScalingConfiguration resources.
 
@@ -1198,489 +1198,489 @@ class _ScalingConfigurationState:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether active current scaling configuration in the specified scaling group. Default to `false`.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="creditSpecification")
-    def credit_specification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credit_specification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Performance mode of the t5 burstable instance. Valid values: 'Standard', 'Unlimited'.
         """
         return pulumi.get(self, "credit_specification")
 
     @credit_specification.setter
-    def credit_specification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credit_specification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credit_specification", value)
 
     @_builtins.property
     @pulumi.getter(name="customPriorities")
-    def custom_priorities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
+    def custom_priorities(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]:
         """
         You can use CustomPriorities to specify the priority of a custom ECS instance type + vSwitch combination. See `custom_priorities` below for details.
         """
         return pulumi.get(self, "custom_priorities")
 
     @custom_priorities.setter
-    def custom_priorities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
+    def custom_priorities(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationCustomPriorityArgs']]]]):
         pulumi.set(self, "custom_priorities", value)
 
     @_builtins.property
     @pulumi.getter(name="dataDisks")
-    def data_disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]:
+    def data_disks(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]:
         """
         DataDisk mappings to attach to ecs instance. See `data_disk` below for details.
         """
         return pulumi.get(self, "data_disks")
 
     @data_disks.setter
-    def data_disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
+    def data_disks(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationDataDiskArgs']]]]):
         pulumi.set(self, "data_disks", value)
 
     @_builtins.property
     @pulumi.getter(name="dedicatedHostClusterId")
-    def dedicated_host_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dedicated_host_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the dedicated host cluster.
         """
         return pulumi.get(self, "dedicated_host_cluster_id")
 
     @dedicated_host_cluster_id.setter
-    def dedicated_host_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dedicated_host_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dedicated_host_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="deletionProtection")
-    def deletion_protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deletion_protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the Release Protection feature for ECS instances. This parameter is applicable to only pay-as-you-go instances. You can use this parameter to specify whether an ECS instance can be directly released by using the ECS console or calling the DeleteInstance operation. Valid values: true, false. Default value: false.
         """
         return pulumi.get(self, "deletion_protection")
 
     @deletion_protection.setter
-    def deletion_protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deletion_protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deletion_protection", value)
 
     @_builtins.property
     @pulumi.getter
-    def enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether enable the specified scaling group(make it active) to which the current scaling configuration belongs.
         """
         return pulumi.get(self, "enable")
 
     @enable.setter
-    def enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDelete")
-    def force_delete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The last scaling configuration will be deleted forcibly with deleting its scaling group. Default to false.
         """
         return pulumi.get(self, "force_delete")
 
     @force_delete.setter
-    def force_delete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname of an ECS instance.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host_name", value)
 
     @_builtins.property
     @pulumi.getter(name="httpEndpoint")
-    def http_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable the access channel for instance metadata. Valid values: enabled, disabled.
         """
         return pulumi.get(self, "http_endpoint")
 
     @http_endpoint.setter
-    def http_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of an image file, indicating the image resource selected when an instance is enabled.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageName")
-    def image_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of an image file, indicating the image resource selected when an instance is enabled.
         """
         return pulumi.get(self, "image_name")
 
     @image_name.setter
-    def image_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_name", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOptionsLoginAsNonRoot")
-    def image_options_login_as_non_root(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def image_options_login_as_non_root(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use ecs-user to log on to an ECS instance. For more information, see Manage the username used to log on to an ECS instance. Valid values: true, false. Default value: false.
         """
         return pulumi.get(self, "image_options_login_as_non_root")
 
     @image_options_login_as_non_root.setter
-    def image_options_login_as_non_root(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def image_options_login_as_non_root(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "image_options_login_as_non_root", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceDescription")
-    def instance_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of ECS instances. The description must be 2 to 256 characters in length. It can contain letters but cannot start with http:// or https://.
         """
         return pulumi.get(self, "instance_description")
 
     @instance_description.setter
-    def instance_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_description", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceIds")
     @_utilities.deprecated("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
-    def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
         return pulumi.get(self, "instance_ids")
 
     @instance_ids.setter
-    def instance_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceName")
-    def instance_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         """
         return pulumi.get(self, "instance_name")
 
     @instance_name.setter
-    def instance_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instancePatternInfos")
-    def instance_pattern_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
+    def instance_pattern_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]:
         """
         intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         """
         return pulumi.get(self, "instance_pattern_infos")
 
     @instance_pattern_infos.setter
-    def instance_pattern_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
+    def instance_pattern_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]]]):
         pulumi.set(self, "instance_pattern_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource type of an ECS instance.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypeOverrides")
-    def instance_type_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
+    def instance_type_overrides(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]:
         """
         specify the weight of instance type.  See `instance_type_override` below for details.
         """
         return pulumi.get(self, "instance_type_overrides")
 
     @instance_type_overrides.setter
-    def instance_type_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
+    def instance_type_overrides(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationInstanceTypeOverrideArgs']]]]):
         pulumi.set(self, "instance_type_overrides", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceTypes")
-    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def instance_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Resource types of an ECS instance.
         """
         return pulumi.get(self, "instance_types")
 
     @instance_types.setter
-    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def instance_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "instance_types", value)
 
     @_builtins.property
     @pulumi.getter(name="internetChargeType")
-    def internet_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def internet_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         """
         return pulumi.get(self, "internet_charge_type")
 
     @internet_charge_type.setter
-    def internet_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def internet_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "internet_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthIn")
-    def internet_max_bandwidth_in(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_in(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second).
         """
         return pulumi.get(self, "internet_max_bandwidth_in")
 
     @internet_max_bandwidth_in.setter
-    def internet_max_bandwidth_in(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_in(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_in", value)
 
     @_builtins.property
     @pulumi.getter(name="internetMaxBandwidthOut")
-    def internet_max_bandwidth_out(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def internet_max_bandwidth_out(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,1024].
         """
         return pulumi.get(self, "internet_max_bandwidth_out")
 
     @internet_max_bandwidth_out.setter
-    def internet_max_bandwidth_out(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def internet_max_bandwidth_out(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "internet_max_bandwidth_out", value)
 
     @_builtins.property
     @pulumi.getter(name="ioOptimized")
     @_utilities.deprecated("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
-    def io_optimized(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def io_optimized(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         return pulumi.get(self, "io_optimized")
 
     @io_optimized.setter
-    def io_optimized(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def io_optimized(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "io_optimized", value)
 
     @_builtins.property
     @pulumi.getter(name="isOutdated")
-    def is_outdated(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_outdated(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use outdated instance type. Default to false.
         """
         return pulumi.get(self, "is_outdated")
 
     @is_outdated.setter
-    def is_outdated(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_outdated(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_outdated", value)
 
     @_builtins.property
     @pulumi.getter(name="keyName")
-    def key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         """
         return pulumi.get(self, "key_name")
 
     @key_name.setter
-    def key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_name", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptedPassword")
-    def kms_encrypted_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_encrypted_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
         """
         return pulumi.get(self, "kms_encrypted_password")
 
     @kms_encrypted_password.setter
-    def kms_encrypted_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_encrypted_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_encrypted_password", value)
 
     @_builtins.property
     @pulumi.getter(name="kmsEncryptionContext")
-    def kms_encryption_context(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def kms_encryption_context(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
         """
         return pulumi.get(self, "kms_encryption_context")
 
     @kms_encryption_context.setter
-    def kms_encryption_context(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def kms_encryption_context(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "kms_encryption_context", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]:
         """
         Specify NetworkInterfaces.N to configure primary and secondary ENIs. In this case, specify at least one primary ENI. If you set NetworkInterfaces.N.InstanceType to Primary, a primary ENI is configured. If you set NetworkInterfaces.N.InstanceType to Secondary or leave the parameter empty, a secondary ENI is configured. See `network_interfaces` below for details.
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def override(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to overwrite the existing data. Default to false.
         """
         return pulumi.get(self, "override")
 
     @override.setter
-    def override(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the ECS instance. The password must be 8 to 30 characters in length. It must contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `() ~!@#$%^&*-_+=\\|{}[]:;'<>,.?/`, The password of Windows-based instances cannot start with a forward slash (/).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordInherit")
-    def password_inherit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_inherit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to use the password that is predefined in the image. If the PasswordInherit parameter is set to true, the `password` and `kms_encrypted_password` will be ignored. You must ensure that the selected image has a password configured.
         """
         return pulumi.get(self, "password_inherit")
 
     @password_inherit.setter
-    def password_inherit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_inherit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_inherit", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="roleName")
-    def role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance RAM role name. The name is provided and maintained by RAM. You can use `ram.Role` to create a new one.
         """
         return pulumi.get(self, "role_name")
 
     @role_name.setter
-    def role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingConfigurationName")
-    def scaling_configuration_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_configuration_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name shown for the scheduled task. which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is ScalingConfigurationId.
         """
         return pulumi.get(self, "scaling_configuration_name")
 
     @scaling_configuration_name.setter
-    def scaling_configuration_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_configuration_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_configuration_name", value)
 
     @_builtins.property
     @pulumi.getter(name="scalingGroupId")
-    def scaling_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scaling_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the scaling group of a scaling configuration.
         """
         return pulumi.get(self, "scaling_group_id")
 
     @scaling_group_id.setter
-    def scaling_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scaling_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scaling_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityEnhancementStrategy")
-    def security_enhancement_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_enhancement_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether to enable Security Hardening. Valid values: Active, Deactive.
         """
         return pulumi.get(self, "security_enhancement_strategy")
 
     @security_enhancement_strategy.setter
-    def security_enhancement_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_enhancement_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_enhancement_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the security group used to create new instance. It is conflict with `security_group_ids`.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupIds")
-    def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def security_group_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List IDs of the security group used to create new instances. It is conflict with `security_group_id`.
         """
         return pulumi.get(self, "security_group_ids")
 
     @security_group_ids.setter
-    def security_group_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def security_group_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "security_group_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="spotDuration")
-    def spot_duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def spot_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The protection period of preemptible instances. Unit: hours. Valid values: 1, 0.
         """
         return pulumi.get(self, "spot_duration")
 
     @spot_duration.setter
-    def spot_duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def spot_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "spot_duration", value)
 
     @_builtins.property
     @pulumi.getter(name="spotPriceLimits")
-    def spot_price_limits(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
+    def spot_price_limits(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]:
         """
         Sets the maximum price hourly for instance types. See `spot_price_limit` below for details.
 
@@ -1701,156 +1701,156 @@ class _ScalingConfigurationState:
         return pulumi.get(self, "spot_price_limits")
 
     @spot_price_limits.setter
-    def spot_price_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
+    def spot_price_limits(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ScalingConfigurationSpotPriceLimitArgs']]]]):
         pulumi.set(self, "spot_price_limits", value)
 
     @_builtins.property
     @pulumi.getter(name="spotStrategy")
-    def spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The spot strategy for a Pay-As-You-Go instance. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         """
         return pulumi.get(self, "spot_strategy")
 
     @spot_strategy.setter
-    def spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter
-    def substitute(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def substitute(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The another scaling configuration which will be active automatically and replace current configuration when setting `active` to 'false'. It is invalid when `active` is 'true'.
         """
         return pulumi.get(self, "substitute")
 
     @substitute.setter
-    def substitute(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def substitute(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "substitute", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskAutoSnapshotPolicyId")
-    def system_disk_auto_snapshot_policy_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_auto_snapshot_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The id of auto snapshot policy for system disk.
         """
         return pulumi.get(self, "system_disk_auto_snapshot_policy_id")
 
     @system_disk_auto_snapshot_policy_id.setter
-    def system_disk_auto_snapshot_policy_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_auto_snapshot_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_auto_snapshot_policy_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskCategory")
-    def system_disk_category(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_category(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Category of the system disk. The parameter value options are `ephemeral_ssd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd` and `cloud`. `cloud` only is used to some no I/O optimized instance. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "system_disk_category")
 
     @system_disk_category.setter
-    def system_disk_category(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_category(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_category", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskDescription")
-    def system_disk_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the system disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "system_disk_description")
 
     @system_disk_description.setter
-    def system_disk_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_description", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskEncryptAlgorithm")
-    def system_disk_encrypt_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_encrypt_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm that you want to use to encrypt the system disk. Valid values: AES-256, SM4-128.
         """
         return pulumi.get(self, "system_disk_encrypt_algorithm")
 
     @system_disk_encrypt_algorithm.setter
-    def system_disk_encrypt_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_encrypt_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_encrypt_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskEncrypted")
-    def system_disk_encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def system_disk_encrypted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to encrypt the system disk.
         """
         return pulumi.get(self, "system_disk_encrypted")
 
     @system_disk_encrypted.setter
-    def system_disk_encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def system_disk_encrypted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "system_disk_encrypted", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskKmsKeyId")
-    def system_disk_kms_key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_kms_key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the KMS key that you want to use to encrypt the system disk.
         """
         return pulumi.get(self, "system_disk_kms_key_id")
 
     @system_disk_kms_key_id.setter
-    def system_disk_kms_key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_kms_key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_kms_key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskName")
-    def system_disk_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the system disk. It must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). Default value: null.
         """
         return pulumi.get(self, "system_disk_name")
 
     @system_disk_name.setter
-    def system_disk_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskPerformanceLevel")
-    def system_disk_performance_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_performance_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD used as the system disk.
         """
         return pulumi.get(self, "system_disk_performance_level")
 
     @system_disk_performance_level.setter
-    def system_disk_performance_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_performance_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_performance_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskProvisionedIops")
-    def system_disk_provisioned_iops(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_provisioned_iops(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IOPS measures the number of read and write operations that an EBS device can process per second.
         """
         return pulumi.get(self, "system_disk_provisioned_iops")
 
     @system_disk_provisioned_iops.setter
-    def system_disk_provisioned_iops(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_provisioned_iops(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_provisioned_iops", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
         - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot be a null string.
@@ -1859,19 +1859,19 @@ class _ScalingConfigurationState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
 
@@ -1881,61 +1881,61 @@ class ScalingConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_optimized: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_outdated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 substitute: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypt_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_options_login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_outdated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 substitute: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESS scaling configuration resource.
@@ -1963,7 +1963,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -2127,7 +2127,7 @@ class ScalingConfiguration(pulumi.CustomResource):
             available_resource_creation="VSwitch")
         default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=2,
-            memory_size=4)
+            memory_size=float(4))
         default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
@@ -2200,61 +2200,61 @@ class ScalingConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-                 data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
-                 dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
-                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 internet_max_bandwidth_in: Optional[pulumi.Input[_builtins.int]] = None,
-                 internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-                 io_optimized: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_outdated: Optional[pulumi.Input[_builtins.bool]] = None,
-                 key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
-                 override: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
-                 spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 substitute: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypt_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-                 system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
+                 data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+                 dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_options_login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+                 instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
+                 internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+                 io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_outdated: pulumi.Input[Optional[_builtins.bool]] = None,
+                 key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+                 override: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+                 spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 substitute: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+                 system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2331,61 +2331,61 @@ class ScalingConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            credit_specification: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_priorities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
-            data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
-            dedicated_host_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            deletion_protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            force_delete: Optional[pulumi.Input[_builtins.bool]] = None,
-            host_name: Optional[pulumi.Input[_builtins.str]] = None,
-            http_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_name: Optional[pulumi.Input[_builtins.str]] = None,
-            image_options_login_as_non_root: Optional[pulumi.Input[_builtins.bool]] = None,
-            instance_description: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            instance_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_pattern_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type_overrides: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
-            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            internet_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            internet_max_bandwidth_in: Optional[pulumi.Input[_builtins.int]] = None,
-            internet_max_bandwidth_out: Optional[pulumi.Input[_builtins.int]] = None,
-            io_optimized: Optional[pulumi.Input[_builtins.str]] = None,
-            is_outdated: Optional[pulumi.Input[_builtins.bool]] = None,
-            key_name: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encrypted_password: Optional[pulumi.Input[_builtins.str]] = None,
-            kms_encryption_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
-            override: Optional[pulumi.Input[_builtins.bool]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_inherit: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_configuration_name: Optional[pulumi.Input[_builtins.str]] = None,
-            scaling_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_enhancement_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            spot_duration: Optional[pulumi.Input[_builtins.int]] = None,
-            spot_price_limits: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
-            spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            substitute: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_auto_snapshot_policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_category: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_description: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_encrypt_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
-            system_disk_kms_key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_name: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_performance_level: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_provisioned_iops: Optional[pulumi.Input[_builtins.int]] = None,
-            system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None) -> 'ScalingConfiguration':
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            credit_specification: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_priorities: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationCustomPriorityArgs', 'ScalingConfigurationCustomPriorityArgsDict']]]]] = None,
+            data_disks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationDataDiskArgs', 'ScalingConfigurationDataDiskArgsDict']]]]] = None,
+            dedicated_host_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            deletion_protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            force_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            host_name: pulumi.Input[Optional[_builtins.str]] = None,
+            http_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_name: pulumi.Input[Optional[_builtins.str]] = None,
+            image_options_login_as_non_root: pulumi.Input[Optional[_builtins.bool]] = None,
+            instance_description: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_pattern_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstancePatternInfoArgs', 'ScalingConfigurationInstancePatternInfoArgsDict']]]]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type_overrides: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationInstanceTypeOverrideArgs', 'ScalingConfigurationInstanceTypeOverrideArgsDict']]]]] = None,
+            instance_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            internet_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            internet_max_bandwidth_in: pulumi.Input[Optional[_builtins.int]] = None,
+            internet_max_bandwidth_out: pulumi.Input[Optional[_builtins.int]] = None,
+            io_optimized: pulumi.Input[Optional[_builtins.str]] = None,
+            is_outdated: pulumi.Input[Optional[_builtins.bool]] = None,
+            key_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encrypted_password: pulumi.Input[Optional[_builtins.str]] = None,
+            kms_encryption_context: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationNetworkInterfaceArgs', 'ScalingConfigurationNetworkInterfaceArgsDict']]]]] = None,
+            override: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_inherit: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_configuration_name: pulumi.Input[Optional[_builtins.str]] = None,
+            scaling_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_enhancement_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            spot_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            spot_price_limits: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ScalingConfigurationSpotPriceLimitArgs', 'ScalingConfigurationSpotPriceLimitArgsDict']]]]] = None,
+            spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            substitute: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_auto_snapshot_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_category: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_description: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_encrypt_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_encrypted: pulumi.Input[Optional[_builtins.bool]] = None,
+            system_disk_kms_key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_name: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_performance_level: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_provisioned_iops: pulumi.Input[Optional[_builtins.int]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None) -> 'ScalingConfiguration':
         """
         Get an existing ScalingConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

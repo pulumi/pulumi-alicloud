@@ -91,5 +91,5 @@ export interface GetServiceOutputArgs {
      *
      * > **NOTE:** Setting `enable = "On"` to open the OSS service that means you have read and agreed the [OSS Terms of Service](https://help.aliyun.com/document_detail/31821.html). The service can not closed once it is opened.
      */
-    enable?: pulumi.Input<string>;
+    enable?: pulumi.Input<string | undefined>;
 }

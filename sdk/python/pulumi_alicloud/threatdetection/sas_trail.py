@@ -30,8 +30,8 @@ class SasTrailArgs:
 @pulumi.input_type
 class _SasTrailState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 service_trail: Optional[pulumi.Input['SasTrailServiceTrailArgs']] = None):
+                 create_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 service_trail: pulumi.Input[Optional['SasTrailServiceTrailArgs']] = None):
         """
         Input properties used for looking up and filtering SasTrail resources.
 
@@ -45,26 +45,26 @@ class _SasTrailState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The service trace creation timestamp, in milliseconds.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceTrail")
-    def service_trail(self) -> Optional[pulumi.Input['SasTrailServiceTrailArgs']]:
+    def service_trail(self) -> pulumi.Input[Optional['SasTrailServiceTrailArgs']]:
         """
         Service trace configuration information.
         """
         return pulumi.get(self, "service_trail")
 
     @service_trail.setter
-    def service_trail(self, value: Optional[pulumi.Input['SasTrailServiceTrailArgs']]):
+    def service_trail(self, value: pulumi.Input[Optional['SasTrailServiceTrailArgs']]):
         pulumi.set(self, "service_trail", value)
 
 
@@ -186,8 +186,8 @@ class SasTrail(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.int]] = None,
-            service_trail: Optional[pulumi.Input[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict']]] = None) -> 'SasTrail':
+            create_time: pulumi.Input[Optional[_builtins.int]] = None,
+            service_trail: pulumi.Input[Optional[Union['SasTrailServiceTrailArgs', 'SasTrailServiceTrailArgsDict']]] = None) -> 'SasTrail':
         """
         Get an existing SasTrail resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -177,35 +177,35 @@ export interface DiskState {
     /**
      * The category of the disk. Valid values: `cloudEfficiency` (high-efficiency cloud disk), `cloudSsd` (full Flash cloud disk), `localHdd` (local HDD), `localSsd` (local ssd).
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The time when the disk was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The name of the disk.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the edge node.
      */
-    ensRegionId?: pulumi.Input<string>;
+    ensRegionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
-    paymentType?: pulumi.Input<string>;
+    paymentType?: pulumi.Input<string | undefined>;
     /**
      * The size of the disk instance. Unit: GiB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the cloud disk.
      *
@@ -213,15 +213,15 @@ export interface DiskState {
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The status of the disk.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The label to which the instance is bound.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -235,11 +235,11 @@ export interface DiskArgs {
     /**
      * The name of the disk.
      */
-    diskName?: pulumi.Input<string>;
+    diskName?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to encrypt the new system disk. Valid values: `true`, `false`(default).
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the edge node.
      */
@@ -247,7 +247,7 @@ export interface DiskArgs {
     /**
      * The ID of the KMS key used by the cloud disk. If `encrypted` is set to `true`, the service default key is used when KMSKeyId is empty.
      */
-    kmsKeyId?: pulumi.Input<string>;
+    kmsKeyId?: pulumi.Input<string | undefined>;
     /**
      * The billing method of the instance. Valid values: `PayAsYouGo`.
      */
@@ -255,7 +255,7 @@ export interface DiskArgs {
     /**
      * The size of the disk instance. Unit: GiB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the snapshot used to create the cloud disk.
      *
@@ -263,9 +263,9 @@ export interface DiskArgs {
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is greater than the specified `size` parameter, the Size of the cloud disk created is the Size of the specified snapshot.
      * - If the snapshot capacity corresponding to the `snapshotId` parameter is less than the set `size` parameter value, the Size of the cloud disk created is the specified `size` parameter value.
      */
-    snapshotId?: pulumi.Input<string>;
+    snapshotId?: pulumi.Input<string | undefined>;
     /**
      * The label to which the instance is bound.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

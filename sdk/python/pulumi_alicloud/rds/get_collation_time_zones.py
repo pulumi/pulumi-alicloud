@@ -114,8 +114,8 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[Union['GetC
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         output_file=pulumi.get(__ret__, 'output_file'))
-def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]]]] = None,
-                                    output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_collation_time_zones_output(collation_time_zones: pulumi.Input[Optional[Optional[Sequence[Union['GetCollationTimeZonesCollationTimeZoneArgs', 'GetCollationTimeZonesCollationTimeZoneArgsDict']]]]] = None,
+                                    output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCollationTimeZonesResult]:
     """
     Operation to query the character set collations and time zones available for use in ApsaraDB RDS.

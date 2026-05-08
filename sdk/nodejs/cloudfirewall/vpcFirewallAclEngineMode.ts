@@ -162,15 +162,15 @@ export interface VpcFirewallAclEngineModeState {
     /**
      * The ID of member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The mode of the ACL engine. Possible values are `0`, `1`.
      */
-    strictMode?: pulumi.Input<number>;
+    strictMode?: pulumi.Input<number | undefined>;
     /**
      * The ID of the VPC firewall.
      */
-    vpcFirewallId?: pulumi.Input<string>;
+    vpcFirewallId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,7 +180,7 @@ export interface VpcFirewallAclEngineModeArgs {
     /**
      * The ID of member account.
      */
-    memberUid?: pulumi.Input<string>;
+    memberUid?: pulumi.Input<string | undefined>;
     /**
      * The mode of the ACL engine. Possible values are `0`, `1`.
      */

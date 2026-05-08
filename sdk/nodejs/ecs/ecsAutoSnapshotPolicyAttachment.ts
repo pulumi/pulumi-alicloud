@@ -141,15 +141,15 @@ export interface EcsAutoSnapshotPolicyAttachmentState {
     /**
      * The ID of the automatic snapshot policy that is applied to the cloud disk.
      */
-    autoSnapshotPolicyId?: pulumi.Input<string>;
+    autoSnapshotPolicyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the disk.
      */
-    diskId?: pulumi.Input<string>;
+    diskId?: pulumi.Input<string | undefined>;
     /**
      * (Available since v1.271.0) The ID of the region where the automatic snapshot policy and the cloud disk are located.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
 }
 
 /**

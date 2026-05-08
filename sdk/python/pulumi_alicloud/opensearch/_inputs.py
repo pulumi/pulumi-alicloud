@@ -22,15 +22,15 @@ __all__ = [
 ]
 
 class AppGroupOrderArgsDict(TypedDict):
-    auto_renew: NotRequired[pulumi.Input[_builtins.bool]]
+    auto_renew: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
     """
-    duration: NotRequired[pulumi.Input[_builtins.int]]
+    duration: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Order cycle. The minimum value is not less than 0.
     """
-    pricing_cycle: NotRequired[pulumi.Input[_builtins.str]]
+    pricing_cycle: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Order cycle unit. Valid values: `Year` and `Month`.
     """
@@ -38,9 +38,9 @@ class AppGroupOrderArgsDict(TypedDict):
 @pulumi.input_type
 class AppGroupOrderArgs:
     def __init__(__self__, *,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 duration: Optional[pulumi.Input[_builtins.int]] = None,
-                 pricing_cycle: Optional[pulumi.Input[_builtins.str]] = None):
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 pricing_cycle: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] auto_renew: Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
         :param pulumi.Input[_builtins.int] duration: Order cycle. The minimum value is not less than 0.
@@ -55,38 +55,38 @@ class AppGroupOrderArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def duration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def duration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Order cycle. The minimum value is not less than 0.
         """
         return pulumi.get(self, "duration")
 
     @duration.setter
-    def duration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def duration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "duration", value)
 
     @_builtins.property
     @pulumi.getter(name="pricingCycle")
-    def pricing_cycle(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pricing_cycle(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Order cycle unit. Valid values: `Year` and `Month`.
         """
         return pulumi.get(self, "pricing_cycle")
 
     @pricing_cycle.setter
-    def pricing_cycle(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pricing_cycle(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pricing_cycle", value)
 
 
@@ -110,7 +110,7 @@ class AppGroupQuotaArgsDict(TypedDict):
     * `opensearch.private.compute`: Exclusive computing type.
     * `opensearch.private.storage`: Exclusive storage type
     """
-    qps: NotRequired[pulumi.Input[_builtins.int]]
+    qps: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Search request. Unit: times/second.
     """
@@ -121,7 +121,7 @@ class AppGroupQuotaArgs:
                  compute_resource: pulumi.Input[_builtins.int],
                  doc_size: pulumi.Input[_builtins.int],
                  spec: pulumi.Input[_builtins.str],
-                 qps: Optional[pulumi.Input[_builtins.int]] = None):
+                 qps: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] compute_resource: Computing resources. Unit: LCU.
         :param pulumi.Input[_builtins.int] doc_size: Storage Size. Unit: GB.
@@ -186,14 +186,14 @@ class AppGroupQuotaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def qps(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def qps(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Search request. Unit: times/second.
         """
         return pulumi.get(self, "qps")
 
     @qps.setter
-    def qps(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def qps(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "qps", value)
 
 

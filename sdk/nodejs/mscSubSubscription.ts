@@ -160,46 +160,46 @@ export interface MscSubSubscriptionState {
     /**
      * The channel the Subscription.
      */
-    channel?: pulumi.Input<string>;
+    channel?: pulumi.Input<string | undefined>;
     /**
      * The ids of subscribed contacts.
      * **NOTE:** There is a potential diff error because of the order of `contactIds` values indefinite.
      * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      */
-    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the Subscription.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    emailStatus?: pulumi.Input<number>;
+    emailStatus?: pulumi.Input<number | undefined>;
     /**
      * The name of the Subscription. **NOTE:**  You should use the `alicloud.getMscSubSubscriptions` to query the available subscription item name.
      */
-    itemName?: pulumi.Input<string>;
+    itemName?: pulumi.Input<string | undefined>;
     /**
      * The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    pmsgStatus?: pulumi.Input<number>;
+    pmsgStatus?: pulumi.Input<number | undefined>;
     /**
      * The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    smsStatus?: pulumi.Input<number>;
+    smsStatus?: pulumi.Input<number | undefined>;
     /**
      * The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    ttsStatus?: pulumi.Input<number>;
+    ttsStatus?: pulumi.Input<number | undefined>;
     /**
      * The ids of subscribed webhooks.
      */
-    webhookIds?: pulumi.Input<pulumi.Input<string>[]>;
+    webhookIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    webhookStatus?: pulumi.Input<number>;
+    webhookStatus?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -212,11 +212,11 @@ export interface MscSubSubscriptionArgs {
      * So, from version 1.161.0, `contactIds` type has been updated as `set` from `list`,
      * and you can use tolist to convert it to a list.
      */
-    contactIds?: pulumi.Input<pulumi.Input<string>[]>;
+    contactIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    emailStatus?: pulumi.Input<number>;
+    emailStatus?: pulumi.Input<number | undefined>;
     /**
      * The name of the Subscription. **NOTE:**  You should use the `alicloud.getMscSubSubscriptions` to query the available subscription item name.
      */
@@ -224,21 +224,21 @@ export interface MscSubSubscriptionArgs {
     /**
      * The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    pmsgStatus?: pulumi.Input<number>;
+    pmsgStatus?: pulumi.Input<number | undefined>;
     /**
      * The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    smsStatus?: pulumi.Input<number>;
+    smsStatus?: pulumi.Input<number | undefined>;
     /**
      * The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    ttsStatus?: pulumi.Input<number>;
+    ttsStatus?: pulumi.Input<number | undefined>;
     /**
      * The ids of subscribed webhooks.
      */
-    webhookIds?: pulumi.Input<pulumi.Input<string>[]>;
+    webhookIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      */
-    webhookStatus?: pulumi.Input<number>;
+    webhookStatus?: pulumi.Input<number | undefined>;
 }

@@ -21,9 +21,9 @@ class ClientCertificateArgs:
     def __init__(__self__, *,
                  site_id: pulumi.Input[_builtins.str],
                  validity_days: pulumi.Input[_builtins.str],
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ClientCertificate resource.
 
@@ -76,7 +76,7 @@ class ClientCertificateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate signing request content.
 
@@ -85,12 +85,12 @@ class ClientCertificateArgs:
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter(name="pkeyType")
-    def pkey_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pkey_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key algorithm type.
 
@@ -99,32 +99,32 @@ class ClientCertificateArgs:
         return pulumi.get(self, "pkey_type")
 
     @pkey_type.setter
-    def pkey_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pkey_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pkey_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate status. Valid values: `revoked`, `active`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
 @pulumi.input_type
 class _ClientCertificateState:
     def __init__(__self__, *,
-                 client_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.str]] = None):
+                 client_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ClientCertificate resources.
 
@@ -159,31 +159,31 @@ class _ClientCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="clientCertId")
-    def client_cert_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ClientCertificate Id
         """
         return pulumi.get(self, "client_cert_id")
 
     @client_cert_id.setter
-    def client_cert_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time when the certificate was created.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate signing request content.
 
@@ -192,12 +192,12 @@ class _ClientCertificateState:
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter(name="pkeyType")
-    def pkey_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pkey_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private key algorithm type.
 
@@ -206,36 +206,36 @@ class _ClientCertificateState:
         return pulumi.get(self, "pkey_type")
 
     @pkey_type.setter
-    def pkey_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pkey_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pkey_type", value)
 
     @_builtins.property
     @pulumi.getter(name="siteId")
-    def site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Site Id
         """
         return pulumi.get(self, "site_id")
 
     @site_id.setter
-    def site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate status. Valid values: `revoked`, `active`.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="validityDays")
-    def validity_days(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validity_days(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Certificate validity period.
 
@@ -244,7 +244,7 @@ class _ClientCertificateState:
         return pulumi.get(self, "validity_days")
 
     @validity_days.setter
-    def validity_days(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validity_days(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validity_days", value)
 
 
@@ -254,11 +254,11 @@ class ClientCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a ESA Client Certificate resource.
@@ -278,7 +278,7 @@ class ClientCertificate(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan",
             site_name="gositecdn.cn")
         default_client_certificate = alicloud.esa.ClientCertificate("default",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             pkey_type="RSA",
             validity_days="365")
         ```
@@ -332,7 +332,7 @@ class ClientCertificate(pulumi.CustomResource):
         default = alicloud.esa.get_sites(plan_subscribe_type="enterpriseplan",
             site_name="gositecdn.cn")
         default_client_certificate = alicloud.esa.ClientCertificate("default",
-            site_id=default.sites[0].id,
+            site_id=output(default.sites[0].id).apply(lambda x: str(x)),
             pkey_type="RSA",
             validity_days="365")
         ```
@@ -363,11 +363,11 @@ class ClientCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 validity_days: Optional[pulumi.Input[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 validity_days: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,13 +398,13 @@ class ClientCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            client_cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            csr: Optional[pulumi.Input[_builtins.str]] = None,
-            pkey_type: Optional[pulumi.Input[_builtins.str]] = None,
-            site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            validity_days: Optional[pulumi.Input[_builtins.str]] = None) -> 'ClientCertificate':
+            client_cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            pkey_type: pulumi.Input[Optional[_builtins.str]] = None,
+            site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            validity_days: pulumi.Input[Optional[_builtins.str]] = None) -> 'ClientCertificate':
         """
         Get an existing ClientCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

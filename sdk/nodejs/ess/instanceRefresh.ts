@@ -251,47 +251,47 @@ export interface InstanceRefreshState {
     /**
      * The duration of the pause when the task reaches a checkpoint. Unit: minutes.
      */
-    checkpointPauseTime?: pulumi.Input<number>;
+    checkpointPauseTime?: pulumi.Input<number | undefined>;
     /**
      * The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
      */
-    checkpoints?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshCheckpoint>[]>;
+    checkpoints?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshCheckpoint>[] | undefined>;
     /**
      * The list of containers in the instance. See `desiredConfigurationContainers` below for details.
      */
-    desiredConfigurationContainers?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationContainer>[]>;
+    desiredConfigurationContainers?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationContainer>[] | undefined>;
     /**
      * The ID of the image file. This is the image resource used for automatic instance creation.
      */
-    desiredConfigurationImageId?: pulumi.Input<string>;
+    desiredConfigurationImageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the launch template. The scaling group uses this template to obtain launch configuration information.
      */
-    desiredConfigurationLaunchTemplateId?: pulumi.Input<string>;
+    desiredConfigurationLaunchTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The instance type information in the launch template overrides. See `desiredConfigurationLaunchTemplateOverrides` below for details.
      */
-    desiredConfigurationLaunchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationLaunchTemplateOverride>[]>;
+    desiredConfigurationLaunchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationLaunchTemplateOverride>[] | undefined>;
     /**
      * The version of the launch template.
      */
-    desiredConfigurationLaunchTemplateVersion?: pulumi.Input<string>;
+    desiredConfigurationLaunchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * The percentage by which the number of instances in the scaling group can exceed the group's capacity during the instance refresh.
      */
-    maxHealthyPercentage?: pulumi.Input<number>;
+    maxHealthyPercentage?: pulumi.Input<number | undefined>;
     /**
      * The percentage of instances that must be healthy in the scaling group during the instance refresh. The value is a percentage of the scaling group's capacity.
      */
-    minHealthyPercentage?: pulumi.Input<number>;
+    minHealthyPercentage?: pulumi.Input<number | undefined>;
     /**
      * The ID of the scaling group.
      */
-    scalingGroupId?: pulumi.Input<string>;
+    scalingGroupId?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether to skip instances that match the desired configuration.
      */
-    skipMatching?: pulumi.Input<boolean>;
+    skipMatching?: pulumi.Input<boolean | undefined>;
     /**
      * The current status of the instance refresh task. Possible values:
      * - Pending: The instance refresh task is created and waiting to be scheduled.
@@ -306,7 +306,7 @@ export interface InstanceRefreshState {
      * - RollbackFailed: The rollback of the instance refresh task failed.
      * - Cancelled:  The instance refresh task is canceled. Set Cancelled to cancel the instance refresh task.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -316,39 +316,39 @@ export interface InstanceRefreshArgs {
     /**
      * The duration of the pause when the task reaches a checkpoint. Unit: minutes.
      */
-    checkpointPauseTime?: pulumi.Input<number>;
+    checkpointPauseTime?: pulumi.Input<number | undefined>;
     /**
      * The checkpoints for the refresh task. The task automatically pauses for the duration specified by CheckpointPauseTime when the percentage of new instances reaches a specified value. See `checkpoints` below for details.
      */
-    checkpoints?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshCheckpoint>[]>;
+    checkpoints?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshCheckpoint>[] | undefined>;
     /**
      * The list of containers in the instance. See `desiredConfigurationContainers` below for details.
      */
-    desiredConfigurationContainers?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationContainer>[]>;
+    desiredConfigurationContainers?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationContainer>[] | undefined>;
     /**
      * The ID of the image file. This is the image resource used for automatic instance creation.
      */
-    desiredConfigurationImageId?: pulumi.Input<string>;
+    desiredConfigurationImageId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the launch template. The scaling group uses this template to obtain launch configuration information.
      */
-    desiredConfigurationLaunchTemplateId?: pulumi.Input<string>;
+    desiredConfigurationLaunchTemplateId?: pulumi.Input<string | undefined>;
     /**
      * The instance type information in the launch template overrides. See `desiredConfigurationLaunchTemplateOverrides` below for details.
      */
-    desiredConfigurationLaunchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationLaunchTemplateOverride>[]>;
+    desiredConfigurationLaunchTemplateOverrides?: pulumi.Input<pulumi.Input<inputs.ess.InstanceRefreshDesiredConfigurationLaunchTemplateOverride>[] | undefined>;
     /**
      * The version of the launch template.
      */
-    desiredConfigurationLaunchTemplateVersion?: pulumi.Input<string>;
+    desiredConfigurationLaunchTemplateVersion?: pulumi.Input<string | undefined>;
     /**
      * The percentage by which the number of instances in the scaling group can exceed the group's capacity during the instance refresh.
      */
-    maxHealthyPercentage?: pulumi.Input<number>;
+    maxHealthyPercentage?: pulumi.Input<number | undefined>;
     /**
      * The percentage of instances that must be healthy in the scaling group during the instance refresh. The value is a percentage of the scaling group's capacity.
      */
-    minHealthyPercentage?: pulumi.Input<number>;
+    minHealthyPercentage?: pulumi.Input<number | undefined>;
     /**
      * The ID of the scaling group.
      */
@@ -356,7 +356,7 @@ export interface InstanceRefreshArgs {
     /**
      * Indicates whether to skip instances that match the desired configuration.
      */
-    skipMatching?: pulumi.Input<boolean>;
+    skipMatching?: pulumi.Input<boolean | undefined>;
     /**
      * The current status of the instance refresh task. Possible values:
      * - Pending: The instance refresh task is created and waiting to be scheduled.
@@ -371,5 +371,5 @@ export interface InstanceRefreshArgs {
      * - RollbackFailed: The rollback of the instance refresh task failed.
      * - Cancelled:  The instance refresh task is canceled. Set Cancelled to cancel the instance refresh task.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

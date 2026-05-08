@@ -126,19 +126,19 @@ export interface PageState {
     /**
      * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The Content-Type field in the HTTP header.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The description of the custom error page.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom response page.
      */
-    pageName?: pulumi.Input<string>;
+    pageName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -148,7 +148,7 @@ export interface PageArgs {
     /**
      * The Base64-encoded content of the error page. The content type is specified by the Content-Type field.
      */
-    content?: pulumi.Input<string>;
+    content?: pulumi.Input<string | undefined>;
     /**
      * The Content-Type field in the HTTP header.
      */
@@ -156,7 +156,7 @@ export interface PageArgs {
     /**
      * The description of the custom error page.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the custom response page.
      */

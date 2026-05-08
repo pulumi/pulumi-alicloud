@@ -40,16 +40,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			var tmp0 float64
-//			if length > 0 {
-//				tmp0 = 0
-//			} else {
-//				tmp0 = 1
-//			}
 //			var defaultInstance []*waf.Instance
-//			for index := 0; index < float64(len(_default.Instances).ApplyT(func(length int) (float64, error) {
+//			for index := 0; index < int(len(_default.Instances).ApplyT(func(length int) (int, error) {
+//				var tmp0 int
+//				if length > 0 {
+//					tmp0 = 0
+//				} else {
+//					tmp0 = 1
+//				}
 //				return tmp0, nil
-//			}).(pulumi.Float64Output)); index++ {
+//			}).(pulumi.IntOutput)); index++ {
 //				key0 := index
 //				_ := index
 //				__res, err := waf.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &waf.InstanceArgs{

@@ -235,94 +235,94 @@ export interface ReservedInstanceState {
     /**
      * Indicates the sharing status of the reserved instance when the AllocationType parameter is set to Shared. Valid values: `allocated`: The reserved instance is allocated to another account. `beAllocated`: The reserved instance is allocated by another account.
      */
-    allocationStatus?: pulumi.Input<string>;
+    allocationStatus?: pulumi.Input<string | undefined>;
     /**
      * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * The time when the reserved instance was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The time when the reserved instance expires.
      */
-    expiredTime?: pulumi.Input<string>;
+    expiredTime?: pulumi.Input<string | undefined>;
     /**
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
      */
-    instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number | undefined>;
     /**
      * Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
      */
-    instanceType?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string | undefined>;
     /**
      * Field `name` has been deprecated from provider version 1.194.0. New field `reservedInstanceName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
      * - `No Upfront`: No upfront payment.
      * - `Partial Upfront`: A portion of upfront payment.
      * - `All Upfront`: Full upfront payment.
      */
-    offeringType?: pulumi.Input<string>;
+    offeringType?: pulumi.Input<string | undefined>;
     /**
      * Details about the lock status of the reserved instance.
      */
-    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.ReservedInstanceOperationLock>[]>;
+    operationLocks?: pulumi.Input<pulumi.Input<inputs.ecs.ReservedInstanceOperationLock>[] | undefined>;
     /**
      * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
      * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
      * - When `periodUnit` is `Month`, Valid values: `1`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
      */
-    reservedInstanceName?: pulumi.Input<string>;
+    reservedInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * The time when the reserved instance took effect.
      */
-    startTime?: pulumi.Input<string>;
+    startTime?: pulumi.Input<string | undefined>;
     /**
      * The status of the reserved instance.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -332,15 +332,15 @@ export interface ReservedInstanceArgs {
     /**
      * The auto-renewal term of the reserved instance. This parameter takes effect only when AutoRenew is set to true. Valid values: 1, 12, 36, and 60. Default value when `periodUnit` is set to Month: 1 Default value when `periodUnit` is set to Year: 12
      */
-    autoRenewPeriod?: pulumi.Input<number>;
+    autoRenewPeriod?: pulumi.Input<number | undefined>;
     /**
      * Description of the RI. 2 to 256 English or Chinese characters. It cannot start with `http://` or `https://`.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
      */
-    instanceAmount?: pulumi.Input<number>;
+    instanceAmount?: pulumi.Input<number | undefined>;
     /**
      * Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
      */
@@ -350,50 +350,50 @@ export interface ReservedInstanceArgs {
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
      * - `No Upfront`: No upfront payment.
      * - `Partial Upfront`: A portion of upfront payment.
      * - `All Upfront`: Full upfront payment.
      */
-    offeringType?: pulumi.Input<string>;
+    offeringType?: pulumi.Input<string | undefined>;
     /**
      * The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
      * - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
      * - When `periodUnit` is `Month`, Valid values: `1`.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * The unit of the validity period of the reserved instance. Valid value: `Month`, `Year`. Default value: `Year`. **NOTE:** From version 1.183.0, `periodUnit` can be set to `Month`.
      */
-    periodUnit?: pulumi.Input<string>;
+    periodUnit?: pulumi.Input<string | undefined>;
     /**
      * The operating system type of the image used by the instance. Optional values: `Windows`, `Linux`. Default is `Linux`.
      */
-    platform?: pulumi.Input<string>;
+    platform?: pulumi.Input<string | undefined>;
     /**
      * Automatic renewal status. Valid values: `AutoRenewal`,`Normal`.
      */
-    renewalStatus?: pulumi.Input<string>;
+    renewalStatus?: pulumi.Input<string | undefined>;
     /**
      * Name of the RI. The name must be a string of 2 to 128 characters in length and can contain letters, numbers, colons (:), underscores (_), and hyphens. It must start with a letter. It cannot start with http:// or https://.
      */
-    reservedInstanceName?: pulumi.Input<string>;
+    reservedInstanceName?: pulumi.Input<string | undefined>;
     /**
      * Resource group ID.
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Scope of the RI. Optional values: `Region`: region-level, `Zone`: zone-level. Default is `Region`.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
     /**
      * A mapping of tags to assign to the resource.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * ID of the zone to which the RI belongs. When Scope is set to Zone, this parameter is required. For information about the zone list, see [DescribeZones](https://www.alibabacloud.com/help/doc-detail/25610.html).
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

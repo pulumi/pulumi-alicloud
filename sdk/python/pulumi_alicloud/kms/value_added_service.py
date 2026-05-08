@@ -20,10 +20,10 @@ __all__ = ['ValueAddedServiceArgs', 'ValueAddedService']
 class ValueAddedServiceArgs:
     def __init__(__self__, *,
                  payment_type: pulumi.Input[_builtins.str],
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_added_service: Optional[pulumi.Input[_builtins.str]] = None):
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_added_service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ValueAddedService resource.
 
@@ -67,7 +67,7 @@ class ValueAddedServiceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. Unit for year
 
@@ -76,12 +76,12 @@ class ValueAddedServiceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, in years.
 
@@ -90,12 +90,12 @@ class ValueAddedServiceArgs:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status of the specified instance. Valid values:
 
@@ -106,12 +106,12 @@ class ValueAddedServiceArgs:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter(name="valueAddedService")
-    def value_added_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_added_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         value added service type, Instance Backup 1 default key rotation 2 Expert service 3
 
@@ -120,21 +120,21 @@ class ValueAddedServiceArgs:
         return pulumi.get(self, "value_added_service")
 
     @value_added_service.setter
-    def value_added_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_added_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_added_service", value)
 
 
 @pulumi.input_type
 class _ValueAddedServiceState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_added_service: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_added_service: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ValueAddedService resources.
 
@@ -176,31 +176,31 @@ class _ValueAddedServiceState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The creation time of the resource
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="paymentType")
-    def payment_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def payment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The payment type of the resource
         """
         return pulumi.get(self, "payment_type")
 
     @payment_type.setter
-    def payment_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def payment_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "payment_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Prepaid cycle. Unit for year
 
@@ -209,24 +209,24 @@ class _ValueAddedServiceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region ID of the resource
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="renewPeriod")
-    def renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Automatic renewal period, in years.
 
@@ -235,12 +235,12 @@ class _ValueAddedServiceState:
         return pulumi.get(self, "renew_period")
 
     @renew_period.setter
-    def renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="renewStatus")
-    def renew_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def renew_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The renewal status of the specified instance. Valid values:
 
@@ -251,24 +251,24 @@ class _ValueAddedServiceState:
         return pulumi.get(self, "renew_status")
 
     @renew_status.setter
-    def renew_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def renew_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "renew_status", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="valueAddedService")
-    def value_added_service(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value_added_service(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         value added service type, Instance Backup 1 default key rotation 2 Expert service 3
 
@@ -277,7 +277,7 @@ class _ValueAddedServiceState:
         return pulumi.get(self, "value_added_service")
 
     @value_added_service.setter
-    def value_added_service(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value_added_service(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_added_service", value)
 
 
@@ -287,11 +287,11 @@ class ValueAddedService(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_added_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_added_service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a KMS Value Added Service resource.
@@ -412,11 +412,11 @@ class ValueAddedService(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 value_added_service: Optional[pulumi.Input[_builtins.str]] = None,
+                 payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 value_added_service: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,14 +446,14 @@ class ValueAddedService(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            payment_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            renew_status: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            value_added_service: Optional[pulumi.Input[_builtins.str]] = None) -> 'ValueAddedService':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            payment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            renew_status: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            value_added_service: pulumi.Input[Optional[_builtins.str]] = None) -> 'ValueAddedService':
         """
         Get an existing ValueAddedService resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

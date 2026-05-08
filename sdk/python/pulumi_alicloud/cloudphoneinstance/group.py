@@ -21,18 +21,18 @@ class GroupArgs:
     def __init__(__self__, *,
                  image_id: pulumi.Input[_builtins.str],
                  instance_group_spec: pulumi.Input[_builtins.str],
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 instance_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Group resource.
 
@@ -112,55 +112,55 @@ class GroupArgs:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instance groups. The default value is 1 and the maximum value is 100.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. The default is false.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. The default is false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuAcceleration")
-    def gpu_acceleration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gpu_acceleration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable GPU acceleration. The default value is false.
         - true: On.
@@ -169,12 +169,12 @@ class GroupArgs:
         return pulumi.get(self, "gpu_acceleration")
 
     @gpu_acceleration.setter
-    def gpu_acceleration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gpu_acceleration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gpu_acceleration", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupName")
-    def instance_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance group name
 
@@ -185,24 +185,24 @@ class GroupArgs:
         return pulumi.get(self, "instance_group_name")
 
     @instance_group_name.setter
-    def instance_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfInstances")
-    def number_of_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances in the instance group. The maximum value is 100.
         """
         return pulumi.get(self, "number_of_instances")
 
     @number_of_instances.setter
-    def number_of_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
-    def office_site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID.
         - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
@@ -211,76 +211,76 @@ class GroupArgs:
         return pulumi.get(self, "office_site_id")
 
     @office_site_id.setter
-    def office_site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the resource purchase. The unit is specified by PeriodUnit.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of time for purchasing resources.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupId")
-    def policy_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy ID. You can query the list of policies by calling ListPolicyGroups.
         """
         return pulumi.get(self, "policy_group_id")
 
     @policy_group_id.setter
-    def policy_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
 
@@ -341,55 +341,55 @@ class _GroupState:
 
     @_builtins.property
     @pulumi.getter
-    def amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instance groups. The default value is 1 and the maximum value is 100.
         """
         return pulumi.get(self, "amount")
 
     @amount.setter
-    def amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "amount", value)
 
     @_builtins.property
     @pulumi.getter(name="autoPay")
-    def auto_pay(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_pay(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to pay automatically. The default is false.
         """
         return pulumi.get(self, "auto_pay")
 
     @auto_pay.setter
-    def auto_pay(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_pay(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_pay", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic renewal. The default is false.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="chargeType")
-    def charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing type.
         """
         return pulumi.get(self, "charge_type")
 
     @charge_type.setter
-    def charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="gpuAcceleration")
-    def gpu_acceleration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def gpu_acceleration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable GPU acceleration. The default value is false.
         - true: On.
@@ -398,24 +398,24 @@ class _GroupState:
         return pulumi.get(self, "gpu_acceleration")
 
     @gpu_acceleration.setter
-    def gpu_acceleration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def gpu_acceleration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "gpu_acceleration", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupName")
-    def instance_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance group name
 
@@ -426,36 +426,36 @@ class _GroupState:
         return pulumi.get(self, "instance_group_name")
 
     @instance_group_name.setter
-    def instance_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceGroupSpec")
-    def instance_group_spec(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_group_spec(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance group specifications.
         """
         return pulumi.get(self, "instance_group_spec")
 
     @instance_group_spec.setter
-    def instance_group_spec(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_group_spec(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_group_spec", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfInstances")
-    def number_of_instances(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of instances in the instance group. The maximum value is 100.
         """
         return pulumi.get(self, "number_of_instances")
 
     @number_of_instances.setter
-    def number_of_instances(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_instances(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_instances", value)
 
     @_builtins.property
     @pulumi.getter(name="officeSiteId")
-    def office_site_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def office_site_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network ID.
         - Create a shared network instance: Network ID is optional. Enter the network ID whose type is **Shared Network** on the [cloud mobile phone console> Network](https://wya.wuying.aliyun.com/network) page. If the console does not have a shared network, you can fill it in. A shared network is automatically created when the instance group is created.
@@ -464,67 +464,67 @@ class _GroupState:
         return pulumi.get(self, "office_site_id")
 
     @office_site_id.setter
-    def office_site_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def office_site_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "office_site_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the resource purchase. The unit is specified by PeriodUnit.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of time for purchasing resources.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="policyGroupId")
-    def policy_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The policy ID. You can query the list of policies by calling ListPolicyGroups.
         """
         return pulumi.get(self, "policy_group_id")
 
     @policy_group_id.setter
-    def policy_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy_group_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance group status
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The vSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
 
@@ -534,20 +534,20 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Phone Instance Group resource.
@@ -721,20 +721,20 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 gpu_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_group_spec: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_instances: Optional[pulumi.Input[_builtins.int]] = None,
-                 office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_group_spec: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+                 office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -773,21 +773,21 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amount: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_pay: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            gpu_acceleration: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_group_spec: Optional[pulumi.Input[_builtins.str]] = None,
-            number_of_instances: Optional[pulumi.Input[_builtins.int]] = None,
-            office_site_id: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            policy_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Group':
+            amount: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_pay: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            gpu_acceleration: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_group_spec: pulumi.Input[Optional[_builtins.str]] = None,
+            number_of_instances: pulumi.Input[Optional[_builtins.int]] = None,
+            office_site_id: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            policy_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -22,15 +22,15 @@ __all__ = [
 ]
 
 class ProvisionedProductOutputArgsDict(TypedDict):
-    description: NotRequired[pulumi.Input[_builtins.str]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Description of the output value defined in the template.
     """
-    output_key: NotRequired[pulumi.Input[_builtins.str]]
+    output_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the output value defined in the template.
     """
-    output_value: NotRequired[pulumi.Input[_builtins.str]]
+    output_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The content of the output value defined in the template.
     """
@@ -38,9 +38,9 @@ class ProvisionedProductOutputArgsDict(TypedDict):
 @pulumi.input_type
 class ProvisionedProductOutputArgs:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: Description of the output value defined in the template.
         :param pulumi.Input[_builtins.str] output_key: The name of the output value defined in the template.
@@ -55,47 +55,47 @@ class ProvisionedProductOutputArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the output value defined in the template.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="outputKey")
-    def output_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the output value defined in the template.
         """
         return pulumi.get(self, "output_key")
 
     @output_key.setter
-    def output_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_key", value)
 
     @_builtins.property
     @pulumi.getter(name="outputValue")
-    def output_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content of the output value defined in the template.
         """
         return pulumi.get(self, "output_value")
 
     @output_value.setter
-    def output_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_value", value)
 
 
 class ProvisionedProductParameterArgsDict(TypedDict):
-    parameter_key: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the parameter defined in the template.
     """
-    parameter_value: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Template parameter value entered by the user.
     """
@@ -103,8 +103,8 @@ class ProvisionedProductParameterArgsDict(TypedDict):
 @pulumi.input_type
 class ProvisionedProductParameterArgs:
     def __init__(__self__, *,
-                 parameter_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_value: Optional[pulumi.Input[_builtins.str]] = None):
+                 parameter_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] parameter_key: The name of the parameter defined in the template.
         :param pulumi.Input[_builtins.str] parameter_value: The Template parameter value entered by the user.
@@ -116,26 +116,26 @@ class ProvisionedProductParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="parameterKey")
-    def parameter_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the parameter defined in the template.
         """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
-    def parameter_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_key", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Template parameter value entered by the user.
         """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_value", value)
 
 

@@ -301,29 +301,29 @@ export interface NodeGroupState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The creation time of the node group.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Number of CUs. CU (Compute Unit) is the basic unit of service measurement, where 1 CU = 1 vCPU + 4 GiB memory. When SpecType is memory-optimized, 1 CU = 1 vCPU + 8 GiB memory.
      */
-    cu?: pulumi.Input<number>;
+    cu?: pulumi.Input<number | undefined>;
     /**
      * Description of node group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Number of disks.
      */
-    diskNumber?: pulumi.Input<number>;
+    diskNumber?: pulumi.Input<number | undefined>;
     /**
      * Duration of node group.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether to restart in fast restart mode. The default is false.
      * - true: Reboots the compute node in fast restart mode. Restart computing nodes in multiple batches, restart in parallel within a batch, and execute serially between batches;
@@ -331,29 +331,29 @@ export interface NodeGroupState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    fastMode?: pulumi.Input<boolean>;
+    fastMode?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Node group local SSD instance specification. This value is only relevant when based on ECS instances and SpecType is set to local SSD/large-scale storage.
      */
-    localStorageInstanceType?: pulumi.Input<string>;
+    localStorageInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The ID of the node group.
      */
-    nodeGroupId?: pulumi.Input<string>;
+    nodeGroupId?: pulumi.Input<string | undefined>;
     /**
      * The name of the node group.
      */
-    nodeGroupName?: pulumi.Input<string>;
+    nodeGroupName?: pulumi.Input<string | undefined>;
     /**
      * Payment type:
      * - PrePaid: Subscription (prepaid).
      * - PostPaid: Pay-as-you-go (postpaid).
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * Unit of purchase duration:
      * - Month
@@ -363,21 +363,21 @@ export interface NodeGroupState {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * ID of promotion option.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * The region ID of the node group.
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Number of nodes.
      */
-    residentNodeNumber?: pulumi.Input<number>;
+    residentNodeNumber?: pulumi.Input<number | undefined>;
     /**
      * Node group spec types include the following:
      * - standard: Standard edition.
@@ -386,11 +386,11 @@ export interface NodeGroupState {
      * - ramEnhanced: Memory-enhanced type.
      * - networkEnhanced: Network-enhanced type.
      */
-    specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string | undefined>;
     /**
      * Node group status, including the following values:_FAILED: Creation failed._CONFIG: Modifying configuration._TIMEZONE: Modifying timezone._SCALING_OUT: Elastic scaling out._SCALING_IN: Elastic scaling in._OUT: Scaling out._IN: Scaling in._UP: Scaling up (upgrading configuration)._DOWN: Scaling down (downgrading configuration)._PUBLIC_NETWORK: Enabling public network._PUBLIC_NETWORK: Disabling public network._AZ: Switching availability zones.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Performance levels of the cloud disk. Includes the following values:
      * - pl0: Maximum random read/write IOPS of a single disk is 10,000.
@@ -398,11 +398,11 @@ export interface NodeGroupState {
      * - pl2: Maximum random read/write IOPS of a single disk is 100,000.
      * - pl3: Maximum random read/write IOPS of a single disk is 1,000,000.
      */
-    storagePerformanceLevel?: pulumi.Input<string>;
+    storagePerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Storage size, measured in GiB.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -414,25 +414,25 @@ export interface NodeGroupArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * Number of CUs. CU (Compute Unit) is the basic unit of service measurement, where 1 CU = 1 vCPU + 4 GiB memory. When SpecType is memory-optimized, 1 CU = 1 vCPU + 8 GiB memory.
      */
-    cu?: pulumi.Input<number>;
+    cu?: pulumi.Input<number | undefined>;
     /**
      * Description of node group.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Number of disks.
      */
-    diskNumber?: pulumi.Input<number>;
+    diskNumber?: pulumi.Input<number | undefined>;
     /**
      * Duration of node group.
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    duration?: pulumi.Input<number>;
+    duration?: pulumi.Input<number | undefined>;
     /**
      * Whether to restart in fast restart mode. The default is false.
      * - true: Reboots the compute node in fast restart mode. Restart computing nodes in multiple batches, restart in parallel within a batch, and execute serially between batches;
@@ -440,25 +440,25 @@ export interface NodeGroupArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    fastMode?: pulumi.Input<boolean>;
+    fastMode?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Node group local SSD instance specification. This value is only relevant when based on ECS instances and SpecType is set to local SSD/large-scale storage.
      */
-    localStorageInstanceType?: pulumi.Input<string>;
+    localStorageInstanceType?: pulumi.Input<string | undefined>;
     /**
      * The name of the node group.
      */
-    nodeGroupName?: pulumi.Input<string>;
+    nodeGroupName?: pulumi.Input<string | undefined>;
     /**
      * Payment type:
      * - PrePaid: Subscription (prepaid).
      * - PostPaid: Pay-as-you-go (postpaid).
      */
-    payType?: pulumi.Input<string>;
+    payType?: pulumi.Input<string | undefined>;
     /**
      * Unit of purchase duration:
      * - Month
@@ -468,17 +468,17 @@ export interface NodeGroupArgs {
      *
      * > **NOTE:** The parameter is immutable after resource creation. It only applies during resource creation and has no effect when modified post-creation.
      */
-    pricingCycle?: pulumi.Input<string>;
+    pricingCycle?: pulumi.Input<string | undefined>;
     /**
      * ID of promotion option.
      *
      * > **NOTE:** This parameter only applies during resource creation, update. If modified in isolation without other property changes, Terraform will not trigger any action.
      */
-    promotionOptionNo?: pulumi.Input<string>;
+    promotionOptionNo?: pulumi.Input<string | undefined>;
     /**
      * Number of nodes.
      */
-    residentNodeNumber?: pulumi.Input<number>;
+    residentNodeNumber?: pulumi.Input<number | undefined>;
     /**
      * Node group spec types include the following:
      * - standard: Standard edition.
@@ -487,7 +487,7 @@ export interface NodeGroupArgs {
      * - ramEnhanced: Memory-enhanced type.
      * - networkEnhanced: Network-enhanced type.
      */
-    specType?: pulumi.Input<string>;
+    specType?: pulumi.Input<string | undefined>;
     /**
      * Performance levels of the cloud disk. Includes the following values:
      * - pl0: Maximum random read/write IOPS of a single disk is 10,000.
@@ -495,9 +495,9 @@ export interface NodeGroupArgs {
      * - pl2: Maximum random read/write IOPS of a single disk is 100,000.
      * - pl3: Maximum random read/write IOPS of a single disk is 1,000,000.
      */
-    storagePerformanceLevel?: pulumi.Input<string>;
+    storagePerformanceLevel?: pulumi.Input<string | undefined>;
     /**
      * Storage size, measured in GiB.
      */
-    storageSize?: pulumi.Input<number>;
+    storageSize?: pulumi.Input<number | undefined>;
 }

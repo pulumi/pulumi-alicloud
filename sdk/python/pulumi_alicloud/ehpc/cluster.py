@@ -28,57 +28,57 @@ class ClusterArgs:
                  login_instance_type: pulumi.Input[_builtins.str],
                  manager_instance_type: pulumi.Input[_builtins.str],
                  os_tag: pulumi.Input[_builtins.str],
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compute_spot_price_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehpc_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_owner_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_compute_ess: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
-                 ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_vis_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 without_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 without_elastic_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compute_spot_price_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_compute_ess: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_install_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
+                 ram_node_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_vis_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 without_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 without_elastic_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
 
@@ -357,115 +357,115 @@ class ClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalVolumes")
-    def additional_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
+    def additional_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
         """
         The additional volumes. See `additional_volumes` below.
         """
         return pulumi.get(self, "additional_volumes")
 
     @additional_volumes.setter
-    def additional_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]):
+    def additional_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]):
         pulumi.set(self, "additional_volumes", value)
 
     @_builtins.property
     @pulumi.getter
-    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
+    def applications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
         """
         The application. See `application` below.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]):
+    def applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]]):
         pulumi.set(self, "applications", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the E-HPC client. By default, the parameter is set to the latest version number.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVersion")
-    def cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the cluster. Default value: `1.0`.
         """
         return pulumi.get(self, "cluster_version")
 
     @cluster_version.setter
-    def cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="computeEnableHt")
-    def compute_enable_ht(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compute_enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the compute nodes support hyper-threading. Default value: `true`.
         """
         return pulumi.get(self, "compute_enable_ht")
 
     @compute_enable_ht.setter
-    def compute_enable_ht(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compute_enable_ht(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compute_enable_ht", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSpotPriceLimit")
-    def compute_spot_price_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_spot_price_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         """
         return pulumi.get(self, "compute_spot_price_limit")
 
     @compute_spot_price_limit.setter
-    def compute_spot_price_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_spot_price_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSpotStrategy")
-    def compute_spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
         - `NoSpot`: The compute nodes are pay-as-you-go instances.
@@ -475,12 +475,12 @@ class ClusterArgs:
         return pulumi.get(self, "compute_spot_strategy")
 
     @compute_spot_strategy.setter
-    def compute_spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployMode")
-    def deploy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
         - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
@@ -490,168 +490,168 @@ class ClusterArgs:
         return pulumi.get(self, "deploy_mode")
 
     @deploy_mode.setter
-    def deploy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsChargeType")
-    def ecs_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the nodes.
         """
         return pulumi.get(self, "ecs_charge_type")
 
     @ecs_charge_type.setter
-    def ecs_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ehpcVersion")
-    def ehpc_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ehpc_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of E-HPC. By default, the parameter is set to the latest version number.
         """
         return pulumi.get(self, "ehpc_version")
 
     @ehpc_version.setter
-    def ehpc_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ehpc_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ehpc_version", value)
 
     @_builtins.property
     @pulumi.getter(name="haEnable")
-    def ha_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
         """
         return pulumi.get(self, "ha_enable")
 
     @ha_enable.setter
-    def ha_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOwnerAlias")
-    def image_owner_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_owner_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         """
         return pulumi.get(self, "image_owner_alias")
 
     @image_owner_alias.setter
-    def image_owner_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_owner_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_owner_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="inputFileUrl")
-    def input_file_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_file_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         """
         return pulumi.get(self, "input_file_url")
 
     @input_file_url.setter
-    def input_file_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_file_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_file_url", value)
 
     @_builtins.property
     @pulumi.getter(name="isComputeEss")
-    def is_compute_ess(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_compute_ess(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scaling. Default value: `false`.
         """
         return pulumi.get(self, "is_compute_ess")
 
     @is_compute_ess.setter
-    def is_compute_ess(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_compute_ess(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_compute_ess", value)
 
     @_builtins.property
     @pulumi.getter(name="jobQueue")
-    def job_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
     @job_queue.setter
-    def job_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_queue", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the AccessKey pair.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="managerCount")
-    def manager_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def manager_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the management nodes. Valid values: 1 and 2.
         """
         return pulumi.get(self, "manager_count")
 
     @manager_count.setter
-    def manager_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def manager_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "manager_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
         * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -661,24 +661,24 @@ class ClusterArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
         - pluginMod: the mode of the plug-in. The following modes are supported:
@@ -690,144 +690,144 @@ class ClusterArgs:
         return pulumi.get(self, "plugin")
 
     @plugin.setter
-    def plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="postInstallScripts")
-    def post_install_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
+    def post_install_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
         """
         The post install script. See `post_install_script` below.
         """
         return pulumi.get(self, "post_install_scripts")
 
     @post_install_scripts.setter
-    def post_install_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]):
+    def post_install_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]):
         pulumi.set(self, "post_install_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="ramNodeTypes")
-    def ram_node_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ram_node_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The node of the RAM role.
         """
         return pulumi.get(self, "ram_node_types")
 
     @ram_node_types.setter
-    def ram_node_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ram_node_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ram_node_types", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Resource Access Management (RAM) role.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseInstance")
-    def release_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The release instance. Valid values: `true`.
         """
         return pulumi.get(self, "release_instance")
 
     @release_instance.setter
-    def release_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "release_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDirectory")
-    def remote_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
     @remote_directory.setter
-    def remote_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteVisEnable")
-    def remote_vis_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_vis_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         """
         return pulumi.get(self, "remote_vis_enable")
 
     @remote_vis_enable.setter
-    def remote_vis_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_vis_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_vis_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sccClusterId")
-    def scc_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scc_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
         """
         return pulumi.get(self, "scc_cluster_id")
 
     @scc_cluster_id.setter
-    def scc_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scc_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scc_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerType")
-    def scheduler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
         """
         return pulumi.get(self, "scheduler_type")
 
     @scheduler_type.setter
-    def scheduler_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group to which the cluster belongs.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
-    def security_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskLevel")
-    def system_disk_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
         * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -838,60 +838,60 @@ class ClusterArgs:
         return pulumi.get(self, "system_disk_level")
 
     @system_disk_level.setter
-    def system_disk_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskType")
-    def system_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
         """
         return pulumi.get(self, "system_disk_type")
 
     @system_disk_type.setter
-    def system_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountOption")
-    def volume_mount_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mount_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount options of the file system.
         """
         return pulumi.get(self, "volume_mount_option")
 
     @volume_mount_option.setter
-    def volume_mount_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mount_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mount_option", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountpoint")
-    def volume_mountpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mountpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount target of the file system. Take note of the following information:
         - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
@@ -900,156 +900,156 @@ class ClusterArgs:
         return pulumi.get(self, "volume_mountpoint")
 
     @volume_mountpoint.setter
-    def volume_mountpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mountpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mountpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeProtocol")
-    def volume_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
     @volume_protocol.setter
-    def volume_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) to which the cluster belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch. E-HPC supports only VPC networks.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="withoutAgent")
-    def without_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def without_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether not to install the agent. Default value: `false`.
         """
         return pulumi.get(self, "without_agent")
 
     @without_agent.setter
-    def without_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def without_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "without_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="withoutElasticIp")
-    def without_elastic_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def without_elastic_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
         """
         return pulumi.get(self, "without_elastic_ip")
 
     @without_elastic_ip.setter
-    def without_elastic_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def without_elastic_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "without_elastic_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
 class _ClusterState:
     def __init__(__self__, *,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compute_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_price_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehpc_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_owner_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_compute_ess: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 login_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 manager_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
-                 ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_vis_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 without_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 without_elastic_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_volumes: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compute_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_price_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_compute_ess: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 login_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 manager_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_install_scripts: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]] = None,
+                 ram_node_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_vis_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 without_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 without_elastic_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
 
@@ -1254,151 +1254,151 @@ class _ClusterState:
 
     @_builtins.property
     @pulumi.getter(name="accountType")
-    def account_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
         """
         return pulumi.get(self, "account_type")
 
     @account_type.setter
-    def account_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account_type", value)
 
     @_builtins.property
     @pulumi.getter(name="additionalVolumes")
-    def additional_volumes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
+    def additional_volumes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]:
         """
         The additional volumes. See `additional_volumes` below.
         """
         return pulumi.get(self, "additional_volumes")
 
     @additional_volumes.setter
-    def additional_volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]):
+    def additional_volumes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterAdditionalVolumeArgs']]]]):
         pulumi.set(self, "additional_volumes", value)
 
     @_builtins.property
     @pulumi.getter
-    def applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
+    def applications(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]]:
         """
         The application. See `application` below.
         """
         return pulumi.get(self, "applications")
 
     @applications.setter
-    def applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterApplicationArgs']]]]):
+    def applications(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterApplicationArgs']]]]):
         pulumi.set(self, "applications", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
         """
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="clientVersion")
-    def client_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the E-HPC client. By default, the parameter is set to the latest version number.
         """
         return pulumi.get(self, "client_version")
 
     @client_version.setter
-    def client_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_version", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the cluster. The name must be `2` to `64` characters in length.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterVersion")
-    def cluster_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the cluster. Default value: `1.0`.
         """
         return pulumi.get(self, "cluster_version")
 
     @cluster_version.setter
-    def cluster_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_version", value)
 
     @_builtins.property
     @pulumi.getter(name="computeCount")
-    def compute_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def compute_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the compute nodes. Valid values: `1` to `99`.
         """
         return pulumi.get(self, "compute_count")
 
     @compute_count.setter
-    def compute_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def compute_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "compute_count", value)
 
     @_builtins.property
     @pulumi.getter(name="computeEnableHt")
-    def compute_enable_ht(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def compute_enable_ht(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the compute nodes support hyper-threading. Default value: `true`.
         """
         return pulumi.get(self, "compute_enable_ht")
 
     @compute_enable_ht.setter
-    def compute_enable_ht(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def compute_enable_ht(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "compute_enable_ht", value)
 
     @_builtins.property
     @pulumi.getter(name="computeInstanceType")
-    def compute_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the compute nodes.
         """
         return pulumi.get(self, "compute_instance_type")
 
     @compute_instance_type.setter
-    def compute_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSpotPriceLimit")
-    def compute_spot_price_limit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_spot_price_limit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
         """
         return pulumi.get(self, "compute_spot_price_limit")
 
     @compute_spot_price_limit.setter
-    def compute_spot_price_limit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_spot_price_limit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_spot_price_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="computeSpotStrategy")
-    def compute_spot_strategy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compute_spot_strategy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
         - `NoSpot`: The compute nodes are pay-as-you-go instances.
@@ -1408,12 +1408,12 @@ class _ClusterState:
         return pulumi.get(self, "compute_spot_strategy")
 
     @compute_spot_strategy.setter
-    def compute_spot_strategy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compute_spot_strategy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compute_spot_strategy", value)
 
     @_builtins.property
     @pulumi.getter(name="deployMode")
-    def deploy_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def deploy_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
         - `Standard`: An account node, a scheduling node, a logon node, and multiple compute nodes are separately deployed.
@@ -1423,216 +1423,216 @@ class _ClusterState:
         return pulumi.get(self, "deploy_mode")
 
     @deploy_mode.setter
-    def deploy_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def deploy_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "deploy_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="ecsChargeType")
-    def ecs_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ecs_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the nodes.
         """
         return pulumi.get(self, "ecs_charge_type")
 
     @ecs_charge_type.setter
-    def ecs_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ecs_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ecs_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="ehpcVersion")
-    def ehpc_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ehpc_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of E-HPC. By default, the parameter is set to the latest version number.
         """
         return pulumi.get(self, "ehpc_version")
 
     @ehpc_version.setter
-    def ehpc_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ehpc_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ehpc_version", value)
 
     @_builtins.property
     @pulumi.getter(name="haEnable")
-    def ha_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
         """
         return pulumi.get(self, "ha_enable")
 
     @ha_enable.setter
-    def ha_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the image.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="imageOwnerAlias")
-    def image_owner_alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_owner_alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
         """
         return pulumi.get(self, "image_owner_alias")
 
     @image_owner_alias.setter
-    def image_owner_alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_owner_alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_owner_alias", value)
 
     @_builtins.property
     @pulumi.getter(name="inputFileUrl")
-    def input_file_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_file_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
         """
         return pulumi.get(self, "input_file_url")
 
     @input_file_url.setter
-    def input_file_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_file_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_file_url", value)
 
     @_builtins.property
     @pulumi.getter(name="isComputeEss")
-    def is_compute_ess(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_compute_ess(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto scaling. Default value: `false`.
         """
         return pulumi.get(self, "is_compute_ess")
 
     @is_compute_ess.setter
-    def is_compute_ess(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_compute_ess(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_compute_ess", value)
 
     @_builtins.property
     @pulumi.getter(name="jobQueue")
-    def job_queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def job_queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The queue to which the compute nodes are added.
         """
         return pulumi.get(self, "job_queue")
 
     @job_queue.setter
-    def job_queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def job_queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "job_queue", value)
 
     @_builtins.property
     @pulumi.getter(name="keyPairName")
-    def key_pair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_pair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the AccessKey pair.
         """
         return pulumi.get(self, "key_pair_name")
 
     @key_pair_name.setter
-    def key_pair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_pair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_pair_name", value)
 
     @_builtins.property
     @pulumi.getter(name="loginCount")
-    def login_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def login_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the logon nodes. Valid values: `1`.
         """
         return pulumi.get(self, "login_count")
 
     @login_count.setter
-    def login_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def login_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "login_count", value)
 
     @_builtins.property
     @pulumi.getter(name="loginInstanceType")
-    def login_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def login_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the logon nodes.
         """
         return pulumi.get(self, "login_instance_type")
 
     @login_instance_type.setter
-    def login_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def login_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "login_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="managerCount")
-    def manager_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def manager_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the management nodes. Valid values: 1 and 2.
         """
         return pulumi.get(self, "manager_count")
 
     @manager_count.setter
-    def manager_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def manager_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "manager_count", value)
 
     @_builtins.property
     @pulumi.getter(name="managerInstanceType")
-    def manager_instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manager_instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The instance type of the management nodes.
         """
         return pulumi.get(self, "manager_instance_type")
 
     @manager_instance_type.setter
-    def manager_instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manager_instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manager_instance_type", value)
 
     @_builtins.property
     @pulumi.getter(name="osTag")
-    def os_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def os_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image tag of the operating system.
         """
         return pulumi.get(self, "os_tag")
 
     @os_tag.setter
-    def os_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def os_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "os_tag", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ & * - + = { } [ ] : ; ‘ < > , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration of the subscription. The unit of the duration is specified by the `period_unit` parameter. Default value: `1`.
         * If you set PriceUnit to Year, the valid values of the Period parameter are 1, 2, and 3.
@@ -1642,24 +1642,24 @@ class _ClusterState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mode configurations of the plug-in. This parameter takes effect only when the SchedulerType parameter is set to custom. The value must be a JSON string. The parameter contains the following parameters: pluginMod, pluginLocalPath, and pluginOssPath.
         - pluginMod: the mode of the plug-in. The following modes are supported:
@@ -1671,156 +1671,156 @@ class _ClusterState:
         return pulumi.get(self, "plugin")
 
     @plugin.setter
-    def plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="postInstallScripts")
-    def post_install_scripts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
+    def post_install_scripts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]:
         """
         The post install script. See `post_install_script` below.
         """
         return pulumi.get(self, "post_install_scripts")
 
     @post_install_scripts.setter
-    def post_install_scripts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]):
+    def post_install_scripts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ClusterPostInstallScriptArgs']]]]):
         pulumi.set(self, "post_install_scripts", value)
 
     @_builtins.property
     @pulumi.getter(name="ramNodeTypes")
-    def ram_node_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ram_node_types(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The node of the RAM role.
         """
         return pulumi.get(self, "ram_node_types")
 
     @ram_node_types.setter
-    def ram_node_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ram_node_types(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ram_node_types", value)
 
     @_builtins.property
     @pulumi.getter(name="ramRoleName")
-    def ram_role_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ram_role_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Resource Access Management (RAM) role.
         """
         return pulumi.get(self, "ram_role_name")
 
     @ram_role_name.setter
-    def ram_role_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ram_role_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ram_role_name", value)
 
     @_builtins.property
     @pulumi.getter(name="releaseInstance")
-    def release_instance(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def release_instance(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         The release instance. Valid values: `true`.
         """
         return pulumi.get(self, "release_instance")
 
     @release_instance.setter
-    def release_instance(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def release_instance(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "release_instance", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteDirectory")
-    def remote_directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote directory to which the file system is mounted.
         """
         return pulumi.get(self, "remote_directory")
 
     @remote_directory.setter
-    def remote_directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_directory", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteVisEnable")
-    def remote_vis_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remote_vis_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
         """
         return pulumi.get(self, "remote_vis_enable")
 
     @remote_vis_enable.setter
-    def remote_vis_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remote_vis_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remote_vis_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sccClusterId")
-    def scc_cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scc_cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
         """
         return pulumi.get(self, "scc_cluster_id")
 
     @scc_cluster_id.setter
-    def scc_cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scc_cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scc_cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="schedulerType")
-    def scheduler_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheduler_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
         """
         return pulumi.get(self, "scheduler_type")
 
     @scheduler_type.setter
-    def scheduler_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheduler_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheduler_type", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the security group to which the cluster belongs.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupName")
-    def security_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
         """
         return pulumi.get(self, "security_group_name")
 
     @security_group_name.setter
-    def security_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskLevel")
-    def system_disk_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
         * `PL0`: A single ESSD can deliver up to 10,000 random read/write IOPS.
@@ -1831,60 +1831,60 @@ class _ClusterState:
         return pulumi.get(self, "system_disk_level")
 
     @system_disk_level.setter
-    def system_disk_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_level", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskSize")
-    def system_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def system_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
         """
         return pulumi.get(self, "system_disk_size")
 
     @system_disk_size.setter
-    def system_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def system_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "system_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="systemDiskType")
-    def system_disk_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def system_disk_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
         """
         return pulumi.get(self, "system_disk_type")
 
     @system_disk_type.setter
-    def system_disk_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def system_disk_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "system_disk_type", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountOption")
-    def volume_mount_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mount_option(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount options of the file system.
         """
         return pulumi.get(self, "volume_mount_option")
 
     @volume_mount_option.setter
-    def volume_mount_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mount_option(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mount_option", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeMountpoint")
-    def volume_mountpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_mountpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mount target of the file system. Take note of the following information:
         - If you do not specify the VolumeId parameter, you can leave the VolumeMountpoint parameter empty. A mount target is created by default.
@@ -1893,91 +1893,91 @@ class _ClusterState:
         return pulumi.get(self, "volume_mountpoint")
 
     @volume_mountpoint.setter
-    def volume_mountpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_mountpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_mountpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeProtocol")
-    def volume_protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
         """
         return pulumi.get(self, "volume_protocol")
 
     @volume_protocol.setter
-    def volume_protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_protocol", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeType")
-    def volume_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
         """
         return pulumi.get(self, "volume_type")
 
     @volume_type.setter
-    def volume_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the virtual private cloud (VPC) to which the cluster belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vswitchId")
-    def vswitch_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vswitch_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vSwitch. E-HPC supports only VPC networks.
         """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
-    def vswitch_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vswitch_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vswitch_id", value)
 
     @_builtins.property
     @pulumi.getter(name="withoutAgent")
-    def without_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def without_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether not to install the agent. Default value: `false`.
         """
         return pulumi.get(self, "without_agent")
 
     @without_agent.setter
-    def without_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def without_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "without_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="withoutElasticIp")
-    def without_elastic_ip(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def without_elastic_ip(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
         """
         return pulumi.get(self, "without_elastic_ip")
 
     @without_elastic_ip.setter
-    def without_elastic_ip(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def without_elastic_ip(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "without_elastic_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the zone.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -1987,64 +1987,64 @@ class Cluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compute_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_price_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehpc_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_owner_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_compute_ess: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 login_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 manager_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
-                 ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_vis_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 without_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 without_elastic_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compute_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_price_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_compute_ess: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 login_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 manager_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_install_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
+                 ram_node_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_vis_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 without_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 without_elastic_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Ehpc Cluster resource.
@@ -2298,64 +2298,64 @@ class Cluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
-                 applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 client_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 compute_enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-                 compute_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_price_limit: Optional[pulumi.Input[_builtins.str]] = None,
-                 compute_spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-                 deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ecs_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ehpc_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_owner_alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_file_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_compute_ess: Optional[pulumi.Input[_builtins.bool]] = None,
-                 job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 login_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 login_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 manager_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 manager_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 os_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
-                 ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 release_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_vis_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 system_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 without_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 without_elastic_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 account_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 additional_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+                 applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 client_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 compute_enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+                 compute_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_price_limit: pulumi.Input[Optional[_builtins.str]] = None,
+                 compute_spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+                 deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ecs_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_file_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_compute_ess: pulumi.Input[Optional[_builtins.bool]] = None,
+                 job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 login_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 login_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 manager_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 manager_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 os_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 post_install_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
+                 ram_node_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 release_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_vis_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 system_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 without_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 without_elastic_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -2450,65 +2450,65 @@ class Cluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_type: Optional[pulumi.Input[_builtins.str]] = None,
-            additional_volumes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
-            applications: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            client_version: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_version: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_count: Optional[pulumi.Input[_builtins.int]] = None,
-            compute_enable_ht: Optional[pulumi.Input[_builtins.bool]] = None,
-            compute_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_spot_price_limit: Optional[pulumi.Input[_builtins.str]] = None,
-            compute_spot_strategy: Optional[pulumi.Input[_builtins.str]] = None,
-            deploy_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            ecs_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ehpc_version: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            image_owner_alias: Optional[pulumi.Input[_builtins.str]] = None,
-            input_file_url: Optional[pulumi.Input[_builtins.str]] = None,
-            is_compute_ess: Optional[pulumi.Input[_builtins.bool]] = None,
-            job_queue: Optional[pulumi.Input[_builtins.str]] = None,
-            key_pair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            login_count: Optional[pulumi.Input[_builtins.int]] = None,
-            login_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            manager_count: Optional[pulumi.Input[_builtins.int]] = None,
-            manager_instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            os_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            plugin: Optional[pulumi.Input[_builtins.str]] = None,
-            post_install_scripts: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
-            ram_node_types: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ram_role_name: Optional[pulumi.Input[_builtins.str]] = None,
-            release_instance: Optional[pulumi.Input[_builtins.bool]] = None,
-            remote_directory: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_vis_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scc_cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            scheduler_type: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_level: Optional[pulumi.Input[_builtins.str]] = None,
-            system_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            system_disk_type: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_mount_option: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_mountpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_protocol: Optional[pulumi.Input[_builtins.str]] = None,
-            volume_type: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vswitch_id: Optional[pulumi.Input[_builtins.str]] = None,
-            without_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-            without_elastic_ip: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cluster':
+            account_type: pulumi.Input[Optional[_builtins.str]] = None,
+            additional_volumes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterAdditionalVolumeArgs', 'ClusterAdditionalVolumeArgsDict']]]]] = None,
+            applications: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterApplicationArgs', 'ClusterApplicationArgsDict']]]]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            client_version: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_version: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_count: pulumi.Input[Optional[_builtins.int]] = None,
+            compute_enable_ht: pulumi.Input[Optional[_builtins.bool]] = None,
+            compute_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_spot_price_limit: pulumi.Input[Optional[_builtins.str]] = None,
+            compute_spot_strategy: pulumi.Input[Optional[_builtins.str]] = None,
+            deploy_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            ecs_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ehpc_version: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            image_owner_alias: pulumi.Input[Optional[_builtins.str]] = None,
+            input_file_url: pulumi.Input[Optional[_builtins.str]] = None,
+            is_compute_ess: pulumi.Input[Optional[_builtins.bool]] = None,
+            job_queue: pulumi.Input[Optional[_builtins.str]] = None,
+            key_pair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            login_count: pulumi.Input[Optional[_builtins.int]] = None,
+            login_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            manager_count: pulumi.Input[Optional[_builtins.int]] = None,
+            manager_instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            os_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            post_install_scripts: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ClusterPostInstallScriptArgs', 'ClusterPostInstallScriptArgsDict']]]]] = None,
+            ram_node_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ram_role_name: pulumi.Input[Optional[_builtins.str]] = None,
+            release_instance: pulumi.Input[Optional[_builtins.bool]] = None,
+            remote_directory: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_vis_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scc_cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scheduler_type: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_level: pulumi.Input[Optional[_builtins.str]] = None,
+            system_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            system_disk_type: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_mount_option: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_mountpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_protocol: pulumi.Input[Optional[_builtins.str]] = None,
+            volume_type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vswitch_id: pulumi.Input[Optional[_builtins.str]] = None,
+            without_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            without_elastic_ip: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -135,11 +135,11 @@ export interface GetHybridMonitorDatasOutputArgs {
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The interval at which monitoring data is collected. Unit: seconds.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The name of the metric. Note PromQL statements are supported.
      */

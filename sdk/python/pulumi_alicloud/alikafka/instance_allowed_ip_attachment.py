@@ -96,10 +96,10 @@ class InstanceAllowedIpAttachmentArgs:
 @pulumi.input_type
 class _InstanceAllowedIpAttachmentState:
     def __init__(__self__, *,
-                 allowed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None):
+                 allowed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering InstanceAllowedIpAttachment resources.
 
@@ -123,43 +123,43 @@ class _InstanceAllowedIpAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="allowedIp")
-    def allowed_ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allowed_ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address whitelist. It can be a CIDR block.
         """
         return pulumi.get(self, "allowed_ip")
 
     @allowed_ip.setter
-    def allowed_ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allowed_ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allowed_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="allowedType")
-    def allowed_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def allowed_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         """
         return pulumi.get(self, "allowed_type")
 
     @allowed_type.setter
-    def allowed_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def allowed_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "allowed_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def port_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Port range. Valid Value: `9092/9092`, `9093/9093`, `9094/9094`, `9095/9095`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`. From version 1.219.0, `port_range` can be set to `9094/9094`, `9095/9095`.
         - `9092/9092`: The port range for access from virtual private clouds (VPCs) by using the default endpoint.
@@ -170,7 +170,7 @@ class _InstanceAllowedIpAttachmentState:
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def port_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "port_range", value)
 
 
@@ -180,10 +180,10 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a AliKafka Instance Allowed Ip Attachment resource.
@@ -337,10 +337,10 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 allowed_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[_builtins.str]] = None,
+                 allowed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 allowed_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,10 +372,10 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            allowed_ip: Optional[pulumi.Input[_builtins.str]] = None,
-            allowed_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            port_range: Optional[pulumi.Input[_builtins.str]] = None) -> 'InstanceAllowedIpAttachment':
+            allowed_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            allowed_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range: pulumi.Input[Optional[_builtins.str]] = None) -> 'InstanceAllowedIpAttachment':
         """
         Get an existing InstanceAllowedIpAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

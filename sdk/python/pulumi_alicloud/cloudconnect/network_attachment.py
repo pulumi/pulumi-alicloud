@@ -58,8 +58,8 @@ class NetworkAttachmentArgs:
 @pulumi.input_type
 class _NetworkAttachmentState:
     def __init__(__self__, *,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAttachment resources.
 
@@ -73,26 +73,26 @@ class _NetworkAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="ccnId")
-    def ccn_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ccn_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the CCN instance.
         """
         return pulumi.get(self, "ccn_id")
 
     @ccn_id.setter
-    def ccn_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ccn_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ccn_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sagId")
-    def sag_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sag_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Smart Access Gateway instance.
         """
         return pulumi.get(self, "sag_id")
 
     @sag_id.setter
-    def sag_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sag_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sag_id", value)
 
 
@@ -102,8 +102,8 @@ class NetworkAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Connect Network Attachment resource. This topic describes how to associate a Smart Access Gateway (SAG) instance with a network instance. You must associate an SAG instance with a network instance if you want to connect the SAG to Alibaba Cloud. You can connect an SAG to Alibaba Cloud through a leased line, the Internet, or the active and standby links.
@@ -221,8 +221,8 @@ class NetworkAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 sag_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 sag_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -248,8 +248,8 @@ class NetworkAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ccn_id: Optional[pulumi.Input[_builtins.str]] = None,
-            sag_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAttachment':
+            ccn_id: pulumi.Input[Optional[_builtins.str]] = None,
+            sag_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAttachment':
         """
         Get an existing NetworkAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

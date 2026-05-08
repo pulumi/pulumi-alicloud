@@ -21,9 +21,9 @@ class TrafficQosQueueArgs:
     def __init__(__self__, *,
                  qos_id: pulumi.Input[_builtins.str],
                  queue_type: pulumi.Input[_builtins.str],
-                 bandwidth_percent: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a TrafficQosQueue resource.
 
@@ -83,7 +83,7 @@ class TrafficQosQueueArgs:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPercent")
-    def bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS queue bandwidth percentage.
 
@@ -93,12 +93,12 @@ class TrafficQosQueueArgs:
         return pulumi.get(self, "bandwidth_percent")
 
     @bandwidth_percent.setter
-    def bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter(name="queueDescription")
-    def queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS queue.
         The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
@@ -106,12 +106,12 @@ class TrafficQosQueueArgs:
         return pulumi.get(self, "queue_description")
 
     @queue_description.setter
-    def queue_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_description", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS queue.
         The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
@@ -119,20 +119,20 @@ class TrafficQosQueueArgs:
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
 
 @pulumi.input_type
 class _TrafficQosQueueState:
     def __init__(__self__, *,
-                 bandwidth_percent: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TrafficQosQueue resources.
 
@@ -171,7 +171,7 @@ class _TrafficQosQueueState:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthPercent")
-    def bandwidth_percent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bandwidth_percent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS queue bandwidth percentage.
 
@@ -181,24 +181,24 @@ class _TrafficQosQueueState:
         return pulumi.get(self, "bandwidth_percent")
 
     @bandwidth_percent.setter
-    def bandwidth_percent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bandwidth_percent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bandwidth_percent", value)
 
     @_builtins.property
     @pulumi.getter(name="qosId")
-    def qos_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def qos_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the QoS policy.
         """
         return pulumi.get(self, "qos_id")
 
     @qos_id.setter
-    def qos_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def qos_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "qos_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queueDescription")
-    def queue_description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the QoS queue.
         The length is 0 to 256 characters and cannot start with 'http:// 'or 'https.
@@ -206,24 +206,24 @@ class _TrafficQosQueueState:
         return pulumi.get(self, "queue_description")
 
     @queue_description.setter
-    def queue_description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_description", value)
 
     @_builtins.property
     @pulumi.getter(name="queueId")
-    def queue_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the QoS queue.
         """
         return pulumi.get(self, "queue_id")
 
     @queue_id.setter
-    def queue_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_id", value)
 
     @_builtins.property
     @pulumi.getter(name="queueName")
-    def queue_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the QoS queue.
         The length is 0 to 128 characters and cannot start with 'http:// 'or 'https.
@@ -231,12 +231,12 @@ class _TrafficQosQueueState:
         return pulumi.get(self, "queue_name")
 
     @queue_name.setter
-    def queue_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_name", value)
 
     @_builtins.property
     @pulumi.getter(name="queueType")
-    def queue_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         QoS queue type, value:
         - `High`: High priority queue.
@@ -248,19 +248,19 @@ class _TrafficQosQueueState:
         return pulumi.get(self, "queue_type")
 
     @queue_type.setter
-    def queue_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -270,11 +270,11 @@ class TrafficQosQueue(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_percent: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Express Connect Traffic Qos Queue resource.
@@ -411,11 +411,11 @@ class TrafficQosQueue(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_percent: Optional[pulumi.Input[_builtins.str]] = None,
-                 qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+                 qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,13 +446,13 @@ class TrafficQosQueue(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_percent: Optional[pulumi.Input[_builtins.str]] = None,
-            qos_id: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_description: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_id: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_name: Optional[pulumi.Input[_builtins.str]] = None,
-            queue_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'TrafficQosQueue':
+            bandwidth_percent: pulumi.Input[Optional[_builtins.str]] = None,
+            qos_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_description: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_id: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_name: pulumi.Input[Optional[_builtins.str]] = None,
+            queue_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'TrafficQosQueue':
         """
         Get an existing TrafficQosQueue resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

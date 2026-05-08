@@ -189,63 +189,63 @@ export interface ProjectState {
     /**
      * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Represents the creation time of the project
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Used to implement computing resource allocation. Valid values: subQuota Nickname
      * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
-    defaultQuota?: pulumi.Input<string>;
+    defaultQuota?: pulumi.Input<string | undefined>;
     /**
      * IP whitelist See `ipWhiteList` below.
      */
-    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
+    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
      * Whether to logically delete. Default value: true. Value: (ture/false),
      *
      * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
-    isLogical?: pulumi.Input<string>;
+    isLogical?: pulumi.Input<string | undefined>;
     /**
      * Project owner
      */
-    owner?: pulumi.Input<string>;
-    productType?: pulumi.Input<string>;
+    owner?: pulumi.Input<string | undefined>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Project base attributes See `properties` below.
      */
-    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
+    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * Security-related attributes See `securityProperties` below.
      */
-    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
+    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties | undefined>;
     /**
      * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether data storage by schema is supported. Valid values:
      */
-    threeTierModel?: pulumi.Input<boolean>;
+    threeTierModel?: pulumi.Input<boolean | undefined>;
     /**
      * Project type
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -255,45 +255,45 @@ export interface ProjectArgs {
     /**
      * Project description information. The length is 1 to 256 English or Chinese characters. The default value is blank.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Used to implement computing resource allocation. Valid values: subQuota Nickname
      * If the calculation Quota is not specified, the default Quota resource will be consumed by jobs initiated by the project. For more information about computing resource usage, see [Computing Resource Usage](https://www.alibabacloud.com/help/en/maxcompute/user-guide/use-of-computing-resources).
      */
-    defaultQuota?: pulumi.Input<string>;
+    defaultQuota?: pulumi.Input<string | undefined>;
     /**
      * IP whitelist See `ipWhiteList` below.
      */
-    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList>;
+    ipWhiteList?: pulumi.Input<inputs.maxcompute.ProjectIpWhiteList | undefined>;
     /**
      * Whether to logically delete. Default value: true. Value: (ture/false),
      *
      * > **NOTE:** -- ture: In this case, the project status will be changed to' deleting' and completely deleted after 14 days. -- false: delete immediately, that is, completely deleted and permanently irrecoverable.
      */
-    isLogical?: pulumi.Input<string>;
-    productType?: pulumi.Input<string>;
+    isLogical?: pulumi.Input<string | undefined>;
+    productType?: pulumi.Input<string | undefined>;
     /**
      * The name begins with a letter, containing letters, digits, and underscores (_). It can be 3 to 28 characters in length and is globally unique.
      */
-    projectName?: pulumi.Input<string>;
+    projectName?: pulumi.Input<string | undefined>;
     /**
      * Project base attributes See `properties` below.
      */
-    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties>;
+    properties?: pulumi.Input<inputs.maxcompute.ProjectProperties | undefined>;
     /**
      * Security-related attributes See `securityProperties` below.
      */
-    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties>;
+    securityProperties?: pulumi.Input<inputs.maxcompute.ProjectSecurityProperties | undefined>;
     /**
      * The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The tag of the resource
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Indicates whether data storage by schema is supported. Valid values:
      */
-    threeTierModel?: pulumi.Input<boolean>;
+    threeTierModel?: pulumi.Input<boolean | undefined>;
 }

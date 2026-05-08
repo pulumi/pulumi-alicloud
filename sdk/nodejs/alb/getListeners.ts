@@ -130,29 +130,29 @@ export interface GetListenersOutputArgs {
     /**
      * Default to `false`. Set it to `true` can output more details about resource attributes.
      */
-    enableDetails?: pulumi.Input<boolean>;
+    enableDetails?: pulumi.Input<boolean | undefined>;
     /**
      * A list of Listener IDs.
      */
-    ids?: pulumi.Input<pulumi.Input<string>[]>;
+    ids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The listener ids.
      */
-    listenerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    listenerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Snooping Protocols. Valid Values: `HTTP`, `HTTPS` Or `QUIC`.
      */
-    listenerProtocol?: pulumi.Input<string>;
+    listenerProtocol?: pulumi.Input<string | undefined>;
     /**
      * The load balancer ids.
      */
-    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    loadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * File name where to save data source results (after running `pulumi preview`).
      */
-    outputFile?: pulumi.Input<string>;
+    outputFile?: pulumi.Input<string | undefined>;
     /**
      * The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }

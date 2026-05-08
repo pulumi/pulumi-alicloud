@@ -20,10 +20,10 @@ __all__ = ['HAVipAttachmentArgs', 'HAVipAttachment']
 class HAVipAttachmentArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None):
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HAVipAttachment resource.
 
@@ -60,63 +60,63 @@ class HAVipAttachmentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the snapshot.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="haVipId")
-    def ha_vip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the HaVip instance.
         """
         return pulumi.get(self, "ha_vip_id")
 
     @ha_vip_id.setter
-    def ha_vip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="havipId")
     @_utilities.deprecated("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
-    def havip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def havip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
         """
         return pulumi.get(self, "havip_id")
 
     @havip_id.setter
-    def havip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def havip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "havip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
 
 @pulumi.input_type
 class _HAVipAttachmentState:
     def __init__(__self__, *,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HAVipAttachment resources.
 
@@ -145,75 +145,75 @@ class _HAVipAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to force delete the snapshot.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force", value)
 
     @_builtins.property
     @pulumi.getter(name="haVipId")
-    def ha_vip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_vip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the HaVip instance.
         """
         return pulumi.get(self, "ha_vip_id")
 
     @ha_vip_id.setter
-    def ha_vip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_vip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_vip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="havipId")
     @_utilities.deprecated("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
-    def havip_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def havip_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         . Field 'havip_id' has been deprecated from provider version 1.259.0. New field 'ha_vip_id' instead.
         """
         return pulumi.get(self, "havip_id")
 
     @havip_id.setter
-    def havip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def havip_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "havip_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the ECS instance bound to the HaVip instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the resource
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -223,11 +223,11 @@ class HAVipAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a VPC Ha Vip Attachment resource.
@@ -396,11 +396,11 @@ class HAVipAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 force: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 havip_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
+                 force: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,12 +428,12 @@ class HAVipAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            force: Optional[pulumi.Input[_builtins.bool]] = None,
-            ha_vip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            havip_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'HAVipAttachment':
+            force: pulumi.Input[Optional[_builtins.bool]] = None,
+            ha_vip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            havip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'HAVipAttachment':
         """
         Get an existing HAVipAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

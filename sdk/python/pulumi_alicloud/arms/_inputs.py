@@ -78,11 +78,11 @@ class DispatchRuleGroupRuleArgsDict(TypedDict):
     """
     The fields that are used to group events. Events with the same field content are assigned to a group. Alerts with the same specified grouping field are sent to the handler in separate notifications.
     """
-    group_id: NotRequired[pulumi.Input[_builtins.int]]
+    group_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The ID of the group rule.
     """
-    repeat_interval: NotRequired[pulumi.Input[_builtins.int]]
+    repeat_interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
     """
@@ -93,8 +93,8 @@ class DispatchRuleGroupRuleArgs:
                  group_interval: pulumi.Input[_builtins.int],
                  group_wait_time: pulumi.Input[_builtins.int],
                  grouping_fields: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 group_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 repeat_interval: Optional[pulumi.Input[_builtins.int]] = None):
+                 group_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 repeat_interval: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] group_interval: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
         :param pulumi.Input[_builtins.int] group_wait_time: The duration for which the system waits after the first alert is sent. After the duration, all alerts are sent in a single notification to the handler.
@@ -148,26 +148,26 @@ class DispatchRuleGroupRuleArgs:
 
     @_builtins.property
     @pulumi.getter(name="groupId")
-    def group_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the group rule.
         """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
-    def group_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatInterval")
-    def repeat_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def repeat_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The silence period of repeated alerts. All alerts are repeatedly sent at specified intervals until the alerts are cleared. The minimum value is 61. Default to 600.
         """
         return pulumi.get(self, "repeat_interval")
 
     @repeat_interval.setter
-    def repeat_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def repeat_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "repeat_interval", value)
 
 
@@ -655,11 +655,11 @@ class DispatchRuleNotifyTemplateArgs:
 
 
 class PrometheusAlertRuleAnnotationArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the annotation.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the annotation.
     """
@@ -667,8 +667,8 @@ class PrometheusAlertRuleAnnotationArgsDict(TypedDict):
 @pulumi.input_type
 class PrometheusAlertRuleAnnotationArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the annotation.
         :param pulumi.Input[_builtins.str] value: The value of the annotation.
@@ -680,35 +680,35 @@ class PrometheusAlertRuleAnnotationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the annotation.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the annotation.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class PrometheusAlertRuleLabelArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the label.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the label.
     """
@@ -716,8 +716,8 @@ class PrometheusAlertRuleLabelArgsDict(TypedDict):
 @pulumi.input_type
 class PrometheusAlertRuleLabelArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the label.
         :param pulumi.Input[_builtins.str] value: The value of the label.
@@ -729,26 +729,26 @@ class PrometheusAlertRuleLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the label.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the label.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
@@ -765,7 +765,7 @@ class SyntheticTaskAvailableAssertionArgsDict(TypedDict):
     """
     Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
     """
-    target: NotRequired[pulumi.Input[_builtins.str]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
     """
@@ -776,7 +776,7 @@ class SyntheticTaskAvailableAssertionArgs:
                  expect: pulumi.Input[_builtins.str],
                  operator: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 target: Optional[pulumi.Input[_builtins.str]] = None):
+                 target: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] expect: Expected value.
         :param pulumi.Input[_builtins.str] operator: Condition: gt: greater than; gte: greater than or equal to; lt: less than; te: less than or equal to; eq: equal to; neq: not equal to; ctn: contains; nctn: does not contain; exist: exists; n_exist: does not exist; belong: belongs to; reg_match: regular matching.
@@ -827,44 +827,44 @@ class SyntheticTaskAvailableAssertionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Check the target. If the target is HttpResCode, HttpResBody, or httpressetime, you do not need to specify the target. If the target is HttpResHead, you need to specify the key in the header. If the target is HttpResHead, you need to use jsonPath.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
 
 class SyntheticTaskCommonSettingArgsDict(TypedDict):
-    custom_host: NotRequired[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgsDict']]
+    custom_host: NotRequired[pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgs']]]
     """
     Custom host. See `custom_host` below.
     """
-    ip_type: NotRequired[pulumi.Input[_builtins.int]]
+    ip_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     IpType.
     """
-    is_open_trace: NotRequired[pulumi.Input[_builtins.bool]]
+    is_open_trace: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable link tracking.
     """
-    monitor_samples: NotRequired[pulumi.Input[_builtins.int]]
+    monitor_samples: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether the monitoring samples are evenly distributed:
     - 0: No
     1: Yes.
     """
-    trace_client_type: NotRequired[pulumi.Input[_builtins.int]]
+    trace_client_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Link trace client type:
     - 0:ARMS Agent
     - 1:OpenTelemetry
     - 2:Jaeger.
     """
-    xtrace_region: NotRequired[pulumi.Input[_builtins.str]]
+    xtrace_region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The link data is reported to the region.
     """
@@ -872,12 +872,12 @@ class SyntheticTaskCommonSettingArgsDict(TypedDict):
 @pulumi.input_type
 class SyntheticTaskCommonSettingArgs:
     def __init__(__self__, *,
-                 custom_host: Optional[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgs']] = None,
-                 ip_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_open_trace: Optional[pulumi.Input[_builtins.bool]] = None,
-                 monitor_samples: Optional[pulumi.Input[_builtins.int]] = None,
-                 trace_client_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 xtrace_region: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_host: pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgs']] = None,
+                 ip_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_open_trace: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monitor_samples: pulumi.Input[Optional[_builtins.int]] = None,
+                 trace_client_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 xtrace_region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input['SyntheticTaskCommonSettingCustomHostArgs'] custom_host: Custom host. See `custom_host` below.
         :param pulumi.Input[_builtins.int] ip_type: IpType.
@@ -906,43 +906,43 @@ class SyntheticTaskCommonSettingArgs:
 
     @_builtins.property
     @pulumi.getter(name="customHost")
-    def custom_host(self) -> Optional[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgs']]:
+    def custom_host(self) -> pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgs']]:
         """
         Custom host. See `custom_host` below.
         """
         return pulumi.get(self, "custom_host")
 
     @custom_host.setter
-    def custom_host(self, value: Optional[pulumi.Input['SyntheticTaskCommonSettingCustomHostArgs']]):
+    def custom_host(self, value: pulumi.Input[Optional['SyntheticTaskCommonSettingCustomHostArgs']]):
         pulumi.set(self, "custom_host", value)
 
     @_builtins.property
     @pulumi.getter(name="ipType")
-    def ip_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ip_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         IpType.
         """
         return pulumi.get(self, "ip_type")
 
     @ip_type.setter
-    def ip_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ip_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ip_type", value)
 
     @_builtins.property
     @pulumi.getter(name="isOpenTrace")
-    def is_open_trace(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_open_trace(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable link tracking.
         """
         return pulumi.get(self, "is_open_trace")
 
     @is_open_trace.setter
-    def is_open_trace(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_open_trace(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_open_trace", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorSamples")
-    def monitor_samples(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_samples(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether the monitoring samples are evenly distributed:
         - 0: No
@@ -951,12 +951,12 @@ class SyntheticTaskCommonSettingArgs:
         return pulumi.get(self, "monitor_samples")
 
     @monitor_samples.setter
-    def monitor_samples(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_samples(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_samples", value)
 
     @_builtins.property
     @pulumi.getter(name="traceClientType")
-    def trace_client_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def trace_client_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Link trace client type:
         - 0:ARMS Agent
@@ -966,19 +966,19 @@ class SyntheticTaskCommonSettingArgs:
         return pulumi.get(self, "trace_client_type")
 
     @trace_client_type.setter
-    def trace_client_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def trace_client_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "trace_client_type", value)
 
     @_builtins.property
     @pulumi.getter(name="xtraceRegion")
-    def xtrace_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def xtrace_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The link data is reported to the region.
         """
         return pulumi.get(self, "xtrace_region")
 
     @xtrace_region.setter
-    def xtrace_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def xtrace_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "xtrace_region", value)
 
 
@@ -1102,11 +1102,11 @@ class SyntheticTaskCommonSettingCustomHostHostArgs:
 
 
 class SyntheticTaskCustomPeriodArgsDict(TypedDict):
-    end_hour: NotRequired[pulumi.Input[_builtins.int]]
+    end_hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     End hours, 0-24.
     """
-    start_hour: NotRequired[pulumi.Input[_builtins.int]]
+    start_hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Starting hours, 0-24.
     """
@@ -1114,8 +1114,8 @@ class SyntheticTaskCustomPeriodArgsDict(TypedDict):
 @pulumi.input_type
 class SyntheticTaskCustomPeriodArgs:
     def __init__(__self__, *,
-                 end_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_hour: Optional[pulumi.Input[_builtins.int]] = None):
+                 end_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_hour: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] end_hour: End hours, 0-24.
         :param pulumi.Input[_builtins.int] start_hour: Starting hours, 0-24.
@@ -1127,26 +1127,26 @@ class SyntheticTaskCustomPeriodArgs:
 
     @_builtins.property
     @pulumi.getter(name="endHour")
-    def end_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         End hours, 0-24.
         """
         return pulumi.get(self, "end_hour")
 
     @end_hour.setter
-    def end_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="startHour")
-    def start_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Starting hours, 0-24.
         """
         return pulumi.get(self, "start_hour")
 
     @start_hour.setter
-    def start_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_hour", value)
 
 
@@ -1217,31 +1217,31 @@ class SyntheticTaskMonitorArgs:
 
 
 class SyntheticTaskMonitorConfArgsDict(TypedDict):
-    api_http: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgsDict']]
+    api_http: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgs']]]
     """
     HTTP(S) task configuration information. See `api_http` below.
     """
-    file_download: NotRequired[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgsDict']]
+    file_download: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgs']]]
     """
     File download type task configuration. See `file_download` below.
     """
-    net_dns: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgsDict']]
+    net_dns: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgs']]]
     """
     The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
     """
-    net_icmp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgsDict']]
+    net_icmp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgs']]]
     """
     ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
     """
-    net_tcp: NotRequired[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgsDict']]
+    net_tcp: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgs']]]
     """
     The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
     """
-    stream: NotRequired[pulumi.Input['SyntheticTaskMonitorConfStreamArgsDict']]
+    stream: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgs']]]
     """
     Streaming Media Dial Test Configuration. See `stream` below.
     """
-    website: NotRequired[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgsDict']]
+    website: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgs']]]
     """
     Website speed measurement type task configuration. See `website` below.
     """
@@ -1249,13 +1249,13 @@ class SyntheticTaskMonitorConfArgsDict(TypedDict):
 @pulumi.input_type
 class SyntheticTaskMonitorConfArgs:
     def __init__(__self__, *,
-                 api_http: Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgs']] = None,
-                 file_download: Optional[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgs']] = None,
-                 net_dns: Optional[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgs']] = None,
-                 net_icmp: Optional[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgs']] = None,
-                 net_tcp: Optional[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgs']] = None,
-                 stream: Optional[pulumi.Input['SyntheticTaskMonitorConfStreamArgs']] = None,
-                 website: Optional[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgs']] = None):
+                 api_http: pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgs']] = None,
+                 file_download: pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgs']] = None,
+                 net_dns: pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgs']] = None,
+                 net_icmp: pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgs']] = None,
+                 net_tcp: pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgs']] = None,
+                 stream: pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgs']] = None,
+                 website: pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgs']] = None):
         """
         :param pulumi.Input['SyntheticTaskMonitorConfApiHttpArgs'] api_http: HTTP(S) task configuration information. See `api_http` below.
         :param pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgs'] file_download: File download type task configuration. See `file_download` below.
@@ -1282,86 +1282,86 @@ class SyntheticTaskMonitorConfArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiHttp")
-    def api_http(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgs']]:
+    def api_http(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgs']]:
         """
         HTTP(S) task configuration information. See `api_http` below.
         """
         return pulumi.get(self, "api_http")
 
     @api_http.setter
-    def api_http(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpArgs']]):
+    def api_http(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpArgs']]):
         pulumi.set(self, "api_http", value)
 
     @_builtins.property
     @pulumi.getter(name="fileDownload")
-    def file_download(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgs']]:
+    def file_download(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgs']]:
         """
         File download type task configuration. See `file_download` below.
         """
         return pulumi.get(self, "file_download")
 
     @file_download.setter
-    def file_download(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfFileDownloadArgs']]):
+    def file_download(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfFileDownloadArgs']]):
         pulumi.set(self, "file_download", value)
 
     @_builtins.property
     @pulumi.getter(name="netDns")
-    def net_dns(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgs']]:
+    def net_dns(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgs']]:
         """
         The configuration parameters of the DNS dial test. Required when TaskType is 3. See `net_dns` below.
         """
         return pulumi.get(self, "net_dns")
 
     @net_dns.setter
-    def net_dns(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfNetDnsArgs']]):
+    def net_dns(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfNetDnsArgs']]):
         pulumi.set(self, "net_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="netIcmp")
-    def net_icmp(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgs']]:
+    def net_icmp(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgs']]:
         """
         ICMP dialing configuration parameters. Required when TaskType is 1. See `net_icmp` below.
         """
         return pulumi.get(self, "net_icmp")
 
     @net_icmp.setter
-    def net_icmp(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfNetIcmpArgs']]):
+    def net_icmp(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfNetIcmpArgs']]):
         pulumi.set(self, "net_icmp", value)
 
     @_builtins.property
     @pulumi.getter(name="netTcp")
-    def net_tcp(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgs']]:
+    def net_tcp(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgs']]:
         """
         The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
         """
         return pulumi.get(self, "net_tcp")
 
     @net_tcp.setter
-    def net_tcp(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfNetTcpArgs']]):
+    def net_tcp(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfNetTcpArgs']]):
         pulumi.set(self, "net_tcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def stream(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfStreamArgs']]:
+    def stream(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgs']]:
         """
         Streaming Media Dial Test Configuration. See `stream` below.
         """
         return pulumi.get(self, "stream")
 
     @stream.setter
-    def stream(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfStreamArgs']]):
+    def stream(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfStreamArgs']]):
         pulumi.set(self, "stream", value)
 
     @_builtins.property
     @pulumi.getter
-    def website(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgs']]:
+    def website(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgs']]:
         """
         Website speed measurement type task configuration. See `website` below.
         """
         return pulumi.get(self, "website")
 
     @website.setter
-    def website(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfWebsiteArgs']]):
+    def website(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfWebsiteArgs']]):
         pulumi.set(self, "website", value)
 
 
@@ -1370,23 +1370,23 @@ class SyntheticTaskMonitorConfApiHttpArgsDict(TypedDict):
     """
     The target URL.
     """
-    connect_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    connect_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
     """
-    method: NotRequired[pulumi.Input[_builtins.str]]
+    method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP method, GET or POST.
     """
-    request_body: NotRequired[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict']]
+    request_body: NotRequired[pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]]
     """
     HTTP request body. See `request_body` below.
     """
-    request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    request_headers: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     HTTP request header.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
     """
@@ -1395,11 +1395,11 @@ class SyntheticTaskMonitorConfApiHttpArgsDict(TypedDict):
 class SyntheticTaskMonitorConfApiHttpArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 connect_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_body: Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']] = None,
-                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 connect_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_body: pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']] = None,
+                 request_headers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] connect_timeout: Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
@@ -1434,77 +1434,77 @@ class SyntheticTaskMonitorConfApiHttpArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectTimeout")
-    def connect_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
         """
         return pulumi.get(self, "connect_timeout")
 
     @connect_timeout.setter
-    def connect_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP method, GET or POST.
         """
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter(name="requestBody")
-    def request_body(self) -> Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]:
+    def request_body(self) -> pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]:
         """
         HTTP request body. See `request_body` below.
         """
         return pulumi.get(self, "request_body")
 
     @request_body.setter
-    def request_body(self, value: Optional[pulumi.Input['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]):
+    def request_body(self, value: pulumi.Input[Optional['SyntheticTaskMonitorConfApiHttpRequestBodyArgs']]):
         pulumi.set(self, "request_body", value)
 
     @_builtins.property
     @pulumi.getter(name="requestHeaders")
-    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def request_headers(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         HTTP request header.
         """
         return pulumi.get(self, "request_headers")
 
     @request_headers.setter
-    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def request_headers(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "request_headers", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 class SyntheticTaskMonitorConfApiHttpRequestBodyArgsDict(TypedDict):
-    content: NotRequired[pulumi.Input[_builtins.str]]
+    content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SyntheticTaskMonitorConfApiHttpRequestBodyArgs:
     def __init__(__self__, *,
-                 content: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 content: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] content: The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
         """
@@ -1515,23 +1515,23 @@ class SyntheticTaskMonitorConfApiHttpRequestBodyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
         """
         return pulumi.get(self, "content")
 
     @content.setter
-    def content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -1540,54 +1540,54 @@ class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
     """
     The target URL.
     """
-    connection_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    connection_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
     """
-    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    custom_header_content: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Custom header, in JSON Map format.
     """
-    download_kernel: NotRequired[pulumi.Input[_builtins.int]]
+    download_kernel: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Download the kernel.
     - 1:curl
     - 0:WinInet
     Default 1.
     """
-    ignore_certificate_auth_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_auth_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
     """
-    ignore_certificate_canceled_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_canceled_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
     """
-    ignore_certificate_out_of_date_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_out_of_date_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
     """
-    ignore_certificate_status_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_status_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
     """
-    ignore_certificate_untrustworthy_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_untrustworthy_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
     """
-    ignore_certificate_using_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_using_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
     """
-    ignore_invalid_host_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_invalid_host_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
     """
-    monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    monitor_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Monitoring timeout, in ms. Not required, 20000 by default.
     """
-    quick_protocol: NotRequired[pulumi.Input[_builtins.int]]
+    quick_protocol: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Quick agreement
     - 1:http1
@@ -1595,26 +1595,26 @@ class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
     - 3:http3
     Default 1.
     """
-    redirection: NotRequired[pulumi.Input[_builtins.int]]
+    redirection: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
     """
-    transmission_size: NotRequired[pulumi.Input[_builtins.int]]
+    transmission_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
     """
-    validate_keywords: NotRequired[pulumi.Input[_builtins.str]]
+    validate_keywords: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Verify keywords.
     """
-    verify_way: NotRequired[pulumi.Input[_builtins.int]]
+    verify_way: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The verification method.
     - 0: Do not validate
     - 1: Validation string
     - 2:MD5 validation.
     """
-    white_list: NotRequired[pulumi.Input[_builtins.str]]
+    white_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
     """
@@ -1623,23 +1623,23 @@ class SyntheticTaskMonitorConfFileDownloadArgsDict(TypedDict):
 class SyntheticTaskMonitorConfFileDownloadArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 connection_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 download_kernel: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_auth_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_canceled_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_out_of_date_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_status_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_untrustworthy_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_certificate_using_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 ignore_invalid_host_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 quick_protocol: Optional[pulumi.Input[_builtins.int]] = None,
-                 redirection: Optional[pulumi.Input[_builtins.int]] = None,
-                 transmission_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 validate_keywords: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_way: Optional[pulumi.Input[_builtins.int]] = None,
-                 white_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 connection_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_header_content: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 download_kernel: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_auth_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_canceled_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_out_of_date_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_status_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_untrustworthy_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_certificate_using_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 ignore_invalid_host_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 quick_protocol: pulumi.Input[Optional[_builtins.int]] = None,
+                 redirection: pulumi.Input[Optional[_builtins.int]] = None,
+                 transmission_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 validate_keywords: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_way: pulumi.Input[Optional[_builtins.int]] = None,
+                 white_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] connection_timeout: Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
@@ -1720,31 +1720,31 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectionTimeout")
-    def connection_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connection_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
         """
         return pulumi.get(self, "connection_timeout")
 
     @connection_timeout.setter
-    def connection_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connection_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connection_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_header_content(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_header_content(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @_builtins.property
     @pulumi.getter(name="downloadKernel")
-    def download_kernel(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def download_kernel(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Download the kernel.
         - 1:curl
@@ -1754,108 +1754,108 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         return pulumi.get(self, "download_kernel")
 
     @download_kernel.setter
-    def download_kernel(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def download_kernel(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "download_kernel", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateAuthError")
-    def ignore_certificate_auth_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_auth_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
         """
         return pulumi.get(self, "ignore_certificate_auth_error")
 
     @ignore_certificate_auth_error.setter
-    def ignore_certificate_auth_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_auth_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_auth_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateCanceledError")
-    def ignore_certificate_canceled_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_canceled_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
         """
         return pulumi.get(self, "ignore_certificate_canceled_error")
 
     @ignore_certificate_canceled_error.setter
-    def ignore_certificate_canceled_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_canceled_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_canceled_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateOutOfDateError")
-    def ignore_certificate_out_of_date_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_out_of_date_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
         """
         return pulumi.get(self, "ignore_certificate_out_of_date_error")
 
     @ignore_certificate_out_of_date_error.setter
-    def ignore_certificate_out_of_date_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_out_of_date_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_out_of_date_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateStatusError")
-    def ignore_certificate_status_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_status_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
         """
         return pulumi.get(self, "ignore_certificate_status_error")
 
     @ignore_certificate_status_error.setter
-    def ignore_certificate_status_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_status_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_status_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateUntrustworthyError")
-    def ignore_certificate_untrustworthy_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_untrustworthy_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
         """
         return pulumi.get(self, "ignore_certificate_untrustworthy_error")
 
     @ignore_certificate_untrustworthy_error.setter
-    def ignore_certificate_untrustworthy_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_untrustworthy_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_untrustworthy_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateUsingError")
-    def ignore_certificate_using_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_using_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
         """
         return pulumi.get(self, "ignore_certificate_using_error")
 
     @ignore_certificate_using_error.setter
-    def ignore_certificate_using_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_using_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_using_error", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreInvalidHostError")
-    def ignore_invalid_host_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_invalid_host_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
         """
         return pulumi.get(self, "ignore_invalid_host_error")
 
     @ignore_invalid_host_error.setter
-    def ignore_invalid_host_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_invalid_host_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_invalid_host_error", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorTimeout")
-    def monitor_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Monitoring timeout, in ms. Not required, 20000 by default.
         """
         return pulumi.get(self, "monitor_timeout")
 
     @monitor_timeout.setter
-    def monitor_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="quickProtocol")
-    def quick_protocol(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def quick_protocol(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Quick agreement
         - 1:http1
@@ -1866,48 +1866,48 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         return pulumi.get(self, "quick_protocol")
 
     @quick_protocol.setter
-    def quick_protocol(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def quick_protocol(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "quick_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def redirection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
         """
         return pulumi.get(self, "redirection")
 
     @redirection.setter
-    def redirection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def redirection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "redirection", value)
 
     @_builtins.property
     @pulumi.getter(name="transmissionSize")
-    def transmission_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def transmission_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
         """
         return pulumi.get(self, "transmission_size")
 
     @transmission_size.setter
-    def transmission_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def transmission_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "transmission_size", value)
 
     @_builtins.property
     @pulumi.getter(name="validateKeywords")
-    def validate_keywords(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def validate_keywords(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Verify keywords.
         """
         return pulumi.get(self, "validate_keywords")
 
     @validate_keywords.setter
-    def validate_keywords(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def validate_keywords(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "validate_keywords", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyWay")
-    def verify_way(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def verify_way(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The verification method.
         - 0: Do not validate
@@ -1917,19 +1917,19 @@ class SyntheticTaskMonitorConfFileDownloadArgs:
         return pulumi.get(self, "verify_way")
 
     @verify_way.setter
-    def verify_way(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def verify_way(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "verify_way", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteList")
-    def white_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def white_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
         """
         return pulumi.get(self, "white_list")
 
     @white_list.setter
-    def white_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def white_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "white_list", value)
 
 
@@ -1938,24 +1938,24 @@ class SyntheticTaskMonitorConfNetDnsArgsDict(TypedDict):
     """
     The target URL.
     """
-    dns_server_ip_type: NotRequired[pulumi.Input[_builtins.int]]
+    dns_server_ip_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The IP address type of the DNS server.
     - 0 (default):ipv4
     - 1:ipv6
     2: Automatic.
     """
-    ns_server: NotRequired[pulumi.Input[_builtins.str]]
+    ns_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the NS server. The default value is 114.114.114.114.
     """
-    query_method: NotRequired[pulumi.Input[_builtins.int]]
+    query_method: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     DNS query method.
     - 0 (default): Recursive
     - 1: Iteration.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
     """
@@ -1964,10 +1964,10 @@ class SyntheticTaskMonitorConfNetDnsArgsDict(TypedDict):
 class SyntheticTaskMonitorConfNetDnsArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 dns_server_ip_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 ns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_method: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 dns_server_ip_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 ns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_method: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] dns_server_ip_type: The IP address type of the DNS server.
@@ -2004,7 +2004,7 @@ class SyntheticTaskMonitorConfNetDnsArgs:
 
     @_builtins.property
     @pulumi.getter(name="dnsServerIpType")
-    def dns_server_ip_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dns_server_ip_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IP address type of the DNS server.
         - 0 (default):ipv4
@@ -2014,24 +2014,24 @@ class SyntheticTaskMonitorConfNetDnsArgs:
         return pulumi.get(self, "dns_server_ip_type")
 
     @dns_server_ip_type.setter
-    def dns_server_ip_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dns_server_ip_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dns_server_ip_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nsServer")
-    def ns_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ns_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the NS server. The default value is 114.114.114.114.
         """
         return pulumi.get(self, "ns_server")
 
     @ns_server.setter
-    def ns_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ns_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ns_server", value)
 
     @_builtins.property
     @pulumi.getter(name="queryMethod")
-    def query_method(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def query_method(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         DNS query method.
         - 0 (default): Recursive
@@ -2040,19 +2040,19 @@ class SyntheticTaskMonitorConfNetDnsArgs:
         return pulumi.get(self, "query_method")
 
     @query_method.setter
-    def query_method(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def query_method(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "query_method", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -2061,35 +2061,35 @@ class SyntheticTaskMonitorConfNetIcmpArgsDict(TypedDict):
     """
     The target URL.
     """
-    interval: NotRequired[pulumi.Input[_builtins.int]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
     """
-    package_num: NotRequired[pulumi.Input[_builtins.int]]
+    package_num: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
     """
-    package_size: NotRequired[pulumi.Input[_builtins.int]]
+    package_size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
     """
-    split_package: NotRequired[pulumi.Input[_builtins.bool]]
+    split_package: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to split ICMP(Ping) packets. The default is true.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
     """
-    tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    tracert_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable tracert. The default is true.
     """
-    tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
+    tracert_num_max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
     """
-    tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    tracert_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
     """
@@ -2098,14 +2098,14 @@ class SyntheticTaskMonitorConfNetIcmpArgsDict(TypedDict):
 class SyntheticTaskMonitorConfNetIcmpArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 package_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 split_package: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tracert_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracert_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 tracert_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 package_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 split_package: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tracert_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracert_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 tracert_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] interval: The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
@@ -2149,98 +2149,98 @@ class SyntheticTaskMonitorConfNetIcmpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter(name="packageNum")
-    def package_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def package_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
         """
         return pulumi.get(self, "package_num")
 
     @package_num.setter
-    def package_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def package_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "package_num", value)
 
     @_builtins.property
     @pulumi.getter(name="packageSize")
-    def package_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def package_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
         """
         return pulumi.get(self, "package_size")
 
     @package_size.setter
-    def package_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def package_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "package_size", value)
 
     @_builtins.property
     @pulumi.getter(name="splitPackage")
-    def split_package(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def split_package(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to split ICMP(Ping) packets. The default is true.
         """
         return pulumi.get(self, "split_package")
 
     @split_package.setter
-    def split_package(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def split_package(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "split_package", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertEnable")
-    def tracert_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tracert_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable tracert. The default is true.
         """
         return pulumi.get(self, "tracert_enable")
 
     @tracert_enable.setter
-    def tracert_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tracert_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tracert_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertNumMax")
-    def tracert_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracert_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
         """
         return pulumi.get(self, "tracert_num_max")
 
     @tracert_num_max.setter
-    def tracert_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracert_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracert_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertTimeout")
-    def tracert_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracert_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
         """
         return pulumi.get(self, "tracert_timeout")
 
     @tracert_timeout.setter
-    def tracert_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracert_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracert_timeout", value)
 
 
@@ -2249,27 +2249,27 @@ class SyntheticTaskMonitorConfNetTcpArgsDict(TypedDict):
     """
     The target URL.
     """
-    connect_times: NotRequired[pulumi.Input[_builtins.int]]
+    connect_times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
     """
-    interval: NotRequired[pulumi.Input[_builtins.int]]
+    interval: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
     """
-    tracert_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    tracert_enable: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable tracert. The default is true.
     """
-    tracert_num_max: NotRequired[pulumi.Input[_builtins.int]]
+    tracert_num_max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
     """
-    tracert_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    tracert_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
     """
@@ -2278,12 +2278,12 @@ class SyntheticTaskMonitorConfNetTcpArgsDict(TypedDict):
 class SyntheticTaskMonitorConfNetTcpArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 connect_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 tracert_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tracert_num_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 tracert_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 connect_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 tracert_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tracert_num_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 tracert_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] connect_times: The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
@@ -2321,107 +2321,107 @@ class SyntheticTaskMonitorConfNetTcpArgs:
 
     @_builtins.property
     @pulumi.getter(name="connectTimes")
-    def connect_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def connect_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
         """
         return pulumi.get(self, "connect_times")
 
     @connect_times.setter
-    def connect_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def connect_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "connect_times", value)
 
     @_builtins.property
     @pulumi.getter
-    def interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
         """
         return pulumi.get(self, "interval")
 
     @interval.setter
-    def interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "interval", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertEnable")
-    def tracert_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tracert_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable tracert. The default is true.
         """
         return pulumi.get(self, "tracert_enable")
 
     @tracert_enable.setter
-    def tracert_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tracert_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tracert_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertNumMax")
-    def tracert_num_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracert_num_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
         """
         return pulumi.get(self, "tracert_num_max")
 
     @tracert_num_max.setter
-    def tracert_num_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracert_num_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracert_num_max", value)
 
     @_builtins.property
     @pulumi.getter(name="tracertTimeout")
-    def tracert_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tracert_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
         """
         return pulumi.get(self, "tracert_timeout")
 
     @tracert_timeout.setter
-    def tracert_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tracert_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tracert_timeout", value)
 
 
 class SyntheticTaskMonitorConfStreamArgsDict(TypedDict):
-    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    custom_header_content: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Custom header, in JSON Map format.
     """
-    player_type: NotRequired[pulumi.Input[_builtins.int]]
+    player_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Player, do not pass the default 12.
     - 12:VLC
     - 2:FlashPlayer.
     """
-    stream_address_type: NotRequired[pulumi.Input[_builtins.int]]
+    stream_address_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Resource address type:
     - 1: Resource address.
     - 0: page address, not 0 by default.
     """
-    stream_monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    stream_monitor_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Monitoring duration, in seconds, up to 60s, not 60 by default.
     """
-    stream_type: NotRequired[pulumi.Input[_builtins.int]]
+    stream_type: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Audio and video flags: 0-video, 1-audio.
     """
-    target_url: NotRequired[pulumi.Input[_builtins.str]]
+    target_url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The target URL.
     """
-    white_list: NotRequired[pulumi.Input[_builtins.str]]
+    white_list: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
     """
@@ -2429,13 +2429,13 @@ class SyntheticTaskMonitorConfStreamArgsDict(TypedDict):
 @pulumi.input_type
 class SyntheticTaskMonitorConfStreamArgs:
     def __init__(__self__, *,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 player_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_address_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_monitor_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 stream_type: Optional[pulumi.Input[_builtins.int]] = None,
-                 target_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 white_list: Optional[pulumi.Input[_builtins.str]] = None):
+                 custom_header_content: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 player_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_address_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_monitor_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 stream_type: pulumi.Input[Optional[_builtins.int]] = None,
+                 target_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 white_list: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] custom_header_content: Custom header, in JSON Map format.
         :param pulumi.Input[_builtins.int] player_type: Player, do not pass the default 12.
@@ -2466,19 +2466,19 @@ class SyntheticTaskMonitorConfStreamArgs:
 
     @_builtins.property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_header_content(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_header_content(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @_builtins.property
     @pulumi.getter(name="playerType")
-    def player_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def player_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Player, do not pass the default 12.
         - 12:VLC
@@ -2487,12 +2487,12 @@ class SyntheticTaskMonitorConfStreamArgs:
         return pulumi.get(self, "player_type")
 
     @player_type.setter
-    def player_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def player_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "player_type", value)
 
     @_builtins.property
     @pulumi.getter(name="streamAddressType")
-    def stream_address_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stream_address_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Resource address type:
         - 1: Resource address.
@@ -2501,55 +2501,55 @@ class SyntheticTaskMonitorConfStreamArgs:
         return pulumi.get(self, "stream_address_type")
 
     @stream_address_type.setter
-    def stream_address_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stream_address_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stream_address_type", value)
 
     @_builtins.property
     @pulumi.getter(name="streamMonitorTimeout")
-    def stream_monitor_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stream_monitor_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Monitoring duration, in seconds, up to 60s, not 60 by default.
         """
         return pulumi.get(self, "stream_monitor_timeout")
 
     @stream_monitor_timeout.setter
-    def stream_monitor_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stream_monitor_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stream_monitor_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="streamType")
-    def stream_type(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stream_type(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Audio and video flags: 0-video, 1-audio.
         """
         return pulumi.get(self, "stream_type")
 
     @stream_type.setter
-    def stream_type(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stream_type(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stream_type", value)
 
     @_builtins.property
     @pulumi.getter(name="targetUrl")
-    def target_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The target URL.
         """
         return pulumi.get(self, "target_url")
 
     @target_url.setter
-    def target_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_url", value)
 
     @_builtins.property
     @pulumi.getter(name="whiteList")
-    def white_list(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def white_list(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
         """
         return pulumi.get(self, "white_list")
 
     @white_list.setter
-    def white_list(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def white_list(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "white_list", value)
 
 
@@ -2558,82 +2558,82 @@ class SyntheticTaskMonitorConfWebsiteArgsDict(TypedDict):
     """
     The target URL.
     """
-    automatic_scrolling: NotRequired[pulumi.Input[_builtins.int]]
+    automatic_scrolling: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether to support automatic scrolling screen, loading page.
     - 0 (default): No
     1: Yes.
     """
-    custom_header: NotRequired[pulumi.Input[_builtins.int]]
+    custom_header: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Custom header.
     - 0 (default): Off
     - 1: Modify the first package
     - 2: Modify all packages.
     """
-    custom_header_content: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    custom_header_content: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Custom header, in JSON Map format.
     """
-    disable_cache: NotRequired[pulumi.Input[_builtins.int]]
+    disable_cache: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether to disable caching.
     - 0: not disabled
     - 1 (default): Disabled.
     """
-    disable_compression: NotRequired[pulumi.Input[_builtins.int]]
+    disable_compression: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
     """
-    dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    dns_hijack_whitelist: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
     """
-    element_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    element_blacklist: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
     """
-    filter_invalid_ip: NotRequired[pulumi.Input[_builtins.int]]
+    filter_invalid_ip: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
     """
-    flow_hijack_jump_times: NotRequired[pulumi.Input[_builtins.int]]
+    flow_hijack_jump_times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Identify elements: Set the total number of elements on the Browse page.
     """
-    flow_hijack_logo: NotRequired[pulumi.Input[_builtins.str]]
+    flow_hijack_logo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
     """
-    ignore_certificate_error: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_certificate_error: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
     """
-    monitor_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    monitor_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Monitoring timeout, in ms. Not required, 20000 by default.
     """
-    page_tamper: NotRequired[pulumi.Input[_builtins.str]]
+    page_tamper: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
     """
-    redirection: NotRequired[pulumi.Input[_builtins.int]]
+    redirection: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
     """
-    slow_element_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    slow_element_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
     """
-    verify_string_blacklist: NotRequired[pulumi.Input[_builtins.str]]
+    verify_string_blacklist: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
     """
-    verify_string_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    verify_string_whitelist: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
     """
-    wait_completion_time: NotRequired[pulumi.Input[_builtins.int]]
+    wait_completion_time: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
     """
@@ -2642,24 +2642,24 @@ class SyntheticTaskMonitorConfWebsiteArgsDict(TypedDict):
 class SyntheticTaskMonitorConfWebsiteArgs:
     def __init__(__self__, *,
                  target_url: pulumi.Input[_builtins.str],
-                 automatic_scrolling: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_header: Optional[pulumi.Input[_builtins.int]] = None,
-                 custom_header_content: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 disable_cache: Optional[pulumi.Input[_builtins.int]] = None,
-                 disable_compression: Optional[pulumi.Input[_builtins.int]] = None,
-                 dns_hijack_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 element_blacklist: Optional[pulumi.Input[_builtins.str]] = None,
-                 filter_invalid_ip: Optional[pulumi.Input[_builtins.int]] = None,
-                 flow_hijack_jump_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 flow_hijack_logo: Optional[pulumi.Input[_builtins.str]] = None,
-                 ignore_certificate_error: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitor_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 page_tamper: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirection: Optional[pulumi.Input[_builtins.int]] = None,
-                 slow_element_threshold: Optional[pulumi.Input[_builtins.int]] = None,
-                 verify_string_blacklist: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify_string_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_completion_time: Optional[pulumi.Input[_builtins.int]] = None):
+                 automatic_scrolling: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_header: pulumi.Input[Optional[_builtins.int]] = None,
+                 custom_header_content: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 disable_cache: pulumi.Input[Optional[_builtins.int]] = None,
+                 disable_compression: pulumi.Input[Optional[_builtins.int]] = None,
+                 dns_hijack_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 element_blacklist: pulumi.Input[Optional[_builtins.str]] = None,
+                 filter_invalid_ip: pulumi.Input[Optional[_builtins.int]] = None,
+                 flow_hijack_jump_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 flow_hijack_logo: pulumi.Input[Optional[_builtins.str]] = None,
+                 ignore_certificate_error: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitor_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 page_tamper: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirection: pulumi.Input[Optional[_builtins.int]] = None,
+                 slow_element_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 verify_string_blacklist: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify_string_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_completion_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] target_url: The target URL.
         :param pulumi.Input[_builtins.int] automatic_scrolling: Whether to support automatic scrolling screen, loading page.
@@ -2740,7 +2740,7 @@ class SyntheticTaskMonitorConfWebsiteArgs:
 
     @_builtins.property
     @pulumi.getter(name="automaticScrolling")
-    def automatic_scrolling(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def automatic_scrolling(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to support automatic scrolling screen, loading page.
         - 0 (default): No
@@ -2749,12 +2749,12 @@ class SyntheticTaskMonitorConfWebsiteArgs:
         return pulumi.get(self, "automatic_scrolling")
 
     @automatic_scrolling.setter
-    def automatic_scrolling(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def automatic_scrolling(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "automatic_scrolling", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeader")
-    def custom_header(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def custom_header(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Custom header.
         - 0 (default): Off
@@ -2764,24 +2764,24 @@ class SyntheticTaskMonitorConfWebsiteArgs:
         return pulumi.get(self, "custom_header")
 
     @custom_header.setter
-    def custom_header(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def custom_header(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "custom_header", value)
 
     @_builtins.property
     @pulumi.getter(name="customHeaderContent")
-    def custom_header_content(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def custom_header_content(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Custom header, in JSON Map format.
         """
         return pulumi.get(self, "custom_header_content")
 
     @custom_header_content.setter
-    def custom_header_content(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def custom_header_content(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "custom_header_content", value)
 
     @_builtins.property
     @pulumi.getter(name="disableCache")
-    def disable_cache(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disable_cache(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to disable caching.
         - 0: not disabled
@@ -2790,175 +2790,175 @@ class SyntheticTaskMonitorConfWebsiteArgs:
         return pulumi.get(self, "disable_cache")
 
     @disable_cache.setter
-    def disable_cache(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disable_cache(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disable_cache", value)
 
     @_builtins.property
     @pulumi.getter(name="disableCompression")
-    def disable_compression(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disable_compression(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
         """
         return pulumi.get(self, "disable_compression")
 
     @disable_compression.setter
-    def disable_compression(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disable_compression(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disable_compression", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsHijackWhitelist")
-    def dns_hijack_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_hijack_whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
         """
         return pulumi.get(self, "dns_hijack_whitelist")
 
     @dns_hijack_whitelist.setter
-    def dns_hijack_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_hijack_whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_hijack_whitelist", value)
 
     @_builtins.property
     @pulumi.getter(name="elementBlacklist")
-    def element_blacklist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def element_blacklist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
         """
         return pulumi.get(self, "element_blacklist")
 
     @element_blacklist.setter
-    def element_blacklist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def element_blacklist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "element_blacklist", value)
 
     @_builtins.property
     @pulumi.getter(name="filterInvalidIp")
-    def filter_invalid_ip(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def filter_invalid_ip(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
         """
         return pulumi.get(self, "filter_invalid_ip")
 
     @filter_invalid_ip.setter
-    def filter_invalid_ip(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def filter_invalid_ip(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "filter_invalid_ip", value)
 
     @_builtins.property
     @pulumi.getter(name="flowHijackJumpTimes")
-    def flow_hijack_jump_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def flow_hijack_jump_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Identify elements: Set the total number of elements on the Browse page.
         """
         return pulumi.get(self, "flow_hijack_jump_times")
 
     @flow_hijack_jump_times.setter
-    def flow_hijack_jump_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def flow_hijack_jump_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "flow_hijack_jump_times", value)
 
     @_builtins.property
     @pulumi.getter(name="flowHijackLogo")
-    def flow_hijack_logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def flow_hijack_logo(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
         """
         return pulumi.get(self, "flow_hijack_logo")
 
     @flow_hijack_logo.setter
-    def flow_hijack_logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def flow_hijack_logo(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "flow_hijack_logo", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreCertificateError")
-    def ignore_certificate_error(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ignore_certificate_error(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
         """
         return pulumi.get(self, "ignore_certificate_error")
 
     @ignore_certificate_error.setter
-    def ignore_certificate_error(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ignore_certificate_error(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ignore_certificate_error", value)
 
     @_builtins.property
     @pulumi.getter(name="monitorTimeout")
-    def monitor_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def monitor_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Monitoring timeout, in ms. Not required, 20000 by default.
         """
         return pulumi.get(self, "monitor_timeout")
 
     @monitor_timeout.setter
-    def monitor_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def monitor_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "monitor_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="pageTamper")
-    def page_tamper(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def page_tamper(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
         """
         return pulumi.get(self, "page_tamper")
 
     @page_tamper.setter
-    def page_tamper(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def page_tamper(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "page_tamper", value)
 
     @_builtins.property
     @pulumi.getter
-    def redirection(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def redirection(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
         """
         return pulumi.get(self, "redirection")
 
     @redirection.setter
-    def redirection(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def redirection(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "redirection", value)
 
     @_builtins.property
     @pulumi.getter(name="slowElementThreshold")
-    def slow_element_threshold(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def slow_element_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
         """
         return pulumi.get(self, "slow_element_threshold")
 
     @slow_element_threshold.setter
-    def slow_element_threshold(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def slow_element_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "slow_element_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyStringBlacklist")
-    def verify_string_blacklist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verify_string_blacklist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
         """
         return pulumi.get(self, "verify_string_blacklist")
 
     @verify_string_blacklist.setter
-    def verify_string_blacklist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verify_string_blacklist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verify_string_blacklist", value)
 
     @_builtins.property
     @pulumi.getter(name="verifyStringWhitelist")
-    def verify_string_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def verify_string_whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
         """
         return pulumi.get(self, "verify_string_whitelist")
 
     @verify_string_whitelist.setter
-    def verify_string_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def verify_string_whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "verify_string_whitelist", value)
 
     @_builtins.property
     @pulumi.getter(name="waitCompletionTime")
-    def wait_completion_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def wait_completion_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
         """
         return pulumi.get(self, "wait_completion_time")
 
     @wait_completion_time.setter
-    def wait_completion_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def wait_completion_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "wait_completion_time", value)
 
 

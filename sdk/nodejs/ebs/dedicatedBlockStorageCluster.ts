@@ -203,67 +203,67 @@ export interface DedicatedBlockStorageClusterState {
     /**
      * The available capacity of the dedicated block storage cluster. Unit: GiB.
      */
-    availableCapacity?: pulumi.Input<string>;
+    availableCapacity?: pulumi.Input<string | undefined>;
     /**
      * The type of cloud disk that can be created by a dedicated block storage cluster.
      */
-    category?: pulumi.Input<string>;
+    category?: pulumi.Input<string | undefined>;
     /**
      * The creation time of the resource
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The first ID of the resource
      */
-    dedicatedBlockStorageClusterId?: pulumi.Input<string>;
+    dedicatedBlockStorageClusterId?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    dedicatedBlockStorageClusterName?: pulumi.Input<string>;
+    dedicatedBlockStorageClusterName?: pulumi.Input<string | undefined>;
     /**
      * Capacity to be delivered in GB.
      */
-    deliveryCapacity?: pulumi.Input<string>;
+    deliveryCapacity?: pulumi.Input<string | undefined>;
     /**
      * The description of the dedicated block storage cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The expiration time of the dedicated block storage cluster, in the Unix timestamp format, in seconds.
      */
-    expiredTime?: pulumi.Input<string>;
+    expiredTime?: pulumi.Input<string | undefined>;
     /**
      * Cloud disk performance level, possible values:-PL0.-PL1.-PL2.-PL3.> Only valid in SupportedCategory = cloud_essd.
      */
-    performanceLevel?: pulumi.Input<string>;
+    performanceLevel?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * This parameter is not supported.
      */
-    supportedCategory?: pulumi.Input<string>;
+    supportedCategory?: pulumi.Input<string | undefined>;
     /**
      * The total capacity of the dedicated block storage cluster. Unit: GiB.
      */
-    totalCapacity?: pulumi.Input<string>;
+    totalCapacity?: pulumi.Input<string | undefined>;
     /**
      * The dedicated block storage cluster performance type. Possible values:-Standard: Basic type. This type of dedicated block storage cluster can create an ESSD PL0 cloud disk.-Premium: performance type. This type of dedicated block storage cluster can create an ESSD PL1 cloud disk.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The used (created disk) capacity of the current cluster, in GB
      */
-    usedCapacity?: pulumi.Input<string>;
+    usedCapacity?: pulumi.Input<string | undefined>;
     /**
      * The zone ID  of the resource
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,7 +277,7 @@ export interface DedicatedBlockStorageClusterArgs {
     /**
      * The description of the dedicated block storage cluster.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The total capacity of the dedicated block storage cluster. Unit: GiB.
      */

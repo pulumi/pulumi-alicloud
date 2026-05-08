@@ -21,7 +21,7 @@ class VpcFirewallAclEngineModeArgs:
     def __init__(__self__, *,
                  strict_mode: pulumi.Input[_builtins.int],
                  vpc_firewall_id: pulumi.Input[_builtins.str],
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcFirewallAclEngineMode resource.
 
@@ -60,23 +60,23 @@ class VpcFirewallAclEngineModeArgs:
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of member account.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
 
 @pulumi.input_type
 class _VpcFirewallAclEngineModeState:
     def __init__(__self__, *,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VpcFirewallAclEngineMode resources.
 
@@ -93,38 +93,38 @@ class _VpcFirewallAclEngineModeState:
 
     @_builtins.property
     @pulumi.getter(name="memberUid")
-    def member_uid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def member_uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of member account.
         """
         return pulumi.get(self, "member_uid")
 
     @member_uid.setter
-    def member_uid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def member_uid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "member_uid", value)
 
     @_builtins.property
     @pulumi.getter(name="strictMode")
-    def strict_mode(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def strict_mode(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The mode of the ACL engine. Possible values are `0`, `1`.
         """
         return pulumi.get(self, "strict_mode")
 
     @strict_mode.setter
-    def strict_mode(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def strict_mode(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "strict_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcFirewallId")
-    def vpc_firewall_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_firewall_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC firewall.
         """
         return pulumi.get(self, "vpc_firewall_id")
 
     @vpc_firewall_id.setter
-    def vpc_firewall_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_firewall_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_firewall_id", value)
 
 
@@ -134,9 +134,9 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a Cloud Firewall Vpc Firewall Acl Engine Mode resource.
@@ -313,9 +313,9 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-                 vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+                 vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,9 +342,9 @@ class VpcFirewallAclEngineMode(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            member_uid: Optional[pulumi.Input[_builtins.str]] = None,
-            strict_mode: Optional[pulumi.Input[_builtins.int]] = None,
-            vpc_firewall_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VpcFirewallAclEngineMode':
+            member_uid: pulumi.Input[Optional[_builtins.str]] = None,
+            strict_mode: pulumi.Input[Optional[_builtins.int]] = None,
+            vpc_firewall_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcFirewallAclEngineMode':
         """
         Get an existing VpcFirewallAclEngineMode resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -189,13 +189,13 @@ def get_public_ip_address_pools(ids: Optional[Sequence[_builtins.str]] = None,
         public_ip_address_pool_ids=pulumi.get(__ret__, 'public_ip_address_pool_ids'),
         public_ip_address_pool_name=pulumi.get(__ret__, 'public_ip_address_pool_name'),
         status=pulumi.get(__ret__, 'status'))
-def get_public_ip_address_pools_output(ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                       isp: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       output_file: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       public_ip_address_pool_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                                       public_ip_address_pool_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_public_ip_address_pools_output(ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                       isp: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       output_file: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       public_ip_address_pool_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
+                                       public_ip_address_pool_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpAddressPoolsResult]:
     """
     This data source provides the Vpc Public Ip Address Pools of the current Alibaba Cloud user.

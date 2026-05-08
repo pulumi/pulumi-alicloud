@@ -98,23 +98,23 @@ __all__ = [
 ]
 
 class AlarmCompositeExpressionArgsDict(TypedDict):
-    expression_list_join: NotRequired[pulumi.Input[_builtins.str]]
+    expression_list_join: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
     """
-    expression_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgsDict']]]]
+    expression_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]]
     """
     The trigger conditions that are created in standard mode. See `expression_list` below.
     """
-    expression_raw: NotRequired[pulumi.Input[_builtins.str]]
+    expression_raw: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The trigger conditions that are created by using expressions.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of consecutive triggers.
     """
@@ -122,11 +122,11 @@ class AlarmCompositeExpressionArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmCompositeExpressionArgs:
     def __init__(__self__, *,
-                 expression_list_join: Optional[pulumi.Input[_builtins.str]] = None,
-                 expression_lists: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]] = None,
-                 expression_raw: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 expression_list_join: pulumi.Input[Optional[_builtins.str]] = None,
+                 expression_lists: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]] = None,
+                 expression_raw: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] expression_list_join: The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
         :param pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]] expression_lists: The trigger conditions that are created in standard mode. See `expression_list` below.
@@ -147,80 +147,80 @@ class AlarmCompositeExpressionArgs:
 
     @_builtins.property
     @pulumi.getter(name="expressionListJoin")
-    def expression_list_join(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression_list_join(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between the trigger conditions for multiple metrics. Valid values: `&&`, `||`.
         """
         return pulumi.get(self, "expression_list_join")
 
     @expression_list_join.setter
-    def expression_list_join(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression_list_join(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression_list_join", value)
 
     @_builtins.property
     @pulumi.getter(name="expressionLists")
-    def expression_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]:
+    def expression_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]:
         """
         The trigger conditions that are created in standard mode. See `expression_list` below.
         """
         return pulumi.get(self, "expression_lists")
 
     @expression_lists.setter
-    def expression_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]):
+    def expression_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AlarmCompositeExpressionExpressionListArgs']]]]):
         pulumi.set(self, "expression_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="expressionRaw")
-    def expression_raw(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expression_raw(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The trigger conditions that are created by using expressions.
         """
         return pulumi.get(self, "expression_raw")
 
     @expression_raw.setter
-    def expression_raw(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expression_raw(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expression_raw", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the alert. Valid values: `CRITICAL`, `WARN`, `INFO`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive triggers.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class AlarmCompositeExpressionExpressionListArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
-    metric_name: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    metric_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The metric that is used to monitor the cloud service.
     """
-    period: NotRequired[pulumi.Input[_builtins.str]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical period of the metric. Unit: seconds. Default value: `300`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
     """
@@ -228,11 +228,11 @@ class AlarmCompositeExpressionExpressionListArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmCompositeExpressionExpressionListArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 metric_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 metric_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_name: The metric that is used to monitor the cloud service.
         :param pulumi.Input[_builtins.str] period: The statistical period of the metric. Unit: seconds. Default value: `300`.
@@ -252,76 +252,76 @@ class AlarmCompositeExpressionExpressionListArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter(name="metricName")
-    def metric_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metric_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The metric that is used to monitor the cloud service.
         """
         return pulumi.get(self, "metric_name")
 
     @metric_name.setter
-    def metric_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metric_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metric_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical period of the metric. Unit: seconds. Default value: `300`.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
 
 class AlarmEscalationsCriticalArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Critical level alarm threshold value, which must be a numeric value currently.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Critical level alarm retry times. Default value: `3`.
     """
@@ -329,10 +329,10 @@ class AlarmEscalationsCriticalArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmEscalationsCriticalArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         :param pulumi.Input[_builtins.str] statistics: Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
@@ -350,67 +350,67 @@ class AlarmEscalationsCriticalArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Critical level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Critical level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Critical level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Critical level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class AlarmEscalationsInfoArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Info level alarm threshold value, which must be a numeric value currently.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Info level alarm retry times. Default value: `3`.
     """
@@ -418,10 +418,10 @@ class AlarmEscalationsInfoArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmEscalationsInfoArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         :param pulumi.Input[_builtins.str] statistics: Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
@@ -439,67 +439,67 @@ class AlarmEscalationsInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Info level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Info level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Info level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Info level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class AlarmEscalationsWarnArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Warn level alarm threshold value, which must be a numeric value currently.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Warn level alarm retry times. Default value: `3`.
     """
@@ -507,10 +507,10 @@ class AlarmEscalationsWarnArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmEscalationsWarnArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         :param pulumi.Input[_builtins.str] statistics: Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
@@ -528,67 +528,67 @@ class AlarmEscalationsWarnArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Warn level alarm comparison operator. Default value: `>`. Valid values: `>`, `>=`, `<`, `<=`, `!=`, `==`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`. **NOTE:** From version 1.231.0, `comparison_operator` can be set to `==`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Warn level alarm statistics method. It must be consistent with that defined for metrics. For more information, see [How to use it](https://cms.console.aliyun.com/metric-meta/acs_ecs_dashboard/ecs).
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Warn level alarm threshold value, which must be a numeric value currently.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Warn level alarm retry times. Default value: `3`.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class AlarmPrometheusArgsDict(TypedDict):
-    annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    annotations: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
     """
-    prom_ql: NotRequired[pulumi.Input[_builtins.str]]
+    prom_ql: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
     """
@@ -596,10 +596,10 @@ class AlarmPrometheusArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmPrometheusArgs:
     def __init__(__self__, *,
-                 annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 prom_ql: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 annotations: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 prom_ql: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         :param pulumi.Input[_builtins.str] level: The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
@@ -617,55 +617,55 @@ class AlarmPrometheusArgs:
 
     @_builtins.property
     @pulumi.getter
-    def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def annotations(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The annotations of the Prometheus alert rule. When a Prometheus alert is triggered, the system renders the annotated keys and values to help you understand the metrics and alert rule.
         """
         return pulumi.get(self, "annotations")
 
     @annotations.setter
-    def annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def annotations(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "annotations", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter(name="promQl")
-    def prom_ql(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prom_ql(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PromQL query statement. **Note:** The data obtained by using the PromQL query statement is the monitoring data. You must include the alert threshold in this statement.
         """
         return pulumi.get(self, "prom_ql")
 
     @prom_ql.setter
-    def prom_ql(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prom_ql(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prom_ql", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of consecutive triggers. If the number of times that the metric values meet the trigger conditions reaches the value of this parameter, CloudMonitor sends alert notifications.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class AlarmTargetArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
     - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
@@ -673,15 +673,15 @@ class AlarmTargetArgsDict(TypedDict):
     - Simple Log Service: `acs:log:{regionId}:{userId}:project/{Project name}/logstore/{Logstore name}`
     - Function Compute: `acs:fc:{regionId}:{userId}:services/{Service name}/functions/{Function name}`
     """
-    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    json_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameters of the alert callback. The parameters are in the JSON format.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
     """
-    target_id: NotRequired[pulumi.Input[_builtins.str]]
+    target_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
     """
@@ -689,10 +689,10 @@ class AlarmTargetArgsDict(TypedDict):
 @pulumi.input_type
 class AlarmTargetArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None,
+                 target_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
                - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
@@ -714,7 +714,7 @@ class AlarmTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource. Simple Message Queue (formerly MNS) (SMQ), Auto Scaling, Simple Log Service, and Function Compute are supported:
         - SMQ: `acs:mns:{regionId}:{userId}:/{Resource type}/{Resource name}/message`. {regionId}: the region ID of the SMQ queue or topic. {userId}: the ID of the Alibaba Cloud account that owns the resource. {Resource type}: the type of the resource for which alerts are triggered. Valid values:queues, topics. {Resource name}: the resource name. If the resource type is queues, the resource name is the queue name. If the resource type is topics, the resource name is the topic name.
@@ -725,43 +725,43 @@ class AlarmTargetArgs:
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonParams")
-    def json_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters of the alert callback. The parameters are in the JSON format.
         """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
-    def json_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
     @_builtins.property
     @pulumi.getter(name="targetId")
-    def target_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource for which alerts are triggered. For more information about how to obtain the ID of the resource for which alerts are triggered, see [DescribeMetricRuleTargets](https://www.alibabacloud.com/help/en/cms/developer-reference/api-describemetricruletargets) .
         """
         return pulumi.get(self, "target_id")
 
     @target_id.setter
-    def target_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target_id", value)
 
 
@@ -813,15 +813,15 @@ class DynamicTagGroupMatchExpressArgs:
 
 
 class EventRuleContactParameterArgsDict(TypedDict):
-    contact_group_name: NotRequired[pulumi.Input[_builtins.str]]
+    contact_group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the alert contact group.
     """
-    contact_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    contact_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alert level and the corresponding notification methods.
     """
@@ -829,9 +829,9 @@ class EventRuleContactParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleContactParameterArgs:
     def __init__(__self__, *,
-                 contact_group_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 contact_parameters_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None):
+                 contact_group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 contact_parameters_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] contact_group_name: The name of the alert contact group.
         :param pulumi.Input[_builtins.str] contact_parameters_id: The ID of the recipient that receives alert notifications.
@@ -846,38 +846,38 @@ class EventRuleContactParameterArgs:
 
     @_builtins.property
     @pulumi.getter(name="contactGroupName")
-    def contact_group_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the alert contact group.
         """
         return pulumi.get(self, "contact_group_name")
 
     @contact_group_name.setter
-    def contact_group_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_group_name", value)
 
     @_builtins.property
     @pulumi.getter(name="contactParametersId")
-    def contact_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications.
         """
         return pulumi.get(self, "contact_parameters_id")
 
     @contact_parameters_id.setter
-    def contact_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_parameters_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alert level and the corresponding notification methods.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
 
@@ -886,7 +886,7 @@ class EventRuleEventPatternArgsDict(TypedDict):
     """
     The type of the cloud service.
     """
-    event_type_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    event_type_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The type of the event-triggered alert rule. Valid values:
     - `StatusNotification`: fault notifications.
@@ -894,7 +894,7 @@ class EventRuleEventPatternArgsDict(TypedDict):
     - `Maintenance`: O&M.
     - `*`: all types.
     """
-    level_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    level_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The level of the event-triggered alert rule. Valid values:
     - `CRITICAL`: critical.
@@ -902,11 +902,11 @@ class EventRuleEventPatternArgsDict(TypedDict):
     - `INFO`: information.
     - `*`: all types.
     """
-    name_lists: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    name_lists: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The name of the event-triggered alert rule.
     """
-    sql_filter: NotRequired[pulumi.Input[_builtins.str]]
+    sql_filter: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
     """
@@ -915,10 +915,10 @@ class EventRuleEventPatternArgsDict(TypedDict):
 class EventRuleEventPatternArgs:
     def __init__(__self__, *,
                  product: pulumi.Input[_builtins.str],
-                 event_type_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 level_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name_lists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 sql_filter: Optional[pulumi.Input[_builtins.str]] = None):
+                 event_type_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 level_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name_lists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 sql_filter: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] product: The type of the cloud service.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] event_type_lists: The type of the event-triggered alert rule. Valid values:
@@ -958,7 +958,7 @@ class EventRuleEventPatternArgs:
 
     @_builtins.property
     @pulumi.getter(name="eventTypeLists")
-    def event_type_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def event_type_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The type of the event-triggered alert rule. Valid values:
         - `StatusNotification`: fault notifications.
@@ -969,12 +969,12 @@ class EventRuleEventPatternArgs:
         return pulumi.get(self, "event_type_lists")
 
     @event_type_lists.setter
-    def event_type_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def event_type_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "event_type_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="levelLists")
-    def level_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def level_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The level of the event-triggered alert rule. Valid values:
         - `CRITICAL`: critical.
@@ -985,52 +985,52 @@ class EventRuleEventPatternArgs:
         return pulumi.get(self, "level_lists")
 
     @level_lists.setter
-    def level_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def level_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "level_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="nameLists")
-    def name_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def name_lists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The name of the event-triggered alert rule.
         """
         return pulumi.get(self, "name_lists")
 
     @name_lists.setter
-    def name_lists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def name_lists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "name_lists", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlFilter")
-    def sql_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sql_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
         """
         return pulumi.get(self, "sql_filter")
 
     @sql_filter.setter
-    def sql_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sql_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sql_filter", value)
 
 
 class EventRuleFcParameterArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.211.1) The ARN of the API operation.
     """
-    fc_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    fc_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications.
     """
-    function_name: NotRequired[pulumi.Input[_builtins.str]]
+    function_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the function.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where Function Compute is deployed.
     """
-    service_name: NotRequired[pulumi.Input[_builtins.str]]
+    service_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Function Compute service.
     """
@@ -1038,11 +1038,11 @@ class EventRuleFcParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleFcParameterArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 fc_parameters_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 function_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 fc_parameters_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 function_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: (Available since v1.211.1) The ARN of the API operation.
         :param pulumi.Input[_builtins.str] fc_parameters_id: The ID of the recipient that receives alert notifications.
@@ -1063,83 +1063,83 @@ class EventRuleFcParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.211.1) The ARN of the API operation.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="fcParametersId")
-    def fc_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fc_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications.
         """
         return pulumi.get(self, "fc_parameters_id")
 
     @fc_parameters_id.setter
-    def fc_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fc_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fc_parameters_id", value)
 
     @_builtins.property
     @pulumi.getter(name="functionName")
-    def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the function.
         """
         return pulumi.get(self, "function_name")
 
     @function_name.setter
-    def function_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where Function Compute is deployed.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceName")
-    def service_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Function Compute service.
         """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
-    def service_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_name", value)
 
 
 class EventRuleMnsParameterArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.211.1) The ARN of the API operation.
     """
-    mns_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    mns_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications.
     """
-    queue: NotRequired[pulumi.Input[_builtins.str]]
+    queue: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the MNS queue.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where Message Service (MNS) is deployed.
     """
-    topic: NotRequired[pulumi.Input[_builtins.str]]
+    topic: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MNS topic.
     """
@@ -1147,11 +1147,11 @@ class EventRuleMnsParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleMnsParameterArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 mns_parameters_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 queue: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 topic: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 mns_parameters_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 queue: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 topic: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: (Available since v1.211.1) The ARN of the API operation.
         :param pulumi.Input[_builtins.str] mns_parameters_id: The ID of the recipient that receives alert notifications.
@@ -1172,91 +1172,91 @@ class EventRuleMnsParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.211.1) The ARN of the API operation.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="mnsParametersId")
-    def mns_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mns_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications.
         """
         return pulumi.get(self, "mns_parameters_id")
 
     @mns_parameters_id.setter
-    def mns_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mns_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mns_parameters_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def queue(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def queue(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the MNS queue.
         """
         return pulumi.get(self, "queue")
 
     @queue.setter
-    def queue(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def queue(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "queue", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where Message Service (MNS) is deployed.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def topic(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def topic(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MNS topic.
         """
         return pulumi.get(self, "topic")
 
     @topic.setter
-    def topic(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def topic(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "topic", value)
 
 
 class EventRuleOpenApiParameterArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The API name.
     """
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.211.1) The ARN of the API operation.
     """
-    open_api_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    open_api_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications sent by an API callback.
     """
-    product: NotRequired[pulumi.Input[_builtins.str]]
+    product: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the cloud service to which the API operation belongs.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where the resource resides.
     """
-    role: NotRequired[pulumi.Input[_builtins.str]]
+    role: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the role.
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version of the API.
     """
@@ -1264,13 +1264,13 @@ class EventRuleOpenApiParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleOpenApiParameterArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_api_parameters_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_api_parameters_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action: The API name.
         :param pulumi.Input[_builtins.str] arn: (Available since v1.211.1) The ARN of the API operation.
@@ -1297,107 +1297,107 @@ class EventRuleOpenApiParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API name.
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.211.1) The ARN of the API operation.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="openApiParametersId")
-    def open_api_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def open_api_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications sent by an API callback.
         """
         return pulumi.get(self, "open_api_parameters_id")
 
     @open_api_parameters_id.setter
-    def open_api_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def open_api_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "open_api_parameters_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the cloud service to which the API operation belongs.
         """
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the resource resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the role.
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version of the API.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class EventRuleSlsParameterArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     (Available since v1.211.1) The ARN of the API operation.
     """
-    log_store: NotRequired[pulumi.Input[_builtins.str]]
+    log_store: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Simple Log Service Logstore.
     """
-    project: NotRequired[pulumi.Input[_builtins.str]]
+    project: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the Simple Log Service project.
     """
-    region: NotRequired[pulumi.Input[_builtins.str]]
+    region: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The region where Simple Log Service is deployed.
     """
-    sls_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    sls_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications.
     """
@@ -1405,11 +1405,11 @@ class EventRuleSlsParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleSlsParameterArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_store: Optional[pulumi.Input[_builtins.str]] = None,
-                 project: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_parameters_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_store: pulumi.Input[Optional[_builtins.str]] = None,
+                 project: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_parameters_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: (Available since v1.211.1) The ARN of the API operation.
         :param pulumi.Input[_builtins.str] log_store: The name of the Simple Log Service Logstore.
@@ -1430,79 +1430,79 @@ class EventRuleSlsParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.211.1) The ARN of the API operation.
         """
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter(name="logStore")
-    def log_store(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_store(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Simple Log Service Logstore.
         """
         return pulumi.get(self, "log_store")
 
     @log_store.setter
-    def log_store(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_store(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_store", value)
 
     @_builtins.property
     @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Simple Log Service project.
         """
         return pulumi.get(self, "project")
 
     @project.setter
-    def project(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where Simple Log Service is deployed.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="slsParametersId")
-    def sls_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications.
         """
         return pulumi.get(self, "sls_parameters_id")
 
     @sls_parameters_id.setter
-    def sls_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_parameters_id", value)
 
 
 class EventRuleWebhookParameterArgsDict(TypedDict):
-    method: NotRequired[pulumi.Input[_builtins.str]]
+    method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The HTTP request method.
     """
-    protocol: NotRequired[pulumi.Input[_builtins.str]]
+    protocol: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the protocol.
     """
-    url: NotRequired[pulumi.Input[_builtins.str]]
+    url: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The callback URL.
     """
-    webhook_parameters_id: NotRequired[pulumi.Input[_builtins.str]]
+    webhook_parameters_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the recipient that receives alert notifications.
     """
@@ -1510,10 +1510,10 @@ class EventRuleWebhookParameterArgsDict(TypedDict):
 @pulumi.input_type
 class EventRuleWebhookParameterArgs:
     def __init__(__self__, *,
-                 method: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 webhook_parameters_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 method: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 webhook_parameters_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] method: The HTTP request method.
         :param pulumi.Input[_builtins.str] protocol: The name of the protocol.
@@ -1531,63 +1531,63 @@ class EventRuleWebhookParameterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HTTP request method.
         """
         return pulumi.get(self, "method")
 
     @method.setter
-    def method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "method", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def protocol(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the protocol.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def protocol(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="webhookParametersId")
-    def webhook_parameters_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook_parameters_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the recipient that receives alert notifications.
         """
         return pulumi.get(self, "webhook_parameters_id")
 
     @webhook_parameters_id.setter
-    def webhook_parameters_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook_parameters_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook_parameters_id", value)
 
 
 class GroupMetricRuleEscalationsArgsDict(TypedDict):
-    critical: NotRequired[pulumi.Input['GroupMetricRuleEscalationsCriticalArgsDict']]
+    critical: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgs']]]
     """
     The critical level. See `critical` below.
     """
-    info: NotRequired[pulumi.Input['GroupMetricRuleEscalationsInfoArgsDict']]
+    info: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgs']]]
     """
     The info level. See `info` below.
     """
-    warn: NotRequired[pulumi.Input['GroupMetricRuleEscalationsWarnArgsDict']]
+    warn: NotRequired[pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgs']]]
     """
     The warn level. See `warn` below.
     """
@@ -1595,9 +1595,9 @@ class GroupMetricRuleEscalationsArgsDict(TypedDict):
 @pulumi.input_type
 class GroupMetricRuleEscalationsArgs:
     def __init__(__self__, *,
-                 critical: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']] = None,
-                 info: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']] = None,
-                 warn: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']] = None):
+                 critical: pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgs']] = None,
+                 info: pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgs']] = None,
+                 warn: pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgs']] = None):
         """
         :param pulumi.Input['GroupMetricRuleEscalationsCriticalArgs'] critical: The critical level. See `critical` below.
         :param pulumi.Input['GroupMetricRuleEscalationsInfoArgs'] info: The info level. See `info` below.
@@ -1612,55 +1612,55 @@ class GroupMetricRuleEscalationsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']]:
+    def critical(self) -> pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgs']]:
         """
         The critical level. See `critical` below.
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsCriticalArgs']]):
+    def critical(self, value: pulumi.Input[Optional['GroupMetricRuleEscalationsCriticalArgs']]):
         pulumi.set(self, "critical", value)
 
     @_builtins.property
     @pulumi.getter
-    def info(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']]:
+    def info(self) -> pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgs']]:
         """
         The info level. See `info` below.
         """
         return pulumi.get(self, "info")
 
     @info.setter
-    def info(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsInfoArgs']]):
+    def info(self, value: pulumi.Input[Optional['GroupMetricRuleEscalationsInfoArgs']]):
         pulumi.set(self, "info", value)
 
     @_builtins.property
     @pulumi.getter
-    def warn(self) -> Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']]:
+    def warn(self) -> pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgs']]:
         """
         The warn level. See `warn` below.
         """
         return pulumi.get(self, "warn")
 
     @warn.setter
-    def warn(self, value: Optional[pulumi.Input['GroupMetricRuleEscalationsWarnArgs']]):
+    def warn(self, value: pulumi.Input[Optional['GroupMetricRuleEscalationsWarnArgs']]):
         pulumi.set(self, "warn", value)
 
 
 class GroupMetricRuleEscalationsCriticalArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -1668,10 +1668,10 @@ class GroupMetricRuleEscalationsCriticalArgsDict(TypedDict):
 @pulumi.input_type
 class GroupMetricRuleEscalationsCriticalArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -1689,67 +1689,67 @@ class GroupMetricRuleEscalationsCriticalArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class GroupMetricRuleEscalationsInfoArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -1757,10 +1757,10 @@ class GroupMetricRuleEscalationsInfoArgsDict(TypedDict):
 @pulumi.input_type
 class GroupMetricRuleEscalationsInfoArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -1778,67 +1778,67 @@ class GroupMetricRuleEscalationsInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class GroupMetricRuleEscalationsWarnArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.int]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -1846,10 +1846,10 @@ class GroupMetricRuleEscalationsWarnArgsDict(TypedDict):
 @pulumi.input_type
 class GroupMetricRuleEscalationsWarnArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.int]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -1867,68 +1867,68 @@ class GroupMetricRuleEscalationsWarnArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "times", value)
 
 
 class GroupMetricRuleTargetArgsDict(TypedDict):
-    arn: NotRequired[pulumi.Input[_builtins.str]]
+    arn: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Alibaba Cloud Resource Name (ARN) of the resource.
     > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the resource for which alerts are triggered.
     """
-    json_params: NotRequired[pulumi.Input[_builtins.str]]
+    json_params: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The parameters of the alert callback. The parameters are in the JSON format.
     """
-    level: NotRequired[pulumi.Input[_builtins.str]]
+    level: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
     """
@@ -1936,10 +1936,10 @@ class GroupMetricRuleTargetArgsDict(TypedDict):
 @pulumi.input_type
 class GroupMetricRuleTargetArgs:
     def __init__(__self__, *,
-                 arn: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 json_params: Optional[pulumi.Input[_builtins.str]] = None,
-                 level: Optional[pulumi.Input[_builtins.str]] = None):
+                 arn: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 json_params: pulumi.Input[Optional[_builtins.str]] = None,
+                 level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
                > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
@@ -1958,7 +1958,7 @@ class GroupMetricRuleTargetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def arn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def arn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Alibaba Cloud Resource Name (ARN) of the resource.
         > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
@@ -1966,52 +1966,52 @@ class GroupMetricRuleTargetArgs:
         return pulumi.get(self, "arn")
 
     @arn.setter
-    def arn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def arn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "arn", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource for which alerts are triggered.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="jsonParams")
-    def json_params(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json_params(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The parameters of the alert callback. The parameters are in the JSON format.
         """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
-    def json_params(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json_params(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json_params", value)
 
     @_builtins.property
     @pulumi.getter
-    def level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
         """
         return pulumi.get(self, "level")
 
     @level.setter
-    def level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "level", value)
 
 
 class HybridMonitorSlsTaskAttachLabelArgsDict(TypedDict):
-    name: NotRequired[pulumi.Input[_builtins.str]]
+    name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag key of the metric.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The tag value of the metric.
     """
@@ -2019,8 +2019,8 @@ class HybridMonitorSlsTaskAttachLabelArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskAttachLabelArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The tag key of the metric.
         :param pulumi.Input[_builtins.str] value: The tag value of the metric.
@@ -2032,43 +2032,43 @@ class HybridMonitorSlsTaskAttachLabelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag key of the metric.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tag value of the metric.
         """
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigArgsDict(TypedDict):
-    expresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict']]]]
+    expresses: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]]
     """
     The extended field that specifies the result of basic operations that are performed on aggregation results.
     """
-    filter: NotRequired[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict']]
+    filter: NotRequired[pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]]
     """
     The conditions that are used to filter logs imported from Log Service. See `filter` below.
     """
-    group_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict']]]]
+    group_bies: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]]
     """
     The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
     """
-    statistics: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict']]]]
+    statistics: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]]
     """
     The method that is used to aggregate logs imported from Log Service. See `statistics` below.
     """
@@ -2076,10 +2076,10 @@ class HybridMonitorSlsTaskSlsProcessConfigArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigArgs:
     def __init__(__self__, *,
-                 expresses: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]] = None,
-                 filter: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']] = None,
-                 group_bies: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]] = None,
-                 statistics: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]] = None):
+                 expresses: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]] = None,
+                 filter: pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']] = None,
+                 group_bies: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]] = None,
+                 statistics: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]] expresses: The extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs'] filter: The conditions that are used to filter logs imported from Log Service. See `filter` below.
@@ -2097,59 +2097,59 @@ class HybridMonitorSlsTaskSlsProcessConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]:
+    def expresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]:
         """
         The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "expresses")
 
     @expresses.setter
-    def expresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]):
+    def expresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigExpressArgs']]]]):
         pulumi.set(self, "expresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]:
+    def filter(self) -> pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]:
         """
         The conditions that are used to filter logs imported from Log Service. See `filter` below.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]):
+    def filter(self, value: pulumi.Input[Optional['HybridMonitorSlsTaskSlsProcessConfigFilterArgs']]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
-    def group_bies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]:
+    def group_bies(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]:
         """
         The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL. See `group_by` below.
         """
         return pulumi.get(self, "group_bies")
 
     @group_bies.setter
-    def group_bies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]):
+    def group_bies(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigGroupByArgs']]]]):
         pulumi.set(self, "group_bies", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]:
+    def statistics(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]:
         """
         The method that is used to aggregate logs imported from Log Service. See `statistics` below.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]):
+    def statistics(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigStatisticArgs']]]]):
         pulumi.set(self, "statistics", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict(TypedDict):
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
     """
-    express: NotRequired[pulumi.Input[_builtins.str]]
+    express: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The extended field that specifies the result of basic operations that are performed on aggregation results.
     """
@@ -2157,8 +2157,8 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 express: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 express: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input[_builtins.str] express: The extended field that specifies the result of basic operations that are performed on aggregation results.
@@ -2170,35 +2170,35 @@ class HybridMonitorSlsTaskSlsProcessConfigExpressArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def express(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def express(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "express")
 
     @express.setter
-    def express(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def express(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "express", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict(TypedDict):
-    filters: NotRequired[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict']]]]
+    filters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]]
     """
     The conditions that are used to filter logs imported from Log Service. See `filters` below.
     """
-    relation: NotRequired[pulumi.Input[_builtins.str]]
+    relation: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
     """
@@ -2206,8 +2206,8 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
     def __init__(__self__, *,
-                 filters: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]] = None,
-                 relation: Optional[pulumi.Input[_builtins.str]] = None):
+                 filters: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]] = None,
+                 relation: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]] filters: The conditions that are used to filter logs imported from Log Service. See `filters` below.
         :param pulumi.Input[_builtins.str] relation: The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
@@ -2219,46 +2219,46 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]:
+    def filters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]:
         """
         The conditions that are used to filter logs imported from Log Service. See `filters` below.
         """
         return pulumi.get(self, "filters")
 
     @filters.setter
-    def filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]):
+    def filters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs']]]]):
         pulumi.set(self, "filters", value)
 
     @_builtins.property
     @pulumi.getter
-    def relation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def relation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
         """
         return pulumi.get(self, "relation")
 
     @relation.setter
-    def relation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def relation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "relation", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgsDict(TypedDict):
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
     """
-    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    sls_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the key that is used to filter logs imported from Log Service.
     """
-    value: NotRequired[pulumi.Input[_builtins.str]]
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
     def __init__(__self__, *,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_key_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 value: Optional[pulumi.Input[_builtins.str]] = None):
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_key_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
         :param pulumi.Input[_builtins.str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
@@ -2272,44 +2272,44 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
-    def sls_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
     @sls_key_name.setter
-    def sls_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_key_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "value")
 
     @value.setter
-    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict(TypedDict):
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
     """
-    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    sls_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the key that is used to filter logs imported from Log Service.
     """
@@ -2317,8 +2317,8 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input[_builtins.str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
@@ -2330,49 +2330,49 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
-    def sls_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
     @sls_key_name.setter
-    def sls_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_key_name", value)
 
 
 class HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict(TypedDict):
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
     """
-    function: NotRequired[pulumi.Input[_builtins.str]]
+    function: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
     """
-    parameter_one: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_one: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the function that is used to aggregate logs imported from Log Service.
     - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
     - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
     """
-    parameter_two: NotRequired[pulumi.Input[_builtins.str]]
+    parameter_two: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
     """
-    sls_key_name: NotRequired[pulumi.Input[_builtins.str]]
+    sls_key_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the key that is used to filter logs imported from Log Service.
     """
@@ -2380,11 +2380,11 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgsDict(TypedDict):
 @pulumi.input_type
 class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 function: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_one: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameter_two: Optional[pulumi.Input[_builtins.str]] = None,
-                 sls_key_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 function: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_one: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameter_two: pulumi.Input[Optional[_builtins.str]] = None,
+                 sls_key_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         :param pulumi.Input[_builtins.str] function: The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
@@ -2407,31 +2407,31 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def function(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def function(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
         """
         return pulumi.get(self, "function")
 
     @function.setter
-    def function(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def function(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "function", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterOne")
-    def parameter_one(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_one(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the function that is used to aggregate logs imported from Log Service.
         - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
@@ -2440,40 +2440,40 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
         return pulumi.get(self, "parameter_one")
 
     @parameter_one.setter
-    def parameter_one(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_one(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_one", value)
 
     @_builtins.property
     @pulumi.getter(name="parameterTwo")
-    def parameter_two(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def parameter_two(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
         """
         return pulumi.get(self, "parameter_two")
 
     @parameter_two.setter
-    def parameter_two(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def parameter_two(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "parameter_two", value)
 
     @_builtins.property
     @pulumi.getter(name="slsKeyName")
-    def sls_key_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_key_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the key that is used to filter logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
     @sls_key_name.setter
-    def sls_key_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_key_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_key_name", value)
 
 
 class IntegrationPolicyEntityGroupArgsDict(TypedDict):
-    cluster_entity_type: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_entity_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cluster entity type.
     """
-    cluster_id: NotRequired[pulumi.Input[_builtins.str]]
+    cluster_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cluster ID.
     """
@@ -2481,8 +2481,8 @@ class IntegrationPolicyEntityGroupArgsDict(TypedDict):
 @pulumi.input_type
 class IntegrationPolicyEntityGroupArgs:
     def __init__(__self__, *,
-                 cluster_entity_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_entity_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cluster_entity_type: The cluster entity type.
         :param pulumi.Input[_builtins.str] cluster_id: The cluster ID.
@@ -2494,26 +2494,26 @@ class IntegrationPolicyEntityGroupArgs:
 
     @_builtins.property
     @pulumi.getter(name="clusterEntityType")
-    def cluster_entity_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster entity type.
         """
         return pulumi.get(self, "cluster_entity_type")
 
     @cluster_entity_type.setter
-    def cluster_entity_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_entity_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_entity_type", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster ID.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
 
@@ -2522,7 +2522,7 @@ class MetricRuleBlackListMetricArgsDict(TypedDict):
     """
     The name of the monitoring indicator.
     """
-    resource: NotRequired[pulumi.Input[_builtins.str]]
+    resource: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
     """
@@ -2531,7 +2531,7 @@ class MetricRuleBlackListMetricArgsDict(TypedDict):
 class MetricRuleBlackListMetricArgs:
     def __init__(__self__, *,
                  metric_name: pulumi.Input[_builtins.str],
-                 resource: Optional[pulumi.Input[_builtins.str]] = None):
+                 resource: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] metric_name: The name of the monitoring indicator.
         :param pulumi.Input[_builtins.str] resource: The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
@@ -2554,14 +2554,14 @@ class MetricRuleBlackListMetricArgs:
 
     @_builtins.property
     @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The extended dimension information of the instance. For example, '{"device":"C:"}' indicates that the blacklist policy is applied to all C disks under the ECS instance.
         """
         return pulumi.get(self, "resource")
 
     @resource.setter
-    def resource(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource", value)
 
 
@@ -2585,11 +2585,11 @@ class MetricRuleTemplateAlertTemplateArgsDict(TypedDict):
     """
     The name of the alert rule.
     """
-    escalations: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgsDict']]
+    escalations: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgs']]]
     """
     The information about the trigger condition based on the alert level. See `escalations` below.
     """
-    webhook: NotRequired[pulumi.Input[_builtins.str]]
+    webhook: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
     """
@@ -2601,8 +2601,8 @@ class MetricRuleTemplateAlertTemplateArgs:
                  metric_name: pulumi.Input[_builtins.str],
                  namespace: pulumi.Input[_builtins.str],
                  rule_name: pulumi.Input[_builtins.str],
-                 escalations: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
-                 webhook: Optional[pulumi.Input[_builtins.str]] = None):
+                 escalations: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgs']] = None,
+                 webhook: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] category: The abbreviation of the Alibaba Cloud service name.
                > **NOTE:** To obtain the abbreviation of an Alibaba Cloud service name, call the [DescribeProjectMeta](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-describeprojectmeta) operation. The metricCategory tag in the Labels response parameter indicates the abbreviation of the Alibaba Cloud service name.
@@ -2676,39 +2676,39 @@ class MetricRuleTemplateAlertTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def escalations(self) -> Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']]:
+    def escalations(self) -> pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgs']]:
         """
         The information about the trigger condition based on the alert level. See `escalations` below.
         """
         return pulumi.get(self, "escalations")
 
     @escalations.setter
-    def escalations(self, value: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsArgs']]):
+    def escalations(self, value: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsArgs']]):
         pulumi.set(self, "escalations", value)
 
     @_builtins.property
     @pulumi.getter
-    def webhook(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def webhook(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
         """
         return pulumi.get(self, "webhook")
 
     @webhook.setter
-    def webhook(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def webhook(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "webhook", value)
 
 
 class MetricRuleTemplateAlertTemplateEscalationsArgsDict(TypedDict):
-    critical: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict']]
+    critical: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]]
     """
     The condition for triggering critical-level alerts. See `critical` below.
     """
-    info: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict']]
+    info: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]]
     """
     The condition for triggering info-level alerts. See `info` below.
     """
-    warn: NotRequired[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict']]
+    warn: NotRequired[pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]]
     """
     The condition for triggering warn-level alerts. See `warn` below.
     """
@@ -2716,9 +2716,9 @@ class MetricRuleTemplateAlertTemplateEscalationsArgsDict(TypedDict):
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsArgs:
     def __init__(__self__, *,
-                 critical: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']] = None,
-                 info: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']] = None,
-                 warn: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']] = None):
+                 critical: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']] = None,
+                 info: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']] = None,
+                 warn: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']] = None):
         """
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs'] critical: The condition for triggering critical-level alerts. See `critical` below.
         :param pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs'] info: The condition for triggering info-level alerts. See `info` below.
@@ -2733,55 +2733,55 @@ class MetricRuleTemplateAlertTemplateEscalationsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def critical(self) -> Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]:
+    def critical(self) -> pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]:
         """
         The condition for triggering critical-level alerts. See `critical` below.
         """
         return pulumi.get(self, "critical")
 
     @critical.setter
-    def critical(self, value: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]):
+    def critical(self, value: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsCriticalArgs']]):
         pulumi.set(self, "critical", value)
 
     @_builtins.property
     @pulumi.getter
-    def info(self) -> Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]:
+    def info(self) -> pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]:
         """
         The condition for triggering info-level alerts. See `info` below.
         """
         return pulumi.get(self, "info")
 
     @info.setter
-    def info(self, value: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]):
+    def info(self, value: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsInfoArgs']]):
         pulumi.set(self, "info", value)
 
     @_builtins.property
     @pulumi.getter
-    def warn(self) -> Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]:
+    def warn(self) -> pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]:
         """
         The condition for triggering warn-level alerts. See `warn` below.
         """
         return pulumi.get(self, "warn")
 
     @warn.setter
-    def warn(self, value: Optional[pulumi.Input['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]):
+    def warn(self, value: pulumi.Input[Optional['MetricRuleTemplateAlertTemplateEscalationsWarnArgs']]):
         pulumi.set(self, "warn", value)
 
 
 class MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.str]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -2789,10 +2789,10 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgsDict(TypedDict):
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.str]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -2810,67 +2810,67 @@ class MetricRuleTemplateAlertTemplateEscalationsCriticalArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "times", value)
 
 
 class MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.str]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -2878,10 +2878,10 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgsDict(TypedDict):
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.str]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -2899,67 +2899,67 @@ class MetricRuleTemplateAlertTemplateEscalationsInfoArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "times", value)
 
 
 class MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict(TypedDict):
-    comparison_operator: NotRequired[pulumi.Input[_builtins.str]]
+    comparison_operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
     """
-    statistics: NotRequired[pulumi.Input[_builtins.str]]
+    statistics: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The statistical aggregation method for warn-level alerts.
     """
-    threshold: NotRequired[pulumi.Input[_builtins.str]]
+    threshold: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The threshold for warn-level alerts.
     """
-    times: NotRequired[pulumi.Input[_builtins.str]]
+    times: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
     """
@@ -2967,10 +2967,10 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgsDict(TypedDict):
 @pulumi.input_type
 class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
     def __init__(__self__, *,
-                 comparison_operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 statistics: Optional[pulumi.Input[_builtins.str]] = None,
-                 threshold: Optional[pulumi.Input[_builtins.str]] = None,
-                 times: Optional[pulumi.Input[_builtins.str]] = None):
+                 comparison_operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 statistics: pulumi.Input[Optional[_builtins.str]] = None,
+                 threshold: pulumi.Input[Optional[_builtins.str]] = None,
+                 times: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] comparison_operator: The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         :param pulumi.Input[_builtins.str] statistics: The statistical aggregation method for warn-level alerts.
@@ -2988,50 +2988,50 @@ class MetricRuleTemplateAlertTemplateEscalationsWarnArgs:
 
     @_builtins.property
     @pulumi.getter(name="comparisonOperator")
-    def comparison_operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comparison_operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comparison operator of the threshold for warn-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
         """
         return pulumi.get(self, "comparison_operator")
 
     @comparison_operator.setter
-    def comparison_operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comparison_operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comparison_operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def statistics(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def statistics(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The statistical aggregation method for warn-level alerts.
         """
         return pulumi.get(self, "statistics")
 
     @statistics.setter
-    def statistics(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def statistics(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "statistics", value)
 
     @_builtins.property
     @pulumi.getter
-    def threshold(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def threshold(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The threshold for warn-level alerts.
         """
         return pulumi.get(self, "threshold")
 
     @threshold.setter
-    def threshold(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def threshold(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "threshold", value)
 
     @_builtins.property
     @pulumi.getter
-    def times(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def times(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
         """
         return pulumi.get(self, "times")
 
     @times.setter
-    def times(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def times(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "times", value)
 
 
@@ -3121,19 +3121,19 @@ class MonitorGroupInstancesInstanceArgs:
 
 
 class SiteMonitorCustomScheduleArgsDict(TypedDict):
-    days: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    days: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
     """
     The days in a week.
     """
-    end_hour: NotRequired[pulumi.Input[_builtins.int]]
+    end_hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The end time of the detection. Unit: hours.
     """
-    start_hour: NotRequired[pulumi.Input[_builtins.int]]
+    start_hour: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The start time of the detection. Unit: hours.
     """
-    time_zone: NotRequired[pulumi.Input[_builtins.str]]
+    time_zone: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The time zone of the detection.
     """
@@ -3141,10 +3141,10 @@ class SiteMonitorCustomScheduleArgsDict(TypedDict):
 @pulumi.input_type
 class SiteMonitorCustomScheduleArgs:
     def __init__(__self__, *,
-                 days: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 end_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 start_hour: Optional[pulumi.Input[_builtins.int]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 days: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 end_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 start_hour: pulumi.Input[Optional[_builtins.int]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] days: The days in a week.
         :param pulumi.Input[_builtins.int] end_hour: The end time of the detection. Unit: hours.
@@ -3162,63 +3162,63 @@ class SiteMonitorCustomScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def days(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def days(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The days in a week.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def days(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "days", value)
 
     @_builtins.property
     @pulumi.getter(name="endHour")
-    def end_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def end_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The end time of the detection. Unit: hours.
         """
         return pulumi.get(self, "end_hour")
 
     @end_hour.setter
-    def end_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def end_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "end_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="startHour")
-    def start_hour(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def start_hour(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The start time of the detection. Unit: hours.
         """
         return pulumi.get(self, "start_hour")
 
     @start_hour.setter
-    def start_hour(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def start_hour(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "start_hour", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The time zone of the detection.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
 
 class SiteMonitorIspCityArgsDict(TypedDict):
-    city: NotRequired[pulumi.Input[_builtins.str]]
+    city: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the city.
     """
-    isp: NotRequired[pulumi.Input[_builtins.str]]
+    isp: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the carrier.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
     """
@@ -3226,9 +3226,9 @@ class SiteMonitorIspCityArgsDict(TypedDict):
 @pulumi.input_type
 class SiteMonitorIspCityArgs:
     def __init__(__self__, *,
-                 city: Optional[pulumi.Input[_builtins.str]] = None,
-                 isp: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 city: pulumi.Input[Optional[_builtins.str]] = None,
+                 isp: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] city: The ID of the city.
         :param pulumi.Input[_builtins.str] isp: The ID of the carrier.
@@ -3243,71 +3243,71 @@ class SiteMonitorIspCityArgs:
 
     @_builtins.property
     @pulumi.getter
-    def city(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def city(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the city.
         """
         return pulumi.get(self, "city")
 
     @city.setter
-    def city(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def city(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "city", value)
 
     @_builtins.property
     @pulumi.getter
-    def isp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def isp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the carrier.
         """
         return pulumi.get(self, "isp")
 
     @isp.setter
-    def isp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def isp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "isp", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class SiteMonitorOptionJsonArgsDict(TypedDict):
-    assertions: NotRequired[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgsDict']]]]
+    assertions: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]]
     """
     Assertion configuration group. See `assertions` below.
     """
-    attempts: NotRequired[pulumi.Input[_builtins.int]]
+    attempts: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of retries after DNS failed.
     """
-    cookie: NotRequired[pulumi.Input[_builtins.str]]
+    cookie: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Cookie that sends the HTTP request.
     """
-    diagnosis_mtr: NotRequired[pulumi.Input[_builtins.bool]]
+    diagnosis_mtr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable automatic MTR network diagnosis after a task failure. Value:
     - false: does not enable automatic MTR network diagnosis.
     - true to turn on automatic MTR network diagnostics.
     """
-    diagnosis_ping: NotRequired[pulumi.Input[_builtins.bool]]
+    diagnosis_ping: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the automatic PING network delay detection after the task fails. Value:
     - false: does not enable automatic PING network delay detection.
     - true: Enable automatic PING network delay detection.
     """
-    dns_hijack_whitelist: NotRequired[pulumi.Input[_builtins.str]]
+    dns_hijack_whitelist: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     List of DNS hijacking configurations.
     """
-    dns_match_rule: NotRequired[pulumi.Input[_builtins.str]]
+    dns_match_rule: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Matching Rules for DNS. Value:
     - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
@@ -3315,13 +3315,13 @@ class SiteMonitorOptionJsonArgsDict(TypedDict):
     - EQUAL: the DNS response is exactly the same as the alias or IP address that is expected to be resolved.
     - ANY:DNS response and the alias or IP address expected to be resolved have an intersection.
     """
-    dns_server: NotRequired[pulumi.Input[_builtins.str]]
+    dns_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IP address of the DNS server.
 
     > **NOTE:**  only applicable to DNS probe types.
     """
-    dns_type: NotRequired[pulumi.Input[_builtins.str]]
+    dns_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     DNS resolution type. Only applicable to DNS probe types. Value:
     - A (default): specifies the IP address corresponding to the host name or domain name.
@@ -3330,93 +3330,93 @@ class SiteMonitorOptionJsonArgsDict(TypedDict):
     - MX: point domain name to a mail server address.
     - TXT: Description of host name or domain name. The text length is limited to 512 bytes, which is usually used as SPF(Sender Policy Framework) record, that is, anti-spam.
     """
-    expect_value: NotRequired[pulumi.Input[_builtins.str]]
+    expect_value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The alias or address to be resolved.
 
     > **NOTE:**  This parameter applies only to DNS probe types.
     """
-    failure_rate: NotRequired[pulumi.Input[_builtins.str]]
+    failure_rate: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Packet loss rate.
 
     > **NOTE:**  This parameter only applies to PING probe types.
     """
-    header: NotRequired[pulumi.Input[_builtins.str]]
+    header: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP request header.
     """
-    http_method: NotRequired[pulumi.Input[_builtins.str]]
+    http_method: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP request method. Value:
     - get
     - post
     - head
     """
-    is_base_encode: NotRequired[pulumi.Input[_builtins.bool]]
+    is_base_encode: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the parameter' Password' is Base64 encoded.
     - true: Yes.
     - false: No.
     """
-    match_rule: NotRequired[pulumi.Input[_builtins.int]]
+    match_rule: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Whether alarm rules are included. Value:
     - 0: Yes.
     - 1: No.
     """
-    min_tls_version: NotRequired[pulumi.Input[_builtins.str]]
+    min_tls_version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password of the SMTP, POP3, or FTP probe type.
     """
-    ping_num: NotRequired[pulumi.Input[_builtins.int]]
+    ping_num: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The heartbeat of the PING probe type.
     """
-    ping_port: NotRequired[pulumi.Input[_builtins.int]]
+    ping_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     PING the port. Applies to TCP PING.
     """
-    ping_type: NotRequired[pulumi.Input[_builtins.str]]
+    ping_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PING protocol type. Value:
     - icmp
     - tcp
     - udp
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Ports of TCP, UDP, SMTP, and POP3 probe types.
     """
-    request_content: NotRequired[pulumi.Input[_builtins.str]]
+    request_content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The request content of the HTTP probe type.
     """
-    request_format: NotRequired[pulumi.Input[_builtins.str]]
+    request_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP request content format. Value:
     - hex: hexadecimal format.
     - text: text format.
     """
-    response_content: NotRequired[pulumi.Input[_builtins.str]]
+    response_content: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Match the response content.
     """
-    response_format: NotRequired[pulumi.Input[_builtins.str]]
+    response_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     HTTP response content format. Value:
     - hex: hexadecimal format.
     - text: text format.
     """
-    timeout: NotRequired[pulumi.Input[_builtins.int]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Timeout time. Unit: milliseconds.
     """
-    user_name: NotRequired[pulumi.Input[_builtins.str]]
+    user_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username of FTP, SMTP, or pop3.
     """
@@ -3424,33 +3424,33 @@ class SiteMonitorOptionJsonArgsDict(TypedDict):
 @pulumi.input_type
 class SiteMonitorOptionJsonArgs:
     def __init__(__self__, *,
-                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]] = None,
-                 attempts: Optional[pulumi.Input[_builtins.int]] = None,
-                 cookie: Optional[pulumi.Input[_builtins.str]] = None,
-                 diagnosis_mtr: Optional[pulumi.Input[_builtins.bool]] = None,
-                 diagnosis_ping: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns_hijack_whitelist: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_match_rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 expect_value: Optional[pulumi.Input[_builtins.str]] = None,
-                 failure_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 header: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_base_encode: Optional[pulumi.Input[_builtins.bool]] = None,
-                 match_rule: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_tls_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ping_num: Optional[pulumi.Input[_builtins.int]] = None,
-                 ping_port: Optional[pulumi.Input[_builtins.int]] = None,
-                 ping_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 request_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 request_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_content: Optional[pulumi.Input[_builtins.str]] = None,
-                 response_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]] = None,
+                 attempts: pulumi.Input[Optional[_builtins.int]] = None,
+                 cookie: pulumi.Input[Optional[_builtins.str]] = None,
+                 diagnosis_mtr: pulumi.Input[Optional[_builtins.bool]] = None,
+                 diagnosis_ping: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns_hijack_whitelist: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_match_rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 expect_value: pulumi.Input[Optional[_builtins.str]] = None,
+                 failure_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 header: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_base_encode: pulumi.Input[Optional[_builtins.bool]] = None,
+                 match_rule: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_tls_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ping_num: pulumi.Input[Optional[_builtins.int]] = None,
+                 ping_port: pulumi.Input[Optional[_builtins.int]] = None,
+                 ping_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 request_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 request_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_content: pulumi.Input[Optional[_builtins.str]] = None,
+                 response_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]] assertions: Assertion configuration group. See `assertions` below.
         :param pulumi.Input[_builtins.int] attempts: Number of retries after DNS failed.
@@ -3570,43 +3570,43 @@ class SiteMonitorOptionJsonArgs:
 
     @_builtins.property
     @pulumi.getter
-    def assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]:
+    def assertions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]:
         """
         Assertion configuration group. See `assertions` below.
         """
         return pulumi.get(self, "assertions")
 
     @assertions.setter
-    def assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]):
+    def assertions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SiteMonitorOptionJsonAssertionArgs']]]]):
         pulumi.set(self, "assertions", value)
 
     @_builtins.property
     @pulumi.getter
-    def attempts(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def attempts(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of retries after DNS failed.
         """
         return pulumi.get(self, "attempts")
 
     @attempts.setter
-    def attempts(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def attempts(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "attempts", value)
 
     @_builtins.property
     @pulumi.getter
-    def cookie(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cookie(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Cookie that sends the HTTP request.
         """
         return pulumi.get(self, "cookie")
 
     @cookie.setter
-    def cookie(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cookie(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cookie", value)
 
     @_builtins.property
     @pulumi.getter(name="diagnosisMtr")
-    def diagnosis_mtr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def diagnosis_mtr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable automatic MTR network diagnosis after a task failure. Value:
         - false: does not enable automatic MTR network diagnosis.
@@ -3615,12 +3615,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "diagnosis_mtr")
 
     @diagnosis_mtr.setter
-    def diagnosis_mtr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def diagnosis_mtr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "diagnosis_mtr", value)
 
     @_builtins.property
     @pulumi.getter(name="diagnosisPing")
-    def diagnosis_ping(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def diagnosis_ping(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the automatic PING network delay detection after the task fails. Value:
         - false: does not enable automatic PING network delay detection.
@@ -3629,24 +3629,24 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "diagnosis_ping")
 
     @diagnosis_ping.setter
-    def diagnosis_ping(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def diagnosis_ping(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "diagnosis_ping", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsHijackWhitelist")
-    def dns_hijack_whitelist(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_hijack_whitelist(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         List of DNS hijacking configurations.
         """
         return pulumi.get(self, "dns_hijack_whitelist")
 
     @dns_hijack_whitelist.setter
-    def dns_hijack_whitelist(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_hijack_whitelist(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_hijack_whitelist", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsMatchRule")
-    def dns_match_rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_match_rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Matching Rules for DNS. Value:
         - IN_DNS: The alias or IP address that is expected to be resolved is in the DNS response.
@@ -3657,12 +3657,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "dns_match_rule")
 
     @dns_match_rule.setter
-    def dns_match_rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_match_rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_match_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsServer")
-    def dns_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address of the DNS server.
 
@@ -3671,12 +3671,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "dns_server")
 
     @dns_server.setter
-    def dns_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_server", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsType")
-    def dns_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS resolution type. Only applicable to DNS probe types. Value:
         - A (default): specifies the IP address corresponding to the host name or domain name.
@@ -3688,12 +3688,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "dns_type")
 
     @dns_type.setter
-    def dns_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_type", value)
 
     @_builtins.property
     @pulumi.getter(name="expectValue")
-    def expect_value(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expect_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alias or address to be resolved.
 
@@ -3702,12 +3702,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "expect_value")
 
     @expect_value.setter
-    def expect_value(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expect_value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expect_value", value)
 
     @_builtins.property
     @pulumi.getter(name="failureRate")
-    def failure_rate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_rate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Packet loss rate.
 
@@ -3716,24 +3716,24 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "failure_rate")
 
     @failure_rate.setter
-    def failure_rate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_rate", value)
 
     @_builtins.property
     @pulumi.getter
-    def header(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def header(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP request header.
         """
         return pulumi.get(self, "header")
 
     @header.setter
-    def header(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def header(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "header", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMethod")
-    def http_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP request method. Value:
         - get
@@ -3743,12 +3743,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "http_method")
 
     @http_method.setter
-    def http_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_method", value)
 
     @_builtins.property
     @pulumi.getter(name="isBaseEncode")
-    def is_base_encode(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_base_encode(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the parameter' Password' is Base64 encoded.
         - true: Yes.
@@ -3757,12 +3757,12 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "is_base_encode")
 
     @is_base_encode.setter
-    def is_base_encode(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_base_encode(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_base_encode", value)
 
     @_builtins.property
     @pulumi.getter(name="matchRule")
-    def match_rule(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def match_rule(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Whether alarm rules are included. Value:
         - 0: Yes.
@@ -3771,60 +3771,60 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "match_rule")
 
     @match_rule.setter
-    def match_rule(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def match_rule(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "match_rule", value)
 
     @_builtins.property
     @pulumi.getter(name="minTlsVersion")
-    def min_tls_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_tls_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Minimum TLS version. By default, TLS1.2 and later versions are supported. TLS1.0 and 1.1 have been disabled. If they still need to be supported, the configuration can be changed.
         """
         return pulumi.get(self, "min_tls_version")
 
     @min_tls_version.setter
-    def min_tls_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_tls_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_tls_version", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password of the SMTP, POP3, or FTP probe type.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="pingNum")
-    def ping_num(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ping_num(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The heartbeat of the PING probe type.
         """
         return pulumi.get(self, "ping_num")
 
     @ping_num.setter
-    def ping_num(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ping_num(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ping_num", value)
 
     @_builtins.property
     @pulumi.getter(name="pingPort")
-    def ping_port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ping_port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         PING the port. Applies to TCP PING.
         """
         return pulumi.get(self, "ping_port")
 
     @ping_port.setter
-    def ping_port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ping_port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ping_port", value)
 
     @_builtins.property
     @pulumi.getter(name="pingType")
-    def ping_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ping_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PING protocol type. Value:
         - icmp
@@ -3834,36 +3834,36 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "ping_type")
 
     @ping_type.setter
-    def ping_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ping_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ping_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Ports of TCP, UDP, SMTP, and POP3 probe types.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="requestContent")
-    def request_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The request content of the HTTP probe type.
         """
         return pulumi.get(self, "request_content")
 
     @request_content.setter
-    def request_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_content", value)
 
     @_builtins.property
     @pulumi.getter(name="requestFormat")
-    def request_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def request_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP request content format. Value:
         - hex: hexadecimal format.
@@ -3872,24 +3872,24 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "request_format")
 
     @request_format.setter
-    def request_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def request_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "request_format", value)
 
     @_builtins.property
     @pulumi.getter(name="responseContent")
-    def response_content(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_content(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Match the response content.
         """
         return pulumi.get(self, "response_content")
 
     @response_content.setter
-    def response_content(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_content(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_content", value)
 
     @_builtins.property
     @pulumi.getter(name="responseFormat")
-    def response_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def response_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         HTTP response content format. Value:
         - hex: hexadecimal format.
@@ -3898,36 +3898,36 @@ class SiteMonitorOptionJsonArgs:
         return pulumi.get(self, "response_format")
 
     @response_format.setter
-    def response_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def response_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "response_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout time. Unit: milliseconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username of FTP, SMTP, or pop3.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
 class SiteMonitorOptionJsonAssertionArgsDict(TypedDict):
-    operator: NotRequired[pulumi.Input[_builtins.str]]
+    operator: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Assertion comparison operator. Value:
     - contains: contains.
@@ -3939,18 +3939,18 @@ class SiteMonitorOptionJsonAssertionArgsDict(TypedDict):
     - Lesthan: less.
     - moreThan: Greater.
     """
-    target: NotRequired[pulumi.Input[_builtins.str]]
+    target: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Assertion matches the target numeric value or character of the comparison.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class SiteMonitorOptionJsonAssertionArgs:
     def __init__(__self__, *,
-                 operator: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 operator: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: Assertion comparison operator. Value:
                - contains: contains.
@@ -3972,7 +3972,7 @@ class SiteMonitorOptionJsonAssertionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def operator(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Assertion comparison operator. Value:
         - contains: contains.
@@ -3987,28 +3987,28 @@ class SiteMonitorOptionJsonAssertionArgs:
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def operator(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "operator", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Assertion matches the target numeric value or character of the comparison.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -4025,7 +4025,7 @@ class SlsGroupSlsGroupConfigArgsDict(TypedDict):
     """
     The Sls Region.
     """
-    sls_user_id: NotRequired[pulumi.Input[_builtins.str]]
+    sls_user_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The ID of the Sls User.
     """
@@ -4036,7 +4036,7 @@ class SlsGroupSlsGroupConfigArgs:
                  sls_logstore: pulumi.Input[_builtins.str],
                  sls_project: pulumi.Input[_builtins.str],
                  sls_region: pulumi.Input[_builtins.str],
-                 sls_user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 sls_user_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] sls_logstore: The name of the Log Store.
         :param pulumi.Input[_builtins.str] sls_project: The name of the Project.
@@ -4087,14 +4087,14 @@ class SlsGroupSlsGroupConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="slsUserId")
-    def sls_user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sls_user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the Sls User.
         """
         return pulumi.get(self, "sls_user_id")
 
     @sls_user_id.setter
-    def sls_user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sls_user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sls_user_id", value)
 
 

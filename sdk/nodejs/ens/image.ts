@@ -150,27 +150,27 @@ export interface ImageState {
     /**
      * The image creation time.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
-    deleteAfterImageUpload?: pulumi.Input<string>;
+    deleteAfterImageUpload?: pulumi.Input<string | undefined>;
     /**
      * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
-    imageName?: pulumi.Input<string>;
+    imageName?: pulumi.Input<string | undefined>;
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The state of the image.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The region of the target OSS where the image is to be stored.
      */
-    targetOssRegionId?: pulumi.Input<string>;
+    targetOssRegionId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,7 +180,7 @@ export interface ImageArgs {
     /**
      * Specifies whether to automatically release the instance after the image is packaged and uploaded. Only image builders are supported. Default value: `false`. Valid values:
      */
-    deleteAfterImageUpload?: pulumi.Input<string>;
+    deleteAfterImageUpload?: pulumi.Input<string | undefined>;
     /**
      * The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      */
@@ -188,9 +188,9 @@ export interface ImageArgs {
     /**
      * The ID of the instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The region of the target OSS where the image is to be stored.
      */
-    targetOssRegionId?: pulumi.Input<string>;
+    targetOssRegionId?: pulumi.Input<string | undefined>;
 }

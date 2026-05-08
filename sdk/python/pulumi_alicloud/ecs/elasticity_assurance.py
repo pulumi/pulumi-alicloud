@@ -22,18 +22,18 @@ class ElasticityAssuranceArgs:
                  instance_amount: pulumi.Input[_builtins.int],
                  instance_type: pulumi.Input[_builtins.str],
                  zone_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
-                 assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ElasticityAssurance resource.
 
@@ -133,19 +133,19 @@ class ElasticityAssuranceArgs:
 
     @_builtins.property
     @pulumi.getter(name="assuranceTimes")
-    def assurance_times(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assurance_times(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
 
     @assurance_times.setter
-    def assurance_times(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assurance_times(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assurance_times", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
         - true
@@ -156,12 +156,12 @@ class ElasticityAssuranceArgs:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
         - Default value when `PeriodUnit` is set to Month: 1.
@@ -172,12 +172,12 @@ class ElasticityAssuranceArgs:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriodUnit")
-    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unit of duration. Value range:
         - Month: Month
@@ -188,24 +188,24 @@ class ElasticityAssuranceArgs:
         return pulumi.get(self, "auto_renew_period_unit")
 
     @auto_renew_period_unit.setter
-    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of flexible guarantee service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
         - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -214,107 +214,107 @@ class ElasticityAssuranceArgs:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolOptionsMatchCriteria")
-    def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_pool_options_match_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
 
     @private_pool_options_match_criteria.setter
-    def private_pool_options_match_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_pool_options_match_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_pool_options_match_criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolOptionsName")
-    def private_pool_options_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_pool_options_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flexible protection service.
         """
         return pulumi.get(self, "private_pool_options_name")
 
     @private_pool_options_name.setter
-    def private_pool_options_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_pool_options_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_pool_options_name", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flexible guarantee service effective time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _ElasticityAssuranceState:
     def __init__(__self__, *,
-                 assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 elasticity_assurance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 end_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 used_assurance_times: Optional[pulumi.Input[_builtins.int]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 elasticity_assurance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 end_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 used_assurance_times: pulumi.Input[Optional[_builtins.int]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ElasticityAssurance resources.
 
@@ -402,19 +402,19 @@ class _ElasticityAssuranceState:
 
     @_builtins.property
     @pulumi.getter(name="assuranceTimes")
-    def assurance_times(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def assurance_times(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
 
     @assurance_times.setter
-    def assurance_times(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def assurance_times(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "assurance_times", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to enable auto-renewal for the elasticity assurance. Valid values:
         - true
@@ -425,12 +425,12 @@ class _ElasticityAssuranceState:
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriod")
-    def auto_renew_period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def auto_renew_period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The auto-renewal period. Unit: month. Valid values: 1, 2, 3, 6, 12, 24, and 36.
         - Default value when `PeriodUnit` is set to Month: 1.
@@ -441,12 +441,12 @@ class _ElasticityAssuranceState:
         return pulumi.get(self, "auto_renew_period")
 
     @auto_renew_period.setter
-    def auto_renew_period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def auto_renew_period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "auto_renew_period", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewPeriodUnit")
-    def auto_renew_period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auto_renew_period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unit of duration. Value range:
         - Month: Month
@@ -457,84 +457,84 @@ class _ElasticityAssuranceState:
         return pulumi.get(self, "auto_renew_period_unit")
 
     @auto_renew_period_unit.setter
-    def auto_renew_period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auto_renew_period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auto_renew_period_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of flexible guarantee service.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="elasticityAssuranceId")
-    def elasticity_assurance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def elasticity_assurance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The first ID of the resource
         """
         return pulumi.get(self, "elasticity_assurance_id")
 
     @elasticity_assurance_id.setter
-    def elasticity_assurance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def elasticity_assurance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "elasticity_assurance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="endTime")
-    def end_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def end_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flexible guarantee service failure time.
         """
         return pulumi.get(self, "end_time")
 
     @end_time.setter
-    def end_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def end_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "end_time", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceAmount")
-    def instance_amount(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def instance_amount(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000. **NOTE:** From version 1.261.0, `instance_amount` can be modified.
         """
         return pulumi.get(self, "instance_amount")
 
     @instance_amount.setter
-    def instance_amount(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def instance_amount(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "instance_amount", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceChargeType")
-    def instance_charge_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_charge_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
         """
         return pulumi.get(self, "instance_charge_type")
 
     @instance_charge_type.setter
-    def instance_charge_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_charge_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_charge_type", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceType")
-    def instance_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance type. Currently, only one instance type is supported.
         """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
-    def instance_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
         - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -543,139 +543,139 @@ class _ElasticityAssuranceState:
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter(name="periodUnit")
-    def period_unit(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def period_unit(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
         """
         return pulumi.get(self, "period_unit")
 
     @period_unit.setter
-    def period_unit(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def period_unit(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "period_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolOptionsMatchCriteria")
-    def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_pool_options_match_criteria(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
 
     @private_pool_options_match_criteria.setter
-    def private_pool_options_match_criteria(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_pool_options_match_criteria(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_pool_options_match_criteria", value)
 
     @_builtins.property
     @pulumi.getter(name="privatePoolOptionsName")
-    def private_pool_options_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_pool_options_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the flexible protection service.
         """
         return pulumi.get(self, "private_pool_options_name")
 
     @private_pool_options_name.setter
-    def private_pool_options_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_pool_options_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_pool_options_name", value)
 
     @_builtins.property
     @pulumi.getter(name="regionId")
-    def region_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (Available since v1.261.0) The region ID of the elasticity assurance.
         """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
-    def region_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region_id", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceGroupId")
-    def resource_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
-    def resource_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flexible guarantee service effective time.
         """
         return pulumi.get(self, "start_time")
 
     @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time", value)
 
     @_builtins.property
     @pulumi.getter(name="startTimeType")
-    def start_time_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_time_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         """
         return pulumi.get(self, "start_time_type")
 
     @start_time_type.setter
-    def start_time_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_time_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_time_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The tag key-value pair information bound by the elastic guarantee service.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="usedAssuranceTimes")
-    def used_assurance_times(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def used_assurance_times(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         This parameter is not yet available.
         """
         return pulumi.get(self, "used_assurance_times")
 
     @used_assurance_times.setter
-    def used_assurance_times(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def used_assurance_times(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "used_assurance_times", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneIds")
-    def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def zone_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         return pulumi.get(self, "zone_ids")
 
     @zone_ids.setter
-    def zone_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def zone_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "zone_ids", value)
 
 
@@ -685,21 +685,21 @@ class ElasticityAssurance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a ECS Elasticity Assurance resource.
@@ -844,21 +844,21 @@ class ElasticityAssurance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-                 instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+                 instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -906,28 +906,28 @@ class ElasticityAssurance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assurance_times: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            auto_renew_period: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_renew_period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            elasticity_assurance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            end_time: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_amount: Optional[pulumi.Input[_builtins.int]] = None,
-            instance_charge_type: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_type: Optional[pulumi.Input[_builtins.str]] = None,
-            period: Optional[pulumi.Input[_builtins.int]] = None,
-            period_unit: Optional[pulumi.Input[_builtins.str]] = None,
-            private_pool_options_match_criteria: Optional[pulumi.Input[_builtins.str]] = None,
-            private_pool_options_name: Optional[pulumi.Input[_builtins.str]] = None,
-            region_id: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time: Optional[pulumi.Input[_builtins.str]] = None,
-            start_time_type: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            used_assurance_times: Optional[pulumi.Input[_builtins.int]] = None,
-            zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ElasticityAssurance':
+            assurance_times: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_renew_period: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            elasticity_assurance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            end_time: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_amount: pulumi.Input[Optional[_builtins.int]] = None,
+            instance_charge_type: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_type: pulumi.Input[Optional[_builtins.str]] = None,
+            period: pulumi.Input[Optional[_builtins.int]] = None,
+            period_unit: pulumi.Input[Optional[_builtins.str]] = None,
+            private_pool_options_match_criteria: pulumi.Input[Optional[_builtins.str]] = None,
+            private_pool_options_name: pulumi.Input[Optional[_builtins.str]] = None,
+            region_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time: pulumi.Input[Optional[_builtins.str]] = None,
+            start_time_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            used_assurance_times: pulumi.Input[Optional[_builtins.int]] = None,
+            zone_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'ElasticityAssurance':
         """
         Get an existing ElasticityAssurance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

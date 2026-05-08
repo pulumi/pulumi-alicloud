@@ -21,8 +21,8 @@ class LoginProfileArgs:
     def __init__(__self__, *,
                  password: pulumi.Input[_builtins.str],
                  user_name: pulumi.Input[_builtins.str],
-                 mfa_bind_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None):
+                 mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LoginProfile resource.
 
@@ -68,7 +68,7 @@ class LoginProfileArgs:
 
     @_builtins.property
     @pulumi.getter(name="mfaBindRequired")
-    def mfa_bind_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_bind_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
         - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
@@ -77,12 +77,12 @@ class LoginProfileArgs:
         return pulumi.get(self, "mfa_bind_required")
 
     @mfa_bind_required.setter
-    def mfa_bind_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_bind_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_bind_required", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordResetRequired")
-    def password_reset_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_reset_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user must reset the password at the next logon. Value:
         - true
@@ -91,18 +91,18 @@ class LoginProfileArgs:
         return pulumi.get(self, "password_reset_required")
 
     @password_reset_required.setter
-    def password_reset_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_reset_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_reset_required", value)
 
 
 @pulumi.input_type
 class _LoginProfileState:
     def __init__(__self__, *,
-                 create_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 mfa_bind_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoginProfile resources.
 
@@ -129,19 +129,19 @@ class _LoginProfileState:
 
     @_builtins.property
     @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Creation time.
         """
         return pulumi.get(self, "create_time")
 
     @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter(name="mfaBindRequired")
-    def mfa_bind_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mfa_bind_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to forcefully enable multi-factor authentication (MFA) for the RAM user. Valid values:
         - true: forcefully enables MFA for the RAM user. The RAM user must bind an MFA device upon the next logon.
@@ -150,24 +150,24 @@ class _LoginProfileState:
         return pulumi.get(self, "mfa_bind_required")
 
     @mfa_bind_required.setter
-    def mfa_bind_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mfa_bind_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mfa_bind_required", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="passwordResetRequired")
-    def password_reset_required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def password_reset_required(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the user must reset the password at the next logon. Value:
         - true
@@ -176,19 +176,19 @@ class _LoginProfileState:
         return pulumi.get(self, "password_reset_required")
 
     @password_reset_required.setter
-    def password_reset_required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def password_reset_required(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "password_reset_required", value)
 
     @_builtins.property
     @pulumi.getter(name="userName")
-    def user_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user name.
         """
         return pulumi.get(self, "user_name")
 
     @user_name.setter
-    def user_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_name", value)
 
 
@@ -198,10 +198,10 @@ class LoginProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mfa_bind_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a RAM Login Profile resource.
@@ -311,10 +311,10 @@ class LoginProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 mfa_bind_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -343,11 +343,11 @@ class LoginProfile(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            create_time: Optional[pulumi.Input[_builtins.str]] = None,
-            mfa_bind_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            password_reset_required: Optional[pulumi.Input[_builtins.bool]] = None,
-            user_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoginProfile':
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            mfa_bind_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            password_reset_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            user_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoginProfile':
         """
         Get an existing LoginProfile resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

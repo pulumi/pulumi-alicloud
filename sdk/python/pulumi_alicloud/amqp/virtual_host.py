@@ -58,8 +58,8 @@ class VirtualHostArgs:
 @pulumi.input_type
 class _VirtualHostState:
     def __init__(__self__, *,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VirtualHost resources.
 
@@ -73,26 +73,26 @@ class _VirtualHostState:
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         InstanceId.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="virtualHostName")
-    def virtual_host_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def virtual_host_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         VirtualHostName.
         """
         return pulumi.get(self, "virtual_host_name")
 
     @virtual_host_name.setter
-    def virtual_host_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def virtual_host_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "virtual_host_name", value)
 
 
@@ -102,8 +102,8 @@ class VirtualHost(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Amqp Virtual Host.
@@ -235,8 +235,8 @@ class VirtualHost(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -262,8 +262,8 @@ class VirtualHost(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            virtual_host_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'VirtualHost':
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            virtual_host_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'VirtualHost':
         """
         Get an existing VirtualHost resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

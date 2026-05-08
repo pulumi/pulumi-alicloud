@@ -149,35 +149,35 @@ export interface IpamIpamResourceDiscoveryState {
     /**
      * The time when the resource discovery was created.
      */
-    createTime?: pulumi.Input<string>;
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of resource discovery.
      */
-    ipamResourceDiscoveryDescription?: pulumi.Input<string>;
+    ipamResourceDiscoveryDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    ipamResourceDiscoveryName?: pulumi.Input<string>;
+    ipamResourceDiscoveryName?: pulumi.Input<string | undefined>;
     /**
      * The list of operating regions for resource discovery.
      */
-    operatingRegionLists?: pulumi.Input<pulumi.Input<string>[]>;
+    operatingRegionLists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The region ID of the resource
      */
-    regionId?: pulumi.Input<string>;
+    regionId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * The status of the resource discovery instance. Value:
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Label list information.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 /**
@@ -187,11 +187,11 @@ export interface IpamIpamResourceDiscoveryArgs {
     /**
      * The description of resource discovery.
      */
-    ipamResourceDiscoveryDescription?: pulumi.Input<string>;
+    ipamResourceDiscoveryDescription?: pulumi.Input<string | undefined>;
     /**
      * The name of the resource
      */
-    ipamResourceDiscoveryName?: pulumi.Input<string>;
+    ipamResourceDiscoveryName?: pulumi.Input<string | undefined>;
     /**
      * The list of operating regions for resource discovery.
      */
@@ -199,9 +199,9 @@ export interface IpamIpamResourceDiscoveryArgs {
     /**
      * The ID of the resource group
      */
-    resourceGroupId?: pulumi.Input<string>;
+    resourceGroupId?: pulumi.Input<string | undefined>;
     /**
      * Label list information.
      */
-    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
